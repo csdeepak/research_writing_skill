@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rce/source_registry.schema.json",
+  "title": "External source registry",
+  "type": "object",
+  "required": ["sources"],
+  "properties": {
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "authors", "year", "publication_status", "level", "verification", "read_depth", "permitted_use"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^SRC-[0-9]{3,}$"},
+          "title": {"type": "string"},
+          "authors": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "year": {"type": "integer", "minimum": 1600, "maximum": 2100},
+          "venue": {"type": ["string", "null"]},
+          "doi": {"type": ["string", "null"], "pattern": "^10\\.[0-9]{4,9}/\\S+$"},
+          "url": {"type": ["string", "null"]},
+          "publication_status": {"enum": ["PEER-REVIEWED", "PREPRINT", "EDITORIAL", "GUIDELINE",
+                                          "TECHNICAL_REPORT", "BLOG", "DOCUMENTATION", "COMMENTARY", "OPINION"]},
+          "peer_review_known": {"type": "boolean"},
+          "domain": {"type": "string"},
+          "paper_type": {"type": "string"},
+          "level": {"enum": [1, 2, 3, 4]},
+          "verification": {
+            "type": "object",
+            "required": ["method", "date"],
+            "properties": {
+              "method": {"enum": ["doi_lookup", "index_lookup", "publisher_page", "user_supplied_file", "manual"]},
+              "date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+              "verified_by": {"enum": ["agent", "human"]},
+              "retraction_checked": {"type": "boolean"}
+            }
+          },
+          "read_depth": {"enum": ["full", "partial", "abstract"]},
+          "establishes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["statement", "support_quote", "location"],
+              "properties": {
+                "statement": {"type": "string"},
+                "support_quote": {"type": "string", "maxLength": 400},
+                "location": {"type": "string"},
+                "strength": {"type": "string"}
+              }
+            }
+          },
+          "why_useful": {"type": "string"},
+          "demonstrates": {"type": "array", "items": {"type": "string"}},
+          "informs_sections": {"type": "array", "items": {"type": "string"}},
+          "evidence_quality": {"enum": ["high", "medium", "low"]},
+          "limitations": {"type": "string"},
+          "permitted_use": {"type": "array", "items": {"enum": ["content_citation", "pattern_exemplar", "negative_pattern", "venue_rule"]}},
+          "citation_count": {"type": ["integer", "null"]}
+        }
+      }
+    }
+  }
+}

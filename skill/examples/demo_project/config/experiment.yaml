@@ -1,0 +1,22 @@
+# SYNTHETIC TEACHING EXAMPLE: invented configuration
+data:
+  generator: synthload          # synthetic hourly series: daily + weekly cycles + gaussian noise
+  train_hours: 8760
+  test_hours: 2160
+  shift_type: level
+  shift_magnitudes: [0.0, 0.2, 0.4, 0.6, 0.8]   # in units of training std
+model:
+  type: mlp
+  hidden_units: 64
+  history_hours: 168
+  horizon_hours: 24
+normalization:
+  baseline: train_stats
+  rwn:
+    window: 48                  # chosen by hand, no sweep (see notes)
+  rwn_fixed:
+    calibration_window: 48      # stats computed once after shift, then frozen
+training:
+  epochs: 50
+  seeds: [0, 1, 2, 3, 4]
+metric: mae

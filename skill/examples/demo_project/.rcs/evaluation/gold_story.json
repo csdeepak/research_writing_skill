@@ -1,0 +1,26 @@
+{
+  "project": "demo_project (SYNTHETIC TEACHING EXAMPLE)",
+  "approved_by_researcher": false,
+  "approval_date": null,
+  "questions": {
+    "Q1": [{"id": "q1a", "text": "Forecasters normalized with training statistics lose accuracy after a level shift", "strength": "context"}],
+    "Q2": [{"id": "q2a", "text": "Level shifts occur in deployed forecasting, so the error matters in practice (not yet cited)", "strength": "context"}],
+    "Q3": [{"id": "q3a", "text": "Existing evaluations change normalization and model size together, so the error source is not separated", "strength": "literature"}],
+    "Q4": [{"id": "q4a", "text": "Compared training-stat normalization, per-window normalization (RWN), and a frozen-stat ablation", "strength": "context", "evidence_ids": ["E007"]},
+           {"id": "q4b", "text": "Same model and budget for all; synthetic series; level shifts 0.2-0.8", "strength": "context", "evidence_ids": ["E007", "E012"]}],
+    "Q5": [{"id": "q5a", "text": "Holding the model fixed isolates normalization from capacity", "strength": "context"}],
+    "Q6": [{"id": "q6a", "text": "Shift sweep over magnitudes incl. no shift, 5 seeds", "strength": "context"},
+           {"id": "q6b", "text": "Ablation freezing statistics after one post-shift window", "strength": "context"}],
+    "Q7": [{"id": "q7a", "text": "RWN reduced MAE by about 11-29% for shifts up to 0.6", "strength": "derived", "evidence_ids": ["E003", "E004"]},
+           {"id": "q7b", "text": "No cost without shift", "strength": "derived", "evidence_ids": ["E001", "E002"]}],
+    "Q8": [{"id": "q8a", "text": "In this synthetic, fixed-capacity setting, stale statistics rather than capacity account for much of the shift error (suggestive)", "strength": "interpretation"},
+           {"id": "q8b", "text": "About a third of the gain needs continued adaptation", "strength": "derived", "evidence_ids": ["E006"]}],
+    "Q9": [{"id": "q9a", "text": "No benefit shown at the largest shift (0.8)", "strength": "derived", "evidence_ids": ["E005"]},
+           {"id": "q9b", "text": "Nothing shown for real data, larger models, or non-level shifts", "strength": "context"}],
+    "Q10": [{"id": "q10a", "text": "Capacity-controlled evidence that per-window normalization removes most level-shift error up to moderate shifts, with its boundary and gain attribution", "strength": "derived"}],
+    "Q11": [{"id": "q11a", "text": "Synthetic data only", "strength": "context"},
+            {"id": "q11b", "text": "One architecture; capacity held, not varied", "strength": "context"},
+            {"id": "q11c", "text": "Window length untuned", "strength": "context"}],
+    "Q12": [{"id": "q12a", "text": "Much level-shift error can come from stale normalization, not the model, at least in this setting; fixing normalization helps up to moderate shifts", "strength": "interpretation"}]
+  }
+}

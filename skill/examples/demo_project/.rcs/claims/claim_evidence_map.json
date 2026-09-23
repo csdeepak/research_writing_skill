@@ -1,0 +1,37 @@
+{
+  "claims": [
+    {"id": "C001", "statement": "Without shift, RWN and the baseline had indistinguishable MAE (0.409 ± 0.007 vs 0.412 ± 0.006, 5 seeds).",
+     "claim_type": "derived", "evidence": ["E001", "E002"], "scope": {"data": "SynthLoad", "shift": 0.0},
+     "confidence": "moderate", "confidence_reasons": ["5 seeds, spread reported", "synthetic data only"],
+     "limitations": ["L001"], "permitted_verbs": ["matched", "was indistinguishable from"], "author_confirmation": "confirmed"},
+    {"id": "C002", "statement": "Under level shifts of 0.2-0.6 training-std units, RWN reduced MAE by 11-29% relative to the baseline, with the gap growing with shift magnitude; seed spread (std ≤ 0.012) is small relative to the differences.",
+     "claim_type": "derived", "evidence": ["E003", "E004"], "scope": {"data": "SynthLoad", "shift_type": "level", "shift": [0.2, 0.6]},
+     "confidence": "moderate", "confidence_reasons": ["hard evidence, 5 seeds", "window not tuned (E011)", "synthetic only"],
+     "limitations": ["L001", "L003", "L004"], "permitted_verbs": ["reduced", "lowered"], "author_confirmation": "confirmed"},
+    {"id": "C003", "statement": "At shift 0.8, RWN gave no clear benefit (0.712 ± 0.021 vs 0.731 ± 0.015; difference about one standard deviation).",
+     "claim_type": "derived", "evidence": ["E005"], "scope": {"shift": 0.8},
+     "confidence": "moderate", "confidence_reasons": ["5 seeds", "no statistical test run"],
+     "limitations": ["L001"], "permitted_verbs": ["did not clearly improve"], "author_confirmation": "confirmed"},
+    {"id": "C004", "statement": "At shift 0.6, freezing statistics after the first post-shift window (RWN-fixed, MAE 0.518) recovers about two thirds of RWN's gain over the baseline; about one third depends on continued adaptation.",
+     "claim_type": "derived", "evidence": ["E003", "E004", "E006"], "scope": {"shift": 0.6},
+     "confidence": "moderate", "confidence_reasons": ["single shift magnitude for ablation"],
+     "limitations": ["L001", "L003"], "permitted_verbs": ["recovers", "accounts for"], "author_confirmation": "confirmed"},
+    {"id": "C005", "statement": "Because capacity was held fixed, the results suggest that stale normalization statistics, rather than model capacity, account for much of the baseline's shift-induced error in this setting.",
+     "claim_type": "interpretation", "evidence": ["C002", "C004", "E007"], "scope": {"data": "SynthLoad", "model": "one MLP"},
+     "confidence": "low", "confidence_reasons": ["capacity not varied, only held constant", "one architecture", "synthetic only"],
+     "limitations": ["L001", "L002", "L004"], "permitted_verbs": ["suggest", "is consistent with"], "author_confirmation": "pending"},
+    {"id": "C006", "statement": "We hypothesized that per-window normalization would reduce error under level shift without harming accuracy when no shift occurs.",
+     "claim_type": "hypothesis", "evidence": ["E009"], "confidence": "moderate", "author_confirmation": "confirmed"},
+    {"id": "C007", "statement": "Whether the effect holds on real load data and larger architectures remains open.",
+     "claim_type": "future", "evidence": [], "confidence": "low", "author_confirmation": "confirmed"}
+  ],
+  "limitations": [
+    {"id": "L001", "statement": "All data come from one synthetic generator; transfer to real load series is untested.", "affects_claims": ["C001", "C002", "C003", "C004", "C005"], "effect_on_interpretation": "Effect sizes may not carry over to real data.", "evidence": ["E008"]},
+    {"id": "L002", "statement": "A single architecture was used and capacity was never varied; the capacity explanation was held constant, not tested.", "affects_claims": ["C005"], "effect_on_interpretation": "The 'rather than capacity' part of C005 is inferred, not isolated.", "evidence": ["E007", "E008"]},
+    {"id": "L003", "statement": "The window length (48) was not tuned.", "affects_claims": ["C002", "C004"], "effect_on_interpretation": "Reported gains are for one untuned setting; they may be higher or lower when tuned.", "evidence": ["E011"]},
+    {"id": "L004", "statement": "Only level shifts were studied.", "affects_claims": ["C002", "C005"], "effect_on_interpretation": "No claim about variance or seasonality shifts.", "evidence": ["E008"]}
+  ],
+  "negative_result_decisions": [
+    {"evidence": "E005", "decision": "reported_main", "reason": "Bounds the main claim C002."}
+  ]
+}

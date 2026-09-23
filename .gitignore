@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.rcs/private/
+# project-level artifacts created when running the skill on real projects
+/.rcs/
+!skill/examples/demo_project/.rcs/

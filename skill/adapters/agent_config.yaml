@@ -1,0 +1,42 @@
+# Model assignments for logical roles. The core skill refers ONLY to logical names.
+# Copy to <project>/.rcs/config.yaml and edit. Model identifiers are runtime-specific strings.
+
+profiles:
+  recommended:            # Sonnet-class / Opus-class / Opus-class
+    AUTHOR: inherit       # whatever model the user is running
+    CORPUS_AGENT: {class: fast-capable, examples: ["claude sonnet-class", "gpt mid-tier", "gemini flash/pro-class"]}
+    REVIEW_AGENT: {class: strongest-reasoning, examples: ["claude opus-class", "gpt top-tier reasoning", "gemini pro-class"]}
+    SKILL_AGENT: {class: strongest-reasoning}
+    RECON_GRADER: {class: fast-capable}
+  budget:                 # Sonnet/Sonnet/Sonnet
+    AUTHOR: inherit
+    CORPUS_AGENT: {class: fast-capable}
+    REVIEW_AGENT: {class: fast-capable}
+    SKILL_AGENT: {class: fast-capable}
+    RECON_GRADER: {class: fast-capable}
+  release_gate:           # cross-family reviewer reduces same-model preference bias
+    AUTHOR: inherit
+    CORPUS_AGENT: {class: fast-capable}
+    REVIEW_AGENT: {class: strongest-reasoning, family: different_from_AUTHOR, runs: [family_1, family_2], seeds: 3}
+    SKILL_AGENT: {class: strongest-reasoning}
+    RECON_GRADER: {class: fast-capable, human_spot_check: 0.2}
+
+active_profile: recommended
+
+# Concrete bindings per runtime (fill for your environment)
+bindings:
+  claude_code: {CORPUS_AGENT: sonnet, REVIEW_AGENT: opus, SKILL_AGENT: opus, RECON_GRADER: sonnet}
+  codex: {CORPUS_AGENT: "<model id>", REVIEW_AGENT: "<model id>", SKILL_AGENT: "<model id>", RECON_GRADER: "<model id>"}
+  openai_compatible: {base_url: "<url>", CORPUS_AGENT: "<model id>", REVIEW_AGENT: "<model id>", SKILL_AGENT: "<model id>"}
+  gemini: {CORPUS_AGENT: "<model id>", REVIEW_AGENT: "<model id>", SKILL_AGENT: "<model id>"}
+  local: {CORPUS_AGENT: "<model name>", REVIEW_AGENT: "<model name>", SKILL_AGENT: "<model name>"}
+
+isolation:
+  everyday: soft          # separate subagent context
+  benchmark: hard         # separate process, cwd = packet dir, read-only tools, no web
+
+data_policy:
+  # Which endpoints may receive confidential project data (Level 0). Default: only the runtime
+  # the user is already using. List others explicitly.
+  allowed_endpoints: [current_runtime]
+  web_search_may_include_project_text: false   # queries use generic terms only
