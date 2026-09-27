@@ -1,0 +1,11 @@
+{
+  "terms": [
+    {"term":"LLM agent","kind":"technical","definition":"A large language model wrapped in a loop that observes an environment, chooses one action per step, and repeats until the task is judged done or a limit is reached.","defined_at":"Introduction ¶2","first_used_at":"Introduction ¶1","synonyms_forbidden":["autonomous agent (unqualified)","AI assistant"]},
+    {"term":"agent hub","kind":"project_specific","definition":"OpenHands' collection of more than 10 implemented agents that share the same platform and tool interfaces.","defined_at":"§3 Platform","first_used_at":"Introduction ¶3"},
+    {"term":"CodeActAgent","kind":"project_specific","definition":"OpenHands' general-purpose agent that represents actions as executable code rather than a fixed action schema.","defined_at":"§3 Platform","first_used_at":"§3 Platform"},
+    {"term":"BrowsingAgent","kind":"project_specific","definition":"OpenHands' agent specialized for web-browser interaction tasks.","defined_at":"§3 Platform","first_used_at":"§3 Platform"},
+    {"term":"resolve rate","kind":"technical","definition":"The fraction of SWE-Bench-style repository issues for which the agent's patch passes the issue's held-out test suite.","defined_at":"§4 Evaluation setup","first_used_at":"§4 Evaluation setup"},
+    {"term":"0-shot / 1-shot","kind":"technical","definition":"Whether the agent is given zero or one full worked demonstration of the task before attempting it.","defined_at":"§4 Evaluation setup","first_used_at":"§4 Evaluation setup"},
+    {"term":"resolve@k / pass@k self-debug","kind":"technical","definition":"An evaluation where the agent may attempt and revise a fix across several turns before its final answer is judged.","defined_at":"§4 Evaluation setup","first_used_at":"§4 Evaluation setup"}
+  ]
+}

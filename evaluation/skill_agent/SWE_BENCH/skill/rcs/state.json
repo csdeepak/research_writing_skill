@@ -1,0 +1,60 @@
+{
+  "step": 21,
+  "gates": {
+    "G1": "passed",
+    "G2": "passed",
+    "G3": "passed",
+    "G4": "passed — blind review diagnostics addressed in step 19",
+    "G5": "passed — tags stripped, claim-invariance checked in step 21"
+  },
+  "open_failures": [],
+  "accepted_risks": [
+    "No user available for STOP/ASK confirmations — most defensible option chosen from evidence",
+    "No subagents — CORPUS_AGENT role performed by AUTHOR sequentially",
+    "Literature limited to works cited in project/paper.txt — verification.method=user_supplied_file, read_depth=abstract",
+    "Step 18 (blind review) performed externally — diagnostics applied in step 19",
+    "Step 20 (further review rounds) skipped per run-specific constraints",
+    "Single greedy decoding per instance — no variance data available (M001); caveat added to §4.1 and §7",
+    "SWE-bench Lite criteria not fully described in extracted text (M002) — described at level available",
+    "Venue treated as generic ML conference (ICLR 2024 established from paper header)",
+    "74.5-line vs 32.8-line gold patch discrepancy reconciled with caveat — root cause (counting convention vs subset difference) unverified",
+    "Two fabricated context-limit numbers (1.87%, 1.22%) found in intermediate paper.md and removed — replaced with evidence-grounded description",
+    "Temporal analysis (§4.6) framed as 'no evidence' rather than 'no correlation' — formal test not possible with two-bucket data",
+    "SWE-Llama competitive claim qualified as oracle-only throughout"
+  ],
+  "artifacts": {
+    "evidence/project_inventory.json": "complete",
+    "evidence/research_evidence.json": "complete — 45 evidence items",
+    "claims/claim_evidence_map.json": "complete — 12 claims, 6 limitations",
+    "story/spine.md": "complete",
+    "corpus/source_registry.json": "complete — 16 sources, all user_supplied_file",
+    "drafts/v001/paper.md": "complete — claim tags retained (intermediate)",
+    "diagnostics/v001_1/diagnostics.json": "complete — external blind review",
+    "diagnostics/v001_1/reconstruction.json": "complete — external blind review",
+    "packets/audience.md": "complete",
+    "packets/objective.md": "complete"
+  },
+  "final_outputs": {
+    "paper.md": "complete — all claim/evidence/limitation tags stripped; [CITATION NEEDED] marker retained for deployment statistic",
+    "open_issues.md": "complete — 10 open issues documented"
+  },
+  "step19_changes": [
+    "Abstract: softened memorization claim from 'does not correlate / cannot memorize' to 'no clear difference / no evidence'; added SWE-bench Lite to release list",
+    "§1: added SWE-bench Lite to contribution list; removed 'competitive with Claude 2 under oracle retrieval' from general contribution claim",
+    "§2.1: replaced single-sentence PR/patch definition with a background box defining issue, pull request, merge, diff, unified diff format, and −/+ notation",
+    "§2.3: fixed cross-reference 'Section 5' → 'Section 4.6'; reframed updatability as design affordance rather than demonstrated result",
+    "§3.1: fixed cross-reference 'Section 5' → 'Section 4.3'; added note that best context limit per model is not separately disclosed",
+    "§3.3: added one-sentence LoRA concept explanation before hyperparameters",
+    "§4.1: renamed 'GPT-4-turbo' to 'GPT-4' to match §3.2 model identifier; added no-variance caveat inline",
+    "§4.2: annotated blank Table 4 cells as '*(not evaluated)*'",
+    "§4.3: removed meta-reference 'Figure 5 of the original paper'; removed two fabricated context-limit numbers (1.87%, 1.22%); described trend using only evidence-grounded data (1.96% at 13k; Table 2 recall percentages)",
+    "§4.4: added explicit reconciliation of 74.5-line vs 32.8-line means; qualified qualitative analysis as 'illustrative only; selection criteria not established'",
+    "§4.5: qualified SWE-Llama 'competitive' claim as 'only under oracle retrieval'",
+    "§4.6: softened to 'no evidence that older instances are easier'; added caveats about two-bucket analysis, no counts/variance, undisclosed retrieval setting",
+    "§5.1: consolidated localization discussion to cross-reference §4.3; removed redundant repetition of the oracle/oracle-collapsed finding",
+    "§5.2: downgraded generalization from corpus-wide to 'illustrative case'; added explicit note that corpus-wide analysis is needed",
+    "§5.3: reordered directions by expected near-term impact; added localization ceiling estimate",
+    "§8: replaced vague bottleneck list with ordered ranking by near-term addressability",
+    "All {C###}, {E###}, {L###} inline tags stripped throughout"
+  ]
+}

@@ -1,0 +1,316 @@
+{
+  "reconstruction": {
+    "packet_id": "pkt-766e9734",
+    "answers": {
+      "Q1": {
+        "answer": "The paper addresses whether normalizing each input window of a forecaster with its own recent statistics (rolling-window normalization, RWN) reduces forecast error when the level of the time series shifts after training, without harming accuracy when there is no shift, and how much of any gain depends on continuing to adapt those statistics.",
+        "locations": ["§1/paragraph 1", "§4/paragraph 2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q2": {
+        "answer": "Forecasters deployed on streaming data (e.g., electricity demand) encounter level shifts. Most pipelines normalize inputs with training statistics, which become stale after a shift. If stale normalization statistics—not model capacity—cause much of the shift-induced error, a simple normalization change could help without retraining or larger models.",
+        "locations": ["§1/paragraph 2", "§4/paragraph 1"],
+        "confidence": 4,
+        "missing": "The paper does not quantify how common or costly level shifts are in practice; citations are marked as needed."
+      },
+      "Q3": {
+        "answer": "Existing evaluations conflate two explanations for shift error: fixed normalization statistics vs. insufficient model capacity for the new regime. The paper notes that in prior work these were changed together, so the relative contribution of stale statistics is unknown.",
+        "locations": ["§4/paragraph 1", "§4/paragraph 2"],
+        "confidence": 4,
+        "missing": "No specific prior works are cited; the claim rests on an uncited literature search."
+      },
+      "Q4": {
+        "answer": "The authors generated a synthetic hourly series (SynthLoad) with daily/weekly cycles and Gaussian noise. They trained an MLP (64 hidden units, 168-hour history, 24-hour horizon) on the first year. After training, they added level shifts of magnitude s ∈ {0.2, 0.4, 0.6, 0.8} (in training standard deviations). They compared three normalizations over 5 seeds each: baseline (training mean/std), RWN (mean/std of most recent 48 steps per window), and RWN-fixed (statistics estimated once from first 48 steps after shift, then frozen). They report mean and standard deviation of MAE on the test period.",
+        "locations": ["Abstract", "§1/paragraph 1", "§2/paragraph 4", "§3/paragraph 1"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q5": {
+        "answer": "The method isolates the effect of normalization statistics by holding model architecture, training budget, and capacity constant across conditions. The synthetic generator allows controlled shift magnitudes. The 48-step window was chosen in a quick trial but not systematically tuned.",
+        "locations": ["§3/paragraph 1", "§4/paragraph 2"],
+        "confidence": 4,
+        "missing": "No rationale for the 48-step window beyond a quick trial; no exploration of other window lengths."
+      },
+      "Q6": {
+        "answer": "Main experiment: three normalizations × four shift magnitudes (0.2, 0.4, 0.6, 0.8) × 5 random seeds. Ablation: RWN-fixed at s=0.6 to estimate how much gain comes from continued adaptation vs. a single statistics update.",
+        "locations": ["§2/paragraph 1", "§2/paragraph 4", "§3/paragraph 1"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q7": {
+        "answer": "Without shift: RWN 0.409±0.007 vs baseline 0.412±0.006 (indistinguishable). At s=0.6: RWN reduced MAE from 0.641 to 0.452 (29% reduction); across s=0.2–0.6 reduction was 11–29%. RWN-fixed at s=0.6 gave MAE 0.518, recovering ~2/3 of RWN's gain. At s=0.8: RWN 0.712±0.021 vs baseline 0.731±0.015 (gap ≈1 std dev, no clear benefit).",
+        "locations": ["§2/paragraph 4", "§2/paragraph 1", "§2/paragraph 2", "Abstract"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q8": {
+        "answer": "RWN matches baseline accuracy without shift. RWN reduces MAE by 11–29% for moderate shifts (s ≤ 0.6). Continued adaptation (re-estimating statistics each window) accounts for about one-third of the gain; a single update after the shift (RWN-fixed) recovers about two-thirds. At the largest shift tested (s=0.8), RWN shows no clear benefit over baseline.",
+        "locations": ["§2/paragraph 4", "§2/paragraph 1", "§2/paragraph 2", "§5/paragraph 1"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q9": {
+        "answer": "The results do not establish: (1) why window length 48 works or whether other lengths would be better; (2) generalization beyond the single synthetic generator; (3) behavior under shift types other than level shifts; (4) interaction with model capacity (capacity was held constant); (5) statistical significance of differences (only descriptive std devs reported, no tests); (6) performance on real-world data.",
+        "locations": ["§4/paragraph 2", "§3/paragraph 1", "§2/paragraph 2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q10": {
+        "answer": "A capacity-controlled comparison showing 11–29% MAE reduction under moderate level shifts at no unshifted cost, a boundary at the largest shift (s=0.8) where benefit vanishes, and an ablation (RWN-fixed) attributing about one-third of the gain to continued adaptation.",
+        "locations": ["§5/paragraph 1", "Abstract"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q11": {
+        "answer": "All data from one synthetic generator; window length (48) not tuned; only level shifts studied; model capacity held constant (not varied); only 5 seeds; no statistical significance tests; no real-world data; citations for prevalence of level shifts and standard normalization practice are marked as needed.",
+        "locations": ["§4/paragraph 2", "§3/paragraph 1", "§1/paragraph 2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q12": {
+        "answer": "Rolling-window normalization using the most recent 48 steps helps forecasting under moderate level shifts (up to 0.6 training std devs) without hurting unshifted performance. Most of the gain (~2/3) comes from just updating statistics once after the shift; continued per-window adaptation adds only ~1/3. At very large shifts (0.8 std), the benefit disappears.",
+        "locations": ["§5/paragraph 1", "§2/paragraph 1", "§2/paragraph 4"],
+        "confidence": 5,
+        "missing": ""
+      }
+    }
+  },
+  "diagnostics": {
+    "packet_id": "pkt-766e9734",
+    "binding_personas": ["A", "B", "E"],
+    "findings": [
+      {
+        "dimension": "problem",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 1, "quote": "level shift of magnitude s, measured in training standard deviations"},
+        "observed": "Problem is clearly defined: level shifts in deployed forecasters where training normalization statistics become stale. Shift magnitude is precisely operationalized (s in training std devs).",
+        "reader_struggle": "A reader might wonder why level shifts are the only shift type considered, but the scope is explicitly bounded.",
+        "likely_consequence": "Reader understands the specific problem and its operationalization.",
+        "revision_principle": "Keep the problem scope explicit and measurable; the shift magnitude definition is a strength."
+      },
+      {
+        "dimension": "motivation",
+        "score": 2,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 2, "quote": "CITATION NEEDED: prevalence of level shifts in deployed load forecasting"},
+        "observed": "Motivation relies on two uncited claims: that level shifts are prevalent in deployed forecasting, and that most pipelines use training statistics for normalization. Both are marked CITATION NEEDED.",
+        "reader_struggle": "A domain expert (A) or verifying reviewer (E) cannot verify the practical importance without citations. An adjacent researcher (B) has no external evidence to judge relevance.",
+        "likely_consequence": "Reader may doubt whether this is a real, widespread problem or a synthetic concern.",
+        "revision_principle": "Either provide citations for prevalence and standard practice, or frame the work as a controlled investigation of a plausible mechanism rather than a solution to a documented deployment problem."
+      },
+      {
+        "dimension": "research_question",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4", "paragraph": 2, "quote": "RQ1: does normalizing each window with its own recent statistics reduce error under level shift without harming unshifted accuracy? RQ2: how much of the gain depends on continued adaptation?"},
+        "observed": "Two precise, answerable research questions are stated explicitly in the Discussion, matching the objective. They are operationalized by the three normalization conditions.",
+        "reader_struggle": "The RQs appear late (Discussion) rather than in Introduction, so a reader encounters them after results.",
+        "likely_consequence": "Reader can map each result to a question, but the forward framing is weaker.",
+        "revision_principle": "State research questions in the Introduction so the reader knows what the experiments are designed to answer."
+      },
+      {
+        "dimension": "contribution",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "5", "paragraph": 1, "quote": "capacity-controlled comparison showing an 11–29% MAE reduction under moderate level shifts at no unshifted cost, a boundary at the largest shift, and an ablation attributing about a third of the gain to continued adaptation"},
+        "observed": "Contribution is clearly summarized in the Conclusion with three specific, measurable claims matching the results.",
+        "reader_struggle": "The contribution claim 'capacity-controlled' is accurate (same model), but a verifying reviewer (E) notes capacity was not varied—only held constant—so 'capacity-controlled' means 'capacity not a confound' not 'capacity effects were studied'.",
+        "likely_consequence": "Reader understands the three-part contribution; the 'capacity-controlled' phrasing is slightly ambiguous but clarified by the method.",
+        "revision_principle": "Distinguish between 'confound controlled' and 'factor varied' in contribution statements."
+      },
+      {
+        "dimension": "method",
+        "score": 3,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "3", "paragraph": 1, "quote": "We chose the window of 48 in a quick trial and did not tune it"},
+        "observed": "Method is reproducible in principle (MLP architecture, history/horizon, seeds, synthetic generator described). However, the key hyperparameter (48-step window) was chosen via an untuned 'quick trial' with no rationale or sensitivity analysis.",
+        "reader_struggle": "A verifying reviewer (E) cannot assess whether results depend critically on this arbitrary choice. A domain expert (A) expects at least a sensitivity sweep for a core method parameter.",
+        "likely_consequence": "Reader cannot tell if 48 is special or if any reasonable window would work; reproducibility is undermined by an unvalidated design choice.",
+        "revision_principle": "Either tune and report sensitivity for key hyperparameters, or explicitly frame the window length as a fixed design choice with a principled justification (e.g., 2 days for daily cycle)."
+      },
+      {
+        "dimension": "experiment",
+        "score": 3,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "3", "paragraph": 1, "quote": "Each configuration ran with 5 seeds, and we report the mean and standard deviation of MAE on the test period"},
+        "observed": "Experiment design is clean: same model, same training budget, three normalization conditions, four shift magnitudes, five seeds. However, only 5 seeds is low for variance estimation; no statistical tests (t-test, bootstrap) are reported; only one synthetic generator; no real data.",
+        "reader_struggle": "A verifying reviewer (E) sees descriptive statistics (±1 std dev) but no inference. At s=0.8 the gap is 'about one standard deviation'—this is not a significance claim. An adjacent researcher (B) cannot judge if 5 seeds is adequate for this variance.",
+        "likely_consequence": "Reader may overinterpret the s=0.8 'no clear benefit' as evidence of no effect rather than low power.",
+        "revision_principle": "Report statistical tests or confidence intervals; justify seed count with a power analysis or prior variance estimates; acknowledge low seed count as a limitation."
+      },
+      {
+        "dimension": "result",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "2", "paragraph": 4, "quote": "Without shift, RWN and the baseline were indistinguishable, with MAE of 0.409 ± 0.007 and 0.412 ± 0.006. Under shift, at s = 0.6, RWN reduced MAE from 0.641 to 0.452"},
+        "observed": "Key results are reported numerically with means and standard deviations. The no-shift baseline equivalence and the s=0.6 improvement are clear. Figure 1 is referenced but not included in the packet.",
+        "reader_struggle": "Without Figure 1, a reader cannot visually assess the trend across s=0.2–0.6 or the error bar overlap. The text says 'as Figure 1 shows' for the 11–29% range but doesn't give per-shift numbers.",
+        "likely_consequence": "Reader trusts the summary numbers but cannot independently verify the trend or variability across all shift magnitudes.",
+        "revision_principle": "Include all per-condition numbers in a table or supplementary material so results are verifiable without figures."
+      },
+      {
+        "dimension": "interpretation",
+        "score": 3,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4", "paragraph": 1, "quote": "Because the model was identical across conditions, these results suggest that stale normalization statistics, rather than model capacity, account for much of the baseline's shift-induced error in this setting."},
+        "observed": "The interpretation correctly notes that capacity was held constant, so the difference must come from normalization. However, 'account for much of' is a strong causal claim from a single ablation (RWN-fixed). The RWN-fixed result (0.518) is between baseline (0.641) and RWN (0.452), suggesting stale statistics explain ~68% of the gap—but this assumes linear additivity and no interaction.",
+        "reader_struggle": "A verifying reviewer (E) sees a plausible but not proven attribution. The phrase 'rather than model capacity' is technically correct (capacity didn't change) but could mislead a reader into thinking capacity is irrelevant in general.",
+        "likely_consequence": "Reader may conclude stale statistics are the primary cause of shift error in general, not just in this controlled setting.",
+        "revision_principle": "Qualify causal attributions: 'in this controlled setting with fixed capacity, stale statistics explain a large fraction of the shift error' rather than implying general primacy."
+      },
+      {
+        "dimension": "limitation",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4", "paragraph": 2, "quote": "All data came from one synthetic generator. The window length was not tuned. Only level shifts were studied."},
+        "limitations": "Limitations are explicitly listed in the Discussion: single synthetic generator, untuned window, only level shifts, capacity not varied. They are honest and specific.",
+        "reader_struggle": "A reader can clearly see the boundaries of the claims. The limitation about capacity not being varied is particularly important for the interpretation.",
+        "likely_consequence": "Reader knows exactly where the findings stop.",
+        "revision_principle": "State limitations in the same section as claims, with equal prominence."
+      },
+      {
+        "dimension": "narrative_coherence",
+        "score": 3,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4", "paragraph": 2, "quote": "Two explanations for shift error compete... We therefore asked, RQ1... RQ2..."},
+        "observed": "The narrative has a logical gap: the research questions appear in the Discussion (section 4) after the Results (section 2), rather than motivating the method. The Introduction mentions the problem but not the RQs. The flow is: problem → results → method → discussion with RQs → conclusion.",
+        "reader_struggle": "A reader encounters results before knowing what questions they answer. The method appears after results, which is unconventional.",
+        "likely_consequence": "Reader must reconstruct the logic backwards; the paper feels like a post-hoc rationalization rather than a hypothesis-driven investigation.",
+        "revision_principle": "Order sections conventionally: Introduction (with RQs) → Method → Results → Discussion → Conclusion."
+      },
+      {
+        "dimension": "terminology",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 1, "quote": "level shift of magnitude s, measured in training standard deviations"},
+        "observed": "Terminology is accessible to the intended audience (ML researchers). 'Level shift', 'normalization', 'MAE', 'standard deviation across seeds' are all within assumed knowledge. 'Rolling-window normalization' is clearly defined.",
+        "reader_struggle": "No significant terminology barriers for binding personas.",
+        "likely_consequence": "Reader follows technical content without terminology friction.",
+        "revision_principle": "Continue defining domain-specific operationalizations (e.g., shift magnitude in training std devs) inline."
+      },
+      {
+        "dimension": "logical_flow",
+        "score": 3,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "2", "paragraph": 1, "quote": "RWN-fixed gave MAE 0.518 at s = 0.6, between the baseline and RWN. Re-estimating once thus recovers about two thirds of RWN's gain."},
+        "observed": "Within sections, logic flows well (e.g., Results presents RWN-fixed before the main RWN vs baseline comparison). But the section ordering (Results before Method, RQs in Discussion) disrupts the overall logical flow.",
+        "reader_struggle": "A reader trying to understand the experimental logic must jump forward to Method after seeing Results.",
+        "likely_consequence": "Increased cognitive load to piece together the experimental rationale.",
+        "revision_principle": "Present method before results; state research questions before method."
+      },
+      {
+        "dimension": "evidence_traceability",
+        "score": 3,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "2", "paragraph": 4, "quote": "across s = 0.2–0.6 the reduction was 11–29%, as Figure 1 shows"},
+        "observed": "Most claims trace to reported numbers (means ± std dev over 5 seeds). However, the '11–29% across s=0.2–0.6' claim references Figure 1 (not in packet) and no per-shift table is given. The RWN-fixed 0.518 number appears without a standard deviation.",
+        "reader_struggle": "A verifying reviewer (E) cannot trace the 11–29% range to individual shift magnitudes. The RWN-fixed result lacks variability info.",
+        "likely_consequence": "Reader must trust the summary statistics for intermediate shift magnitudes.",
+        "revision_principle": "Report all per-condition means and standard deviations in a table; include variability for all reported point estimates."
+      },
+      {
+        "dimension": "figure_table",
+        "score": 2,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "2", "paragraph": 3, "quote": "Figure 1. RWN's error stays near its unshifted level for shifts up to 0.6, while the baseline's error rises steadily."},
+        "observed": "Figure 1 is referenced and captioned but not included in the packet. The caption describes the key visual claim. No tables are present.",
+        "reader_struggle": "Without the figure, a reader cannot verify the visual trend, error bar overlaps, or the s=0.8 near-overlap. The caption makes a claim ('stays near unshifted level') that the text supports only for s=0.6 numerically.",
+        "likely_consequence": "Reader cannot independently assess the figure evidence; must trust the caption's description.",
+        "revision_principle": "Include all figures in the submission packet; provide a results table as backup."
+      },
+      {
+        "dimension": "claim_evidence_alignment",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "5", "paragraph": 1, "quote": "an 11–29% MAE reduction under moderate level shifts at no unshifted cost, a boundary at the largest shift, and an ablation attributing about a third of the gain to continued adaptation"},
+        "observed": "The three conclusion claims align well with the evidence: (1) 11–29% reduction at s≤0.6 with no-shift equivalence—supported by §2/¶4 numbers; (2) boundary at s=0.8—supported by §2/¶2 (gap ≈1 std dev); (3) ~1/3 from continued adaptation—supported by RWN-fixed at 0.518 being ~2/3 of the way from baseline to RWN.",
+        "reader_struggle": "The 'about a third' attribution assumes the RWN-fixed vs RWN difference isolates continued adaptation cleanly, which is reasonable but not proven (could be interaction with frozen statistics).",
+        "likely_consequence": "Reader accepts the three claims as fairly supported.",
+        "revision_principle": "Maintain the tight claim–evidence alignment; add a caveat that the ablation assumes no interaction between frozen statistics and model predictions."
+      },
+      {
+        "dimension": "unsupported_inference",
+        "score": 3,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4", "paragraph": 1, "quote": "stale normalization statistics, rather than model capacity, account for much of the baseline's shift-induced error in this setting"},
+        "observed": "The inference that stale statistics 'account for much' of the error is supported by the RWN-fixed ablation but goes beyond it by contrasting with 'model capacity'. Capacity was held constant, not shown to be insufficient. The phrase 'rather than model capacity' implies a comparison that wasn't run (e.g., larger model with baseline normalization).",
+        "reader_struggle": "A verifying reviewer (E) sees an overreach: the experiment shows stale statistics matter, not that capacity doesn't. A domain expert (A) knows capacity could still be a factor in real settings.",
+        "likely_consequence": "Reader may incorrectly infer that model capacity is not a relevant factor for shift robustness.",
+        "revision_principle": "Distinguish 'stale statistics are a sufficient explanation in this controlled setting' from 'stale statistics are the primary explanation in general'."
+      },
+      {
+        "dimension": "redundancy",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "Abstract", "paragraph": 1, "quote": "We use a multilayer perceptron with 64 hidden units, 168 hours of history and a 24-hour horizon"},
+        "observed": "The paper is concise (workshop length). No harmful redundancy. Key numbers appear in Abstract, Results, and Conclusion but each serves a different purpose (summary, detail, synthesis).",
+        "reader_struggle": "None.",
+        "likely_consequence": "Reader gets a dense, efficient presentation.",
+        "revision_principle": "Preserve the concise style; workshop papers benefit from minimal redundancy."
+      },
+      {
+        "dimension": "cognitive_load",
+        "score": 3,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "2", "paragraph": 4, "quote": "Without shift, RWN and the baseline were indistinguishable, with MAE of 0.409 ± 0.007 and 0.412 ± 0.006. Under shift, at s = 0.6, RWN reduced MAE from 0.641 to 0.452"},
+        "observed": "The results paragraph packs many numbers (4 shift magnitudes × 3 conditions × mean±std) into dense prose. A table would offload this cognitive burden. The section ordering (Results before Method) also adds load.",
+        "reader_struggle": "A reader must hold multiple numbers in working memory to compare conditions. The RWN-fixed result (0.518) appears in a separate paragraph without its std dev.",
+        "likely_consequence": "Reader may miss the precision of comparisons or misremember numbers.",
+        "revision_principle": "Move detailed numerical results to a table; keep prose for qualitative patterns and key contrasts."
+      },
+      {
+        "dimension": "orientation",
+        "score": 3,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 1, "quote": "After a training year we added a level shift of magnitude s, measured in training standard deviations, for s in {0.2, 0.4, 0.6, 0.8}."},
+        "observed": "The Introduction orients the reader to the synthetic setup, shift magnitudes, and three conditions. However, the research questions are not stated until the Discussion, so the reader doesn't know the evaluation criteria upfront.",
+        "reader_struggle": "An adjacent researcher (B) reads the setup but doesn't know what comparison constitutes success until later.",
+        "likely_consequence": "Reader processes methods and results without a clear evaluation framework.",
+        "revision_principle": "State the research questions and success criteria in the Introduction."
+      },
+      {
+        "dimension": "so_what",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "5", "paragraph": 1, "quote": "Our contributions are a capacity-controlled comparison showing an 11–29% MAE reduction under moderate level shifts at no unshifted cost, a boundary at the largest shift, and an ablation attributing about a third of the gain to continued adaptation."},
+        "observed": "The Conclusion clearly states what was found, the practical implication (simple normalization change helps at no cost for moderate shifts), and the boundary (fails at large shifts). The ablation quantifies the value of continued adaptation.",
+        "reader_struggle": "A reader comes away with a clear takeaway: try RWN or at least update normalization statistics after a detected shift. The 'so what' is actionable for practitioners.",
+        "likely_consequence": "Reader can apply the insight (update normalization statistics) and knows the limits.",
+        "revision_principle": "End with a clear, bounded, actionable summary—this paper does it well."
+      }
+    ],
+    "inference_issues": [
+      {
+        "kind": "overstrong_language",
+        "location": {"section": "4", "paragraph": 1, "quote": "stale normalization statistics, rather than model capacity, account for much of the baseline's shift-induced error"},
+        "claim_text": "stale normalization statistics, rather than model capacity, account for much of the baseline's shift-induced error in this setting",
+        "missing_link": "Capacity was held constant, not varied. The experiment shows stale statistics are sufficient to explain much of the error, not that capacity is irrelevant. The phrase 'rather than model capacity' implies a ruled-out alternative that wasn't tested."
+      },
+      {
+        "kind": "overgeneralization",
+        "location": {"section": "4", "paragraph": 1, "quote": "account for much of the baseline's shift-induced error in this setting"},
+        "claim_text": "stale normalization statistics... account for much of the baseline's shift-induced error in this setting",
+        "missing_link": "The RWN-fixed ablation suggests stale statistics explain ~68% of the RWN–baseline gap at s=0.6, but this assumes additive effects and no interaction. The claim 'account for much' is reasonable for this setting but the Discussion presents it as a general mechanistic insight."
+      },
+      {
+        "kind": "selective_presentation",
+        "location": {"section": "2", "paragraph": 4, "quote": "across s = 0.2–0.6 the reduction was 11–29%, as Figure 1 shows"},
+        "claim_text": "across s = 0.2–0.6 the reduction was 11–29%",
+        "missing_link": "No per-shift-magnitude numbers are given for s=0.2 and s=0.4. The reader cannot verify the 11% and 29% endpoints or the intermediate values. Figure 1 is not in the packet."
+      },
+      {
+        "kind": "limitation_not_respected",
+        "location": {"section": "5", "paragraph": 1, "quote": "capacity-controlled comparison showing an 11–29% MAE reduction"},
+        "claim_text": "capacity-controlled comparison",
+        "missing_link": "The limitation section honestly states 'Capacity was held constant, not varied.' The conclusion calls it 'capacity-controlled' which is technically true (capacity is controlled/fixed) but could be read as 'capacity effects were controlled for and shown not to matter.' The phrasing blurs the distinction."
+      }
+    ],
+    "objective_discrepancies": [
+      "The objective states the paper asks three questions: (1) does RWN reduce error under shift, (2) without harming unshifted accuracy, (3) how much gain depends on continued adaptation. The paper answers all three clearly. No major discrepancy.",
+      "Minor: The objective says 'A reader should come away knowing what was tested, what was found, and where the finding stops.' The paper achieves this, but the 'where the finding stops' (limitations) appears in Discussion rather than Conclusion, and the window-length limitation is not emphasized in the Conclusion."
+    ],
+    "injection_suspected": []
+  }
+}

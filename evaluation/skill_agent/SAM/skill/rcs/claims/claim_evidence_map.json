@@ -1,0 +1,146 @@
+{
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "Image segmentation lacks a foundation model capable of zero-shot transfer to new distributions and tasks.",
+      "claim_type": "gap",
+      "evidence_ids": [],
+      "confidence": "high",
+      "permitted_verbs": ["motivates", "identifies", "notes"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C002",
+      "statement": "Segmentation masks are not naturally abundant on the internet, preventing the standard web-scale data collection strategy used for NLP foundation models.",
+      "claim_type": "gap",
+      "evidence_ids": [],
+      "confidence": "high",
+      "permitted_verbs": ["motivates", "identifies"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C003",
+      "statement": "The research question is whether a promptable segmentation task, a capable model, and sufficient training data can together enable zero-shot generalization across segmentation tasks.",
+      "claim_type": "hypothesis",
+      "evidence_ids": [],
+      "confidence": "high",
+      "permitted_verbs": ["asks", "investigates"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C004",
+      "statement": "SAM consists of an image encoder (MAE pre-trained ViT-H), a prompt encoder (handling points, boxes, masks, and text), and a lightweight mask decoder that together allow amortized real-time prompting.",
+      "claim_type": "method",
+      "evidence_ids": ["E004", "E014"],
+      "confidence": "high",
+      "permitted_verbs": ["is", "consists of", "enables"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C005",
+      "statement": "The three-stage data engine (assisted-manual, semi-automatic, fully automatic) was necessary to collect SA-1B.",
+      "claim_type": "method",
+      "evidence_ids": ["E011", "E012", "E013"],
+      "confidence": "high",
+      "permitted_verbs": ["collects", "produces", "enables"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C006",
+      "statement": "SA-1B contains 1.1 billion masks from 11 million licensed, privacy-respecting images — 400x more masks than any prior segmentation dataset.",
+      "claim_type": "result",
+      "evidence_ids": ["E001", "E002"],
+      "confidence": "high",
+      "permitted_verbs": ["contains", "comprises", "exceeds"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C007",
+      "statement": "In zero-shot single-point evaluation across 23 diverse datasets, SAM outperforms RITM (strongest interactive segmentation baseline) on 16 of 23 datasets by automatic mIoU; with oracle ambiguity resolution, outperforms RITM on all 23.",
+      "claim_type": "result",
+      "evidence_ids": ["E005"],
+      "confidence": "high",
+      "permitted_verbs": ["outperforms", "achieves", "demonstrates"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C008",
+      "statement": "Human raters consistently score SAM's masks substantially higher than RITM's (mean ratings 7-9 on 1-10 scale) in a blinded study across 7 diverse datasets.",
+      "claim_type": "result",
+      "evidence_ids": ["E006"],
+      "confidence": "high",
+      "permitted_verbs": ["achieves", "demonstrates", "obtains"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C009",
+      "statement": "In zero-shot instance segmentation, SAM achieves AP 46.5 on COCO and 44.7 on LVIS, trailing fully supervised ViTDet-H (51.0, 46.6) on automatic metrics but achieving higher human-rated mask quality (8.1 vs 7.9).",
+      "claim_type": "result",
+      "evidence_ids": ["E009", "E010"],
+      "confidence": "high",
+      "permitted_verbs": ["achieves", "obtains", "trails"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C010",
+      "statement": "In zero-shot edge detection on BSDS500, SAM achieves ODS=.768 without training on BSDS500, competitive with the 2015 supervised HED (ODS=.788) though below the 2022 state of the art.",
+      "claim_type": "result",
+      "evidence_ids": ["E007"],
+      "confidence": "high",
+      "permitted_verbs": ["achieves", "demonstrates"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C011",
+      "statement": "SAM's promptable interface enables composable use as a segmentation module in larger systems without per-task retraining.",
+      "claim_type": "interpretation",
+      "evidence_ids": ["E004", "E005", "E006"],
+      "confidence": "medium",
+      "permitted_verbs": ["suggests", "indicates", "enables"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C012",
+      "statement": "SAM misses fine structures, hallucinates small disconnected components, and is not real-time when the heavy image encoder is included.",
+      "claim_type": "limitation",
+      "evidence_ids": ["E019"],
+      "confidence": "high",
+      "permitted_verbs": ["misses", "fails", "hallucinates"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C013",
+      "statement": "Automatically generated SA-1B masks achieve 94% >90% IoU agreement with professional annotators, comparable to or exceeding inter-annotator consistency (85-91% IoU) from prior work.",
+      "claim_type": "result",
+      "evidence_ids": ["E003"],
+      "confidence": "high",
+      "permitted_verbs": ["achieves", "matches"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C014",
+      "statement": "Training SAM on only automatically generated masks (vs. all data engine stages) reduces mIoU by only ~0.5; 1M images gives comparable results to full 11M images.",
+      "claim_type": "result",
+      "evidence_ids": ["E016", "E017"],
+      "confidence": "high",
+      "permitted_verbs": ["shows", "demonstrates", "achieves"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C015",
+      "statement": "SAM shows no statistically significant performance difference across perceived gender presentation or skin tone for people segmentation; a bias is detected for clothing segmentation across perceived gender.",
+      "claim_type": "result",
+      "evidence_ids": ["E020", "E021"],
+      "confidence": "high",
+      "permitted_verbs": ["shows", "finds", "detects"],
+      "author_confirmation": "confirmed"
+    }
+  ],
+  "limitations": [
+    {"id": "L001", "statement": "SAM not real-time when heavy image encoder included", "linked_claims": ["C012"]},
+    {"id": "L002", "statement": "Text-to-mask is a proof of concept, not fully robust", "linked_claims": ["C012"]},
+    {"id": "L003", "statement": "All evaluations are zero-shot; fine-tuned domain-specific tools likely outperform SAM in their domains", "linked_claims": ["C012"]},
+    {"id": "L004", "statement": "Geographic dataset coverage underrepresents Africa and low-income countries", "linked_claims": ["C015"]},
+    {"id": "L005", "statement": "Bias detected in clothing segmentation across perceived gender; SAM users should be mindful when used in larger systems", "linked_claims": ["C015"]}
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "project": "OPENHANDS",
+  "verified": true,
+  "approved_by_researcher": false,
+  "approval_date": null,
+  "questions": {
+    "Q1": [
+      {"id": "Q1a", "text": "A core challenge the paper addresses is enabling agents to effectively create and modify code in complex software systems and to gather information on the fly to debug problems.", "strength": "context", "evidence_ids": ["paper §1, L17"]},
+      {"id": "Q1b", "text": "Ensuring that agent-driven software development is safe and avoids negative side effects on the user's system is identified as a challenge motivating the work.", "strength": "context", "evidence_ids": ["paper §1, L17"]}
+    ],
+    "Q2": [
+      {"id": "Q2a", "text": "The authors argue that software is the most powerful way humans currently interact with the world, making it the ideal interface for AI agents to act through.", "strength": "interpretation", "evidence_ids": ["paper §1, L12", "paper §1, L17"]},
+      {"id": "Q2b", "text": "Rapid improvements in LLMs have driven growing research on AI agents that perceive and act on their environment, making their development and evaluation increasingly challenging.", "strength": "context", "evidence_ids": ["paper §1, L10", "paper §1, L11"]}
+    ],
+    "Q3": [
+      {"id": "Q3a", "text": "Existing open-source agent frameworks (e.g. MetaGPT, AutoGen, AutoAgents) generally provide interfaces for agents to act on the world, environments to operate in, and mechanisms for human-agent or agent-agent interaction.", "strength": "context", "evidence_ids": ["paper §1, L11"]},
+      {"id": "Q3b", "text": "SWE-Agent showed the importance of a carefully crafted agent-computer interface, but creating, maintaining, and distributing such tools across different agent implementations is a difficult engineering challenge.", "strength": "context", "evidence_ids": ["paper §2.3, L196"]},
+      {"id": "Q3c", "text": "The paper notes specific shortcomings of prior frameworks, e.g. AutoGen supports Python and bash execution but with stateless command execution, and CrewAI offers only a sandboxed but limited code interpreter.", "strength": "context", "evidence_ids": ["paper App. C, L902"]}
+    ],
+    "Q4": [
+      {"id": "Q4a", "text": "OpenHands connects user interfaces, agents, and environments through an event stream: a chronological history of actions and observations that forms part of the agent's state.", "strength": "context", "evidence_ids": ["paper §1, L17-18", "paper §2.1, L130"]},
+      {"id": "Q4b", "text": "For each task session OpenHands runs a Docker-sandboxed runtime whose action execution API provides a bash shell, a Jupyter IPython server, and a Playwright-based Chromium browser.", "strength": "context", "evidence_ids": ["paper §2.2, L185-189"]},
+      {"id": "Q4c", "text": "OpenHands integrates 15 established benchmarks into its evaluation framework.", "strength": "context", "evidence_ids": ["paper §4, L257", "paper Table 2, L259-271"]},
+      {"id": "Q4d", "text": "OpenHands ships an AgentSkills library of Python utility functions (e.g. file editing, PDF/image parsing) auto-imported into the agent's IPython environment.", "strength": "context", "evidence_ids": ["paper §2.3, L197-199"]},
+      {"id": "Q4e", "text": "OpenHands supports multi-agent delegation via AgentDelegateAction, e.g. the generalist CodeActAgent delegating web browsing to the specialized BrowsingAgent.", "strength": "context", "evidence_ids": ["paper §2.4, L201"]}
+    ],
+    "Q5": [
+      {"id": "Q5a", "text": "The core action set (bash and Python execution plus browser interaction), inspired by CodeAct, was chosen as a comprehensive yet flexible set of primitives covering most tasks performed by human software engineers and analysts.", "strength": "interpretation", "evidence_ids": ["paper §2.1, L131"]},
+      {"id": "Q5b", "text": "A new AgentSkill is added only when a capability is not readily achievable by an LLM writing code directly, and/or when it requires calling an external model.", "strength": "interpretation", "evidence_ids": ["paper §2.3, L198"]}
+    ],
+    "Q6": [
+      {"id": "Q6a", "text": "The evaluation benchmarks span three categories: software engineering, web browsing, and miscellaneous assistance.", "strength": "context", "evidence_ids": ["paper §4, L257", "paper Table 2, L259-271"]},
+      {"id": "Q6b", "text": "SWE-Bench was evaluated on the 300-instance SWE-Bench Lite subset, without hint text, for cost reasons.", "strength": "context", "evidence_ids": ["paper §4.2, L464", "paper Table 4, L478"]},
+      {"id": "Q6c", "text": "HumanEvalFix was evaluated on the 164-instance Python subset, 0-shot, allowing multi-turn self-debugging from test-execution feedback.", "strength": "context", "evidence_ids": ["paper §4.2.1, L466", "paper Table 4, L483"]},
+      {"id": "Q6d", "text": "GPQA headline results use the 198-instance diamond set, with main and extended subsets reported in an appendix table.", "strength": "context", "evidence_ids": ["paper Table 6, L652", "paper App. G Table 7, L973-986"]}
+    ],
+    "Q7": [
+      {"id": "Q7a", "text": "CodeActAgent v1.8 with claude-3.5-sonnet resolves 26.0% of SWE-Bench Lite instances.", "strength": "measured", "evidence_ids": ["paper §4.2, L464", "paper Table 4, L529"]},
+      {"id": "Q7b", "text": "CodeActAgent v1.5 with gpt-4o-2024-05-13 fixes 79.3% of HumanEvalFix Python bugs in a 0-shot setting.", "strength": "measured", "evidence_ids": ["paper §4.2.1, L466", "paper Table 4, L489-491, L530"]},
+      {"id": "Q7e", "text": "SWE-Agent (gpt-4-turbo) reaches 87.7% on HumanEvalFix, but with a 1-shot demonstration trajectory rather than 0-shot.", "strength": "measured", "evidence_ids": ["paper §4.2.1, L466", "paper Table 4, L485-487, L530"]},
+      {"id": "Q7c", "text": "CodeActAgent v1.8 with claude-3-5-sonnet-20240620 scores 52.0% on the GPQA diamond set.", "strength": "measured", "evidence_ids": ["paper Table 6, L666-670", "paper Table 3, L455"]},
+      {"id": "Q7f", "text": "Non-expert human validators score 21.9% on the GPQA diamond set.", "strength": "measured", "evidence_ids": ["paper Table 6, L658", "paper Table 7, L994"]},
+      {"id": "Q7g", "text": "Expert human validators score 81.3% on the GPQA diamond set (reported as 81.2% in the appendix Table 7).", "strength": "measured", "evidence_ids": ["paper Table 6, L658", "paper Table 7, L988"]},
+      {"id": "Q7d", "text": "CodeActAgent v1.5 with gpt-4o-2024-05-13 scores 57.6% on the AgentBench OS (bash) subset.", "strength": "measured", "evidence_ids": ["paper Table 6, L672-684"]},
+      {"id": "Q7h", "text": "The AgentBench baseline agent with gpt-4 scores 42.4% on the AgentBench OS subset.", "strength": "measured", "evidence_ids": ["paper Table 6, L674-678"]}
+    ],
+    "Q8": [
+      {"id": "Q8a", "text": "The authors claim the same CodeAct agent, without modifying its system prompt, performs competitively across software development, web interaction, and miscellaneous tasks, unlike baselines optimized for specific categories.", "strength": "derived", "evidence_ids": ["paper §4.1, L461"]},
+      {"id": "Q8b", "text": "OpenHands' infrastructure was used to run agents across all 15 integrated benchmarks, and the authors state it significantly simplifies integrating hard-to-set-up benchmarks such as GAIA.", "strength": "observed", "evidence_ids": ["paper §4, L257", "paper §4.4, L626"]}
+    ],
+    "Q9": [
+      {"id": "Q9a", "text": "All SWE-Bench results are reported without hint text.", "strength": "context", "evidence_ids": ["paper §4.2, L464"]},
+      {"id": "Q9b", "text": "The HumanEvalFix comparison is not like-for-like: OpenHands is evaluated 0-shot while SWE-Agent's 87.7% uses a 1-shot full demonstration trajectory.", "strength": "context", "evidence_ids": ["paper §4.2.1, L466"]},
+      {"id": "Q9c", "text": "Comparisons are restricted to open-source reproducible baselines that do not perform manual prompt engineering based on the benchmark content.", "strength": "context", "evidence_ids": ["paper §4, L257"]}
+    ],
+    "Q10": [
+      {"id": "Q10a", "text": "The primary contribution is a general, open-source, community-driven platform (not a single agent) that includes a usable implementation of agents, environments, and evaluations.", "strength": "context", "evidence_ids": ["paper §1, L17-20", "paper §5, L777"]},
+      {"id": "Q10b", "text": "OpenHands includes an agent hub with over 10 implemented agents, including a strong CodeAct-based generalist agent.", "strength": "context", "evidence_ids": ["paper §1, L20", "paper §3, L202-204"]}
+    ],
+    "Q11": [
+      {"id": "Q11a", "text": "The authors state that current agents still struggle with complex tasks.", "strength": "context", "evidence_ids": ["paper App. A, L887"]},
+      {"id": "Q11b", "text": "The authors state that the current agent suffers a lot when editing long files.", "strength": "context", "evidence_ids": ["paper App. A, L892"]},
+      {"id": "Q11c", "text": "The authors state that OpenHands' workflow still requires a substantial handcrafted workload, with automatic workflow generation left to future work.", "strength": "context", "evidence_ids": ["paper App. A, L894"]},
+      {"id": "Q11d", "text": "The authors acknowledge that OpenHands agents may not achieve top performance in every category.", "strength": "context", "evidence_ids": ["paper §4.1, L461"]},
+      {"id": "Q11e", "text": "The authors state that most AI agents today remain research artifacts that cannot reliably perform complex, long-horizon real-world tasks.", "strength": "context", "evidence_ids": ["paper App. B, L896"]}
+    ],
+    "Q12": [
+      {"id": "Q12a", "text": "OpenHands (formerly OpenDevin) is an MIT-licensed, community-driven platform for developing AI agents that interact with the world through software by writing code, using a command line, and browsing the web.", "strength": "context", "evidence_ids": ["paper Abstract, L7", "paper §1, L124"]},
+      {"id": "Q12b", "text": "Its default CodeAct-based generalist agent is reported to be competitive across software engineering, web browsing, and miscellaneous-assistance benchmarks without per-task system-prompt changes.", "strength": "derived", "evidence_ids": ["paper §4.1, L461"]}
+    ]
+  }
+}

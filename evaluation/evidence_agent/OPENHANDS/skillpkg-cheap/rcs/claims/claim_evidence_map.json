@@ -1,0 +1,316 @@
+{
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "OpenHands is a community-driven platform for developing AI agents that interact with the world through software interfaces (code execution, command line, web browsing).",
+      "claim_type": "observed",
+      "evidence": ["E004"],
+      "scope": "Platform design and purpose",
+      "confidence": "high",
+      "confidence_reasons": ["Hard evidence from paper architecture", "Multiple design choices support this claim"],
+      "limitations": [],
+      "permitted_verbs": ["implements", "provides", "is designed to"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C002",
+      "statement": "CodeActAgent v1.8 with claude-3.5-sonnet reaches a 26.0% resolve rate on SWE-Bench Lite (300 instances, without hint text).",
+      "claim_type": "measured",
+      "evidence": ["E005"],
+      "scope": {"benchmark": "SWE-Bench Lite", "instances": 300, "hints": "none", "model": "claude-3.5-sonnet"},
+      "confidence": "high",
+      "confidence_reasons": ["Hard evidence from Table 4", "Controlled evaluation conditions"],
+      "limitations": ["L002"],
+      "permitted_verbs": ["achieved", "reached", "was measured at"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C003",
+      "statement": "Model choice produces a large difference in SWE-Bench Lite performance: claude-3.5-sonnet (26.0%) versus gpt-4o-mini (6.3%), a 19.7 percentage-point gap under otherwise identical conditions.",
+      "claim_type": "derived",
+      "evidence": ["E005", "E006"],
+      "derived_from": ["E005", "E006"],
+      "scope": "SWE-Bench Lite performance variance across models",
+      "confidence": "high",
+      "confidence_reasons": ["Two hard measurements", "Controlled conditions differ only by model"],
+      "limitations": ["L001"],
+      "permitted_verbs": ["a difference of", "corresponds to"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C004",
+      "statement": "CodeActAgent v1.5 fixes 79.3% of bugs on the HumanEvalFix Python subset (164 instances) using a 0-shot, multi-turn self-debugging setup.",
+      "claim_type": "measured",
+      "evidence": ["E008", "E036"],
+      "scope": {"benchmark": "HumanEvalFix", "subset": "Python", "instances": 164, "shots": 0},
+      "confidence": "high",
+      "confidence_reasons": ["Hard evidence", "Controlled 0-shot setting"],
+      "limitations": ["L005"],
+      "permitted_verbs": ["fixed", "achieved", "reached"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C005",
+      "statement": "On HumanEvalFix, CodeActAgent's 0-shot result is reported by the authors as better than non-agentic approaches and close to double the pass rate of StarCoder2-15B.",
+      "claim_type": "interpretation",
+      "evidence": ["E008"],
+      "scope": "Comparison to non-agentic baselines",
+      "confidence": "moderate",
+      "confidence_reasons": ["Based on a single measured result", "Comparison baseline values not included in the evidence package"],
+      "limitations": ["L005"],
+      "permitted_verbs": ["is consistent with", "the authors report"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C006",
+      "statement": "The same CodeActAgent, without any change to its system prompt, is evaluated across software-engineering, web-browsing, and miscellaneous-assistance tasks.",
+      "claim_type": "interpretation",
+      "evidence": ["E005", "E017", "E022", "E041"],
+      "scope": "Generalist agent evaluation across 15 benchmarks",
+      "confidence": "moderate",
+      "confidence_reasons": ["Multiple evidence points from different benchmarks", "Same agent configuration used across categories"],
+      "limitations": ["L001", "L002", "L003"],
+      "permitted_verbs": ["is evaluated on", "demonstrates performance on"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C007",
+      "statement": "On the 812-instance WebArena benchmark, BrowsingAgent v1.0 scores between 8.5% and 15.5% depending on the underlying model, using domain-general zero-shot prompting.",
+      "claim_type": "measured",
+      "evidence": ["E017", "E018", "E019"],
+      "scope": {"benchmark": "WebArena", "instances": 812, "prompting": "zero-shot"},
+      "confidence": "high",
+      "confidence_reasons": ["Three hard measurements", "Consistent evaluation conditions"],
+      "limitations": ["L001"],
+      "permitted_verbs": ["achieved", "scored", "ranged from ... to"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C008",
+      "statement": "On the 198-question GPQA diamond set, CodeActAgent v1.8 with claude-3.5-sonnet reaches 52.0% accuracy, compared with 81.3% for expert humans and 38.8% for GPT-4 with search.",
+      "claim_type": "measured",
+      "evidence": ["E023", "E024"],
+      "scope": {"benchmark": "GPQA", "subset": "diamond", "instances": 198},
+      "confidence": "high",
+      "confidence_reasons": ["Hard measured values", "Baseline comparison provided in the same table"],
+      "limitations": [],
+      "permitted_verbs": ["achieved", "compared with"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C009",
+      "statement": "On the 225-instance MINT math subset, CodeActAgent v1.5 with gpt-4o reaches 77.3% with up to five rounds of tool/feedback interaction.",
+      "claim_type": "measured",
+      "evidence": ["E026"],
+      "scope": {"benchmark": "MINT", "subset": "math", "instances": 225, "iterations": "up to 5"},
+      "confidence": "high",
+      "confidence_reasons": ["Hard measured evidence"],
+      "limitations": [],
+      "permitted_verbs": ["achieved", "reached"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C010",
+      "statement": "On the 600-instance challenging (5-hop) ProofWriter subset, CodeActAgent v1.5 reaches 78.8% accuracy.",
+      "claim_type": "measured",
+      "evidence": ["E028"],
+      "scope": {"benchmark": "ProofWriter", "reasoning_hops": 5, "instances": 600},
+      "confidence": "high",
+      "confidence_reasons": ["Hard measured evidence"],
+      "limitations": [],
+      "permitted_verbs": ["achieved", "reached"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C011",
+      "statement": "OpenHands integrates 15 established benchmarks spanning software engineering (7), web browsing (2), and miscellaneous assistance (6).",
+      "claim_type": "observed",
+      "evidence": ["E030"],
+      "scope": "Benchmark integration",
+      "confidence": "high",
+      "confidence_reasons": ["Hard evidence from Table 2"],
+      "limitations": [],
+      "permitted_verbs": ["integrates", "supports"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C012",
+      "statement": "At the time of writing, OpenHands had received 32K GitHub stars and more than 2.1K contributions from over 188 contributors.",
+      "claim_type": "observed",
+      "evidence": ["E003"],
+      "scope": "Community engagement, point-in-time metric",
+      "confidence": "moderate",
+      "confidence_reasons": ["Soft evidence from paper text", "Point-in-time metric subject to change"],
+      "limitations": [],
+      "permitted_verbs": ["had received", "reported"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C013",
+      "statement": "The authors report that current agents still struggle with complex tasks, particularly editing long files.",
+      "claim_type": "interpretation",
+      "evidence": ["E032"],
+      "scope": "Known agent limitations",
+      "confidence": "high",
+      "confidence_reasons": ["Explicitly stated limitation by the authors"],
+      "limitations": ["L003"],
+      "permitted_verbs": ["struggle with", "the authors note"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C014",
+      "statement": "Constructing new agent workflows in OpenHands currently requires substantial handcrafted engineering effort.",
+      "claim_type": "interpretation",
+      "evidence": ["E033"],
+      "scope": "Workflow automation limitation",
+      "confidence": "high",
+      "confidence_reasons": ["Explicitly acknowledged limitation"],
+      "limitations": ["L004"],
+      "permitted_verbs": ["requires", "the authors acknowledge"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C015",
+      "statement": "The authors state that OpenHands is intended to help identify and address the risks of increasingly capable agents by enabling systematic evaluation before wide deployment.",
+      "claim_type": "hypothesis",
+      "evidence": ["E031"],
+      "scope": "Safety and risk-mitigation rationale",
+      "confidence": "moderate",
+      "confidence_reasons": ["Stated as a goal/hypothesis rather than a demonstrated result"],
+      "limitations": [],
+      "permitted_verbs": ["is intended to", "the authors hypothesize"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C016",
+      "statement": "The full MiniWoB++ evaluation set (125 environments) includes tasks that require vision capability to solve.",
+      "claim_type": "observed",
+      "evidence": ["E021"],
+      "scope": "MiniWoB++ benchmark characteristics",
+      "confidence": "high",
+      "confidence_reasons": ["Explicit statement in the methods text"],
+      "limitations": ["L006"],
+      "permitted_verbs": ["includes", "requires"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C017",
+      "statement": "For BIRD, the authors extended the standard single-turn setting to allow multi-turn interaction so the agent can revise a SQL query using execution feedback.",
+      "claim_type": "observed",
+      "evidence": ["E037"],
+      "scope": "BIRD benchmark modification",
+      "confidence": "high",
+      "confidence_reasons": ["Explicit methodological statement"],
+      "limitations": [],
+      "permitted_verbs": ["extended", "allowed"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C018",
+      "statement": "OpenHands' Docker-based runtime uses a dual-tagging scheme (a hash-based tag for reproducibility and a generic tag for the latest version) to balance reproducibility with flexibility.",
+      "claim_type": "observed",
+      "evidence": ["E038"],
+      "scope": "Runtime image management",
+      "confidence": "high",
+      "confidence_reasons": ["Explicit technical description"],
+      "limitations": [],
+      "permitted_verbs": ["uses", "balances"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C019",
+      "statement": "OpenHands' integration-test framework mocks LLM calls with predefined responses keyed to exact prompt matches, enabling deterministic tests without incurring live LLM costs.",
+      "claim_type": "observed",
+      "evidence": ["E039"],
+      "scope": "Quality-control mechanism",
+      "confidence": "high",
+      "confidence_reasons": ["Explicit technical description of the testing approach"],
+      "limitations": [],
+      "permitted_verbs": ["intercepts", "supplies", "enables"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    },
+    {
+      "id": "C020",
+      "statement": "Running the full SWE-Bench evaluation (2294 instances) is estimated by the authors to cost approximately $6.9k under a conservative per-instance estimate, which is why the smaller SWE-Bench Lite (300 instances) is used for most reported results.",
+      "claim_type": "observed",
+      "evidence": ["E035"],
+      "scope": "Evaluation-cost rationale",
+      "confidence": "moderate",
+      "confidence_reasons": ["Soft evidence: a footnote estimate, not a logged expenditure"],
+      "limitations": ["L002"],
+      "permitted_verbs": ["is estimated at", "the authors report"],
+      "author_confirmation": "confirmed",
+      "used_in": []
+    }
+  ],
+  "limitations": [
+    {
+      "id": "L001",
+      "statement": "Agent performance depends strongly on the underlying LLM: on SWE-Bench Lite, claude-3.5-sonnet outperforms gpt-4o-mini by roughly 4x (26.0% vs 6.3%).",
+      "affects_claims": ["C002", "C003", "C006", "C007"],
+      "evidence": ["E005", "E006"],
+      "effect_on_interpretation": "Claims about OpenHands' 'competitive performance' hold for specific model backends and should not be read as model-independent."
+    },
+    {
+      "id": "L002",
+      "statement": "Many results are reported on reduced-size benchmark subsets (e.g., SWE-Bench Lite's 300 instances rather than the full 2294-instance SWE-Bench) for cost reasons.",
+      "affects_claims": ["C002", "C004", "C006", "C020"],
+      "evidence": ["E035"],
+      "effect_on_interpretation": "Reported rates may not transfer unchanged to the full benchmarks; evaluation scope is bounded by cost."
+    },
+    {
+      "id": "L003",
+      "statement": "Agents built on OpenHands still struggle with complex tasks and with editing long files.",
+      "affects_claims": ["C006", "C013"],
+      "evidence": ["E032"],
+      "effect_on_interpretation": "Practical applicability to complex, real-world software-engineering tasks is limited by current agent capability, not just platform design."
+    },
+    {
+      "id": "L004",
+      "statement": "Building new agent workflows in OpenHands still requires substantial handcrafted engineering.",
+      "affects_claims": ["C001", "C014"],
+      "evidence": ["E033"],
+      "effect_on_interpretation": "Claims about ease of extending OpenHands to new agents are bounded: the framework does not yet automate workflow construction."
+    },
+    {
+      "id": "L005",
+      "statement": "HumanEvalFix allows a theoretical maximum of 100%, so 79.3% is not a ceiling result.",
+      "affects_claims": ["C004", "C005"],
+      "evidence": ["E042"],
+      "effect_on_interpretation": "There is room for improvement; 79.3% reflects a capability gap rather than a benchmark limit."
+    },
+    {
+      "id": "L006",
+      "statement": "The full MiniWoB++ evaluation set includes vision-dependent tasks.",
+      "affects_claims": ["C007"],
+      "evidence": ["E021"],
+      "effect_on_interpretation": "Web-browsing scores that include the full MiniWoB++ set partly reflect multimodal (vision) capability, not only browsing-action competence."
+    }
+  ],
+  "negative_result_decisions": [
+    {
+      "evidence": "E034",
+      "decision": "reported_main",
+      "reason": "Demonstrates model sensitivity and guides model selection for practitioners; important for reproducibility."
+    }
+  ]
+}

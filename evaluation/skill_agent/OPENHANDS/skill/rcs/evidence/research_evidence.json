@@ -1,0 +1,423 @@
+{
+  "evidence_items": [
+    {
+      "id": "E001",
+      "type": "result",
+      "description": "CodeActAgent v1.8 (claude-3-5-sonnet) SWE-Bench Lite resolve rate",
+      "value": "26.0",
+      "unit": "% resolve rate",
+      "conditions": "SWE-Bench Lite, 300 instances, 0-shot, without hint text",
+      "locator": "project/paper.txt:Table 4, line 529",
+      "strength": "hard"
+    },
+    {
+      "id": "E002",
+      "type": "result",
+      "description": "CodeActAgent v1.8 (gpt-4o) SWE-Bench Lite resolve rate",
+      "value": "22.0",
+      "unit": "% resolve rate",
+      "conditions": "SWE-Bench Lite, 300 instances, 0-shot, without hint text",
+      "locator": "project/paper.txt:Table 4, line 529",
+      "strength": "hard"
+    },
+    {
+      "id": "E003",
+      "type": "result",
+      "description": "CodeActAgent v1.8 (gpt-4o-mini) SWE-Bench Lite resolve rate",
+      "value": "6.3",
+      "unit": "% resolve rate",
+      "conditions": "SWE-Bench Lite, 300 instances, 0-shot, without hint text",
+      "locator": "project/paper.txt:Table 4 (also Table 3 overview), line 529",
+      "strength": "hard"
+    },
+    {
+      "id": "E004",
+      "type": "baseline",
+      "description": "SWE-Agent (gpt-4-1106-preview) SWE-Bench Lite",
+      "value": "18.0",
+      "unit": "% resolve rate",
+      "locator": "project/paper.txt:Table 4, line 529",
+      "strength": "hard"
+    },
+    {
+      "id": "E005",
+      "type": "baseline",
+      "description": "AutoCodeRover (gpt-4-0125-preview) SWE-Bench Lite",
+      "value": "19.0",
+      "unit": "% resolve rate",
+      "locator": "project/paper.txt:Table 4, line 529",
+      "strength": "hard"
+    },
+    {
+      "id": "E006",
+      "type": "baseline",
+      "description": "Aider (gpt-4o & claude-3-opus) SWE-Bench Lite",
+      "value": "26.3",
+      "unit": "% resolve rate",
+      "locator": "project/paper.txt:Table 4, line 529",
+      "strength": "hard"
+    },
+    {
+      "id": "E007",
+      "type": "baseline",
+      "description": "Agentless (gpt-4o) SWE-Bench Lite",
+      "value": "27.3",
+      "unit": "% resolve rate",
+      "locator": "project/paper.txt:Table 4, line 529",
+      "strength": "hard"
+    },
+    {
+      "id": "E008",
+      "type": "result",
+      "description": "CodeActAgent v1.5 HumanEvalFix Python (0-shot)",
+      "value": "79.3",
+      "unit": "% pass rate",
+      "conditions": "HumanEvalFix, 164 instances, 0-shot, gpt-4o-2024-05-13",
+      "locator": "project/paper.txt:Table 4, line 530",
+      "strength": "hard"
+    },
+    {
+      "id": "E009",
+      "type": "baseline",
+      "description": "SWE-Agent HumanEvalFix Python (1-shot with demonstration)",
+      "value": "87.7",
+      "unit": "% pass rate",
+      "conditions": "HumanEvalFix, 1-shot with trajectory demonstration, gpt-4-turbo",
+      "locator": "project/paper.txt:Table 4, line 530",
+      "strength": "hard"
+    },
+    {
+      "id": "E010",
+      "type": "baseline",
+      "description": "StarCoder2-15B HumanEvalFix Python (non-agentic)",
+      "value": "48.6",
+      "unit": "% pass rate",
+      "locator": "project/paper.txt:Table 4, line 530",
+      "strength": "hard"
+    },
+    {
+      "id": "E011",
+      "type": "result",
+      "description": "CodeActAgent v1.5 BIRD text-to-SQL accuracy",
+      "value": "47.3",
+      "unit": "% execution accuracy",
+      "conditions": "BIRD, 300 instances, 0-shot, gpt-4o-2024-05-13, prompting + BM25",
+      "locator": "project/paper.txt:Table 4, line 531",
+      "strength": "hard"
+    },
+    {
+      "id": "E012",
+      "type": "result",
+      "description": "CodeActAgent v1.5 ML-Bench success rate (gpt-4o)",
+      "value": "64.4",
+      "unit": "% success rate",
+      "conditions": "ML-Bench, 68 instances (quarter subset), 0-shot, gpt-4o-2024-05-13",
+      "locator": "project/paper.txt:Table 4, line 532",
+      "strength": "hard"
+    },
+    {
+      "id": "E013",
+      "type": "baseline",
+      "description": "SWE-Agent ML-Bench success rate",
+      "value": "42.6",
+      "unit": "% success rate",
+      "locator": "project/paper.txt:Table 4, line 532",
+      "strength": "hard"
+    },
+    {
+      "id": "E014",
+      "type": "result",
+      "description": "CodeActAgent v1.5 BioCoder Python success rate (0-shot, gpt-4o)",
+      "value": "27.5",
+      "unit": "% success rate",
+      "conditions": "BioCoder Python, 157 instances, 0-shot, no context provided, gpt-4o-2024-05-13",
+      "locator": "project/paper.txt:Table 4, line 533",
+      "strength": "hard"
+    },
+    {
+      "id": "E015",
+      "type": "result",
+      "description": "CodeActAgent v1.5 Gorilla APIBench (gpt-4o)",
+      "value": "47.2",
+      "unit": "% accuracy",
+      "conditions": "Gorilla APIBench, 1775 instances, 0-shot, gpt-4o-2024-05-13",
+      "locator": "project/paper.txt:Table 4, line 535",
+      "strength": "hard"
+    },
+    {
+      "id": "E016",
+      "type": "result",
+      "description": "CodeActAgent v1.5 ToolQA easy (gpt-4o)",
+      "value": "43.1",
+      "unit": "% accuracy",
+      "conditions": "ToolQA easy subset, 800 instances, gpt-4o-2024-05-13",
+      "locator": "project/paper.txt:Table 4, line 536",
+      "strength": "hard"
+    },
+    {
+      "id": "E017",
+      "type": "result",
+      "description": "BrowsingAgent v1.0 WebArena (claude-3-5-sonnet)",
+      "value": "15.5",
+      "unit": "% success rate",
+      "conditions": "WebArena, 812 instances, claude-3-5-sonnet-20240620",
+      "locator": "project/paper.txt:Table 5, line 601",
+      "strength": "hard"
+    },
+    {
+      "id": "E018",
+      "type": "result",
+      "description": "BrowsingAgent v1.0 WebArena (gpt-4o)",
+      "value": "14.8",
+      "unit": "% success rate",
+      "conditions": "WebArena, 812 instances, gpt-4o-2024-05-13",
+      "locator": "project/paper.txt:Table 5, line 601",
+      "strength": "hard"
+    },
+    {
+      "id": "E019",
+      "type": "baseline",
+      "description": "WebArena Agent (Zhou et al., 2023a) WebArena (gpt-4-turbo)",
+      "value": "14.4",
+      "unit": "% success rate",
+      "locator": "project/paper.txt:Table 5, line 599",
+      "strength": "hard"
+    },
+    {
+      "id": "E020",
+      "type": "baseline",
+      "description": "AutoWebGLM WebArena (trained 7B model)",
+      "value": "18.2",
+      "unit": "% success rate",
+      "locator": "project/paper.txt:Table 5, line 599",
+      "strength": "hard"
+    },
+    {
+      "id": "E021",
+      "type": "result",
+      "description": "BrowsingAgent v1.0 MiniWoB++ full set (gpt-4o)",
+      "value": "40.8",
+      "unit": "% success rate",
+      "conditions": "MiniWoB++, 125 environments, full set, gpt-4o-2024-05-13",
+      "locator": "project/paper.txt:Table 5, line 603",
+      "strength": "hard"
+    },
+    {
+      "id": "E022",
+      "type": "result",
+      "description": "CodeActAgent v1.8 GPQA diamond set (claude-3-5-sonnet)",
+      "value": "52.0",
+      "unit": "% accuracy",
+      "conditions": "GPQA diamond set, 198 instances, claude-3-5-sonnet-20240620",
+      "locator": "project/paper.txt:Table 6, line 669; Table 7, line 1039",
+      "strength": "hard"
+    },
+    {
+      "id": "E023",
+      "type": "baseline",
+      "description": "Few-shot CoT GPT-4 GPQA diamond set",
+      "value": "38.8",
+      "unit": "% accuracy",
+      "locator": "project/paper.txt:Table 6, line 664",
+      "strength": "hard"
+    },
+    {
+      "id": "E024",
+      "type": "baseline",
+      "description": "Expert human GPQA diamond set accuracy",
+      "value": "81.3",
+      "unit": "% accuracy",
+      "locator": "project/paper.txt:Table 6, line 657",
+      "strength": "hard"
+    },
+    {
+      "id": "E025",
+      "type": "baseline",
+      "description": "Non-expert human GPQA diamond set accuracy",
+      "value": "21.9",
+      "unit": "% accuracy",
+      "locator": "project/paper.txt:Table 6, line 658",
+      "strength": "hard"
+    },
+    {
+      "id": "E026",
+      "type": "result",
+      "description": "GPTSwarm v1.0 GAIA L1 validation (gpt-4o)",
+      "value": "32.1",
+      "unit": "% success rate",
+      "conditions": "GAIA L1 validation set, 53 instances, gpt-4o",
+      "locator": "project/paper.txt:Table 6, line 648",
+      "strength": "hard"
+    },
+    {
+      "id": "E027",
+      "type": "baseline",
+      "description": "AutoGPT GAIA L1 (gpt-4-turbo)",
+      "value": "13.2",
+      "unit": "% success rate",
+      "locator": "project/paper.txt:Table 6, line 640",
+      "strength": "hard"
+    },
+    {
+      "id": "E028",
+      "type": "result",
+      "description": "CodeActAgent v1.5 AgentBench OS subset (gpt-4o)",
+      "value": "57.6",
+      "unit": "% success rate",
+      "conditions": "AgentBench OS (bash) subset, 144 tasks, gpt-4o-2024-05-13",
+      "locator": "project/paper.txt:Table 6, line 682",
+      "strength": "hard"
+    },
+    {
+      "id": "E029",
+      "type": "baseline",
+      "description": "AgentBench Baseline Agent OS subset (gpt-4)",
+      "value": "42.4",
+      "unit": "% success rate",
+      "locator": "project/paper.txt:Table 6, line 676",
+      "strength": "hard"
+    },
+    {
+      "id": "E030",
+      "type": "result",
+      "description": "CodeActAgent v1.5 MINT math subset (gpt-4o)",
+      "value": "77.3",
+      "unit": "% success rate",
+      "conditions": "MINT math subset, 225 instances, gpt-4o-2024-05-13",
+      "locator": "project/paper.txt:Table 6, line 700",
+      "strength": "hard"
+    },
+    {
+      "id": "E031",
+      "type": "baseline",
+      "description": "MINT Baseline Agent math subset (gpt-4-0613)",
+      "value": "65.8",
+      "unit": "% success rate",
+      "locator": "project/paper.txt:Table 6, line 694",
+      "strength": "hard"
+    },
+    {
+      "id": "E032",
+      "type": "result",
+      "description": "CodeActAgent v1.5 ProofWriter (gpt-4o)",
+      "value": "78.8",
+      "unit": "% accuracy",
+      "conditions": "ProofWriter, 600 instances (5-hop reasoning), gpt-4o-2024-05-13",
+      "locator": "project/paper.txt:Table 6, line 741",
+      "strength": "hard"
+    },
+    {
+      "id": "E033",
+      "type": "baseline",
+      "description": "Logic-LM (GPT-4 + symbolic solver) ProofWriter",
+      "value": "79.6",
+      "unit": "% accuracy",
+      "locator": "project/paper.txt:Table 6, line 731",
+      "strength": "hard"
+    },
+    {
+      "id": "E034",
+      "type": "observation",
+      "description": "Community metrics: GitHub stars and contributors",
+      "value": "32K GitHub stars, 2.1K contributions from 188+ contributors",
+      "locator": "project/paper.txt:abstract and line 124",
+      "strength": "soft"
+    },
+    {
+      "id": "E035",
+      "type": "method",
+      "description": "Agent abstraction: step function, event stream",
+      "value": "Agent = step function: State -> Action; State contains chronological event stream of Action-Observation pairs",
+      "locator": "project/paper.txt:Section 2.1, lines 129-181",
+      "strength": "soft"
+    },
+    {
+      "id": "E036",
+      "type": "method",
+      "description": "Docker sandbox isolation",
+      "value": "Each task session runs in an isolated Docker container with REST API for action execution",
+      "locator": "project/paper.txt:Section 2.2, lines 184-194",
+      "strength": "soft"
+    },
+    {
+      "id": "E037",
+      "type": "method",
+      "description": "Number of benchmarks integrated into evaluation framework",
+      "value": "15",
+      "unit": "benchmarks",
+      "locator": "project/paper.txt:Section 4, line 257",
+      "strength": "soft"
+    },
+    {
+      "id": "E038",
+      "type": "method",
+      "description": "Number of implemented agents in agent hub",
+      "value": "over 10",
+      "unit": "implemented agents",
+      "locator": "project/paper.txt:line 20",
+      "strength": "soft"
+    },
+    {
+      "id": "E039",
+      "type": "result",
+      "description": "Cost of running SWE-Bench Lite with gpt-4o",
+      "value": "~600 USD",
+      "unit": "USD",
+      "conditions": "300 instances, gpt-4o",
+      "locator": "project/paper.txt:footnote 4, line 912",
+      "strength": "soft"
+    },
+    {
+      "id": "E040",
+      "type": "limitation",
+      "description": "Current agents struggle with long file editing",
+      "value": "Author-stated limitation",
+      "locator": "project/paper.txt:Appendix A, lines 892-893",
+      "strength": "soft"
+    },
+    {
+      "id": "E041",
+      "type": "limitation",
+      "description": "Workflow still requires substantial handcrafted workload",
+      "value": "Author-stated limitation",
+      "locator": "project/paper.txt:Appendix A, line 894",
+      "strength": "soft"
+    },
+    {
+      "id": "E042",
+      "type": "result",
+      "description": "CodeActAgent v1.5 GPQA diamond with GPT-4o (Table 7)",
+      "value": "53.1",
+      "unit": "% accuracy",
+      "conditions": "GPQA diamond set, gpt-4o-2024-05-13, CodeActAgent v1.5",
+      "locator": "project/paper.txt:Table 7, line 1038",
+      "strength": "hard",
+      "note": "This is from CodeActAgent v1.5; the main text Table 6 reports v1.8 with claude-3-5-sonnet at 52.0%"
+    },
+    {
+      "id": "E043",
+      "type": "method",
+      "description": "MIT license and open-source community model",
+      "value": "Released under MIT license, permitting commercial use",
+      "locator": "project/paper.txt:abstract and line 124",
+      "strength": "soft"
+    }
+  ],
+  "missing_evidence": [
+    {
+      "id": "M001",
+      "description": "Variance/confidence intervals not reported for any benchmark results",
+      "impact": "Cannot assess statistical significance of performance differences"
+    },
+    {
+      "id": "M002",
+      "description": "Seed variance not reported for stochastic LLM-based evaluations",
+      "impact": "Results may vary across runs"
+    },
+    {
+      "id": "M003",
+      "description": "WebArena results for CodeActAgent via BrowsingAgent delegation are given (8.3, 14.5, 15.3) but it's unclear if these supersede standalone BrowsingAgent",
+      "impact": "Comparison of delegation vs direct browsing unclear"
+    }
+  ]
+}

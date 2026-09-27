@@ -1,0 +1,235 @@
+{
+  "evidence_items": [
+    {
+      "id": "E001",
+      "type": "claim",
+      "description": "SA-1B dataset size",
+      "value": "Over 1 billion masks (1.1B) on 11 million licensed and privacy-respecting images",
+      "source": "project/paper.txt",
+      "location": "Abstract and Section 5",
+      "verbatim": "SA-1B includes more than 1B masks from 11M licensed and privacy-preserving images"
+    },
+    {
+      "id": "E002",
+      "type": "result",
+      "description": "SA-1B is 400x larger than next largest segmentation dataset",
+      "value": "400x more masks than any existing segmentation dataset",
+      "source": "project/paper.txt",
+      "location": "Section 1, Section 5",
+      "verbatim": "SA-1B has 11× more images and 400× more masks than the second largest, Open Images"
+    },
+    {
+      "id": "E003",
+      "type": "result",
+      "description": "Automatic mask quality (IoU vs professional annotations)",
+      "value": "94% of pairs have >90% IoU; 97% of pairs have >75% IoU",
+      "comparison": "Inter-annotator consistency estimated at 85-91% IoU in prior work",
+      "source": "project/paper.txt",
+      "location": "Section 5 (Mask quality)",
+      "verbatim": "94% of pairs have greater than 90% IoU (and 97% of pairs have greater than 75% IoU). For comparison, prior work estimates inter-annotator consistency at 85-91% IoU"
+    },
+    {
+      "id": "E004",
+      "type": "result",
+      "description": "Prompt encoder and mask decoder inference time",
+      "value": "~50ms in a web browser, on CPU",
+      "source": "project/paper.txt",
+      "location": "Section 3",
+      "verbatim": "the prompt encoder and mask decoder run in a web browser, on CPU, in ∼50ms"
+    },
+    {
+      "id": "E005",
+      "type": "result",
+      "description": "Zero-shot single-point mask evaluation vs RITM",
+      "value": "SAM outperforms RITM on 16 of 23 datasets; with oracle, outperforms RITM on all 23 datasets",
+      "source": "project/paper.txt",
+      "location": "Section 7.1",
+      "verbatim": "SAM yields higher results on 16 of the 23 datasets, by as much as ∼47 IoU... with the oracle to perform ambiguity resolution, SAM outperforms RITM on all datasets"
+    },
+    {
+      "id": "E006",
+      "type": "result",
+      "description": "Human study mask quality ratings",
+      "value": "SAM mean ratings fall between 7 and 9 on 1-10 scale; consistently higher than RITM",
+      "source": "project/paper.txt",
+      "location": "Section 7.1",
+      "verbatim": "SAM's mean ratings fall between 7 and 9... annotators consistently rate the quality of SAM's masks substantially higher than the strongest baseline, RITM"
+    },
+    {
+      "id": "E007",
+      "type": "result",
+      "description": "Zero-shot edge detection on BSDS500",
+      "value": "ODS=.768, OIS=.786, AP=.794, R50=.928",
+      "comparison": "HED (2015, trained on BSDS500): ODS=.788, OIS=.808; EDETR (2022): ODS=.840",
+      "source": "project/paper.txt",
+      "location": "Table 3",
+      "verbatim": "SAM 2023 .768 .786 .794 .928"
+    },
+    {
+      "id": "E008",
+      "type": "result",
+      "description": "Zero-shot object proposal generation on LVIS v1",
+      "value": "SAM mask AR@1000 all=59.3, small=45.5, med=81.6, large=86.9, freq=63.9, com=65.8, rare=65.8",
+      "comparison": "ViTDet-H (supervised): all=63.0, small=51.7, med=80.8, large=87.0",
+      "source": "project/paper.txt",
+      "location": "Table 4",
+      "verbatim": "SAM 59.3 45.5 81.6 86.9 63.9 65.8 65.8; ViTDet-H 63.0 51.7 80.8 87.0 63.1 63.3 58.3"
+    },
+    {
+      "id": "E009",
+      "type": "result",
+      "description": "Zero-shot instance segmentation on COCO and LVIS",
+      "value": "SAM COCO AP=46.5; LVIS AP=44.7 (vs ViTDet-H COCO 51.0, LVIS 46.6)",
+      "source": "project/paper.txt",
+      "location": "Table 5",
+      "verbatim": "ViTDet-H 51.0 ... SAM 46.5; LVIS: ViTDet-H 46.6, SAM 44.7"
+    },
+    {
+      "id": "E010",
+      "type": "result",
+      "description": "Human study: instance segmentation mask quality",
+      "value": "SAM mean rating 8.1 ± 0.07; ViTDet-H 7.9 ± 0.08 (on LVIS ground truth boxes)",
+      "source": "project/paper.txt",
+      "location": "Figure 11",
+      "verbatim": "8.1 ± 0.07, SAM; 7.9 ± 0.08, ViTDet-H"
+    },
+    {
+      "id": "E011",
+      "type": "method",
+      "description": "Data engine stage 1: assisted-manual",
+      "value": "4.3M masks from 120k images; annotation time decreased from 34 to 14 seconds per mask; SAM retrained 6 times",
+      "source": "project/paper.txt",
+      "location": "Section 4",
+      "verbatim": "we collected 4.3M masks from 120k images in this stage... Average annotation time per mask decreased from 34 to 14 seconds"
+    },
+    {
+      "id": "E012",
+      "type": "method",
+      "description": "Data engine stage 2: semi-automatic",
+      "value": "Additional 5.9M masks in 180k images; total 10.2M masks; retrained 5 times",
+      "source": "project/paper.txt",
+      "location": "Section 4",
+      "verbatim": "we collected an additional 5.9M masks in 180k images (for a total of 10.2M masks)"
+    },
+    {
+      "id": "E013",
+      "type": "method",
+      "description": "Data engine stage 3: fully automatic",
+      "value": "Generated 1.1B masks from all 11M images using 32x32 foreground point grid",
+      "source": "project/paper.txt",
+      "location": "Section 4",
+      "verbatim": "we applied fully automatic mask generation to all 11M images in our dataset, producing a total of 1.1B high-quality masks"
+    },
+    {
+      "id": "E014",
+      "type": "method",
+      "description": "Image encoder architecture",
+      "value": "MAE pre-trained ViT-H/16 with 14x14 windowed attention and 4 equally-spaced global attention blocks; 636M parameters",
+      "source": "project/paper.txt",
+      "location": "Section 3, Appendix A",
+      "verbatim": "we use an MAE pre-trained Vision Transformer (ViT) minimally adapted to process high resolution inputs"
+    },
+    {
+      "id": "E015",
+      "type": "method",
+      "description": "Model training recipe",
+      "value": "90k iterations, batch size 256, AdamW optimizer, lr=8e-4, 256 GPUs",
+      "source": "project/paper.txt",
+      "location": "Appendix A",
+      "verbatim": "We train for 90k iterations... The batch size is 256 images... We distribute training across 256 GPUs"
+    },
+    {
+      "id": "E016",
+      "type": "result",
+      "description": "Ablation: data engine stages",
+      "value": "Each stage increases mIoU; automatic-only training yields only ~0.5 mIoU lower than all data combined",
+      "source": "project/paper.txt",
+      "location": "Section 7.6, Figure 13 left",
+      "verbatim": "each stage increases mIoU... SAM performs only marginally lower than using all data (∼0.5 mIoU)"
+    },
+    {
+      "id": "E017",
+      "type": "result",
+      "description": "Ablation: data volume",
+      "value": "1M images (~10% of SA-1B) achieves comparable results to full 11M; 0.1M shows large decline",
+      "source": "project/paper.txt",
+      "location": "Section 7.6, Figure 13 middle",
+      "verbatim": "with 1M images, about 10% of the full dataset, we observe results comparable to using the full dataset"
+    },
+    {
+      "id": "E018",
+      "type": "result",
+      "description": "Ablation: image encoder scaling",
+      "value": "ViT-H (636M) substantially improves over ViT-B (91M); marginal gains over ViT-L (308M)",
+      "source": "project/paper.txt",
+      "location": "Section 7.6, Figure 13 right",
+      "verbatim": "ViT-H improves substantially over ViT-B, but has only marginal gains over ViT-L"
+    },
+    {
+      "id": "E019",
+      "type": "limitation",
+      "description": "Known limitations of SAM",
+      "value": "Can miss fine structures; hallucinates small disconnected components; boundaries less crisp than compute-intensive methods; not real-time with heavy encoder; text-to-mask not fully robust; unclear how to prompt for semantic/panoptic segmentation",
+      "source": "project/paper.txt",
+      "location": "Section 8",
+      "verbatim": "It can miss fine structures, hallucinates small disconnected components at times, and does not produce boundaries as crisply as more computationally intensive methods"
+    },
+    {
+      "id": "E020",
+      "type": "result",
+      "description": "Fairness: SAM performance across demographic groups (people segmentation)",
+      "value": "mIoU at 1 point: feminine 54.4±1.7, masculine 55.7±1.7; skin tones 1-6 all 51.5-56.7; all 95% CI overlap except older vs. middle age",
+      "source": "project/paper.txt",
+      "location": "Table 2",
+      "verbatim": "all confidence intervals overlap except older vs. middle"
+    },
+    {
+      "id": "E021",
+      "type": "result",
+      "description": "Fairness: clothing segmentation bias",
+      "value": "mIoU at 1 point: masculine 81.0±1.2, feminine 76.3±1.1 (disjoint CIs — bias detected)",
+      "source": "project/paper.txt",
+      "location": "Table 6, Appendix C",
+      "verbatim": "The intervals for perceived gender are disjoint, with mIoU for masculine being higher"
+    },
+    {
+      "id": "E022",
+      "type": "method",
+      "description": "Ambiguity resolution: multiple mask outputs",
+      "value": "SAM predicts 3 masks per prompt; backprop from minimum loss only; adds IoU confidence head",
+      "source": "project/paper.txt",
+      "location": "Section 3",
+      "verbatim": "we modify the model to predict multiple output masks for a single prompt... We found 3 mask outputs is sufficient to address most common cases"
+    },
+    {
+      "id": "E023",
+      "type": "dataset",
+      "description": "SA-1B geographic and income diversity",
+      "value": "Covers 161+ countries; 36.2% Asia & Oceania, 49.8% Europe, 54% high-income, 45% middle-income, 0.9% low-income",
+      "source": "project/paper.txt",
+      "location": "Table 1",
+      "verbatim": "SA-1B has higher representation in Europe and Asia & Oceania as well as middle income countries"
+    },
+    {
+      "id": "E024",
+      "type": "method",
+      "description": "Evaluation benchmark: 23 diverse datasets",
+      "value": "Domains include egocentric, microscopy, X-ray, underwater, aerial, simulation, driving, painting images",
+      "source": "project/paper.txt",
+      "location": "Section 7, Figure 8, Table 7"
+    },
+    {
+      "id": "E025",
+      "type": "result",
+      "description": "SA-1B proportion automatically generated",
+      "value": "99.1% of masks generated fully automatically",
+      "source": "project/paper.txt",
+      "location": "Section 5",
+      "verbatim": "99.1% of which were generated fully automatically"
+    }
+  ],
+  "missing_evidence": [
+    "Exact mIoU values per dataset for Fig. 9a (only ranges and specific deltas noted in text)",
+    "Variance/standard deviation for ablation results in Figure 13"
+  ]
+}

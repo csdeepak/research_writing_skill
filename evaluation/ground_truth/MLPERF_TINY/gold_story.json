@@ -1,0 +1,71 @@
+{
+  "project": "MLPERF_TINY",
+  "approved_by_researcher": false,
+  "approval_date": null,
+  "questions": {
+    "Q1": [
+      {"id": "Q1a", "text": "TinyML systems lack a widely accepted and easily reproducible benchmark, which limits continued progress in the field.", "strength": "context", "evidence_ids": ["paper.txt L10"]},
+      {"id": "Q1b", "text": "Without a fair, reliable comparison method, direct comparison of TinyML solutions is challenging and the impact of individual optimizations is difficult to measure.", "strength": "context", "evidence_ids": ["paper.txt L12", "paper.txt L17"]}
+    ],
+    "Q2": [
+      {"id": "Q2a", "text": "Edge/TinyML inference is argued to increase energy efficiency, privacy, responsiveness, and autonomy of edge devices by avoiding wireless-communication energy costs.", "strength": "interpretation", "evidence_ids": ["paper.txt L12"]},
+      {"id": "Q2b", "text": "TinyML is argued to enable a class of smart, battery-powered, always-on applications for real-time data collection and processing.", "strength": "interpretation", "evidence_ids": ["paper.txt L12"]},
+      {"id": "Q2c", "text": "The paper motivates the benchmark by noting that TinyML achieves ML inference under a milliwatt of power, breaking the traditional power barrier limiting distributed machine intelligence.", "strength": "context", "evidence_ids": ["paper.txt L12"]}
+    ],
+    "Q3": [
+      {"id": "Q3a", "text": "EEMBC's CoreMark benchmark does not profile full programs and does not accurately represent machine learning inference workloads.", "strength": "context", "evidence_ids": ["paper.txt L31"]},
+      {"id": "Q3b", "text": "EEMBC's MLMark benchmark uses models too large for MCU-class devices, requiring far too much memory, and does not support power measurement.", "strength": "context", "evidence_ids": ["paper.txt L32"]},
+      {"id": "Q3c", "text": "The existing large-scale MLPerf inference benchmark precludes MCUs and other resource-constrained platforms due to a lack of small benchmarks and compatible implementations.", "strength": "context", "evidence_ids": ["paper.txt L33"]}
+    ],
+    "Q4": [
+      {"id": "Q4a", "text": "The authors created MLPerf Tiny, the first industry-standard benchmark suite for ultra-low-power TinyML systems, comprising four benchmarks: keyword spotting, visual wake words, image classification, and anomaly detection.", "strength": "context", "evidence_ids": ["paper.txt L10"]},
+      {"id": "Q4b", "text": "Each of the four benchmarks specifies a dataset, a reference model, and a quality target (Table 1).", "strength": "context", "evidence_ids": ["paper.txt L35", "paper.txt L39-50"]},
+      {"id": "Q4c", "text": "The suite defines closed and open submission divisions with different rules on what may be modified from the reference implementation.", "strength": "context", "evidence_ids": ["paper.txt L85-88"]},
+      {"id": "Q4d", "text": "A measurement framework computes accuracy (Top-1 or AUC), latency (median inferences-per-second of five runs), and energy (median micro-Joules/inference of five runs).", "strength": "context", "evidence_ids": ["paper.txt L93-96"]}
+    ],
+    "Q5": [
+      {"id": "Q5a", "text": "The modular design was chosen so submitters can demonstrate the benefit of their product regardless of where it falls on the ML deployment stack, in a fair and reproducible manner.", "strength": "interpretation", "evidence_ids": ["paper.txt L10", "paper.txt L83-84"]},
+      {"id": "Q5b", "text": "The closed division was designed to enable a more direct comparison of systems by requiring the same models, datasets, and quality targets as the reference implementation.", "strength": "interpretation", "evidence_ids": ["paper.txt L87"]},
+      {"id": "Q5c", "text": "The open division was designed to let submitters demonstrate improvements to performance, energy, or accuracy at any stage of the ML pipeline.", "strength": "interpretation", "evidence_ids": ["paper.txt L88"]},
+      {"id": "Q5d", "text": "Feature extraction was excluded from the keyword-spotting measurement window because it is typically a small fraction of overall compute cost.", "strength": "interpretation", "evidence_ids": ["paper.txt L68"]}
+    ],
+    "Q6": [
+      {"id": "Q6a", "text": "Reference-model accuracy was evaluated for each of the four benchmarks using per-benchmark test/evaluation subsets.", "strength": "measured", "evidence_ids": ["paper.txt L54", "paper.txt L59", "paper.txt L67", "paper.txt L72"]},
+      {"id": "Q6b", "text": "Reference implementation latency and energy were measured on the NUCLEO-L4R5ZI board and reported in Figure 5, but the numeric values are not present in the extracted paper text.", "strength": "observed", "evidence_ids": ["paper.txt L91", "paper.txt L97"]},
+      {"id": "Q6c", "text": "A first round of submissions (June 2021), spanning closed and open divisions across five hardware/software stacks, was collected and qualitatively summarized in Table 2.", "strength": "observed", "evidence_ids": ["paper.txt L101", "paper.txt L186", "paper.txt L104-184"]}
+    ],
+    "Q7": [
+      {"id": "Q7a", "text": "The KWS reference DS-CNN model achieved 92.2% accuracy in the authors' experiments; the quantized model reached 91.6% on the full test set and 91.7% on a 1000-utterance subset (target 90%).", "strength": "measured", "evidence_ids": ["paper.txt L68-69"]},
+      {"id": "Q7b", "text": "The IC reference ResNet model achieved 86.5% accuracy on 200 CIFAR-10 test images (target 85%).", "strength": "measured", "evidence_ids": ["paper.txt L61-64"]},
+      {"id": "Q7c", "text": "The VWW reference MobileNetV1 model reached about 86% accuracy on the preprocessed MSCOCO 2014 test dataset (target 80%).", "strength": "measured", "evidence_ids": ["paper.txt L56"]},
+      {"id": "Q7d", "text": "The AD reference autoencoder achieved AUC 0.88 (fp32) and AUC 0.86 (quantized) on 248 evaluation samples (target 0.85).", "strength": "measured", "evidence_ids": ["paper.txt L77"]}
+    ],
+    "Q8": [
+      {"id": "Q8a", "text": "The results establish that each reference implementation (52.5-325 KB model size) meets its own stated minimum accuracy target.", "strength": "derived", "evidence_ids": ["paper.txt L39-50", "paper.txt L54-77"]},
+      {"id": "Q8b", "text": "The results establish that a first round of five submissions, across closed and open divisions on diverse hardware (ARM MCU, RISC-V MCU, RasPi 4, an NN accelerator, an FPGA), successfully exercised the benchmark's modular design.", "strength": "observed", "evidence_ids": ["paper.txt L104-184"]},
+      {"id": "Q8c", "text": "The results establish that 8-bit integer quantization was the most common numerical format among first-round submitters.", "strength": "observed", "evidence_ids": ["paper.txt L189"]}
+    ],
+    "Q9": [
+      {"id": "Q9a", "text": "The paper's extracted text does not contain numeric latency or energy values; those results exist only in Figure 5, an image not recoverable from this snapshot.", "strength": "context", "evidence_ids": ["paper.txt L91", "paper.txt L97"]},
+      {"id": "Q9b", "text": "The current benchmark version excludes pre-processing/feature extraction from the measurement window, so its results do not reflect full end-to-end pipeline cost (a scope boundary the authors state directly).", "strength": "derived", "evidence_ids": ["paper.txt L35", "paper.txt L198"]},
+      {"id": "Q9c", "text": "None of the first-round submissions modified the training dataset, so the round-one results do not demonstrate data-centric optimization.", "strength": "observed", "evidence_ids": ["paper.txt L191"]},
+      {"id": "Q9d", "text": "Because the closed division prohibits any retraining or weight replacement, closed-division results cannot be read as evidence about retraining or architecture-search effects.", "strength": "derived", "evidence_ids": ["paper.txt L87"]}
+    ],
+    "Q10": [
+      {"id": "Q10a", "text": "The primary contribution is MLPerf Tiny, the first industry-standard benchmark suite for ultra-low-power TinyML systems, developed collaboratively by more than 50 organizations.", "strength": "context", "evidence_ids": ["paper.txt L10"]},
+      {"id": "Q10b", "text": "The contribution includes open-source reference implementations (training scripts, pre-trained models, C code) for the four benchmarks.", "strength": "context", "evidence_ids": ["paper.txt L36"]},
+      {"id": "Q10c", "text": "The contribution includes a measurement framework and closed/open division run rules for comparing accuracy, latency, and energy.", "strength": "context", "evidence_ids": ["paper.txt L85-96"]}
+    ],
+    "Q11": [
+      {"id": "Q11a", "text": "The authors state the suite must continue to evolve with new benchmarks for domains like wearables, medical devices, and environmental monitoring, while also keeping a subset of benchmarks long-term stable for historical tracking.", "strength": "future", "evidence_ids": ["paper.txt L197"]},
+      {"id": "Q11b", "text": "For streaming, time-domain tasks (KWS, AD), limited bandwidth between the test runner and the device under test makes it difficult to recreate a true streaming scenario without added data-transfer delays.", "strength": "context", "evidence_ids": ["paper.txt L198"]},
+      {"id": "Q11c", "text": "Excluding feature extraction from measurement while allowing submitter-selected feature choices creates a possible degenerate case where nearly the whole model could be labeled 'feature extraction'.", "strength": "context", "evidence_ids": ["paper.txt L198"]},
+      {"id": "Q11d", "text": "The closed division's models are based mainly on FC and CNN layers; broader architectures such as RNNs are not yet covered by the reference suite.", "strength": "context", "evidence_ids": ["paper.txt L199"]}
+    ],
+    "Q12": [
+      {"id": "Q12a", "text": "MLPerf Tiny is a four-benchmark suite (KWS, VWW, IC, AD) for ultra-low-power TinyML inference, measuring accuracy, latency, and energy.", "strength": "context", "evidence_ids": ["paper.txt L10", "paper.txt L39-50"]},
+      {"id": "Q12b", "text": "It has closed (strict: same model/dataset/quality target) and open (flexible, must still document deviations) submission divisions.", "strength": "context", "evidence_ids": ["paper.txt L87-88"]},
+      {"id": "Q12c", "text": "Reference accuracies were 92.2%/91.6-91.7% (KWS), 86.5% (IC), about 86% (VWW), and AUC 0.88/0.86 (AD) - each above its stated quality target.", "strength": "measured", "evidence_ids": ["paper.txt L56", "paper.txt L61-64", "paper.txt L68-69", "paper.txt L77"]}
+    ]
+  }
+}

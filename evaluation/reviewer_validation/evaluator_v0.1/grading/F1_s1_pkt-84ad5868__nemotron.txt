@@ -1,0 +1,75 @@
+{
+  "questions": {
+    "Q1": {
+      "q1a": "present"
+    },
+    "Q2": {
+      "q2a": "present"
+    },
+    "Q3": {
+      "q3a": "absent"
+    },
+    "Q4": {
+      "q4a": "present",
+      "q4b": "present"
+    },
+    "Q5": {
+      "q5a": "weakened"
+    },
+    "Q6": {
+      "q6a": "present",
+      "q6b": "present"
+    },
+    "Q7": {
+      "q7a": "weakened",
+      "q7b": "present"
+    },
+    "Q8": {
+      "q8a": "absent",
+      "q8b": "absent"
+    },
+    "Q9": {
+      "q9a": "absent",
+      "q9b": "present"
+    },
+    "Q10": {
+      "q10a": "absent"
+    },
+    "Q11": {
+      "q11a": "present",
+      "q11b": "absent",
+      "q11c": "absent"
+    },
+    "Q12": {
+      "q12a": "present"
+    }
+  },
+  "intrusions": [
+    {
+      "question": "Q2",
+      "text": "Every motivating claim is a [CITATION NEEDED] placeholder; no evidence that level shifts are prevalent or that training-stat normalization is the standard is actually provided.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q5",
+      "text": "RWN uses statistics of the most recent 48 steps; RWN-fixed freezes statistics after the first 48 post-shift steps.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q6",
+      "text": "RWN-fixed was only run at s=0.6; the experimental grid is therefore incomplete for the ablation.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q7",
+      "text": "SDs range 0.006–0.021.",
+      "tag": "benign_elaboration"
+    }
+  ],
+  "notes": "RR=12/17=0.706 (present+weakened), DR=2/17=0.118 (weakened+overstated+contradicted), IR=4/17=0.235, MMF=(10*1+2*0.5)/17=0.647. Core nuggets (derived/interpretation: q7a,q7b,q8a,q8b,q10a,q12a): Core RR=3/6=0.5 (q7b present, q7a weakened, q12a present; q8a,q8b,q10a absent). Reader captures methods and key results well but misses the literature gap (Q3), the interpretation that stale statistics account for shift error (Q8a), the quantitative gain attribution (Q8b), the explicit boundary at s=0.8 (Q9a, Q10a), and two limitation nuggets (Q11b,c). Several true experimental details appear as benign elaborations.",
+  "RR": 0.706,
+  "DR": 0.118,
+  "IR": 0.235,
+  "MMF": 0.647,
+  "Core_RR": 0.5
+}

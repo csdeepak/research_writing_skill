@@ -1,0 +1,426 @@
+[
+ {
+  "run": "skill_agent/BEIR/skill",
+  "artifacts": {
+   "research_evidence": "research_evidence.json",
+   "claim_map": "claim_evidence_map.json",
+   "story_graph": "story_graph.json",
+   "spine": "spine.md",
+   "architecture": null,
+   "skeleton": null,
+   "question_ledger": null,
+   "term_ledger": null,
+   "lit_gap_chain": null,
+   "source_registry": "corpus/source_registry.json",
+   "audience_profile": null,
+   "venue_profile": null,
+   "open_issues": "open_issues.md"
+  },
+  "artifact_coverage": 0.46,
+  "figure_cards": 0,
+  "audit_files": [],
+  "n_claims": 14,
+  "claim_types": {
+   "measured": 0,
+   "observed": 0,
+   "derived": 0,
+   "literature": 0,
+   "interpretation": 0,
+   "hypothesis": 0,
+   "speculation": 0,
+   "future": 0
+  },
+  "n_limitations": 3,
+  "n_limitations_linked": 0,
+  "negative_result_decisions": 0,
+  "n_evidence": 0,
+  "validator_errors_excl_locators": 227,
+  "validator_error_examples": [
+   "evidence/research_evidence.json: $: missing required 'project_root'",
+   "evidence/research_evidence.json: $: missing required 'generated_at'",
+   "evidence/research_evidence.json: $: missing required 'items'",
+   "claims/claim_evidence_map.json: $.claims[0]: missing required 'statement'",
+   "claims/claim_evidence_map.json: $.claims[0]: missing required 'claim_type'",
+   "claims/claim_evidence_map.json: $.claims[0]: missing required 'author_confirmation'",
+   "claims/claim_evidence_map.json: $.claims[1]: missing required 'statement'",
+   "claims/claim_evidence_map.json: $.claims[1]: missing required 'claim_type'"
+  ],
+  "accepted_risks": 4,
+  "state_step": null,
+  "gates": null,
+  "open_issue_bullets": 27,
+  "tool_invocations": {
+   "validate_artifacts": 0,
+   "lint_draft": 0,
+   "build_review_packet": 0,
+   "snapshot": 0
+  },
+  "skill_files_read": [
+   "SKILL.md"
+  ],
+  "paper_words_main": 5096,
+  "residual_tags": 0,
+  "markers": 1,
+  "has_limitations_section": true
+ },
+ {
+  "run": "skill_agent/MLPERF_TINY/skill",
+  "artifacts": {
+   "research_evidence": "evidence/research_evidence.json",
+   "claim_map": "claims/claim_evidence_map.json",
+   "story_graph": "story/story_graph.json",
+   "spine": "story/spine.md",
+   "architecture": "plan/paper_architecture.md",
+   "skeleton": null,
+   "question_ledger": null,
+   "term_ledger": null,
+   "lit_gap_chain": null,
+   "source_registry": "corpus/source_registry.json",
+   "audience_profile": "plan/audience_profile.json",
+   "venue_profile": "plan/venue_profile.yaml",
+   "open_issues": "open_issues.md"
+  },
+  "artifact_coverage": 0.69,
+  "figure_cards": 0,
+  "audit_files": [
+   "audits/v001/reconstruction_self.md"
+  ],
+  "n_claims": 10,
+  "claim_types": {
+   "measured": 4,
+   "observed": 5,
+   "derived": 0,
+   "literature": 0,
+   "interpretation": 1,
+   "hypothesis": 0,
+   "speculation": 0,
+   "future": 0
+  },
+  "n_limitations": 5,
+  "n_limitations_linked": 5,
+  "negative_result_decisions": 0,
+  "n_evidence": 0,
+  "validator_errors_excl_locators": 141,
+  "validator_error_examples": [
+   "evidence/research_evidence.json: $: missing required 'project_root'",
+   "evidence/research_evidence.json: $: missing required 'generated_at'",
+   "evidence/research_evidence.json: $: missing required 'items'",
+   "story/story_graph.json: $: missing required 'pattern'",
+   "corpus/source_registry.json: $.sources[0]: missing required 'title'",
+   "corpus/source_registry.json: $.sources[0]: missing required 'authors'",
+   "corpus/source_registry.json: $.sources[0]: missing required 'year'",
+   "corpus/source_registry.json: $.sources[0]: missing required 'level'"
+  ],
+  "accepted_risks": 9,
+  "state_step": 21,
+  "gates": {
+   "G1": "passed",
+   "G2": "passed",
+   "G3": "passed",
+   "G4": "passed",
+   "G5": "passed"
+  },
+  "open_issue_bullets": 39,
+  "tool_invocations": {
+   "validate_artifacts": 0,
+   "lint_draft": 0,
+   "build_review_packet": 0,
+   "snapshot": 2
+  },
+  "skill_files_read": [
+   "SKILL.md",
+   "agents//corpus_agent.md",
+   "evidence_model.md",
+   "research_story.md",
+   "workflow.md"
+  ],
+  "paper_words_main": 4270,
+  "residual_tags": 0,
+  "markers": 2,
+  "has_limitations_section": true
+ },
+ {
+  "run": "skill_agent/OPENHANDS/skill",
+  "artifacts": {
+   "research_evidence": "evidence/research_evidence.json",
+   "claim_map": "claims/claim_evidence_map.json",
+   "story_graph": "story/story_graph.json",
+   "spine": "story/spine.md",
+   "architecture": null,
+   "skeleton": "plan/skeleton.md",
+   "question_ledger": null,
+   "term_ledger": null,
+   "lit_gap_chain": null,
+   "source_registry": "corpus/source_registry.json",
+   "audience_profile": "plan/audience_profile.json",
+   "venue_profile": null,
+   "open_issues": "open_issues.md"
+  },
+  "artifact_coverage": 0.62,
+  "figure_cards": 0,
+  "audit_files": [],
+  "n_claims": 10,
+  "claim_types": {
+   "measured": 0,
+   "observed": 0,
+   "derived": 0,
+   "literature": 0,
+   "interpretation": 0,
+   "hypothesis": 0,
+   "speculation": 0,
+   "future": 0
+  },
+  "n_limitations": 1,
+  "n_limitations_linked": 0,
+  "negative_result_decisions": 0,
+  "n_evidence": 0,
+  "validator_errors_excl_locators": 207,
+  "validator_error_examples": [
+   "evidence/research_evidence.json: $: missing required 'project_root'",
+   "evidence/research_evidence.json: $: missing required 'generated_at'",
+   "evidence/research_evidence.json: $: missing required 'items'",
+   "claims/claim_evidence_map.json: $.claims[0]: missing required 'evidence'",
+   "claims/claim_evidence_map.json: $.claims[0].claim_type: 'method_description' not in ['measured', 'observed', 'derived', 'literature', 'interpretation', 'hypothe",
+   "claims/claim_evidence_map.json: $.claims[1]: missing required 'evidence'",
+   "claims/claim_evidence_map.json: $.claims[1].claim_type: 'method_description' not in ['measured', 'observed', 'derived', 'literature', 'interpretation', 'hypothe",
+   "claims/claim_evidence_map.json: $.claims[2]: missing required 'evidence'"
+  ],
+  "accepted_risks": 8,
+  "state_step": 21,
+  "gates": {
+   "G1": "passed",
+   "G2": "passed",
+   "G3": "passed",
+   "G4": "passed",
+   "G5": "passed"
+  },
+  "open_issue_bullets": 14,
+  "tool_invocations": {
+   "validate_artifacts": 0,
+   "lint_draft": 0,
+   "build_review_packet": 0,
+   "snapshot": 0
+  },
+  "skill_files_read": [
+   "SKILL.md",
+   "agents//corpus_agent.md",
+   "workflow.md"
+  ],
+  "paper_words_main": 4468,
+  "residual_tags": 0,
+  "markers": 0,
+  "has_limitations_section": false
+ },
+ {
+  "run": "skill_agent/SAM/skill",
+  "artifacts": {
+   "research_evidence": "evidence/research_evidence.json",
+   "claim_map": "claims/claim_evidence_map.json",
+   "story_graph": null,
+   "spine": "story/spine.md",
+   "architecture": null,
+   "skeleton": "plan/skeleton.md",
+   "question_ledger": null,
+   "term_ledger": null,
+   "lit_gap_chain": null,
+   "source_registry": "corpus/source_registry.json",
+   "audience_profile": "plan/audience_profile.json",
+   "venue_profile": null,
+   "open_issues": "open_issues.md"
+  },
+  "artifact_coverage": 0.54,
+  "figure_cards": 0,
+  "audit_files": [
+   "audits/v001/reconstruction_self.md"
+  ],
+  "n_claims": 15,
+  "claim_types": {
+   "measured": 0,
+   "observed": 0,
+   "derived": 0,
+   "literature": 0,
+   "interpretation": 1,
+   "hypothesis": 1,
+   "speculation": 0,
+   "future": 0
+  },
+  "n_limitations": 5,
+  "n_limitations_linked": 0,
+  "negative_result_decisions": 0,
+  "n_evidence": 0,
+  "validator_errors_excl_locators": 164,
+  "validator_error_examples": [
+   "evidence/research_evidence.json: $: missing required 'project_root'",
+   "evidence/research_evidence.json: $: missing required 'generated_at'",
+   "evidence/research_evidence.json: $: missing required 'items'",
+   "claims/claim_evidence_map.json: $.claims[0]: missing required 'evidence'",
+   "claims/claim_evidence_map.json: $.claims[0].claim_type: 'gap' not in ['measured', 'observed', 'derived', 'literature', 'interpretation', 'hypothesis', 'speculat",
+   "claims/claim_evidence_map.json: $.claims[1]: missing required 'evidence'",
+   "claims/claim_evidence_map.json: $.claims[1].claim_type: 'gap' not in ['measured', 'observed', 'derived', 'literature', 'interpretation', 'hypothesis', 'speculat",
+   "claims/claim_evidence_map.json: $.claims[2]: missing required 'evidence'"
+  ],
+  "accepted_risks": 9,
+  "state_step": 21,
+  "gates": {
+   "G1": "passed \u2014 spine bound to claims; all claims bound to evidence IDs or typed hypothesis/gap",
+   "G2": "passed \u2014 skeleton self-reconstruction: all 12 Q1-Q12 answerable from skeleton",
+   "G3": "passed \u2014 all {C###} tags resolve; section contracts checked",
+   "G4": "passed \u2014 step 18 blind review complete; step 19 structural revisions applied; step 20 skipped per run constraints",
+   "G5": "passed \u2014 all {C###}/{E###}/{L###} tags stripped; claim map unchanged (15 claims, 5 limitations); lint: no orphan tags, no [MISSING] markers remaining unresolved"
+  },
+  "open_issue_bullets": 24,
+  "tool_invocations": {
+   "validate_artifacts": 0,
+   "lint_draft": 0,
+   "build_review_packet": 0,
+   "snapshot": 0
+  },
+  "skill_files_read": [
+   "SKILL.md",
+   "workflow.md"
+  ],
+  "paper_words_main": 4704,
+  "residual_tags": 0,
+  "markers": 0,
+  "has_limitations_section": true
+ },
+ {
+  "run": "skill_agent/SWE_BENCH/skill",
+  "artifacts": {
+   "research_evidence": "evidence/research_evidence.json",
+   "claim_map": "claims/claim_evidence_map.json",
+   "story_graph": null,
+   "spine": "story/spine.md",
+   "architecture": null,
+   "skeleton": null,
+   "question_ledger": null,
+   "term_ledger": null,
+   "lit_gap_chain": null,
+   "source_registry": "corpus/source_registry.json",
+   "audience_profile": null,
+   "venue_profile": null,
+   "open_issues": "open_issues.md"
+  },
+  "artifact_coverage": 0.38,
+  "figure_cards": 0,
+  "audit_files": [],
+  "n_claims": 12,
+  "claim_types": {
+   "measured": 0,
+   "observed": 0,
+   "derived": 0,
+   "literature": 0,
+   "interpretation": 0,
+   "hypothesis": 0,
+   "speculation": 0,
+   "future": 0
+  },
+  "n_limitations": 6,
+  "n_limitations_linked": 0,
+  "negative_result_decisions": 0,
+  "n_evidence": 0,
+  "validator_errors_excl_locators": 154,
+  "validator_error_examples": [
+   "evidence/research_evidence.json: $: missing required 'project_root'",
+   "evidence/research_evidence.json: $: missing required 'generated_at'",
+   "evidence/research_evidence.json: $: missing required 'items'",
+   "claims/claim_evidence_map.json: $.claims[0]: missing required 'evidence'",
+   "claims/claim_evidence_map.json: $.claims[0].claim_type: 'background_fact' not in ['measured', 'observed', 'derived', 'literature', 'interpretation', 'hypothesis",
+   "claims/claim_evidence_map.json: $.claims[1]: missing required 'evidence'",
+   "claims/claim_evidence_map.json: $.claims[1].claim_type: 'gap' not in ['measured', 'observed', 'derived', 'literature', 'interpretation', 'hypothesis', 'speculat",
+   "claims/claim_evidence_map.json: $.claims[1].confidence: 'medium' not in ['high', 'moderate', 'low']"
+  ],
+  "accepted_risks": 12,
+  "state_step": 21,
+  "gates": {
+   "G1": "passed",
+   "G2": "passed",
+   "G3": "passed",
+   "G4": "passed \u2014 blind review diagnostics addressed in step 19",
+   "G5": "passed \u2014 tags stripped, claim-invariance checked in step 21"
+  },
+  "open_issue_bullets": 49,
+  "tool_invocations": {
+   "validate_artifacts": 0,
+   "lint_draft": 0,
+   "build_review_packet": 0,
+   "snapshot": 0
+  },
+  "skill_files_read": [
+   "SKILL.md",
+   "anti_patterns.md",
+   "templates//packet_audience_objective.md",
+   "workflow.md"
+  ],
+  "paper_words_main": 4671,
+  "residual_tags": 0,
+  "markers": 1,
+  "has_limitations_section": true
+ },
+ {
+  "run": "skill_agent/WHISPER/skill",
+  "artifacts": {
+   "research_evidence": "evidence/research_evidence.json",
+   "claim_map": "claims/claim_evidence_map.json",
+   "story_graph": "story/story_graph.json",
+   "spine": "story/spine.md",
+   "architecture": "plan/paper_architecture.md",
+   "skeleton": null,
+   "question_ledger": null,
+   "term_ledger": null,
+   "lit_gap_chain": null,
+   "source_registry": "corpus/source_registry.json",
+   "audience_profile": "plan/audience_profile.json",
+   "venue_profile": null,
+   "open_issues": "open_issues.md"
+  },
+  "artifact_coverage": 0.62,
+  "figure_cards": 0,
+  "audit_files": [
+   "audits/v001/reconstruction_self.md"
+  ],
+  "n_claims": 13,
+  "claim_types": {
+   "measured": 0,
+   "observed": 0,
+   "derived": 0,
+   "literature": 0,
+   "interpretation": 0,
+   "hypothesis": 0,
+   "speculation": 0,
+   "future": 0
+  },
+  "n_limitations": 10,
+  "n_limitations_linked": 0,
+  "negative_result_decisions": 0,
+  "n_evidence": 0,
+  "validator_errors_excl_locators": 206,
+  "validator_error_examples": [
+   "evidence/research_evidence.json: $: missing required 'project_root'",
+   "evidence/research_evidence.json: $: missing required 'generated_at'",
+   "evidence/research_evidence.json: $: missing required 'items'",
+   "claims/claim_evidence_map.json: $.claims[0]: missing required 'evidence'",
+   "claims/claim_evidence_map.json: $.claims[0].claim_type: 'observation' not in ['measured', 'observed', 'derived', 'literature', 'interpretation', 'hypothesis', '",
+   "claims/claim_evidence_map.json: $.claims[1]: missing required 'evidence'",
+   "claims/claim_evidence_map.json: $.claims[1].claim_type: 'empirical' not in ['measured', 'observed', 'derived', 'literature', 'interpretation', 'hypothesis', 'sp",
+   "claims/claim_evidence_map.json: $.claims[2]: missing required 'evidence'"
+  ],
+  "state_error": "Expecting ',' delimiter: line 35 column 5 (char 1992)",
+  "open_issue_bullets": 3,
+  "tool_invocations": {
+   "validate_artifacts": 0,
+   "lint_draft": 0,
+   "build_review_packet": 0,
+   "snapshot": 0
+  },
+  "skill_files_read": [
+   "SKILL.md",
+   "research_story.md",
+   "workflow.md"
+  ],
+  "paper_words_main": 5888,
+  "residual_tags": 0,
+  "markers": 0,
+  "has_limitations_section": true
+ }
+]

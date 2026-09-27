@@ -1,0 +1,39 @@
+{
+ "step": 17,
+ "gates": {"G1": "passed", "G2": "passed", "G3": "passed", "G4": "passed (self-administered; step 18 deferred to external blind review per run constraints)"},
+ "open_failures": [
+  {"state": "INSUFFICIENT_LITERATURE", "resolution": "accepted, non-blocking (see accepted_risks)"}
+ ],
+ "accepted_risks": [
+  {
+   "risk": "No human reviewer available for this run. Wherever the skill specifies ASK or STOP for user input, the most defensible option was chosen from the evidence and recorded here rather than blocking.",
+   "decision": "Proceed autonomously through all 17 steps; treat claim map / spine confirmation gates as self-reviewed."
+  },
+  {
+   "risk": "Step 4 gate G1 normally requires showing the spine and claim list to the user for confirmation of pending claims.",
+   "decision": "All claims kept author_confirmation: pending (matches origin: author_stated in source evidence package); none upgraded to confirmed without a human. Confidence levels instead computed strictly from evidence_model.md Sec.4."
+  },
+  {
+   "risk": "Step 6 VENUE_UNKNOWN: no venue or guideline was specified by the task.",
+   "decision": "Used templates/venue_profile.generic.yaml with every rule marked assumed: true, and words_main set from the TASK.md length requirement (3000-4500 words excluding references)."
+  },
+  {
+   "risk": "Step 7 literature collection: no web access permitted; task restricts citation to works cited in project materials only.",
+   "decision": "Searched the full evidence package (research_evidence.json, claim_candidates.json, missing_evidence.json) for any author-year or et al. citation pattern; none found (only 'August 2023' matched the date-like regex, which is not a citation). Concluded no citable literature is available in this run's evidence interface. No source_registry entries were created and no External/Related-Work citations are used; the Related Work section is written using only the project's own stated gap (evidence kind method_detail/dataset items), consistent with 'never cite from model memory' (citation_rules.md Sec.1) and 'missing means marked' (Hard Rule 7). Recorded as INSUFFICIENT_LITERATURE, accepted (not blocking) per run constraints.",
+   "failure_state": "INSUFFICIENT_LITERATURE (accepted, non-blocking)"
+  },
+  {
+   "risk": "Step 1-2 (CORPUS_AGENT evidence build) was pre-performed by a separate evidence agent per the run's EVIDENCE INTERFACE; the original paper.txt is not available to verify locators or run the 20% numeric spot-check against source text.",
+   "decision": "Evidence package copied as-is into .rcs/evidence/ and claims/. Locators are treated as unresolvable-but-not-erroneous per run instructions. Numeric values are reported exactly as given in research_evidence.json without independent re-verification against paper.txt."
+  },
+  {
+   "risk": "E018 vs E020/E021 report conflicting values for Claude 2's headline BM25 resolve rate (1.97% vs 1.96%).",
+   "decision": "Both values reported in the draft (\"1.96-1.97%\") rather than silently picking one; logged as limitation L006 and in open_issues.md."
+  },
+  {
+   "risk": "Step 18 (blind REVIEW_AGENT) cannot be run: no subagents available in this environment.",
+   "decision": "Per run constraints, step 18 is performed externally after this run. Steps 11-17 (self-administered audits) were completed by the author role in this same context; drafts were still written and left at .rcs/drafts/v001/ for external blind review."
+  }
+ ],
+ "notes": "CORPUS_AGENT role performed by AUTHOR per run constraints (no subagents). Literature mode limited to project materials; none found. Workflow executed steps 3-17 per run's EVIDENCE INTERFACE (steps 1-2 supplied pre-built). Steps 3-9 artifacts: story/spine.md, story/story_graph.json, claims/claim_evidence_map.json, plan/audience_profile.json, plan/venue_profile.yaml, plan/paper_architecture.md, plan/skeleton.md. Steps 10-17: drafts/v001/paper.md (full draft, all sections, claim tags kept), audits/v001/{lint_report.txt,validate_report.txt,citation_audit.json,reconstruction_self.md}. Per run's Step-18 override, the draft was copied verbatim (tags kept) to .rcs/drafts/v001/paper.md and to ./paper.md, and .rcs/packets/audience.md + .rcs/packets/objective.md were written, then the run stopped as instructed."
+}

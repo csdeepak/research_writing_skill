@@ -1,0 +1,637 @@
+{
+ "reconstruction": {
+  "packet_id": "pkt-93f95d2e",
+  "answers": {
+   "Q1": {
+    "answer": "The paper addresses the lack of a shared, open infrastructure for building, comparing, and extending LLM-backed autonomous agents that interact with the world through software. Existing research systems are described as brittle, narrowly scoped, or too expensive to reproduce, which fragments the community and slows cumulative progress.",
+    "locations": [
+     "§1 ¶3-4"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q2": {
+    "answer": "Motivation is that software/code is a near-universal medium for shaping the digital world, so an agent that can write and execute code could unlock broad automation. The specific gap is that prior frameworks (LangChain, AutoGen, SWE-Agent) each solve only part of the problem, none combining sandboxed execution, skill library, multi-agent collaboration, GUI, and broad evaluation.",
+    "locations": [
+     "§1 ¶1-2, ¶5"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q3": {
+    "answer": "Central question: can LLMs be turned into autonomous agents that interact with the real world as human software developers do, and does a single generalist agent built on a software-centric (code) action space generalize competitively across diverse task categories (software engineering, web browsing, general assistance) without task-specific customization?",
+    "locations": [
+     "Abstract",
+     "§1 ¶2",
+     "§3 CodeActAgent",
+     "§4.1"
+    ],
+    "confidence": 4,
+    "missing": "No explicitly stated hypothesis with success criteria/thresholds."
+   },
+   "Q4": {
+    "answer": "Contributions: (1) event-stream architecture decoupling agents/environments/interfaces; (2) Docker-sandboxed runtime executing arbitrary code and supporting arbitrary base OS images; (3) AgentSkills library of reusable Python utilities; (4) multi-agent delegation mechanism; (5) an evaluation framework spanning 15 benchmarks; plus the platform as an MIT-licensed community artifact.",
+    "locations": [
+     "Abstract",
+     "§1 ¶6",
+     "§2",
+     "§4"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q5": {
+    "answer": "Method is an architecture: an agent abstraction (a function mapping state, including the full event stream, to a single action) over an ordered event stream of actions/observations; an action space of three primitives (IPythonRunCellAction, CmdRunAction, BrowseInteractiveAction); a Docker runtime hosting bash, Jupyter, and Playwright Chromium with a REST action-execution API and dual image tagging; the AgentSkills Python package auto-imported into IPython; and AgentDelegateAction for multi-agent delegation. AgentHub provides CodeActAgent, BrowsingAgent, GPTSwarm, and micro agents.",
+    "locations": [
+     "§2.1-§2.4",
+     "§3"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q6": {
+    "answer": "Evaluation runs the default CodeActAgent (and BrowsingAgent/GPTSwarm for some tasks) across 15 established benchmarks in three categories (software engineering, web browsing, miscellaneous assistance), compared against open-source reproducible baselines without benchmark-specific prompt engineering, using various LLM backends (gpt-4o, claude-3-5-sonnet, gpt-3.5-turbo, gpt-4o-mini).",
+    "locations": [
+     "§4.1-§4.4"
+    ],
+    "confidence": 5,
+    "missing": "No number of runs, variance, or statistical testing reported."
+   },
+   "Q7": {
+    "answer": "Key results: SWE-Bench Lite 26.0% (claude-3-5-sonnet); HumanEvalFix 79.3% (gpt-4o); BIRD 47.3%; ML-Bench 76.5%; BioCoder 27.5%; Gorilla APIBench 47.2%; ToolQA easy 43.1%; WebArena 15.5% (BrowsingAgent, claude); MiniWoB++ 40.8%; GAIA L1 32.1% (GPTSwarm); GPQA Diamond 53.1% (gpt-4o)/52.0% (claude); AgentBench 57.6%; MINT math 77.3%, code 50.0%; ProofWriter 78.8%; Entity Deduction Arena 38.0%.",
+    "locations": [
+     "§4.2-§4.4"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q8": {
+    "answer": "Interpretation: a single unmodified generalist agent achieves competitive performance across all three categories simultaneously; specialists may match or exceed it in their target domain but cannot be transferred, so the generalist's modest performance cost is the right trade-off for a general-purpose research platform.",
+    "locations": [
+     "§4.5"
+    ],
+    "confidence": 5,
+    "missing": "No analysis of cases where it underperforms baselines (MINT code, MiniWoB++)."
+   },
+   "Q9": {
+    "answer": "Limitations: agents struggle with long-file editing (context limits); web-browsing performance is well below human due to precise low-level interactions and long-horizon planning; multi-modal support relies on external model calls (latency, limited integration); automatic workflow generation is needed; and agents cannot reliably handle complex long-horizon tasks or high-stakes production settings.",
+    "locations": [
+     "§7"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q10": {
+    "answer": "Related work spans general-purpose frameworks (Auto-GPT, LangChain, MetaGPT, AutoGen, AutoAgents, GPTSwarm), SE-specific systems (SWE-Agent, AutoCodeRover, Agentless), and web systems (OpenAgents). OpenHands is differentiated as the only surveyed system combining sandboxed code execution, a full browser, a reusable tool library, multi-agent delegation, a GUI, and an evaluation framework, and by being community-driven/extensible.",
+    "locations": [
+     "§1 ¶5",
+     "§6"
+    ],
+    "confidence": 5,
+    "missing": "Differentiation claim relies on a self-defined feature combination without a comparison table."
+   },
+   "Q11": {
+    "answer": "So what: programming languages provide a universal, expressive, maintainable action space; an agent that writes and executes code can accomplish nearly any digital task. OpenHands operationalizes this as shared, MIT-licensed, community-built research infrastructure intended as a foundation for advancing agentic AI.",
+    "locations": [
+     "§8",
+     "Abstract"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q12": {
+    "answer": "Future work: better long-file editing strategies, native (in-context) multi-modal support, improved web browsing/long-horizon planning, and moving from handcrafted pipelines to learned/optimized workflows (e.g., graph-based frameworks like GPTSwarm).",
+    "locations": [
+     "§7"
+    ],
+    "confidence": 5,
+    "missing": ""
+   }
+  }
+ },
+ "diagnostics": {
+  "packet_id": "pkt-93f95d2e",
+  "binding_personas": [
+   "A",
+   "B",
+   "E"
+  ],
+  "findings": [
+   {
+    "dimension": "problem",
+    "score": 4,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "3-4",
+     "quote": "the field lacks a shared, open infrastructure for building, comparing, and extending these agents"
+    },
+    "observed": "The problem (fragmented, non-reproducible agent research) is stated clearly and early.",
+    "reader_struggle": "Adjacent readers accept the gap claim, but no quantitative or cited evidence establishes the severity of fragmentation.",
+    "likely_consequence": "Problem reads as motivating rhetoric rather than an evidenced pain point.",
+    "revision_principle": "Support gap claims with at least one concrete example of failed reproduction or cost figure."
+   },
+   {
+    "dimension": "motivation",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "2",
+     "quote": "programming languages are expressive enough to call any API, orchestrate any tool, and manipulate any digital artifact"
+    },
+    "observed": "Motivation for a code-centric action space is intuitive and well argued.",
+    "reader_struggle": "'Manipulate any digital artifact' overstates; not everything is reachable via code (e.g., pixel-level GUI, hardware), which the limitations later concede.",
+    "likely_consequence": "Adjacent reader may over-trust the universality premise then feel misled by §7.",
+    "revision_principle": "Qualify the universality claim up front and forward-reference known exceptions."
+   },
+   {
+    "dimension": "research_question",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "Abstract",
+     "paragraph": "1",
+     "quote": "can these models be turned into autonomous agents that interact with the real world"
+    },
+    "observed": "The guiding question is present but framed as an open rhetorical question rather than a testable claim.",
+    "reader_struggle": "Verifying reviewer cannot map the broad question to specific measurable predictions.",
+    "likely_consequence": "Hard to judge whether the paper 'answers' its question or merely demonstrates a system.",
+    "revision_principle": "Restate the question as a falsifiable claim with success criteria (e.g., generalist within X% of specialists)."
+   },
+   {
+    "dimension": "contribution",
+    "score": 4,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "6",
+     "quote": "An event-stream architecture that decouples agents, environments, and interfaces"
+    },
+    "observed": "Contributions are enumerated as a clean bulleted list.",
+    "reader_struggle": "Contributions blend novel design with engineering integration; novelty relative to prior art is asserted, not delineated per item.",
+    "likely_consequence": "Domain expert questions which pieces are genuinely new vs. assembled.",
+    "revision_principle": "For each contribution mark what is novel vs. adopted, citing the closest prior system."
+   },
+   {
+    "dimension": "method",
+    "score": 4,
+    "persona": [
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§2.1",
+     "paragraph": "2",
+     "quote": "An agent in OpenHands is defined by a single function: it takes the current state ... and returns a single action"
+    },
+    "observed": "The core abstraction is described crisply and is easy to grasp.",
+    "reader_struggle": "How the loop terminates, handles errors, or bounds context/cost is not specified.",
+    "likely_consequence": "Adjacent reader cannot reconstruct control flow or reproduce behavior.",
+    "revision_principle": "Add a step-by-step control-loop specification (termination, budget, error handling)."
+   },
+   {
+    "dimension": "experiment",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§4.1",
+     "paragraph": "1",
+     "quote": "OpenHands integrates 15 established benchmarks"
+    },
+    "observed": "Broad benchmark coverage but no report of number of runs, seeds, or variance despite agent stochasticity.",
+    "reader_struggle": "Readers trained in statistics cannot assess whether reported differences are meaningful.",
+    "likely_consequence": "Point estimates may be over-interpreted as robust rankings.",
+    "revision_principle": "Report runs/seeds and confidence intervals or note single-run status explicitly."
+   },
+   {
+    "dimension": "result",
+    "score": 4,
+    "persona": [
+     "A"
+    ],
+    "location": {
+     "section": "§4.2",
+     "paragraph": "SWE-Bench table",
+     "quote": "OH CodeActAgent v1.8 | claude-3-5-sonnet | 26.0"
+    },
+    "observed": "Results are tabulated with baselines and models.",
+    "reader_struggle": "The headline 26% is below several listed baselines (Agentless 27.3, Moatless 26.7, Aider 26.3); 'competitive' is fair but the framing leans favorable.",
+    "likely_consequence": "Skimming reader may infer state-of-the-art where it is actually mid-pack.",
+    "revision_principle": "State rank explicitly (e.g., 'within 1.3 pts of best reproducible baseline')."
+   },
+   {
+    "dimension": "interpretation",
+    "score": 2,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§4.5",
+     "paragraph": "1",
+     "quote": "a single unmodified agent — CodeActAgent — achieves competitive performance on software engineering, web browsing, and miscellaneous assistance benchmarks simultaneously"
+    },
+    "observed": "The unifying claim credits CodeActAgent, but WebArena's best OpenHands number comes from BrowsingAgent and GAIA's from GPTSwarm.",
+    "reader_struggle": "Reader who checks the tables finds the 'single agent' story only partially holds.",
+    "likely_consequence": "Central thesis appears overstated relative to evidence.",
+    "revision_principle": "Restrict the claim to results actually produced by CodeActAgent, or explicitly credit delegation/other agents."
+   },
+   {
+    "dimension": "limitation",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§7",
+     "paragraph": "1",
+     "quote": "agents currently struggle with long-file editing"
+    },
+    "observed": "Limitations are candid and specific to failure modes.",
+    "reader_struggle": "Limitations are not linked back to the specific benchmarks/results where they manifested.",
+    "likely_consequence": "Reader cannot connect stated weaknesses to observed underperformance.",
+    "revision_principle": "Cross-reference each limitation to the results it explains (e.g., MiniWoB++, MINT code)."
+   },
+   {
+    "dimension": "narrative_coherence",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§3",
+     "paragraph": "1",
+     "quote": "AgentHub: Community-Contributed Agents"
+    },
+    "observed": "Sections flow logically from architecture to agents to evaluation.",
+    "reader_struggle": "AgentHub introduces GPTSwarm/BrowsingAgent that later carry key results, but the abstract/summary emphasize only CodeActAgent, creating a subtle mismatch.",
+    "likely_consequence": "Reader must reconcile which agent produced which headline.",
+    "revision_principle": "Align the framing across abstract, §3, §4.5, and conclusion about which agents are evaluated."
+   },
+   {
+    "dimension": "terminology",
+    "score": 2,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§2.3",
+     "paragraph": "1",
+     "quote": "a carefully crafted Agent-Computer Interface (ACI)"
+    },
+    "observed": "Subfield terms (ACI, CodeAct, BrowserGym, SWE-Bench 'Lite', 'hint text', accessibility tree) are used with minimal definition.",
+    "reader_struggle": "Adjacent ML researchers lack this vocabulary and must infer meanings.",
+    "likely_consequence": "Increased friction and possible misreading of core mechanisms.",
+    "revision_principle": "Add a brief glossary or inline one-line definitions on first use for adjacent readers."
+   },
+   {
+    "dimension": "logical_flow",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§4.4",
+     "paragraph": "MINT",
+     "quote": "On the code subset (136 instances), it achieves 50.0% vs. 59.6% for the baseline"
+    },
+    "observed": "A clear underperformance is reported but immediately followed with no reconciliation, while §4.5 asserts overall competitiveness.",
+    "reader_struggle": "Reader sees contradictory signals between subsection data and summary claim.",
+    "likely_consequence": "Perceived selective emphasis undermines trust in the summary.",
+    "revision_principle": "Acknowledge and briefly explain sub-benchmark losses in the summary."
+   },
+   {
+    "dimension": "evidence_traceability",
+    "score": 2,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§4.2",
+     "paragraph": "BIRD/ML-Bench/BioCoder",
+     "quote": "OH CodeActAgent v1.5 with GPT-4o achieves 47.3%, compared to 18.3% for CodeLlama-7B-Instruct"
+    },
+    "observed": "Many results appear as inline numbers without tables, versions, or citations for the specific comparison figures.",
+    "reader_struggle": "Verifying reviewer cannot trace where each baseline number originates.",
+    "likely_consequence": "Reduced verifiability; numbers must be taken on faith.",
+    "revision_principle": "Provide consistent tables with citations and evaluation configuration for every benchmark."
+   },
+   {
+    "dimension": "figure_table",
+    "score": 1,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": "all",
+     "quote": "OpenHands is organized around three tightly integrated components"
+    },
+    "observed": "The architecture is described entirely in prose with no system/architecture diagram, and no figures appear anywhere in the paper.",
+    "reader_struggle": "Adjacent readers must mentally assemble event stream, runtime, and delegation relationships without a visual.",
+    "likely_consequence": "High effort and possible misunderstanding of component interactions.",
+    "revision_principle": "Add an architecture diagram and an event-stream flow figure."
+   },
+   {
+    "dimension": "claim_evidence_alignment",
+    "score": 2,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§2.1",
+     "paragraph": "3",
+     "quote": "These three primitives cover the vast majority of tasks performed by human software engineers."
+    },
+    "observed": "A strong coverage claim is made with no citation or measurement.",
+    "reader_struggle": "Reader cannot verify 'vast majority'.",
+    "likely_consequence": "Perceived as unsupported assertion weakening credibility.",
+    "revision_principle": "Cite evidence or soften to a design rationale rather than an empirical claim."
+   },
+   {
+    "dimension": "unsupported_inference",
+    "score": 2,
+    "persona": [
+     "A"
+    ],
+    "location": {
+     "section": "§4.5",
+     "paragraph": "1",
+     "quote": "Purpose-built specialists ... cannot be transferred."
+    },
+    "observed": "Blanket non-transferability claim about specialist systems is asserted without evidence.",
+    "reader_struggle": "Domain expert knows some specialists (e.g., SWE-Agent variants) have been adapted across tasks.",
+    "likely_consequence": "Overgeneralization damages the trade-off argument.",
+    "revision_principle": "Qualify (e.g., 'in their released form') or cite transfer attempts."
+   },
+   {
+    "dimension": "redundancy",
+    "score": 3,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§8",
+     "paragraph": "2",
+     "quote": "a 26% resolve rate on SWE-Bench Lite, 52% accuracy on GPQA Diamond, and 15.5% task success on WebArena"
+    },
+    "observed": "The same three headline numbers are repeated near-verbatim in abstract, §4.5 spirit, and conclusion.",
+    "reader_struggle": "Repetition without added interpretation adds little for an attentive reader.",
+    "likely_consequence": "Mild fatigue; space that could carry deeper analysis.",
+    "revision_principle": "Repeat headline metrics once; use later mentions to add interpretation."
+   },
+   {
+    "dimension": "cognitive_load",
+    "score": 3,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§4.2-§4.4",
+     "paragraph": "multiple",
+     "quote": "OH CodeActAgent v1.5 ... v1.8 ..."
+    },
+    "observed": "Multiple version tags (v1.0/v1.5/v1.8) and shifting model backends across benchmarks are interleaved.",
+    "reader_struggle": "Adjacent reader must track which version/model applies to which result to compare fairly.",
+    "likely_consequence": "Comparisons feel apples-to-oranges; higher load.",
+    "revision_principle": "Consolidate configuration in a single table and note version differences explicitly."
+   },
+   {
+    "dimension": "orientation",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": "1",
+     "quote": "organized around three tightly integrated components"
+    },
+    "observed": "Section opens with a roadmap of components.",
+    "reader_struggle": "Reader is oriented on components but not on how a full task executes end-to-end from user input to result.",
+    "likely_consequence": "Structural view without a worked example limits intuition.",
+    "revision_principle": "Add a concise end-to-end walkthrough of one task through the architecture."
+   },
+   {
+    "dimension": "so_what",
+    "score": 4,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§8",
+     "paragraph": "1",
+     "quote": "programming languages provide a universal, expressive, and maintainable action space for AI agents"
+    },
+    "observed": "The take-home message is stated and tied to the platform's value.",
+    "reader_struggle": "The 'so what' for adjacent researchers (how to use it in their subfield) is implicit rather than actionable.",
+    "likely_consequence": "Reader from another subfield may not see concrete adoption path.",
+    "revision_principle": "Add explicit guidance on how adjacent researchers can extend/apply the platform."
+   },
+   {
+    "dimension": "result",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "Abstract",
+     "paragraph": "1",
+     "quote": "52% accuracy on GPQA (graduate-level Q&A)"
+    },
+    "observed": "Abstract cites 52% (claude) while §4.4 headline is 53.1% (gpt-4o); the abstract does not name the subset (Diamond) or model.",
+    "reader_struggle": "Reader cannot tell which configuration the abstract number refers to.",
+    "likely_consequence": "Minor inconsistency erodes precision.",
+    "revision_principle": "Specify subset and model for every headline metric in the abstract."
+   },
+   {
+    "dimension": "interpretation",
+    "score": 3,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§4.2",
+     "paragraph": "HumanEvalFix",
+     "quote": "The 87.7% of SWE-Agent uses a one-shot demonstration ... while the OpenHands evaluation is zero-shot."
+    },
+    "observed": "A fair caveat is given to contextualize a large gap.",
+    "reader_struggle": "The zero-shot vs one-shot framing recasts a 8.4-pt deficit as favorable, but no zero-shot SWE-Agent number is provided for a like-for-like comparison.",
+    "likely_consequence": "Reader cannot judge the true head-to-head.",
+    "revision_principle": "Provide matched-setting comparisons (both zero-shot) where possible."
+   },
+   {
+    "dimension": "evidence_traceability",
+    "score": 3,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "7",
+     "quote": "32K GitHub stars and more than 2.1K contributions from over 188 contributors"
+    },
+    "observed": "Community metrics are cited as evidence of significance.",
+    "reader_struggle": "Metrics are undated and not verifiable within the paper; popularity is not scientific quality.",
+    "likely_consequence": "Reader may discount as marketing.",
+    "revision_principle": "Date the metrics and separate community-adoption claims from research claims."
+   }
+  ],
+  "inference_issues": [
+   {
+    "kind": "overgeneralization",
+    "location": {
+     "section": "§4.5",
+     "paragraph": "1",
+     "quote": "a single unmodified agent — CodeActAgent — achieves competitive performance on software engineering, web browsing, and miscellaneous assistance benchmarks simultaneously"
+    },
+    "claim_text": "A single unmodified CodeActAgent is competitive across all three categories.",
+    "missing_link": "Best web (BrowsingAgent) and GAIA (GPTSwarm) results are not produced by CodeActAgent alone; the claim conflates distinct AgentHub agents."
+   },
+   {
+    "kind": "overstrong_language",
+    "location": {
+     "section": "§4.5",
+     "paragraph": "1",
+     "quote": "Purpose-built specialists ... cannot be transferred."
+    },
+    "claim_text": "Specialist agents cannot be transferred to other domains.",
+    "missing_link": "No evidence or citation of failed transfer; absolute 'cannot' unsupported."
+   },
+   {
+    "kind": "unsupported_conclusion",
+    "location": {
+     "section": "§2.1",
+     "paragraph": "3",
+     "quote": "These three primitives cover the vast majority of tasks performed by human software engineers."
+    },
+    "claim_text": "Three action primitives cover the vast majority of SWE tasks.",
+    "missing_link": "No measurement or citation quantifying task coverage."
+   },
+   {
+    "kind": "selective_presentation",
+    "location": {
+     "section": "§4.4",
+     "paragraph": "MINT",
+     "quote": "On the code subset (136 instances), it achieves 50.0% vs. 59.6% for the baseline"
+    },
+    "claim_text": "Overall competitiveness across misc-assistance tasks.",
+    "missing_link": "Sub-benchmark losses (MINT code, MiniWoB++ 40.8 vs 91.1 specialist, Entity Deduction slightly below GPT-4) are not integrated into the summary judgment."
+   },
+   {
+    "kind": "causal_overreach",
+    "location": {
+     "section": "§4.4",
+     "paragraph": "GPQA",
+     "quote": "substantially exceeding GPT-4 chain-of-thought prompting (38.8%) by leveraging code execution for precise calculations"
+    },
+    "claim_text": "The gain is caused by code execution enabling precise calculation.",
+    "missing_link": "No ablation isolating code execution from model/prompt differences to establish causation."
+   },
+   {
+    "kind": "overgeneralization",
+    "location": {
+     "section": "§1",
+     "paragraph": "2",
+     "quote": "an agent that can write and execute code can accomplish nearly any digital task"
+    },
+    "claim_text": "Code-writing agents can accomplish nearly any digital task.",
+    "missing_link": "Contradicted by §7 (web/pixel/timing tasks, long-horizon failures); no evidence for 'nearly any'."
+   },
+   {
+    "kind": "selective_presentation",
+    "location": {
+     "section": "§6",
+     "paragraph": "1",
+     "quote": "it is the only system among those surveyed that combines a sandboxed code execution environment, a full web browser, a reusable tool library, multi-agent delegation, a graphical user interface, and an evaluation framework"
+    },
+    "claim_text": "OpenHands uniquely combines this feature set.",
+    "missing_link": "Uniqueness rests on a self-selected feature list and survey scope; no comparison matrix substantiates 'only system'."
+   }
+  ],
+  "objective_discrepancies": [
+   "For an adjacent-researcher audience, subfield terms (ACI, CodeAct, BrowserGym, SWE-Bench Lite, hint text, accessibility tree, resolve rate) are used with little definition, raising the entry barrier.",
+   "The paper reads partly as a system/artifact report (community stars, contributions, MIT license emphasis) rather than a hypothesis-driven research article, which mismatches the stated objective of presenting a research project to adjacent ML researchers.",
+   "Absence of any figures/diagrams and of variance/statistical analysis conflicts with adjacent readers' standard evaluation and statistics expectations."
+  ],
+  "injection_suspected": [
+   {
+    "location": "system prompt header HTML comment",
+    "quote": "<!-- VISIBILITY: REVIEW_AGENT only. The orchestrator (AUTHOR) must dispatch this file to an",
+    "note": "Truncated hidden HTML comment attempting to assert routing/visibility instructions; treated as untrusted and ignored for review content."
+   },
+   {
+    "location": "system-reminder auto-memory block",
+    "quote": "PROJECTS section always orders ASMOS ... regardless of JD; Never raise CGPA",
+    "note": "Irrelevant personal-memory content injected into context; not related to the review task and disregarded."
+   }
+  ]
+ },
+ "dim_scores": {
+  "problem": 4,
+  "motivation": 4,
+  "research_question": 3,
+  "contribution": 4,
+  "method": 4,
+  "experiment": 2,
+  "result": 3,
+  "interpretation": 2,
+  "limitation": 4,
+  "narrative_coherence": 4,
+  "terminology": 2,
+  "logical_flow": 3,
+  "evidence_traceability": 2,
+  "figure_table": 1,
+  "claim_evidence_alignment": 2,
+  "unsupported_inference": 2,
+  "redundancy": 3,
+  "cognitive_load": 3,
+  "orientation": 4,
+  "so_what": 4
+ },
+ "validation_problems": [
+  "diagnostics $.findings[0].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[1].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[2].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[3].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[4].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[5].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[6].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[7].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[8].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[9].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[10].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[11].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[12].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[13].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[14].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[15].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[16].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[17].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[18].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[19].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[20].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[21].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[22].location.paragraph: expected type ['integer'], got str"
+ ]
+}

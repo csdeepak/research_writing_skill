@@ -1,0 +1,71 @@
+{
+ "SWE_BENCH/cheap": {
+  "nuggets": 40,
+  "coverage_rate": 0.625,
+  "covered": 20,
+  "partial": 10,
+  "missing": 10,
+  "contradicted": 0,
+  "type_match": 23,
+  "type_stronger": 4,
+  "type_weaker": 0,
+  "package_errors": 2,
+  "missing_ids": [
+   "Q1a",
+   "Q1b",
+   "Q2a",
+   "Q2b",
+   "Q3a",
+   "Q3b",
+   "Q5a",
+   "Q7f",
+   "Q9b",
+   "Q9c"
+  ]
+ },
+ "SWE_BENCH/strong": {
+  "nuggets": 40,
+  "coverage_rate": 0.75,
+  "covered": 28,
+  "partial": 4,
+  "missing": 8,
+  "contradicted": 0,
+  "type_match": 21,
+  "type_stronger": 3,
+  "type_weaker": 4,
+  "package_errors": 2,
+  "missing_ids": [
+   "Q1a",
+   "Q1b",
+   "Q2a",
+   "Q2b",
+   "Q2c",
+   "Q3a",
+   "Q3b",
+   "Q5a"
+  ]
+ },
+ "WHISPER/cheap": {
+  "nuggets": 40,
+  "coverage_rate": 0.675,
+  "covered": 23,
+  "partial": 8,
+  "missing": 9,
+  "contradicted": 0,
+  "type_match": 27,
+  "type_stronger": 4,
+  "type_weaker": 0,
+  "package_errors": 5,
+  "missing_ids": [
+   "Q1a",
+   "Q2c",
+   "Q3a",
+   "Q4c",
+   "Q5a",
+   "Q5b",
+   "Q9b",
+   "Q10b",
+   "Q11d"
+  ]
+ }
+}

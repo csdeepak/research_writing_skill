@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rce/diagnostics.schema.json",
+  "title": "Structured reviewer diagnostics (the only reviewer output that crosses boundaries)",
+  "type": "object",
+  "required": ["packet_id", "binding_personas", "findings", "inference_issues", "injection_suspected"],
+  "properties": {
+    "packet_id": {"type": "string"},
+    "binding_personas": {"type": "array", "items": {"enum": ["A", "B", "C", "D", "E"]}},
+    "findings": {
+      "type": "array",
+      "minItems": 20,
+      "items": {
+        "type": "object",
+        "required": ["dimension", "score", "persona", "location", "observed", "reader_struggle", "likely_consequence", "revision_principle"],
+        "properties": {
+          "dimension": {"enum": ["problem", "motivation", "research_question", "contribution", "method",
+                                 "experiment", "result", "interpretation", "limitation", "narrative_coherence",
+                                 "terminology", "logical_flow", "evidence_traceability", "figure_table",
+                                 "claim_evidence_alignment", "unsupported_inference", "redundancy",
+                                 "cognitive_load", "orientation", "so_what"]},
+          "score": {"type": "integer", "minimum": 0, "maximum": 5},
+          "persona": {"type": "array", "minItems": 1, "items": {"enum": ["A", "B", "C", "D", "E"]}},
+          "location": {
+            "type": "object",
+            "required": ["section"],
+            "properties": {"section": {"type": "string"}, "paragraph": {"type": "integer"}, "quote": {"type": "string", "maxLength": 200}}
+          },
+          "observed": {"type": "string", "minLength": 5},
+          "reader_struggle": {"type": "string"},
+          "likely_consequence": {"type": "string"},
+          "revision_principle": {"type": "string"}
+        }
+      }
+    },
+    "inference_issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "location", "claim_text", "missing_link"],
+        "properties": {
+          "kind": {"enum": ["unsupported_conclusion", "overstrong_language", "selective_presentation",
+                            "limitation_not_respected", "causal_overreach", "overgeneralization"]},
+          "location": {"type": "object"},
+          "claim_text": {"type": "string"},
+          "missing_link": {"type": "string"}
+        }
+      }
+    },
+    "objective_discrepancies": {"type": "array", "items": {"type": "string"}},
+    "injection_suspected": {"type": "array", "items": {"type": "object"}}
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "entries": [
+    {"id": "Q-R1", "question": "What is 'OpenHands'?", "raised_at": "Title/Abstract", "answered_at": "Introduction para 1", "reader_personas": ["A","B","E"]},
+    {"id": "Q-R2", "question": "What counts as an 'agent' here, and what is a 'generalist' agent?", "raised_at": "Introduction para 1", "answered_at": "Background/Platform section", "reader_personas": ["B","E"]},
+    {"id": "Q-R3", "question": "Why should an adjacent ML researcher care about agent evaluation platforms?", "raised_at": "Introduction para 1", "answered_at": "Introduction para 2", "reader_personas": ["B","E"]},
+    {"id": "Q-R4", "question": "What exactly is missing from prior systems?", "raised_at": "Introduction para 2", "answered_at": "Related Work", "reader_personas": ["A","B"]},
+    {"id": "Q-R5", "question": "What research question does the paper ask?", "raised_at": "Introduction para 3", "answered_at": "Introduction para 3", "reader_personas": ["A","B","E"]},
+    {"id": "Q-R6", "question": "What did the authors build/do?", "raised_at": "Introduction para 4", "answered_at": "Platform and Method section", "reader_personas": ["A","B","E"]},
+    {"id": "Q-R7", "question": "What did they find, and how large are the effects?", "raised_at": "Introduction para 5", "answered_at": "Results section", "reader_personas": ["A","B","E"]},
+    {"id": "Q-R8", "question": "Is a 26% resolve rate good? Compared to what?", "raised_at": "Results SWE-Bench paragraph", "answered_at": "Results SWE-Bench paragraph (baseline comparison table)", "reader_personas": ["B","E"]},
+    {"id": "Q-R9", "question": "Does performance hold across models, or is it fragile?", "raised_at": "Results SWE-Bench paragraph", "answered_at": "Results SWE-Bench paragraph + Limitations", "reader_personas": ["A","B","E"]},
+    {"id": "Q-R10", "question": "What does cross-domain performance actually establish about the platform?", "raised_at": "Results section opening", "answered_at": "Discussion para 1", "reader_personas": ["A","B","E"]},
+    {"id": "Q-R11", "question": "What can this NOT show?", "raised_at": "Discussion", "answered_at": "Limitations section", "reader_personas": ["A","B","E"]},
+    {"id": "Q-R12", "question": "What should a reader remember?", "raised_at": "Abstract", "answered_at": "Conclusion", "reader_personas": ["A","B","E"]}
+  ],
+  "debt_at_end": 0
+}

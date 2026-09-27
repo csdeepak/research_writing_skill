@@ -1,0 +1,11 @@
+{
+ "mode": "B",
+ "primary": "Machine-learning researchers from other subfields (adjacent researchers): know general ML, deep learning, standard evaluation practice, and statistics, but not speech-processing terminology, datasets, or prior work.",
+ "secondary": "Reviewers/replicators checking whether the reported numbers and comparisons support the stated claims.",
+ "tertiary": "Practitioners and students in other ML subfields who may later reuse the idea of scaling weakly supervised data.",
+ "assumed_known": ["supervised learning", "encoder-decoder Transformers", "zero-shot evaluation", "train/test splits", "distribution shift", "multitask learning"],
+ "not_assumed": ["Word Error Rate (WER) and its computation", "BLEU", "speech-specific datasets (LibriSpeech, Fleurs, VoxPopuli, CoVoST2, MLS, TED-LIUM, etc.)", "the ASR self-supervised pretraining literature (wav2vec-style methods)", "effective robustness methodology"],
+ "binding_personas": ["A", "B", "E"],
+ "term_budget": {"per_paragraph": 2, "abstract_acronyms": 1},
+ "source": "run-specific constraint (TASK.md AUDIENCE); no human available to confirm, so mode B is applied directly as specified rather than elicited."
+}

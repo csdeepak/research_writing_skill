@@ -1,0 +1,320 @@
+{
+ "frozen": "2026-09-24",
+ "gold_version": "v1.0",
+ "projects": {
+  "SWE_BENCH": {
+   "nuggets": 40,
+   "per_question": {
+    "Q1": 3,
+    "Q2": 3,
+    "Q3": 2,
+    "Q4": 4,
+    "Q5": 3,
+    "Q6": 4,
+    "Q7": 6,
+    "Q8": 4,
+    "Q9": 3,
+    "Q10": 2,
+    "Q11": 3,
+    "Q12": 3
+   },
+   "schema_errors": [],
+   "verified": true,
+   "verdict": "ACCEPT AFTER CORRECTIONS",
+   "files_sha256": {
+    "GOLD_ACCOUNT_DRAFT.md": "234259c9ce47b4b5796abdc6b469d705cdc6df97ca1d50e3dcc54851821a54cc",
+    "GOLD_ACCOUNT_v1.md": "35ff19d30479c61cb46cc1dfd327f85a355f19e503ffaf977ecd00211366ab2d",
+    "gold_story.json": "6df6232a0dbec0b2c674f6bac394811e4d365a7bce549f6514f2dbbc8faf3438",
+    "gold_story.v1.json": "caadf208b9219e8319299876020196597fdb00bc0fd00ca0bdb0a2c78f375c94",
+    "VERIFICATION.md": "d16b967c663d89a20523625da55e9dbdad30ca2a2db6775b056e6a77668678c7"
+   },
+   "sources": {
+    "arxiv": "2310.06770v3",
+    "files": {
+     "paper.pdf": {
+      "url": "https://arxiv.org/pdf/2310.06770v3",
+      "sha256": "f7e8e1df64129742b8199a21a042734519a823a1dafd6f48f8f3ddcfb48ee296"
+     },
+     "paper.txt": {
+      "derived_from": "paper.pdf via pdftotext",
+      "sha256": "8a25d3b5b644be9b346d41b023a68d9f7580e5e19d63d5a9893c6de15b3c9394",
+      "words": 22052
+     },
+     "README__SWE-bench__SWE-bench.md": {
+      "url": "https://github.com/SWE-bench/SWE-bench/blob/02e7a74ffd0b707aab73d203fe87bdc7c76afc8e/README.md",
+      "sha256": "06841624d7b5130dfe3cc6714642e9a8fd2a608c95c66ae0180e409f12b73aaa"
+     }
+    },
+    "repos": {
+     "SWE-bench/SWE-bench": {
+      "commit": "02e7a74ffd0b707aab73d203fe87bdc7c76afc8e",
+      "readme_path": "README.md"
+     }
+    }
+   }
+  },
+  "BEIR": {
+   "nuggets": 40,
+   "per_question": {
+    "Q1": 2,
+    "Q2": 2,
+    "Q3": 3,
+    "Q4": 4,
+    "Q5": 3,
+    "Q6": 4,
+    "Q7": 5,
+    "Q8": 4,
+    "Q9": 3,
+    "Q10": 4,
+    "Q11": 3,
+    "Q12": 3
+   },
+   "schema_errors": [],
+   "verified": true,
+   "verdict": "ACCEPT AFTER CORRECTIONS",
+   "files_sha256": {
+    "GOLD_ACCOUNT_DRAFT.md": "6d2042db76908f43602426df255223c49bb47c32ed15758c9f1f9bc61a5c0cac",
+    "GOLD_ACCOUNT_v1.md": "2819459b05f1df889565eb682412ba0be092e9e197009cfacb2453c145c4e341",
+    "gold_story.json": "a6ed06fe285bc1018b673632880ecf4722296256121781b2bd94910e56149225",
+    "gold_story.v1.json": "6cf3f08f660c12a16786bbd61884eb7bd4d36bb2bb997c3d1b2e51b7bfc9ed58",
+    "VERIFICATION.md": "66cb3ad626d24ddd25d66d7b4e7842691a9c1e5b97276207da693058c1497f2a"
+   },
+   "sources": {
+    "arxiv": "2104.08663v4",
+    "files": {
+     "paper.pdf": {
+      "url": "https://arxiv.org/pdf/2104.08663v4",
+      "sha256": "1925755aeb627123d1a63c66f02e5aa2432f7e92751a02bea7c8c3b6bbb6ec33"
+     },
+     "paper.txt": {
+      "derived_from": "paper.pdf via pdftotext",
+      "sha256": "fe1651d1903760eada41b2a15e07977da0ed847a2da30184e707e438a5843316",
+      "words": 14051
+     },
+     "README__beir-cellar__beir.md": {
+      "url": "https://github.com/beir-cellar/beir/blob/ef83d29307061c65d04b035b4f4e7c18bd8374af/README.md",
+      "sha256": "d030c5374d29194e6c23ded13314dc6964b253c137cbcf606765a4222f4bc4e1"
+     }
+    },
+    "repos": {
+     "beir-cellar/beir": {
+      "commit": "ef83d29307061c65d04b035b4f4e7c18bd8374af",
+      "readme_path": "README.md"
+     }
+    }
+   }
+  },
+  "MLPERF_TINY": {
+   "nuggets": 40,
+   "per_question": {
+    "Q1": 2,
+    "Q2": 4,
+    "Q3": 3,
+    "Q4": 4,
+    "Q5": 5,
+    "Q6": 3,
+    "Q7": 4,
+    "Q8": 3,
+    "Q9": 2,
+    "Q10": 2,
+    "Q11": 5,
+    "Q12": 3
+   },
+   "schema_errors": [],
+   "verified": true,
+   "verdict": "ACCEPT AFTER CORRECTIONS",
+   "files_sha256": {
+    "GOLD_ACCOUNT_DRAFT.md": "c6defbe6b6ac9f275184b9b46342a7f4391f3331897778f9563e3cf7626cb82a",
+    "GOLD_ACCOUNT_v1.md": "1d1938061c8c93a14f94635a0c56813893915b2dfc1d76b04ee783f071cc4ec7",
+    "gold_story.json": "662365ebcac5b41be6c3840e3086aa33320f82ec70f15c5389d6272ad7e34154",
+    "gold_story.v1.json": "ab93166be7c8faa49fb87081dfd9f0e8e809d1495976e5203eaf21de476e35e9",
+    "VERIFICATION.md": "c093ef36d5fea565949606037c14c745828f55ab081bd281fbd4f188e1ddac58"
+   },
+   "sources": {
+    "arxiv": "2106.07597v4",
+    "files": {
+     "paper.pdf": {
+      "url": "https://arxiv.org/pdf/2106.07597v4",
+      "sha256": "3c4a2271a4ef3640f80b697de9048d4721047b5b85c39e998971f79ab601421c"
+     },
+     "paper.txt": {
+      "derived_from": "paper.pdf via pdftotext",
+      "sha256": "a03ca91b46064309134d0ae6a4e5b755b107adf2aa2418bc4281a5986eca46dc",
+      "words": 7464
+     },
+     "README__mlcommons__tiny.md": {
+      "url": "https://github.com/mlcommons/tiny/blob/4addd0fa08d216e20637637874e084895f289da4/README.md",
+      "sha256": "eea982c312052b3650aa3b6bf554b2707355bf2df36056e79a3962f00818ab86"
+     }
+    },
+    "repos": {
+     "mlcommons/tiny": {
+      "commit": "4addd0fa08d216e20637637874e084895f289da4",
+      "readme_path": "README.md"
+     }
+    }
+   }
+  },
+  "SAM": {
+   "nuggets": 36,
+   "per_question": {
+    "Q1": 2,
+    "Q2": 2,
+    "Q3": 2,
+    "Q4": 4,
+    "Q5": 3,
+    "Q6": 3,
+    "Q7": 4,
+    "Q8": 4,
+    "Q9": 4,
+    "Q10": 1,
+    "Q11": 4,
+    "Q12": 3
+   },
+   "schema_errors": [],
+   "verified": true,
+   "verdict": "ACCEPT AFTER CORRECTIONS",
+   "files_sha256": {
+    "GOLD_ACCOUNT_DRAFT.md": "d3bb6bb6b100a93ba5c622de55aebae63f0983981641746254fdf2a48d874e5b",
+    "GOLD_ACCOUNT_v1.md": "e67c8ec0fceedc709fbb2d1a27a6ac70bdc06e46535b28f4f7bf892a73d76ced",
+    "gold_story.json": "7303eb517142b546afd3d0611b862d68100108f4c8198932249190889d94cc68",
+    "gold_story.v1.json": "018478d2a4891f3c3e0170a21c8c704eb3018880a21dbb8c077562cefa0780ab",
+    "VERIFICATION.md": "183be73234d07323330f90659e9f423631e66215d8ced4451e1cf4864896aec8"
+   },
+   "sources": {
+    "arxiv": "2304.02643v1",
+    "files": {
+     "paper.pdf": {
+      "url": "https://arxiv.org/pdf/2304.02643v1",
+      "sha256": "c6ca524e47200c3e542587ca76ac1dbc89cc67340f948c819250d16fdbd90cfb"
+     },
+     "paper.txt": {
+      "derived_from": "paper.pdf via pdftotext",
+      "sha256": "ef207a4222d105b390136d1c04784a03c0596c3f7036e28a7bea53b8b460b1d7",
+      "words": 26591
+     },
+     "README__facebookresearch__segment-anything.md": {
+      "url": "https://github.com/facebookresearch/segment-anything/blob/dca509fe793f601edb92606367a655c15ac00fdf/README.md",
+      "sha256": "cab2c4900910c9e4afd64833f57d106b8fc1a27fca963d4439ae5b8f94cdbce1"
+     }
+    },
+    "repos": {
+     "facebookresearch/segment-anything": {
+      "commit": "dca509fe793f601edb92606367a655c15ac00fdf",
+      "readme_path": "README.md"
+     }
+    }
+   }
+  },
+  "WHISPER": {
+   "nuggets": 40,
+   "per_question": {
+    "Q1": 2,
+    "Q2": 3,
+    "Q3": 2,
+    "Q4": 4,
+    "Q5": 2,
+    "Q6": 4,
+    "Q7": 5,
+    "Q8": 4,
+    "Q9": 4,
+    "Q10": 2,
+    "Q11": 4,
+    "Q12": 4
+   },
+   "schema_errors": [],
+   "verified": true,
+   "verdict": "ACCEPT AFTER CORRECTIONS",
+   "files_sha256": {
+    "GOLD_ACCOUNT_DRAFT.md": "e197d626081df9a78a06583342b0324a0eb5703f283c65e5a663682399c092a5",
+    "GOLD_ACCOUNT_v1.md": "fe4b6f65e9a4f28f10b7d859aebcd5ace6fbc91416afeaba739f0127cfc8eb10",
+    "gold_story.json": "955ea523df99935ec7a4284088be0fb6b6955bfb48bcdf960c72e72e1ae4cc9f",
+    "gold_story.v1.json": "fa9257b0ec1414d773f82757c05f5ee414ff1c01bfb653cdd0f7f0b109aa4252",
+    "VERIFICATION.md": "ca4237c63fb2823f677eea082b45744d69650ba7bdc9082daaf73113b5151479"
+   },
+   "sources": {
+    "arxiv": "2212.04356v1",
+    "files": {
+     "paper.pdf": {
+      "url": "https://arxiv.org/pdf/2212.04356v1",
+      "sha256": "6337bde031b2f237547a977b022f831169a7e05b4d9047f29501166d83594566"
+     },
+     "paper.txt": {
+      "derived_from": "paper.pdf via pdftotext",
+      "sha256": "450c8d9c0fbe115b7f0edc10bb6dc961ae346e94f5493da79b613330d32b855e",
+      "words": 17054
+     },
+     "README__openai__whisper.md": {
+      "url": "https://github.com/openai/whisper/blob/86098128c0b4f24f0e2aa2994de830614b474227/README.md",
+      "sha256": "38c180c2a8d8ba628a3e131ad42bf06c8a51bb681efb30fbe28d5a0f4b65f288"
+     }
+    },
+    "repos": {
+     "openai/whisper": {
+      "commit": "86098128c0b4f24f0e2aa2994de830614b474227",
+      "readme_path": "README.md"
+     }
+    }
+   }
+  },
+  "OPENHANDS": {
+   "nuggets": 40,
+   "per_question": {
+    "Q1": 2,
+    "Q2": 2,
+    "Q3": 3,
+    "Q4": 5,
+    "Q5": 2,
+    "Q6": 4,
+    "Q7": 8,
+    "Q8": 2,
+    "Q9": 3,
+    "Q10": 2,
+    "Q11": 5,
+    "Q12": 2
+   },
+   "schema_errors": [],
+   "verified": true,
+   "verdict": "ACCEPT AFTER CORRECTIONS",
+   "files_sha256": {
+    "GOLD_ACCOUNT_DRAFT.md": "187f9701a507c3e109d2efc1d92ccbf52fafd6f2538c4ee27279f50fa784e9ec",
+    "GOLD_ACCOUNT_v1.md": "0c1765477e48d7d544fab46a7ee1464970e4316dfe2570720f4fafa98609f935",
+    "gold_story.json": "c8df1474e9e0d57664e685cade789f10b86b904e3b777ed1338771b4f3d9f06a",
+    "gold_story.v1.json": "7b8402e7401631275f139963bc813a42ca0487e88cd1c76cdf2b5e2ecdfa5cdf",
+    "VERIFICATION.md": "7ec0e361b5680063eac9b8ca698f3c81c43bcf4d530489d472fdd49f6d030965"
+   },
+   "sources": {
+    "arxiv": "2407.16741v3",
+    "files": {
+     "paper.pdf": {
+      "url": "https://arxiv.org/pdf/2407.16741v3",
+      "sha256": "5d802255c4a58104a06147ba736fee09569faf3c26f251e5e9b7eff5d7662c14"
+     },
+     "paper.txt": {
+      "derived_from": "paper.pdf via pdftotext",
+      "sha256": "e3d04583c136c38de04e17756421ebd16d632e8859682f7038d07d2f34789c3a",
+      "words": 14724
+     },
+     "README__OpenHands__OpenHands.md": {
+      "url": "https://github.com/OpenHands/OpenHands/blob/b0906809b3e8777491519c386d55ce32d7f4daa4/README.md",
+      "sha256": "598b92bb2dd208941b099259a389cde93d083a18e7fe9dbe5b04c9cae6cdf1c6"
+     },
+     "README__OpenHands__benchmarks.md": {
+      "url": "https://github.com/OpenHands/benchmarks/blob/405bae7140d7e961a75f4910a0b2e7069731db96/README.md",
+      "sha256": "b0208d415c5fc548e52dafbc222913a6f710f89da5454086aabad1d86f0a9f4c"
+     }
+    },
+    "repos": {
+     "OpenHands/OpenHands": {
+      "commit": "b0906809b3e8777491519c386d55ce32d7f4daa4",
+      "readme_path": "README.md"
+     },
+     "OpenHands/benchmarks": {
+      "commit": "405bae7140d7e961a75f4910a0b2e7069731db96",
+      "readme_path": "README.md"
+     }
+    }
+   }
+  }
+ }
+}

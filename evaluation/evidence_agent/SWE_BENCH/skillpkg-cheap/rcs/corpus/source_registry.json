@@ -1,0 +1,36 @@
+{
+  "sources": [
+    {
+      "id": "SRC-001",
+      "citation_key": "Liu et al., 2023b",
+      "title": "(not independently retrievable in this run — no web access; identified only by the author-supplied in-text label 'Liu et al. 2023b')",
+      "authors": ["Liu, N. F.", "et al."],
+      "year": 2023,
+      "venue": null,
+      "publication_status": "TECHNICAL_REPORT",
+      "level": 4,
+      "domain": "NLP / long-context language models",
+      "why_useful": "Cited by the SWE-bench authors as corroborating evidence for models' difficulty making use of long input contexts (the long-context degradation phenomenon), used here to support the interpretation that resolution-rate decline with context length is consistent with a known limit on long-context use, not unique to this benchmark.",
+      "establishes": [
+        {
+          "statement": "Language models have difficulty making full use of information placed within long input contexts.",
+          "support_quote": "corroborated by other findings (Table 2, Liu et al. 2023b)",
+          "location": "claim_candidates.json, claim C017 confidence_reasons (as characterized in the project's evidence package, not independently read by us)",
+          "strength": "weak — attributed via a secondary reference inside the evidence package; not independently verified against the original source"
+        }
+      ],
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-24",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "permitted_use": ["content_citation"],
+      "evidence_quality": "low",
+      "limitations": "Registered from the evidence package's own citation of this work, per run constraint ('no web'; literature mode limited to works cited in the project materials). Full bibliographic metadata (venue, DOI) could not be independently confirmed in this run. Cited at 'literature'-claim strength only — attributing a general finding to the source — never quoted directly and never used to license a stronger claim than the source material itself makes.",
+      "citation_count": null
+    }
+  ],
+  "note": "This is the complete literature corpus available to this run. No systematic search was performed (no web access, per run constraints). No other external work is named anywhere in the evidence package (research_evidence.json, claim_candidates.json, missing_evidence.json). Consequently the Related Work section is scoped narrowly to what SWE-bench's own evidence package documents about prior benchmarking practice (e.g. the mention of 'Defects4J' in missing_evidence.json, which we do not cite because no author/year form is given), and does not claim a systematic literature survey."
+}

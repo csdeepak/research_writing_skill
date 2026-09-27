@@ -1,0 +1,152 @@
+[
+ {
+  "stream": "evaluation/evidence_agent/cheap/OPENHANDS/session.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/evidence_agent/cheap/SWE_BENCH/session.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/evidence_agent/cheap/WHISPER/session.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/evidence_agent/strong/OPENHANDS/session.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/evidence_agent/strong/SWE_BENCH/session.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/evidence_agent/strong/WHISPER/session.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/plain_agent/BEIR/plain/W-BEIR-plain.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/plain_agent/MLPERF_TINY/plain/W-MLPERF_TINY-plain.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/plain_agent/OPENHANDS/plain/W-OPENHANDS-plain.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/plain_agent/SAM/plain/W-SAM-plain.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/plain_agent/SWE_BENCH/plain/W-SWE_BENCH-plain.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/plain_agent/WHISPER/plain/W-WHISPER-plain.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/skill_agent/BEIR/skill/W-BEIR-skill-draft.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/skill_agent/BEIR/skill/W-BEIR-skill-revise.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/skill_agent/MLPERF_TINY/skill/W-MLPERF_TINY-skill-draft.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/skill_agent/MLPERF_TINY/skill/W-MLPERF_TINY-skill-revise.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/skill_agent/OPENHANDS/skill/W-OPENHANDS-skill-draft.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/skill_agent/OPENHANDS/skill/W-OPENHANDS-skill-revise.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/skill_agent/SAM/skill/W-SAM-skill-draft.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/skill_agent/SAM/skill/W-SAM-skill-revise.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/skill_agent/SWE_BENCH/skill/W-SWE_BENCH-skill-draft.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/skill_agent/SWE_BENCH/skill/W-SWE_BENCH-skill-revise.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/skill_agent/WHISPER/skill/W-WHISPER-skill-draft.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/skill_agent/WHISPER/skill/W-WHISPER-skill-revise.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/evidence_agent/cheap/OPENHANDS/session.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/evidence_agent/cheap/SWE_BENCH/session.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/evidence_agent/cheap/WHISPER/session.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/evidence_agent/strong/OPENHANDS/session.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/evidence_agent/strong/SWE_BENCH/session.stream.jsonl",
+  "breach": false,
+  "paths": []
+ },
+ {
+  "stream": "evaluation/evidence_agent/strong/WHISPER/session.stream.jsonl",
+  "breach": false,
+  "paths": []
+ }
+]

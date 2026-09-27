@@ -1,0 +1,37 @@
+{
+  "sources": [
+    {
+      "id": "SRC-001",
+      "title": "WebArena Agent (baseline system named in the evidence package's Table 5, cited there as Zhou et al., 2023a)",
+      "authors": ["Zhou"],
+      "year": 2023,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "publication_status": "TECHNICAL_REPORT",
+      "peer_review_known": false,
+      "domain": "web-browsing agents",
+      "level": 4,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-25",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The WebArena Agent (Zhou et al., 2023a) is used in the evidence package as a named baseline system for the WebArena benchmark; its gpt-4-turbo result is not reported (missing value).",
+          "support_quote": "Table 5 lists 'WebArena Agent (Zhou et al., 2023a) gpt-4-turbo' but performance value is '-'.",
+          "location": "project/missing_evidence.json, WebArena baseline entry",
+          "strength": "soft"
+        }
+      ],
+      "why_useful": "Only citation string present anywhere in the evidence package; used solely to name the WebArena Agent baseline system by its citation as it appears in the evidence.",
+      "evidence_quality": "low",
+      "limitations": "No title, venue, or verifiable metadata beyond the author/year string is available in the evidence package; web verification is out of scope for this run (no-web constraint). Read depth is abstract-level only, per run instructions.",
+      "permitted_use": ["content_citation"],
+      "citation_count": null
+    }
+  ]
+}

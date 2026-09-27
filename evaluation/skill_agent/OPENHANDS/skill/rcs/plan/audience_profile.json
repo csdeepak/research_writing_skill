@@ -1,0 +1,29 @@
+{
+  "mode": "B",
+  "mode_description": "Adjacent researcher",
+  "primary": "ML researchers from NLP, RL, computer vision, or general deep learning who work with or are curious about LLM-based systems but do not specialize in AI agents or software engineering automation",
+  "secondary": "Systems researchers interested in infrastructure for AI evaluation; ML practitioners evaluating agent frameworks",
+  "assumed_knowledge": [
+    "Large language models (LLMs) and transformer architectures",
+    "Standard ML evaluation methodology (train/val/test splits, benchmarks, metrics)",
+    "Basic software engineering concepts (code execution, APIs, command line)",
+    "Reinforcement learning basics (agents, environments, actions, observations)",
+    "Docker containers at a conceptual level",
+    "Common ML benchmarks (e.g., ImageNet, GLUE) as reference for how benchmarks work"
+  ],
+  "terms_requiring_definition": [
+    "SWE-Bench (software engineering benchmark)",
+    "agent-computer interface (ACI)",
+    "event stream",
+    "CodeAct framework",
+    "sandboxed execution",
+    "resolve rate (for GitHub issues)",
+    "pass@k (code evaluation metric)"
+  ],
+  "term_budget": "define all subfield-specific terms on first use",
+  "binding_personas": [
+    "NLP researcher familiar with LLM prompting but not agent infrastructure",
+    "RL researcher who thinks of agents in terms of Gym-style environments",
+    "ML practitioner evaluating whether to use OpenHands for their own agent research"
+  ]
+}

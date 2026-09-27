@@ -1,0 +1,69 @@
+{
+  "step": 17,
+  "gates": {
+    "G1": "passed (no human available to confirm pending claims; all claims in claims/claim_evidence_map.json autonomously confirmed against hard evidence per accepted_risks; every spine line bound to >=1 claim/limitation ID; no open STOP-class failure)",
+    "G2": "passed (skeleton self-reconstruction Q1-Q12 check recorded in plan/skeleton.md)",
+    "G3": "passed (all {C###} tags resolve against claims/claim_evidence_map.json; tools/lint_draft.py reports 0 WARN/ERROR on drafts/v001/paper.md as of this run)",
+    "G4": "not attempted this run (step 18 blind review is performed externally per run-specific constraints; steps 11-17 self-audits completed and folded directly into drafts/v001/paper.md rather than written as separate audit-round artifacts, given the no-subagent/no-human constraints)"
+  },
+  "open_failures": [
+    "VENUE_UNKNOWN (accepted; generic profile used, see plan/venue_profile.yaml)",
+    "L001/L006 conflicting evidence in the source material, disclosed in the paper rather than resolved (see claims/claim_evidence_map.json limitations)"
+  ],
+  "workflow_notes": [
+    "Steps 1-2 (CORPUS_AGENT evidence build) were supplied pre-built by a separate evidence agent as project/research_evidence.json, claim_candidates.json, missing_evidence.json, per this run's EVIDENCE INTERFACE; copied into .rcs/evidence and .rcs/claims and treated as the output of steps 1-2.",
+    "Step 3 (spine + story graph): story/spine.md, story/story_graph.json.",
+    "Step 4 (claim-evidence graph): claims/claim_evidence_map.json, built from claim_candidates.json with all claims autonomously confirmed, one new evidence conflict (L006) discovered and disclosed, and one new claim (C021) added to cover previously untagged qualitative evidence (E065/E066).",
+    "Step 5 (audience): plan/audience_profile.json, mode B per TASK.md.",
+    "Step 6 (venue): plan/venue_profile.yaml, VENUE_UNKNOWN, generic profile with all rules assumed:true, words_main overridden per TASK.md's explicit 3000-4500 requirement.",
+    "Step 7 (literature): corpus/source_registry.json, corpus/literature_map.json, story/lit_gap_chain.md - limited to the single named source in the evidence package (Liu et al., 2023b) per the no-web run constraint.",
+    "Step 8 (architecture): plan/paper_architecture.md, plan/figure_cards/TAB-1..5.md.",
+    "Step 9 (skeleton): plan/skeleton.md, Gate G2 self-check recorded inline.",
+    "Step 10 (draft): drafts/v001/paper.md, all sections drafted with {C###} tags per claim map.",
+    "Steps 11-17 (self-audits): performed directly against drafts/v001/paper.md using tools/lint_draft.py and tools/validate_artifacts.py plus manual review; fixes applied in place (table cross-references added, acronyms defined at first use, orphan claims tagged, intensifier/significance language downgraded, one buried-contribution fix in the Introduction). No separate audits/v001/*.json files were written as distinct artifacts; the audit outcomes are captured here and in the final lint_draft.py run (0 WARN/ERROR as of this state).",
+    "Step 18 (blind review) explicitly out of scope for this run per run-specific constraints; not performed.",
+    "Final artifacts for this run: .rcs/drafts/v001/paper.md (claim tags kept, as instructed) copied verbatim to ./paper.md; .rcs/packets/audience.md and .rcs/packets/objective.md written per templates/packet_audience_objective.md."
+  ],
+  "accepted_risks": [
+    {
+      "risk": "No human reviewer available. Wherever the skill workflow specifies ASK or STOP for user input, the most defensible option supported by the evidence package was chosen autonomously and recorded here.",
+      "decided_by": "AUTHOR (autonomous, no human available per run constraints)"
+    },
+    {
+      "risk": "Original paper.txt is not available in this run. Evidence locators (e.g. 'paper.txt line 9-10') refer to the original paper and cannot be independently re-verified against the source text; they are treated as authoritative because they were produced by a separate evidence-extraction agent. Unresolved locators are not treated as errors.",
+      "decided_by": "AUTHOR"
+    },
+    {
+      "risk": "All claim_candidates.json entries have author_confirmation='pending' because no author is available to confirm them. Since every claim traces to hard evidence items with resolvable locators (or is explicitly typed hypothesis/interpretation with limitations attached), all are accepted into claim_evidence_map.json with author_confirmation changed to 'accepted_no_human_available' rather than left blocking the workflow.",
+      "decided_by": "AUTHOR"
+    },
+    {
+      "risk": "Discrepancy L001: Claude 2 BM25 resolution rate reported as 1.96% in prose (E015) vs 1.97% in Table 5 (E016). Resolution: use 1.96% as the primary reported value (stated in abstract and repeated in the main text) and note the 1.97% table figure as a minor, immaterial discrepancy in a limitations note, per the evidence package's own suggested resolution.",
+      "decided_by": "AUTHOR"
+    },
+    {
+      "risk": "No web access and no literature corpus search performed (run constraint). Literature mode is limited to the single work named in the evidence package's claim rationale, 'Liu et al. 2023b', registered with verification.method='user_supplied_file' and read_depth='abstract'. No claim of exhaustive or systematic literature coverage is made; the Related Work section is scoped accordingly and 'first'/'novel'-type language is avoided unless directly licensed by the evidence.",
+      "decided_by": "AUTHOR"
+    },
+    {
+      "risk": "Venue is unspecified. VENUE_UNKNOWN failure state raised; templates/venue_profile.generic.yaml used with all rules marked assumed:true, structured as a generic ML research article with IMRaD-style sections suited to an adjacent-researcher (mode B) audience, per TASK.md's explicit audience and length requirements which override generic venue limits (words_main).",
+      "decided_by": "AUTHOR"
+    },
+    {
+      "risk": "C011's category counts (bug fixes / feature requests / regressions / other) reference a 'regressions: 39' and 'other: 1641' breakdown not present as a discrete evidence item (only E058 bug=442 and E059 feature=167 are in research_evidence.json). Because the regression and 'other' counts cannot be traced to a specific evidence item, the paper reports only the two directly evidenced categories (bug fixes, feature requests) plus the qualitative point that categories do not sum to the full 2,294 (2,289 tagged), and drops the unevidenced regression/other figures rather than inventing them.",
+      "decided_by": "AUTHOR"
+    },
+    {
+      "risk": "C016's claim_candidates statement cites a median pass-to-pass figure of 79 that has no corresponding evidence item (only E054 mean=171.3 is present; no median P2P evidence item exists). The paper omits the unevidenced median-P2P figure.",
+      "decided_by": "AUTHOR"
+    },
+    {
+      "risk": "C019 (Claude 2 vs SWE-Llama 13b overlap: 110 and 91 instances, 42% overlap) references instance counts (110, 91) that are not present as discrete items in research_evidence.json (only the 42% figure and the qualitative quote are directly evidenced via E023's surrounding context and the claim's own quote). The paper reports the 42% figure (directly quoted in claim_candidates.json) and both models' comparable oracle-retrieval performance, without asserting the unevidenced raw counts of 110/91 as if independently verified beyond the quoted claim text.",
+      "decided_by": "AUTHOR"
+    },
+    {
+      "risk": "CONFLICTING_EVIDENCE (L006): claim_candidates.json's C002 statement and quote assert Claude 2 is 'the best-performing model' at 1.96%, but evidence item E022 (Table 5) reports Claude 3 Opus at 3.79% under the same BM25/full-benchmark condition, which is higher. Per evidence_model.md, conflicting evidence is disclosed, not merged or silently resolved by picking one. Decision: the paper reports both figures, does not assert an unqualified 'best model' ranking, and notes the apparent inconsistency as a property of the source material.",
+      "decided_by": "AUTHOR"
+    }
+  ]
+}

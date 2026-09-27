@@ -1,0 +1,17 @@
+{
+  "mode": "B",
+  "primary": "Machine-learning researchers from other subfields (e.g. vision, RL theory, NLP-adjacent, systems-for-ML) who know general ML/DL, standard evaluation practice, and statistics, but not this project's subfield (LLM agents for digital tasks), its benchmarks, or its prior work.",
+  "secondary": "Reviewers/replicators checking the claims against the reported tables.",
+  "tertiary": "Future readers and practitioners deciding whether to build on or evaluate against this platform.",
+  "assumed_known": ["supervised/self-supervised deep learning", "large language models and prompting", "train/validation/test splits", "accuracy/success-rate style metrics", "baselines and ablations as a comparison concept"],
+  "not_assumed": [
+    "what an LLM agent / agent scaffold / tool-use loop is",
+    "SWE-Bench, WebArena, MiniWoB++, GAIA, GPQA, AgentBench, MINT, ProofWriter, Entity Deduction Arena, ML-Bench, BioCoder, Gorilla APIBench, ToolQA as benchmarks",
+    "the convention of a 'resolve rate' for repository-level code-fix tasks",
+    "0-shot vs 1-shot / self-debug conventions in this literature",
+    "CodeAct-style action representations"
+  ],
+  "binding_personas": ["A", "B", "E"],
+  "term_budget": {"per_paragraph": 2, "abstract_acronyms": 1},
+  "source": "Derived from TASK.md AUDIENCE statement (run-specific input); no user available to confirm interactively, so this profile is treated as given and not re-asked (UNCLEAR_AUDIENCE not applicable: audience was specified)."
+}

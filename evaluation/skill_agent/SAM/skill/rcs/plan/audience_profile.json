@@ -1,0 +1,29 @@
+{
+  "mode": "B",
+  "description": "Adjacent ML researcher — knows general ML/deep learning, Transformers, standard evaluation practice, and statistics, but not computer vision segmentation subfield terminology, datasets, or prior work.",
+  "assumed_knowledge": [
+    "Transformer architecture (self-attention, cross-attention, encoders, decoders)",
+    "Vision Transformers (ViT) at high level",
+    "Foundation models and the NLP prompting paradigm (GPT, CLIP at high level)",
+    "Standard evaluation metrics (IoU, precision, recall, AP)",
+    "Transfer learning / zero-shot learning concepts",
+    "Standard supervised training pipeline",
+    "MAE (masked autoencoders) concept",
+    "Focal loss, dice loss at high level"
+  ],
+  "terms_to_define": [
+    "image segmentation (produce a pixel-level mask)",
+    "instance segmentation vs. semantic segmentation vs. panoptic segmentation",
+    "interactive segmentation",
+    "mIoU (mean Intersection over Union)",
+    "average recall (AR) in proposal generation",
+    "ODS/OIS in edge detection",
+    "SA-1B (the dataset produced by this work)",
+    "promptable segmentation task"
+  ],
+  "binding_personas": [
+    "NLP researcher who understands GPT-style prompting but not segmentation datasets",
+    "Reinforcement learning researcher interested in composable perception modules",
+    "Generative model researcher (diffusion/GAN) who uses segmentation as a preprocessing step"
+  ]
+}

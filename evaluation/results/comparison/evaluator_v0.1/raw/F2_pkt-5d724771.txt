@@ -1,0 +1,322 @@
+{
+  "reconstruction": {
+    "packet_id": "pkt-5d724771",
+    "answers": {
+      "Q1": {
+        "answer": "The core problem is the robustness gap in ASR: models optimized on a single data distribution (e.g., LibriSpeech) achieve low word error rates on held-out data from that same distribution but fail dramatically on real-world deployment conditions (different acoustic environments, speakers, recording conditions), making far more errors than humans.",
+        "locations": ["§1.1/paragraph 1-2", "§1.2/paragraph 1-2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q2": {
+        "answer": "This matters because the 'superhuman' WER claims on benchmarks like LibriSpeech are misleading — they reflect in-distribution pattern matching (formatting conventions, speaker templates, silence distributions) rather than genuine speech understanding. The gap between benchmark performance and real-world robustness prevents reliable deployment of ASR systems.",
+        "locations": ["§1.1/paragraph 2-3", "§2.2/paragraph 1-2", "§6.2/paragraph 1-3"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q3": {
+        "answer": "Current approaches fall short because: (1) Self-supervised pretraining (wav2vec 2.0, HuBERT) requires dataset-specific supervised fine-tuning, which reintroduces distributional specificity; (2) Multi-dataset supervised training (SpeechStew) is limited to ~5,000 hours of high-quality labeled data, far below modern data scales; (3) Prior weakly supervised efforts (GigaSpeech 10k hrs, People's Speech 30k hrs) are orders of magnitude smaller in scale.",
+        "locations": ["§1.2/paragraph 1-3", "§1.3/paragraph 2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q4": {
+        "answer": "The authors trained Whisper, an encoder-decoder Transformer, on 680,000 hours of weakly supervised internet audio-transcript pairs across 96 languages and four tasks (multilingual transcription, speech-to-English translation, voice activity detection, language identification). Training used only next-token prediction with special tokens conditioning the decoder for each task. No self-supervised pretraining, no dataset-specific fine-tuning, no data augmentation. Five model sizes from 39M to 1.55B parameters. Evaluated zero-shot on 25+ benchmarks.",
+        "locations": ["§1.3/paragraph 1-3", "§3.1/paragraph 1-3", "§3.2/paragraph 1-3", "§3.3/paragraph 1-3", "§3.4/paragraph 1-2", "§4/paragraph 1"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q5": {
+        "answer": "The method is motivated by the CLIP/BiT paradigm in computer vision: internet-scale weak supervision provides sufficient distributional diversity that no single shortcut (formatting quirk, equipment signature, vocabulary bias) consistently predicts transcripts, forcing the model to learn robust acoustic representations. Multitask training is instrumental — combined signal across languages, noise, domains forces generalization. Architecture is standard (Transformer) to isolate the effect of data scale and diversity.",
+        "locations": ["§1.2/paragraph 3-4", "§1.3/paragraph 3", "§3.2/paragraph 1", "§6.1/paragraph 1-3", "§6.3/paragraph 1-2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q6": {
+        "answer": "Key experiments: (1) Zero-shot English ASR on 14 datasets (13 OOD + LibriSpeech reference) vs. wav2vec 2.0 Large matched on LibriSpeech WER (2.7%); (2) Human comparison on 25 Kincaid46 recordings vs. 5 transcription services; (3) Multilingual ASR on MLS (8 langs), VoxPopuli (16 langs), Fleurs (102 langs); (4) Speech-to-English translation on CoVoST 2 (21 langs); (5) Language identification on Fleurs; (6) Long-form transcription on 7 datasets vs. open-source and commercial ASR; (7) Ablations: model scale, dataset scale (0.5%-100%), multitask transfer, noise robustness, text normalization bias check.",
+        "locations": ["§4.1/paragraph 1-4", "§4.2/paragraph 1-3", "§4.3/paragraph 1-3", "§4.4/paragraph 1-3", "§4.5/paragraph 1-2", "§4.6/paragraph 1-3", "§5.1-5.5"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q7": {
+        "answer": "Strongest results: (1) 55.2% average relative error reduction over supervised baseline on 13 OOD English ASR datasets while matched on LibriSpeech (2.7% WER); (2) Whisper Tiny (39M params) roughly competitive with best supervised model on OOD datasets; (3) Zero-shot Whisper approaches human-level robustness frontier (within 95% CI of human evaluator on OOD); (4) Best CoVoST 2 translation (29.1 BLEU) especially on low-resource languages (+6.7 BLEU); (5) Outperforms commercial ASR on most long-form benchmarks; (6) Monotonic scaling with data across all tasks.",
+        "locations": ["§4.1/table and paragraph 3-4", "§4.2/paragraph 1-2", "§4.4/paragraph 1-2", "§4.6/paragraph 2-3", "§5.2/table"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q8": {
+        "answer": "Results establish that: (1) Large-scale weak supervision (680k hrs) closes the robustness gap — zero-shot generalization far exceeds supervised models matched in-distribution; (2) The robustness advantage stems from data diversity/scale, not model size (even Tiny benefits); (3) Multitask training eventually provides positive transfer at large scale; (4) Scaling laws hold: more data monotonically improves all tasks, with translation having a minimum threshold (~7k hrs); (5) Whisper approaches human-like robustness on English OOD conditions.",
+        "locations": ["§4.1/paragraph 3-4", "§4.2/paragraph 1-2", "§5.1/paragraph 1", "§5.2/paragraph 1-3", "§5.3/paragraph 1-3", "§6.1/paragraph 1-2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q9": {
+        "answer": "Results do NOT establish: (1) Fine-tuning performance (explicitly not studied); (2) Superiority on high-resource multilingual ASR (lags Maestro on VoxPopuli); (3) State-of-the-art language identification (64.5% on full Fleurs, capped by missing 20 languages); (4) Causal mechanism — scale vs. diversity contributions are entangled (no experiment varies one while holding other constant); (5) Human parity (25 recordings, no CIs, indicative only); (6) Long-form decoding is fully solved (hallucination/repetition remain).",
+        "locations": ["§4.3/paragraph 2", "§4.5/paragraph 1-2", "§5.2/paragraph 3", "§6.1/paragraph 3-4", "§6.4/paragraph 1-6"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q10": {
+        "answer": "Primary contribution: Demonstrating that scaling weakly supervised pretraining to 680,000 hours of diverse internet audio — using only next-token prediction on a standard encoder-decoder Transformer, without self-supervised pretraining or fine-tuning — closes the ASR robustness gap. Zero-shot Whisper achieves 55.2% average relative error reduction over a supervised baseline matched on in-distribution performance, approaching human-level robustness on English OOD conditions. This validates the CLIP/BiT weak-supervision-at-scale paradigm for speech.",
+        "locations": ["§1.3/paragraph 1-3", "§4.1/paragraph 3-4", "§6.3/paragraph 1-2", "§8/paragraph 1-2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q11": {
+        "answer": "Main limitations: (1) Fine-tuning not evaluated; (2) Low-resource language performance poor (<1,000 hrs training data for most non-English languages); (3) Long-form decoding has failure modes (hallucination, repetition); (4) Evaluation bias from co-developed text normalizer on some benchmarks; (5) Commercial ASR comparison approximate (possible training overlap); (6) Human comparison limited (25 recordings, no CIs); (7) Scale vs. diversity entangled — relative contributions unmeasured; (8) Language identification limited by missing training languages.",
+        "locations": ["§6.4/paragraph 1-7", "§4.3/paragraph 2-3", "§4.6/paragraph 1-2", "§5.5/paragraph 1-2", "§4.2/paragraph 3"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q12": {
+        "answer": "One day later: Weak supervision at massive scale (680k hrs diverse internet audio) with a simple next-token prediction objective on a standard Transformer closes the ASR robustness gap — zero-shot models match supervised in-distribution performance but far exceed them out-of-distribution, approaching human-like robustness. The CLIP paradigm transfers to speech. Key caveats: fine-tuning unstudied, low-resource languages need more data, long-form decoding still has failure modes.",
+        "locations": ["§8/paragraph 1-3", "§6.3/paragraph 1-2", "§6.4/paragraph 1-7"],
+        "confidence": 5,
+        "missing": ""
+      }
+    }
+  },
+  "diagnostics": {
+    "packet_id": "pkt-5d724771",
+    "binding_personas": ["A", "B", "E"],
+    "findings": [
+      {
+        "dimension": "problem",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1.1", "paragraph": 1, "quote": "models optimized on a single data distribution perform well on held-out data from that same distribution but fail in real deployment conditions"},
+        "observed": "Problem is sharply defined: the in-distribution trap where benchmark WER improvements don't translate to real-world robustness.",
+        "reader_struggle": "No struggle — the problem is concrete, well-motivated, and framed in terms familiar to ML researchers (distribution shift, shortcut learning).",
+        "likely_consequence": "Reader immediately grasps why this problem matters and why prior 'superhuman' claims are misleading.",
+        "revision_principle": "Keep the problem framing grounded in measurable deployment failure, not just benchmark gaps."
+      },
+      {
+        "dimension": "motivation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1.2", "paragraph": 3, "quote": "CLIP trained on 400 million image-text pairs scraped from the internet and produced zero-shot visual classification competitive with supervised models while far exceeding them on novel distributions"},
+        "observed": "Motivation draws a clear, cross-domain analogy to CLIP/BiT in vision, making the hypothesis (weak supervision at scale → robustness) immediately credible to adjacent researchers.",
+        "reader_struggle": "None — the vision analogy is well-known and the parallel is precisely stated with comparable scale numbers (82M examples vs 400M).",
+        "likely_consequence": "Reader sees this as testing a general ML principle, not just an ASR trick.",
+        "revision_principle": "Anchor novel domain claims in established cross-domain precedents with quantitative scale comparisons."
+      },
+      {
+        "dimension": "research_question",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1.2", "paragraph": 4, "quote": "The central question of this paper is whether the same strategy — large-scale weak supervision from internet data — can close the robustness gap for speech recognition"},
+        "observed": "Research question is explicitly stated, falsifiable, and scoped to the core hypothesis (weak supervision at scale → robustness).",
+        "reader_struggle": "No ambiguity — the question is binary (does it close the gap?) and the evaluation protocol (zero-shot, matched in-distribution) is defined upfront.",
+        "likely_consequence": "Reader knows exactly what evidence would confirm or refute the claim.",
+        "revision_principle": "State the central question as a testable hypothesis with a defined evaluation criterion."
+      },
+      {
+        "dimension": "contribution",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "8", "paragraph": 1, "quote": "A single encoder-decoder Transformer trained on 680,000 hours of weakly supervised internet audio — without any self-supervised pretraining, without any dataset-specific fine-tuning, and without any data augmentation — achieves 55.2% average relative error reduction"},
+        "observed": "Contribution is precisely scoped: it's the demonstration that weak supervision at this scale works for speech, with the 55.2% RER as the headline quantitative result. The 'without X, without Y, without Z' framing makes the minimal-recipe claim explicit.",
+        "reader_struggle": "None — the contribution is unmistakable and the ablation conditions are clearly listed.",
+        "likely_consequence": "Reader can cite this as 'weak supervision at scale closes ASR robustness gap' with the key number.",
+        "revision_principle": "State the contribution as a minimal recipe with the key quantitative result and explicit exclusions."
+      },
+      {
+        "dimension": "method",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "3.1", "paragraph": 2, "quote": "heuristics to detect and discard machine-generated transcripts, exploiting signals such as absence of complex punctuation, all-uppercase or all-lowercase formatting, and the absence of contractions"},
+        "observed": "Method is described with sufficient detail for reproduction: data collection, filtering heuristics (two-pass), language matching, deduplication, segmentation, architecture (standard Transformer with specs), multitask token conditioning, training hyperparameters. The filtering heuristics are specific enough to implement.",
+        "reader_struggle": "Adjacent researcher (B) can follow without ASR-specific knowledge — spectrogram parameters, tokenizer choice, and token conditioning format are all explained.",
+        "likely_consequence": "Reader trusts the method is reproducible and understands the design choices (e.g., why standard architecture).",
+        "revision_principle": "Explain domain-specific preprocessing (filtering heuristics) in implementable detail; justify standard architecture choice."
+      },
+      {
+        "dimension": "experiment",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.1", "paragraph": 2, "quote": "The comparison partner is wav2vec 2.0 Large (no language model), a state-of-the-art supervised baseline that achieves 2.7% WER on LibriSpeech test-clean. The best zero-shot Whisper model ... also achieves 2.7% WER on LibriSpeech test-clean — the two models are effectively matched on their common reference distribution."},
+        "observed": "Experimental design is rigorous: zero-shot evaluation, matched in-distribution performance (controls for capacity), 13 diverse OOD datasets, multiple ablations (scale, data, multitask, noise, normalization). The matched-baseline design isolates effective robustness.",
+        "reader_struggle": "No struggle — the controlled comparison (matched LibriSpeech WER) is a clean experimental design that adjacent researchers will recognize as strong.",
+        "likely_consequence": "Reader sees the 55.2% RER as a valid measure of robustness, not just raw performance.",
+        "revision_principle": "Use matched in-distribution performance as the control when claiming robustness gains."
+      },
+      {
+        "dimension": "result",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.1", "paragraph": 3, "quote": "On these datasets, zero-shot Whisper achieves a 55.2% average relative error reduction over the supervised baseline."},
+        "observed": "Results are presented clearly with a summary table (14 datasets, WERs, RER per dataset), the average RER, and the key insight that even Tiny model gets the robustness benefit. Multilingual, translation, LID, long-form results are all tabulated with comparisons.",
+        "reader_struggle": "The table is dense but readable; the three missing datasets in the summary table (TED-LIUM 3, VoxPopuli, Earnings-21) are noted in a footnote.",
+        "likely_consequence": "Reader can verify the per-dataset numbers and sees the consistency of the robustness gain.",
+        "revision_principle": "Report per-dataset results in a table with the aggregate metric; footnote any omissions from the summary view."
+      },
+      {
+        "dimension": "interpretation",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "6.1", "paragraph": 3, "quote": "no experiment holds volume constant while varying diversity — and no experiment holds diversity constant while varying volume — so the relative contributions of scale versus distributional breadth remain entangled and unmeasured by the current evidence"},
+        "observed": "Interpretation is honest about what the data does and doesn't support. The authors explicitly acknowledge the scale/diversity confound and don't overclaim causality. They frame the CLIP analogy as a 'motivating parallel, not evidence of mechanistic equivalence.'",
+        "reader_struggle": "Minor: the interpretation that 'distributional breadth acts as a regularizer' (§6.1 para 2) is presented before the confound acknowledgment, which could momentarily mislead a reader into thinking it's established.",
+        "likely_consequence": "Careful reader (E) notices the confound admission and adjusts confidence; less careful reader may overattribute to diversity.",
+        "revision_principle": "Present interpretive hypotheses (e.g., 'diversity as regularizer') as hypotheses, then immediately flag confounds that prevent causal attribution."
+      },
+      {
+        "dimension": "limitation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "6.4", "paragraph": 1, "quote": "Fine-tuning not evaluated. The entire paper focuses on zero-shot transfer, which is the most stringent and general-purpose setting."},
+        "observed": "Limitations section is comprehensive and specific: fine-tuning unstudied, low-resource language data scarcity, long-form decoding failures, evaluation bias from co-developed normalizer, commercial ASR comparison caveats, human comparison precision (25 recordings, no CIs), scale/diversity confound, LID missing languages. Each limitation is concrete and bounded.",
+        "reader_struggle": "No struggle — limitations are where a verifying reviewer (E) would look first, and they're all there with specific details.",
+        "likely_consequence": "Reader can correctly scope the claims: zero-shot robustness demonstrated, but fine-tuning potential, low-resource languages, and long-form reliability remain open.",
+        "revision_principle": "List limitations as specific, bounded constraints on each claim, not generic boilerplate."
+      },
+      {
+        "dimension": "narrative_coherence",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1.3", "paragraph": 1, "quote": "This paper presents Whisper, a speech recognition system trained on 680,000 hours of audio paired with transcripts collected from the internet."},
+        "observed": "Narrative flows logically: problem → why current approaches fail → analogy to vision → this work (method) → results (main, then each task) → analysis/ablations → discussion (interpretation, limitations, related work) → conclusion. Each section builds on the previous.",
+        "reader_struggle": "None — the structure serves the argument. An adjacent researcher can follow the logic without subfield knowledge.",
+        "likely_consequence": "Reader can reconstruct the argument from memory after one read.",
+        "revision_principle": "Structure the paper as a logical argument: problem → hypothesis → minimal test → evidence → interpretation bounded by limitations."
+      },
+      {
+        "dimension": "terminology",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "2.1", "paragraph": 1, "quote": "Word error rate (WER), measures how many word substitutions, deletions, and insertions are needed to transform a model's output into the reference transcript, divided by the number of reference words"},
+        "observed": "All ASR-specific terms (WER, effective robustness, weak supervision, zero-shot, fine-tuning, specAugment, BPE) are defined on first use in accessible language. The background section (§2) explicitly serves adjacent researchers.",
+        "reader_struggle": "None for binding personas — B (adjacent ML researcher) gets all definitions needed; A (expert) can skim; E (verifier) finds precise definitions.",
+        "likely_consequence": "No terminology barrier for any binding persona.",
+        "revision_principle": "Define every domain-specific term on first use with a plain-language explanation and formula if applicable."
+      },
+      {
+        "dimension": "logical_flow",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.1", "paragraph": 1, "quote": "All Whisper evaluations are performed in a zero-shot setting: no training data from any evaluation benchmark is used at any point."},
+        "observed": "Logical flow is impeccable: the zero-shot protocol is declared upfront (§4), then each result section follows the same pattern (task → datasets → baseline → Whisper → analysis). Ablations (§5) directly test components of the main hypothesis (scale, data, multitask, noise, normalization).",
+        "reader_struggle": "No gaps — each claim is followed by its evidence in the same or next subsection.",
+        "likely_consequence": "Reader never wonders 'where's the evidence for that?'",
+        "revision_principle": "Declare evaluation protocol once globally; structure each result section as task → evidence → interpretation."
+      },
+      {
+        "dimension": "evidence_traceability",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.1", "paragraph": 4, "quote": "(Source: Table 2 in Radford et al., 2022.)"},
+        "observed": "Every quantitative claim traces to a table or figure with a source citation. The main table (Table 2) is reproduced in the paper. Ablation tables (Table 6) are included. The human comparison cites the specific dataset (Kincaid46) and number of recordings (25).",
+        "reader_struggle": "None — a verifying reviewer can trace every number to a presented table or explicit source.",
+        "likely_consequence": "Full verifiability of reported numbers from the paper alone.",
+        "revision_principle": "Reproduce key tables in the paper; cite exact source tables for all reported metrics."
+      },
+      {
+        "dimension": "figure_table_comprehension",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.1", "paragraph": 4, "quote": "Three datasets included in that average — TED-LIUM 3, VoxPopuli, and Earnings-21 — are not individually shown in this summary table."},
+        "observed": "The main results table (Table 2) is clear and complete for the 11 shown datasets, with a footnote explaining the 3 omitted from the summary but included in the average. The data scaling table (§5.2) is clear. No actual figures are rendered in this text (arXiv PDF would have them), but the tables are self-contained.",
+        "reader_struggle": "Minor: the summary table omits 3 of 14 datasets that contribute to the average, requiring the reader to trust the footnote or consult the original Table 2. In the PDF this would be less of an issue.",
+        "likely_consequence": "Reader notices the omission but the footnote mitigates it; the average is still verifiable from the full table in the source.",
+        "revision_principle": "Either show all datasets in the summary table or explicitly state the average is over the full set with a footnote listing omissions."
+      },
+      {
+        "dimension": "claim_evidence_alignment",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.4", "paragraph": 1, "quote": "The authors explicitly caution that the text normalizer used in this comparison was co-developed alongside Whisper, preventing confident state-of-the-art claims; this result is best read as 'competitive with or better than existing published systems under matched normalization conditions.'"},
+        "observed": "Claims are precisely aligned with evidence: the translation SOTA claim is explicitly qualified; the human comparison is labeled 'indicative rather than definitive'; the LID gap is explained by missing languages; the scale/diversity confound is admitted. No claim exceeds its evidence.",
+        "reader_struggle": "None — the paper models good claim-evidence hygiene.",
+        "likely_consequence": "Reader trusts the claims because the qualifications are proactive and specific.",
+        "revision_principle": "Qualify every claim at the point of making it with the specific evidence constraint (normalizer co-development, sample size, missing languages)."
+      },
+      {
+        "dimension": "unsupported_inference",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "6.2", "paragraph": 3, "quote": "Zero-shot Whisper models, across all five model sizes, trace a frontier lying within the 95% confidence interval for that human evaluator — not because Whisper is better than humans at LibriSpeech, but because it degrades no more than a human does when the distribution shifts."},
+        "observed": "No unsupported inferences detected. The paper avoids causal language where evidence is correlational (scale/diversity confound), avoids 'first' or 'state-of-the-art' without qualification, and doesn't generalize beyond tested conditions. The human robustness comparison is carefully framed as 'within 95% CI of a single human evaluator' not 'human parity.'",
+        "reader_struggle": "None — the paper is a model of restrained inference.",
+        "likely_consequence": "Reader comes away with exactly the conclusions the evidence supports.",
+        "revision_principle": "Match inference strength to evidence strength; explicitly flag where evidence is correlational or confounded."
+      },
+      {
+        "dimension": "redundancy",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "7", "paragraph": 1, "quote": "A consistent thread in ASR research over the past decade is that scale — of models, data, and compute — reliably improves performance."},
+        "observed": "No harmful redundancy. Related work (§7) is organized by theme and concise. Background (§2) defines terms without repeating introduction. Discussion (§6) interprets rather than re-stating results. Each section has a distinct purpose.",
+        "reader_struggle": "None — the paper respects the reader's time.",
+        "likely_consequence": "Efficient reading experience; no sense of re-reading the same points.",
+        "revision_principle": "Assign each section a unique function (problem, method, evidence, interpretation, context) and don't repeat across sections."
+      },
+      {
+        "dimension": "cognitive_load",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "3.3", "paragraph": 1, "quote": "The decoder is conditioned on a sequence of special tokens that specify the task before generating the transcript. The token sequence is: 1. <|startoftranscript|> ... 5. Optionally, a <|nospeech|> token"},
+        "observed": "Cognitive load is well managed: complex multitask format is explained as a numbered list; model sizes in a table; data splits in a table; results in tables; ablations in tables. The background section front-loads definitions. The 'robustness frontier' concept is explained with a concrete visualization description.",
+        "reader_struggle": "Minimal — the token conditioning format could be a diagram in the PDF, but the numbered list is clear in text.",
+        "likely_consequence": "Reader absorbs the multitask mechanism without re-reading.",
+        "revision_principle": "Use structured formats (numbered lists, tables) for multi-component descriptions; front-load definitions in a background section."
+      },
+      {
+        "dimension": "orientation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1.3", "paragraph": 3, "quote": "We evaluate Whisper entirely in a zero-shot setting — without using any training data from the evaluation benchmarks — across 25+ academic datasets spanning diverse acoustic conditions, languages, and tasks."},
+        "observed": "Reader is continuously oriented: the evaluation protocol (zero-shot) is stated in §1.3, reiterated in §4, and the baseline matching strategy is explained before the main result. Each result section opens with the task and datasets. The 'roadmap' in §1.3 previews the whole paper.",
+        "reader_struggle": "None — the reader always knows what's being compared, on what data, and under what protocol.",
+        "likely_consequence": "No disorientation; the reader can predict the structure of each result subsection.",
+        "revision_principle": "State the evaluation protocol globally; repeat the comparison logic at the start of each result section."
+      },
+      {
+        "dimension": "so_what",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "6.3", "paragraph": 1, "quote": "Whisper's core result — that internet-scale diverse weak supervision produces zero-shot generalization competitive with specialized supervised baselines, and far superior to them out-of-distribution — is the speech analogue of what CLIP and BiT demonstrated in vision."},
+        "observed": "The 'so what' is articulated at multiple levels: for ASR (robustness gap closed), for ML generally (CLIP paradigm transfers to speech), for practice (zero-shot deployment viable), for future work (targeted data collection, fine-tuning, decoding). The conclusion (§8) synthesizes all three.",
+        "reader_struggle": "None — the significance is clear for each binding persona: A sees the ASR paradigm shift; B sees the cross-domain principle; E sees the bounded claims.",
+        "likely_consequence": "Reader can articulate why this paper matters to their own work.",
+        "revision_principle": "Articulate significance at multiple levels (subfield, cross-domain, practical, future directions) in discussion and conclusion."
+      }
+    ],
+    "inference_issues": [
+      {
+        "kind": "overstrong_language",
+        "location": {"section": "4.2", "paragraph": 2, "quote": "Among the compared services, a computer-assisted human transcription service was the most accurate overall, achieving an aggregate WER 1.15 percentage points lower than Whisper. The four purely human transcription services performed only a fraction of a percentage point better than Whisper."},
+        "claim_text": "Whisper approaches human-level accuracy and robustness on English speech",
+        "missing_link": "The human comparison uses only 25 recordings with no confidence intervals reported. The paper itself acknowledges this is 'indicative rather than definitive' (§6.4), but the abstract and §4.2 lead with 'approaches human-level accuracy' without the same qualification."
+      },
+      {
+        "kind": "overstrong_language",
+        "location": {"section": "4.4", "paragraph": 1, "quote": "zero-shot Whisper achieves 29.1 BLEU — the highest score among compared models, improving over mSLAM-CTC (24.8) and Maestro (25.2)"},
+        "claim_text": "highest score among compared models",
+        "missing_link": "The text normalizer was co-developed with Whisper, which the authors explicitly say 'prevent[s] confident state-of-the-art claims' and the result is 'best read as competitive with or better than existing published systems under matched normalization conditions.' The unqualified 'highest score' in §4.4 precedes this qualification."
+      },
+      {
+        "kind": "selective_presentation",
+        "location": {"section": "4.3", "paragraph": 2, "quote": "On VoxPopuli, however, Whisper lags substantially behind Maestro (13.6% vs. 8.1% WER), likely because other models use VoxPopuli as a major unsupervised pretraining source and VoxPopuli has substantially more supervised data per language (roughly 10× more than MLS)."},
+        "claim_text": "Whisper is competitive with or surpasses prior work on speech-to-English translation and multilingual recognition",
+        "missing_link": "The abstract claims Whisper is 'competitive with or surpasses prior work on ... multilingual recognition' but on VoxPopuli (16 European languages) it lags substantially (13.6% vs 8.1% WER). The paper explains why (data overlap), but the abstract claim is broader than the evidence supports without that context."
+      },
+      {
+        "kind": "limitation_not_respected",
+        "location": {"section": "6.4", "paragraph": 3, "quote": "Long-form decoding failures. While the heuristic decoding strategy substantially improves long-form transcription, failure modes including hallucination and repetition loops remain."},
+        "claim_text": "outperforms commercial ASR services on most long-form transcription benchmarks",
+        "missing_link": "The long-form results use a heuristic decoding stack (beam search, temperature fallback, VAD, previous-text conditioning) that the paper admits doesn't fully solve hallucination/repetition. The commercial comparison is also noted as 'approximate' because commercial systems may have trained on the eval datasets. The claim in the abstract doesn't carry these qualifications."
+      },
+      {
+        "kind": "causal_overreach",
+        "location": {"section": "6.1", "paragraph": 2, "quote": "One interpretation of Whisper's result is that its enormous distributional breadth acts as a regularizer: no single acoustic or textual quirk consistently predicts transcript tokens across 680,000 hours of varied internet audio, so the model is forced to learn representations that are robust to those variations."},
+        "claim_text": "distributional breadth acts as a regularizer ... forced to learn representations that are robust",
+        "missing_link": "The paper immediately acknowledges (§6.1 para 3) that 'no experiment holds volume constant while varying diversity — and no experiment holds diversity constant while varying volume — so the relative contributions of scale versus distributional breadth remain entangled and unmeasured.' The causal mechanism (diversity as regularizer) is presented as an interpretation before the confound is admitted."
+      }
+    ],
+    "objective_discrepancies": [
+      "The authors state the paper is 'meant to present their research project to adjacent machine-learning researchers.' The reconstruction confirms this: the paper defines all ASR-specific terms (WER, effective robustness, weak supervision), explains the vision analogy (CLIP/BiT) for cross-domain access, uses standard Transformer architecture to isolate the data effect, and structures results for a general ML audience. No discrepancy — the paper achieves its stated objective.",
+      "Minor discrepancy: The objective says 'present their research project' (singular) but the paper presents a model family (5 sizes), multiple tasks (4), and extensive ablations — it's a comprehensive research program, not a single project. The paper delivers more than the minimal objective."
+    ],
+    "injection_suspected": []
+  }
+}

@@ -1,0 +1,5 @@
+Intended readers: machine-learning researchers from other subfields (adjacent researchers) — they know general ML, deep learning, and standard evaluation practice and statistics, but not this project's subfield-specific terminology, datasets, or prior work.
+They can be assumed to know: supervised learning, language models, fine-tuning, train/test splits, greedy decoding, retrieval as a general concept, and standard evaluation/statistics practice (e.g. why single-run point estimates are weaker evidence than repeated trials).
+They cannot be assumed to know: software-engineering-benchmark conventions, BM25, pull request / issue terminology, unified diff / patch format, this specific benchmark suite and its predecessors, or LoRA fine-tuning details.
+Binding reader types for this review: B (adjacent researcher, primary), A (specialist, secondary check on precision), E (mixed venue, sanity check that accessible framing does not lose rigor).
+Venue type: journal (generic; no specific venue guidelines were supplied for this run).

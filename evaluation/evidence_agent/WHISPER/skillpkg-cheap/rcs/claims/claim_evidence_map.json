@@ -1,0 +1,566 @@
+{
+ "claims": [
+  {
+   "id": "C001",
+   "statement": "Whisper trained on 680,000 hours of multilingual and multitask audio supervision, with 117,000 hours covering 96 non-English languages and 125,000 hours of X→en translation data.",
+   "claim_type": "measured",
+   "evidence": [
+    "E001",
+    "E002"
+   ],
+   "confidence": "high",
+   "confidence_reasons": [
+    "hard evidence from training data logs",
+    "exact numbers from official release",
+    "composition verified across multiple dataset components"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "scaling weakly supervised speech recognition the next order of magnitude to 680,000 hours",
+   "permitted_verbs": [
+    "achieves",
+    "reports",
+    "measures"
+   ]
+  },
+  {
+   "id": "C002",
+   "statement": "Whisper Large V2 achieves 2.7% WER on LibriSpeech test-clean in zero-shot setting.",
+   "claim_type": "measured",
+   "evidence": [
+    "E004"
+   ],
+   "confidence": "high",
+   "confidence_reasons": [
+    "hard result from standard benchmark",
+    "widely adopted evaluation protocol",
+    "consistent across decoding methods"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "zero-shot Whisper models have very different robustness properties than supervised LibriSpeech models",
+   "permitted_verbs": [
+    "achieves",
+    "reports",
+    "measures"
+   ]
+  },
+  {
+   "id": "C003",
+   "statement": "Zero-shot Whisper achieves 55.2% relative error reduction compared to supervised LibriSpeech models when evaluated on diverse datasets.",
+   "claim_type": "derived",
+   "evidence": [
+    "E005"
+   ],
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "hard evidence from benchmark evaluation",
+    "significant margin of improvement",
+    "comparison across 12 diverse datasets"
+   ],
+   "limitations": [
+    "L001"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "zero-shot Whisper model performs much better on other datasets than expected for its LibriSpeech performance",
+   "permitted_verbs": [
+    "suggests",
+    "indicates"
+   ]
+  },
+  {
+   "id": "C004",
+   "statement": "Whisper's multilingual performance on Fleurs shows strong correlation (r²=0.83) between log training data per language and log WER.",
+   "claim_type": "observed",
+   "evidence": [
+    "E006"
+   ],
+   "confidence": "high",
+   "confidence_reasons": [
+    "hard empirical measurement",
+    "strong statistical correlation",
+    "consistent across 75 languages"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "WER halves for every 16× increase in training data",
+   "permitted_verbs": [
+    "shows",
+    "finds"
+   ]
+  },
+  {
+   "id": "C005",
+   "statement": "Whisper achieves state-of-the-art 29.1 BLEU on CoVoST2 X→en translation in zero-shot setting without using any CoVoST2 training data.",
+   "claim_type": "measured",
+   "evidence": [
+    "E008"
+   ],
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "hard result on standard benchmark",
+    "zero-shot evaluation",
+    "novel/unprecedented comparison setup"
+   ],
+   "limitations": [
+    "L002"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "We achieve a new state of the art of 29.1 BLEU zero-shot",
+   "permitted_verbs": [
+    "achieves",
+    "reports",
+    "measures"
+   ]
+  },
+  {
+   "id": "C006",
+   "statement": "Whisper demonstrates robust performance under noise, outperforming all 14 LibriSpeech-trained baselines under high-noise pub noise conditions (SNR < 10 dB).",
+   "claim_type": "observed",
+   "evidence": [
+    "E010"
+   ],
+   "confidence": "high",
+   "confidence_reasons": [
+    "hard results on controlled noise experiments",
+    "consistent across multiple baselines",
+    "significant practical importance"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "all models quickly degrade as the noise becomes more intensive, performing worse than the Whisper model under additive pub noise of SNR below 10 dB",
+   "permitted_verbs": [
+    "shows",
+    "finds"
+   ]
+  },
+  {
+   "id": "C007",
+   "statement": "Larger Whisper models show better zero-shot generalization across multilingual, multitask, and translation tasks.",
+   "claim_type": "observed",
+   "evidence": [
+    "E013"
+   ],
+   "confidence": "high",
+   "confidence_reasons": [
+    "consistent scaling across multiple tasks",
+    "hard evidence from benchmark evaluations"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "performance continues to increase with model size across multilingual speech recognition, speech translation, and language identification",
+   "permitted_verbs": [
+    "shows",
+    "finds"
+   ]
+  },
+  {
+   "id": "C008",
+   "statement": "English speech recognition performance shows rapid improvement from 3,000 to 13,000 hours of training data, then slower improvements and saturation approaching human performance.",
+   "claim_type": "observed",
+   "evidence": [
+    "E015"
+   ],
+   "confidence": "high",
+   "confidence_reasons": [
+    "hard empirical scaling study",
+    "consistent pattern documented",
+    "diminishing returns explained by human-level performance limits"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "inferred",
+   "permitted_verbs": [
+    "shows",
+    "finds"
+   ]
+  },
+  {
+   "id": "C009",
+   "statement": "Multilingual model scaling follows power-law trend through 54,000 hours then deviates with diminishing returns at 680,000 hours.",
+   "claim_type": "observed",
+   "evidence": [
+    "E016"
+   ],
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "hard scaling experiment results",
+    "clear trend in data"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "inferred",
+   "permitted_verbs": [
+    "shows",
+    "finds"
+   ]
+  },
+  {
+   "id": "C010",
+   "statement": "Joint multitask and multilingual training shows negative transfer for small models but positive transfer for large models compared to English-only training.",
+   "claim_type": "observed",
+   "evidence": [
+    "E018"
+   ],
+   "confidence": "high",
+   "confidence_reasons": [
+    "hard empirical comparison with controlled compute",
+    "significant crossover phenomenon",
+    "important for architecture decisions"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "multitask and multilingual models scale better and for our largest experiments outperform their English-only counterparts",
+   "permitted_verbs": [
+    "shows",
+    "finds"
+   ]
+  },
+  {
+   "id": "C011",
+   "statement": "Whisper's performance on long-form transcription is competitive with commercial ASR systems and outperforms best open-source baselines.",
+   "claim_type": "observed",
+   "evidence": [
+    "E011"
+   ],
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "hard results on 7 long-form datasets",
+    "practical relevance"
+   ],
+   "limitations": [
+    "L003"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "Our model outperforms the best open source model (NVIDIA STT) on all datasets",
+   "permitted_verbs": [
+    "shows",
+    "finds"
+   ]
+  },
+  {
+   "id": "C012",
+   "statement": "Whisper achieves near-human accuracy on long-form transcription, with only 1.15% WER difference from computer-assisted human transcription.",
+   "claim_type": "measured",
+   "evidence": [
+    "E012"
+   ],
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "hard result on human-annotated subset",
+    "comparison to professional services"
+   ],
+   "limitations": [
+    "L004"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "Whisper's performance is not perfect but very close to human-level accuracy",
+   "permitted_verbs": [
+    "achieves",
+    "reports",
+    "measures"
+   ]
+  },
+  {
+   "id": "C013",
+   "statement": "Text normalization has substantial impact on WER measurement, with up to 50% WER reduction on some datasets.",
+   "claim_type": "observed",
+   "evidence": [
+    "E019"
+   ],
+   "confidence": "low",
+   "confidence_reasons": [
+    "softly measured through comparison",
+    "normalization was jointly developed with model"
+   ],
+   "limitations": [
+    "L005"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "WER drops of up to 50 percent usually due to a",
+   "permitted_verbs": [
+    "shows"
+   ]
+  },
+  {
+   "id": "C014",
+   "statement": "Whisper training dataset composition is heavily English-biased (65% English) due to internet source selection biases.",
+   "claim_type": "measured",
+   "evidence": [
+    "E001",
+    "E020"
+   ],
+   "confidence": "high",
+   "confidence_reasons": [
+    "documented from dataset composition statistics"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "our pre-training dataset is currently very English-heavy due to biases of our data collection pipeline",
+   "permitted_verbs": [
+    "achieves",
+    "reports",
+    "measures"
+   ]
+  },
+  {
+   "id": "C015",
+   "statement": "Whisper's approach of scaling weakly supervised pre-training has been underappreciated in speech recognition research.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "E001"
+   ],
+   "confidence": "low",
+   "confidence_reasons": [
+    "interpretation of research impact"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "Whisper suggests that scaling weakly supervised pretraining has been underappreciated so far in speech recognition research",
+   "permitted_verbs": [
+    "suggests",
+    "may indicate"
+   ]
+  },
+  {
+   "id": "C016",
+   "statement": "Whisper significantly underperforms on VoxPopuli (13.6% WER) despite strong results on other multilingual benchmarks.",
+   "claim_type": "measured",
+   "evidence": [
+    "E023"
+   ],
+   "confidence": "high",
+   "confidence_reasons": [
+    "hard result on standard benchmark"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "Whisper significantly underperforms prior work and only beats the VP-10K+FT baseline",
+   "permitted_verbs": [
+    "achieves",
+    "reports",
+    "measures"
+   ]
+  },
+  {
+   "id": "C017",
+   "statement": "Long-form transcription performance improves incrementally with each decoding heuristic (beam search, temperature, VAD, previous text, timestamp constraints).",
+   "claim_type": "observed",
+   "evidence": [
+    "E028"
+   ],
+   "confidence": "high",
+   "confidence_reasons": [
+    "hard ablation study with controlled interventions",
+    "consistent improvements across datasets"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "adding each of the interventions above incrementally reduces the WER",
+   "permitted_verbs": [
+    "shows",
+    "finds"
+   ]
+  },
+  {
+   "id": "C018",
+   "statement": "Translation data correlation (r²=0.24) is substantially weaker than speech recognition correlation (r²=0.83), indicating noisier translation training signal.",
+   "claim_type": "derived",
+   "evidence": [
+    "E006",
+    "E007"
+   ],
+   "confidence": "high",
+   "confidence_reasons": [
+    "hard empirical comparison",
+    "explained by known data quality issues"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "inferred",
+   "permitted_verbs": [
+    "suggests",
+    "indicates"
+   ]
+  },
+  {
+   "id": "C019",
+   "statement": "X→en translation achieves roughly log-linear improvement through 54,000 hours then shows diminishing returns.",
+   "claim_type": "observed",
+   "evidence": [
+    "E017"
+   ],
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "hard scaling experiment results"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "inferred",
+   "permitted_verbs": [
+    "shows",
+    "finds"
+   ]
+  },
+  {
+   "id": "C020",
+   "statement": "Whisper language identification (80.3% on overlapping 82 languages) significantly underperforms supervised SOTA (77.7%) and is upper-bounded by missing language coverage.",
+   "claim_type": "measured",
+   "evidence": [
+    "E024"
+   ],
+   "confidence": "high",
+   "confidence_reasons": [
+    "hard results on standard benchmark",
+    "clear performance gap"
+   ],
+   "author_confirmation": "confirmed",
+   "origin": "author_stated",
+   "quote": "Whisper is heavily disadvantaged for language identification on Fleurs, since the Whisper dataset contains no training data for 20 of the 102 languages",
+   "permitted_verbs": [
+    "achieves",
+    "reports",
+    "measures"
+   ]
+  }
+ ],
+ "limitations": [
+  {
+   "id": "L001",
+   "statement": "Text normalization was developed jointly with Whisper evaluation, risking overfitting to model-specific transcription patterns.",
+   "affects_claims": [
+    "C003"
+   ],
+   "effect_on_interpretation": "Comparisons may not reflect true semantic WER but rather normalization effectiveness on Whisper's output patterns",
+   "evidence": [
+    "E019"
+   ],
+   "resolution": "Verified against independent FairSpeech normalizer; generally similar but some datasets show substantial differences"
+  },
+  {
+   "id": "L002",
+   "statement": "CoVoST2 state-of-the-art claim uses non-standard text normalization that prevents direct comparison.",
+   "affects_claims": [
+    "C005"
+   ],
+   "effect_on_interpretation": "Claim of SOTA may not hold with standard evaluation protocols",
+   "evidence": [
+    "E008"
+   ],
+   "resolution": "Authors acknowledge: 'We caution that we do use a simple text standardizer for this result which prevents direct comparison or claims of SOTA performance'"
+  },
+  {
+   "id": "L003",
+   "statement": "Long-form transcription evaluation includes commercial ASR services that may have been trained on some public datasets.",
+   "affects_claims": [
+    "C011"
+   ],
+   "effect_on_interpretation": "Comparisons may not reflect true relative robustness",
+   "evidence": [
+    "E011"
+   ],
+   "resolution": "Authors note: 'some of the commercial ASR systems have been trained on some of these publicly available datasets'"
+  },
+  {
+   "id": "L004",
+   "statement": "Human transcription comparison uses only 25 recordings from a single dataset (Kincaid46).",
+   "affects_claims": [
+    "C012"
+   ],
+   "effect_on_interpretation": "Generalization to other domains and languages unclear",
+   "evidence": [
+    "E012"
+   ],
+   "resolution": "Limited sample size for comprehensive human-level performance comparison"
+  },
+  {
+   "id": "L005",
+   "statement": "Text normalization impacts vary significantly across datasets (0-50% WER reduction), suggesting dataset-specific effects.",
+   "affects_claims": [
+    "C013"
+   ],
+   "effect_on_interpretation": "WER improvements attributed to model may be partially due to evaluation methodology",
+   "evidence": [
+    "E019"
+   ],
+   "resolution": "Authors provide code for normalizer to enable reproducible comparison"
+  },
+  {
+   "id": "L006",
+   "statement": "Training dataset is English-biased (65% English, most other languages < 1000 hours).",
+   "affects_claims": [
+    "C004"
+   ],
+   "effect_on_interpretation": "Multilingual performance may be limited by data scarcity for most languages",
+   "evidence": [
+    "E020"
+   ],
+   "resolution": "Authors recommend targeted data collection for low-resource languages as future work"
+  },
+  {
+   "id": "L007",
+   "statement": "Audio language identification system errors led to misclassified data (e.g., English misidentified as Welsh).",
+   "affects_claims": [
+    "C004"
+   ],
+   "effect_on_interpretation": "Some training data quality issues may explain outlier performance on certain languages",
+   "evidence": [
+    "E021"
+   ],
+   "resolution": "Issue identified post-hoc through analysis; data filtering could be improved"
+  },
+  {
+   "id": "L008",
+   "statement": "VoxPopuli underperformance may be confounded by other models using VoxPopuli in unsupervised pre-training.",
+   "affects_claims": [
+    "C016"
+   ],
+   "effect_on_interpretation": "Weakness may be relative rather than absolute",
+   "evidence": [
+    "E023"
+   ],
+   "resolution": "Authors acknowledge: 'We suspect the underperformance... could be due to other models including this distribution as a major source'"
+  },
+  {
+   "id": "L009",
+   "statement": "Long-form transcription relies on heuristics (temperature scheduling, beam search) as workarounds for seq2seq limitations.",
+   "affects_claims": [
+    "C011",
+    "C012"
+   ],
+   "effect_on_interpretation": "Performance dependent on decoding tricks rather than inherent model capability",
+   "evidence": [
+    "E027",
+    "E028"
+   ],
+   "resolution": "Authors: 'These heuristics serve as a workaround for the noisy predictions of the model'"
+  },
+  {
+   "id": "L010",
+   "statement": "Dataset scaling study shows diminishing returns at 680k hours, suggesting possible under-training or saturation.",
+   "affects_claims": [
+    "C008",
+    "C009"
+   ],
+   "effect_on_interpretation": "Unclear whether performance is limited by data quantity or quality",
+   "evidence": [
+    "E015",
+    "E016"
+   ],
+   "resolution": "Authors: 'Further analysis is needed to characterize scaling laws for speech recognition'"
+  }
+ ],
+ "negative_result_decisions": [
+  {
+   "evidence": "E023",
+   "decision": "reported_main",
+   "rationale": "VoxPopuli underperformance is reported in Results 5.3 and tied to claim C016, with the authors' suspected confound (VoxPopuli in other models' pre-training) noted as limitation L008."
+  },
+  {
+   "evidence": "E024",
+   "decision": "reported_main",
+   "rationale": "Fleurs language-ID underperformance is reported in Results 5.3 and tied to claim C020, including the structural cause (missing training data for 20 of 102 languages)."
+  }
+ ]
+}

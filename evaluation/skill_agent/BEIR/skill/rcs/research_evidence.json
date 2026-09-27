@@ -1,0 +1,200 @@
+{
+  "evidence": [
+    {
+      "id": "E001",
+      "description": "BEIR benchmark composition",
+      "value": "18 publicly available datasets from diverse text retrieval tasks and domains, spanning 9 heterogeneous retrieval tasks",
+      "file": "project/paper.txt",
+      "lines": "7, 121"
+    },
+    {
+      "id": "E002",
+      "description": "Number of models evaluated",
+      "value": "10 state-of-the-art retrieval systems",
+      "file": "project/paper.txt",
+      "lines": "7"
+    },
+    {
+      "id": "E003",
+      "description": "Model architecture categories",
+      "value": "lexical, sparse, dense, late-interaction and re-ranking architectures",
+      "file": "project/paper.txt",
+      "lines": "7"
+    },
+    {
+      "id": "E004",
+      "description": "BM25 in-domain underperformance",
+      "value": "BM25 heavily underperforms neural approaches by 7-18 points on in-domain MS MARCO",
+      "file": "project/paper.txt",
+      "lines": "366"
+    },
+    {
+      "id": "E005",
+      "description": "BM25 avg zero-shot performance vs other models",
+      "value": "Table 2: BM25 avg performance vs BM25 baseline column shows competitors with: DeepCT -27.9%, SPARTA -20.3%, docT5query +1.6%, DPR -47.7%, ANCE -7.4%, TAS-B -2.8%, GenQ -3.6%, ColBERT +2.5%, BM25+CE +11%",
+      "file": "project/paper.txt",
+      "lines": "423-531"
+    },
+    {
+      "id": "E006",
+      "description": "docT5query outperforms BM25 on datasets count",
+      "value": "docT5query outperforms BM25 on 11/18 datasets",
+      "file": "project/paper.txt",
+      "lines": "535"
+    },
+    {
+      "id": "E007",
+      "description": "BM25+CE outperforms BM25 on datasets count",
+      "value": "BM25+CE performs the best and is able to outperform BM25 on almost all (16/18) datasets",
+      "file": "project/paper.txt",
+      "lines": "537"
+    },
+    {
+      "id": "E008",
+      "description": "ColBERT outperforms BM25 on datasets count",
+      "value": "ColBERT is able to outperform BM25 on 9/18 datasets",
+      "file": "project/paper.txt",
+      "lines": "537"
+    },
+    {
+      "id": "E009",
+      "description": "Efficiency comparison - reranking latency",
+      "value": "BM25+CE: GPU 450ms, CPU 350ms; ColBERT: CPU 6100ms; dense models (TAS-B, GenQ, ANCE): GPU 14-20ms, CPU 125-275ms; BM25: CPU 20ms",
+      "file": "project/paper.txt",
+      "lines": "601-651"
+    },
+    {
+      "id": "E010",
+      "description": "Index size comparison",
+      "value": "BM25 and docT5query: 0.4GB; dense models: 3GB; SPARTA: 12GB; ColBERT: 20GB for 1M documents",
+      "file": "project/paper.txt",
+      "lines": "601-656"
+    },
+    {
+      "id": "E011",
+      "description": "ColBERT BioASQ index size",
+      "value": "ColBERT requires ~900GB to store the BioASQ (~15M documents) index, whereas BM25 only requires 18GB",
+      "file": "project/paper.txt",
+      "lines": "656"
+    },
+    {
+      "id": "E012",
+      "description": "Hole@10 rates for TREC-COVID",
+      "value": "BM25 6.4%, docT5query 2.8%, DeepCT 19.4%, SPARTA 12.4%, ANCE 14.4%, TAS-B 31.8%, ColBERT 12.4%",
+      "file": "project/paper.txt",
+      "lines": "669-675"
+    },
+    {
+      "id": "E013",
+      "description": "Performance change after annotation of missing judgments in TREC-COVID",
+      "value": "ANCE: 0.654 -> 0.735 (+8.1 points); ColBERT: 0.677 -> 0.735 (+5.8 points); BM25: 0.656 -> 0.668 (+1.2 points); docT5query: 0.713 -> 0.714 (+0.1 points)",
+      "file": "project/paper.txt",
+      "lines": "679-700"
+    },
+    {
+      "id": "E014",
+      "description": "TREC-COVID manual annotation count",
+      "value": "In total, we annotated 980 query-document pairs in TREC-COVID",
+      "file": "project/paper.txt",
+      "lines": "704"
+    },
+    {
+      "id": "E015",
+      "description": "Dataset size range",
+      "value": "datasets of various sizes (3.6k - 15M documents)",
+      "file": "project/paper.txt",
+      "lines": "121"
+    },
+    {
+      "id": "E016",
+      "description": "Query length range",
+      "value": "average query length between 3 and 192 words",
+      "file": "project/paper.txt",
+      "lines": "121"
+    },
+    {
+      "id": "E017",
+      "description": "Document length range",
+      "value": "average document length between 11 and 635 words",
+      "file": "project/paper.txt",
+      "lines": "121"
+    },
+    {
+      "id": "E018",
+      "description": "Dense vs lexical retrieval speed advantage",
+      "value": "dense retrievers are 20-30x faster (<20ms) compared to the re-ranking models",
+      "file": "project/paper.txt",
+      "lines": "598"
+    },
+    {
+      "id": "E019",
+      "description": "TAS-B performance vs peers",
+      "value": "TAS-B outperforms ANCE on 14/18 and DPR on 17/18 datasets",
+      "file": "project/paper.txt",
+      "lines": "538"
+    },
+    {
+      "id": "E020",
+      "description": "TAS-B document length preference finding",
+      "value": "On TREC-COVID, TAS-B retrieves documents with a median length of mere 10 words versus ANCE with 160 words",
+      "file": "project/paper.txt",
+      "lines": "539"
+    },
+    {
+      "id": "E021",
+      "description": "MS MARCO training pairs",
+      "value": "MS MARCO Passage Ranking dataset contains 8.8M Passages and an official training set of 532,761 query-passage pairs",
+      "file": "project/paper.txt",
+      "lines": "839"
+    },
+    {
+      "id": "E022",
+      "description": "Evaluation metric",
+      "value": "nDCG@10 for all datasets",
+      "file": "project/paper.txt",
+      "lines": "353"
+    },
+    {
+      "id": "E023",
+      "description": "Domain diversity analysis method",
+      "value": "pairwise weighted Jaccard similarity score on unigram word overlap between all dataset pairs",
+      "file": "project/paper.txt",
+      "lines": "293"
+    },
+    {
+      "id": "E024",
+      "description": "Software framework availability",
+      "value": "pip install beir; wraps Sentence-Transformers, Transformers, Anserini, DPR, Elasticsearch, ColBERT, Universal Sentence Encoder",
+      "file": "project/paper.txt",
+      "lines": "296"
+    },
+    {
+      "id": "E025",
+      "description": "Limitations of BEIR",
+      "value": "All English only; max document length ~512 word pieces; no multi-factor signals (PageRank, click-through); single-field only; task-specific models not covered",
+      "file": "project/paper.txt",
+      "lines": "833-837"
+    },
+    {
+      "id": "E026",
+      "description": "GenQ domain adaptation finding",
+      "value": "GenQ outperforms TAS-B model on specialized domains like scientific publications, finance or StackExchange. On broader and more generic domains, like Wikipedia, it performs weaker than TAS-B",
+      "file": "project/paper.txt",
+      "lines": "590"
+    },
+    {
+      "id": "E027",
+      "description": "DPR training data",
+      "value": "DPR Multi model trained on four QA datasets: NQ, TriviaQA, WebQuestions and CuratedTREC; not MS MARCO trained",
+      "file": "project/paper.txt",
+      "lines": "360"
+    },
+    {
+      "id": "E028",
+      "description": "Cosine vs dot-product similarity function experiment",
+      "value": "Cosine-sim vs dot-product on TREC-COVID: 0.482 vs 0.635 nDCG@10 (+15.3 points for dot product); on Signal-1M(RT): 0.261 vs 0.243; on FEVER: 0.670 vs 0.685",
+      "file": "project/paper.txt",
+      "lines": "1274-1284"
+    }
+  ]
+}

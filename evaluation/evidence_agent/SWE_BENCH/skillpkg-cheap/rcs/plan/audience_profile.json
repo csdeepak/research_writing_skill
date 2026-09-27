@@ -1,0 +1,11 @@
+{
+  "mode": "B",
+  "primary": "Machine-learning researchers from other subfields (adjacent researchers): know general ML, deep learning, standard evaluation practice, and statistics, but not this subfield's (LLM code generation / software engineering benchmarks) terminology, datasets, or prior work.",
+  "secondary": "Reviewers and replicators checking the evaluation methodology and reported numbers.",
+  "tertiary": "Practitioners and future researchers deciding whether to build on or compare against SWE-bench.",
+  "assumed_known": ["supervised learning and fine-tuning", "large language models and prompting", "train/validation/test-style dataset splits", "basic retrieval-augmented generation concept (at a general level)", "standard evaluation statistics (mean, median)"],
+  "not_assumed": ["software-engineering benchmark conventions (unit tests as ground truth)", "BM25 and lexical retrieval specifics", "prior code-generation benchmarks (e.g. function-level benchmarks) and their limitations", "GitHub issue/PR workflow terminology", "LoRA fine-tuning specifics"],
+  "binding_personas": ["A", "B", "E"],
+  "term_budget": {"per_paragraph": 2, "abstract_acronyms": 1},
+  "source": "Set from TASK.md's explicit audience specification (no human elicitation needed); UNCLEAR_AUDIENCE not raised."
+}

@@ -1,0 +1,17 @@
+venue: "NeurIPS Datasets and Benchmarks Track (inferred from arXiv metadata and citation format)"
+assumed: true
+section_template:
+  - Abstract
+  - Introduction
+  - Challenges / Background
+  - Related Work
+  - Benchmark Design
+  - Measurement Methodology
+  - Submission Results and Assessment
+  - Limitations
+  - Conclusion
+citation_style: "(Author et al., Year) inline"
+voice: "active preferred"
+length_guidance: "3000–4500 words main text (per run-specific constraint)"
+required_statements: []
+notes: "Venue is inferred; all rules marked assumed: true. Paper targets adjacent ML researchers per audience specification."

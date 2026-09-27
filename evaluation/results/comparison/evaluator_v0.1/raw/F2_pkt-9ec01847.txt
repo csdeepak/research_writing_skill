@@ -1,0 +1,315 @@
+{
+  "reconstruction": {
+    "packet_id": "pkt-9ec01847",
+    "answers": {
+      "Q1": {
+        "answer": "The problem is the lack of a standardized, reproducible benchmark for comparing ultra-low-power machine learning (TinyML) inference systems on the metrics that matter most: accuracy, latency, and energy consumption. The field spans diverse hardware (MCUs, accelerators, FPGAs) and software stacks, but existing benchmarks either target larger hardware, don't measure energy, or can't accommodate the heterogeneity.",
+        "locations": ["§1/para2-4", "§2/para1-5"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q2": {
+        "answer": "TinyML enables always-on, battery-powered intelligent sensing on devices that consume <1mW. Without a standard benchmark, claims of improvement are made against different baselines, on different hardware, using different metrics, making it impossible to judge whether progress is real or whether one system genuinely outperforms another. Energy cost of wireless communication exceeds local inference, making on-device inference necessary for battery-powered deployment.",
+        "locations": ["§1/para1-3"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q3": {
+        "answer": "Existing benchmarks fall short: CoreMark measures general CPU performance, not ML inference; MLMark uses models requiring hundreds of MB to GB (far beyond MCU memory); MLPerf Inference targets hardware with GB memory and requires OS/file IOS/debug interfaces that exclude MCU-class devices. None jointly measure accuracy, latency, and energy for microcontroller-class ML inference.",
+        "locations": ["§3/para1-4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q4": {
+        "answer": "The authors created MLPerf Tiny v0.5: a benchmark suite with four inference tasks (keyword spotting, visual wake words, image classification, anomaly detection), each with a dataset, reference model, and quality target. They designed a two-division submission structure (closed: fixed model, PTQ only; open: any model/training) and a measurement harness with electrical isolation for energy measurement. They ran a first submission round (June 2021) with five diverse submissions.",
+        "locations": ["§4/para1-2", "§5.1", "§5.2", "§5.3", "§6.1"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q5": {
+        "answer": "The two-division design balances comparability (closed division fixes model so differences reflect hardware/stack) with flexibility (open division allows model/training innovation). The minimal firmware API (no OS, file system, or debug interface required) accommodates hardware heterogeneity. The electrical isolation harness with three supported energy monitors enables fair energy measurement across platforms. Reference implementations provide open baselines.",
+        "locations": ["§2/para6", "§5.1", "§5.2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q6": {
+        "answer": "The first submission round (v0.5, June 2021) attracted five submissions: (1) ARM MCU with TFLM INT-8 PTQ (closed), (2) RISC-V MCU with TFLM INT-8 PTQ (closed), (3) Raspberry Pi 4 with LEIP Framework FP32/INT-8 PTQ (closed), (4) NN Accelerator with Syntiant TDK INT-8 PTQ (closed), (5) FPGA with HLS4ML INT-6/8 QAT (open). All measured accuracy, latency (IPS), and energy (µJ/inference) per the protocol.",
+        "locations": ["§6.1", "Table 2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q7": {
+        "answer": "The benchmark successfully accommodated fundamentally different hardware and software stacks within a single round. INT-8 PTQ was the dominant quantization format (4/5 submissions) with limited accuracy loss (e.g., KWS 92.2%→91.6%, anomaly AUC 0.88→0.86). Submissions spanned three orders of magnitude in power (microwatts to watts). The modular design enabled diverse contributors (hardware vendors, software toolchains, reconfigurable hardware) to participate and produce comparable results.",
+        "locations": ["§6.2/para1-5", "§8/para2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q8": {
+        "answer": "The results establish that: (1) a single benchmark suite can fairly measure accuracy, latency, and energy for MCU-class ML across heterogeneous hardware/software; (2) the two-division structure works to accommodate different contributor types; (3) INT-8 PTQ is viable for meeting quality targets on these tasks; (4) the measurement harness works across a wide power range. The v0.5 round demonstrates feasibility and initial adoption.",
+        "locations": ["§6.2", "§8/para1-2"],
+        "confidence": 4,
+        "missing": ""
+      },
+      "Q9": {
+        "answer": "The results do NOT establish: (1) stable trends in the field (single round, 5 submissions); (2) whether dataset modification will be used in open division (none did in v0.5); (3) generalization beyond the four benchmark tasks and their specific reference models; (4) fairness of closed-division comparison for architectures not represented (RNNs, attention); (5) whether pre-processing exclusion creates gaming risk in practice; (6) longitudinal progress tracking (only one round so far).",
+        "locations": ["§7/para1-3", "§6.2/para4-5"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q10": {
+        "answer": "The primary contribution is MLPerf Tiny v0.5: the first industry-standard, open-source benchmark suite for TinyML inference that jointly measures accuracy, latency, and energy across four representative tasks, with a modular two-division design accommodating hardware and software heterogeneity, validated by a first submission round with five diverse platforms.",
+        "locations": ["§Abstract", "§1/para4-5", "§8/para1-2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q11": {
+        "answer": "Main limitations: (1) Pre-processing excluded from measurement window, creating degenerate-case risk where computation could be relabeled as feature extraction; streaming inputs not supported due to serial bandwidth. (2) Closed-division reference models only cover FC and conv layers — no RNNs, attention, or other sequence modeling architectures. (3) Single submission round (v0.5, 5 participants) — observations are a snapshot, not stable characterizations. (4) No v0.5 submission modified training data, but unclear if this pattern will persist.",
+        "locations": ["§7/para1-3", "§6.2/para4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q12": {
+        "answer": "MLPerf Tiny is the first standardized benchmark for TinyML that measures accuracy, latency, and energy together across diverse hardware/software. It uses four tasks, a two-division structure (closed for hardware comparison, open for model innovation), and an electrical-isolation harness for fair energy measurement. The v0.5 round showed it works across platforms from MCU to FPGA, but it's early — limitations include excluded pre-processing, no recurrent architectures in closed division, and only one round of data so far.",
+        "locations": ["§Abstract", "§1/para4-5", "§7", "§8"],
+        "confidence": 5,
+        "missing": ""
+      }
+    }
+  },
+  "diagnostics": {
+    "packet_id": "pkt-9ec01847",
+    "binding_personas": ["A", "B", "E"],
+    "findings": [
+      {
+        "dimension": "problem",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 2, "quote": "Without a standard benchmark, claims of improvement are made against different baselines"},
+        "observed": "The problem is sharply defined: TinyML's heterogeneity (hardware, software, memory, power) makes fair comparison impossible with existing benchmarks. The paper articulates why this is distinct from datacenter ML benchmarking.",
+        "reader_struggle": "No struggle — the problem is introduced early, motivated concretely, and tied to the field's defining constraints (sub-mW, KB memory, no OS).",
+        "likely_consequence": "Readers immediately understand what gap this benchmark fills and why existing solutions fail.",
+        "revision_principle": "Keep the problem statement grounded in concrete constraints (power, memory, hardware diversity) rather than abstract appeals to standardization."
+      },
+      {
+        "dimension": "motivation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 1, "quote": "energy cost of wireless communication — transmitting raw sensor data to a cloud server for processing — far exceeds the energy cost of running inference locally"},
+        "observed": "Motivation is anchored in a physical/economic reality: communication energy >> compute energy at this scale, making on-device inference not optional but necessary. This grounds the entire enterprise.",
+        "reader_struggle": "None — the motivation is visceral and quantitative (cites Bouguera et al. 2018).",
+        "likely_consequence": "Readers grasp why TinyML exists as a field, not just why a benchmark is useful.",
+        "revision_principle": "Motivate benchmarks through the deployment economics they enable, not just academic comparison."
+      },
+      {
+        "dimension": "research_question",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 4, "quote": "can a single benchmark suite fairly measure accuracy, latency, and energy for microcontroller-class ML systems while accommodating the hardware and software heterogeneity"},
+        "observed": "The research question is explicit, precise, and directly addresses the four challenges enumerated in Section 2. It sets up the design choices in Sections 4-5 as answers.",
+        "reader_struggle": "No struggle — the question is posed as a design challenge, not a vague goal.",
+        "likely_consequence": "Readers can evaluate each design choice against this question.",
+        "revision_principle": "State the research question as a concrete design question with explicit constraints."
+      },
+      {
+        "dimension": "contribution",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "Abstract", "paragraph": 1, "quote": "the first industry-standard benchmark suite for TinyML inference, developed collaboratively by more than 50 organizations"},
+        "observed": "The contribution is clearly claimed and scoped: first industry-standard TinyML benchmark, four tasks, three metrics, two divisions, 50+ org collaboration, open source. The abstract and intro align.",
+        "reader_struggle": "None — contribution is unmistakable.",
+        "likely_consequence": "Readers know exactly what artifact is being offered.",
+        "revision_principle": "State the contribution in the abstract with specific differentiators (first, industry-standard, collaborative, open)."
+      },
+      {
+        "dimension": "method",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "5.2", "paragraph": 1, "quote": "TinyML devices typically lack the resources needed to run a self-contained benchmark — they have no file I/O, no standard output, and often no operating system"},
+        "observed": "The method is well-described: two-division structure, minimal firmware API, host-device harness with electrical isolation proxy, three supported energy monitors, median-of-five protocol. The mapping from challenges to design choices (§2 para 6) is explicit.",
+        "reader_struggle": "Minor: The energy measurement setup (Arduino UNO as IO Manager, level shifters, three monitor options) is dense. A diagram would help adjacent researchers visualize the signal/power flow. The exclusion of level-shifter power from reporting is noted but not quantified — could this vary across setups?",
+        "likely_consequence": "Readers understand the protocol but may not fully grasp the isolation topology or whether the three energy monitors are truly interchangeable.",
+        "revision_principle": "For complex measurement topologies, include a block diagram showing power/signal paths and what is included/excluded in the measurement boundary."
+      },
+      {
+        "dimension": "experiment",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "6.1", "paragraph": 1, "quote": "Five submissions were received, summarized in Table 2"},
+        "observed": "The experiment is the v0.5 submission round. Five diverse submissions are characterized in Table 2. However, the paper does not reproduce the quantitative results (accuracy, IPS, µJ/inference per submission per benchmark) — it refers readers to mlcommons.org. For a journal article, this forces the reader to go elsewhere to see the actual evidence.",
+        "reader_struggle": "Binding readers (especially E) cannot verify claims about INT-8 accuracy loss, power range, or comparability without fetching external results. The paper describes trends but doesn't show the numbers.",
+        "likely_consequence": "Readers must trust the characterization or do external work. The paper's evidence is incomplete on its own.",
+        "revision_principle": "Include a summary table of key quantitative results (per submission, per benchmark) in the paper; external repositories are for reproducibility, not for primary evidence."
+      },
+      {
+        "dimension": "result",
+        "score": 3,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "6.2", "paragraph": 2, "quote": "INT-8 quantization incurred limited accuracy loss across the v0.5 submissions — for example, AUC 0.88 (fp32) vs. 0.86 (INT-8 PTQ) for anomaly detection"},
+        "observed": "Results are reported as qualitative trends with a few illustrative numbers (KWS 92.2%→91.6%, anomaly 0.88→0.86). No per-submission, per-benchmark table. The claim 'four of five submissions used INT-8 PTQ' is stated but not tied to individual results. The 'three orders of magnitude power range' is asserted without showing the actual µJ/inference values.",
+        "reader_struggle": "Readers cannot assess the magnitude of differences, variance across benchmarks, or whether the quality targets were comfortably met. The verifying reviewer (E) has no data to check.",
+        "likely_consequence": "The results feel like a narrative summary rather than evidence. The paper claims the benchmark 'successfully accommodated' diversity but doesn't show the comparative numbers that would prove it.",
+        "revision_principle": "Present core quantitative results in the paper; use external links for full raw data and reproducibility artifacts."
+      },
+      {
+        "dimension": "interpretation",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "6.2", "paragraph": 5, "quote": "The modular design is consistent with successfully enabling submitters with fundamentally different goals"},
+        "observed": "Interpretations are generally grounded: INT-8 dominance noted with numbers, power range observed, software heterogeneity illustrated. The paper avoids overclaiming — it calls observations 'snapshot' and notes alternative explanations for no dataset modification. The link between modular design and successful accommodation is plausible but not rigorously proven (only 5 submissions).",
+        "reader_struggle": "Minor: The claim that the modular design 'enabled' diversity could be correlation — diverse participants might have joined regardless. But the paper hedges appropriately.",
+        "likely_consequence": "Readers accept the interpretations as reasonable but provisional.",
+        "revision_principle": "Distinguish design-enabled outcomes from self-selection effects; use language like 'consistent with' rather than 'enabled' when evidence is observational."
+      },
+      {
+        "dimension": "limitation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "7", "paragraph": 1, "quote": "pre-processing steps ... are excluded from the measurement window ... creates a degenerate-case risk: a submitter could define a significant portion of the computation as 'feature extraction' rather than 'inference'"},
+        "observed": "Limitations are candid, specific, and technically precise: pre-processing exclusion creates gaming risk; streaming not supported; closed division lacks recurrent/attention architectures; single round limits trend claims. Each limitation explains the design rationale and the consequence.",
+        "reader_struggle": "None — limitations are clearly separated, well-explained, and bound the claims appropriately.",
+        "likely_consequence": "Readers can calibrate their trust in the benchmark's current scope and future evolution.",
+        "revision_principle": "State limitations as design trade-offs with concrete consequences, not as apologies."
+      },
+      {
+        "dimension": "narrative_coherence",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 5, "quote": "The paper is organized as follows. Section 2 describes the specific challenges... Section 3 situates MLPerf Tiny... Section 4 describes the four benchmark tasks... Section 5 presents the measurement methodology... Section 6 summarizes results... Sections 7 and 8 address limitations and conclusions."},
+        "observed": "The narrative follows a classic problem → challenges → related work → design → method → results → limitations → conclusion arc. Section 2's four challenges map explicitly to Sections 4-5 design choices (para 6 of §2). Each section delivers what the roadmap promises.",
+        "reader_struggle": "No struggle — the structure is transparent and honored.",
+        "likely_consequence": "Readers can navigate to any aspect (tasks, measurement, results) predictably.",
+        "revision_principle": "Use an explicit roadmap paragraph and ensure each section's content matches its promised scope."
+      },
+      {
+        "dimension": "terminology",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.2", "paragraph": 1, "quote": "Depthwise-separable convolutions decompose a standard convolution into a depthwise spatial convolution followed by a pointwise (1×1) convolution"},
+        "observed": "TinyML-specific terms (DS-CNN, PTQ vs QAT, AUC-ROC, log-mel spectrogram, width multiplier) are defined on first use. The paper assumes general ML knowledge (convolutions, quantization, AUC) but explains domain-specific variants. Adjacent researchers (B) can follow without subfield expertise.",
+        "reader_struggle": "Minor: 'HLS4ML' and 'high-level synthesis' appear in §6.2 without definition until the parenthetical. 'Mbed' is mentioned in §4.1 as 'an open-source ARM embedded development framework' but its role isn't elaborated. These are minor gaps for B.",
+        "likely_consequence": "B readers may momentarily pause at HLS4ML and Mbed but recover from context.",
+        "revision_principle": "Define all proper-noun tools/frameworks on first use, even if they appear only in results discussion."
+      },
+      {
+        "dimension": "logical_flow",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "2", "paragraph": 6, "quote": "The mapping is as follows: low-power measurement is handled by the electrical-isolation harness... memory constraints shaped the selection of reference models... hardware heterogeneity is accommodated by a minimal firmware API... software heterogeneity is addressed by the two-division structure"},
+        "observed": "The logical flow is exceptional: challenges (Sec 2) → design decisions (Sec 4-5) with explicit mapping. The two-division rationale (§5.1) directly answers the software heterogeneity challenge. The harness design (§5.2) directly answers the hardware heterogeneity and low-power challenges. Every design choice traces to a stated requirement.",
+        "reader_struggle": "No struggle — the reasoning is traceable end-to-end.",
+        "likely_consequence": "Readers can evaluate whether each design choice actually solves its challenge.",
+        "revision_principle": "Include an explicit challenge-to-design mapping paragraph; it makes the logic auditable."
+      },
+      {
+        "dimension": "evidence_traceability",
+        "score": 3,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "6.1", "paragraph": 1, "quote": "Quantitative accuracy, latency (IPS), and energy (µJ/inference) per submission are available in the MLPerf Tiny v0.5 public results at mlcommons.org"},
+        "observed": "The paper traces design decisions to challenges well, but the experimental evidence (v0.5 results) is not traceable within the paper — it's external. The few numbers given (KWS 92.2%→91.6%, anomaly 0.88→0.86) are from 'authors' experiments' not the submissions. Submission results are only summarized qualitatively.",
+        "reader_struggle": "E cannot trace claims about submission results (INT-8 dominance, power range, software heterogeneity) to actual measurements in the paper. The evidence is one hop away.",
+        "likely_consequence": "The paper reads as a design description with a post-hoc anecdote, not a validated system with evidence.",
+        "revision_principle": "Embed key experimental evidence in the paper; reference external sources for completeness, not for primary claims."
+      },
+      {
+        "dimension": "figure_table",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.1", "paragraph": 1, "quote": "Table 1 summarizes the benchmarks"},
+        "observed": "Table 1 (four benchmarks, datasets, models, quality targets) is clear and information-dense. Table 2 (submission summary) is clear but lacks quantitative results. No figures — a harness diagram and a results figure would significantly aid comprehension, especially for B and E.",
+        "reader_struggle": "B and E would benefit from a harness block diagram (host, isolation proxy, DUT, energy monitor) and a results visualization (e.g., latency vs energy scatter across submissions).",
+        "likely_consequence": "The measurement topology and comparative results are harder to mentally simulate without visual aids.",
+        "revision_principle": "Include at least one architecture/harness diagram and one results figure for journal submissions; tables alone are insufficient for spatial/topological concepts."
+      },
+      {
+        "dimension": "claim_evidence_alignment",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "Abstract", "paragraph": 1, "quote": "demonstrating that the benchmark successfully accommodated fundamentally different hardware and software stacks within a single submission round"},
+        "observed": "Most claims align with evidence: the benchmark design addresses stated challenges, the two-division structure is well-motivated, limitations are acknowledged. The claim 'successfully accommodated' in the abstract is supported by the fact that five diverse submissions completed the round — but 'successfully' implies fair comparability, which the paper doesn't demonstrate with numbers (only asserts in §6.2).",
+        "reader_struggle": "E notices the gap between 'accommodated' (they submitted) and 'fairly compared' (results not shown).",
+        "likely_consequence": "Readers may overestimate the validation level of the benchmark's fairness.",
+        "revision_principle": "Distinguish 'participated' from 'fairly compared'; show the comparative results that prove fairness."
+      },
+      {
+        "dimension": "unsupported_inference",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "6.2", "paragraph": 4, "quote": 'No v0.5 submission modified the training dataset. This suggests that at this stage of the field's development, optimization effort is concentrated on model architecture, inference framework, and hardware, rather than on data curation or augmentation.'"},
+        "observed": "The paper makes one notable inference from absence of evidence: no dataset modification → field focuses on model/hardware not data. It correctly notes alternative explanations (complexity, small sample) but still leads with the 'suggests' claim. This is a mild overreach from n=5.",
+        "reader_struggle": "E sees the alternative explanations but notes the main claim is still presented as the primary interpretation.",
+        "likely_consequence": "Readers may take the 'field focuses on model not data' as a finding rather than a speculation.",
+        "revision_principle": "When inferring from absence in small samples, present all plausible explanations with equal weight; avoid 'suggests' language that privileges one."
+      },
+      {
+        "dimension": "redundancy",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.2", "paragraph": 1, "quote": "Keyword spotting (KWS) — continuously monitoring audio for specific trigger words like 'Hey Siri' or 'Alexa' — is one of the most prevalent TinyML applications"},
+        "observed": "No harmful redundancy. Each benchmark task is described with its motivation, dataset, model, and quality target in a consistent structure. The related work section is concise. The challenge-to-design mapping (§2 para 6) repeats information but as a synthesis, not duplication.",
+        "reader_struggle": "None — the consistent per-benchmark structure aids comparison.",
+        "likely_consequence": "Readers can easily compare the four benchmarks along consistent dimensions.",
+        "revision_principle": "Use parallel structure for parallel concepts; synthesize rather than repeat in summary paragraphs."
+      },
+      {
+        "dimension": "cognitive_load",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "5.2", "paragraph": 1, "quote": "an electrical isolation proxy (an Arduino UNO acting as an IO Manager) — is placed between the host and the DUT, preventing the host PC's power draw — delivered through the serial connection — from inflating the DUT measurement"},
+        "observed": "The paper is well-organized but the measurement harness description (§5.2) packs many components (host, serial, Arduino UNO proxy, level shifters, three energy monitor options, GPIO toggle, UART, firmware API) into dense prose. The exclusion of level-shifter power is mentioned but not quantified. A diagram would offload this cognitive work.",
+        "reader_struggle": "B and E must mentally construct the hardware topology and measurement boundary from text alone.",
+        "likely_consequence": "Readers may not fully grasp what is/isn't included in the energy measurement, affecting trust in cross-platform comparability.",
+        "revision_principle": "For multi-component measurement systems, provide a diagram; quantify exclusions (e.g., 'level shifters consume <X mW')."
+      },
+      {
+        "dimension": "orientation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 5, "quote": "The paper is organized as follows. Section 2 describes the specific challenges that TinyML systems pose for benchmarking."},
+        "observed": "Excellent orientation: roadmap paragraph in intro, challenge-to-design mapping in §2, consistent per-benchmark structure in §4, clear division between methodology (§5) and results (§6). Section openings often restate context (e.g., §5.1 opens by restating the two-division purpose).",
+        "reader_struggle": "None — readers always know where they are and why.",
+        "likely_consequence": "Readers can jump to sections of interest without losing the thread.",
+        "revision_principle": "Use contextual opening sentences in each major section, not just the introduction."
+      },
+      {
+        "dimension": "so_what",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "8", "paragraph": 2, "quote": "the challenge of designing benchmarks that jointly capture accuracy, efficiency, and hardware diversity is not unique to TinyML; the two-division structure and measurement harness described here offer a template that other efficiency-aware ML subfields may adapt"},
+        "observed": "The 'so what' is clear at multiple levels: (1) TinyML now has a benchmark enabling fair comparison; (2) the two-division + isolation harness template is transferable to other efficiency-aware ML subfields; (3) longitudinal tracking will build a progress record. The conclusion connects back to the opening problem and expands the implication.",
+        "reader_struggle": "None — the significance is stated concretely, not rhetorically.",
+        "likely_consequence": "Readers understand both the immediate artifact value and the broader methodological contribution.",
+        "revision_principle": "Close with both the specific artifact's impact and the generalizable design pattern it demonstrates."
+      }
+    ],
+    "inference_issues": [
+      {
+        "kind": "unsupported_conclusion",
+        "location": {"section": "6.2", "paragraph": 5, "quote": "The modular design is consistent with successfully enabling submitters with fundamentally different goals"},
+        "claim_text": "The modular design enabled diverse submitters to participate and produce directly comparable results.",
+        "missing_link": "No comparative results (latency, energy, accuracy per submission per benchmark) are shown in the paper to demonstrate that results are 'directly comparable.' The claim rests on participation diversity, not demonstrated comparability of metrics."
+      },
+      {
+        "kind": "overstrong_language",
+        "location": {"section": "Abstract", "paragraph": 1, "quote": "the first industry-standard benchmark suite for TinyML inference"},
+        "claim_text": "MLPerf Tiny is the first industry-standard benchmark suite for TinyML inference.",
+        "missing_link": "'Industry-standard' implies broad adoption and recognition. v0.5 had 5 submissions from 50+ collaborating organizations — the collaboration is broad, but 'standard' typically requires multiple rounds, wider adoption, and community ratification. 'First' is defensible; 'industry-standard' is aspirational at v0.5."
+      },
+      {
+        "kind": "selective_presentation",
+        "location": {"section": "6.1", "paragraph": 1, "quote": "Quantitative accuracy, latency (IPS), and energy (µJ/inference) per submission are available in the MLPerf Tiny v0.5 public results at mlcommons.org"},
+        "claim_text": "The paper presents trends (INT-8 dominance, power range, software heterogeneity) without showing the per-submission, per-benchmark quantitative results that would let readers verify these trends.",
+        "missing_link": "The actual measurement data for each of the 5 submissions across 4 benchmarks × 3 metrics (accuracy, IPS, µJ) is not in the paper. Readers cannot check whether INT-8 accuracy loss was consistent across all benchmarks, or whether the 'three orders of magnitude' power range is driven by one outlier."
+      },
+      {
+        "kind": "limitation_not_respected",
+        "location": {"section": "Abstract", "paragraph": 1, "quote": "demonstrating that the benchmark successfully accommodated fundamentally different hardware and software stacks within a single submission round"},
+        "claim_text": "The benchmark successfully accommodated fundamentally different hardware and software stacks.",
+        "missing_link": "Section 7 explicitly limits: 'The v0.5 evidence is one submission round with five participants. Observations about trends... reflect the state of the field at a single point in time and may shift substantially.' The abstract claims 'successfully accommodated' without this qualification, presenting a single round as definitive validation."
+      }
+    ],
+    "objective_discrepancies": [
+      "The objective states the paper is meant to 'present their research project to adjacent machine-learning researchers.' The paper does this well — it explains TinyML context, defines terms, and avoids subfield jargon. However, the omission of quantitative results in the paper (referring to external URL) makes it harder for adjacent researchers to evaluate the benchmark's effectiveness without leaving the paper. An adjacent researcher wants to see the evidence inline."
+    ],
+    "injection_suspected": []
+  }
+}

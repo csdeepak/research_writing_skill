@@ -1,0 +1,208 @@
+WARN  L0    A2-buried-contribution       no contribution statement in the Introduction
+      > Introduction
+INFO  L5    A-long-sentence              41-word sentence: split or keep with reason
+      > This paper presents Whisper, a single encoder-decoder Transformer trained to predict transcripts, translations, timestamps, and spoken-language identity as text
+INFO  L5    A-long-sentence              52-word sentence: split or keep with reason
+      > On multilingual recognition, error scales with training data per language (r² = 0.83 between log word error rate and log hours) {C004}; on X→English translation
+WARN  L5    A3-undefined-acronym         acronym 'BLEU' never defined
+      > BLEU
+WARN  L5    A3-use-before-definition     'WER' used (line 5) before its definition (line 9)
+      > WER
+WARN  L5    B3-sota                      SOTA claim: name benchmark, full comparison set and date, or remove
+      > Across 12 diverse speech-recognition datasets, zero-shot Whisper reduces word error rate by 55.2% on average relative to a supervised LibriSpeech baseline, desp
+WARN  L5    B3-sota                      SOTA claim: name benchmark, full comparison set and date, or remove
+      > On multilingual recognition, error scales with training data per language (r² = 0.83 between log word error rate and log hours) {C004}; on X→English translation
+INFO  L9    A-long-sentence              40-word sentence: split or keep with reason
+      > Modern automatic speech recognition (ASR) systems routinely report word error rates (WER) — the fraction of words a transcript gets wrong relative to a referenc
+INFO  L9    A-long-sentence              48-word sentence: split or keep with reason
+      > This gap between narrow benchmark competence and broad real-world reliability is the central problem this paper addresses: an ASR model is only as useful as it 
+INFO  L11   A-long-sentence              44-word sentence: split or keep with reason
+      > This learns strong general-purpose audio representations, but produces only an encoder: the model cannot produce text until a decoder (or separate language mode
+INFO  L11   A-long-sentence              42-word sentence: split or keep with reason
+      > Prior work of this kind (Narayanan et al., Likhomanenko et al.) shows combining datasets helps generality, but the resulting sets remain small relative to what 
+INFO  L13   A-long-sentence              56-word sentence: split or keep with reason
+      > The research question is direct: if audio and text supervision — however noisy, and gathered automatically from the internet rather than transcribed by hand — i
+INFO  L15   A-long-sentence              60-word sentence: split or keep with reason
+      > This paper answers that question with Whisper, a single sequence-to-sequence Transformer trained on 680,000 hours of multilingual and multitask audio-text data 
+INFO  L15   A-long-sentence              37-word sentence: split or keep with reason
+      > Every task (transcription, translation into English, spoken-language identification, and timestamp prediction) is expressed as one shared text-output format, de
+INFO  L15   B-absolute                   absolute term: justified only by complete enumeration or proof
+      > Every task (transcription, translation into English, spoken-language identification, and timestamp prediction) is expressed as one shared text-output format, de
+INFO  L17   A-long-sentence              43-word sentence: split or keep with reason
+      > The central finding is that this scale of weak supervision produces large, consistent robustness gains that a same-benchmark-trained system does not show, and t
+INFO  L17   A-long-sentence              84-word sentence: split or keep with reason
+      > The paper reports: (i) a 55.2% relative error reduction across 12 diverse recognition datasets despite comparable LibriSpeech performance to a strong supervised
+INFO  L17   A-long-sentence              43-word sentence: split or keep with reason
+      > The paper also reports where this approach falls short: uneven language coverage from an English-heavy internet corpus, a substantially weaker data-scaling rela
+WARN  L17   B3-sota                      SOTA claim: name benchmark, full comparison set and date, or remove
+      > The paper reports: (i) a 55.2% relative error reduction across 12 diverse recognition datasets despite comparable LibriSpeech performance to a strong supervised
+WARN  L17   B9-intensifier               intensifier: give the number and a reference point instead
+      > The paper also reports where this approach falls short: uneven language coverage from an English-heavy internet corpus, a substantially weaker data-scaling rela
+INFO  L23   A-long-sentence              41-word sentence: split or keep with reason
+      > **Self-supervised audio pre-training.** The dominant recent strategy for building general-purpose speech models has been to pre-train an encoder on large amount
+INFO  L23   A-long-sentence              43-word sentence: split or keep with reason
+      > This produces strong acoustic representations, but the encoder alone cannot transcribe: a decoder, or an external language model, must still be fine-tuned on a 
+INFO  L25   A-long-sentence              40-word sentence: split or keep with reason
+      > Whisper shares this motivation — diversity beats narrow fit — but is over two orders of magnitude larger, substituting automated web-scale collection with light
+WARN  L25   C1-orphan-claim              claim-like sentence without {C###} tag
+      > **Combining existing supervised datasets.** A second line of work increases robustness by pooling several existing human-labeled speech datasets into a larger, 
+WARN  L25   C1-orphan-claim              claim-like sentence without {C###} tag
+      > Prior work in this vein (Narayanan et al., Likhomanenko et al.) shows this diversity improves generality relative to training on any one dataset alone.
+INFO  L27   A-long-sentence              46-word sentence: split or keep with reason
+      > **Weak supervision at scale.** The strategy of training directly on noisy, automatically or loosely labeled data rather than gold-standard annotations is well e
+INFO  L27   A-long-sentence              48-word sentence: split or keep with reason
+      > Whisper's contribution, in this context, is not a new architecture or training objective — it uses a standard encoder-decoder Transformer {C001}{E003} — but an 
+INFO  L33   A-long-sentence              62-word sentence: split or keep with reason
+      > Whisper is trained on 680,000 hours of audio paired with text collected from the internet, split into three components: 438,218 hours of English speech paired w
+INFO  L33   A-long-sentence              42-word sentence: split or keep with reason
+      > Audio is broken into 30-second segments, each paired with the subset of the transcript that falls inside that time window {E026}, which gives the model a fixed-
+INFO  L35   A-long-sentence              41-word sentence: split or keep with reason
+      > The automated language identification used to assign non-English audio a language label is itself imperfect: a large share of data nominally labeled Welsh (arou
+INFO  L39   A-long-sentence              48-word sentence: split or keep with reason
+      > Whisper casts every task it performs — transcription, translation into English, spoken-language identification, and timestamp prediction — as one shared sequenc
+INFO  L61   A-long-sentence              53-word sentence: split or keep with reason
+      > The evaluation strategy that most directly targets this paper's research question is zero-shot transfer: Whisper is evaluated on external benchmarks — LibriSpee
+INFO  L61   A-long-sentence              40-word sentence: split or keep with reason
+      > This is a stricter test than the way most prior ASR systems are evaluated (fine-tuned or otherwise adapted to each benchmark's training distribution), and it is
+WARN  L61   A3-undefined-acronym         acronym 'TED' never defined
+      > TED
+WARN  L61   A3-undefined-acronym         acronym 'LIUM' never defined
+      > LIUM
+WARN  L61   A3-undefined-acronym         acronym 'CORAAL' never defined
+      > CORAAL
+INFO  L61   A4-rare-acronym              'MLS' used 1x: spell out instead
+      > MLS
+INFO  L63   A-long-sentence              36-word sentence: split or keep with reason
+      > This normalizer was jointly developed with the model being evaluated, which creates a risk that it is inadvertently tuned to fix patterns specific to Whisper's 
+INFO  L63   A-long-sentence              39-word sentence: split or keep with reason
+      > Text normalization can change measured WER substantially — by up to 50% on some datasets — so this choice materially affects the numbers reported below, and it 
+WARN  L63   B9-intensifier               intensifier: give the number and a reference point instead
+      > Text normalization can change measured WER substantially — by up to 50% on some datasets — so this choice materially affects the numbers reported below, and it 
+INFO  L67   A-long-sentence              44-word sentence: split or keep with reason
+      > First, a dataset-size scaling study trains medium-sized models with early stopping at six dataset sizes — 0.5%, 1%, 2%, 4%, 8%, and 100% of the full corpus, i.e
+WARN  L67   C1-orphan-claim              claim-like sentence without {C###} tag
+      > First, a dataset-size scaling study trains medium-sized models with early stopping at six dataset sizes — 0.5%, 1%, 2%, 4%, 8%, and 100% of the full corpus, i.e
+INFO  L71   A-long-sentence              39-word sentence: split or keep with reason
+      > Robustness to acoustic distortion is tested by adding white noise and "pub" (background babble) noise from the Audio Degradation Toolbox across a range of signa
+WARN  L71   A3-undefined-acronym         acronym 'NVIDIA' never defined
+      > NVIDIA
+WARN  L71   A3-undefined-acronym         acronym 'STT' never defined
+      > STT
+WARN  L71   A3-undefined-acronym         acronym 'CTC' never defined
+      > CTC
+INFO  L71   A4-rare-acronym              'SNR' used 2x: spell out instead
+      > SNR
+WARN  L71   B9-intensifier               intensifier: give the number and a reference point instead
+      > Long-form transcription — audio substantially longer than the 30-second training segments — is evaluated on seven datasets against the best open-source system t
+INFO  L73   A-long-sentence              49-word sentence: split or keep with reason
+      > No confidence intervals, standard deviations, or significance tests are reported for any of the point estimates below; the evidence available for this paper rep
+INFO  L73   marker                       unresolved marker (list in open_issues.md)
+      > [MISSING RESULT: variance/confidence intervals for the WER and BLEU point estimates in Sections 5.1-5.5, and any significance testing between systems]
+INFO  L79   A-long-sentence              45-word sentence: split or keep with reason
+      > On LibriSpeech test-clean — the single most heavily used ASR benchmark, and one that many prior systems are specifically tuned toward — the largest Whisper mode
+WARN  L79   B3-sota                      SOTA claim: name benchmark, full comparison set and date, or remove
+      > On LibriSpeech test-clean — the single most heavily used ASR benchmark, and one that many prior systems are specifically tuned toward — the largest Whisper mode
+INFO  L81   A-long-sentence              53-word sentence: split or keep with reason
+      > Averaged across 12 other, more diverse evaluation datasets (including Common Voice, CHiME-6, and TED-LIUM 3) in the same zero-shot setting, Whisper achieves a 1
+INFO  L81   A-long-sentence              40-word sentence: split or keep with reason
+      > In other words, a supervised system tuned to do well specifically on LibriSpeech reaches a lower WER on LibriSpeech itself, but loses substantially more accurac
+WARN  L81   B9-intensifier               intensifier: give the number and a reference point instead
+      > In other words, a supervised system tuned to do well specifically on LibriSpeech reaches a lower WER on LibriSpeech itself, but loses substantially more accurac
+WARN  L81   C1-orphan-claim              claim-like sentence without {C###} tag
+      > In other words, a supervised system tuned to do well specifically on LibriSpeech reaches a lower WER on LibriSpeech itself, but loses substantially more accurac
+INFO  L87   A-long-sentence              50-word sentence: split or keep with reason
+      > Across 75 languages on the Fleurs multilingual benchmark, WER and the amount of Whisper training data available for that language are strongly related: the squa
+WARN  L87   C1-orphan-claim              claim-like sentence without {C###} tag
+      > This is a clean, monotonic scaling relationship, and it directly explains much of the paper's central limitation: because per-language data is so uneven (Sectio
+INFO  L89   A-long-sentence              55-word sentence: split or keep with reason
+      > The evidence attributes this gap not to translation being intrinsically harder to scale, but to noisier training labels for translation data — in particular, er
+INFO  L89   A-long-sentence              50-word sentence: split or keep with reason
+      > Despite this weaker scaling relationship, Whisper still achieves a new zero-shot state of the art of 29.1 BLEU on the CoVoST2 X→English translation benchmark, u
+WARN  L89   B3-sota                      SOTA claim: name benchmark, full comparison set and date, or remove
+      > Despite this weaker scaling relationship, Whisper still achieves a new zero-shot state of the art of 29.1 BLEU on the CoVoST2 X→English translation benchmark, u
+WARN  L89   B3-sota                      SOTA claim: name benchmark, full comparison set and date, or remove
+      > The authors caution that this state-of-the-art claim uses the same custom text normalizer discussed in Section 4.1, which prevents a fully like-for-like compari
+INFO  L93   A-long-sentence              60-word sentence: split or keep with reason
+      > On Fleurs language identification, Whisper reaches 64.5% accuracy against a 77.7% supervised state of the art on the full 102-language set; restricted to the 82
+WARN  L93   A3-undefined-acronym         acronym 'XLS' never defined
+      > XLS
+WARN  L93   A3-undefined-acronym         acronym 'VP' never defined
+      > VP
+WARN  L93   A3-undefined-acronym         acronym 'FT' never defined
+      > FT
+WARN  L93   B3-sota                      SOTA claim: name benchmark, full comparison set and date, or remove
+      > On Fleurs language identification, Whisper reaches 64.5% accuracy against a 77.7% supervised state of the art on the full 102-language set; restricted to the 82
+WARN  L93   B9-intensifier               intensifier: give the number and a reference point instead
+      > On VoxPopuli, Whisper's zero-shot WER of 13.6% is substantially worse than XLS-R (10.6%) and mSLAM (9.1%), beating only a weaker fine-tuned baseline (VP-10K+FT)
+WARN  L93   C1-orphan-claim              claim-like sentence without {C###} tag
+      > On Multilingual LibriSpeech, Whisper (7.3% WER) outperforms XLS-R (9.7%) but only matches the Maestro system (also 7.3%) {E032}.
+INFO  L97   A-long-sentence              43-word sentence: split or keep with reason
+      > The controlled dataset-size sweep (Section 4.2) shows a consistent shape across three tasks (Table 2): rapid improvement from the smallest training sizes tested
+INFO  L107  A-long-sentence              39-word sentence: split or keep with reason
+      > The English-recognition curve moves from 30.5% WER at 3,405 hours to 9.9% at the full 681,070 hours, with the steepest gains occurring between roughly 3,000 and
+INFO  L107  A-long-sentence              53-word sentence: split or keep with reason
+      > The evidence available does not fully disentangle whether the flattening near full data size reflects an intrinsic saturation of what this kind of weak supervis
+INFO  L109  A-long-sentence              45-word sentence: split or keep with reason
+      > Increasing model size (Table 1) produces a similar monotonic pattern: English WER on LibriSpeech test-clean falls from 6.7% for the smallest (Tiny) model to 4.2
+INFO  L109  A-long-sentence              77-word sentence: split or keep with reason
+      > A related but distinct scaling effect concerns *how* training is structured rather than how much data or how large a model is used: training one model jointly o
+INFO  L113  A-long-sentence              36-word sentence: split or keep with reason
+      > Long-form audio — substantially longer than the 30-second segments used in training — requires the model to be run repeatedly and its outputs stitched together,
+INFO  L113  A-long-sentence              46-word sentence: split or keep with reason
+      > An ablation over the long-form decoding pipeline shows each added heuristic reduces average WER across the seven datasets: 11.0% with greedy decoding, 10.6% add
+WARN  L113  B9-intensifier               intensifier: give the number and a reference point instead
+      > Long-form audio — substantially longer than the 30-second segments used in training — requires the model to be run repeatedly and its outputs stitched together,
+INFO  L121  A-long-sentence              64-word sentence: split or keep with reason
+      > Taken together, the results in Section 5 point to a consistent interpretation: robustness in speech recognition — the ability to keep working when the input dis
+INFO  L121  A-long-sentence              37-word sentence: split or keep with reason
+      > This is visible most directly in the contrast between Whisper's merely competitive LibriSpeech-only performance and its large advantage on the 12-dataset averag
+WARN  L121  B5-causal                    causal wording: requires causal design or ablation; otherwise 'is associated with'
+      > Taken together, the results in Section 5 point to a consistent interpretation: robustness in speech recognition — the ability to keep working when the input dis
+WARN  L121  B9-intensifier               intensifier: give the number and a reference point instead
+      > The paper's authors interpret this as evidence that scaling weakly supervised pre-training — an approach with substantial precedent in natural language processi
+WARN  L121  C1-orphan-claim              claim-like sentence without {C###} tag
+      > This is an interpretive claim about the field's prior emphasis, offered with lower confidence than the paper's directly measured results, and it should be read 
+INFO  L123  A-long-sentence              47-word sentence: split or keep with reason
+      > Both the dataset-size and model-size sweeps show rapid early improvement followed by diminishing returns, and the multitask/multilingual transfer crossover show
+INFO  L123  A-long-sentence              49-word sentence: split or keep with reason
+      > A reader deciding whether to build a large, broad, weakly supervised system versus a smaller, task-specific one should weigh both which scale of compute is avai
+WARN  L123  C1-orphan-claim              claim-like sentence without {C###} tag
+      > Both the dataset-size and model-size sweeps show rapid early improvement followed by diminishing returns, and the multitask/multilingual transfer crossover show
+WARN  L123  C1-orphan-claim              claim-like sentence without {C###} tag
+      > A reader deciding whether to build a large, broad, weakly supervised system versus a smaller, task-specific one should weigh both which scale of compute is avai
+INFO  L127  A-long-sentence              56-word sentence: split or keep with reason
+      > The strong data-scaling correlation for multilingual recognition (r² = 0.83, Section 5.2) means this imbalance predicts correspondingly uneven accuracy across l
+INFO  L127  marker                       unresolved marker (list in open_issues.md)
+      > [MISSING RESULT: per-language WER breakdown beyond the aggregate Fleurs correlation and the Welsh case]
+INFO  L129  A-long-sentence              65-word sentence: split or keep with reason
+      > Second, label noise from the automated data-collection pipeline is a real and at least partially quantified concern: the Welsh-labeled-as-English case (Section 
+INFO  L133  A-long-sentence              48-word sentence: split or keep with reason
+      > Fourth, the evidence states that fine-tuning was not studied: Whisper is evaluated exclusively zero-shot, so how much further it could improve if adapted to a t
+INFO  L133  marker                       unresolved marker (list in open_issues.md)
+      > [MISSING RESULT: fine-tuned Whisper performance on any benchmark in Section 5]
+INFO  L135  A-hedge-filler               assertive filler: delete or show why it is clear
+      > Finally, in long-form transcription, the remaining errors described in the evidence are increasingly structural — complete hallucination of text unrelated to th
+INFO  L135  A-long-sentence              55-word sentence: split or keep with reason
+      > Finally, in long-form transcription, the remaining errors described in the evidence are increasingly structural — complete hallucination of text unrelated to th
+INFO  L135  marker                       unresolved marker (list in open_issues.md)
+      > [MISSING RESULT: quantified rate of hallucination/repetition-looping failures in long-form transcription]
+INFO  L139  A-long-sentence              53-word sentence: split or keep with reason
+      > This paper set out to test whether scaling weakly supervised, multitask, multilingual training data for speech — collected automatically from the internet rathe
+INFO  L139  A-long-sentence              70-word sentence: split or keep with reason
+      > The evidence supports this: a single 680,000-hour-trained model, evaluated with no fine-tuning on any target benchmark, substantially reduces error relative to 
+INFO  L139  A-long-sentence              39-word sentence: split or keep with reason
+      > At the same time, the same evidence shows this strategy is not unconditionally superior: coverage is uneven across languages, the translation-side data-scaling 
+INFO  L139  A-long-sentence              45-word sentence: split or keep with reason
+      > Read together, the results support treating scale and diversity of weak supervision as one effective, comparatively underused lever for building robust speech s
+WARN  L139  B3-sota                      SOTA claim: name benchmark, full comparison set and date, or remove
+      > The evidence supports this: a single 680,000-hour-trained model, evaluated with no fine-tuning on any target benchmark, substantially reduces error relative to 
+WARN  L139  B9-intensifier               intensifier: give the number and a reference point instead
+      > The evidence supports this: a single 680,000-hour-trained model, evaluated with no fine-tuning on any target benchmark, substantially reduces error relative to 
+WARN  L139  C1-orphan-claim              claim-like sentence without {C###} tag
+      > The evidence supports this: a single 680,000-hour-trained model, evaluated with no fine-tuning on any target benchmark, substantially reduces error relative to 
+WARN  L139  C1-orphan-claim              claim-like sentence without {C###} tag
+      > At the same time, the same evidence shows this strategy is not unconditionally superior: coverage is uneven across languages, the translation-side data-scaling 
+INFO  L148  A-long-sentence              59-word sentence: split or keep with reason
+      > Named systems and datasets used as comparators throughout the paper (wav2vec 2.0, XLS-R, mSLAM, Maestro, SpeechStew, NVIDIA STT, FairSpeech, VP-10K+FT, and the 
+
+0 error(s), 40 warning(s), 63 info

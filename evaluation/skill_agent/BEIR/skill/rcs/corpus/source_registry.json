@@ -1,0 +1,132 @@
+{
+  "sources": [
+    {
+      "id": "S001",
+      "key": "Thakur et al., 2021",
+      "title": "BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation of Information Retrieval Models",
+      "file": "project/paper.txt",
+      "verification_method": "user_supplied_file",
+      "read_depth": "full"
+    },
+    {
+      "id": "S002",
+      "key": "Robertson and Zaragoza, 2009",
+      "title": "The Probabilistic Relevance Framework: BM25 and Beyond",
+      "verification_method": "user_supplied_file",
+      "read_depth": "abstract",
+      "support_quote": "BM25 is a commonly-used bag-of-words retrieval function based on token-matching between two high-dimensional sparse vectors with TF-IDF token weights"
+    },
+    {
+      "id": "S003",
+      "key": "Karpukhin et al., 2020",
+      "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+      "verification_method": "user_supplied_file",
+      "read_depth": "abstract",
+      "support_quote": "DPR is a two-tower bi-encoder trained with a single BM25 hard negative and in-batch negatives"
+    },
+    {
+      "id": "S004",
+      "key": "Khattab and Zaharia, 2020",
+      "title": "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT",
+      "verification_method": "user_supplied_file",
+      "read_depth": "abstract",
+      "support_quote": "ColBERT encodes and represents the query and passage into a bag of multiple contextualized token embeddings"
+    },
+    {
+      "id": "S005",
+      "key": "Xiong et al., 2020",
+      "title": "Approximate Nearest Neighbor Negative Contrastive Learning for Dense Text Retrieval (ANCE)",
+      "verification_method": "user_supplied_file",
+      "read_depth": "abstract",
+      "support_quote": "ANCE is a bi-encoder constructing hard negatives from an Approximate Nearest Neighbor (ANN) index"
+    },
+    {
+      "id": "S006",
+      "key": "Hofstätter et al., 2021",
+      "title": "Efficiently Teaching an Effective Dense Retriever with Balanced Topic Aware Sampling (TAS-B)",
+      "verification_method": "user_supplied_file",
+      "read_depth": "abstract",
+      "support_quote": "TAS-B is a bi-encoder trained with Balanced Topic Aware Sampling using dual supervision from a cross-encoder and a ColBERT model"
+    },
+    {
+      "id": "S007",
+      "key": "Nogueira and Cho, 2020",
+      "title": "Passage Re-ranking with BERT",
+      "verification_method": "user_supplied_file",
+      "read_depth": "abstract",
+      "support_quote": "Significant improvement in performance was achieved with the cross-attention mechanism of BERT"
+    },
+    {
+      "id": "S008",
+      "key": "Dai and Callan, 2020",
+      "title": "Context-Aware Term Weighting For First Stage Passage Retrieval (DeepCT)",
+      "verification_method": "user_supplied_file",
+      "read_depth": "abstract",
+      "support_quote": "DeepCT used a BERT model to learn relevant term weights in a document and generated a pseudo-document representation"
+    },
+    {
+      "id": "S009",
+      "key": "Nogueira et al., 2019",
+      "title": "From doc2query to docTTTTTquery (docT5query)",
+      "verification_method": "user_supplied_file",
+      "read_depth": "abstract",
+      "support_quote": "DocT5query is a popular document expansion technique using a T5 (base) model trained on MS MARCO to generate synthetic queries"
+    },
+    {
+      "id": "S010",
+      "key": "Zhao et al., 2021",
+      "title": "SPARTA: Efficient Open-Domain Question Answering via Sparse Transformer Matching Retrieval",
+      "verification_method": "user_supplied_file",
+      "read_depth": "abstract",
+      "support_quote": "SPARTA computes similarity scores between the non-contextualized query embeddings from BERT with the contextualized document embeddings"
+    },
+    {
+      "id": "S011",
+      "key": "Guo et al., 2020",
+      "title": "MultiReQA: A Cross-Domain Evaluation for Retrieval Question Answering Models",
+      "verification_method": "user_supplied_file",
+      "read_depth": "abstract",
+      "support_quote": "MultiReQA consists of eight Question-Answering datasets and evaluates sentence-level answer retrieval given a question"
+    },
+    {
+      "id": "S012",
+      "key": "Petroni et al., 2020",
+      "title": "KILT: a Benchmark for Knowledge Intensive Language Tasks",
+      "verification_method": "user_supplied_file",
+      "read_depth": "abstract",
+      "support_quote": "KILT consists of five knowledge-intensive tasks including a total of eleven datasets... KILT retrieves documents only from Wikipedia"
+    },
+    {
+      "id": "S013",
+      "key": "Nguyen et al., 2016",
+      "title": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset",
+      "verification_method": "user_supplied_file",
+      "read_depth": "abstract",
+      "support_quote": "MS MARCO Passage Ranking dataset contains 8.8M Passages and an official training set of 532,761 query-passage pairs"
+    },
+    {
+      "id": "S014",
+      "key": "Wang et al., 2020",
+      "title": "MiniLM: Deep Self-Attention Distillation for Task-Agnostic Compression of Pre-Trained Transformers",
+      "verification_method": "user_supplied_file",
+      "read_depth": "abstract",
+      "support_quote": "a 6-layer, 384-h MiniLM cross-encoder model offers the best performance on MS MARCO"
+    },
+    {
+      "id": "S015",
+      "key": "Lipani, 2019",
+      "title": "On Biases in Information retrieval models and evaluation",
+      "verification_method": "user_supplied_file",
+      "read_depth": "abstract",
+      "support_quote": "selection bias: A new retrieval system might retrieve vastly different results than the system used for the annotation"
+    },
+    {
+      "id": "S016",
+      "key": "Lin et al., 2020",
+      "title": "Pretrained Transformers for Text Ranking: BERT and Beyond",
+      "verification_method": "user_supplied_file",
+      "read_depth": "abstract",
+      "support_quote": "we refer the reader to Lin et al. for a recent survey in neural retrieval"
+    }
+  ]
+}

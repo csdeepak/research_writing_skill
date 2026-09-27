@@ -1,0 +1,610 @@
+{
+ "reconstruction": {
+  "packet_id": "pkt-e2bf3043",
+  "answers": {
+   "Q1": {
+    "answer": "The paper addresses that time-series forecasting (TSF) pipelines which z-score inputs using training-set-derived (TSD) moments become inaccurate (inflated MAE) when the level of the series shifts after deployment (an out-of-distribution level-shift regime), because the fixed normalization statistics are stale and mis-scale post-shift inputs.",
+    "locations": [
+     "Abstract",
+     "§1 Introduction"
+    ],
+    "confidence": 4,
+    "missing": "No citation establishing that level shifts actually occur in real deployed forecasting; problem prevalence is a [CITATION NEEDED] placeholder."
+   },
+   "Q2": {
+    "answer": "Deployed forecasters encounter level shifts, yet canonical pipelines assume stationary first/second moments and normalize with training-set statistics, so inputs are mis-scaled after a shift. The authors also claim prior evaluations confound 'moment staleness' with 'capacity insufficiency', motivating a deconfounded study.",
+    "locations": [
+     "§1 Introduction, para 1-2"
+    ],
+    "confidence": 3,
+    "missing": "Every motivating claim (prevalence, standard practice, prior confounding) is an unfilled [CITATION NEEDED]; the confound claim explicitly notes 'literature search not yet run'."
+   },
+   "Q3": {
+    "answer": "RQ1: Does re-estimating normalization moments per input window (RWN) reduce MAE in the level-shift regime while retaining parity with the baseline when there is no shift (IID regime)? RQ2: What fraction of any gain is attributable to continued adaptation of the moments versus a single one-shot re-estimation?",
+    "locations": [
+     "Abstract",
+     "§1 Introduction, para 2"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q4": {
+    "answer": "RWN (per-window normalization) re-estimates each input window's mean/variance from its own trailing-48 statistics instead of fixed training moments. An RWN-F ablation freezes the moments after the first post-shift window to isolate the adaptive-moment contribution. A capacity-matched (iso-budget) MLP holds representational capacity fixed so staleness and capacity can be separated.",
+    "locations": [
+     "Abstract",
+     "§2 Setup"
+    ],
+    "confidence": 4,
+    "missing": "The RWN acronym is never expanded; details of moment estimation (per-channel? mean+std?) and window choice justification absent."
+   },
+   "Q5": {
+    "answer": "SynthLoad, a synthetic hourly generator with diurnal and weekly components plus additive Gaussian noise, is used. Piecewise-constant-mean level shifts of magnitude s ∈ {0.2,0.4,0.6,0.8}σ are injected after the training set. Three normalizers are compared: baseline (training moments), RWN (trailing-48 moments), RWN-F (frozen after first post-shift window). Backbone is an MLP (hidden=64, lookback L=168, horizon H=24), iso-budget, 5 random seeds; metric is MAE reported as mean ± sd on the test period.",
+    "locations": [
+     "§2 Setup"
+    ],
+    "confidence": 5,
+    "missing": "No description of series count, train/test split sizes, or how iso-budget capacity matching was implemented across the three normalizers."
+   },
+   "Q6": {
+    "answer": "IID (no shift): RWN 0.409 ± 0.007 vs baseline 0.412 ± 0.006 (parity). Under level shift the baseline MAE grows monotonically with s while RWN stays near its IID level; at s=0.6σ MAE goes 0.641→0.452, and across 0.2–0.6σ the reduction is 11–29% with sd ≤ 0.012. At 0.8σ there is no reliable gain (0.712 ± 0.021 vs 0.731 ± 0.015, within ~1 sd). RWN-F at 0.6σ is 0.518.",
+    "locations": [
+     "§3 Results",
+     "Figure 1"
+    ],
+    "confidence": 4,
+    "missing": "Only s=0.6σ point values and the two endpoints are given numerically; the full per-s table underlying '11–29%' and Figure 1 is not shown, and RWN-F has no reported sd or seed count."
+   },
+   "Q7": {
+    "answer": "The authors interpret the results as showing that, under fixed capacity, level-shift-induced error is dominated by stale normalization moments rather than by insufficient model capacity. For RQ2, continued adaptivity accounts for about one third of the gain and one-shot re-estimation about two thirds.",
+    "locations": [
+     "§3 Results, last para",
+     "§4 Discussion",
+     "§5 Conclusion"
+    ],
+    "confidence": 4,
+    "missing": "The staleness-dominates claim is asserted causally although capacity was fixed, not varied, so the comparison to 'capacity' is not directly tested."
+   },
+   "Q8": {
+    "answer": "Stated limitations: synthetic data only; window length untuned; only level-shift drift studied (no variance or seasonality drift); capacity was fixed rather than varied; and no gain is achievable at 0.8σ. Generalization to non-synthetic corpora and larger backbones is left open.",
+    "locations": [
+     "§4 Discussion (Caveats)",
+     "§5 Conclusion"
+    ],
+    "confidence": 5,
+    "missing": "No limitation acknowledged regarding single architecture family (MLP only) or the untested motivating claims."
+   },
+   "Q9": {
+    "answer": "Three contributions: (1) capacity-matched evidence of an 11–29% MAE reduction under level shift up to 0.6σ at IID parity; (2) identification of a boundary at 0.8σ where the benefit vanishes; (3) an RWN-F ablation attributing about one third of the gain to moment adaptivity (the rest to one-shot re-estimation).",
+    "locations": [
+     "§1 Introduction (Contributions)"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q10": {
+    "answer": "The 'so what' is that for moderate post-deployment level shifts the cheap fix of re-normalizing each window with recent statistics recovers most of the lost accuracy without adding model capacity, implying that normalization staleness—not model expressiveness—is the leverage point for this class of robustness failure.",
+    "locations": [
+     "Abstract",
+     "§5 Conclusion"
+    ],
+    "confidence": 3,
+    "missing": "Implications are not translated for the stated audience of general robustness researchers; no explicit statement of why they should care beyond forecasting."
+   },
+   "Q11": {
+    "answer": "The finding is bounded to moderate level shifts (s ≤ 0.6σ), a single synthetic benchmark (SynthLoad), a single capacity-matched MLP backbone, and level-shift-only drift. It explicitly does not hold at 0.8σ, and the causal attribution to staleness is limited because capacity was held fixed rather than varied.",
+    "locations": [
+     "§3 Results",
+     "§4 Discussion",
+     "§5 Conclusion"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q12": {
+    "answer": "Open items: transfer to non-synthetic/real corpora, evaluation with larger backbones, and (implied) other drift types such as variance or seasonality drift, plus tuning the window length.",
+    "locations": [
+     "Abstract",
+     "§4 Discussion",
+     "§5 Conclusion"
+    ],
+    "confidence": 4,
+    "missing": "Future work is listed but not prioritized or linked to how it would test the causal staleness claim."
+   }
+  }
+ },
+ "diagnostics": {
+  "packet_id": "pkt-e2bf3043",
+  "binding_personas": [
+   "A",
+   "B",
+   "E"
+  ],
+  "findings": [
+   {
+    "dimension": "problem",
+    "score": 3,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "1",
+     "quote": "Deployed TSF systems encounter LS [CITATION NEEDED: prevalence of level shifts...]"
+    },
+    "observed": "The core problem (stale normalization under level shift) is stated but its real-world premise is a placeholder citation.",
+    "reader_struggle": "An adjacent-domain reader cannot judge whether the problem is real or a synthetic artifact.",
+    "likely_consequence": "The motivation reads as assumed rather than established, weakening the paper's stakes.",
+    "revision_principle": "Ground the problem in at least one concrete cited instance or explicitly frame it as a hypothesized failure mode."
+   },
+   {
+    "dimension": "motivation",
+    "score": 2,
+    "persona": [
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "2",
+     "quote": "confounded in the evaluations we examined [CITATION NEEDED: literature search not yet run]"
+    },
+    "observed": "The confounding claim that justifies the whole deconfounding design admits its literature search was never run.",
+    "reader_struggle": "Reader cannot verify that prior work actually confounds staleness and capacity.",
+    "likely_consequence": "The central motivating gap is unsubstantiated, undermining the paper's reason to exist.",
+    "revision_principle": "Complete the literature review or soften to a testable assumption before submission."
+   },
+   {
+    "dimension": "research_question",
+    "score": 5,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "2",
+     "quote": "RQ1: does RWN reduce LS-regime MAE with IID parity? RQ2: what fraction of the gain is attributable to the adaptive-moment term..."
+    },
+    "observed": "Two research questions are crisp, testable, and mapped to results (RQ1b) and the ablation.",
+    "reader_struggle": "Minimal; questions are clear once acronyms are decoded.",
+    "likely_consequence": "Strong scaffolding for the paper.",
+    "revision_principle": "Preserve; only ensure acronyms are defined before first RQ use."
+   },
+   {
+    "dimension": "contribution",
+    "score": 4,
+    "persona": [
+     "A"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "Contributions",
+     "quote": "capacity-matched evidence of 11–29% MAE reduction under LS up to 0.6σ at IID parity"
+    },
+    "observed": "Contributions are enumerated and each maps to a result; scope-limited claims are commendable.",
+    "reader_struggle": "Reader must trust the 11–29% range without the full table.",
+    "likely_consequence": "Contributions credible but partially unverifiable from text alone.",
+    "revision_principle": "Attach the supporting per-shift numbers so every contribution is traceable."
+   },
+   {
+    "dimension": "method",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": "1",
+     "quote": "RWN: trailing-48 moments. RWN-F: moments frozen after the first post-LS window."
+    },
+    "observed": "Method is described tersely; how moments are computed (per-feature? mean and sd?) and why 48 is unspecified.",
+    "reader_struggle": "A reader cannot reimplement RWN precisely.",
+    "likely_consequence": "Reproducibility is compromised; ablation interpretation depends on undocumented choices.",
+    "revision_principle": "Specify the exact normalization statistic, its scope, and rationale for the 48-window."
+   },
+   {
+    "dimension": "experiment",
+    "score": 3,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": "1",
+     "quote": "iso-budget, 5 seeds; MAE mean ± sd on the test period"
+    },
+    "observed": "Seed count and metric are stated, but iso-budget matching procedure, dataset size, and split are not.",
+    "reader_struggle": "Verifying reviewer cannot confirm that capacity was truly matched.",
+    "likely_consequence": "The 'capacity-matched' framing—central to the causal claim—rests on undocumented setup.",
+    "revision_principle": "Document parameter counts per condition and the matching method explicitly."
+   },
+   {
+    "dimension": "result",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§3",
+     "paragraph": "2",
+     "quote": "across 0.2–0.6σ the reduction is 11–29%, with sd ≤ 0.012"
+    },
+    "observed": "Only the 0.6σ pair and IID/0.8σ endpoints are given numerically; the 0.2 and 0.4σ values behind the range are absent.",
+    "reader_struggle": "Reader cannot see where in the range each shift level falls or reproduce the percentages.",
+    "likely_consequence": "Key quantitative claim is not fully traceable.",
+    "revision_principle": "Provide a complete results table of MAE per (method, s)."
+   },
+   {
+    "dimension": "interpretation",
+    "score": 3,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": "1",
+     "quote": "moment staleness rather than capacity plausibly dominates LS error here, though capacity was fixed, not varied"
+    },
+    "observed": "The interpretation is appropriately hedged and self-flags that capacity was not varied.",
+    "reader_struggle": "Reader may still read 'dominates' as a tested comparison.",
+    "likely_consequence": "Partial causal overreach despite the caveat.",
+    "revision_principle": "Reframe as 'staleness is sufficient to explain most error at fixed capacity' rather than 'dominates over capacity'."
+   },
+   {
+    "dimension": "limitation",
+    "score": 4,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": "Caveats",
+     "quote": "synthetic-only, untuned window, LS-only (no variance or seasonality drift)"
+    },
+    "observed": "Limitations are explicit and align with the scope of claims.",
+    "reader_struggle": "Minimal.",
+    "likely_consequence": "Enhances credibility.",
+    "revision_principle": "Add single-architecture (MLP-only) and untested-motivation as further caveats."
+   },
+   {
+    "dimension": "narrative_coherence",
+    "score": 3,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "Abstract",
+     "paragraph": "1",
+     "quote": "RWN attains IID parity and cuts MAE 11–29% for s ≤ 0.6σ, with no clear gain at 0.8σ"
+    },
+    "observed": "Abstract, RQs, results, and conclusion tell a consistent story; boundary at 0.8σ carried throughout.",
+    "reader_struggle": "Coherence is undercut only by dense acronyms rather than logic gaps.",
+    "likely_consequence": "Story holds together but is hard to follow for non-specialists.",
+    "revision_principle": "Keep the consistent arc but reduce acronym density in high-traffic sections."
+   },
+   {
+    "dimension": "terminology",
+    "score": 1,
+    "persona": [
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "Abstract",
+     "paragraph": "1",
+     "quote": "Z-scored TSF pipelines with TSD-anchored moments are brittle under OOD LS regimes"
+    },
+    "observed": "RWN, TSD, PCM, LS, TSF, and SynthLoad are used without first-use expansion; audience explicitly cannot be assumed to know forecasting normalization.",
+    "reader_struggle": "Adjacent-domain robustness readers cannot parse the opening sentence at all.",
+    "likely_consequence": "The paper is effectively unreadable to its stated audience in its densest passages.",
+    "revision_principle": "Expand every acronym on first use and add a one-line plain-language gloss of forecasting normalization."
+   },
+   {
+    "dimension": "logical_flow",
+    "score": 3,
+    "persona": [
+     "A"
+    ],
+    "location": {
+     "section": "§3",
+     "paragraph": "3",
+     "quote": "about two thirds of the gain is from one-shot re-estimation and about one third from adaptivity"
+    },
+    "observed": "The two-thirds/one-third decomposition follows from three numbers (0.641, 0.452, 0.518) but the arithmetic step is left implicit.",
+    "reader_struggle": "Reader must reconstruct the decomposition themselves.",
+    "likely_consequence": "The RQ2 conclusion feels asserted rather than derived.",
+    "revision_principle": "Show the gain-partition computation explicitly."
+   },
+   {
+    "dimension": "evidence_traceability",
+    "score": 2,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "1-2",
+     "quote": "[CITATION NEEDED: standard normalization practice]"
+    },
+    "observed": "Multiple load-bearing claims carry unresolved citation placeholders and one admits the search was not run.",
+    "reader_struggle": "Reviewer cannot trace any external claim to a source.",
+    "likely_consequence": "The empirical claims float without contextual grounding.",
+    "revision_principle": "Resolve all [CITATION NEEDED] markers before review."
+   },
+   {
+    "dimension": "figure_table",
+    "score": 2,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§3",
+     "paragraph": "Figure 1",
+     "quote": "Figure 1. RWN stays near IID MAE up to 0.6σ, whereas the baseline degrades monotonically."
+    },
+    "observed": "The only visual is Figure 1, described but not rendered; there is no results table, so the 11–29% range has no shown backing.",
+    "reader_struggle": "Reader cannot inspect per-shift values or verify monotonicity and error bars.",
+    "likely_consequence": "Central quantitative evidence is not independently checkable.",
+    "revision_principle": "Include the figure and a companion table of all MAE±sd values."
+   },
+   {
+    "dimension": "claim_evidence_alignment",
+    "score": 2,
+    "persona": [
+     "E",
+     "A"
+    ],
+    "location": {
+     "section": "Abstract",
+     "paragraph": "1",
+     "quote": "RWN, i.e. per-window moment re-estimation, eliminates the LS-induced MAE inflation"
+    },
+    "observed": "Abstract says 'eliminates' while results show RWN still leaves residual error and no gain at 0.8σ; conclusion instead says 'removes most of it'.",
+    "reader_struggle": "Reader gets an inflated claim in the abstract inconsistent with the body.",
+    "likely_consequence": "Overclaim that a verifying reviewer will flag.",
+    "revision_principle": "Align abstract wording to 'reduces most of' and add the 0.8σ boundary in the abstract's claim itself."
+   },
+   {
+    "dimension": "unsupported_inference",
+    "score": 2,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§3",
+     "paragraph": "3",
+     "quote": "RWN-F at 0.6σ: 0.518"
+    },
+    "observed": "The RWN-F value has no sd or seed count, yet a precise two-thirds/one-third attribution is drawn from it.",
+    "reader_struggle": "Reader cannot tell if the ablation split is within noise.",
+    "likely_consequence": "The RQ2 answer may be non-robust.",
+    "revision_principle": "Report RWN-F mean±sd over the same 5 seeds and state whether the split exceeds noise."
+   },
+   {
+    "dimension": "redundancy",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§5",
+     "paragraph": "1",
+     "quote": "Under capacity matching, LS-induced MAE inflation appears to be mostly moment staleness."
+    },
+    "observed": "Conclusion largely restates the abstract and discussion with little new synthesis.",
+    "reader_struggle": "Low; some repetition aids retention.",
+    "likely_consequence": "Minor space inefficiency for a workshop paper.",
+    "revision_principle": "Trim the conclusion to add forward-looking synthesis rather than restatement."
+   },
+   {
+    "dimension": "cognitive_load",
+    "score": 1,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "Abstract",
+     "paragraph": "1",
+     "quote": "OOD LS regimes because the IID assumption on first and second moments is violated post-deployment"
+    },
+    "observed": "Extreme acronym and jargon density stacks multiple undefined terms per sentence.",
+    "reader_struggle": "Non-specialist must decode 5+ abbreviations before grasping one idea.",
+    "likely_consequence": "High abandonment risk for the stated adjacent-domain audience.",
+    "revision_principle": "Cap acronyms per sentence and prefer plain terms (e.g., 'level shift') on first mention."
+   },
+   {
+    "dimension": "orientation",
+    "score": 2,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": "1",
+     "quote": "SynthLoad is an hourly generator with diurnal and hebdomadal components plus AWGN."
+    },
+    "observed": "The benchmark is introduced without orienting the reader to why load forecasting or this generator; audience notes benchmark is unknown to them.",
+    "reader_struggle": "Reader lacks context for what SynthLoad represents or why it is a fair proxy.",
+    "likely_consequence": "Reader cannot judge external validity of the synthetic setup.",
+    "revision_principle": "Add a brief orienting sentence on the benchmark's purpose and realism."
+   },
+   {
+    "dimension": "so_what",
+    "score": 2,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§5",
+     "paragraph": "1",
+     "quote": "RWN removes most of it for moderate LS at IID parity"
+    },
+    "observed": "The broader payoff for robustness researchers (cheap normalization fix vs capacity) is implicit, never stated in their terms.",
+    "reader_struggle": "The stated audience is left to infer why this matters beyond forecasting.",
+    "likely_consequence": "Impact underappreciated by the intended non-specialist readers.",
+    "revision_principle": "Add one sentence connecting the staleness result to general distribution-shift robustness intuitions."
+   },
+   {
+    "dimension": "result",
+    "score": 3,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§3",
+     "paragraph": "1",
+     "quote": "IID: RWN 0.409 ± 0.007 vs 0.412 ± 0.006, i.e. parity (RQ1b)"
+    },
+    "observed": "Parity is asserted from overlapping error bars but no equivalence test or margin is defined.",
+    "reader_struggle": "Reader cannot tell if 'parity' means statistical equivalence or merely small difference.",
+    "likely_consequence": "The IID-parity claim is qualitative.",
+    "revision_principle": "Define a parity margin or report an equivalence test."
+   },
+   {
+    "dimension": "interpretation",
+    "score": 4,
+    "persona": [
+     "A"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": "1",
+     "quote": "RQ1 holds for moderate LS only"
+    },
+    "observed": "Interpretation correctly restricts RQ1 to moderate shift, respecting the 0.8σ null.",
+    "reader_struggle": "Minimal.",
+    "likely_consequence": "Reader gets an appropriately bounded takeaway.",
+    "revision_principle": "Maintain this disciplined scoping throughout."
+   }
+  ],
+  "inference_issues": [
+   {
+    "kind": "overstrong_language",
+    "location": {
+     "section": "Abstract",
+     "paragraph": "1",
+     "quote": "eliminates the LS-induced MAE inflation without IID-regime degradation"
+    },
+    "claim_text": "RWN 'eliminates' level-shift-induced MAE inflation.",
+    "missing_link": "Results show residual error and outright no gain at 0.8σ; 'eliminates' is not supported and contradicts the conclusion's own 'removes most of it'."
+   },
+   {
+    "kind": "causal_overreach",
+    "location": {
+     "section": "§5",
+     "paragraph": "1",
+     "quote": "LS-induced MAE inflation appears to be mostly moment staleness"
+    },
+    "claim_text": "Staleness rather than capacity causes the error.",
+    "missing_link": "Capacity was fixed, never varied, so the staleness-vs-capacity causal comparison was not experimentally tested."
+   },
+   {
+    "kind": "unsupported_conclusion",
+    "location": {
+     "section": "§1",
+     "paragraph": "2",
+     "quote": "Moment staleness and capacity insufficiency are confounded in the evaluations we examined [CITATION NEEDED: literature search not yet run]"
+    },
+    "claim_text": "Prior evaluations confound staleness and capacity.",
+    "missing_link": "The paper admits the literature search was not conducted, so this foundational claim has no evidentiary basis."
+   },
+   {
+    "kind": "selective_presentation",
+    "location": {
+     "section": "§3",
+     "paragraph": "2",
+     "quote": "across 0.2–0.6σ the reduction is 11–29%"
+    },
+    "claim_text": "11–29% MAE reduction across the 0.2–0.6σ range.",
+    "missing_link": "Only the 0.6σ pair is shown numerically; the 0.2σ and 0.4σ values defining the range are omitted, preventing verification."
+   },
+   {
+    "kind": "overgeneralization",
+    "location": {
+     "section": "Abstract",
+     "paragraph": "1",
+     "quote": "This suggests moment staleness, not representational capacity, dominates LS error in this regime."
+    },
+    "claim_text": "General statement about what dominates level-shift error.",
+    "missing_link": "Evidence is from one synthetic dataset and one MLP; generalizing 'dominates' beyond this single configuration is not warranted."
+   },
+   {
+    "kind": "unsupported_conclusion",
+    "location": {
+     "section": "§3",
+     "paragraph": "3",
+     "quote": "about one third from adaptivity"
+    },
+    "claim_text": "Adaptivity contributes about one third of the gain.",
+    "missing_link": "The RWN-F value lacks sd/seed reporting, so the one-third/two-thirds split may lie within noise and is not shown to be significant."
+   }
+  ],
+  "objective_discrepancies": [
+   "The objective requires a reader to know 'what was tested, what was found, and where the finding stops'; the where-it-stops (0.8σ boundary, synthetic-only, fixed capacity) is well served, but the what-was-tested is obscured for the stated audience by undefined forecasting jargon.",
+   "The objective centers on whether per-window normalization helps under post-training level shift 'without harming accuracy when there is no shift'; the paper addresses this, but the IID 'parity' claim is qualitative (no equivalence margin), leaving the no-harm question only partially answered.",
+   "The objective asks how much gain depends on continued adaptation; the paper answers via RWN-F but without uncertainty estimates, so the dependence is quantified but not shown to be reliable."
+  ],
+  "injection_suspected": [
+   {
+    "location": {
+     "section": "pre-header comment",
+     "paragraph": "0",
+     "quote": "VISIBILITY: REVIEW_AGENT only. The orchestrator (AUTHOR) must dispatch this file to an"
+    },
+    "note": "A hidden HTML-comment instruction addressed to the agent/orchestrator precedes the packet; it is not part of the paper content and appears to be an out-of-band directive, treated as non-authoritative and ignored for the review."
+   }
+  ]
+ },
+ "dim_scores": {
+  "problem": 3,
+  "motivation": 2,
+  "research_question": 5,
+  "contribution": 4,
+  "method": 3,
+  "experiment": 3,
+  "result": 3,
+  "interpretation": 3,
+  "limitation": 4,
+  "narrative_coherence": 3,
+  "terminology": 1,
+  "logical_flow": 3,
+  "evidence_traceability": 2,
+  "figure_table": 2,
+  "claim_evidence_alignment": 2,
+  "unsupported_inference": 2,
+  "redundancy": 4,
+  "cognitive_load": 1,
+  "orientation": 2,
+  "so_what": 2
+ },
+ "validation_problems": [
+  "diagnostics $.findings[0].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[1].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[2].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[3].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[4].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[5].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[6].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[7].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[8].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[9].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[10].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[11].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[12].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[13].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[14].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[15].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[16].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[17].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[18].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[19].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[20].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[21].location.paragraph: expected type ['integer'], got str"
+ ]
+}

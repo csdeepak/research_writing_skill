@@ -1,0 +1,123 @@
+{
+ "packet_id": "pkt-465f0cd5",
+ "answers": {
+  "Q1": {
+   "answer": "The paper addresses the absence of a standardized, reproducible benchmark for TinyML (ML inference on sub-milliwatt microcontroller-class devices) that jointly measures the metrics that matter for this regime: accuracy, latency, and energy consumption. Without one, improvement claims are made against incompatible baselines, models, and metrics.",
+   "locations": [
+    "Abstract",
+    "\u00a71 \u00b62-3",
+    "\u00a72"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q2": {
+   "answer": "Energy is definitional at this scale: because wireless transmission of raw sensor data costs far more energy than local inference (Bouguera et al., 2018), on-device inference is necessary for battery-powered deployment. Co-optimization across ML/embedded/hardware layers requires a common yardstick to know whether a new model, quantization scheme, or engine actually improves the state of practice.",
+   "locations": [
+    "\u00a71 \u00b61",
+    "\u00a71 \u00b62",
+    "\u00a72 (low power first-class)"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q3": {
+   "answer": "Can a benchmark suite be designed that fairly evaluates TinyML systems on accuracy, latency, and energy, accommodates hardware and software heterogeneity, and enables diverse submitters to demonstrate the value of their contribution?",
+   "locations": [
+    "\u00a71 \u00b63",
+    "objective.md"
+   ],
+   "confidence": 4,
+   "missing": "The paper implies but does not state the research question verbatim."
+  },
+  "Q4": {
+   "answer": "MLPerf Tiny: the first community-developed, industry-standard TinyML inference benchmark suite. Its contribution is threefold: four benchmarks (keyword spotting, visual wake words, image classification, anomaly detection) with specified datasets/models/quality targets; a modular two-division (closed/open) submission structure; and a standardized measurement harness for accuracy, latency (IPS), and energy (\u00b5J/inference).",
+   "locations": [
+    "Abstract",
+    "\u00a71 \u00b63",
+    "\u00a74.1",
+    "\u00a75"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q5": {
+   "answer": "Benchmark design specifies four tasks each with dataset, reference TFLite model, memory footprint, and minimum quality target (Table 1), with open-source reference implementations on an ARM Cortex-M4 using TFLM. Measurement uses closed/open divisions; a host/DUT harness connected by serial (plus an electrical-isolation proxy and energy monitor for power); and a protocol of median-of-5 trials (\u226510 s / \u226510 iterations) for latency and energy, single-pass for accuracy, with scores valid only if quality target met.",
+   "locations": [
+    "\u00a74.1",
+    "\u00a75.1",
+    "\u00a75.2",
+    "\u00a75.3"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q6": {
+   "answer": "The evidence is the first submission round (v0.5, June 2021): five submissions summarized in Table 2, peer-reviewed for run-rule conformance, plus the reference-model results reported per task. No controlled experiments beyond this single round.",
+   "locations": [
+    "\u00a76.1",
+    "Table 2",
+    "\u00a74.2-4.5"
+   ],
+   "confidence": 5,
+   "missing": "No quantitative latency/energy numbers per submission are reported in the paper."
+  },
+  "Q7": {
+   "answer": "Five diverse submissions were accommodated in one round: ARM MCU and RISC-V MCU (INT-8 PTQ, TFLM), Raspberry Pi 4 (LEIP toolchain, FP-32 & INT-8), Syntiant NN accelerator (INT-8 PTQ), and an FPGA (HLS4ML, INT-6/8 QAT, open division). Reference results: DS-CNN 92.2% fp32 / 91.6% quantized; anomaly-detection autoencoder AUC 0.88 / 0.86 quantized.",
+   "locations": [
+    "Table 2",
+    "\u00a76.1",
+    "\u00a74.2",
+    "\u00a74.5"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q8": {
+   "answer": "Interpretations: INT-8 PTQ is the dominant numeric format (4/5) with limited accuracy loss; platforms spanned ~3 orders of magnitude of power (\u00b5W accelerator to W-class RPi4) within one round; software stacks ranged from TFLM to HLS synthesis; no submission modified the training dataset (suggesting effort is on model/framework/hardware); and the modular design successfully let contributors with different goals produce comparable results.",
+   "locations": [
+    "\u00a76.2"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q9": {
+   "answer": "Three limitations: (1) pre-processing and streaming inputs are excluded from measurement (creating a degenerate-case risk where computation is relabeled as feature extraction; streaming infeasible over serial); (2) closed-division architecture coverage is limited to FC and CNN layers (no RNN/attention); (3) evidence is a single round of five participants, so trend observations are a snapshot, not stable characterizations.",
+   "locations": [
+    "\u00a77"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q10": {
+   "answer": "The paper does not claim the suite is complete or final, does not compare hardware platforms against each other (that is deferred to results rounds), and does not offer causal explanations for submission patterns (e.g., why INT-8 dominates).",
+   "locations": [
+    "\u00a77 (single round)",
+    "objective.md",
+    "\u00a76.2 (hedged 'suggests')"
+   ],
+   "confidence": 3,
+   "missing": "The 'does not compare hardware' and 'not final' non-claims are stated in the objective but only implicit in the paper."
+  },
+  "Q11": {
+   "answer": "The paper is written for a broad ML research audience; needed background includes standard supervised/unsupervised learning, CNN/ResNet/MobileNet/autoencoder architectures, quantization, and metrics (top-1, AUC-ROC). It supplies embedded-specific background (MCU constraints, energy-measurement rationale, TFLM, the datasets/tasks) that non-TinyML readers lack.",
+   "locations": [
+    "\u00a72",
+    "\u00a74",
+    "\u00a75.2",
+    "audience.md"
+   ],
+   "confidence": 3,
+   "missing": "The paper does not explicitly declare its intended audience/prerequisites."
+  },
+  "Q12": {
+   "answer": "So what: MLPerf Tiny provides shared, reproducible infrastructure enabling apples-to-apples comparison and longitudinal tracking of TinyML progress across successive rounds, and is extensible to new domains (wearable health, environmental sensing) and paradigms (transformers, NAS) as they reach the embedded scale.",
+   "locations": [
+    "\u00a78",
+    "\u00a71 \u00b62"
+   ],
+   "confidence": 5,
+   "missing": ""
+  }
+ }
+}

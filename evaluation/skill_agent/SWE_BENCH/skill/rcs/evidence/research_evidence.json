@@ -1,0 +1,382 @@
+{
+  "evidence": [
+    {
+      "id": "E001",
+      "type": "dataset",
+      "description": "SWE-bench: 2,294 task instances from 12 Python GitHub repositories",
+      "value": "2294",
+      "unit": "task instances",
+      "source": "project/paper.txt",
+      "locator": "line 10 (abstract), line 78"
+    },
+    {
+      "id": "E002",
+      "type": "dataset",
+      "description": "Source repositories: 12 popular Python repos (astropy, django, flask, matplotlib, pylint, pytest, requests, scikit-learn, seaborn, sphinx, sympy, xarray)",
+      "source": "project/paper.txt",
+      "locator": "line 96-104"
+    },
+    {
+      "id": "E003",
+      "type": "dataset_stat",
+      "description": "Average issue text length",
+      "value": "195.1",
+      "unit": "words",
+      "source": "project/paper.txt",
+      "locator": "Table 1, line 108-118"
+    },
+    {
+      "id": "E004",
+      "type": "dataset_stat",
+      "description": "Average codebase size (non-test files)",
+      "value": "3010",
+      "unit": "files",
+      "source": "project/paper.txt",
+      "locator": "Table 1, line 108-118"
+    },
+    {
+      "id": "E005",
+      "type": "dataset_stat",
+      "description": "Average codebase lines (non-test)",
+      "value": "438K",
+      "unit": "lines",
+      "source": "project/paper.txt",
+      "locator": "Table 1, line 108-118"
+    },
+    {
+      "id": "E006",
+      "type": "dataset_stat",
+      "description": "Average gold patch lines edited",
+      "value": "32.8",
+      "unit": "lines",
+      "source": "project/paper.txt",
+      "locator": "Table 1, line 122-131"
+    },
+    {
+      "id": "E007",
+      "type": "dataset_stat",
+      "description": "Average gold patch files edited",
+      "value": "1.7",
+      "unit": "files",
+      "source": "project/paper.txt",
+      "locator": "Table 1, line 122-131"
+    },
+    {
+      "id": "E008",
+      "type": "dataset_stat",
+      "description": "Average gold patch functions edited",
+      "value": "3",
+      "unit": "functions",
+      "source": "project/paper.txt",
+      "locator": "Table 1, line 122-131"
+    },
+    {
+      "id": "E009",
+      "type": "dataset_stat",
+      "description": "Average fail-to-pass tests per instance",
+      "value": "9.1",
+      "unit": "tests",
+      "source": "project/paper.txt",
+      "locator": "Table 1, line 122-131"
+    },
+    {
+      "id": "E010",
+      "type": "dataset_stat",
+      "description": "Average total tests per instance",
+      "value": "120.8",
+      "unit": "tests",
+      "source": "project/paper.txt",
+      "locator": "Table 1, line 122-131"
+    },
+    {
+      "id": "E011",
+      "type": "result",
+      "description": "Claude 2 best BM25 resolve rate (13k context)",
+      "value": "1.96%",
+      "condition": "BM25 retrieval, 13k context",
+      "source": "project/paper.txt",
+      "locator": "line 49, line 254, Table 2"
+    },
+    {
+      "id": "E012",
+      "type": "result",
+      "description": "Claude 3 Opus BM25 resolve rate on SWE-bench",
+      "value": "3.79%",
+      "condition": "BM25 retrieval",
+      "source": "project/paper.txt",
+      "locator": "Table 5, lines 192-243"
+    },
+    {
+      "id": "E013",
+      "type": "result",
+      "description": "Claude 2 BM25 resolve rate on SWE-bench",
+      "value": "1.97%",
+      "condition": "BM25 retrieval",
+      "source": "project/paper.txt",
+      "locator": "Table 5, lines 192-243"
+    },
+    {
+      "id": "E014",
+      "type": "result",
+      "description": "ChatGPT-3.5 BM25 resolve rate",
+      "value": "0.17%",
+      "condition": "BM25 retrieval",
+      "source": "project/paper.txt",
+      "locator": "Table 5"
+    },
+    {
+      "id": "E015",
+      "type": "result",
+      "description": "GPT-4-turbo BM25 resolve rate",
+      "value": "1.31%",
+      "condition": "BM25 retrieval",
+      "source": "project/paper.txt",
+      "locator": "Table 5"
+    },
+    {
+      "id": "E016",
+      "type": "result",
+      "description": "SWE-Llama 7b BM25 resolve rate",
+      "value": "0.70%",
+      "condition": "BM25 retrieval",
+      "source": "project/paper.txt",
+      "locator": "Table 5"
+    },
+    {
+      "id": "E017",
+      "type": "result",
+      "description": "SWE-Llama 13b BM25 resolve rate",
+      "value": "0.70%",
+      "condition": "BM25 retrieval",
+      "source": "project/paper.txt",
+      "locator": "Table 5"
+    },
+    {
+      "id": "E018",
+      "type": "result",
+      "description": "Claude 2 oracle retrieval resolve rate",
+      "value": "4.80%",
+      "condition": "oracle retrieval",
+      "source": "project/paper.txt",
+      "locator": "Table 18, line 255"
+    },
+    {
+      "id": "E019",
+      "type": "result",
+      "description": "SWE-Llama 13b oracle retrieval resolve rate",
+      "value": "3.97%",
+      "condition": "oracle retrieval",
+      "source": "project/paper.txt",
+      "locator": "Table 18"
+    },
+    {
+      "id": "E020",
+      "type": "result",
+      "description": "Claude 2 oracle-collapsed resolve rate",
+      "value": "5.93%",
+      "condition": "oracle-collapsed retrieval",
+      "source": "project/paper.txt",
+      "locator": "Table 6, line 288-300"
+    },
+    {
+      "id": "E021",
+      "type": "result",
+      "description": "Claude 3 Opus oracle-collapsed resolve rate",
+      "value": "9.39%",
+      "condition": "oracle-collapsed retrieval",
+      "source": "project/paper.txt",
+      "locator": "Table 6"
+    },
+    {
+      "id": "E022",
+      "type": "result",
+      "description": "GPT-4 oracle-collapsed resolve rate",
+      "value": "3.40%",
+      "condition": "oracle-collapsed retrieval",
+      "source": "project/paper.txt",
+      "locator": "Table 6"
+    },
+    {
+      "id": "E023",
+      "type": "observation",
+      "description": "Performance drops with longer context. BM25 with larger context windows hurts performance despite higher recall.",
+      "source": "project/paper.txt",
+      "locator": "line 258, Figure 5, Table 2"
+    },
+    {
+      "id": "E024",
+      "type": "result",
+      "description": "BM25 with 27k context retrieves any oracle file in 51.27% of instances",
+      "value": "51.27%",
+      "condition": "BM25 27k context, Any recall",
+      "source": "project/paper.txt",
+      "locator": "Table 3, line 166-168"
+    },
+    {
+      "id": "E025",
+      "type": "result",
+      "description": "BM25 with 27k context retrieves none of oracle files in ~50% of instances",
+      "source": "project/paper.txt",
+      "locator": "line 149"
+    },
+    {
+      "id": "E026",
+      "type": "observation",
+      "description": "Models generate shorter patches than gold patches. Applied patches average 30.1 lines total vs 74.5 for gold patches.",
+      "source": "project/paper.txt",
+      "locator": "Table 8, line 326"
+    },
+    {
+      "id": "E027",
+      "type": "observation",
+      "description": "Model patches rarely edit more than 1 file. Gold patches edit avg 1.7 files, model patches avg ~1.0-1.2 files.",
+      "source": "project/paper.txt",
+      "locator": "Table 8"
+    },
+    {
+      "id": "E028",
+      "type": "observation",
+      "description": "Performance shows no significant correlation with issue date (before vs after 2023). Temporal analysis rules out memorization.",
+      "source": "project/paper.txt",
+      "locator": "Table 7, line 302"
+    },
+    {
+      "id": "E029",
+      "type": "observation",
+      "description": "SWE-Llama fine-tuned models perform poorly with BM25 context (context distribution shift from oracle training data)",
+      "source": "project/paper.txt",
+      "locator": "line 324"
+    },
+    {
+      "id": "E030",
+      "type": "method",
+      "description": "Three-stage pipeline to collect task instances: (1) repo selection and scraping, (2) attribute filtering (merged+issue+test), (3) execution-based filtering (install+pass-fail tests)",
+      "source": "project/paper.txt",
+      "locator": "lines 56-78"
+    },
+    {
+      "id": "E031",
+      "type": "dataset",
+      "description": "SWE-bench-train: 19,000 issue-PR pairs from 37 additional Python repos, used for fine-tuning",
+      "value": "19000",
+      "unit": "instances",
+      "source": "project/paper.txt",
+      "locator": "line 136"
+    },
+    {
+      "id": "E032",
+      "type": "method",
+      "description": "SWE-Llama training: LoRA fine-tuning with r=16, alpha=16, dropout=0.05 on attention sublayers; CodeLlama-Python base; 7b and 13b sizes",
+      "source": "project/paper.txt",
+      "locator": "lines 1073-1074"
+    },
+    {
+      "id": "E033",
+      "type": "dataset",
+      "description": "SWE-bench Lite: 300 instances sampled for self-contained functional bug fixes",
+      "value": "300",
+      "unit": "instances",
+      "source": "project/paper.txt",
+      "locator": "line 133"
+    },
+    {
+      "id": "E034",
+      "type": "result",
+      "description": "Claude 3 Opus on SWE-bench Lite: 4.33% resolved",
+      "value": "4.33%",
+      "condition": "SWE-bench Lite, BM25",
+      "source": "project/paper.txt",
+      "locator": "Table 5"
+    },
+    {
+      "id": "E035",
+      "type": "observation",
+      "description": "Majority of non-resolved applied patches are No-Op or Regression. For Claude 2: 471 No-Op + 436 Regression out of 968 non-resolved applied patches (from 1078 total applied, 110 resolved).",
+      "source": "project/paper.txt",
+      "locator": "Table 23, lines 1302-1327"
+    },
+    {
+      "id": "E036",
+      "type": "observation",
+      "description": "Models write primitive Python code and do not leverage existing libraries/codebase. Models take greedy approach, ignoring code style.",
+      "source": "project/paper.txt",
+      "locator": "line 560"
+    },
+    {
+      "id": "E037",
+      "type": "result",
+      "description": "40% of instances have at least two fail-to-pass tests",
+      "value": "40%",
+      "source": "project/paper.txt",
+      "locator": "line 87"
+    },
+    {
+      "id": "E038",
+      "type": "result",
+      "description": "Median pass-to-pass tests per instance: 51",
+      "value": "51",
+      "unit": "tests (median)",
+      "source": "project/paper.txt",
+      "locator": "line 87"
+    },
+    {
+      "id": "E039",
+      "type": "dataset_stat",
+      "description": "Original PR scraping: ~90,000 PRs; filtered to 11,407 (attribute); then 2,294 (execution)",
+      "source": "project/paper.txt",
+      "locator": "Table 10, line 866"
+    },
+    {
+      "id": "E040",
+      "type": "observation",
+      "description": "Claude 2 and SWE-Llama 13b solve largely non-overlapping sets of instances in oracle setting: Claude 2 only solves 42% of instances solved by SWE-Llama",
+      "source": "project/paper.txt",
+      "locator": "line 256"
+    },
+    {
+      "id": "E041",
+      "type": "limitation",
+      "description": "All task instances are in Python. Coverage limited to one programming language.",
+      "source": "project/paper.txt",
+      "locator": "line 568"
+    },
+    {
+      "id": "E042",
+      "type": "limitation",
+      "description": "Execution-based testing alone insufficient to guarantee quality; model code may be less comprehensive, efficient, or readable than human solutions.",
+      "source": "project/paper.txt",
+      "locator": "line 569"
+    },
+    {
+      "id": "E043",
+      "type": "limitation",
+      "description": "Baseline experiments use only retrieval-based approaches; agent-based and tool-augmented methods not evaluated in this paper.",
+      "source": "project/paper.txt",
+      "locator": "line 569"
+    },
+    {
+      "id": "E044",
+      "type": "result",
+      "description": "Claude 2 with GPT-4: performance jump from oracle to oracle-collapsed. GPT-4 goes from 1.3% to 3.4%",
+      "source": "project/paper.txt",
+      "locator": "line 301"
+    },
+    {
+      "id": "E045",
+      "type": "observation",
+      "description": "32% of matplotlib and 10% of seaborn instances contain embedded images in issue text vs 2% overall; multi-modal capability needed",
+      "source": "project/paper.txt",
+      "locator": "line 257"
+    }
+  ],
+  "missing_evidence": [
+    {
+      "id": "M001",
+      "description": "Variance/standard deviation across runs not reported (single greedy decoding per instance, pass@1)"
+    },
+    {
+      "id": "M002",
+      "description": "SWE-bench Lite filtering criteria not fully described in main paper text (Appendix A.7 incomplete in extracted text)"
+    }
+  ]
+}

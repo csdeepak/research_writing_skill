@@ -1,0 +1,115 @@
+{
+  "id": "20260924-attribution-and-adherence",
+  "date": "2026-09-24",
+  "from_version": "0.1.0",
+  "to_version": "0.2.0",
+  "failure_observed": "Readers of skill-written papers reconstruct the authors' own limitations (Q11), motivation (Q2) and design rationale (Q5) worse than readers of plain papers: author-stated limitations are replaced by writer-derived caveats presented in the authors' voice, and author rationale is compressed into the writer's spine framing. The skill as executed also differs from the skill as designed: section contracts and attribution-relevant rules sit in files no run opened, the validator and linter were never run, and all gates were self-certified. Two of six skill papers exceeded the 4,500-word limit (0/6 plain).",
+  "evidence": {
+    "cluster_id": "S1+S2 (attribution), S3 (adherence), S4 (length)",
+    "instances": 6,
+    "metrics": {
+      "S1_Q11_nuggets_net_F1": -7,
+      "S1_projects_affected_F1": "5/6",
+      "S2_Q2_nuggets_net_F1": -3,
+      "S2_Q5_nuggets_net_F1": -3,
+      "S2_projects_affected_F1": "4/6",
+      "S2_interpretation_nuggets_lost_vs_gained_F1": "6 vs 2",
+      "Q11_mean_RR_F1_skill_vs_plain": "0.536 vs 0.749 (6 paired projects)",
+      "Q2_mean_RR_F1_skill_vs_plain": "0.514 vs 0.653 (6 paired projects)",
+      "Q5_mean_RR_F1_skill_vs_plain": "0.561 vs 0.714 (6 paired projects)",
+      "F2_note": "F2 (3 paired projects) shows no Q2/Q5 loss and Q11 0.756 vs 0.778; the S2 effect is reader-dependent",
+      "S3_runs_affected": "6/6",
+      "S3_validator_or_lint_invocations": 0,
+      "S3_validator_errors_per_run": "141-227",
+      "S3_runs_self_certifying_all_gates": "4/4 runs with a readable state.json (1 run had malformed state.json)",
+      "S3_section_rules_opened": "0/6 runs",
+      "S4_over_limit_skill_vs_plain": "2/6 vs 0/6 (5,071 and 5,888 words vs 4,500)"
+    }
+  },
+  "root_cause": "missing_artifact",
+  "mechanism_type": "artifact_field",
+  "components": [
+    {
+      "part": 1,
+      "clusters": ["S1", "S2"],
+      "root_cause": "missing_artifact",
+      "secondary_causes": ["conflicting_rules: LIMITATIONS 'must not: generic limitations' + LIMITATION_MISSING 'draft from the claim graph' pushed out broad author limitations"],
+      "mechanism_type": "artifact_field",
+      "summary": "New evidence kind rationale_stated; required limitation.origin (author_stated | writer_derived); optional claim.origin and claim.rationale (motivation | design_choice). Validator: every live limitation_noted item is carried by an author_stated limitation, author_stated limitations must cite limitation_noted evidence, every rationale_stated item is carried by an author_stated rationale claim. Lint on assembled drafts: author_stated limitations and rationale claims must be tagged (ERROR), writer-derived caveats mixed into the authors' limitations and rationale placed outside Introduction/Method (WARN). Limitations contract: all author-stated limitations first, attributed; writer-derived caveats after, in an 'Additional caveats' paragraph; broad author limitations attach to the central claim instead of being dropped as generic.",
+      "tests": ["T-008", "T-009", "T-010", "T-011", "T-017", "T-018"]
+    },
+    {
+      "part": 2,
+      "clusters": ["S3"],
+      "root_cause": "weak_gate",
+      "secondary_causes": ["wrong_placement: load-bearing rules only in unread secondary files"],
+      "mechanism_type": "gate",
+      "summary": "Gates G1/G3/G5 become executable: a 'passed' gate needs a tool report under .rcs/audits/gates/ (validate_artifacts --out, lint_draft --out) with 0 errors and matching SHA-256 of the checked inputs; validate_artifacts.py .rcs flags any other 'passed' gate as SELF_CERTIFIED_GATE and flags malformed state.json. SKILL.md now inlines the attribution rules, a one-table section-contract summary, the claim_type/confidence enums, and the gate commands; the 'tools are optional' wording is removed ('unverified' replaces 'passed' when tools cannot run).",
+      "tests": ["T-012", "T-013", "T-014"]
+    },
+    {
+      "part": 3,
+      "clusters": ["S4"],
+      "root_cause": "missing_check",
+      "mechanism_type": "automatic_check",
+      "summary": "length_limit_words in state.json (or venue words_main); lint counts main-text words excluding references/appendix/supplement and raises S4-over-length (WARN in draft, ERROR with --final); G5 fails if the final lint report is over the limit. Step 21 procedure: relocate SUPPLEMENTARY content, never cut claims, negative results, author-stated limitations, or rationale. Step 8 architecture gains a planned-words column (target <= 90% of the limit).",
+      "tests": ["T-015", "T-016"]
+    }
+  ],
+  "change": {
+    "files": [
+      "SKILL.md",
+      "workflow.md",
+      "section_rules.md",
+      "evidence_model.md",
+      "failure_states.md",
+      "agents/corpus_agent.md",
+      "templates/paper_architecture.md",
+      "schemas/claim_evidence_map.schema.json",
+      "schemas/research_evidence.schema.json",
+      "examples/demo_project/.rcs/claims/claim_evidence_map.json",
+      "tests/README.md",
+      "changelog.md",
+      "tools/rce_common.py",
+      "tools/validate_artifacts.py",
+      "tools/lint_draft.py",
+      "tools/tests/test_tools.py",
+      "tools/tests/test_v020_attribution_gates.py",
+      "tools/tests/fixtures/H_author_limitations_replaced.md",
+      "tools/tests/fixtures/I_attributed_limitations.md"
+    ],
+    "summary": "Three independently testable parts (see components): (1) attribution-preserving limitation and rationale fields, checks and section contract; (2) executable gates plus inlining of never-read load-bearing rules into SKILL.md; (3) a length gate with a relocation-not-deletion procedure. No hard rule relaxed; no existing test changed except for path resolution in the copied test_tools.py (the candidate keeps tools/ beside SKILL.md)."
+  },
+  "expected_improvement": "Primary: Q11 recall (F1 reader) recovers toward the plain baseline (skill 0.536 vs plain 0.749); expected +0.10 to +0.20 absolute, because author-stated limitations can no longer silently disappear from claim map or assembled draft. Q2/Q5 recall (F1): expected +0.05 to +0.10 each, smaller and less certain, because rationale coverage depends on the extractor recording rationale_stated items (not machine-checkable against the source). DR should not rise (writer caveats are now labelled rather than attributed to authors). S3: validator/lint invocations > 0 in every run, schema errors per run from 141-227 toward 0, no 'passed' gate without a report. S4: 0 papers over the limit.",
+  "possible_regressions": [
+    "More words: attributed author limitations plus a labelled 'Additional caveats' paragraph lengthen Limitations; the length gate counteracts but may push secondary results to the appendix (possible small Q7/Q9 loss).",
+    "SKILL.md grows from ~1,170 to ~1,880 words; more instruction text may dilute attention on other rules.",
+    "The 'Additional caveats' label may read as unusual in a venue paper; readers may discount writer-derived caveats that are in fact important (Q9/Q11 nuggets that are writer-derived).",
+    "Extractor may over-record rationale_stated items (every 'because' in notes), forcing low-value rationale claims into the Introduction/Method and adding words.",
+    "Executable gates add tool-run cost and may stall runs where Python is unavailable (gates become 'unverified' instead of 'passed').",
+    "S1-caveat-attribution (WARN) fires on every v0.1.0-style text that mixes author and writer limitations in one paragraph, including A_clean.md; it is a warning only, but adds lint noise.",
+    "The attribution checks rely on {L###}/{C###} tags; drafts written without tags or in --final mode bypass the draft-side check (the claim-map check and claim-invariance still apply).",
+    "Brittle hash-based staleness: harmless re-saves (whitespace) of artifacts after G1 produce a WARN; after G5 they block until the validator is re-run."
+  ],
+  "tests_added": [
+    "T-008 test_v020_attribution_gates.py::AttributionValidatorTests.test_T008_limitation_requires_origin",
+    "T-009 ::test_T009_author_limitation_must_be_carried (+ T-009b superseded exemption)",
+    "T-010 ::test_T010_writer_caveat_cannot_be_labelled_author_stated",
+    "T-011 ::test_T011_author_rationale_must_be_carried (+ T-011b writer-derived rationale rejected)",
+    "T-012 GateTests.test_T012_self_certified_gate_is_an_error (+ T-012b malformed state.json)",
+    "T-013 GateTests.test_T013_gate_backed_by_fresh_report_passes (+ T-013b stale G5 blocks, T-013c report with errors blocks)",
+    "T-014 GateTests.test_T014_G3_lint_report (+ T-014b lint report with errors blocks)",
+    "T-015 LengthGateTests.test_T015_lint_length_rule (+ T-015b back matter excluded)",
+    "T-016 LengthGateTests.test_T016_G5_length_gate",
+    "T-017 AttributionLintTests.test_T017_author_limitations_replaced_by_writer_caveats (+ T-017b variant E, T-017c attributed fixture clean, T-017d mixed caveats warn, T-017e single-section drafts not checked)",
+    "T-018 AttributionLintTests.test_T018_author_rationale_must_reach_intro_or_method"
+  ],
+  "gate": {
+    "status": "pending",
+    "results": {
+      "unit_tests_candidate": "44/44 pass (21 existing + 23 new)",
+      "new_tests_on_v0.1.0": "21/23 fail or error (the 2 that pass are negative controls T-017c, T-017e); the unmodified test module does not import on v0.1.0",
+      "release_gate": "not run: held-out evaluation with the same writer/reader/grader protocol vs frozen v0.1.0 baseline is owned by the orchestrator"
+    }
+  }
+}

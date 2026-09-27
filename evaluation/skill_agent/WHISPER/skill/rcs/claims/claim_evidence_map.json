@@ -1,0 +1,159 @@
+{
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "Supervised ASR models fine-tuned on a single dataset distribution achieve low WER on that distribution but fail to generalize, making many more errors than humans on other distributions.",
+      "claim_type": "observation",
+      "evidence_ids": ["E032", "E008"],
+      "confidence": "high",
+      "permitted_verbs": ["demonstrate", "show", "observe", "find"],
+      "scope": "Quantified for LibriSpeech-trained models evaluated on 12 other academic datasets",
+      "limitation_links": ["L001"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C002",
+      "statement": "Large-scale weakly supervised pretraining on 680,000 hours of diverse internet audio enables zero-shot transfer to diverse speech recognition benchmarks without any dataset-specific fine-tuning.",
+      "claim_type": "empirical",
+      "evidence_ids": ["E001", "E004", "E005", "E033"],
+      "confidence": "high",
+      "permitted_verbs": ["demonstrate", "show", "achieve", "find"],
+      "scope": "Evaluated on 13 academic ASR datasets including diverse domains and acoustic conditions",
+      "limitation_links": ["L002", "L003"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C003",
+      "statement": "Despite matching a top supervised LibriSpeech model on its home benchmark (both at 2.7% WER), zero-shot Whisper Large V2 achieves 55.2% average relative error reduction over that supervised model on 13 other datasets.",
+      "claim_type": "empirical",
+      "evidence_ids": ["E004", "E005", "E031"],
+      "confidence": "high",
+      "permitted_verbs": ["achieve", "show", "demonstrate"],
+      "scope": "Comparison with wav2vec 2.0 Large (no LM) on 13 OOD datasets; text normalization applied",
+      "limitation_links": ["L004"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C004",
+      "statement": "Zero-shot Whisper's robustness matches human robustness: the robustness frontier of zero-shot Whisper includes the 95% confidence interval of human performance on the studied datasets.",
+      "claim_type": "empirical",
+      "evidence_ids": ["E008", "E015"],
+      "confidence": "medium",
+      "permitted_verbs": ["suggest", "indicate", "approach"],
+      "scope": "Single human evaluator (Alec) in Figure 2; 25 audio recordings in Kincaid46 for Figure 7",
+      "limitation_links": ["L005"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C005",
+      "statement": "A single multitask token-based format enables one model to perform multilingual transcription, speech-to-English translation, voice activity detection, language identification, and time-aligned transcription without architectural changes.",
+      "claim_type": "empirical",
+      "evidence_ids": ["E003", "E009", "E011", "E012"],
+      "confidence": "high",
+      "permitted_verbs": ["demonstrate", "show", "enable"],
+      "scope": "All five tasks demonstrated; performance varies by task",
+      "limitation_links": ["L006"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C006",
+      "statement": "Whisper performance scales reliably with model size for multilingual speech recognition, translation, and language identification, but English speech recognition shows diminishing returns consistent with approaching human-level saturation.",
+      "claim_type": "empirical",
+      "evidence_ids": ["E016"],
+      "confidence": "medium",
+      "permitted_verbs": ["suggest", "show", "observe", "indicate"],
+      "scope": "Five model sizes 39M-1550M parameters; saturation interpretation is the authors' inference",
+      "limitation_links": ["L007"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C007",
+      "statement": "Zero-shot Whisper performance scales with training dataset size across all tasks, with approximately power-law improvement in WER for multilingual SR and log-linear improvement in translation BLEU.",
+      "claim_type": "empirical",
+      "evidence_ids": ["E017", "E010"],
+      "confidence": "high",
+      "permitted_verbs": ["show", "demonstrate", "observe"],
+      "scope": "Tested at 0.5%-100% of 680k-hour dataset on medium-sized model; full dataset shows some diminishing returns",
+      "limitation_links": ["L007"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C008",
+      "statement": "For small models, joint multilingual and multitask training degrades English speech recognition compared to English-only training; for large models, joint training eventually yields positive transfer with slightly better English SR performance.",
+      "claim_type": "empirical",
+      "evidence_ids": ["E018"],
+      "confidence": "high",
+      "permitted_verbs": ["show", "demonstrate", "find"],
+      "scope": "Compute-adjusted comparison; 95% bootstrap CI shown in Figure 9",
+      "limitation_links": [],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C009",
+      "statement": "Whisper achieves near-human English ASR performance: on 25 Kincaid46 recordings, pure-human transcription services are only a fraction of a percentage point better, and a computer-assisted service is 1.15 WER points better.",
+      "claim_type": "empirical",
+      "evidence_ids": ["E015"],
+      "confidence": "medium",
+      "permitted_verbs": ["achieve", "approach", "indicate"],
+      "scope": "25 recordings from Kincaid46; 5 services compared; no confidence intervals reported",
+      "limitation_links": ["L005"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C010",
+      "statement": "Whisper zero-shot achieves a new SOTA of 29.1 BLEU on CoVoST2 X->en translation, improving over mSLAM by 6.7 BLEU on the lowest-resource language group.",
+      "claim_type": "empirical",
+      "evidence_ids": ["E011"],
+      "confidence": "medium",
+      "permitted_verbs": ["achieve", "show"],
+      "scope": "Zero-shot evaluation; text standardizer applied. Authors caution against SOTA claim due to normalizer.",
+      "limitation_links": ["L008"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C011",
+      "statement": "Zero-shot Whisper outperforms all compared open-source ASR models and most commercial ASR services on long-form transcription across 7 datasets.",
+      "claim_type": "empirical",
+      "evidence_ids": ["E014", "E019"],
+      "confidence": "medium",
+      "permitted_verbs": ["show", "outperform", "demonstrate"],
+      "scope": "7 long-form datasets; 4 commercial services as of September 2022; commercial services may have been trained on some of these datasets",
+      "limitation_links": ["L009"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C012",
+      "statement": "The amount of per-language training data strongly predicts zero-shot speech recognition performance (r^2=0.83 on log-log scale), with WER halving for every 16-fold increase in training hours.",
+      "claim_type": "empirical",
+      "evidence_ids": ["E010"],
+      "confidence": "high",
+      "permitted_verbs": ["show", "find", "demonstrate"],
+      "scope": "Evaluated across languages in Fleurs dataset; outliers include languages with unique scripts",
+      "limitation_links": ["L010"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C013",
+      "statement": "Language identification performance is not competitive with supervised methods (64.5% vs 77.7% on Fleurs), but this comparison is confounded because Whisper has no training data for 20 of 102 Fleurs languages; on the 82 overlapping languages, Whisper achieves 80.3%.",
+      "claim_type": "empirical",
+      "evidence_ids": ["E012", "E020"],
+      "confidence": "high",
+      "permitted_verbs": ["show", "achieve", "find"],
+      "scope": "Fleurs dataset; supervised models trained specifically on these languages",
+      "limitation_links": [],
+      "author_confirmation": "confirmed"
+    }
+  ],
+  "limitations": [
+    {"id": "L001", "statement": "The supervised models in this comparison are all trained primarily on LibriSpeech; other supervised baselines may generalize differently."},
+    {"id": "L002", "statement": "Zero-shot transfer may be enabled by data contamination rather than generalization; de-duplication was applied for TED-LIUM 3 only."},
+    {"id": "L003", "statement": "Fine-tuning performance not studied; Whisper may benefit further from domain-specific fine-tuning."},
+    {"id": "L004", "statement": "Text normalization co-developed with Whisper; comparison on some datasets (WSJ, CallHome, Switchboard) may favor Whisper."},
+    {"id": "L005", "statement": "Human comparison uses limited samples (25 recordings, single human in Figure 2) without confidence intervals; human panel not a representative sample."},
+    {"id": "L006", "statement": "Language identification significantly underperforms supervised SOTA; translation performance weaker on high-resource languages."},
+    {"id": "L007", "statement": "Scaling analysis uses medium-sized models for data scaling; LLM-style scaling laws not fully characterized."},
+    {"id": "L008", "statement": "Text standardizer used for translation; prevents direct comparison or SOTA claims per authors' own caution."},
+    {"id": "L009", "statement": "Commercial ASR services may have been trained on some of the long-form evaluation datasets; comparison not necessarily fair."},
+    {"id": "L010", "statement": "Outlier languages (non-Indo-European, unique scripts) deviate from the scaling trend for reasons not fully diagnosed."}
+  ]
+}

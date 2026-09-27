@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rce/claim_evidence_map.schema.json",
+  "title": "Claim-evidence graph",
+  "type": "object",
+  "required": ["claims", "limitations"],
+  "properties": {
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "statement", "claim_type", "evidence", "confidence", "author_confirmation"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^C[0-9]{3,}$"},
+          "statement": {"type": "string", "minLength": 5},
+          "claim_type": {"enum": ["measured", "observed", "derived", "literature", "interpretation",
+                                  "hypothesis", "speculation", "future"]},
+          "evidence": {"type": "array", "items": {"type": "string", "pattern": "^(E[0-9]{3,}|C[0-9]{3,})$"}},
+          "sources": {"type": "array", "items": {"type": "string", "pattern": "^SRC-[0-9]{3,}$"}},
+          "scope": {"type": ["object", "string"]},
+          "confidence": {"enum": ["high", "moderate", "low"]},
+          "confidence_reasons": {"type": "array", "items": {"type": "string"}},
+          "limitations": {"type": "array", "items": {"type": "string", "pattern": "^L[0-9]{3,}$"}},
+          "negative_results": {"type": "array", "items": {"type": "string", "pattern": "^E[0-9]{3,}$"}},
+          "permitted_verbs": {"type": "array", "items": {"type": "string"}},
+          "author_confirmation": {"enum": ["confirmed", "pending", "rejected"]},
+          "used_in": {"type": "array", "items": {"type": "string"}},
+          "origin": {"enum": ["author_stated", "writer_derived"],
+                     "description": "Who asserts this: the authors' own materials (author_stated, quote in evidence) or the writing agent (writer_derived). Required when 'rationale' is set."},
+          "rationale": {"enum": ["motivation", "design_choice"],
+                        "description": "Set on claims that carry the authors' stated motivation (Q2) or reason for a design choice (Q5). Must be origin author_stated and cite a rationale_stated evidence item."}
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "statement", "affects_claims", "origin"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^L[0-9]{3,}$"},
+          "statement": {"type": "string"},
+          "origin": {"enum": ["author_stated", "writer_derived"],
+                     "description": "author_stated: the authors concede it in their own materials (must cite a limitation_noted evidence item). writer_derived: a caveat the writing agent inferred (reported separately as an additional caveat, never in the authors' voice as their concession)."},
+          "affects_claims": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^C[0-9]{3,}$"}},
+          "effect_on_interpretation": {"type": "string"},
+          "evidence": {"type": "array", "items": {"type": "string"}},
+          "resolution": {"type": "string"}
+        }
+      }
+    },
+    "negative_result_decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["evidence", "decision"],
+        "properties": {
+          "evidence": {"type": "string", "pattern": "^E[0-9]{3,}$"},
+          "decision": {"enum": ["reported_main", "reported_supplement", "excluded"]},
+          "reason": {"type": "string"}
+        }
+      }
+    }
+  }
+}

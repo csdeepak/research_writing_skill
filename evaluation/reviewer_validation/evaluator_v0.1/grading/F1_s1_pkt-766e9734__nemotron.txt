@@ -1,0 +1,29 @@
+{
+  "questions": {
+    "Q1": { "q1a": "present" },
+    "Q2": { "q2a": "present" },
+    "Q3": { "q3a": "absent" },
+    "Q4": { "q4a": "present", "q4b": "present" },
+    "Q5": { "q5a": "present" },
+    "Q6": { "q6a": "present", "q6b": "absent" },
+    "Q7": { "q7a": "present", "q7b": "present" },
+    "Q8": { "q8a": "present", "q8b": "present" },
+    "Q9": { "q9a": "absent", "q9b": "present" },
+    "Q10": { "q10a": "absent" },
+    "Q11": { "q11a": "present", "q11b": "absent", "q11c": "present" },
+    "Q12": { "q12a": "present" }
+  },
+  "intrusions": [
+    { "question": "Q1", "text": "The problem is only framed via a synthetic setup; no evidence that this is a real deployment failure is cited.", "tag": "benign_elaboration" },
+    { "question": "Q2", "text": "Both motivating claims carry [CITATION NEEDED] tags, so the prevalence of level shifts and the ubiquity of training-statistic normalization are asserted, not supported.", "tag": "benign_elaboration" },
+    { "question": "Q3", "text": "The research questions appear only in the Discussion, not the Introduction, so their placement is late.", "tag": "benign_elaboration" },
+    { "question": "Q5", "text": "Training budget, optimizer, loss, and test-period length are not specified; window length 48 was chosen in a quick trial (ASK AUTHOR).", "tag": "benign_elaboration" },
+    { "question": "Q6", "text": "Number of test windows, whether RWN-fixed and the s-sweep were both fully run, and per-s raw values for s=0.2/0.4 are not tabulated.", "tag": "benign_elaboration" },
+    { "question": "Q7", "text": "Only aggregate/range values are given for s=0.2 and 0.4; no full per-s table; standard deviations reported only for no-shift and s=0.8.", "tag": "benign_elaboration" },
+    { "question": "Q8", "text": "Capacity was held constant, not varied, so 'not capacity' is inferred rather than tested; conclusion is hedged with 'may/suggest'.", "tag": "benign_elaboration" },
+    { "question": "Q10", "text": "SynthLoad, a self-generated synthetic hourly series with daily and weekly cycles plus Gaussian noise; there is a training year followed by a post-shift period.", "tag": "unsupported_belief" },
+    { "question": "Q10", "text": "Generator parameters (noise scale, cycle amplitudes, series length) are not given, limiting reproducibility.", "tag": "unsupported_belief" },
+    { "question": "Q12", "text": "No real-data confirmation; generalization to real load or to non-level shifts is untested.", "tag": "benign_elaboration" }
+  ],
+  "notes": "RR=14/19 (73.7%); DR=0/14 (0%); IR=11 intrusions/12 questions (0.92); MMF=3.33/12 (27.8%); Core RR=5/7 (71.4%). Key misses: Q3 (literature gap about entangled normalization/capacity in prior work), Q6b (ablation design detail), Q9a (no benefit at s=0.8), Q10a (core contribution statement — reader answered about dataset instead), Q11b (architecture/capacity limitation). No overstated/contradicted labels. Intrusions are mostly benign elaborations on missing details or paper structure; two unsupported_belief tags for Q10 because the reader answered a different question (dataset description) than the gold nugget (core contribution)."
+}

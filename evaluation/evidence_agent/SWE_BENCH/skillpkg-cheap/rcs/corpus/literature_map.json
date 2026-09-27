@@ -1,0 +1,16 @@
+{
+  "matrix": [
+    {
+      "source": "SRC-001 (Liu et al., 2023b)",
+      "problem_framing": "How well language models use information placed at different positions within long input contexts.",
+      "method_family": "Empirical analysis of long-context LLM behavior.",
+      "key_assumption": "Not independently verifiable in this run (abstract-only, no full text).",
+      "data_eval": "Not independently verifiable in this run.",
+      "strength": "Cited by the SWE-bench authors as corroboration, suggesting field-level relevance.",
+      "weakness_limit": "Cannot be independently assessed here; registered at low verification strength (user_supplied_file, abstract read_depth, unverified metadata).",
+      "relation_to_this_work": "Supports (does not establish on its own) the interpretation that SWE-bench's context-length degradation pattern (C003) is consistent with a broader, previously documented limitation of long-context use in LLMs."
+    }
+  ],
+  "dimensions_used": ["problem framing (long-context use)"],
+  "note": "Only one verifiable-by-label source exists in the evidence package; a full dimension matrix (method families, datasets, contradictions) cannot be built from a single entry without inventing coverage that was not searched for. The Related Work section instead centers on what the evidence package itself documents about the gap relative to prior evaluation practice (short, self-contained coding problems vs. this benchmark's real-repository, test-verified tasks), sourced from research_evidence.json/claim_candidates.json rather than from an external literature search."
+}

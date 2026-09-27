@@ -1,0 +1,77 @@
+{
+ "sources": [
+  {
+   "id": "SRC-001",
+   "title": "[TITLE UNKNOWN: not given in the evidence package]",
+   "authors": [
+    "Narayanan et al."
+   ],
+   "year": null,
+   "venue": null,
+   "publication_status": "TECHNICAL_REPORT",
+   "level": 4,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-24",
+    "verified_by": "agent"
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Prior work combined multiple existing supervised speech datasets/domains to improve model generality.",
+     "support_quote": "Prior work (Narayanan et al., Likhomanenko et al.) also combined multiple datasets",
+     "location": "project evidence package: missing_evidence.json, item on comparison with supervised pre-training approaches",
+     "strength": "soft"
+    }
+   ],
+   "why_useful": "Establishes the prior-work baseline strategy (dataset pooling) that the Related Work section contrasts with Whisper's scale.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null,
+   "limitations": "No title, venue, or year is available anywhere in the evidence package; year is left null rather than invented (see .rcs/state.json accepted_risks). This causes a schema validation error (year must be an integer), accepted as a documented deviation rather than fabricating a value."
+  },
+  {
+   "id": "SRC-002",
+   "title": "[TITLE UNKNOWN: not given in the evidence package]",
+   "authors": [
+    "Likhomanenko et al."
+   ],
+   "year": null,
+   "venue": null,
+   "publication_status": "TECHNICAL_REPORT",
+   "level": 4,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-24",
+    "verified_by": "agent"
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Prior work combined multiple existing supervised speech datasets/domains to improve model generality.",
+     "support_quote": "Prior work (Narayanan et al., Likhomanenko et al.) also combined multiple datasets",
+     "location": "project evidence package: missing_evidence.json, item on comparison with supervised pre-training approaches",
+     "strength": "soft"
+    }
+   ],
+   "why_useful": "Establishes the prior-work baseline strategy (dataset pooling) that the Related Work section contrasts with Whisper's scale.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null,
+   "limitations": "No title, venue, or year is available anywhere in the evidence package; year is left null rather than invented (see .rcs/state.json accepted_risks). This causes a schema validation error (year must be an integer), accepted as a documented deviation rather than fabricating a value."
+  }
+ ],
+ "unnamed_systems_mentioned_without_citable_author": [
+  "wav2vec 2.0",
+  "XLS-R",
+  "mSLAM",
+  "Maestro",
+  "SpeechStew",
+  "NVIDIA STT (Conformer-CTC Large)",
+  "VP-10K+FT",
+  "FairSpeech (independent text normalizer)"
+ ],
+ "note": "These systems/datasets are referenced by name in the evidence package (as baselines/comparators) but no author name or year is attached to them anywhere in the package, so they are used in-text as named systems, not as parenthetical author-year citations, per the never-invent rule."
+}

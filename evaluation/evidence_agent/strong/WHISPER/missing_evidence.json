@@ -1,0 +1,54 @@
+{
+  "missing": [
+    {
+      "what": "Variance, spread, or number of seeds for every reported WER/BLEU/accuracy value (Tables 2-16, Figures 2,5,6,7).",
+      "why_it_matters": "All headline results (e.g., 55.2% RER, 29.1 BLEU, 2.5 WER) are single point estimates with no error bars, so their statistical reliability and any 'significant' comparison cannot be assessed.",
+      "location": "paper.txt, Tables 2, 3, 4, 5, 6, 7 and results Sections 3.3-3.9"
+    },
+    {
+      "what": "Source data files behind every table and figure (no CSV/JSON/log artifacts are present in the project).",
+      "why_it_matters": "The project contains only the published paper document and a README; no numbers are reproducible from a data file in this session, so every evidence item is necessarily classified soft.",
+      "location": "project/ (only paper.txt and README_1.md exist)"
+    },
+    {
+      "what": "Machine-readable per-cell values for Appendix D tables (Tables 8-16) and Appendix E (Figure 11) and F.",
+      "why_it_matters": "The provided paper.txt renders these appendix tables with jumbled/interleaved columns from OCR, so individual per-model/per-language cells (e.g., large-v2 LibriSpeech test-clean in Tables 8/9) cannot be reliably attributed. This also blocks confirmation of the E014/E015 conflict against the appendix.",
+      "location": "paper.txt, Appendix D.1-D.4 (Tables 8-16), Appendix E (Figure 11)"
+    },
+    {
+      "what": "Precise numeric value for the pure-human transcriber advantage over Whisper on Kincaid46.",
+      "why_it_matters": "The 'close to human' claim (C013) relies on a quantity described only as 'a fraction of a percentage point'; the aggregate WERs are annotated on Figure 7 but not given in the text.",
+      "location": "paper.txt, Section 3.9 / Figure 7"
+    },
+    {
+      "what": "Baselines re-run under Whisper's exact evaluation/normalizer conditions for the multilingual (Table 3), translation (Table 4), and language-ID (Table 5) comparisons.",
+      "why_it_matters": "Prior-work numbers are quoted from their original papers rather than re-measured under the same text standardizer, which the authors themselves flag as preventing direct SOTA comparison; confidence in comparative claims is limited.",
+      "location": "paper.txt, Sections 3.4-3.6, Tables 3-5"
+    },
+    {
+      "what": "An ablation isolating the contribution of the encoder vs the decoder (audio-conditional language model) to robustness.",
+      "why_it_matters": "The authors attribute robustness partly to the strong decoder but state this is untested; the interpretation claim about why Whisper is robust lacks direct evidence.",
+      "location": "paper.txt, Section 6 (Studying the impact of Language Models on Robustness)"
+    },
+    {
+      "what": "Per-point WER-vs-SNR values behind the noise-robustness result (Figure 5) and per-dataset long-form aggregate WERs (Figure 6).",
+      "why_it_matters": "These robustness claims (C010, C011) currently rest only on visual reading of figures (extracted_from_image); the underlying numbers are not tabulated in the readable text.",
+      "location": "paper.txt, Sections 3.7-3.8, Figures 5 and 6"
+    },
+    {
+      "what": "Fine-tuning results for Whisper.",
+      "why_it_matters": "Only zero-shot transfer was studied; the authors note fine-tuning is a common setting that would enable direct comparison with prior work and could improve results, but no such evidence exists.",
+      "location": "paper.txt, Section 6 (Studying ﬁne-tuning)"
+    },
+    {
+      "what": "Turbo / large-v3 model details and their benchmark numbers.",
+      "why_it_matters": "The README documents a turbo model (809M, optimized large-v3) and large-v3 that are absent from paper.txt; their accuracy/robustness claims ('minimal degradation') have no in-project evidence.",
+      "location": "README_1.md, 'Available models and languages'"
+    },
+    {
+      "what": "Definition/quantification of the human robustness frontier and its 95% confidence interval used in Figure 2.",
+      "why_it_matters": "Figure 2's central 'closes the gap to human robustness' framing depends on a single human (Alec) and a 95% CI whose values are not tabulated, limiting how strongly the human-parity claim can be stated.",
+      "location": "paper.txt, Section 3.3 / Figure 2"
+    }
+  ]
+}

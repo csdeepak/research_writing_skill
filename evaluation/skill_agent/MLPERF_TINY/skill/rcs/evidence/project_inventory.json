@@ -1,0 +1,16 @@
+{
+  "inventory": [
+    {
+      "path": "project/paper.txt",
+      "type_class": "draft",
+      "notes": "Text extracted from arXiv preprint 2106.07597v4 (MLPerf Tiny Benchmark, Banbury et al., 2021). Contains full paper text including abstract, introduction, benchmark descriptions, run rules, benchmark assessment, impact, limitations, conclusion, appendix, and references. Tables and figures may be damaged by extraction. Opened: true.",
+      "opened": true
+    },
+    {
+      "path": "project/README_1.md",
+      "type_class": "reference",
+      "notes": "GitHub repository README for mlcommons/tiny. Lists benchmark versions, submission deadlines, and citation info. Opened: true.",
+      "opened": true
+    }
+  ]
+}

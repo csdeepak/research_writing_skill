@@ -1,0 +1,40 @@
+{
+  "step": 21,
+  "gates": {
+    "G1": "passed",
+    "G2": "passed",
+    "G3": "passed"
+  },
+  "open_failures": [],
+  "accepted_risks": [
+    "No human available for ASK/STOP decisions; most defensible option chosen from evidence.",
+    "No subagents; CORPUS_AGENT role performed by AUTHOR.",
+    "Step 20 (second review round) skipped per run-specific constraint.",
+    "Literature mode limited to works cited in project/paper.txt; verification_method=user_supplied_file, read_depth=abstract.",
+    "Step 18 (blind review) performed externally; draft written after step 17.",
+    "Venue unknown; generic venue profile applied with all rules assumed.",
+    "G1 user confirmation of pending claims skipped (no human); all claims confirmed from evidence.",
+    "Human comparison (Section 4.2) uses small sample (25 recordings) without confidence intervals; stated with appropriate hedging per evidence.",
+    "CoVoST2 SOTA caveat included per authors' own caution about text standardizer.",
+    "Effective robustness table corrected to include all 14 rows from Table 2."
+  ],
+  "completed_steps": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21],
+  "artifacts": {
+    "evidence/project_inventory.json": "complete",
+    "evidence/research_evidence.json": "complete (33 evidence items E001-E033)",
+    "evidence/missing_evidence.json": "complete (4 items M001-M004)",
+    "claims/claim_evidence_map.json": "complete (13 claims C001-C013, 10 limitations L001-L010)",
+    "story/spine.md": "complete",
+    "story/story_graph.json": "complete (23 nodes, 28 edges)",
+    "plan/audience_profile.json": "complete (Mode B)",
+    "corpus/source_registry.json": "complete (22 sources, all user_supplied_file)",
+    "plan/paper_architecture.md": "complete",
+    "drafts/v001/paper.md": "complete (with claim tags)",
+    "paper.md": "complete (step 19+21: all diagnostics applied, claim tags stripped)",
+    "open_issues.md": "complete (6 open issues; 17 resolved issues logged)"
+    "audits/v001/reconstruction_self.md": "complete (all 12 Q pass; 3 defects found and fixed)",
+    "packets/audience.md": "complete",
+    "packets/objective.md": "complete"
+  },
+  "final_paper": "paper.md (claim tags stripped, defects fixed)"
+}

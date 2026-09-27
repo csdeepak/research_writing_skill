@@ -1,0 +1,26 @@
+# VENUE_UNKNOWN: no venue was specified for this run. Using the generic fallback profile,
+# adapted to satisfy TASK.md's explicit, overriding length requirement (3,000-4,500 words main text).
+# All rules below are assumed:true (no official guideline source; failure state VENUE_UNKNOWN raised and accepted per state.json).
+venue: {name: "generic ML research article (adjacent-researcher audience)", type: journal, guideline_urls: []}
+structure:
+  section_template: [Title, Abstract, Introduction, Related Work, Methods, Results, Discussion, Limitations, Conclusion, References]
+  results_discussion: separate
+  related_work_position: after_intro
+  limitations_section_required: true
+  assumed: true
+limits: {pages_main: null, words_main: "3000-4500 (TASK.md requirement, overrides generic default)", abstract_words: 250, supplement_allowed: false, assumed: true}
+style:
+  citation_style: "(FirstAuthor et al., Year), per TASK.md requirement"
+  voice_preference: "active voice; 'we' for author actions"
+  spelling: US
+  abstract_format: unstructured
+  abstract_citations_allowed: false
+  assumed: true
+required_statements:
+  data_availability: false
+  code_availability: false
+  ai_use_disclosure: false
+  assumed: true
+  note: "No required-statements policy could be sourced (VENUE_UNKNOWN); omitted rather than invented. TASK.md does not request these statements."
+checklists: []
+reporting_guideline: null

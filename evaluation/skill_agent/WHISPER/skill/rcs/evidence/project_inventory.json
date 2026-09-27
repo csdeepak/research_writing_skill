@@ -1,0 +1,21 @@
+{
+  "project_root": "./",
+  "files": [
+    {
+      "path": "project/paper.txt",
+      "classification": "draft",
+      "description": "Full text of paper 'Robust Speech Recognition via Large-Scale Weak Supervision' (arXiv:2212.04356v1). Primary evidence source. Contains main text, all tables (1-19), figure captions, appendices A-F, and references.",
+      "size_lines": 2157,
+      "status": "read"
+    },
+    {
+      "path": "project/README_1.md",
+      "classification": "reference",
+      "description": "Official GitHub README for the Whisper repository. Contains model table with VRAM/speed info, command-line usage examples, and Python API examples. Consistent with paper claims.",
+      "size_lines": 161,
+      "status": "read"
+    }
+  ],
+  "no_evidence_risk": false,
+  "notes": "All result-bearing evidence is contained in paper.txt. README_1.md provides supplementary context on model sizes and deployment. No raw logs, training data, or additional experimental files."
+}

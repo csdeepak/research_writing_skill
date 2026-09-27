@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rce/skill_change.schema.json",
+  "title": "Skill amendment proposal",
+  "type": "object",
+  "required": ["id", "date", "from_version", "to_version", "failure_observed", "evidence", "root_cause",
+               "mechanism_type", "change", "expected_improvement", "possible_regressions", "tests_added", "gate"],
+  "properties": {
+    "id": {"type": "string"},
+    "date": {"type": "string"},
+    "from_version": {"type": "string"},
+    "to_version": {"type": "string"},
+    "failure_observed": {"type": "string"},
+    "evidence": {
+      "type": "object",
+      "required": ["cluster_id", "instances", "metrics"],
+      "properties": {
+        "cluster_id": {"type": "string"},
+        "instances": {"type": "integer", "minimum": 3},
+        "metrics": {"type": "object"}
+      }
+    },
+    "root_cause": {"enum": ["missing_rule", "missing_check", "missing_artifact", "wrong_order", "weak_gate",
+                            "ambiguous_rule", "conflicting_rules", "not_skill"]},
+    "mechanism_type": {"enum": ["artifact_field", "graph_constraint", "automatic_check", "gate",
+                                "procedure_step", "worked_example", "wording"]},
+    "change": {
+      "type": "object",
+      "required": ["files", "summary"],
+      "properties": {"files": {"type": "array", "items": {"type": "string"}}, "summary": {"type": "string"}}
+    },
+    "expected_improvement": {"type": "string"},
+    "possible_regressions": {"type": "array", "items": {"type": "string"}},
+    "tests_added": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "gate": {
+      "type": "object",
+      "properties": {"status": {"enum": ["pending", "passed", "failed"]}, "results": {"type": "object"}}
+    }
+  }
+}

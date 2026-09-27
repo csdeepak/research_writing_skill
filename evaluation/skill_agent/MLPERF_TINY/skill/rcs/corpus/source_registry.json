@@ -1,0 +1,154 @@
+{
+  "sources": [
+    {
+      "id": "SRC001",
+      "citation": "Banbury et al., 2021",
+      "full_ref": "C. Banbury, C. Zhou, I. Fedorov, R. Matas, U. Thakker, D. Gope, V. Janapa Reddi, M. Mattina, and P. Whatmough. Micronets: Neural network architectures for deploying tinyml applications on commodity microcontrollers. Proceedings of Machine Learning and Systems, 3, 2021.",
+      "verification": {"method": "user_supplied_file", "read_depth": "abstract"},
+      "publication_status": "peer-reviewed",
+      "permitted_use": ["motivation_citation"],
+      "support_quote": "TinyML has acted as a standard set of tasks for TinyML research [4]",
+      "story_node": "N17"
+    },
+    {
+      "id": "SRC002",
+      "citation": "David et al., 2020",
+      "full_ref": "R. David, J. Duke, A. Jain, V. J. Reddi, N. Jeffries, J. Li, N. Kreeger, I. Nappier, M. Natraj, S. Regev, et al. Tensorflow lite micro: Embedded machine learning on tinyml systems. arXiv preprint arXiv:2010.08678, 2020.",
+      "verification": {"method": "user_supplied_file", "read_depth": "abstract"},
+      "publication_status": "preprint",
+      "permitted_use": ["motivation_citation"],
+      "support_quote": "Reference implementations run using TFLite for Microcontrollers (TFLM) [7]",
+      "story_node": "N07"
+    },
+    {
+      "id": "SRC003",
+      "citation": "Gal-On & Levy, 2012",
+      "full_ref": "S. Gal-On and M. Levy. Exploring coremark a benchmark maximizing simplicity and efficacy. The Embedded Microprocessor Benchmark Consortium, 2012.",
+      "verification": {"method": "user_supplied_file", "read_depth": "abstract"},
+      "publication_status": "technical-report",
+      "permitted_use": ["gap_citation"],
+      "support_quote": "CoreMark does not profile full programs, nor does it accurately represent machine learning inference workloads.",
+      "story_node": "N03"
+    },
+    {
+      "id": "SRC004",
+      "citation": "Torelli & Bangale, n.d.",
+      "full_ref": "P. Torelli and M. Bangale. Measuring inference performance of machine-learning frameworks on edge-class devices with the mlmark benchmark.",
+      "verification": {"method": "user_supplied_file", "read_depth": "abstract"},
+      "publication_status": "technical-report",
+      "permitted_use": ["gap_citation"],
+      "support_quote": "MLMark models are far too large for MCU-class devices...They require far too much memory (GBs).",
+      "story_node": "N03"
+    },
+    {
+      "id": "SRC005",
+      "citation": "Reddi et al., 2019",
+      "full_ref": "V. J. Reddi, C. Cheng, D. Kanter, P. Mattson, et al. Mlperf inference benchmark, 2019.",
+      "verification": {"method": "user_supplied_file", "read_depth": "abstract"},
+      "publication_status": "preprint",
+      "permitted_use": ["gap_citation"],
+      "support_quote": "MLPerf inference precludes MCUs and other resource-constrained platforms due to a lack of small benchmarks and compatible implementations.",
+      "story_node": "N03"
+    },
+    {
+      "id": "SRC006",
+      "citation": "Warden, 2018",
+      "full_ref": "P. Warden. Speech commands: A dataset for limited-vocabulary speech recognition. arXiv preprint arXiv:1804.03209, 2018.",
+      "verification": {"method": "user_supplied_file", "read_depth": "abstract"},
+      "publication_status": "preprint",
+      "permitted_use": ["dataset_citation"],
+      "support_quote": "Speech Commands v2 dataset [21], a collection of 105,829 utterances collected from 2,618 speakers",
+      "story_node": "N10"
+    },
+    {
+      "id": "SRC007",
+      "citation": "Zhang et al., 2017",
+      "full_ref": "Y. Zhang, N. Suda, L. Lai, and V. Chandra. Hello edge: Keyword spotting on microcontrollers. arXiv preprint arXiv:1711.07128, 2017.",
+      "verification": {"method": "user_supplied_file", "read_depth": "abstract"},
+      "publication_status": "preprint",
+      "permitted_use": ["model_citation"],
+      "support_quote": "small depthwise-separable CNN described in [22]...with 38.6K parameters...achieving accuracy of 92.2%",
+      "story_node": "N10"
+    },
+    {
+      "id": "SRC008",
+      "citation": "Chowdhery et al., 2019",
+      "full_ref": "A. Chowdhery, P. Warden, J. Shlens, A. Howard, and R. Rhodes. Visual wake words dataset. CoRR, abs/1906.05721, 2019.",
+      "verification": {"method": "user_supplied_file", "read_depth": "abstract"},
+      "publication_status": "preprint",
+      "permitted_use": ["dataset_citation", "task_citation"],
+      "support_quote": "Visual Wakewords challenge [6] tasked submitters with detecting whether at least one person is in an image.",
+      "story_node": "N10"
+    },
+    {
+      "id": "SRC009",
+      "citation": "Howard et al., 2017",
+      "full_ref": "A. G. Howard, M. Zhu, B. Chen, D. Kalenichenko, W. Wang, T. Weyand, M. Andreetto, and H. Adam. Mobilenets: Efficient convolutional neural networks for mobile vision applications. arXiv preprint arXiv:1704.04861, 2017.",
+      "verification": {"method": "user_supplied_file", "read_depth": "abstract"},
+      "publication_status": "preprint",
+      "permitted_use": ["model_citation"],
+      "support_quote": "Visual Wakewords model is a MobilenetV1 [11]",
+      "story_node": "N10"
+    },
+    {
+      "id": "SRC010",
+      "citation": "He et al., 2016",
+      "full_ref": "K. He, X. Zhang, S. Ren, and J. Sun. Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 770-778, 2016.",
+      "verification": {"method": "user_supplied_file", "read_depth": "abstract"},
+      "publication_status": "peer-reviewed",
+      "permitted_use": ["model_citation"],
+      "support_quote": "Image Classification model is a customized ResNetv1 [10]",
+      "story_node": "N10"
+    },
+    {
+      "id": "SRC011",
+      "citation": "Krizhevsky et al., 2009",
+      "full_ref": "A. Krizhevsky, V. Nair, and G. Hinton. Cifar-10 (canadian institute for advanced research). 2009.",
+      "verification": {"method": "user_supplied_file", "read_depth": "abstract"},
+      "publication_status": "technical-report",
+      "permitted_use": ["dataset_citation"],
+      "support_quote": "CIFAR-10 [14] is a labeled subset of the 80 Million Tiny Images dataset.",
+      "story_node": "N10"
+    },
+    {
+      "id": "SRC012",
+      "citation": "Koizumi et al., 2019",
+      "full_ref": "Y. Koizumi, S. Saito, H. Uematsu, N. Harada, and K. Imoto. Toyadmos: A dataset of miniature-machine operating sounds for anomalous sound detection. In 2019 IEEE Workshop on Applications of Signal Processing to Audio and Acoustics (WASPAA), pages 313-317. IEEE, 2019.",
+      "verification": {"method": "user_supplied_file", "read_depth": "abstract"},
+      "publication_status": "peer-reviewed",
+      "permitted_use": ["dataset_citation"],
+      "support_quote": "ToyADMOS [12], and the MIMII [17] datasets",
+      "story_node": "N10"
+    },
+    {
+      "id": "SRC013",
+      "citation": "Koizumi et al., 2020",
+      "full_ref": "Y. Koizumi, Y. Kawaguchi, K. Imoto, T. Nakamura, Y. Nikaido, R. Tanabe, H. Purohit, K. Suefusa, T. Endo, M. Yasuda, and N. Harada. Description and discussion on DCASE2020 challenge task2: Unsupervised anomalous sound detection for machine condition monitoring. arXiv e-prints: 2006.05822, June 2020.",
+      "verification": {"method": "user_supplied_file", "read_depth": "abstract"},
+      "publication_status": "preprint",
+      "permitted_use": ["dataset_citation", "task_citation"],
+      "support_quote": "dataset from the DCASE2020 [13] competition",
+      "story_node": "N10"
+    },
+    {
+      "id": "SRC014",
+      "citation": "Lin et al., 2014",
+      "full_ref": "T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Dollar, and C. L. Zitnick. Microsoft coco: Common objects in context. In European conference on computer vision, pages 740-755. Springer, 2014.",
+      "verification": {"method": "user_supplied_file", "read_depth": "abstract"},
+      "publication_status": "peer-reviewed",
+      "permitted_use": ["dataset_citation"],
+      "support_quote": "Visual Wakewords Challenge uses the MSCOCO 2014 dataset [15]",
+      "story_node": "N10"
+    },
+    {
+      "id": "SRC015",
+      "citation": "Bouguera et al., 2018",
+      "full_ref": "T. Bouguera, J.-F. Diouris, J.-J. Chaillout, R. Jaouadi, and G. Andrieux. Energy consumption model for sensor nodes based on lora and lorawan. Sensors, 18(7):2104, 2018.",
+      "verification": {"method": "user_supplied_file", "read_depth": "abstract"},
+      "publication_status": "peer-reviewed",
+      "permitted_use": ["motivation_citation"],
+      "support_quote": "energy cost associated with wireless communication, which at this scale is far higher than that of compute [5]",
+      "story_node": "N02"
+    }
+  ]
+}

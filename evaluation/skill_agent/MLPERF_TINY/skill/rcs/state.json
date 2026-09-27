@@ -1,0 +1,64 @@
+{
+  "step": 21,
+  "gates": {
+    "G1": "passed",
+    "G2": "passed",
+    "G3": "passed",
+    "G4": "passed",
+    "G5": "passed"
+  },
+  "open_failures": [],
+  "accepted_risks": [
+    "No user available for STOP/ASK states; proceeding with most defensible option from evidence.",
+    "No subagents available; CORPUS_AGENT role performed by AUTHOR in same context.",
+    "Literature mode: no web access. All 15 sources registered with verification.method=user_supplied_file and read_depth=abstract.",
+    "Step 18 (blind review) performed externally per run-specific constraints.",
+    "All evidence strength is 'soft' (extracted from preprint paper text, no raw data files). Single-run results reported without variance; marked as incomplete in evidence map and noted in §7 Limitations.",
+    "Figure 5 (reference hardware latency/energy results) was damaged in extraction; specific numerical values unavailable. Measurement protocol described instead.",
+    "Venue inferred as NeurIPS Datasets and Benchmarks; all venue rules marked assumed:true.",
+    "Step 20 skipped per run-specific instruction (no further review rounds in this run).",
+    "RQ paragraph (§1), challenge-solution crosswalk (§2), PTQ residual note (§5.1), and FPGA claim softening (§6.2) added without human confirmation; flagged in open_issues.md #9."
+  ],
+  "completed_steps": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21],
+  "artifacts": {
+    "evidence/project_inventory.json": "done",
+    "evidence/research_evidence.json": "done (38 items)",
+    "evidence/missing_evidence.json": "done (3 items)",
+    "claims/claim_evidence_map.json": "done (10 claims, 5 limitations)",
+    "story/spine.md": "done",
+    "story/story_graph.json": "done (18 nodes, 21 edges)",
+    "corpus/source_registry.json": "done (15 sources)",
+    "plan/audience_profile.json": "done",
+    "plan/venue_profile.yaml": "done",
+    "plan/paper_architecture.md": "done",
+    "audits/v001/reconstruction_self.md": "done (all 12 Qs pass)",
+    "drafts/v001/paper.md": "done (with claim tags)",
+    "diagnostics/v001_1/diagnostics.json": "done (external blind review, 18 findings, 5 inference issues)",
+    "diagnostics/v001_1/reconstruction.json": "done (12 Qs, all confidence >= 4 except Q10/Q11)",
+    "packets/audience.md": "done",
+    "packets/objective.md": "done",
+    "../paper.md": "done (step 19+21: revised and final; 9 open issues in .rcs/open_issues.md)",
+    "open_issues.md": "done (9 items)"
+  },
+  "step19_summary": {
+    "structural_changes": [
+      "Abstract: 'comparable round' softened to 'submission round' (claim-evidence alignment fix)",
+      "§1: Explicit research question added as standalone paragraph",
+      "§2: Challenge-to-solution crosswalk added to final sentence",
+      "§5.1: PTQ residual variable acknowledged as limitation within closed division",
+      "§6.2: INT-8 throughput claim decoupled from accuracy evidence; throughput correctly hedged",
+      "§6.2: FPGA/open-division claim softened from 'demonstrates' to 'provides an early example'",
+      "§6.2: Alternative explanations added for dataset-modification observation",
+      "§8: Conclusion first paragraph trimmed; cross-community template sentence added"
+    ],
+    "language_changes": [
+      "§4.1: Mbed glossed on first use",
+      "§4.4: CIFAR-10 200-image subset contextualized against 10,000-image full set",
+      "§4.5: Input-size derivation (640 = 5 × 128) made explicit inline",
+      "§5.2: GPIO and UART glossed on first use; isolation proxy contamination mechanism explained",
+      "§6.1: MISSING marker added for archival URL/DOI",
+      "Table 2: Note added directing readers to quantitative public results"
+    ],
+    "claim_invariance": "All revisions are claim-neutral or claim-weakening. No new empirical claims added. Claim map unchanged."
+  }
+}

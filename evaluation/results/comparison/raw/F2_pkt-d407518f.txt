@@ -1,0 +1,329 @@
+{
+  "reconstruction": {
+    "packet_id": "pkt-d407518f",
+    "answers": {
+      "Q1": {
+        "answer": "The paper addresses the problem that existing benchmarks for evaluating large language models (LLMs) on code (like HumanEval) are saturated and fail to capture real-world software engineering complexity—specifically, the ability to fix bugs or implement features in large, multi-file production codebases with cross-module dependencies, requiring structured patches rather than short snippets.",
+        "locations": ["Abstract", "§1 Introduction paragraphs 1-2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q2": {
+        "answer": "This problem matters because LLMs are increasingly deployed in software development tooling (autocomplete, refactoring, automated bug-fixers), but current benchmarks don't measure the capabilities needed for real software engineering: navigating thousands of files, understanding cross-module dependencies, iterative debugging against test suites, and generating structured change representations.",
+        "locations": ["§1 Introduction paragraph 1"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q3": {
+        "answer": "Existing code benchmarks (HumanEval, MultiPL-E, ClassEval, CoderEval, etc.) measure self-contained function/class generation from docstrings, omitting large codebases, inter-file dependencies, iterative debugging against existing test suites, and structured patch generation. Prior automated program repair datasets (Defects4J, ManySStuBs4J) don't present code context at repository scale and focus on small, isolated defects.",
+        "locations": ["§1 Introduction paragraph 2", "§6 Related Work paragraphs 2-3"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q4": {
+        "answer": "The authors constructed SWE-bench: a benchmark of 2,294 task instances from real GitHub issues and merged PRs across 12 popular Python repositories. Each instance provides an issue description, a full codebase snapshot, and a test patch (oracle). Models must generate a patch that passes the repository's test suite. They evaluated ChatGPT-3.5, GPT-4, Claude 2, and fine-tuned SWE-Llama models (7B/13B) under BM25 retrieval and oracle retrieval settings, analyzing performance, failure modes, context sensitivity, and temporal robustness.",
+        "locations": ["Abstract", "§2 Benchmark Construction", "§3 SWE-Llama", "§4 Experimental Setup", "§5 Results"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q5": {
+        "answer": "They chose GitHub PRs as a natural source of real-world coding problems because merged PRs that resolve issues and add tests provide both a well-defined problem statement and an execution-based oracle. The three-stage pipeline (repository selection, attribute filtering, execution validation) ensures quality. BM25 retrieval simulates realistic conditions; oracle retrieval provides an upper bound. SWE-Llama was fine-tuned on oracle-retrieved contexts to create a meaningful open-model baseline since off-the-shelf open models couldn't generate well-formed patches.",
+        "locations": ["§1 Introduction paragraph 3", "§2.1 Data Collection Pipeline", "§3 SWE-Llama", "§4.1 Retrieval-Based Context Construction"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q6": {
+        "answer": "Experiments: (1) Main evaluation on SWE-bench and SWE-bench Lite with BM25 retrieval at multiple context limits (13k, 27k, 50k tokens) for all models. (2) Oracle retrieval evaluation (perfect file selection) for upper bound. (3) Oracle-collapsed retrieval (oracle files with non-edited code removed) to isolate localization within files. (4) Temporal robustness: performance on instances before vs. after 2023. (5) Per-repository difficulty analysis. (6) Patch characteristic analysis (lines/files edited vs. gold). (7) Outcome taxonomy categorization of applied patches (Resolved, Breaking Resolved, Partially Resolved, Work in Progress, No-Op, Regression). (8) Comparison of patch format vs. full-file regeneration.",
+        "locations": ["§4 Experimental Setup", "§5.1 Main Results", "§5.2 Difficulty Varies", "§5.3 Context Length Sensitivity", "§5.4 Temporal Robustness", "§5.5 Fine-Tuned Models", "§5.6 Patch Characteristics", "§5.7 Outcome Taxonomy"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q7": {
+        "answer": "Strongest results: (1) Under BM25 retrieval (realistic), best model Claude 2 resolves only 1.96% of SWE-bench issues (1.97% in Table 3). (2) Under oracle retrieval, Claude 2 reaches 4.80%, SWE-Llama 13b 3.97%. (3) Oracle-collapsed retrieval boosts Claude 2 to 5.93%, GPT-4 to 3.40%—showing localization within files is a major bottleneck. (4) Context length sensitivity: Claude 2 drops from 1.96% (13k) to 1.22% (50k) despite better oracle file recall. (5) Temporal robustness: no significant performance gap between pre-2023 and post-2023 instances (Claude 2: 4.87% vs 4.23%). (6) SWE-Llama models collapse under BM25 (0.70%) vs oracle (3.97%) due to distribution shift. (7) Model patches are ~half the length of gold patches (Claude 2: 19.6 vs 44.1 lines) and rarely edit >1 file. (8) Most applied patches are No-Op (471/1078 for Claude 2) or Regression (436/1078).",
+        "locations": ["Table 3", "Table 4", "Table 5", "Table 6", "Table 7", "§5.5", "Table 8", "Table 9"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q8": {
+        "answer": "The results establish that: (1) Current SOTA LLMs are far from autonomous software engineering—best resolves <2% under realistic conditions. (2) File localization (BM25 recall) is poor (~40% superset, ~50% zero oracle files). (3) Even with perfect file selection, line-level localization within files is a major bottleneck (oracle-collapsed >> oracle). (4) Models generate overly simple, short patches that address symptoms not root causes, rarely edit multiple files, and violate codebase conventions. (5) Most model patches that apply do nothing meaningful (No-Op) or break existing behavior (Regression). (6) Models aren't memorizing—performance is consistent across temporal splits. (7) Fine-tuning on oracle contexts doesn't transfer to noisy retrieval (distribution shift). (8) Context length hurts performance despite better recall (lost-in-the-middle).",
+        "locations": ["§5.1", "§5.3", "§5.4", "§5.5", "§5.6", "§5.7", "§7.1 Key Findings"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q9": {
+        "answer": "The results do NOT establish: (1) That SWE-bench captures all aspects of software engineering (it's Python-only, execution-based testing may miss efficiency/readability/maintainability). (2) That agentic/iterative/tool-augmented approaches wouldn't perform better—the baselines use single-pass generation with simple BM25. (3) That the 1.96% ceiling is fundamental vs. an artifact of current retrieval/generation methods. (4) Why exactly models fail at line-level localization (attention mechanisms? training data? prompt design?). (5) Whether SWE-Llama's poor BM25 performance is due to training on oracle-only contexts vs. inherent model limitations. (6) Cross-language generalizability (Python only). (7) Whether the 'lost in the middle' effect is specific to code or general.",
+        "locations": ["§7.2 Limitations", "§7.1 Key Findings", "§5.5"],
+        "confidence": 4,
+        "missing": "The paper doesn't explicitly state what it doesn't establish; this is inferred from limitations and scope."
+      },
+      "Q10": {
+        "answer": "Primary contribution: SWE-bench, a challenging, realistic, continually updatable benchmark for evaluating LLMs on real-world software engineering (GitHub issue resolution) with execution-based correctness checking via the repository's own test suite. It provides 2,294 task instances from 12 Python repositories, revealing that SOTA models resolve <2% under realistic conditions, and identifying localization, patch completeness, and context sensitivity as key failure modes.",
+        "locations": ["Abstract", "§1 Introduction paragraph 3-4", "§8 Conclusion"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q11": {
+        "answer": "Main limitations: (1) Python-only, limiting cross-language generalizability. (2) Baselines use simple BM25 retrieval and single-pass generation; agentic/iterative/tool-augmented methods not explored. (3) Execution-based testing may not capture solution quality dimensions like efficiency, readability, maintainability (though Cyclomatic/Halstead complexity metrics mentioned briefly). (4) SWE-Llama trained only on oracle contexts, so BM25 results reflect distribution shift. (5) Image content in issues (matplotlib, seaborn) disadvantages non-vision models. (6) Oracle retrieval still doesn't guarantee all needed context (inter-module dependencies).",
+        "locations": ["§7.2 Limitations", "§5.2", "§5.5"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q12": {
+        "answer": "One day later, a reader should remember: SWE-bench is a new benchmark using real GitHub issues/PRs from 12 Python repos (2,294 tasks) where models must generate patches that pass the project's test suite. SOTA models (Claude 2, GPT-4, fine-tuned CodeLlama) all fail badly—best is <2% resolution under realistic retrieval. The core bottlenecks are: (1) finding the right files (BM25 recall poor), (2) finding the right lines within files (oracle-collapsed >> oracle), and (3) generating complete, multi-file patches that don't break existing behavior. Models produce overly simple, short patches that mostly do nothing (No-Op) or cause regressions. Performance doesn't degrade on post-2023 issues, suggesting genuine reasoning not memorization. The benchmark is continually updatable and Python-only for now.",
+        "locations": ["Abstract", "§5.1", "§5.3", "§5.4", "§5.6", "§5.7", "§7.1", "§8 Conclusion"],
+        "confidence": 5,
+        "missing": ""
+      }
+    }
+  },
+  "diagnostics": {
+    "packet_id": "pkt-d407518f",
+    "binding_personas": ["A", "B", "E"],
+    "findings": [
+      {
+        "dimension": "problem",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1 Introduction", "paragraph": 1, "quote": "benchmarks used to track LM progress on code remain largely disconnected from the complexity of real software engineering"},
+        "observed": "The problem is clearly stated in the first paragraph: existing code benchmarks (HumanEval) are saturated and don't capture real software engineering complexity—large codebases, cross-module dependencies, iterative debugging, structured patches.",
+        "reader_struggle": "No struggle; the problem is immediately accessible even to non-specialists.",
+        "likely_consequence": "Reader immediately understands why this benchmark is needed.",
+        "revision_principle": "Keep the problem framing concrete and grounded in deployment reality."
+      },
+      {
+        "dimension": "motivation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1 Introduction", "paragraph": 1, "quote": "Language models are increasingly deployed in software development tooling—autocomplete assistants, refactoring tools, and automated bug-fixers"},
+        "observed": "Strong motivation: LLMs are already deployed in dev tools, but benchmarks don't measure what matters for those deployments.",
+        "reader_struggle": "None; the deployment context makes the motivation concrete.",
+        "likely_consequence": "Reader sees this as practically important, not just academically interesting.",
+        "revision_principle": "Anchor benchmark motivation in real deployment gaps."
+      },
+      {
+        "dimension": "research_question",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1 Introduction", "paragraph": 3, "quote": "We identify a natural, high-quality source of real-world coding problems in GitHub pull requests"},
+        "observed": "The research question is implicit: 'Can LLMs resolve real GitHub issues in large codebases?' and 'What are the failure modes?' It's not posed as an explicit question but is clear from the contribution statement.",
+        "reader_struggle": "A reader looking for an explicit research question sentence won't find one, but the intent is clear from context.",
+        "likely_consequence": "Reader infers the question correctly but may wish for explicit formulation.",
+        "revision_principle": "State the research question explicitly in the introduction for clarity."
+      },
+      {
+        "dimension": "contribution",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1 Introduction", "paragraph": 4, "quote": "Several properties distinguish SWE-bench from prior coding benchmarks: Realistic complexity. Execution-based evaluation. Continual updatability. Diversity."},
+        "observed": "Four clear distinguishing contributions listed explicitly with specifics (1.7 files, 3.0 functions, 32.8 lines edited on average; execution-based; pipeline for new instances; 12 repos across domains).",
+        "reader_struggle": "None; contributions are enumerated and quantified.",
+        "likely_consequence": "Reader can immediately articulate what's new.",
+        "revision_principle": "List contributions with measurable distinguishing properties."
+      },
+      {
+        "dimension": "method",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§2.1 Data Collection Pipeline", "paragraph": 1, "quote": "Task instances are produced by a three-stage pipeline applied to pull requests from 12 popular open-source Python repositories"},
+        "observed": "Method is exceptionally well-specified: three-stage pipeline (repo selection, attribute filtering, execution validation) with concrete criteria (merged PRs, 'fixes #N', test file modifications, fail-to-pass test requirement). Table 1 shows per-repo survival rates.",
+        "reader_struggle": "No struggle; the pipeline is reproducible from this description.",
+        "likely_consequence": "Reader trusts the benchmark construction and could replicate it.",
+        "revision_principle": "Provide pipeline stages with concrete, checkable criteria and survival statistics."
+      },
+      {
+        "dimension": "experiment",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§4 Experimental Setup", "paragraph": 1, "quote": "We consider two retrieval settings: Sparse retrieval (BM25) ... Oracle retrieval"},
+        "observed": "Experiments are comprehensive: multiple retrieval settings (BM25 at 3 context limits, oracle, oracle-collapsed), multiple models (5 models with context coverage stats), temporal split, per-repo analysis, patch characteristic analysis, outcome taxonomy. All design choices justified.",
+        "reader_struggle": "None; the experimental design is thorough and well-explained.",
+        "likely_consequence": "Reader can evaluate whether experiments support claims.",
+        "revision_principle": "Test multiple retrieval conditions to isolate bottlenecks; include diagnostic settings (oracle, collapsed) not just realistic ones."
+      },
+      {
+        "dimension": "result",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§5.1 Main Results", "paragraph": 1, "quote": "All models fail to resolve the vast majority of issues, with the best result at 1.96% under realistic conditions"},
+        "observed": "Results are presented clearly in tables with multiple metrics (% Resolved, % Apply). Key numbers: 1.96% (BM25), 4.80% (oracle), 5.93% (oracle-collapsed) for Claude 2. Context sensitivity shown in Table 5. Temporal robustness in Table 7. Patch stats in Table 8. Outcome distribution in Table 9.",
+        "reader_struggle": "None; tables are well-organized and metrics are clearly defined.",
+        "likely_consequence": "Reader can verify all claimed results from tables.",
+        "revision_principle": "Report multiple complementary metrics (resolution rate, apply rate) and use diagnostic settings to isolate factors."
+      },
+      {
+        "dimension": "interpretation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§7.1 Key Findings", "paragraph": 1, "quote": "Localization is the bottleneck. Even when provided with the exact files that need to be edited (oracle retrieval), models resolve fewer than 5% of issues"},
+        "observed": "Interpretation is grounded in the diagnostic experiments: oracle vs oracle-collapsed isolates line-level localization; BM25 vs oracle isolates file-level localization; temporal split tests memorization; patch stats show simplicity bias; outcome taxonomy shows No-Op/Regression dominance.",
+        "reader_struggle": "None; each interpretation ties directly to a specific experimental result.",
+        "likely_consequence": "Reader understands not just *that* models fail but *why* at multiple levels.",
+        "revision_principle": "Use controlled experimental contrasts (oracle vs collapsed vs BM25) to attribute failure modes to specific causes."
+      },
+      {
+        "dimension": "limitation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§7.2 Limitations", "paragraph": 1, "quote": "SWE-bench is currently Python-only, limiting cross-language generalizability"},
+        "observed": "Limitations are explicitly stated and well-scoped: Python-only, simple baselines (BM25, single-pass), execution-based testing limitations, SWE-Llama distribution shift, image content in issues, oracle context incompleteness. Each limitation is acknowledged without overclaiming.",
+        "reader_struggle": "None; limitations are front-and-center and honest.",
+        "likely_consequence": "Reader knows exactly where results generalize and where they don't.",
+        "revision_principle": "State limitations explicitly and specifically; don't hide them or make them sound like future work."
+      },
+      {
+        "dimension": "narrative_coherence",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1 Introduction", "paragraph": 4, "quote": "We introduce SWE-bench: a benchmark where each task instance presents a model with an issue description and a full codebase snapshot"},
+        "observed": "Narrative flows logically: problem → gap → solution (benchmark) → construction details → method (SWE-Llama) → experimental design → results organized by research question (main, difficulty, context, temporal, distribution shift, patch characteristics, outcomes) → discussion → limitations → conclusion. Each section builds on the previous.",
+        "reader_struggle": "None; the paper tells a complete story from construction to diagnosis.",
+        "likely_consequence": "Reader can follow the argument without backtracking.",
+        "revision_principle": "Structure results around the failure modes they diagnose, not just model comparisons."
+      },
+      {
+        "dimension": "terminology",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§2.2 Task Formulation", "paragraph": 1, "quote": "Each task instance contains: Problem statement — Codebase snapshot — Test patch — Gold patch"},
+        "observed": "All key terms (fail-to-pass test, pass-to-pass test, gold patch, test patch, oracle retrieval, BM25, oracle-collapsed) are defined at first use. No subfield-specific jargon without explanation. Accessible to adjacent ML researchers.",
+        "reader_struggle": "None; terminology is introduced clearly and used consistently.",
+        "likely_consequence": "Adjacent researcher (persona B) can read without external references.",
+        "revision_principle": "Define every benchmark-specific term at first use with concrete examples."
+      },
+      {
+        "dimension": "logical_flow",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§5.3 Context Length Sensitivity", "paragraph": 1, "quote": "As total input length increases, model performance drops considerably"},
+        "observed": "Logical flow within results is strong: each subsection addresses a specific question (main performance → repository variation → context sensitivity → temporal robustness → distribution shift → patch characteristics → outcome taxonomy). Transitions between subsections are smooth.",
+        "reader_struggle": "None; each result subsection answers a natural follow-up question.",
+        "likely_consequence": "Reader builds a layered understanding of failure modes.",
+        "revision_principle": "Order result subsections to progressively deepen the diagnosis."
+      },
+      {
+        "dimension": "evidence_traceability",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "Table 3", "paragraph": "caption", "quote": "Model performance on SWE-bench and SWE-bench Lite with BM25 retrieval"},
+        "observed": "Every claim in the text traces to a specific table or experiment. Table 3 (main), Table 4 (oracle), Table 5 (context limits), Table 6 (oracle-collapsed), Table 7 (temporal), Table 8 (patch stats), Table 9 (outcomes). Numbers in text match tables.",
+        "reader_struggle": "None; evidence is traceable to labeled tables with clear captions.",
+        "likely_consequence": "Verifying reviewer (E) can check every quantitative claim.",
+        "revision_principle": "Put all key numbers in tables; reference tables in text; ensure text numbers match table numbers exactly."
+      },
+      {
+        "dimension": "figure_table_comprehension",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "Table 1", "paragraph": "caption", "quote": "Candidate task instances at each pipeline stage"},
+        "observed": "All tables are self-contained with clear captions, column headers, and units. Table 1 shows pipeline funnel per repo. Table 2 shows benchmark stats with mean/max. Tables 3-4-6 show model performance across conditions. Table 5 shows context sensitivity. Table 7 temporal. Table 8 patch stats. Table 9 outcome taxonomy. No figures, but tables suffice.",
+        "reader_struggle": "None; tables are readable without reading the main text.",
+        "likely_consequence": "Reader can extract key findings from tables alone.",
+        "revision_principle": "Design tables to be independently interpretable with complete metadata in headers/captions."
+      },
+      {
+        "dimension": "claim_evidence_alignment",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§7.1 Key Findings", "paragraph": 1, "quote": "The oracle-collapsed experiment, which further removes irrelevant code, boosts performance substantially—confirming that models struggle to identify the relevant lines within a file"},
+        "observed": "Claims align precisely with evidence: 'localization is bottleneck' supported by oracle (4.8%) vs oracle-collapsed (5.93%) gap; 'context length hurts' supported by Table 5 (1.96% → 1.22%); 'models generate simple patches' supported by Table 8 (19.6 vs 44.1 lines); 'No-Op/Regression dominate' supported by Table 9 (471+436 vs 110 resolved for Claude 2).",
+        "reader_struggle": "None; each claim has a specific experimental result backing it.",
+        "likely_consequence": "Reader trusts the conclusions because evidence is directly cited.",
+        "revision_principle": "Make every interpretive claim reference a specific experimental comparison."
+      },
+      {
+        "dimension": "unsupported_inference",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§5.4 Temporal Robustness", "paragraph": 1, "quote": "The absence of a temporal gap suggests models are genuinely reasoning about code changes rather than reciting memorized solutions"},
+        "observed": "No overreaching inferences. The temporal robustness claim is appropriately hedged ('suggests' not 'proves'). The paper acknowledges GPT-4 was only evaluated on 25% subset. The 'lost in the middle' reference is cited (Liu et al., 2023b) not claimed as novel. Distribution shift explanation for SWE-Llama is plausible but not overstated.",
+        "reader_struggle": "None; inferences are appropriately cautious.",
+        "likely_consequence": "Reader doesn't come away with inflated claims.",
+        "revision_principle": "Use 'suggests', 'consistent with', 'indicates' rather than 'proves' for mechanistic claims."
+      },
+      {
+        "dimension": "redundancy",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§5.6 Patch Characteristics", "paragraph": 1, "quote": "Model-generated patches are consistently shorter and simpler than reference solutions"},
+        "observed": "No harmful redundancy. Each section adds new information. Table 8 and the qualitative failure modes (primitive Python, greedy fixes, import style) complement each other. The outcome taxonomy (Table 9) adds a categorical view beyond binary resolved/unresolved. SWE-bench Lite is mentioned once as a practical subset.",
+        "reader_struggle": "None; no repetitive restating of the same results.",
+        "likely_consequence": "Reader gets maximum information per page.",
+        "revision_principle": "Use different analytical lenses (quantitative stats, qualitative patterns, outcome categories) on the same data rather than repeating the same view."
+      },
+      {
+        "dimension": "cognitive_load",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§2.3 Benchmark Characteristics", "paragraph": 1, "quote": "The task requires models to navigate large, multi-file codebases under conditions that differ fundamentally from typical code generation benchmarks"},
+        "observed": "Cognitive load is well managed: benchmark stats summarized in Table 2 (mean/max), key properties bulleted (cross-context editing, robust evaluation, diverse issue types). Complex pipeline shown as three clear stages with Table 1. Models summarized in §4.2 with context coverage %. Results structured by research question not model.",
+        "reader_struggle": "None; the paper anticipates what the reader needs to know at each point.",
+        "likely_consequence": "Reader can absorb the benchmark design, experiments, and results without overload.",
+        "revision_principle": "Summarize complex multi-stage processes in tables; bullet key properties; group results by question not by model."
+      },
+      {
+        "dimension": "orientation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1 Introduction", "paragraph": 4, "quote": "Several properties distinguish SWE-bench from prior coding benchmarks:"},
+        "observed": "Excellent reader orientation: Introduction previews all four distinguishing properties. §2.3 re-states and quantifies them. §4.1 explains retrieval settings before results. §5 subsections each address a clear question. §7.1 summarizes three key findings. §7.2 lists limitations. §8 concludes with takeaway.",
+        "reader_struggle": "None; reader always knows where they are in the argument.",
+        "likely_consequence": "Reader can navigate to sections of interest and understand how they fit.",
+        "revision_principle": "Preview structure in introduction; use signposting at section transitions; summarize findings before discussing implications."
+      },
+      {
+        "dimension": "so_what",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§8 Conclusion", "paragraph": 1, "quote": "SWE-bench establishes a challenging, realistic, and continually updatable benchmark for evaluating language models on real-world software engineering tasks"},
+        "observed": "The 'so what' is clear throughout: this benchmark reveals that SOTA models are far from autonomous software engineering (<2% resolution), and the diagnostic experiments pinpoint exactly why (localization, patch completeness, context sensitivity). The conclusion restates this and notes the benchmark can serve as a testbed for safety/alignment of code agents.",
+        "reader_struggle": "None; the significance is stated upfront and reinforced.",
+        "likely_consequence": "Reader understands the benchmark's value for the field and for future research directions.",
+        "revision_principle": "State the 'so what' in the abstract, introduction, and conclusion; use diagnostic results to show what future work should target."
+      }
+    ],
+    "inference_issues": [
+      {
+        "kind": "overstrong_language",
+        "location": {"section": "Abstract", "paragraph": 1, "quote": "the best-performing model, Claude 2, resolves only 1.96% of issues under realistic retrieval conditions"},
+        "claim_text": "best-performing model, Claude 2, resolves only 1.96% of issues under realistic retrieval conditions",
+        "missing_link": "The paper evaluates only 5 models (ChatGPT-3.5, GPT-4, Claude 2, SWE-Llama 7b/13b). Other models (e.g., GPT-4o, Claude 3.5 Sonnet, other open models) not evaluated. 'Best-performing model' implies a broader comparison than conducted. Should say 'best-performing model *among those evaluated*'."
+      },
+      {
+        "kind": "overstrong_language",
+        "location": {"section": "§1 Introduction", "paragraph": 4, "quote": "All models fail to resolve the vast majority of issues, with the best result at 1.96% under realistic conditions, establishing SWE-bench as a meaningful long-range challenge for LM research."},
+        "claim_text": "establishing SWE-bench as a meaningful long-range challenge for LM research",
+        "missing_link": "The benchmark is challenging *for current models and methods tested*. 'Long-range challenge' implies it will remain challenging for future models—a prediction not established by current results. The benchmark could be solved by better retrieval/agentic methods not tested."
+      },
+      {
+        "kind": "causal_overreach",
+        "location": {"section": "§5.5 Fine-Tuned Models Are Sensitive to Distribution Shift", "paragraph": 1, "quote": "The models were fine-tuned exclusively on oracle-retrieved contexts, so the shift to noisier BM25 context—which includes irrelevant files—disrupts their behavior."},
+        "claim_text": "the shift to noisier BM25 context—which includes irrelevant files—disrupts their behavior",
+        "missing_link": "This is a plausible hypothesis but not directly tested. The paper doesn't ablate: (a) fine-tune on BM25 contexts and test on BM25, (b) test oracle-trained model on oracle vs BM25 with same oracle files present. The performance gap could also reflect SWE-Llama's base model limitations or LoRA capacity. The causal claim 'so the shift... disrupts' is stronger than the evidence."
+      },
+      {
+        "kind": "overgeneralization",
+        "location": {"section": "§5.6 Patch Characteristics", "paragraph": 2, "quote": "Qualitative inspection reveals several recurring failure modes: (a) models write primitive Python without leveraging existing utilities or patterns in the codebase, (b) models take a 'greedy' approach that fixes the reported symptom without anticipating related edge cases that gold patches address, (c) models use absolute imports where the codebase uses relative imports, violating local style conventions."},
+        "claim_text": "models write primitive Python without leveraging existing utilities or patterns in the codebase",
+        "missing_link": "Qualitative inspection is mentioned but no systematic analysis or inter-annotator agreement reported. How many patches inspected? By whom? What fraction exhibit each failure mode? These are presented as general patterns from qualitative inspection without quantification."
+      },
+      {
+        "kind": "selective_presentation",
+        "location": {"section": "§5.4 Temporal Robustness", "paragraph": 1, "quote": "Performance is consistent across the temporal split for all models except GPT-4 (which was evaluated on only a 25% random subset)."},
+        "claim_text": "Performance is consistent across the temporal split for all models except GPT-4",
+        "missing_link": "GPT-4 evaluated on only 25% random subset—this is a significant limitation buried in a parenthetical. The temporal robustness claim for GPT-4 is not supported. Also, no statistical test reported for 'consistent' (e.g., confidence intervals, significance). The pre/post 2023 split sizes per model not reported."
+      },
+      {
+        "kind": "limitation_not_respected",
+        "location": {"section": "§7.2 Limitations", "paragraph": 1, "quote": "The baseline models use simple BM25 retrieval and a single-pass generation approach; the authors explicitly encourage future exploration of agentic methods, iterative tool-augmented LMs, and richer context construction strategies."},
+        "claim_text": "the finding that state-of-the-art models resolve fewer than 2% of issues under realistic conditions underscores how far current systems are from autonomous software engineering",
+        "missing_link": "The conclusion (§8) states models are 'far from autonomous software engineering' based on <2% resolution. But the limitation section acknowledges the baselines use simple BM25 + single-pass. The 1.96% reflects *this specific method*, not a fundamental model capability ceiling. The conclusion doesn't sufficiently qualify that agentic/iterative methods (not tested) could dramatically change this number."
+      }
+    ],
+    "objective_discrepancies": [
+      "The objective says the paper is 'meant to present their research project to adjacent machine-learning researchers.' The paper succeeds at this—it's accessible, well-explained, and doesn't assume subfield knowledge. No significant discrepancy.",
+      "The objective doesn't mention SWE-Llama as a contribution, but the paper presents it as a meaningful open-model baseline (§3, §5.5). This is a minor addition beyond 'presenting the benchmark.'",
+      "The paper claims 'continual updatability' as a key property (§1, §2.1) but doesn't demonstrate updating the benchmark post-publication. This is a forward-looking claim not yet evidenced."
+    ],
+    "injection_suspected": []
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rce/research_evidence.schema.json",
+  "title": "Research evidence map (Level-0 ground truth)",
+  "type": "object",
+  "required": ["project_root", "generated_at", "items"],
+  "properties": {
+    "project_root": {"type": "string"},
+    "generated_at": {"type": "string"},
+    "generated_by": {"type": "string"},
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "summary", "locator", "strength", "status"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^E[0-9]{3,}$"},
+          "kind": {"enum": ["result", "experiment", "dataset", "baseline", "metric", "observation",
+                            "negative_result", "limitation_noted", "rationale_stated", "assumption", "hypothesis_stated",
+                            "method_detail", "implementation_detail", "external_fact"]},
+          "summary": {"type": "string", "minLength": 3},
+          "value": {"type": ["object", "array", "string", "number", "null"]},
+          "conditions": {"type": ["object", "string", "null"]},
+          "locator": {
+            "type": "object",
+            "required": ["path"],
+            "properties": {"path": {"type": "string"}, "anchor": {"type": "string"}}
+          },
+          "strength": {"enum": ["hard", "soft"]},
+          "status": {"enum": ["ok", "conflicting", "incomplete", "unverifiable", "superseded"]},
+          "conflicts_with": {"type": "array", "items": {"type": "string", "pattern": "^E[0-9]{3,}$"}},
+          "derived_from": {"type": "array", "items": {"type": "string", "pattern": "^E[0-9]{3,}$"}},
+          "extracted_from_image": {"type": "boolean"},
+          "notes": {"type": "string"}
+        }
+      }
+    }
+  }
+}

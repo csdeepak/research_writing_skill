@@ -1,0 +1,569 @@
+{
+ "reconstruction": {
+  "packet_id": "pkt-c0b734ff",
+  "answers": {
+   "Q1": {
+    "answer": "The problem is that deployed forecasting series can change their level after training (level shifts), and standard normalization using fixed training statistics may not handle this well.",
+    "locations": [
+     "§1/paragraph 2",
+     "§2/paragraph 1"
+    ],
+    "confidence": 4,
+    "missing": ""
+   },
+   "Q2": {
+    "answer": "Forecasting is widely used in energy systems, and level shifts in deployed series are a practical concern that degrades accuracy when using fixed normalization statistics.",
+    "locations": [
+     "§1/paragraph 2"
+    ],
+    "confidence": 3,
+    "missing": "No specific evidence or citations provided for prevalence or impact of level shifts in real deployments"
+   },
+   "Q3": {
+    "answer": "Standard normalization uses fixed training data statistics. Many normalization variants exist but it's unclear which handle level shifts best, and whether adapting normalization statistics alone (without model retraining) can reduce shift-induced error.",
+    "locations": [
+     "§1/paragraph 2",
+     "§4/paragraph 1"
+    ],
+    "confidence": 3,
+    "missing": "No survey or discussion of existing normalization variants that address level shifts; citations are all marked as 'CITATION NEEDED'"
+   },
+   "Q4": {
+    "answer": "Generated synthetic hourly load series (SynthLoad) with daily/weekly cycles + noise, added level shifts of 0.2-0.8 training std deviations. Compared three normalizations: (1) training statistics baseline, (2) rolling-window normalization (RWN) using most recent 48 steps, (3) RWN-fixed freezing stats after first 48 post-shift steps. All used same MLP (64 hidden units), same training budget, 5 seeds. Measured MAE.",
+    "locations": [
+     "§2/paragraph 1",
+     "§3/paragraph 1-4"
+    ],
+    "confidence": 4,
+    "missing": "Details on MLP architecture beyond 64 hidden units, training budget specifics, how shifts are applied (abrupt? gradual?), data split methodology"
+   },
+   "Q5": {
+    "answer": "To isolate whether stale normalization statistics (vs. model capacity) cause shift-induced error, by holding model capacity constant while varying normalization adaptation.",
+    "locations": [
+     "§4/paragraph 1",
+     "§4/paragraph 2"
+    ],
+    "confidence": 4,
+    "missing": "Explicit statement of this reasoning in the method section; it appears mainly in Discussion"
+   },
+   "Q6": {
+    "answer": "Main experiment: MAE comparison across shift magnitudes s={0, 0.2, 0.4, 0.6, 0.8} for three normalization methods. Ablation: RWN-fixed at s=0.6 to test dependence on continued adaptation. Figure 1 shows RWN vs baseline across shifts.",
+    "locations": [
+     "§3/paragraph 1-4",
+     "Figure 1 caption"
+    ],
+    "confidence": 4,
+    "missing": "No description of Figure 1 data beyond caption; no tables with full numerical results for all conditions"
+   },
+   "Q7": {
+    "answer": "Without shift: RWN (0.409±0.007) ≈ baseline (0.412±0.006). With shifts up to s=0.6: RWN reduced MAE by 11-29% vs baseline, with small seed spread. At s=0.8: RWN 0.712±0.021 vs baseline 0.731±0.015 (no clear benefit). RWN-fixed at s=0.6 gave 0.518, recovering ~2/3 of RWN's gain.",
+    "locations": [
+     "§3/paragraph 1-4"
+    ],
+    "confidence": 4,
+    "missing": "Exact MAE values for all shift magnitudes for all three methods; statistical significance testing"
+   },
+   "Q8": {
+    "answer": "Adapting normalization statistics per window (RWN) eliminates most shift-induced error for moderate shifts (up to 0.6σ) at no cost when unshifted. Continued adaptation accounts for ~1/3 of the gain (RWN-fixed recovers ~2/3). At large shifts (0.8σ), RWN no longer helps.",
+    "locations": [
+     "§3/paragraph 1-4",
+     "§4/paragraph 2"
+    ],
+    "confidence": 4,
+    "missing": "Whether the 11-29% reduction is statistically significant; precise breakdown of gain attribution"
+   },
+   "Q9": {
+    "answer": "Does not establish: whether results generalize to real data, other shift types (variance, trend, seasonal), other models, other window sizes, statistical significance of differences, whether RWN is better than other adaptive normalization methods, or why RWN fails at s=0.8.",
+    "locations": [
+     "§4/paragraph 1",
+     "§5/paragraph 1"
+    ],
+    "confidence": 4,
+    "missing": ""
+   },
+   "Q10": {
+    "answer": "A capacity-controlled experiment showing that per-window normalization adaptation removes most level-shift-induced error for moderate shifts without unshifted cost, but fails at large shifts and depends on continued adaptation for ~1/3 of its benefit.",
+    "locations": [
+     "§4/paragraph 2"
+    ],
+    "confidence": 4,
+    "missing": "Clear statement of contribution in Introduction or Conclusion"
+   },
+   "Q11": {
+    "answer": "Synthetic data only; untuned 48-step window; only level shifts studied (not other distribution shifts); model capacity held constant not varied; only 5 seeds; no statistical tests; only one baseline normalization; no real-data validation.",
+    "locations": [
+     "§4/paragraph 1",
+     "§5/paragraph 1"
+    ],
+    "confidence": 4,
+    "missing": ""
+   },
+   "Q12": {
+    "answer": "Adapting normalization statistics to recent data (rolling window) handles moderate level shifts in forecasting almost for free, but stops helping at large shifts and needs continuous adaptation for full benefit.",
+    "locations": [
+     "§4/paragraph 2",
+     "§3/paragraph 1-4"
+    ],
+    "confidence": 4,
+    "missing": ""
+   }
+  }
+ },
+ "diagnostics": {
+  "packet_id": "pkt-c0b734ff",
+  "binding_personas": [
+   "A",
+   "B",
+   "E"
+  ],
+  "findings": [
+   {
+    "dimension": "problem",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "1",
+     "paragraph": 2,
+     "quote": "Deployed series can change their level after training [CITATION NEEDED]"
+    },
+    "observed": "Problem statement relies entirely on uncited claims; no evidence presented that level shifts are a real, documented problem in deployed forecasting systems.",
+    "reader_struggle": "Reader cannot verify the problem exists or its practical significance; domain expert (A) knows citations are missing, adjacent researcher (B) has no basis to judge importance.",
+    "likely_consequence": "Reader treats problem as hypothetical rather than motivated; undermines credibility of the entire study.",
+    "revision_principle": "Either provide citations for claims about real-world prevalence of level shifts, or explicitly frame as a synthetic investigation of a plausible mechanism without claiming practical prevalence."
+   },
+   {
+    "dimension": "motivation",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "1",
+     "paragraph": 2,
+     "quote": "Many normalization variants exist [CITATION NEEDED: survey of normalization variants]"
+    },
+    "observed": "Motivation for studying *these specific* normalization variants is absent; no discussion of why RWN (48-step window) was chosen over other adaptive methods.",
+    "reader_struggle": "Reader cannot understand why this comparison matters or what gap it fills; no connection to existing literature on adaptive normalization.",
+    "likely_consequence": "Work appears arbitrary rather than targeted; reader cannot situate contribution relative to prior work.",
+    "revision_principle": "Explicitly state the research gap: e.g., 'While adaptive normalization has been studied in X, Y, Z, it remains unclear whether per-window adaptation alone (without model updates) suffices for level shifts.'"
+   },
+   {
+    "dimension": "research_question",
+    "score": 3,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "1",
+     "paragraph": 3,
+     "quote": "In this paper we describe our setup, then our results, and then discuss them."
+    },
+    "observed": "Research question is only implicit in the objective and discussion; the introduction never explicitly states the question being answered.",
+    "reader_struggle": "Reader must infer the question from the method and results; binding persona E (verifier) cannot check alignment without an explicit question.",
+    "likely_consequence": "Paper reads as a report of experiments rather than an answer to a question; contribution feels post-hoc.",
+    "revision_principle": "State the research question explicitly in Introduction: 'We ask whether normalizing each input window with its own recent statistics reduces error under level shift without harming unshifted accuracy, and how much gain requires continued adaptation.'"
+   },
+   {
+    "dimension": "contribution",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "4",
+     "paragraph": 2,
+     "quote": "what this work contributes is a capacity-controlled answer to a question we had not stated"
+    },
+    "observed": "Authors acknowledge the research question was not stated upfront; contribution is framed retrospectively in Discussion rather than prospectively.",
+    "reader_struggle": "Reader discovers the contribution only at the end; cannot evaluate whether methods match the claim while reading. Persona A expects contributions to be declared early.",
+    "likely_consequence": "Contribution appears discovered after the fact; reduces trust in the rigor of the experimental design.",
+    "revision_principle": "Declare the contribution and research question in Introduction; ensure method section explicitly links design choices to the question."
+   },
+   {
+    "dimension": "method",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "2",
+     "paragraph": 1,
+     "quote": "We generated SynthLoad, a synthetic hourly series with daily and weekly cycles plus Gaussian noise"
+    },
+    "observed": "Critical methodological details omitted: MLP architecture (layers, activation, optimizer, learning rate, epochs), train/validation/test split, how level shifts are injected (abrupt? at what point?), whether RWN uses training-window statistics or test-window statistics at inference, whether baseline uses training-set statistics on test data.",
+    "reader_struggle": "Persona E cannot verify the experiment; persona B cannot replicate or adapt the method. 'Same training budget' is undefined.",
+    "likely_consequence": "Results cannot be independently verified or reproduced; method appears underspecified.",
+    "revision_principle": "Provide sufficient detail for reproduction: full model specification, data split protocol, shift injection procedure, and exact normalization computation at train vs. test time."
+   },
+   {
+    "dimension": "experiment",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "2",
+     "paragraph": 1,
+     "quote": "over 5 seeds"
+    },
+    "observed": "Only 5 seeds reported; no statistical significance testing; no confidence intervals; single window size (48) untuned; only one synthetic dataset; no real data; only level shifts tested.",
+    "reader_struggle": "Persona E cannot assess whether reported differences (e.g., 0.712 vs 0.731 at s=0.8) are meaningful or noise. Persona A expects proper statistical rigor.",
+    "likely_consequence": "Claims of 'reduced MAE by 11-29%' and 'no measurable accuracy cost' lack statistical support; reader cannot trust quantitative comparisons.",
+    "revision_principle": "Report confidence intervals or statistical tests for all comparisons; justify seed count; test sensitivity to window size; acknowledge limited scope explicitly."
+   },
+   {
+    "dimension": "result",
+    "score": 3,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "3",
+     "paragraph": 2,
+     "quote": "RWN reduced MAE by 11–29%, and seed spread was small next to these differences"
+    },
+    "observed": "Key quantitative results presented clearly in text; Figure 1 described but not shown (caption only). Numerical values given for main comparisons.",
+    "reader_struggle": "Reader can understand the pattern but cannot see the full data (no table for all conditions); Figure 1 is referenced but not included in packet.",
+    "likely_consequence": "Reader accepts the described pattern but cannot independently inspect the evidence; trust depends on author honesty.",
+    "revision_principle": "Include complete results table for all conditions; ensure figures are either included or fully described with all data points."
+   },
+   {
+    "dimension": "interpretation",
+    "score": 3,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "4",
+     "paragraph": 1,
+     "quote": "these results suggest that stale normalization statistics, rather than model capacity, account for much of the shift-induced error in this setting"
+    },
+    "observed": "Interpretation correctly notes capacity was held constant; appropriately qualifies with 'in this setting' and 'suggest'. Does not overclaim causality beyond the controlled experiment.",
+    "reader_struggle": "Minor: interpretation is reasonable given the design, but the 'much of' is vague without quantification of what fraction of total shift error is attributable to normalization.",
+    "likely_consequence": "Reader may overestimate the generality of the normalization-vs-capacity finding.",
+    "revision_principle": "Quantify the proportion of shift-induced error explained by normalization adaptation (e.g., 'RWN recovers X% of the baseline's shift degradation')."
+   },
+   {
+    "dimension": "limitation",
+    "score": 4,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "4",
+     "paragraph": 1,
+     "quote": "Data were synthetic, the window was untuned, and only level shifts were studied."
+    },
+    "observed": "Limitations explicitly acknowledged: synthetic data, untuned hyperparameter, single shift type, capacity not varied. Honest and specific.",
+    "reader_struggle": "None; limitations are clear and appropriately scoped.",
+    "likely_consequence": "Reader correctly understands the boundary of the claim; trust increases.",
+    "revision_principle": "Maintain this level of candid limitation disclosure; consider adding limitation about small seed count and lack of statistical testing."
+   },
+   {
+    "dimension": "narrative_coherence",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "1",
+     "paragraph": 3,
+     "quote": "In this paper we describe our setup, then our results, and then discuss them."
+    },
+    "observed": "Narrative is flat: Introduction gives no roadmap of the argument, no research question, no hypothesis. Discussion retroactively frames the contribution. Conclusion is content-free.",
+    "reader_struggle": "Reader cannot anticipate the structure or evaluate whether each section delivers on a promise; feels like a lab notebook rather than a paper.",
+    "likely_consequence": "Reader disengages; paper fails to persuade or inform efficiently.",
+    "revision_principle": "Structure Introduction around the research question, hypothesis, and expected contribution; use Discussion to evaluate against the question, not to discover it."
+   },
+   {
+    "dimension": "terminology",
+    "score": 3,
+    "persona": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E"
+    ],
+    "location": {
+     "section": "2",
+     "paragraph": 1,
+     "quote": "rolling-window normalization (RWN), which uses the statistics of the most recent 48 steps"
+    },
+    "observed": "Terminology is accessible; RWN and RWN-fixed are defined clearly. Assumes knowledge of MAE, standard deviation, seeds (per audience.md). No forecasting-specific jargon unexplained.",
+    "reader_struggle": "Minor: 'training standard deviations' as shift unit assumes familiarity with normalization terminology; but audience.md says they know this.",
+    "likely_consequence": "Terminology is not a barrier for any persona.",
+    "revision_principle": "Keep current clarity; consider defining 'level shift' explicitly for completeness."
+   },
+   {
+    "dimension": "logical_flow",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "3",
+     "paragraph": 1,
+     "quote": "Without shift, RWN and the baseline were indistinguishable... Under shift, the baseline's error grew..."
+    },
+    "observed": "Results section presents findings in logical order (no shift → shift → ablation), but the link to the unstated research question is missing. Discussion then reinterprets the result as answering a capacity-vs-normalization question not raised earlier.",
+    "reader_struggle": "Reader follows the experimental logic but cannot see the argumentative logic; the 'why' appears only after the 'what'.",
+    "likely_consequence": "Paper feels reactive rather than purposeful; contribution seems accidental.",
+    "revision_principle": "Align each result paragraph with an explicit sub-question from Introduction; use Discussion to answer the main question, not to introduce it."
+   },
+   {
+    "dimension": "evidence_traceability",
+    "score": 2,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "3",
+     "paragraph": 3,
+     "quote": "Figure 1. RWN's error stays near its unshifted level for shifts up to 0.6"
+    },
+    "observed": "Figure 1 is referenced but not provided in the packet; no table with full numerical results; no raw data or code reference. Verifier (E) cannot trace claims to evidence.",
+    "reader_struggle": "Persona E cannot verify any quantitative claim; must trust the text completely.",
+    "likely_consequence": "Verification is impossible; review must flag all quantitative claims as unverifiable.",
+    "revision_principle": "Include all data in tables or supplementary material; ensure figures are either rendered or fully tabulated in the paper."
+   },
+   {
+    "dimension": "figure_table_comprehension",
+    "score": 1,
+    "persona": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E"
+    ],
+    "location": {
+     "section": "3",
+     "paragraph": 3,
+     "quote": "Figure 1. RWN's error stays near its unshifted level for shifts up to 0.6"
+    },
+    "observed": "Only a caption is provided; no figure, no table. Reader cannot comprehend what they cannot see.",
+    "reader_struggle": "All personas cannot evaluate the visual evidence; the caption makes claims but provides no data to inspect.",
+    "likely_consequence": "Key evidence is inaccessible; paper fails to communicate its central result visually.",
+    "revision_principle": "Either embed the figure or provide a complete results table with all conditions, seeds, and error bars."
+   },
+   {
+    "dimension": "claim_evidence_alignment",
+    "score": 2,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "3",
+     "paragraph": 2,
+     "quote": "RWN reduced MAE by 11–29%, and seed spread was small next to these differences"
+    },
+    "observed": "Claims of percentage reduction and 'small seed spread' are made without showing the underlying per-seed data or statistical tests. At s=0.8, 'cannot claim a benefit' is a reasonable hedge but still unverified.",
+    "reader_struggle": "Persona E cannot check whether 11-29% is accurate or whether seed spread is actually small relative to differences.",
+    "likely_consequence": "Quantitative claims are uncheckable; alignment cannot be confirmed.",
+    "revision_principle": "Report full per-seed results or at minimum mean±CI with statistical test p-values; show the calculation for percentage reductions."
+   },
+   {
+    "dimension": "unsupported_inference",
+    "score": 3,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "4",
+     "paragraph": 2,
+     "quote": "Per-window normalization removes most of it for moderate shifts at no unshifted cost, fails at the largest shift, and depends on continued adaptation for about a third of its gain."
+    },
+    "observed": "Summary claim in Discussion aligns reasonably with reported results. 'About a third' matches 'recovering about two thirds' (so ~1/3 dependent on continued adaptation). No overstrong language like 'proves' or 'first'.",
+    "reader_struggle": "Minor: 'most of it' is vague; 'no unshifted cost' is supported by overlapping error bars but not tested.",
+    "likely_consequence": "Reader accepts the qualitative pattern but cannot verify the quantitative boundaries.",
+    "revision_principle": "Replace vague quantifiers ('most', 'about a third') with precise numbers from the data; test equivalence for 'no cost' claim."
+   },
+   {
+    "dimension": "redundancy",
+    "score": 4,
+    "persona": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E"
+    ],
+    "location": {
+     "section": "5",
+     "paragraph": 1,
+     "quote": "We reported several normalization experiments on synthetic data. Future work could consider real data."
+    },
+    "observed": "Paper is concise (no redundancy); Conclusion is minimal but not repetitive. No filler text.",
+    "reader_struggle": "None; brevity is appropriate for a workshop paper.",
+    "likely_consequence": "Reader gets information efficiently; no wasted attention.",
+    "revision_principle": "Maintain conciseness; expand Conclusion only to restate the answer to the research question."
+   },
+   {
+    "dimension": "cognitive_load",
+    "score": 3,
+    "persona": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E"
+    ],
+    "location": {
+     "section": "2",
+     "paragraph": 1,
+     "quote": "We compared three normalizations: training statistics (baseline); rolling-window normalization (RWN)... and RWN-fixed"
+    },
+    "observed": "Simple experimental design (3 methods × 5 shift levels × 5 seeds) is easy to hold in mind. Low inherent complexity.",
+    "reader_struggle": "Slight load from missing details (forces reader to guess), but the core comparison is straightforward.",
+    "likely_consequence": "Reader understands the design easily; missing details create minor uncertainty but not confusion.",
+    "revision_principle": "Keep design simple; add missing methodological specifics to eliminate guessing."
+   },
+   {
+    "dimension": "orientation",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E"
+    ],
+    "location": {
+     "section": "1",
+     "paragraph": 3,
+     "quote": "In this paper we describe our setup, then our results, and then discuss them."
+    },
+    "observed": "No orientation to the research question, hypothesis, or expected contribution. Reader doesn't know what to look for in each section.",
+    "reader_struggle": "All personas must read passively without a mental framework; cannot actively evaluate as they read.",
+    "likely_consequence": "Reading is less efficient and less critical; key gaps (like missing research question) are noticed only in retrospect.",
+    "revision_principle": "Provide a roadmap in Introduction: state the question, the approach, and what each section will deliver."
+   },
+   {
+    "dimension": "so_what",
+    "score": 3,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "4",
+     "paragraph": 2,
+     "quote": "Per-window normalization removes most of it for moderate shifts at no unshifted cost, fails at the largest shift, and depends on continued adaptation for about a third of its gain."
+    },
+    "observed": "The 'so what' is clearly articulated in Discussion: adaptive normalization handles moderate level shifts cheaply but has limits. Practical implication for forecasting practitioners is identifiable.",
+    "reader_struggle": "Reader understands the practical takeaway but cannot gauge its generality (synthetic only, one model, one window).",
+    "likely_consequence": "Takeaway is clear but its applicability is uncertain; reader may over- or under-apply the insight.",
+    "revision_principle": "Pair the 'so what' with explicit boundary conditions: 'For practitioners using similar MLPs on load-like data with abrupt level shifts, try RWN with ~48h window; expect diminishing returns beyond ~0.6σ shifts.'"
+   }
+  ],
+  "inference_issues": [
+   {
+    "kind": "unsupported_conclusion",
+    "location": {
+     "section": "3",
+     "paragraph": 1,
+     "quote": "RWN and the baseline were indistinguishable (0.409 ± 0.007 and 0.412 ± 0.006)"
+    },
+    "claim_text": "RWN and the baseline were indistinguishable",
+    "missing_link": "No statistical test (t-test, confidence interval overlap analysis, or equivalence test) provided to support 'indistinguishable'; only overlapping ±1σ bars shown."
+   },
+   {
+    "kind": "overstrong_language",
+    "location": {
+     "section": "3",
+     "paragraph": 2,
+     "quote": "RWN reduced MAE by 11–29%"
+    },
+    "claim_text": "RWN reduced MAE by 11–29%",
+    "missing_link": "Percentage reductions reported without confidence intervals or significance tests; with only 5 seeds, the precision of these percentages is unknown."
+   },
+   {
+    "kind": "selective_presentation",
+    "location": {
+     "section": "2",
+     "paragraph": 1,
+     "quote": "rolling-window normalization (RWN), which uses the statistics of the most recent 48 steps"
+    },
+    "claim_text": "RWN uses 48-step window",
+    "missing_link": "Window size 48 is untuned and unjustified; no sensitivity analysis or ablation on window size. Results may depend critically on this choice."
+   },
+   {
+    "kind": "limitation_not_respected",
+    "location": {
+     "section": "4",
+     "paragraph": 2,
+     "quote": "Per-window normalization removes most of it for moderate shifts at no unshifted cost"
+    },
+    "claim_text": "Per-window normalization removes most shift error at no unshifted cost",
+    "missing_link": "Limitation section notes data are synthetic, window untuned, only level shifts studied—but the Discussion claim generalizes to 'per-window normalization' broadly without these qualifiers."
+   },
+   {
+    "kind": "causal_overreach",
+    "location": {
+     "section": "4",
+     "paragraph": 1,
+     "quote": "these results suggest that stale normalization statistics, rather than model capacity, account for much of the shift-induced error in this setting"
+    },
+    "claim_text": "stale normalization statistics, rather than model capacity, account for much of the shift-induced error",
+    "missing_link": "Capacity was held constant, not varied; the experiment shows normalization adaptation helps, but cannot rule out that a larger model with fixed normalization would also help. 'Rather than model capacity' is a comparative claim not tested."
+   }
+  ],
+  "objective_discrepancies": [
+   "Objective states: 'A reader should come away knowing what was tested, what was found, and where the finding stops.' Paper delivers 'what was tested' and 'what was found' but 'where the finding stops' is only partially addressed (limitations listed but not integrated into claim scope).",
+   "Objective frames the question as three parts: (1) does per-window normalization reduce error under shift, (2) without harming unshifted accuracy, (3) how much gain depends on continued adaptation. Paper answers all three but the three-part structure is never made explicit in the paper itself.",
+   "Objective implies a clear 'answer to a question' framing; paper adopts a 'here are experiments' framing until the Discussion retroactively identifies the question."
+  ],
+  "injection_suspected": []
+ },
+ "dim_scores": {
+  "problem": 2,
+  "motivation": 2,
+  "research_question": 3,
+  "contribution": 2,
+  "method": 2,
+  "experiment": 2,
+  "result": 3,
+  "interpretation": 3,
+  "limitation": 4,
+  "narrative_coherence": 2,
+  "terminology": 3,
+  "logical_flow": 2,
+  "evidence_traceability": 2,
+  "claim_evidence_alignment": 2,
+  "unsupported_inference": 3,
+  "redundancy": 4,
+  "cognitive_load": 3,
+  "orientation": 2,
+  "so_what": 3
+ },
+ "validation_problems": [
+  "diagnostics $.findings[13].dimension: 'figure_table_comprehension' not in ['problem', 'motivation', 'research_question', 'contribution', 'method', 'experiment', 'result', 'interpretation', 'limitation', 'narrative_coherence', 'terminology', 'logical_flow', 'evidence_traceability', 'figure_table', 'claim_evidence_alignment', 'unsupported_inference', 'redundancy', 'cognitive_load', 'orientation', 'so_what']",
+  "no score for dimension figure_table"
+ ]
+}

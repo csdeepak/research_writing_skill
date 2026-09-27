@@ -1,0 +1,100 @@
+{
+  "questions": {
+    "Q1": {
+      "q1a": "present"
+    },
+    "Q2": {
+      "q2a": "present"
+    },
+    "Q3": {
+      "q3a": "absent"
+    },
+    "Q4": {
+      "q4a": "present",
+      "q4b": "weakened"
+    },
+    "Q5": {
+      "q5a": "present"
+    },
+    "Q6": {
+      "q6a": "present",
+      "q6b": "absent"
+    },
+    "Q7": {
+      "q7a": "present",
+      "q7b": "present"
+    },
+    "Q8": {
+      "q8a": "present",
+      "q8b": "present"
+    },
+    "Q9": {
+      "q9a": "present",
+      "q9b": "present"
+    },
+    "Q10": {
+      "q10a": "present"
+    },
+    "Q11": {
+      "q11a": "present",
+      "q11b": "absent",
+      "q11c": "absent"
+    },
+    "Q12": {
+      "q12a": "absent"
+    }
+  },
+  "intrusions": [
+    {
+      "question": "Q1",
+      "text": "The problem is stated only through acronyms; no worked example or explicit definition of 'level shift' for non-forecasting readers.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q2",
+      "text": "The authors also argue that moment staleness and model-capacity insufficiency have been confounded in prior evaluations they examined.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q2",
+      "text": "All three motivating claims are flagged [CITATION NEEDED]; no evidence that LS is prevalent, that the normalization practice is standard, or that prior work confounds staleness with capacity.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q3",
+      "text": "Results reference an 'RQ1b' that is never explicitly defined in §1.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q4",
+      "text": "Capacity-matched evidence of an 11–29% MAE reduction under LS up to 0.6σ at IID parity; identification of a boundary at 0.8σ where no gain can be claimed; an RWN-F ablation attributing about one third of the gain to the adaptive-moment term.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q5",
+      "text": "No equations or precise description of how moments are applied; 'trailing-48' units (windows? hours?) are implicit; no normalization background for adjacent-domain readers.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q6",
+      "text": "No justification for SynthLoad or trailing-48 window choice; benchmark unfamiliar to the stated audience and not externally referenced.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q7",
+      "text": "Only the 0.6σ endpoints are given explicitly; the 0.2σ and 0.4σ values behind the 11–29% range are not tabulated.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q8",
+      "text": "The capacity claim is inferential: capacity was matched/fixed, not varied, so 'capacity does not dominate' is not directly tested.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q12",
+      "text": "Transfer to non-synthetic corpora and larger backbones is left open, as is drift beyond level shift (e.g., variance and seasonality drift) and tuning of the normalization window.",
+      "tag": "benign_elaboration"
+    }
+  ],
+  "notes": "Reader reconstruction captures most core findings (Q1, Q2, Q4a, Q5, Q6a, Q7, Q8, Q9, Q10, Q11a) but misses several gold nuggets: Q3 (literature gap about confounded evaluations), Q4b (synthetic series and shift range 0.2-0.8 not explicit in Q4 answer), Q6b (frozen-stat ablation not mentioned in Q6), Q11b/c (architecture/capacity and window untuned not in Q11 answer), Q12a (main takeaway not stated in Q12). Many intrusions are reader critiques of paper exposition (citations, missing definitions, untuned choices) which are benign elaborations. The Q4 answer lists contributions rather than experimental design, causing q4b to be weakened. Q12 answer discusses future work instead of the main interpretation."
+}

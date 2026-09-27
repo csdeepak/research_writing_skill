@@ -1,0 +1,25 @@
+{
+  "inventory": [
+    {
+      "path": "project/paper.txt",
+      "type": "draft",
+      "subtype": "published_paper_text_extraction",
+      "opened": true,
+      "note": "Full text of ICLR 2025 paper: OpenHands: An Open Platform for AI Software Developers as Generalist Agents. 1335 lines. Tables partially damaged by PDF extraction but cross-referenced internally."
+    },
+    {
+      "path": "project/README_1.md",
+      "type": "reference",
+      "subtype": "benchmark_infrastructure_readme",
+      "opened": true,
+      "note": "README for OpenHands Benchmarks repository. Documents benchmark infrastructure, available benchmarks (SWE-Bench, GAIA, etc.), workspace types, SDK compatibility."
+    },
+    {
+      "path": "project/README_2.md",
+      "type": "reference",
+      "subtype": "agent_canvas_readme",
+      "opened": true,
+      "note": "README for OpenHands Agent Canvas — self-hosted developer control center. Documents architecture, deployment options, and multi-backend support."
+    }
+  ]
+}

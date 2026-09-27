@@ -1,0 +1,44 @@
+{
+ "missing": [
+  {
+   "what": "Variance / spread / seed counts for every benchmark result.",
+   "why_it_matters": "All reported success rates and accuracies (Tables 3-7) are single point estimates with no std, confidence interval, or number of runs/seeds. Without variance, differences between OpenHands and baselines (e.g., 26.0 vs 27.3 on SWE-Bench Lite, 78.8 vs 79.6 on ProofWriter) cannot be assessed for significance, and 'competitive' claims cannot be quantified.",
+   "location": "paper.txt — Tables 3, 4, 5, 6, 7 (all result cells)"
+  },
+  {
+   "what": "Per-model row attribution for ML-Bench, BioCoder, Gorilla APIBench, and ToolQA success rates in Table 4.",
+   "why_it_matters": "The numeric cells for these four software benchmarks are present in the text but the PDF-to-text linearization scrambled which value belongs to which agent/model row, and no prose restates them. OpenHands' own results on these benchmarks therefore cannot be cited without risk of misattribution (see E115).",
+   "location": "paper.txt — Table 4 (§4.2), ML-Bench / BioCoder / Gorilla APIBench / ToolQA sections"
+  },
+  {
+   "what": "GPQA Main Set and Extended Set accuracies (Table 7) by method.",
+   "why_it_matters": "Table 7 (§G) reports Diamond/Main/Extended columns, but only the Diamond column could be reconstructed and cross-checked (against Tables 3 and 6). Main and Extended values are not attributed here to avoid misassignment, leaving the full GPQA picture incomplete (see E068).",
+   "location": "paper.txt — Table 7 (§G)"
+  },
+  {
+   "what": "Resolution of the two intra-paper numeric conflicts.",
+   "why_it_matters": "SWE-Bench Lite gpt-4o-mini is reported as 6.3% (Table 3) and 7.0% (Table 4); GPQA diamond expert-human is reported as 81.3% (Table 6) and 81.2% (Table 7). The correct value in each pair is unknown and was not resolved by the corpus agent (see E012/E013, E061/E066).",
+   "location": "paper.txt — Table 3 vs Table 4; Table 6 vs Table 7"
+  },
+  {
+   "what": "Underlying evaluation data, logs, or result files.",
+   "why_it_matters": "The provided corpus is only the paper text plus two READMEs; no machine-produced results/log/CSV files are present. Therefore no value could be independently reproduced or spot-checked against source data, and all numbers are recorded at the strength of 'reported in the official paper' rather than 'reproducible from files'.",
+   "location": "project_root ./project/ — only paper.txt, README_1.md, README_2.md present"
+  },
+  {
+   "what": "Baseline tuning budget / parity information.",
+   "why_it_matters": "The paper compares OpenHands agents to baselines but does not state whether baselines were tuned with a comparable compute/prompt budget. This limits interpretation of the head-to-head comparisons (e.g., AgentBench, MINT math where OpenHands exceeds baselines).",
+   "location": "paper.txt — §4 Evaluation (Tables 4-6)"
+  },
+  {
+   "what": "Statistical significance tests for any comparison.",
+   "why_it_matters": "No named significance test accompanies any comparison. Claims that OpenHands is 'competitive with' or 'better than' baselines rest on raw point differences only.",
+   "location": "paper.txt — §4 Evaluation"
+  },
+  {
+   "what": "Framework-comparison Table 1 (feature matrix) has no readable cell values.",
+   "why_it_matters": "Table 1 compares agent frameworks along feature dimensions (sandbox, browser, multi-agent, etc.), but the checkmark/cell entries did not survive text extraction, so the specific per-framework feature claims cannot be verified from the provided text.",
+   "location": "paper.txt — Table 1 (§C)"
+  }
+ ]
+}

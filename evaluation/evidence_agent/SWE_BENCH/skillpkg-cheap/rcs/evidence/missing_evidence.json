@@ -1,0 +1,142 @@
+{
+ "missing": [
+  {
+   "what": "Per-instance difficulty metrics - correlation between task attributes and resolution rate",
+   "why_it_matters": "Understanding which features make problems harder (issue length, codebase size, number of files to edit, etc.) would help characterize benchmark difficulty and guide future model development",
+   "location": "Paper provides summary statistics but no correlation analysis; would require accessing individual instance data",
+   "severity": "medium"
+  },
+  {
+   "what": "Detailed error categorization and failure modes",
+   "why_it_matters": "The paper provides only 11 qualitative examples (6 successful, 5 unsuccessful). Systematic categorization of failure types across all model attempts would reveal whether models fail due to (a) lack of understanding, (b) localization errors, (c) syntax issues, (d) logic errors, or (e) test harness compatibility",
+   "location": "Mentioned qualitatively in Section 5.1 and Appendix F; statistical breakdown not provided",
+   "severity": "high"
+  },
+  {
+   "what": "Model performance stability/variance across multiple runs per instance",
+   "why_it_matters": "Current evaluation uses Pass@1 (greedy decoding, single attempt per instance). Confidence intervals or standard deviations on resolution rates would indicate whether small differences between models are meaningful",
+   "location": "D.2 states only single patch generated per instance; no multiple runs or variance measurements",
+   "severity": "medium"
+  },
+  {
+   "what": "Cross-model instance overlap - which instances are universally hard vs. easy",
+   "why_it_matters": "Would help identify systematic difficulty tiers and whether different models find different classes of problems hard",
+   "location": "Partially addressed for Claude 2 vs SWE-Llama 13b (42% overlap) but not comprehensively for all model pairs",
+   "severity": "low"
+  },
+  {
+   "what": "Ablation study on retrieval methods beyond BM25 and oracle",
+   "why_it_matters": "Dense retrieval methods (e.g., using embeddings of issue text vs. code) might outperform BM25; no comparison provided",
+   "location": "Paper states dense methods are ill-suited but provides no empirical validation",
+   "severity": "medium"
+  },
+  {
+   "what": "Training data contamination analysis - verification that SWE-Llama training data is truly disjoint from eval repositories",
+   "why_it_matters": "Critical for ensuring fine-tuned models aren't overfitting to known solutions; only stated assumption that disjoint repositories prevent contamination",
+   "location": "Section 3 and A.1 state 37 training repositories are 'disjoint' from 12 eval repositories; no cross-check provided",
+   "severity": "high"
+  },
+  {
+   "what": "SWE-Llama performance on its training repositories",
+   "why_it_matters": "Would establish upper bound on generalization performance and indicate whether data-specific knowledge has been learned vs. general coding capability",
+   "location": "Not evaluated; paper only reports SWE-bench (eval) results",
+   "severity": "medium"
+  },
+  {
+   "what": "Hyperparameter sensitivity analysis for SWE-Llama fine-tuning",
+   "why_it_matters": "Choice of LoRA rank (r=16), alpha (16), learning rate (6e-4), and context length limit (30k) not justified; ablations would show which choices matter",
+   "location": "Appendix B.1 lists hyperparameters but no ablation or justification",
+   "severity": "low"
+  },
+  {
+   "what": "Statistical significance testing on performance differences",
+   "why_it_matters": "Claude 2 (1.96%) vs SWE-Llama 13b (0.70%) - is the 2.8x gap statistically significant? No confidence intervals or hypothesis tests provided",
+   "location": "All results presented as point estimates without error bars or significance tests",
+   "severity": "medium"
+  },
+  {
+   "what": "Patch application failure analysis",
+   "why_it_matters": "Table 14 shows many patches fail to apply (e.g., ChatGPT-3.5: 604/2270 = 26.6% apply rate). Categories of failures (syntax, merge conflicts, invalid hunks) not analyzed",
+   "location": "Table 14 provides counts; Section A.4 describes repair procedure but no failure categorization",
+   "severity": "medium"
+  },
+  {
+   "what": "Temporal generalization across more time ranges",
+   "why_it_matters": "Table 21 shows performance by year but with varying samples per bin (244 in 2023 down to 89 pre-2018). Not clear if year is truly predictive or just sampling variance",
+   "location": "Appendix C.4, Table 21; could benefit from larger temporal splits or trend analysis",
+   "severity": "low"
+  },
+  {
+   "what": "Oracle retrieval results for all models on full benchmark",
+   "why_it_matters": "Table 18 shows oracle results but only ChatGPT-3.5 and SWE-Llama on full set; GPT-4 on 25% subset. Limits comparison",
+   "location": "Appendix Table 18; GPT-4 marked with *, subsampled due to budget",
+   "severity": "low"
+  },
+  {
+   "what": "Code quality metrics beyond test passing (cyclomatic complexity, maintainability)",
+   "why_it_matters": "Appendix C.7 explores software engineering metrics (complexity, Halstead) but only on requests repository, only on Claude 2. Generalizes to all models/repos?",
+   "location": "Appendix C.7; limited to single repository and single model",
+   "severity": "low"
+  },
+  {
+   "what": "Qualitative analysis of why oracle-collapsed improves performance",
+   "why_it_matters": "Table 6 shows oracle-collapsed achieves 5.93% vs 4.80% for full oracle, but mechanism unclear - is it noise reduction or information loss trade-off?",
+   "location": "Table 6 and text around line 301; mechanism not explained",
+   "severity": "low"
+  },
+  {
+   "what": "Sensitivity to prompt engineering and instruction wording",
+   "why_it_matters": "Section D.2 mentions experiments with different instruction lengths showed no substantial effect, but no details provided",
+   "location": "Appendix D.2, line 1608: 'Experiments using slightly more or fewer lines of instructions' - no quantitative results",
+   "severity": "medium"
+  },
+  {
+   "what": "Model performance on instances with multiple fail-to-pass tests",
+   "why_it_matters": "Paper notes 40% of instances have ≥2 fail-to-pass tests; are multi-test instances harder? No analysis provided",
+   "location": "Section 2.3, line 87; no per-instance breakdown by test count",
+   "severity": "low"
+  },
+  {
+   "what": "Breakdown of pass-to-pass test failures (regression rate) by model",
+   "why_it_matters": "Table 23 shows model-induced regressions (failures in pass-to-pass tests) - Claude 2: 436 out of 1078 applied patches. Is this systematic?",
+   "location": "Table 23; counts provided but no analysis of patterns",
+   "severity": "medium"
+  },
+  {
+   "what": "Reproducibility of SWE-Llama results with different random seeds",
+   "why_it_matters": "Training details mention selection of best checkpoint on validation loss, but no variance across runs reported",
+   "location": "Appendix B.1; single training run reported",
+   "severity": "low"
+  },
+  {
+   "what": "Analysis of why models rarely edit multiple files",
+   "why_it_matters": "Observation that models rarely edit >1 file (E046) - is this task difficulty or an architectural limitation of model generation?",
+   "location": "Section 5, line 326-327; stated as observation but cause unclear",
+   "severity": "low"
+  },
+  {
+   "what": "Comparison with existing program repair benchmarks",
+   "why_it_matters": "Paper mentions Defects4J but no quantitative comparison of difficulty/performance; is SWE-bench strictly harder?",
+   "location": "Related work section mentions Defects4J but no direct comparison",
+   "severity": "low"
+  },
+  {
+   "what": "Failed retrieval analysis - what happens when BM25 retrieves empty results?",
+   "why_it_matters": "Table 3 shows low recall but doesn't clarify how many instances have 0% recall from BM25",
+   "location": "Implied in Table 3 but explicit counts not provided",
+   "severity": "low"
+  },
+  {
+   "what": "Variance in patch format compliance",
+   "why_it_matters": "Table 14 shows 'fixed' patches requiring post-generation repairs; what % of failures are syntax/format vs. logic?",
+   "location": "Table 14; repair rates by model given but reasons not categorized",
+   "severity": "medium"
+  },
+  {
+   "what": "Generalization to non-Python languages",
+   "why_it_matters": "E047 notes limitation to Python; would benchmark easily extend to Java, C++, etc.?",
+   "location": "Section 7, line 569: stated as limitation but no technical analysis",
+   "severity": "low"
+  }
+ ]
+}

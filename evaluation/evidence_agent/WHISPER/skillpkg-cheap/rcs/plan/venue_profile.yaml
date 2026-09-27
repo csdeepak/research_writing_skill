@@ -1,0 +1,9 @@
+source: none (VENUE_UNKNOWN; no venue specified in TASK.md beyond word count and audience)
+assumed: true
+section_template: "standard ML-conference IMRaD-like: Title, Abstract, Introduction, Related Work, Method, Experimental Setup, Results, Discussion/Limitations, Conclusion"
+length_limit: "3,000-4,500 words main text, excluding references (from TASK.md, not assumed)"
+citation_style: "(FirstAuthor et al., Year), restricted to works named in the evidence package; year omitted where the evidence package does not supply one (documented as accepted risk in state.json)"
+voice_preference: "active voice by default, assumed"
+required_statements: []
+figures_tables: "Markdown tables only; no images, per TASK.md"
+ai_use_policy: "not specified; disclosure.md drafted generically"

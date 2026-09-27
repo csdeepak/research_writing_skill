@@ -1,0 +1,119 @@
+{
+ "packet_id": "pkt-b9fd83f2",
+ "answers": {
+  "Q1": {
+   "answer": "The core problem is the robustness gap in ASR: models optimized on a single training distribution (e.g., clean LibriSpeech audiobooks) perform superbly on held-out data from that same distribution but make far more errors than humans when the acoustic environment, speakers, or recording conditions change. In-distribution WER improvements (down to 1.4% vs. 5.8% human) do not transfer to conversational, noisy, accented, or telephone speech. It matters because low in-distribution WER is being mistaken for general capability.",
+   "locations": [
+    "Abstract",
+    "\u00a71.1",
+    "\u00a72.2"
+   ],
+   "confidence": 5,
+   "missing": "No explicit numeric statement of how large the human-vs-machine OOD gap is before Whisper."
+  },
+  "Q2": {
+   "answer": "Word error rate = (Substitutions + Deletions + Insertions) / (reference words) \u00d7 100%, i.e., the string edit distance between hypothesis and reference. Its limitation is sensitivity to formatting conventions (spelled-out vs. numeric numbers, contractions, punctuation): a semantically correct transcript like 'sixty-eight million dollars' vs. '$68 million' incurs word errors, unfairly penalizing zero-shot models not tuned to a dataset's formatting. The paper addresses this with text normalization before WER computation.",
+   "locations": [
+    "\u00a72.1",
+    "\u00a74 intro"
+   ],
+   "confidence": 5,
+   "missing": "No worked numerical example of the normalizer's effect size besides \u00a75.5's qualitative note."
+  },
+  "Q3": {
+   "answer": "Two dominant paradigms fall short. (1) Self-/unsupervised pretraining (wav2vec 2.0, up to 1M hours) learns strong representations but yields no usable transcript alone; a supervised decoder must be fine-tuned per deployment distribution, which reintroduces the distribution-specificity pretraining was meant to remove. (2) Fully supervised multi-dataset training (e.g., SpeechStew, 5,140 hours) improves robustness but is limited by the small volume of available high-quality labeled data. Neither achieves the distributional breadth needed for robustness.",
+   "locations": [
+    "\u00a71.2",
+    "\u00a77.1",
+    "\u00a77.2"
+   ],
+   "confidence": 5,
+   "missing": "Direct empirical demonstration that fine-tuning specifically causes shortcut learning is asserted rather than shown."
+  },
+  "Q4": {
+   "answer": "Whisper is an encoder-decoder Transformer trained end-to-end with next-token prediction on 680,000 hours of weakly supervised (noisily labeled internet) audio-transcript pairs across 96 languages and four tasks (transcription, X\u2192En translation, VAD, language ID). Tasks are specified by special tokens prepended to the decoder. No self-supervised losses, no dataset-specific fine-tuning, and no data augmentation for the base models. It is evaluated entirely zero-shot. Five sizes (39M\u20131550M params). Input is an 80-channel log-Mel spectrogram; tokenizer is GPT-2 BPE (refit for multilingual).",
+   "locations": [
+    "\u00a71.3",
+    "\u00a73.1",
+    "\u00a73.2",
+    "\u00a73.3",
+    "\u00a73.4"
+   ],
+   "confidence": 5,
+   "missing": "Compute/training cost (GPU-hours) is not reported."
+  },
+  "Q5": {
+   "answer": "Zero-shot Whisper Large V2 and the supervised wav2vec 2.0 Large baseline are matched at 2.7% WER on LibriSpeech test-clean (the reference distribution). On 13 other OOD English ASR benchmarks, Whisper achieves a 55.2% average relative error reduction over the supervised baseline (average WER 12.8% vs 29.3%). Because in-distribution WER is held constant, the 55.2% measures effective robustness, not raw accuracy. Even 39M-param Whisper Tiny is roughly competitive OOD with the best supervised LibriSpeech model.",
+   "locations": [
+    "Abstract",
+    "\u00a74.1",
+    "Table 2"
+   ],
+   "confidence": 5,
+   "missing": "The displayed table lists ~10 non-reference datasets, not 13; the remaining datasets and their per-set numbers are not shown."
+  },
+  "Q6": {
+   "answer": "The decoder is conditioned on a token sequence that acts as a task interface: (1) <|startoftranscript|>, (2) a language token (one of 99), (3) a task token <|transcribe|> or <|translate|>, (4) a timestamp / <|notimestamps|> token, and optionally (5) <|nospeech|> for voice activity detection. Changing only these conditioning tokens lets one forward pass perform transcription, translation, language ID, or VAD. Preceding-segment transcript is sometimes prepended for longer-range context.",
+   "locations": [
+    "\u00a73.3"
+   ],
+   "confidence": 5,
+   "missing": "The probability with which prior-context text is prepended during training is not stated."
+  },
+  "Q7": {
+   "answer": "Two comparisons. (1) A robustness frontier plots OOD WER vs LibriSpeech WER; zero-shot Whisper traces a frontier overlapping the 95% CI of a single human evaluator, while supervised LibriSpeech models sit well above it. (2) On 25 Kincaid46 recordings against five professional transcription services: a computer-assisted human service was best (aggregate WER 1.15 pp lower than Whisper); the four purely-human services beat Whisper by only a fraction of a percentage point. Conclusion: Whisper approaches, but does not exceed, professional human English transcription.",
+   "locations": [
+    "\u00a74.2"
+   ],
+   "confidence": 4,
+   "missing": "No confidence intervals on the 25-recording comparison; sample is small (acknowledged in \u00a76.4)."
+  },
+  "Q8": {
+   "answer": "Training a medium model on 0.5%\u2013100% of the data shows all three tasks improve monotonically with hours. English WER falls fast from ~3k\u201313k hours then saturates (consistent with approaching human-level irreducible error). Multilingual WER follows a power law through ~54k hours. Translation BLEU is near zero below ~7,000 hours (a minimum-data threshold) then rises roughly log-linearly. Beyond 54k\u2013680k hours diminishing returns appear (either under-training or a genuine plateau).",
+   "locations": [
+    "\u00a75.2",
+    "Table 6"
+   ],
+   "confidence": 5,
+   "missing": "Whether the plateau is under-training vs saturation is left unresolved by the authors."
+  },
+  "Q9": {
+   "answer": "Multilingual: on MLS (8 languages) zero-shot Whisper (7.3% WER) beats fine-tuned XLS-R (10.9%) and matches Maestro (7.3%); on VoxPopuli it lags Maestro (13.6 vs 8.1) because competitors pretrain on VoxPopuli and have ~10\u00d7 more supervised data. On Fleurs (102 langs), log WER scales linearly with log training hours (r\u00b2=0.83, WER halves per 16\u00d7 data). Translation: on CoVoST 2 (21\u2192En), Whisper reaches 29.1 BLEU, a new SOTA overall (vs mSLAM 24.8, Maestro 25.2), with biggest gains on low-resource languages; it does not beat competitors on high-resource languages.",
+   "locations": [
+    "\u00a74.3",
+    "\u00a74.4"
+   ],
+   "confidence": 5,
+   "missing": "Per-language multilingual numbers beyond aggregates are not tabulated here; CoVoST caveat is the co-developed normalizer."
+  },
+  "Q10": {
+   "answer": "Effective robustness (Taori et al., 2020) is how well a model performs OOD relative to its in-distribution performance \u2014 a model with high effective robustness degrades no more than expected given its reference-benchmark score. In ASR it is measured by fixing the LibriSpeech (reference-distribution) WER and comparing OOD WER; supervised LibriSpeech models have low effective robustness (good on home benchmark, poor elsewhere), which is exactly what the matched 2.7% comparison isolates.",
+   "locations": [
+    "\u00a72.2",
+    "\u00a74.1"
+   ],
+   "confidence": 5,
+   "missing": "No formal equation for the effective-robustness quantity is given, only the conceptual framing."
+  },
+  "Q11": {
+   "answer": "Honest limitations: (1) Fine-tuning is not studied, so zero-shot numbers may be conservative. (2) Low-resource language performance is poor (most non-English languages have <1,000 hours), a data limitation not an approach failure. (3) Long-form decoding still has hallucination and repetition-loop failure modes despite heuristics. (4) Evaluation fairness: the text normalizer was co-developed with Whisper (modest bias on WSJ/CallHome/Switchboard), commercial-service comparisons may be contaminated, and the human comparison used only 25 recordings without CIs. (5) Language ID trails supervised SOTA, largely due to 20 missing training languages.",
+   "locations": [
+    "\u00a76.4",
+    "\u00a74.5",
+    "\u00a75.5"
+   ],
+   "confidence": 5,
+   "missing": "Nothing material missing; limitations are explicitly enumerated."
+  },
+  "Q12": {
+   "answer": "The result is the speech analogue of CLIP/BiT in vision: internet-scale weak supervision produces zero-shot generalization competitive with specialized supervised baselines and far superior OOD. This matters to adjacent researchers because it (a) reframes 'superhuman' in-distribution benchmark scores as not implying general capability, (b) provides a scaling/data-curation lesson relevant to LLM training, and (c) delivers released models usable as a multimodal backbone. The enabling mechanism in both vision and speech: internet-scale data is diverse enough that predicting weak labels forces genuine semantic understanding rather than dataset-specific shortcuts.",
+   "locations": [
+    "\u00a76.3",
+    "\u00a77.4",
+    "objective.md rationale"
+   ],
+   "confidence": 5,
+   "missing": "The paper asserts but does not directly quantify the 'shortcut vs semantic understanding' mechanism."
+  }
+ }
+}

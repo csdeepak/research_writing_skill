@@ -1,0 +1,51 @@
+{
+  "run_id": "beir_rce_001",
+  "project": "BEIR",
+  "audience": "B_adjacent_researcher",
+  "deliverable": "standalone_paper_md",
+  "accepted_risks": [
+    {
+      "step": "global",
+      "assumption": "No user available; all ASK/STOP decisions resolved from evidence",
+      "decision": "Proceeded with most defensible option per evidence"
+    },
+    {
+      "step": "6_venue",
+      "assumption": "No venue specified; written for general ML venue (NeurIPS Datasets & Benchmarks style)",
+      "decision": "Length and style set to 3000-4500 words as per run constraint"
+    },
+    {
+      "step": "7_literature",
+      "assumption": "No web access; cited works registered with verification.method=user_supplied_file, read_depth=abstract",
+      "decision": "Only works cited in paper.txt are referenced"
+    },
+    {
+      "step": "18_blind_review",
+      "assumption": "Performed externally; stopping after step 17 per run constraint",
+      "decision": "Draft written to .rcs/drafts/v001/paper.md and paper.md"
+    }
+  ],
+  "gates_passed": ["G1", "G2", "G3", "G4", "G5"],
+  "status": "complete_step21",
+  "step19_revisions": [
+    "Abstract: scoped bias correction claim to TREC-COVID case study",
+    "Abstract: replaced 'frequently fall substantially below BM25' with TAS-B/DPR range",
+    "S1: added explicit research question sentence",
+    "S1: added quantitative coverage details for MultiReQA/KILT",
+    "S2: added vocabulary-size intuition for SPARTA 30k dimensions",
+    "S3.2: added NLP benchmark scale comparison for corpus sizes",
+    "S3.3: added [MISSING] marker for Jaccard overlap statistics",
+    "S3.4: added gain/discount/normalization intuition for nDCG@10",
+    "S5.1: changed TAS-B attribution from causal to explicitly correlational",
+    "S5.2: added transition sentence linking efficiency to generalisation thesis",
+    "Table3: added BioASQ-scale annotation to ColBERT index size",
+    "S6: added transition sentence linking bias section to S5 results",
+    "S7: added confound list and correlational disclaimer to cross-attention explanation",
+    "S9: revised conclusion to lead with implications, added TREC-COVID scope qualifier for bias"
+  ],
+  "step21_actions": [
+    "Claim-invariance check passed: no claim upgraded beyond evidence",
+    "No inline tags remain in paper.md (stripped prior to step 19)",
+    "Remaining [MISSING] markers: S3.3 Jaccard statistics (genuinely unresolved)"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+ "SWE_BENCH": {
+  "lost": 7,
+  "gained": 5
+ },
+ "BEIR": {
+  "lost": 4,
+  "gained": 10
+ },
+ "MLPERF_TINY": {
+  "lost": 8,
+  "gained": 3
+ },
+ "SAM": {
+  "lost": 8,
+  "gained": 1
+ },
+ "WHISPER": {
+  "lost": 4,
+  "gained": 2
+ },
+ "OPENHANDS": {
+  "lost": 12,
+  "gained": 1
+ }
+}

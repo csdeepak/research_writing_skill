@@ -1,0 +1,112 @@
+{
+ "packet_id": "pkt-d5c2bf08",
+ "answers": {
+  "Q1": {
+   "answer": "The paper addresses the gap between existing code-generation benchmarks and real software engineering. Prior benchmarks (e.g., HumanEval) test self-contained functions solvable in a few lines, leaving open whether LMs can handle real-world software maintenance: navigating large repositories, understanding interdependencies, localizing where to change code, and producing coordinated multi-file edits verified by the repository's own tests.",
+   "locations": [
+    "Abstract",
+    "\u00a71 \u00b61-2"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q2": {
+   "answer": "LMs are increasingly deployed as coding assistants, debuggers, and autonomous agents, yet evaluation has not kept pace. Real SE differs from code generation in four ways: input is a natural-language issue (not a formal spec), the codebase is large (thousands of files), the model must decide WHERE to edit, and correctness is judged by the repo's real test suite. These make repository-level issue resolution qualitatively harder than isolated synthesis.",
+   "locations": [
+    "\u00a71 \u00b61-2"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q3": {
+   "answer": "Can state-of-the-art LMs (GPT-4, Claude 2/3, fine-tuned open models), given a codebase and a natural-language issue description, generate a patch that passes the human-written tests associated with the fix \u2014 and what are the primary bottlenecks preventing this?",
+   "locations": [
+    "Abstract",
+    "\u00a71 \u00b63",
+    "objective.md"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q4": {
+   "answer": "(1) SWE-bench itself: 2,294 execution-validated task instances from 12 Python repos, continuously updatable and memorization-resistant; (2) a systematic evaluation of ChatGPT-3.5, GPT-4, Claude 2, Claude 3 Opus, and SWE-Llama 7b/13b; (3) release of SWE-bench-train (19,000 instances) and the SWE-Llama fine-tuned models; plus SWE-bench Lite (300 instances).",
+   "locations": [
+    "\u00a71 \u00b64",
+    "\u00a72.4",
+    "\u00a73.3"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q5": {
+   "answer": "A three-stage pipeline: Stage I scrapes ~90,000 PRs from top-downloaded PyPI packages across 12 repos; Stage II keeps merged PRs that explicitly resolve an issue (e.g., 'fixes #N') AND modify test files, reducing to 11,407; Stage III installs each repo at the base commit, applies the test patch, runs tests before/after the code change, and keeps only instances where \u22651 test goes fail\u2192pass, yielding 2,294 instances.",
+   "locations": [
+    "\u00a72.2 (Stages I-III)"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q6": {
+   "answer": "Because codebases (~438K lines) exceed context windows, they compare retrieval strategies: BM25 (sparse term-frequency) at 13k/27k/50k token limits, 'oracle' (exactly the reference-edited files), and 'oracle-collapsed' (\u00b115 lines around edited lines). Models get an instruction prompt, issue text, retrieved files, and an example patch, and must output a unified-diff patch. Greedy decoding / Pass@1 throughout. GPT-4 evaluated on a 25% subset for cost.",
+   "locations": [
+    "\u00a73.1",
+    "\u00a73.2"
+   ],
+   "confidence": 5,
+   "missing": "Exact per-model context limits used for the reported 'best' BM25 rows not tabulated"
+  },
+  "Q7": {
+   "answer": "All models resolve a small fraction of issues. Under BM25 (best per model): Claude 3 Opus 3.79%, Claude 2 1.97%, GPT-4-turbo 1.31%, SWE-Llama 7b/13b 0.70%, ChatGPT-3.5 0.17%. Oracle retrieval roughly doubles Claude 2 (1.97%\u21924.80%); oracle-collapsed further raises it (Claude 2 5.93%, Claude 3 Opus 9.39%, GPT-4 3.40%). Even ideal context yields <10% resolved.",
+   "locations": [
+    "\u00a74.1 Table 3",
+    "\u00a74.2 Table 4",
+    "Abstract"
+   ],
+   "confidence": 5,
+   "missing": "Oracle (non-collapsed) result for Claude 3 Opus is not reported (dash in Table 4)"
+  },
+  "Q8": {
+   "answer": "The bottleneck is not only retrieval quality but the models themselves. Long contexts distract models (larger windows improve recall but lower resolve rate; oracle-collapsed helps by removing surrounding code), pointing to poor in-context localization. Models produce shorter, simpler, single-file patches vs. gold patches' multi-file structural fixes, taking a 'greedy' symptom-fixing approach. Outcome breakdown shows most applied patches are No-Op or Regression.",
+   "locations": [
+    "\u00a74.3",
+    "\u00a74.4 Table 5",
+    "\u00a75.1"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q9": {
+   "answer": "Python-only; single-pass retrieve-then-generate baselines (no agents/execution feedback), so results are a floor not a ceiling; test passage is a necessary-but-not-sufficient proxy for solution quality; no variance reporting (greedy Pass@1); GPT-4 evaluated only on a 25% subset (574 instances).",
+   "locations": [
+    "\u00a77"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q10": {
+   "answer": "'Oracle' retrieval is an upper-bound setting where the model is given exactly the files the human reference solution modified \u2014 unrealistic in practice (a developer wouldn't know these in advance) but it isolates model capability from retrieval quality. 'Oracle-collapsed' trims those files to only \u00b115 lines around each edited line.",
+   "locations": [
+    "\u00a73.1"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q11": {
+   "answer": "The gap defines a measurable research frontier. Directions: better retrieval/localization (BM25 finds no relevant file in ~half of instances; oracle-collapsed suggests a 6-9% ceiling with perfect localization); agent-based/interactive systems that run tests and read tracebacks; and multi-modal models for image-containing issues (~32% of matplotlib, ~10% of seaborn). The benchmark's updatability keeps it relevant as models improve.",
+   "locations": [
+    "\u00a75.3",
+    "\u00a78"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q12": {
+   "answer": "To test memorization, resolve rates were compared for instances created before vs. after January 2023. Performance is similar across the boundary (Claude 2: 4.87% before vs 4.23% after; SWE-Llama 13b: 3.98% vs 3.85%), which the authors take as evidence that models are not solving issues by memorizing specific repository versions.",
+   "locations": [
+    "\u00a74.6"
+   ],
+   "confidence": 4,
+   "missing": "Which retrieval setting these temporal numbers use is unstated; only two coarse time buckets and no counts/variance are given"
+  }
+ }
+}

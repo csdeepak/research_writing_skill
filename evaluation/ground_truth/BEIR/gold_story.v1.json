@@ -1,0 +1,72 @@
+{
+  "project": "BEIR",
+  "verified": true,
+  "approved_by_researcher": false,
+  "approval_date": null,
+  "questions": {
+    "Q1": [
+      {"id": "Q1a", "text": "Neural IR models had often been studied in homogeneous, narrow settings, limiting insight into their out-of-distribution generalization.", "strength": "context", "evidence_ids": ["paper.txt line 7"]},
+      {"id": "Q1b", "text": "It was unclear how well trained neural retrieval models perform on other text domains or retrieval tasks, and how different approach types (sparse vs dense) generalize out of distribution.", "strength": "context", "evidence_ids": ["paper.txt line 120"]}
+    ],
+    "Q2": [
+      {"id": "Q2a", "text": "Prior work commonly trains and evaluates neural retrievers on the same large dataset (e.g. NQ, MS MARCO), which does not reveal how they perform elsewhere.", "strength": "context", "evidence_ids": ["paper.txt line 10"]},
+      {"id": "Q2b", "text": "Building large training corpora is time-consuming and expensive, so many retrieval systems are deployed zero-shot with no target-domain training data.", "strength": "context", "evidence_ids": ["paper.txt line 11"]}
+    ],
+    "Q3": [
+      {"id": "Q3a", "text": "Existing retrieval benchmarks such as MultiReQA and KILT were narrower: they focused on a single task, small corpora or a certain domain, and did not evaluate zero-shot retrieval in depth.", "strength": "literature", "evidence_ids": ["paper.txt line 127"]},
+      {"id": "Q3b", "text": "MultiReQA covers only question answering, is mostly Wikipedia-based (5 of 8 datasets), and 6 of 8 tasks have fewer than 100k candidate sentences.", "strength": "literature", "evidence_ids": ["paper.txt line 127"]},
+      {"id": "Q3c", "text": "KILT covers five knowledge-intensive tasks (eleven datasets) but retrieves only from Wikipedia and treats retrieval as a secondary component rather than the primary task.", "strength": "literature", "evidence_ids": ["paper.txt line 127", "paper.txt line 131"]}
+    ],
+    "Q4": [
+      {"id": "Q4a", "text": "The authors built BEIR, a benchmark of 18 zero-shot retrieval datasets spanning 9 heterogeneous tasks and domains.", "strength": "context", "evidence_ids": ["paper.txt line 121", "paper.txt line 138"]},
+      {"id": "Q4b", "text": "They released an open-source Python package (installable via pip) that converts datasets into a standardized corpus/queries/qrels format and wraps multiple retrieval libraries for evaluation.", "strength": "context", "evidence_ids": ["paper.txt line 296", "paper.txt line 351"]},
+      {"id": "Q4c", "text": "They evaluated ten retrieval systems spanning five architecture families (lexical, sparse, dense, late-interaction, re-ranking) on the benchmark.", "strength": "context", "evidence_ids": ["paper.txt line 122", "paper.txt line 356"]},
+      {"id": "Q4d", "text": "They ran a bias study, manually annotating 980 missing query-document pairs in TREC-COVID to measure the impact of lexical annotation bias.", "strength": "context", "evidence_ids": ["paper.txt line 704"]}
+    ],
+    "Q5": [
+      {"id": "Q5a", "text": "Datasets were selected using four criteria: diverse tasks, diverse domains, sufficient task difficulty, and diverse annotation strategies.", "strength": "context", "evidence_ids": ["paper.txt line 137"]},
+      {"id": "Q5b", "text": "nDCG@10 was chosen as the single primary metric: Precision and Recall are rank-unaware, and binary rank-aware metrics (MRR, MAP) cannot evaluate graded relevance judgements, whereas nDCG suits both binary and graded relevance.", "strength": "interpretation", "evidence_ids": ["paper.txt line 353"]},
+      {"id": "Q5c", "text": "Documents were truncated to the first 512 word pieces for all neural models due to transformer input-length limits.", "strength": "context", "evidence_ids": ["paper.txt line 355"]}
+    ],
+    "Q6": [
+      {"id": "Q6a", "text": "A zero-shot comparison of 10 models across 18 datasets plus in-domain MS MARCO, reporting nDCG@10 for each model-dataset pair.", "strength": "measured", "evidence_ids": ["paper.txt lines 370-533 Table 2"]},
+      {"id": "Q6b", "text": "A latency and index-size study on a randomly sampled 1-million-document subset of DBPedia, measured on both CPU and GPU.", "strength": "measured", "evidence_ids": ["paper.txt lines 592-656 Table 3"]},
+      {"id": "Q6c", "text": "A manual re-annotation study on TREC-COVID measuring Hole@10 and nDCG@10 before and after adding missing relevance judgements.", "strength": "measured", "evidence_ids": ["paper.txt lines 660-705 Table 4"]},
+      {"id": "Q6d", "text": "An ablation comparing two otherwise identically trained DistilBERT dense models using cosine similarity vs. dot product, on TREC-COVID, Signal-1M(RT) and FEVER.", "strength": "measured", "evidence_ids": ["paper.txt lines 950-954", "paper.txt lines 1254-1286 Table 10"]}
+    ],
+    "Q7": [
+      {"id": "Q7a", "text": "The re-ranking model BM25+CE had the best average zero-shot performance relative to BM25 (+11%) and outperformed BM25 on 16 of 18 datasets, failing only on ArguAna and Touché-2020.", "strength": "measured", "evidence_ids": ["paper.txt line 531", "paper.txt line 537"]},
+      {"id": "Q7b", "text": "The late-interaction model ColBERT averaged +2.5% relative to BM25 and outperformed BM25 on 9 of 18 datasets.", "strength": "measured", "evidence_ids": ["paper.txt line 521", "paper.txt line 537"]},
+      {"id": "Q7c", "text": "The document-expansion model docT5query averaged +1.6% relative to BM25 and outperformed BM25 on 11 of 18 datasets.", "strength": "measured", "evidence_ids": ["paper.txt line 455", "paper.txt line 535"]},
+      {"id": "Q7d", "text": "DPR, the only dense model not trained on MS MARCO, generalized worst, averaging -47.7% relative to BM25.", "strength": "measured", "evidence_ids": ["paper.txt line 466", "paper.txt line 536"]},
+      {"id": "Q7e", "text": "The term-weighting sparse models underperformed BM25 on average: DeepCT -27.9% and SPARTA -20.3%.", "strength": "measured", "evidence_ids": ["paper.txt line 433", "paper.txt line 444", "paper.txt line 535"]}
+    ],
+    "Q8": [
+      {"id": "Q8a", "text": "In-domain performance on MS MARCO does not predict a model's zero-shot generalization across BEIR: BM25 trails neural models by 7-18 points in-domain yet is a strong zero-shot baseline.", "strength": "derived", "evidence_ids": ["paper.txt line 122", "paper.txt line 366", "paper.txt line 709"]},
+      {"id": "Q8b", "text": "There is a trade-off between generalization and computational cost: the best-generalizing re-ranking and late-interaction models are the slowest (>350ms per query), while dense retrievers are 20-30x faster (<20ms).", "strength": "derived", "evidence_ids": ["paper.txt line 122", "paper.txt line 598"]},
+      {"id": "Q8c", "text": "After the missing TREC-COVID judgements were filled in, lexical systems barely changed (docT5query 0.713 to 0.714), while the dense retriever ANCE rose from 0.654 to 0.735, moving from slightly below BM25 to 6.7 points above it.", "strength": "measured", "evidence_ids": ["paper.txt line 705", "paper.txt lines 677-698 Table 4"]},
+      {"id": "Q8d", "text": "BEIR datasets can carry a lexical annotation bias, likely because lexical retrieval systems were used to build annotation candidate pools, which disadvantages non-lexical models. Even TREC-COVID's multi-system pool remained biased toward lexical approaches.", "strength": "interpretation", "evidence_ids": ["paper.txt line 123", "paper.txt line 661", "paper.txt line 705"]}
+    ],
+    "Q9": [
+      {"id": "Q9a", "text": "The benchmark covers English-only datasets; multilingual and cross-lingual retrieval were not evaluated.", "strength": "context", "evidence_ids": ["paper.txt line 833"]},
+      {"id": "Q9b", "text": "The benchmark covers pure textual search and does not integrate non-textual relevance signals such as PageRank, recency, authority score, or click-through rate.", "strength": "context", "evidence_ids": ["paper.txt line 835"]},
+      {"id": "Q9c", "text": "The annotation-bias analysis was carried out on a single dataset (TREC-COVID), and the missing judgements were annotated by the paper's authors, who were blind to which system retrieved each document.", "strength": "context", "evidence_ids": ["paper.txt line 703", "paper.txt line 704", "paper.txt line 825"]}
+    ],
+    "Q10": [
+      {"id": "Q10a", "text": "The primary contribution is a heterogeneous, 18-dataset, 9-task zero-shot benchmark (BEIR) for evaluating IR model generalization.", "strength": "context", "evidence_ids": ["paper.txt line 121"]},
+      {"id": "Q10b", "text": "A second contribution is a comparative zero-shot evaluation of 10 retrieval architectures, showing no single approach dominates and that in-domain performance does not predict generalization.", "strength": "context", "evidence_ids": ["paper.txt line 122", "paper.txt line 366"]},
+      {"id": "Q10c", "text": "A third contribution is an analysis of annotation selection bias via manual TREC-COVID re-annotation, showing non-lexical approaches are disadvantaged by lexically biased annotation pools.", "strength": "context", "evidence_ids": ["paper.txt line 123", "paper.txt line 710"]},
+      {"id": "Q10d", "text": "The authors released BEIR as a documented, extensible open-source package integrating diverse retrieval systems and datasets.", "strength": "context", "evidence_ids": ["paper.txt line 124"]}
+    ],
+    "Q11": [
+      {"id": "Q11b", "text": "Long-document retrieval is not covered: most tasks have documents of at most a few hundred words, and the 512-word-piece limit of transformer models would require a different setup to compare approaches.", "strength": "context", "evidence_ids": ["paper.txt line 834"]},
+      {"id": "Q11e", "text": "Multi-field retrieval is not covered: only datasets with one or two fields were included, although real collections can have many (title, abstract, body, authors, journal).", "strength": "context", "evidence_ids": ["paper.txt line 836"]},
+      {"id": "Q11c", "text": "No error bars or repeated-run variance are reported, because most evaluated models are pre-trained checkpoints that the authors could not feasibly retrain.", "strength": "context", "evidence_ids": ["paper.txt line 816"]}
+    ],
+    "Q12": [
+      {"id": "Q12a", "text": "BEIR is an 18-dataset, 9-task zero-shot benchmark showing that no single IR model architecture wins everywhere, and that in-domain accuracy does not predict out-of-domain generalization.", "strength": "context", "evidence_ids": ["paper.txt line 121", "paper.txt line 122"]},
+      {"id": "Q12b", "text": "Re-ranking and late-interaction models generalize best but at the highest computational cost, while BM25 remains a strong zero-shot baseline.", "strength": "context", "evidence_ids": ["paper.txt line 7", "paper.txt line 122"]},
+      {"id": "Q12c", "text": "Many BEIR datasets carry a lexical annotation bias that can understate the performance of non-lexical (e.g. dense) retrieval systems.", "strength": "context", "evidence_ids": ["paper.txt line 123", "paper.txt line 661", "paper.txt line 705"]}
+    ]
+  }
+}

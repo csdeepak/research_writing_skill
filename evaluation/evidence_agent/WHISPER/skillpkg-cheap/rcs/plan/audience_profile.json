@@ -1,0 +1,24 @@
+{
+  "primary": {
+    "mode": "B",
+    "description": "Machine-learning researchers from other subfields (adjacent researchers): know general ML/deep learning, standard Transformer architectures, and standard evaluation practice/statistics, but not speech-processing-specific terminology, datasets, or prior work.",
+    "assumed_knowledge": [
+      "encoder-decoder Transformers, attention, sequence-to-sequence modeling",
+      "supervised vs. unsupervised/self-supervised pre-training",
+      "the general idea of zero-shot transfer and distribution shift",
+      "standard error-rate style metrics and BLEU-like comparison scores at a conceptual level",
+      "scaling-law style plots (performance vs. data/model size)"
+    ],
+    "not_assumed_knowledge": [
+      "Word Error Rate (WER) computation details and text-normalization conventions",
+      "speech-specific datasets (LibriSpeech, Common Voice, Fleurs, VoxPopuli, CoVoST2, TED-LIUM, CHiME, Kincaid46, Earnings-21/22, CORAAL, MLS)",
+      "speech-specific baselines (wav2vec 2.0, XLS-R, mSLAM, Maestro, SpeechStew, NVIDIA STT/Conformer-CTC)",
+      "conventions of weak/weakly-supervised training data in ASR",
+      "voice activity detection (VAD), beam search/temperature-fallback decoding heuristics specific to long-form ASR"
+    ]
+  },
+  "secondary": {"description": "Speech/audio-processing specialists reading for context (not the binding persona for density decisions)."},
+  "tertiary": {"description": "General ML practitioners evaluating whether the approach transfers to their own modality."},
+  "term_budget": "Define every speech-specific term at first use; no more than ~2 new domain concepts per paragraph.",
+  "binding_personas": ["B"]
+}

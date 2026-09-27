@@ -1,0 +1,268 @@
+{
+  "evidence": [
+    {
+      "id": "E001",
+      "type": "dataset",
+      "description": "Whisper training dataset: 680,000 hours of labeled audio paired with transcripts collected from the internet. Includes 438,218 hours English speech recognition, 117,113 hours multilingual speech recognition (96 other languages), and 125,739 hours X-to-English translation data.",
+      "value": "680,000 hours total; 438,218h English SR; 117,113h multilingual SR covering 96 languages; 125,739h X->en translation",
+      "source": "project/paper.txt",
+      "locator": "Section 1 (Introduction), Section 2.1, Appendix E"
+    },
+    {
+      "id": "E002",
+      "type": "model_architecture",
+      "description": "Encoder-decoder Transformer architecture. Five model sizes: Tiny (39M params, 4 layers, width 384, 6 heads), Base (74M, 6 layers, 512, 8 heads), Small (244M, 12 layers, 768, 12 heads), Medium (769M, 24 layers, 1024, 16 heads), Large (1550M, 32 layers, 1280, 20 heads). Audio processed as 80-channel log-magnitude Mel spectrogram on 25ms windows, 10ms stride. 30-second chunks.",
+      "value": "5 model sizes, 39M to 1550M parameters",
+      "source": "project/paper.txt",
+      "locator": "Section 2.2, Table 1"
+    },
+    {
+      "id": "E003",
+      "type": "method_detail",
+      "description": "Multitask training format: a single sequence-to-sequence model handles multilingual transcription, speech translation, voice activity detection, and language identification. Tasks specified via special tokens prepended to the decoder input: <|startoftranscript|>, language token (99 options), <|transcribe|>/<|translate|>, <|notimestamps|>/<|nospeech|>.",
+      "value": "4 tasks unified via token-based format; 99 language tokens",
+      "source": "project/paper.txt",
+      "locator": "Section 2.3, Figure 1"
+    },
+    {
+      "id": "E004",
+      "type": "result",
+      "description": "Zero-shot Whisper Large V2 on LibriSpeech test-clean WER vs supervised wav2vec 2.0 Large (no LM) on LibriSpeech test-clean: 2.7% vs 2.7% (within 0.1% of each other), showing matched in-distribution performance.",
+      "value": "2.7% WER (Whisper Large V2), 2.7% WER (wav2vec 2.0 Large no LM) on LibriSpeech clean",
+      "source": "project/paper.txt",
+      "locator": "Table 2"
+    },
+    {
+      "id": "E005",
+      "type": "result",
+      "description": "Effective robustness comparison: despite matching LibriSpeech performance, zero-shot Whisper Large V2 achieves 55.2% average relative error reduction over wav2vec 2.0 Large (no LM) on 13 other speech recognition datasets.",
+      "value": "55.2% average relative error reduction (RER) across out-of-distribution datasets",
+      "source": "project/paper.txt",
+      "locator": "Table 2, Section 3.3"
+    },
+    {
+      "id": "E006",
+      "type": "result",
+      "description": "WER of best zero-shot Whisper model on LibriSpeech test-clean using beam search with temperature fallback: 2.5%.",
+      "value": "2.5% WER on LibriSpeech test-clean (Whisper Large V2, beam search + temperature fallback)",
+      "source": "project/paper.txt",
+      "locator": "Section 3.3, Table 9"
+    },
+    {
+      "id": "E007",
+      "type": "result",
+      "description": "Smallest zero-shot Whisper (39M params, Tiny) achieves 6.7 WER on LibriSpeech test-clean and is 'roughly competitive with the best supervised LibriSpeech model when evaluated on other datasets.'",
+      "value": "39M params, 6.7% WER on LibriSpeech clean, competitive with best supervised model on OOD datasets",
+      "source": "project/paper.txt",
+      "locator": "Section 3.3"
+    },
+    {
+      "id": "E008",
+      "type": "observation",
+      "description": "Supervised LibriSpeech models make roughly twice as many errors as a human on other datasets, while best zero-shot Whisper models' estimated robustness frontier includes the 95% CI for the particular human.",
+      "value": "Supervised models ~2x human error on OOD; Whisper zero-shot robustness frontier includes human 95% CI",
+      "source": "project/paper.txt",
+      "locator": "Figure 2, Section 3.3"
+    },
+    {
+      "id": "E009",
+      "type": "result",
+      "description": "Multilingual LibriSpeech (MLS) performance: Zero-shot Whisper achieves 7.3 WER on MLS, outperforming supervised XLS-R (10.9), mSLAM-CTC (not listed), and Maestro (7.3 - essentially tied). On VoxPopuli: Whisper zero-shot 13.6 WER vs. Maestro 8.1 (significantly underperforms).",
+      "value": "MLS WER: Whisper zero-shot=7.3 (outperforms XLS-R 10.9); VoxPopuli: Whisper=13.6, Maestro=8.1",
+      "source": "project/paper.txt",
+      "locator": "Table 3, Section 3.4"
+    },
+    {
+      "id": "E010",
+      "type": "result",
+      "description": "Correlation between per-language training data and zero-shot WER on Fleurs: r^2=0.83. Regression shows WER halves for every 16x increase in training data.",
+      "value": "r^2=0.83 (log-log correlation), WER halves per 16x training data increase",
+      "source": "project/paper.txt",
+      "locator": "Figure 3, Section 3.4"
+    },
+    {
+      "id": "E011",
+      "type": "result",
+      "description": "X->en translation on CoVoST2: Zero-shot Whisper achieves 29.1 BLEU overall (SOTA zero-shot), outperforming XLS-R (22.1), mSLAM (24.8), Maestro (25.2). But on high-resource languages, Whisper (36.2) underperforms best supervised (XMEF-X: 34.2 for high... wait let me re-check). From Table 4: XMEF-X High=34.2, XLS-R High=36.1, Whisper High=36.2. So Whisper is comparable on high but Table 4 says 'moderately underperforms on high-resource'. Actually XMEF-X High=34.2 looks lower than 36.2... the table shows overall Whisper=29.1 outperforming all, but on high resource Whisper=36.2 while XMEF-X=34.2 - lower WER=better for translation? No, these are BLEU scores so higher is better. So Whisper (36.2 BLEU) vs XMEF-X (34.2 BLEU) - Whisper IS better on high resource? But the paper says 'the best Whisper model does not actually improve over Maestro and mSLAM on average for the highest resource languages'. Let me re-read Table 4. The table shows: XMEF-X: High=34.2, Mid=20.2, Low=5.9, All=14.7; XLS-R (2B): High=36.1, Mid=27.7, Low=15.1, All=22.1; mSLAM-CTC(2B): High=37.8, Mid=29.6, Low=18.5, All=24.8; Maestro: High=38.2, Mid=31.3, Low=18.4, All=25.2; Zero-Shot Whisper: High=36.2, Mid=32.6, Low=25.2, All=29.1. So for high resource: Maestro(38.2) > mSLAM(37.8) > XLS-R(36.1) ≈ Whisper(36.2). For All: Whisper(29.1) > Maestro(25.2) > mSLAM(24.8) > XLS-R(22.1). So Whisper is SOTA overall and on low-resource but does not surpass Maestro/mSLAM on high-resource.",
+      "value": "CoVoST2 BLEU: Whisper zero-shot overall=29.1 (SOTA), high-resource=36.2 (vs Maestro 38.2), low-resource=25.2 (vs mSLAM 18.5)",
+      "source": "project/paper.txt",
+      "locator": "Table 4, Section 3.5"
+    },
+    {
+      "id": "E012",
+      "type": "result",
+      "description": "Language identification accuracy on Fleurs: Zero-shot Whisper=64.5%, w2v-bert-51=71.4%, mSLAM-CTC=77.7%. Whisper penalized for having no training data for 20 of 102 Fleurs languages (upper bound 80.4%). On 82 overlapping languages: 80.3%.",
+      "value": "Fleurs LangID: Whisper zero-shot=64.5% (13.2% below supervised SOTA 77.7%); on 82 overlapping languages=80.3%",
+      "source": "project/paper.txt",
+      "locator": "Table 5, Section 3.6"
+    },
+    {
+      "id": "E013",
+      "type": "result",
+      "description": "Noise robustness: Under additive pub noise with SNR < 10 dB, all 14 compared LibriSpeech-trained models perform worse than Whisper. Under low noise (40 dB SNR), many models outperform Whisper.",
+      "value": "At SNR < 10 dB pub noise, all 14 compared models outperformed by Whisper; at high SNR (40 dB), Whisper surpassed by many",
+      "source": "project/paper.txt",
+      "locator": "Figure 5, Section 3.7"
+    },
+    {
+      "id": "E014",
+      "type": "result",
+      "description": "Long-form transcription: Whisper outperforms compared open-source models (best: NVIDIA STT) and in most cases commercial ASR systems across 7 long-form datasets (TED-LIUM3, Meanwhile, Kincaid46, Rev16, Earnings-21, Earnings-22, CORAAL).",
+      "value": "Whisper outperforms NVIDIA STT on all 7 long-form datasets and commercial ASR on most",
+      "source": "project/paper.txt",
+      "locator": "Figure 6, Section 3.8"
+    },
+    {
+      "id": "E015",
+      "type": "result",
+      "description": "Human comparison on Kincaid46 (25 recordings): Computer-assisted transcription service has lowest aggregate WER that is 1.15% points better than Whisper. Pure-human performance is only a fraction of a percent better than Whisper.",
+      "value": "Computer-assisted service: 1.15% WER points better than Whisper. Pure-human: fraction of a percent better than Whisper.",
+      "source": "project/paper.txt",
+      "locator": "Figure 7, Section 3.9"
+    },
+    {
+      "id": "E016",
+      "type": "result",
+      "description": "Model scaling (Figure 8): Performance continues to improve with model size across multilingual SR, translation, and language ID. English SR shows diminishing returns (possibly approaching human-level saturation).",
+      "value": "Scaling improves multilingual SR, translation, language ID; English SR shows saturation",
+      "source": "project/paper.txt",
+      "locator": "Figure 8, Section 4.1"
+    },
+    {
+      "id": "E017",
+      "type": "result",
+      "description": "Dataset scaling (Table 6): Training on 3,405h vs 681,070h hours. English WER: 30.5->9.9; Multilingual WER: 92.4->29.2; X->en BLEU: 0.2->24.8. All tasks improve monotonically with data. Diminishing returns from 54k to 680k hours.",
+      "value": "3405h->681070h: Eng WER 30.5->9.9, Multi WER 92.4->29.2, X->en BLEU 0.2->24.8",
+      "source": "project/paper.txt",
+      "locator": "Table 6, Section 4.2"
+    },
+    {
+      "id": "E018",
+      "type": "result",
+      "description": "Multitask/multilingual transfer (Figure 9): At small model sizes, joint training HURTS English SR vs English-only training (negative transfer). At large model sizes, joint models outperform English-only models (positive transfer), even without compute adjustment.",
+      "value": "Negative transfer for small models; positive transfer for large models in joint multilingual/multitask training",
+      "source": "project/paper.txt",
+      "locator": "Figure 9, Section 4.3"
+    },
+    {
+      "id": "E019",
+      "type": "result",
+      "description": "Long-form decoding heuristics ablation (Table 7): Greedy decoding baseline average WER=11.0, after all heuristics (beam search, temp fallback, VAD, prior text, initial timestamp): 10.0 average WER across 7 datasets.",
+      "value": "Greedy=11.0 avg WER; full heuristic stack=10.0 avg WER on 7 long-form datasets",
+      "source": "project/paper.txt",
+      "locator": "Table 7, Section 4.5"
+    },
+    {
+      "id": "E020",
+      "type": "negative_result",
+      "description": "Language identification competitive disadvantage: Whisper significantly underperforms supervised SOTA on Fleurs language ID (64.5% vs 77.7%) partly due to absent languages in training data. Upper bound on overlapping languages is 80.3%.",
+      "value": "Whisper LangID 64.5% vs supervised SOTA 77.7%; gap partially structural (missing languages)",
+      "source": "project/paper.txt",
+      "locator": "Table 5, Section 3.6"
+    },
+    {
+      "id": "E021",
+      "type": "negative_result",
+      "description": "VoxPopuli multilingual SR: Whisper zero-shot (13.6) significantly underperforms Maestro (8.1), XLS-R (10.6), mSLAM (9.1). Authors attribute this to other models using VoxPopuli as major pretraining source and larger supervised data per language.",
+      "value": "Whisper VoxPopuli WER=13.6 vs Maestro=8.1 (significantly worse)",
+      "source": "project/paper.txt",
+      "locator": "Table 3, Section 3.4"
+    },
+    {
+      "id": "E022",
+      "type": "negative_result",
+      "description": "High-resource translation: Whisper (36.2 BLEU) underperforms Maestro (38.2) and mSLAM (37.8) on high-resource CoVoST2 languages.",
+      "value": "Whisper 36.2 BLEU on high-resource, Maestro 38.2, mSLAM 37.8 (Whisper underperforms)",
+      "source": "project/paper.txt",
+      "locator": "Table 4, Section 3.5"
+    },
+    {
+      "id": "E023",
+      "type": "negative_result",
+      "description": "Translation data quality: r^2=0.24 between training data amount and zero-shot BLEU on Fleurs translation, much lower than 0.83 for speech recognition. Partly caused by noisy language ID (e.g. Welsh outlier with misclassified English audio).",
+      "value": "r^2=0.24 for translation vs 0.83 for SR; Welsh (CY) outlier: 13 BLEU despite 9,000h supposedly translated data",
+      "source": "project/paper.txt",
+      "locator": "Figure 4, Section 3.5"
+    },
+    {
+      "id": "E024",
+      "type": "limitation",
+      "description": "Long-form transcription failure modes: repetition loops, failure to transcribe first/last words, complete hallucination. Authors note decoding heuristics help but more research needed.",
+      "value": "Hallucination, repetition loops, word truncation are known failure modes of long-form decoding",
+      "source": "project/paper.txt",
+      "locator": "Section 6"
+    },
+    {
+      "id": "E025",
+      "type": "limitation",
+      "description": "English-heavy training data: most non-English languages have <1,000 hours of training data due to internet data collection biases. Performance on low-resource languages remains poor.",
+      "value": "Most non-English languages <1,000h training data; English-heavy due to internet data collection",
+      "source": "project/paper.txt",
+      "locator": "Section 6"
+    },
+    {
+      "id": "E026",
+      "type": "limitation",
+      "description": "Zero-shot only studied: fine-tuning not explored in main paper. Authors expect fine-tuning would further improve performance on specific domains.",
+      "value": "No fine-tuning experiments in main paper; fine-tuning expected to improve domain-specific performance",
+      "source": "project/paper.txt",
+      "locator": "Section 6"
+    },
+    {
+      "id": "E027",
+      "type": "limitation",
+      "description": "Text normalization co-developed with Whisper may overfit to Whisper's quirks. Comparison with FairSpeech normalizer (Koenecke et al., 2020) shows similar effects on most datasets but larger Whisper-specific advantages on WSJ, CallHome, Switchboard.",
+      "value": "Normalizer overfitting risk; cross-validated with FairSpeech normalizer showing similar patterns on most datasets",
+      "source": "project/paper.txt",
+      "locator": "Figure 10, Section 4.4"
+    },
+    {
+      "id": "E028",
+      "type": "method_detail",
+      "description": "Data filtering: automated filtering to remove machine-generated transcripts, language mismatch filtering using VoxLingua107 model, fuzzy deduplication, manual inspection after initial model training based on high error rate sources.",
+      "value": "Multi-stage filtering: machine transcript detection, language matching, dedup, manual inspection",
+      "source": "project/paper.txt",
+      "locator": "Section 2.1"
+    },
+    {
+      "id": "E029",
+      "type": "method_detail",
+      "description": "Training details: AdamW optimizer, FP16, data parallelism, batch size 256, 2^20 updates (2-3 passes over dataset), linear LR decay after 2048 warmup steps. No data augmentation or regularization except speaker name fine-tuning fix.",
+      "value": "AdamW, FP16, 256 batch size, 2^20 updates, no augmentation/regularization",
+      "source": "project/paper.txt",
+      "locator": "Section 2.4"
+    },
+    {
+      "id": "E030",
+      "type": "method_detail",
+      "description": "Large V2 changes: trained for 2.5x more epochs with SpecAugment, Stochastic Depth, and BPE Dropout added. These regularization techniques applied only for V2.",
+      "value": "Large V2: 2.5x epochs, SpecAugment, Stochastic Depth, BPE Dropout added",
+      "source": "project/paper.txt",
+      "locator": "Section 2.4 footnote 3"
+    },
+    {
+      "id": "E031",
+      "type": "result",
+      "description": "From Table 2, detailed per-dataset effective robustness (wav2vec 2.0 Large (no LM) vs Whisper Large V2, RER%): Artie: 24.5 -> 6.2 (74.7% RER); Common Voice: 29.9 -> 9.0 (69.9% RER); CHiME6: 65.8->25.5 (61.2%); CORAAL: 35.6->16.2 (54.5%); AMI IHM: 37.0->16.9 (54.3%); Switchboard: 28.3->13.8 (51.2%); CallHome: 34.8->17.6 (49.4%); WSJ: 7.7->3.9 (49.4%); AMI SDM1: 67.6->36.4 (46.2%); LibriSpeech Other: 6.2->5.2 (16.1%); Average RER: 55.2%",
+      "value": "Per-dataset RER ranging from 16.1% (LibriSpeech Other) to 74.7% (Artie), avg 55.2%",
+      "source": "project/paper.txt",
+      "locator": "Table 2"
+    },
+    {
+      "id": "E032",
+      "type": "observation",
+      "description": "In-distribution vs out-of-distribution generalization asymmetry in current ASR evaluation: models achieve reportedly 'superhuman' WER on LibriSpeech (1.4% in 2021, SOTA) but remain far above human error rates in other settings. LibriSpeech SOTA WER dropped 73% from Deep Speech 2's 5.3% to 1.4% (Zhang et al., 2021).",
+      "value": "LibriSpeech SOTA WER dropped from 5.3% (2015) to 1.4% (2021), yet OOD performance remains poor",
+      "source": "project/paper.txt",
+      "locator": "Section 3.3"
+    },
+    {
+      "id": "E033",
+      "type": "method_detail",
+      "description": "Evaluation protocol: zero-shot evaluation on 12+ academic datasets without using any training data from those datasets. Text normalization standardized before WER calculation to reduce formatting penalization.",
+      "value": "Zero-shot evaluation (no training data from eval sets); text normalization before WER computation",
+      "source": "project/paper.txt",
+      "locator": "Section 3.1, 3.2"
+    }
+  ]
+}

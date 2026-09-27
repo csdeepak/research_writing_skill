@@ -1,0 +1,114 @@
+{
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "OpenHands provides a unified, extensible platform for building AI agents that interact with computing environments through code execution, command-line access, and web browsing.",
+      "claim_type": "method_description",
+      "evidence_ids": ["E035", "E036", "E038"],
+      "confidence": "high",
+      "permitted_verbs": ["provides", "enables", "supports", "allows", "implements"],
+      "author_confirmation": "confirmed",
+      "limitations": []
+    },
+    {
+      "id": "C002",
+      "statement": "A Docker-sandboxed runtime prevents agent-generated code from affecting the host system, enabling safe evaluation and deployment.",
+      "claim_type": "method_description",
+      "evidence_ids": ["E036"],
+      "confidence": "high",
+      "permitted_verbs": ["provides", "enables", "prevents", "isolates"],
+      "author_confirmation": "confirmed",
+      "limitations": ["L001"]
+    },
+    {
+      "id": "C003",
+      "statement": "CodeActAgent v1.8 with claude-3-5-sonnet achieves a 26.0% resolve rate on SWE-Bench Lite, comparable to open-source software-engineering specialists such as Aider (26.3%) and Moatless Tools (26.7%).",
+      "claim_type": "empirical_result",
+      "evidence_ids": ["E001", "E006"],
+      "confidence": "high",
+      "permitted_verbs": ["achieves", "demonstrates", "shows", "reaches"],
+      "author_confirmation": "confirmed",
+      "scope": "SWE-Bench Lite, 300 instances, without hint text, 0-shot",
+      "limitations": ["M001", "M002"]
+    },
+    {
+      "id": "C004",
+      "statement": "CodeActAgent (0-shot) achieves 79.3% on HumanEvalFix Python, substantially exceeding non-agentic code models (e.g., StarCoder2-15B at 48.6%), though below SWE-Agent's 1-shot result of 87.7%.",
+      "claim_type": "empirical_result",
+      "evidence_ids": ["E008", "E009", "E010"],
+      "confidence": "high",
+      "permitted_verbs": ["achieves", "exceeds", "demonstrates", "shows"],
+      "author_confirmation": "confirmed",
+      "scope": "HumanEvalFix, 164 Python instances",
+      "limitations": ["M001"]
+    },
+    {
+      "id": "C005",
+      "statement": "The same generalist CodeActAgent, without task-specific prompt modification, achieves competitive performance across software engineering, web browsing, and general assistance task categories.",
+      "claim_type": "empirical_result",
+      "evidence_ids": ["E001", "E017", "E022", "E026", "E028", "E030"],
+      "confidence": "medium",
+      "permitted_verbs": ["demonstrates", "shows", "achieves", "suggests"],
+      "author_confirmation": "confirmed",
+      "scope": "Results span multiple benchmarks; generality claim is relative to task-specific baselines",
+      "limitations": ["M001", "M002"]
+    },
+    {
+      "id": "C006",
+      "statement": "CodeActAgent with tool use achieves 52.0% accuracy on the GPQA diamond benchmark, surpassing GPT-4 few-shot chain-of-thought (38.8%) and exceeding the non-expert human baseline (21.9%).",
+      "claim_type": "empirical_result",
+      "evidence_ids": ["E022", "E023", "E024", "E025"],
+      "confidence": "high",
+      "permitted_verbs": ["achieves", "surpasses", "exceeds", "outperforms"],
+      "author_confirmation": "confirmed",
+      "scope": "GPQA diamond set, 198 instances, claude-3-5-sonnet",
+      "limitations": ["M001"]
+    },
+    {
+      "id": "C007",
+      "statement": "The event-stream abstraction decouples agent logic from environment details, enabling modular development and drop-in substitution of agent implementations.",
+      "claim_type": "design_claim",
+      "evidence_ids": ["E035"],
+      "confidence": "medium",
+      "permitted_verbs": ["enables", "allows", "supports", "facilitates"],
+      "author_confirmation": "confirmed",
+      "limitations": []
+    },
+    {
+      "id": "C008",
+      "statement": "Multi-agent delegation allows a generalist agent to hand off subtasks to specialists, demonstrated by CodeActAgent delegating web browsing to BrowsingAgent via AgentDelegateAction.",
+      "claim_type": "method_description",
+      "evidence_ids": ["E035", "M003"],
+      "confidence": "medium",
+      "permitted_verbs": ["allows", "enables", "supports", "demonstrates"],
+      "author_confirmation": "confirmed",
+      "limitations": []
+    },
+    {
+      "id": "C009",
+      "statement": "The platform integrates 15 benchmarks spanning software engineering, web interaction, and general assistance, supporting systematic evaluation of agent generality.",
+      "claim_type": "method_description",
+      "evidence_ids": ["E037"],
+      "confidence": "high",
+      "permitted_verbs": ["integrates", "supports", "provides", "enables"],
+      "author_confirmation": "confirmed",
+      "limitations": []
+    },
+    {
+      "id": "C010",
+      "statement": "Current OpenHands agents underperform on long-file editing tasks and require substantial handcrafted workflow design, representing open engineering challenges.",
+      "claim_type": "limitation",
+      "evidence_ids": ["E040", "E041"],
+      "confidence": "high",
+      "permitted_verbs": ["struggle", "require", "represent", "face"],
+      "author_confirmation": "confirmed",
+      "limitations": []
+    }
+  ],
+  "limitations": [
+    {
+      "id": "L001",
+      "description": "Docker isolation reduces but does not eliminate risk from agent actions; network access and resource consumption remain potential concerns."
+    }
+  ]
+}

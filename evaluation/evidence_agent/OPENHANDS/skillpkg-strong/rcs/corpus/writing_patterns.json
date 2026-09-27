@@ -1,0 +1,5 @@
+{
+  "patterns": [],
+  "anti_patterns": [],
+  "note": "Mode `patterns` normally extracts move sequences from full-text exemplars that passed the exemplar rubric. All nine registered sources in this run are read_depth=abstract (only a single reported number and citation string are available from the evidence package), so no reliable move-sequence extraction is possible without risking fabrication. Per evidence_model.md §7 ('never turn soft into hard by restating it confidently') and the corpus agent's constraint against inferring from unread text, this file is intentionally left empty rather than guessed. The draft instead follows the skill's own section_rules.md and information_design.md directly."
+}

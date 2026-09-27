@@ -1,0 +1,57 @@
+{
+  "note": "Literature mode is constrained to zero web access for this run (see .rcs/corpus/corpus_log.md). Exactly one citation string exists anywhere in the evidence package. This matrix is intentionally thin and the GAP statement in story_graph.json/spine.md is scoped to 'the systems named in the available evidence', not to a systematic literature search.",
+  "dimension_matrix": [
+    {
+      "source_or_system": "SWE-Agent (named baseline, Table 4)",
+      "problem_framing": "Resolve real GitHub issues (SWE-Bench Lite)",
+      "method_family": "LLM agent with an agent-computer interface for code editing",
+      "key_assumption": "not documented in the evidence package",
+      "data_eval": "SWE-Bench Lite, 300 instances",
+      "strength": "18.0% resolve rate with gpt-4-1106-preview (E009)",
+      "weakness_limit": "not documented in the evidence package",
+      "relation_to_this_paper": "compared against CodeActAgent v1.8 in the same table"
+    },
+    {
+      "source_or_system": "AutoCodeRover (named baseline, Table 4)",
+      "problem_framing": "Resolve real GitHub issues (SWE-Bench Lite)",
+      "method_family": "Program-repair-oriented agent",
+      "key_assumption": "not documented in the evidence package",
+      "data_eval": "SWE-Bench Lite, 300 instances",
+      "strength": "19.0% resolve rate with gpt-4-0125-preview (E010)",
+      "weakness_limit": "not documented in the evidence package",
+      "relation_to_this_paper": "compared against CodeActAgent v1.8 in the same table"
+    },
+    {
+      "source_or_system": "Aider (named baseline, Table 4)",
+      "problem_framing": "Resolve real GitHub issues (SWE-Bench Lite)",
+      "method_family": "Pair-programming style code-editing agent",
+      "key_assumption": "not documented in the evidence package",
+      "data_eval": "SWE-Bench Lite, 300 instances",
+      "strength": "26.3% resolve rate with gpt-4o and claude-3-opus (E011)",
+      "weakness_limit": "not documented in the evidence package",
+      "relation_to_this_paper": "closest-performing baseline to CodeActAgent v1.8 with claude-3.5-sonnet"
+    },
+    {
+      "source_or_system": "WebArena Agent (Zhou et al., 2023a) [SRC-001]",
+      "problem_framing": "Complete realistic web tasks (WebArena)",
+      "method_family": "Web-browsing agent",
+      "key_assumption": "not documented in the evidence package",
+      "data_eval": "WebArena, 812 instances",
+      "strength": "6.2% with gpt-3.5-turbo (E020)",
+      "weakness_limit": "gpt-4-turbo result not reported in the evidence package",
+      "relation_to_this_paper": "reference baseline for the platform's BrowsingAgent results"
+    },
+    {
+      "source_or_system": "GPTSwarm (named system, Table 6)",
+      "problem_framing": "General assistant tasks (GAIA)",
+      "method_family": "Multi-agent orchestration",
+      "key_assumption": "not documented in the evidence package",
+      "data_eval": "GAIA level 1, 53 instances",
+      "strength": "32.1% with gpt-4o-2024-05-13 (E022)",
+      "weakness_limit": "not documented in the evidence package",
+      "relation_to_this_paper": "one of the systems evaluated via the platform's benchmark harness"
+    }
+  ],
+  "grouping_dimension_chosen": "method family and task category (software engineering vs. web browsing vs. miscellaneous assistance), because the evidence package organizes its own benchmark tables this way and it is the dimension that explains why a single generalist agent's cross-domain behavior is the object of interest.",
+  "gap_scoped_to": "the systems and benchmarks named in the evidence package, not a systematic search of the field"
+}

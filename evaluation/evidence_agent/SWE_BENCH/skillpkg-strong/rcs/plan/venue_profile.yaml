@@ -1,0 +1,26 @@
+# VENUE_UNKNOWN -> generic profile used, per workflow.md Step 6 failure handling.
+# Run-specific override: no human available; assumption recorded in state.json accepted_risks.
+venue: {name: "generic ML research article (no venue specified)", type: journal, guideline_urls: []}
+structure:
+  section_template: [Title, Abstract, Introduction, Related Work, Method, Experimental Setup, Results, Discussion, Limitations, Conclusion, References]
+  results_discussion: separate
+  related_work_position: after_intro
+  limitations_section_required: true
+  assumed: true
+limits: {pages_main: null, words_main: "3000-4500 (task requirement, excludes references)", abstract_words: 250, supplement_allowed: false, assumed: true}
+style:
+  citation_style: "author-year, form (FirstAuthor et al., Year), per task instructions"
+  voice_preference: "active voice; 'we' for author actions"
+  spelling: US
+  abstract_format: unstructured
+  abstract_citations_allowed: false
+  assumed: true
+required_statements:
+  data_availability: false
+  code_availability: false
+  ai_use_disclosure: false
+  assumed: true
+  note: "Run constraints direct output to ./paper.md and ./.rcs/ only; no separate disclosure.md requested for this run."
+checklists: []
+reporting_guideline: null
+literature_availability_note: "No works are cited by name/year anywhere in the supplied evidence package (research_evidence.json, claim_candidates.json, missing_evidence.json); the original paper's reference list is not available to this run. Per citation_rules.md Sec.1, citations may be drawn only from corpus/source_registry.json entries verified from project materials. Since no citable work could be identified in the evidence package, the Related Work section describes the prior-work gap in the authors' own terms (grounded in E001/E012 style project-only evidence) without inventing citations, and no References section of external works is produced. This is recorded as an accepted risk in state.json."

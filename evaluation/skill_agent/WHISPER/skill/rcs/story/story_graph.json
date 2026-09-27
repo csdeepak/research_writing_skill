@@ -1,0 +1,148 @@
+{
+  "nodes": [
+    {
+      "id": "N01", "type": "PROBLEM",
+      "text": "ASR systems trained on single-distribution data fail to generalize, making far more errors than humans outside their training domain.",
+      "claims": ["C001"], "evidence": ["E032", "E008"]
+    },
+    {
+      "id": "N02", "type": "SIGNIFICANCE",
+      "text": "Reliable general-purpose speech recognition is necessary for real-world deployment; brittle models require expensive re-training per application domain.",
+      "claims": ["C001"]
+    },
+    {
+      "id": "N03", "type": "KNOWN",
+      "text": "Unsupervised pre-training (e.g., Wav2Vec 2.0) scales to 1M hours and improves audio encoders, but requires supervised fine-tuning that reintroduces distributional brittleness.",
+      "sources": ["Baevski et al. 2020", "Zhang et al. 2021"]
+    },
+    {
+      "id": "N04", "type": "KNOWN",
+      "text": "Multi-domain supervised training increases robustness, but existing efforts combine at most ~5,000 hours of high-quality labeled audio.",
+      "sources": ["Chan et al. 2021", "Narayanan et al. 2018"]
+    },
+    {
+      "id": "N05", "type": "KNOWN",
+      "text": "Weakly supervised training on large noisy datasets dramatically improves robustness in computer vision, suggesting the same may hold for speech.",
+      "sources": ["Mahajan et al. 2018", "Kolesnikov et al. 2020"]
+    },
+    {
+      "id": "N06", "type": "GAP",
+      "text": "Weakly supervised speech recognition has not been scaled past ~30,000 hours, leaving untested whether the scale needed for robust zero-shot generalization is achievable.",
+      "claims": []
+    },
+    {
+      "id": "N07", "type": "RQ",
+      "text": "RQ1: Does scaling weakly supervised pretraining to 680,000 hours produce zero-shot transfer that matches or exceeds supervised models on diverse speech benchmarks?",
+      "claims": ["C002", "C003"]
+    },
+    {
+      "id": "N08", "type": "RQ",
+      "text": "RQ2: Does a single model trained with a multitask token format generalize across transcription, translation, voice activity detection, and language identification?",
+      "claims": ["C005"]
+    },
+    {
+      "id": "N09", "type": "RQ",
+      "text": "RQ3: How do model scale and data scale affect performance?",
+      "claims": ["C006", "C007"]
+    },
+    {
+      "id": "N10", "type": "RQ",
+      "text": "RQ4: Does joint multilingual/multitask training help or hurt compared to English-only training?",
+      "claims": ["C008"]
+    },
+    {
+      "id": "N11", "type": "APPROACH",
+      "text": "Whisper: an encoder-decoder Transformer trained via next-token prediction on 680,000 hours of weakly supervised internet audio across five model sizes (39M to 1,550M parameters), using a token-based multitask format.",
+      "claims": ["C002", "C005"], "evidence": ["E001", "E002", "E003", "E028", "E029"]
+    },
+    {
+      "id": "N12", "type": "DESIGN",
+      "text": "Zero-shot evaluation on 13 academic ASR datasets spanning diverse domains; comparison with supervised LibriSpeech models matched on in-distribution performance.",
+      "claims": ["C003"], "evidence": ["E033"]
+    },
+    {
+      "id": "N13", "type": "RESULT",
+      "text": "Zero-shot Whisper (2.7% WER on LibriSpeech clean) achieves 55.2% average relative error reduction over a supervised model with the same in-distribution WER on 13 other datasets.",
+      "claims": ["C003"], "evidence": ["E004", "E005", "E031"]
+    },
+    {
+      "id": "N14", "type": "RESULT",
+      "text": "Whisper robustness frontier includes the 95% CI of human robustness; English ASR approaches human accuracy on Kincaid46.",
+      "claims": ["C004", "C009"], "evidence": ["E008", "E015"]
+    },
+    {
+      "id": "N15", "type": "RESULT",
+      "text": "Multitask token format enables competitive zero-shot performance on translation (29.1 BLEU CoVoST2 overall SOTA) and functional language ID (80.3% on overlapping languages).",
+      "claims": ["C005", "C010", "C013"], "evidence": ["E011", "E012"]
+    },
+    {
+      "id": "N16", "type": "RESULT",
+      "text": "Performance scales with model size across multilingual SR, translation, and language ID; English SR saturates at large scale.",
+      "claims": ["C006"], "evidence": ["E016"]
+    },
+    {
+      "id": "N17", "type": "RESULT",
+      "text": "Performance improves monotonically with training data from 3,405 to 681,070 hours across all tasks.",
+      "claims": ["C007"], "evidence": ["E017"]
+    },
+    {
+      "id": "N18", "type": "RESULT",
+      "text": "Joint multilingual/multitask training causes negative transfer at small model scales but positive transfer at large scales.",
+      "claims": ["C008"], "evidence": ["E018"]
+    },
+    {
+      "id": "N19", "type": "INTERPRETATION",
+      "text": "The robustness gap between ASR and human performance is primarily a training distribution problem, not a capacity problem; diverse supervised coverage is the key driver.",
+      "claims": ["C003", "C004"]
+    },
+    {
+      "id": "N20", "type": "CONTRIBUTION",
+      "text": "Whisper demonstrates that scaling weakly supervised pretraining with diverse internet data to 680k hours achieves human-like robustness and zero-shot generalization for a single multitask speech model.",
+      "claims": ["C002", "C003", "C004", "C005"]
+    },
+    {
+      "id": "N21", "type": "LIMITATION",
+      "text": "Fine-tuning not evaluated; low-resource language performance remains poor; text normalizer developed alongside model; human comparison uses small sample.",
+      "claims": ["L003", "L004", "L005", "L010"]
+    },
+    {
+      "id": "N22", "type": "IMPLICATION",
+      "text": "Zero-shot evaluation should be emphasized alongside in-distribution evaluation to avoid overstating ASR capabilities; large-scale weakly supervised pretraining is a viable path for robust speech recognition.",
+      "claims": ["C001", "C002"]
+    },
+    {
+      "id": "N23", "type": "FUTURE",
+      "text": "Better decoding for long-form transcription, targeted data collection for low-resource languages, fine-tuning studies, and language model integration remain open.",
+      "claims": []
+    }
+  ],
+  "edges": [
+    {"from": "N01", "to": "N07", "type": "motivates"},
+    {"from": "N02", "to": "N07", "type": "motivates"},
+    {"from": "N03", "to": "N06", "type": "establishes"},
+    {"from": "N04", "to": "N06", "type": "establishes"},
+    {"from": "N05", "to": "N06", "type": "establishes"},
+    {"from": "N07", "to": "N06", "type": "addresses"},
+    {"from": "N08", "to": "N06", "type": "addresses"},
+    {"from": "N09", "to": "N06", "type": "addresses"},
+    {"from": "N10", "to": "N06", "type": "addresses"},
+    {"from": "N11", "to": "N07", "type": "implements"},
+    {"from": "N11", "to": "N08", "type": "implements"},
+    {"from": "N12", "to": "N13", "type": "produces"},
+    {"from": "N12", "to": "N14", "type": "produces"},
+    {"from": "N13", "to": "N19", "type": "supports"},
+    {"from": "N14", "to": "N19", "type": "supports"},
+    {"from": "N19", "to": "N07", "type": "answers"},
+    {"from": "N15", "to": "N08", "type": "supports"},
+    {"from": "N16", "to": "N09", "type": "supports"},
+    {"from": "N17", "to": "N09", "type": "supports"},
+    {"from": "N18", "to": "N10", "type": "supports"},
+    {"from": "N13", "to": "N20", "type": "grounds"},
+    {"from": "N06", "to": "N20", "type": "grounds"},
+    {"from": "N21", "to": "N19", "type": "limits"},
+    {"from": "N21", "to": "N20", "type": "limits"},
+    {"from": "N19", "to": "N22", "type": "implies"},
+    {"from": "N21", "to": "N23", "type": "opens"},
+    {"from": "N22", "to": "N23", "type": "opens"}
+  ]
+}

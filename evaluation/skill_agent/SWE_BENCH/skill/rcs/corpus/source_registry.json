@@ -1,0 +1,20 @@
+{
+  "sources": [
+    {"id": "S001", "citation": "Chen et al., 2021", "title": "Evaluating Large Language Models Trained on Code (HumanEval)", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S002", "citation": "Rozie`re et al., 2023", "title": "Code Llama: Open Foundation Models for Code", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S003", "citation": "Kiela et al., 2021", "title": "Dynabench: Rethinking Benchmarking in NLP", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S004", "citation": "Ott et al., 2022", "title": "Mapping global dynamics of benchmark creation and saturation in AI", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S005", "citation": "Srivastava et al., 2023", "title": "Beyond the Imitation Game: Quantifying and Extrapolating the Capabilities of LMs", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S006", "citation": "Liang et al., 2022", "title": "Holistic Evaluation of Language Models (HELM)", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S007", "citation": "Liu et al., 2023b", "title": "Lost in the Middle: How Language Models Use Long Contexts", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S008", "citation": "Hu et al., 2022", "title": "LoRA: Low-Rank Adaptation of Large Language Models", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S009", "citation": "Robertson et al., 2009", "title": "The Probabilistic Relevance Framework: BM25 and Beyond", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S010", "citation": "Cassano et al., 2022", "title": "MultiPL-E: A Scalable and Extensible Approach to Benchmarking Neural Code Generation", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S011", "citation": "McCabe, 1976", "title": "A Complexity Measure", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S012", "citation": "Halstead, 1977", "title": "Elements of Software Science", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S013", "citation": "Martínez-Plumed et al., 2021", "title": "Research Community Dynamics Behind Popular AI Benchmarks", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S014", "citation": "Yao et al., 2022", "title": "WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S015", "citation": "Dao et al., 2022", "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S016", "citation": "Jacobs et al., 2023", "title": "DeepSpeed Ulysses: System Optimizations for Enabling Training of Extreme Long Sequence Transformer Models", "verification_method": "user_supplied_file", "read_depth": "abstract"}
+  ]
+}

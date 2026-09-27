@@ -1,0 +1,112 @@
+INFO  L5    A-long-sentence              45-word sentence: split or keep with reason
+      > Whether current models can do this has been hard to measure, because standard code-generation benchmarks score a self-contained function against a handful of un
+INFO  L5    A-long-sentence              37-word sentence: split or keep with reason
+      > We describe SWE-bench, a benchmark of 2,294 task instances built from real, merged GitHub pull requests across 12 popular Python repositories, each validated by
+INFO  L5    A-long-sentence              43-word sentence: split or keep with reason
+      > These results indicate that repository-scale, test-verified issue resolution is far from solved by current models, and that the gap between oracle and automatic
+WARN  L5    A3-undefined-acronym         acronym 'SWE' never defined
+      > SWE
+INFO  L5    B-absolute                   absolute term: justified only by complete enumeration or proof
+      > Whether current models can do this has been hard to measure, because standard code-generation benchmarks score a self-contained function against a handful of un
+INFO  L9    A-long-sentence              68-word sentence: split or keep with reason
+      > Language models are increasingly deployed as coding assistants, and the natural next question is not whether they can write a short function, but whether they c
+INFO  L11   A-long-sentence              49-word sentence: split or keep with reason
+      > This format is useful for measuring raw code-synthesis ability, but it does not require a model to search a codebase for the file and function that need to chan
+INFO  L11   A-long-sentence              51-word sentence: split or keep with reason
+      > It therefore leaves open the question motivating this paper: can a model that writes good isolated functions also resolve a real, previously unaddressed issue w
+INFO  L15   A-long-sentence              44-word sentence: split or keep with reason
+      > To answer this, we built SWE-bench, a benchmark of 2,294 task instances mined from real, merged pull requests across 12 popular Python repositories, each pairin
+INFO  L15   A-long-sentence              68-word sentence: split or keep with reason
+      > We evaluate several general-purpose language models (Claude 2, Claude 3 Opus, ChatGPT-3.5, GPT-4/GPT-4-turbo) and SWE-Llama, a pair of open models fine-tuned fo
+WARN  L15   A3-undefined-acronym         acronym 'GPT' never defined
+      > GPT
+INFO  L17   A-long-sentence              65-word sentence: split or keep with reason
+      > The paper's contribution is a large, execution-verified benchmark demonstrating that repository-scale issue resolution is largely unsolved by current language m
+INFO  L19   A-long-sentence              37-word sentence: split or keep with reason
+      > Section 2 places SWE-bench relative to the evaluation it is meant to complement, in the authors' own terms (no external prior-work citations are available in th
+INFO  L25   A-long-sentence              55-word sentence: split or keep with reason
+      > Both properties make the format tractable to build and evaluate at scale, but they also mean a high score on it does not establish that a model can find the rig
+INFO  L27   A-long-sentence              44-word sentence: split or keep with reason
+      > SWE-bench is built to close this specific gap: every task instance requires operating on a real, large codebase (Section 3), and every task instance's check is 
+INFO  L33   A-long-sentence              39-word sentence: split or keep with reason
+      > Stage III re-ran each repository's test suite before and after applying the candidate's reference patch, keeping only instances with a well-defined change in te
+INFO  L59   A-long-sentence              36-word sentence: split or keep with reason
+      > Roughly 40% of instances require at least two FAIL_TO_PASS tests, and a median of 51 additional PASS_TO_PASS tests are checked per instance, so the resolve chec
+INFO  L63   A-long-sentence              41-word sentence: split or keep with reason
+      > Despite this scale, reference (gold) solutions are typically small and localized: they edit 1.7 files, 3.0 functions, and 32.8 lines on average, though the maxi
+INFO  L69   A-long-sentence              38-word sentence: split or keep with reason
+      > This is the setting a fully automated tool would have to use in practice, since the correct files are not known in advance. - **"Oracle" retrieval.** The model 
+INFO  L69   A-long-sentence              52-word sentence: split or keep with reason
+      > This is less realistic — a real engineer does not know in advance which files need changing, and the edited files may not include all the context needed to writ
+INFO  L72   A-long-sentence              60-word sentence: split or keep with reason
+      > For BM25, three maximum context lengths were tested (13,000, 27,000, and 50,000 tokens); recall of the oracle file set at these limits ranges from about 30% to 
+INFO  L72   A-long-sentence              37-word sentence: split or keep with reason
+      > Because models have different maximum context windows, the fraction of instances whose oracle file set fits at all varies: 58.1% for ChatGPT-3.5 (16,385 tokens)
+INFO  L74   A-long-sentence              40-word sentence: split or keep with reason
+      > SWE-Llama is obtained by supervised fine-tuning of CodeLlama-Python (7b and 13b) on SWE-bench-train, using low-rank adaptation (LoRA) restricted to the attentio
+INFO  L74   A-long-sentence              37-word sentence: split or keep with reason
+      > GPT-4 was evaluated on only a 25% random subset (574 instances) in the oracle and BM25-27k settings, due to budget constraints, so its numbers below are not dir
+INFO  L74   B5-causal                    causal wording: requires causal design or ablation; otherwise 'is associated with'
+      > GPT-4 was evaluated on only a 25% random subset (574 instances) in the oracle and BM25-27k settings, due to budget constraints, so its numbers below are not dir
+INFO  L80   A-long-sentence              49-word sentence: split or keep with reason
+      > With BM25-retrieved context on the full 2,294-instance benchmark, the best-performing model tested, Claude 2, resolves about 1.96-1.97% of issues; the source re
+INFO  L93   A-long-sentence              44-word sentence: split or keep with reason
+      > "Applied" rates are consistently much higher than "resolved" rates for every model — SWE-Llama models apply more than half the time but resolve well under 1% of
+INFO  L97   A-long-sentence              42-word sentence: split or keep with reason
+      > The same rise from BM25 to oracle context appears for every other model: ChatGPT-3.5 to 0.52%, SWE-Llama 7b/13b to 3.01%/3.97% (versus 0.70% each under BM25), a
+INFO  L109  A-long-sentence              54-word sentence: split or keep with reason
+      > The rise from BM25 to oracle retrieval across every model is consistent with an interpretation that finding the correct file(s) to edit, not only writing a plau
+INFO  L109  A-long-sentence              43-word sentence: split or keep with reason
+      > This is an interpretation, not something the data isolate directly: the oracle setting changes both what code the model sees and how much of it, so the gain can
+INFO  L111  A-long-sentence              43-word sentence: split or keep with reason
+      > Trimming the oracle context further — showing only the regions the reference patch edited plus a small buffer, rather than the full files — increases resolve ra
+INFO  L115  A-long-sentence              60-word sentence: split or keep with reason
+      > Holding retrieval method fixed and varying only the maximum context length tested (13,000, 27,000, and 50,000 tokens) under BM25 retrieval, resolve rates fall a
+INFO  L115  A-long-sentence              41-word sentence: split or keep with reason
+      > A qualitative analysis by total input length and by issue length shows the same direction of effect for Claude 2 and other models, though the underlying figure'
+INFO  L119  A-long-sentence              40-word sentence: split or keep with reason
+      > Because SWE-bench issues have creation dates, and a model's training data has a cutoff date, one might worry that apparent success partly reflects having seen a
+INFO  L119  A-long-sentence              37-word sentence: split or keep with reason
+      > This absence of a temporal trend is consistent with models not resolving issues merely by reproducing a memorized, more recent version of the repository, though
+INFO  L123  A-long-sentence              56-word sentence: split or keep with reason
+      > Among successfully applied patches under oracle retrieval, model-generated edits are consistently smaller than the reference patches: averaged across all models
+INFO  L123  A-long-sentence              61-word sentence: split or keep with reason
+      > The paper's own prose compares these two numbers directly (74.5 versus 30.1 lines) to argue models "tend to generate shorter, simpler edits" {C009}; this mixes 
+INFO  L127  A-long-sentence              36-word sentence: split or keep with reason
+      > SWE-Llama 7b and 13b, fine-tuned on oracle-context training data, resolve a respectable 3.01% and 3.97% of issues under matching oracle retrieval (Section 5.2) 
+INFO  L127  A-long-sentence              45-word sentence: split or keep with reason
+      > The authors attribute this to distribution shift: SWE-Llama was fine-tuned exclusively on clean, exactly-relevant oracle context, and evaluating it on the noisi
+INFO  L127  A-long-sentence              46-word sentence: split or keep with reason
+      > This is a stated suspicion, not something isolated by a dedicated ablation, but it directly qualifies how much fine-tuning, by itself, narrows the gap to genera
+INFO  L127  B-absolute                   absolute term: justified only by complete enumeration or proof
+      > The authors attribute this to distribution shift: SWE-Llama was fine-tuned exclusively on clean, exactly-relevant oracle context, and evaluating it on the noisi
+INFO  L129  A-long-sentence              45-word sentence: split or keep with reason
+      > Claude 2 and SWE-Llama 13b, the two strongest oracle-setting models, resolve 110 and 91 instances respectively, but Claude 2 solves only 42% of the instances SW
+INFO  L133  A-long-sentence              36-word sentence: split or keep with reason
+      > **Does automatic retrieval let current models resolve real issues?** Largely no: the best model tested resolves under 2% of the full benchmark with automaticall
+INFO  L135  A-long-sentence              36-word sentence: split or keep with reason
+      > **Is the difficulty mainly about generating a correct edit, or about finding the right code?** Both appear to matter, but the data point toward localization and
+INFO  L135  A-long-sentence              45-word sentence: split or keep with reason
+      > Moving from BM25 to oracle retrieval — giving the model the exact files to edit, changing nothing about its generation ability — roughly doubles Claude 2's reso
+INFO  L135  A-long-sentence              37-word sentence: split or keep with reason
+      > Together, these are consistent with an account in which models' patch-generation ability, once the right code is in front of them and not buried in surrounding 
+INFO  L137  A-long-sentence              51-word sentence: split or keep with reason
+      > **Could high performance simply reflect memorized, more recent repository states?** The available check — comparing resolve rates on issues created before and a
+INFO  L141  A-long-sentence              58-word sentence: split or keep with reason
+      > **What does this mean going forward?** Because oracle-setting resolve rates remain low (under 5% for every model), and trimming irrelevant context helps even af
+INFO  L145  A-long-sentence              242-word sentence: split or keep with reason
+      > Small differences — including the 1.96% vs. 1.97% discrepancy in the source material's own reporting of Claude 2's headline BM25 result — cannot be distinguishe
+INFO  L145  B-absolute                   absolute term: justified only by complete enumeration or proof
+      > Small differences — including the 1.96% vs. 1.97% discrepancy in the source material's own reporting of Claude 2's headline BM25 result — cannot be distinguishe
+INFO  L154  A-long-sentence              43-word sentence: split or keep with reason
+      > This paper introduced SWE-bench, a benchmark of 2,294 task instances built from real GitHub issues and their linked, merged pull requests across 12 popular Pyth
+INFO  L154  A-long-sentence              42-word sentence: split or keep with reason
+      > Evaluating a range of general-purpose and fine-tuned language models on it shows that current models resolve only a small fraction of real repository issues: un
+INFO  L154  A-long-sentence              52-word sentence: split or keep with reason
+      > Because SWE-bench instances are timestamped, the collection procedure is designed to allow adding issues created after a given model's training cutoff, intended
+INFO  L154  C4-style-marker              LLM-associated style marker (not wrong per se; replace if it adds nothing)
+      > A fine-tuned model can approach general-purpose performance within a matching retrieval setting but does not transfer that performance across settings, undersco
+INFO  L158  A-long-sentence              36-word sentence: split or keep with reason
+      > *Note on references: no citable prior-work sources could be identified in the evidence available to this paper (see the sourcing note at the start of Section 2)
+
+0 error(s), 2 warning(s), 53 info

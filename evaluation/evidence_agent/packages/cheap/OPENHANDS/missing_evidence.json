@@ -1,0 +1,112 @@
+{
+ "missing": [
+  {
+   "what": "Variance/spread metrics for benchmark results",
+   "why_it_matters": "Understanding performance stability and confidence intervals is critical for assessing result reliability. Single point estimates without variance suggest single runs or aggregated results without uncertainty quantification.",
+   "location": "All benchmark tables (Tables 3-7): No std, spread, or n (seeds/runs) reported for any result",
+   "impact": "Cannot compute confidence intervals or statistical significance; limits interpretation of small performance differences"
+  },
+  {
+   "what": "Detailed breakdown of HumanEvalFix Java performance",
+   "why_it_matters": "Paper reports only Python subset (79.3%). Java performance would clarify language-specific capabilities and generalization.",
+   "location": "Section 4.2.1 mentions 'Python subset' but no Java results provided",
+   "impact": "Incomplete picture of language support in bug-fixing task"
+  },
+  {
+   "what": "Ablation studies on agent components (actions, skills, runtime features)",
+   "why_it_matters": "Would clarify which features contribute most to performance and enable better design decisions.",
+   "location": "Not present in paper or evaluation sections",
+   "impact": "Cannot determine relative importance of different architectural components"
+  },
+  {
+   "what": "Error analysis and failure modes",
+   "why_it_matters": "Understanding why agents fail (incorrect reasoning, tool use errors, hallucination, etc.) is essential for improvement prioritization.",
+   "location": "Not provided in paper; only aggregate pass rates reported",
+   "impact": "Cannot diagnose root causes of performance gaps"
+  },
+  {
+   "what": "Detailed cost breakdown by benchmark and model",
+   "why_it_matters": "Only SWE-Bench Lite cost estimate ($6.9k) provided in footnote; other benchmarks have cost columns but values mostly missing.",
+   "location": "Tables 4-6: Most cost cells are empty or show '-'",
+   "impact": "Cannot assess cost-effectiveness or reproduce evaluations with budget constraints"
+  },
+  {
+   "what": "Reproducibility details: seeds, random state, environment versions",
+   "why_it_matters": "Essential for reproducing results and understanding variance.",
+   "location": "Not mentioned in paper for any benchmark evaluation",
+   "impact": "Cannot verify or reproduce evaluation results"
+  },
+  {
+   "what": "Comparison with concurrent work (e.g., Agentless, Moatless Tools timing)",
+   "why_it_matters": "Performance alone doesn't establish competitiveness; need context on when evaluations were run.",
+   "location": "Table 3-4 show many concurrent approaches but no timestamps or evaluation date",
+   "impact": "Unclear if results reflect current capabilities or past performance"
+  },
+  {
+   "what": "Full GPQA results (all subsets shown in Table 7 have partial data)",
+   "why_it_matters": "Table 7 promises 'full evaluation results' but several cells show '-' for some model-subset combinations.",
+   "location": "Table 7: Multiple cells empty (e.g., AutoGPT and Some baseline rows)",
+   "impact": "Incomplete baseline comparisons for GPQA evaluation"
+  },
+  {
+   "what": "WebArena baseline result with gpt-4-turbo",
+   "why_it_matters": "Table 5 lists 'WebArena Agent (Zhou et al., 2023a) gpt-4-turbo' but performance value is '-'.",
+   "location": "Table 5, WebArena Agent row",
+   "impact": "Missing key baseline comparison for web browsing tasks"
+  },
+  {
+   "what": "Integration test coverage metrics",
+   "why_it_matters": "Section E claims integration tests prevent bugs but provides no metrics on coverage or effectiveness.",
+   "location": "Section E, Quality Control subsection",
+   "impact": "Cannot assess quality control rigor or test suite adequacy"
+  },
+  {
+   "what": "Detailed AgentSkills adoption metrics",
+   "why_it_matters": "Section 2.3 describes AgentSkills library but provides no data on adoption by community agents or impact on performance.",
+   "location": "Section 2.3, AgentSkills subsection",
+   "impact": "Cannot assess library effectiveness or community adoption"
+  },
+  {
+   "what": "Multi-agent delegation examples and performance impact",
+   "why_it_matters": "Section 2.4 describes AgentDelegateAction but no empirical evaluation of delegation effectiveness.",
+   "location": "Section 2.4, Agent Delegation subsection",
+   "impact": "Cannot quantify benefits of multi-agent coordination"
+  },
+  {
+   "what": "Deployment metrics: uptime, reliability, resource utilization",
+   "why_it_matters": "Platform designed for production use but no operational metrics provided.",
+   "location": "Not provided in paper",
+   "impact": "Cannot assess production readiness or operational feasibility"
+  },
+  {
+   "what": "Hyperparameter tuning details for agent evaluation",
+   "why_it_matters": "Unclear whether baselines were similarly tuned; could affect fairness of comparisons.",
+   "location": "Section 4 and footnotes mention 'without hint text' but no other tuning details",
+   "impact": "Baseline fairness may be questioned"
+  },
+  {
+   "what": "Qualitative analysis of successful vs unsuccessful agent traces",
+   "why_it_matters": "Would illuminate agent reasoning patterns and failure modes.",
+   "location": "Not provided; only aggregate statistics",
+   "impact": "Limited understanding of agent behavior beyond success rate metrics"
+  },
+  {
+   "what": "Security evaluation and attack surface analysis",
+   "why_it_matters": "Section B mentions safety but no systematic security evaluation provided.",
+   "location": "Ethics Statement (Section B) acknowledges risks but no evaluation details",
+   "impact": "Cannot assess security posture or vulnerability landscape"
+  },
+  {
+   "what": "Comparison of OpenHands runtime vs alternative runtimes (e.g., local execution, cloud-based)",
+   "why_it_matters": "Paper assumes Docker is best choice but provides no comparative analysis.",
+   "location": "Section F describes Docker design but no alternatives considered",
+   "impact": "Cannot determine if architectural choice is optimal"
+  },
+  {
+   "what": "User study or user experience feedback on GUI",
+   "why_it_matters": "Section D describes GUI but no usability evaluation provided.",
+   "location": "Section D, Graphical User Interface subsection",
+   "impact": "Cannot assess practical usability for developers"
+  }
+ ]
+}

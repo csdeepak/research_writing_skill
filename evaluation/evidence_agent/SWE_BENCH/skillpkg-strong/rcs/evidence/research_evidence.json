@@ -1,0 +1,1328 @@
+{
+ "project_root": "./project/",
+ "items": [
+  {
+   "id": "E001",
+   "kind": "dataset",
+   "summary": "SWE-bench consists of 2,294 software engineering task instances drawn from 12 popular Python repositories.",
+   "value": {
+    "task_instances": 2294,
+    "repositories": 12
+   },
+   "conditions": "Final evaluation set after 3-stage construction/validation pipeline.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Abstract; Table 10 (row=Total, col=Post-Validation (Final)=2,294)"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Abstract: 'an evaluation framework consisting of 2,294 software engineering problems ... across 12 popular Python repositories'."
+  },
+  {
+   "id": "E002",
+   "kind": "dataset",
+   "summary": "Total pull requests crawled across the 12 repositories before filtering.",
+   "value": {
+    "total_prs_crawled": 93139
+   },
+   "conditions": "Stage I scrape across 12 repositories.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 10 (row=Total, col=Total PRs Crawled=93,139)"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Running prose (Sec 2.1) states an approximate figure: 'about ∼ 90,000 PRs in total'. Table 10 gives the exact 93,139."
+  },
+  {
+   "id": "E003",
+   "kind": "dataset",
+   "summary": "Candidate task instances remaining after attribute-based conversion, before execution validation.",
+   "value": {
+    "post_conversion_candidates": 11407
+   },
+   "conditions": "Stage II attribute filter output.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 10 (row=Total, col=Post-Conversion=11,407)"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E004",
+   "kind": "dataset",
+   "summary": "Per-repository final task-instance counts in SWE-bench.",
+   "value": {
+    "astropy": 95,
+    "django": 850,
+    "flask": 11,
+    "matplotlib": 184,
+    "pylint": 57,
+    "pytest": 119,
+    "requests": 44,
+    "scikit-learn": 229,
+    "seaborn": 22,
+    "sphinx": 187,
+    "sympy": 386,
+    "xarray": 110,
+    "total": 2294
+   },
+   "conditions": "Post-Validation (Final) column.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 10 (col=Post-Validation (Final))"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E005",
+   "kind": "dataset",
+   "summary": "SWE-bench-train contains 19,000 non-testing task instances from 37 additional repositories.",
+   "value": {
+    "instances": 19000,
+    "repositories": 37
+   },
+   "conditions": "Training set; PRs not required to contribute tests; repositories disjoint from evaluation benchmark.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 1 / Section 3 'Training data'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Stated in prose only; no data file present to verify."
+  },
+  {
+   "id": "E006",
+   "kind": "method_detail",
+   "summary": "Effective SWE-Llama training corpus reduced to 10,000 instances after excluding sequences over 30,000 tokens.",
+   "value": {
+    "effective_instances": 10000,
+    "token_exclusion_threshold": 30000
+   },
+   "conditions": "Supervised fine-tuning of CodeLlama-Python 7b/13b.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 3 'Training details'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E007",
+   "kind": "dataset",
+   "summary": "SWE-bench Lite is a 300-instance subset covering 11 of the 12 original repositories.",
+   "value": {
+    "instances": 300,
+    "repositories": 11
+   },
+   "conditions": "Sampled for more self-contained functional bug fixes.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 2.4 SWE-BENCH LITE"
+   },
+   "strength": "soft",
+   "status": "incomplete",
+   "notes": "Full filtering criteria (Appendix A.7) is truncated in paper.txt ('SWE-bench Lite is a canonical subset ... SWE-bench is'). See missing_evidence."
+  },
+  {
+   "id": "E008",
+   "kind": "dataset",
+   "summary": "Development set of 225 task instances from 6 repositories.",
+   "value": {
+    "instances": 225,
+    "repositories": 6
+   },
+   "conditions": "Same methodology as main set; additionally filtered to instances created after January 1, 2019.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section A.6 DEVELOPMENT SET CHARACTERIZATION"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E009",
+   "kind": "metric",
+   "summary": "Issue text length across SWE-bench task instances.",
+   "value": {
+    "metric": "Issue Text Length (Words)",
+    "mean": 195.1,
+    "max": 4477,
+    "unit": "words"
+   },
+   "conditions": "Micro-averaged, without grouping by repository.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 1 (Issue Text Length: Mean=195.1, Max=4477)"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E010",
+   "kind": "metric",
+   "summary": "Number of non-test files in the codebase per task instance.",
+   "value": {
+    "metric": "# Files (non-test)",
+    "mean": 3010,
+    "max": 5890
+   },
+   "conditions": "Micro-averaged.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 1 (# Files non-test: Mean=3,010, Max=5,890)"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E011",
+   "kind": "metric",
+   "summary": "Number of non-test lines in the codebase per task instance.",
+   "value": {
+    "metric": "# Lines (non-test)",
+    "mean": "438K",
+    "max": "886K"
+   },
+   "conditions": "Micro-averaged.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 1 (# Lines non-test: Mean=438K, Max=886K)"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E012",
+   "kind": "result",
+   "summary": "Reference (gold) patches edit on average 1.7 files, 3.0 functions, and 32.8 lines.",
+   "value": {
+    "lines_edited_mean": 32.8,
+    "files_edited_mean": 1.7,
+    "functions_edited_mean": 3.0
+   },
+   "conditions": "Averages over SWE-bench gold patches; no spread reported.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 2.3 'Cross-context code editing'; Figure 3 (Gold Patch)"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "No variance/spread reported for these averages. Section 2.3: 'reference solutions average editing 1.7 files, 3.0 functions, and 32.8 lines'."
+  },
+  {
+   "id": "E013",
+   "kind": "metric",
+   "summary": "Gold-patch and test-count statistics (means and maxima) from Figure 3.",
+   "value": {
+    "lines_edited": {
+     "mean": 32.8,
+     "max": 5888
+    },
+    "files_edited": {
+     "mean": 1.7,
+     "max": 31
+    },
+    "functions_edited": {
+     "mean": 3,
+     "max": 36
+    },
+    "fail_to_pass_tests": {
+     "mean": 9.1,
+     "max": 1633
+    },
+    "total_tests": {
+     "mean": 120.8,
+     "max": 9459
+    }
+   },
+   "conditions": "Micro-averaged across task instances.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Figure 3 (Gold Patch / Tests: Mean & Max rows)"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E014",
+   "kind": "observation",
+   "summary": "40% of instances have at least two fail-to-pass tests; a median of 51 additional tests run.",
+   "value": {
+    "pct_with_two_plus_f2p": "40%",
+    "median_additional_tests": 51
+   },
+   "conditions": "Robust evaluation feature description.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 2.3 'Robust evaluation'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E015",
+   "kind": "result",
+   "summary": "BM25 recall with respect to oracle files at three maximum context lengths.",
+   "value": {
+    "Avg": {
+     "13k": 29.58,
+     "27k": 44.41,
+     "50k": 51.06
+    },
+    "All": {
+     "13k": 26.09,
+     "27k": 39.83,
+     "50k": 45.9
+    },
+    "Any": {
+     "13k": 34.77,
+     "27k": 51.27,
+     "50k": 58.38
+    },
+    "unit": "percent recall"
+   },
+   "conditions": "BM25 retrieval vs oracle file set.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 3 (BM25 Recall: Avg/All/Any x 13k/27k/50k)"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E016",
+   "kind": "observation",
+   "summary": "At the 27,000-token limit BM25 retrieves a superset of the oracle files for ~40% of instances, but retrieves none of the oracle files in almost half of instances.",
+   "value": {
+    "superset_pct": "approximately 40%",
+    "none_retrieved": "almost half"
+   },
+   "conditions": "27,000-token context limit.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 4.1 '“Oracle” retrieval'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E017",
+   "kind": "method_detail",
+   "summary": "Model context limits and proportion of instances whose oracle context fits.",
+   "value": {
+    "ChatGPT-3.5": {
+     "max_tokens": 16385,
+     "pct_instances": "58.1%"
+    },
+    "GPT-4": {
+     "max_tokens": 32768,
+     "pct_instances": "84.1%"
+    },
+    "Claude 2": {
+     "max_tokens": 100000,
+     "pct_instances": "96.4%"
+    },
+    "SWE-Llama": {
+     "max_tokens": "≥100,000",
+     "pct_instances": "≥94.8%"
+    }
+   },
+   "conditions": "Token-lengths are a relative non-standard measure; Llama-tokenized sequences are 42% longer on average than GPT-4-tokenized equivalents.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 4 (Max. Tokens / % of Instances)"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E018",
+   "kind": "result",
+   "summary": "Model resolve and apply rates on full SWE-bench using BM25 retrieval (Table 5).",
+   "value": {
+    "Claude 3 Opus": {
+     "resolved": 3.79,
+     "apply": 46.56
+    },
+    "Claude 2": {
+     "resolved": 1.97,
+     "apply": 43.07
+    },
+    "ChatGPT-3.5": {
+     "resolved": 0.17,
+     "apply": 26.33
+    },
+    "GPT-4-turbo": {
+     "resolved": 1.31,
+     "apply": 26.9
+    },
+    "SWE-Llama 7b": {
+     "resolved": 0.7,
+     "apply": 51.74
+    },
+    "SWE-Llama 13b": {
+     "resolved": 0.7,
+     "apply": 53.62
+    },
+    "unit": "percent"
+   },
+   "conditions": "BM25 retriever, full SWE-bench test set; single greedy generation per instance.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 5 (SWE-bench % Resolved / % Apply)"
+   },
+   "strength": "hard",
+   "status": "conflicting",
+   "conflicts_with": [
+    "E020"
+   ],
+   "notes": "Table 5 gives Claude 2 % Resolved = 1.97, but the Abstract, Section 5, and Table 2 (13k, best) report 1.96 for the same headline quantity (Claude 2, BM25, full SWE-bench)."
+  },
+  {
+   "id": "E019",
+   "kind": "result",
+   "summary": "Model resolve and apply rates on SWE-bench Lite using BM25 retrieval (Table 5).",
+   "value": {
+    "Claude 3 Opus": {
+     "resolved": 4.33,
+     "apply": 51.67
+    },
+    "Claude 2": {
+     "resolved": 3.0,
+     "apply": 33.0
+    },
+    "ChatGPT-3.5": {
+     "resolved": 0.33,
+     "apply": 10.0
+    },
+    "GPT-4-turbo": {
+     "resolved": 2.67,
+     "apply": 29.67
+    },
+    "SWE-Llama 7b": {
+     "resolved": 1.33,
+     "apply": 38.0
+    },
+    "SWE-Llama 13b": {
+     "resolved": 1.0,
+     "apply": 38.0
+    },
+    "unit": "percent"
+   },
+   "conditions": "BM25 retriever, SWE-bench Lite (300 instances).",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 5 (SWE-bench Lite % Resolved / % Apply)"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E020",
+   "kind": "result",
+   "summary": "Headline prose claim: best-performing model Claude 2 resolves 1.96% of issues with BM25 retrieval.",
+   "value": {
+    "model": "Claude 2",
+    "resolved": 1.96,
+    "unit": "percent"
+   },
+   "conditions": "BM25 retriever, full SWE-bench; best context window (13k per Table 2).",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Abstract; Section 1; Section 5 'The best performing model, Claude 2, is only able to resolve 1.96%'"
+   },
+   "strength": "soft",
+   "status": "conflicting",
+   "conflicts_with": [
+    "E018"
+   ],
+   "notes": "Matches Table 2 (Claude 2 @13k = 1.96) but conflicts with Table 5 value of 1.97 (E018). Prose value; classified soft."
+  },
+  {
+   "id": "E021",
+   "kind": "result",
+   "summary": "BM25 resolve rates by maximum context length (Table 2).",
+   "value": {
+    "Claude 2": {
+     "13k": 1.96,
+     "27k": 1.87,
+     "50k": 1.22
+    },
+    "SWE-Llama 7b": {
+     "13k": 0.7,
+     "27k": 0.31,
+     "50k": 0.0
+    },
+    "SWE-Llama 13b": {
+     "13k": 0.7,
+     "27k": 0.48,
+     "50k": 0.0
+    },
+    "unit": "percent resolved"
+   },
+   "conditions": "BM25 retrieval; each model evaluated on limits fitting its context window; best reported.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 2 (Model resolve rates with BM25, Max. Content 13k/27k/50k)"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Claude 2 @13k = 1.96 supports the prose headline (E020); the Table 5 aggregate (E018) reports 1.97."
+  },
+  {
+   "id": "E022",
+   "kind": "result",
+   "summary": "Model resolve and apply rates using 'oracle' retrieval (Table 18).",
+   "value": {
+    "Claude 2": {
+     "resolved": 4.8,
+     "apply": 62.82
+    },
+    "ChatGPT-3.5": {
+     "resolved": 0.52,
+     "apply": 21.8
+    },
+    "GPT-4*": {
+     "resolved": 1.74,
+     "apply": 34.0
+    },
+    "SWE-Llama 7b": {
+     "resolved": 3.01,
+     "apply": 65.52
+    },
+    "SWE-Llama 13b": {
+     "resolved": 3.97,
+     "apply": 66.78
+    },
+    "unit": "percent"
+   },
+   "conditions": "'Oracle' retrieval, full SWE-bench; *GPT-4 evaluated on 25% random subset (oracle & BM25 27k only).",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 18 ('Oracle' Retrieval % Resolved / % Apply)"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E023",
+   "kind": "result",
+   "summary": "Prose statement that Claude 2 resolves 4.8% of issues with oracle retrieval.",
+   "value": {
+    "model": "Claude 2",
+    "resolved": 4.8,
+    "unit": "percent"
+   },
+   "conditions": "'Oracle' retrieval.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 5 'Claude 2 is able to resolve 4.8% of issues using the “oracle” retriever'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Consistent with Table 18 value 4.80 (E022)."
+  },
+  {
+   "id": "E024",
+   "kind": "result",
+   "summary": "Resolve and apply rates for the 'Oracle'-collapsed retrieval setting (Table 6).",
+   "value": {
+    "Claude 3 Opus": {
+     "resolved": 9.39,
+     "apply": 48.0
+    },
+    "Claude 2": {
+     "resolved": 5.93,
+     "apply": 68.18
+    },
+    "GPT-4": {
+     "resolved": 3.4,
+     "apply": 48.65
+    },
+    "ChatGPT-3.5": {
+     "resolved": 1.09,
+     "apply": 40.93
+    },
+    "unit": "percent"
+   },
+   "conditions": "Oracle files with non-modified code collapsed except lines edited by the PR (±15 lines buffer).",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 ('Oracle'-collapsed Resolved / Applied)"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Prose (Sec 5): 'GPT-4 jumping from 1.3% to 3.4% and Claude 2 from 4.8% to 5.9%'."
+  },
+  {
+   "id": "E025",
+   "kind": "result",
+   "summary": "Percent resolved before vs after 2023 under oracle retrieval (Table 7).",
+   "value": {
+    "Claude 2": {
+     "before_2023": 4.87,
+     "after_2023": 4.23
+    },
+    "ChatGPT-3.5": {
+     "before_2023": 0.49,
+     "after_2023": 0.77
+    },
+    "GPT-4*": {
+     "before_2023": 1.96,
+     "after_2023": 0.0
+    },
+    "SWE-Llama 7b": {
+     "before_2023": 2.95,
+     "after_2023": 3.46
+    },
+    "SWE-Llama 13b": {
+     "before_2023": 3.98,
+     "after_2023": 3.85
+    },
+    "unit": "percent"
+   },
+   "conditions": "'Oracle' retrieval; PRs partitioned by creation before/after 2023; *GPT-4 on 25% random subset.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 7 (Before 2023 / After 2023)"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E026",
+   "kind": "observation",
+   "summary": "Model performance shows no consistent correlation with issue resolution year.",
+   "value": null,
+   "conditions": "Extended temporal analysis across 6 year partitions (Table 21), oracle retrieval.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section C.4; Table 21"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Authors interpret this as evidence models are unlikely to 'cheat' via memorization; see claim C008."
+  },
+  {
+   "id": "E027",
+   "kind": "result",
+   "summary": "Per-repository % resolved for each model in the 'Oracle' retrieval setting (Table 19).",
+   "value": {
+    "requests": {
+     "Claude 2": 15.91,
+     "ChatGPT-3.5": 2.33,
+     "GPT-4": 8.33,
+     "SWE-Llama 13b": 13.64,
+     "SWE-Llama 7b": 18.18
+    },
+    "seaborn": {
+     "Claude 2": 0.0,
+     "ChatGPT-3.5": 0.0,
+     "GPT-4": 0.0,
+     "SWE-Llama 13b": 0.0,
+     "SWE-Llama 7b": 0.0
+    },
+    "django": {
+     "Claude 2": 6.15,
+     "ChatGPT-3.5": 1.32,
+     "GPT-4": 2.5,
+     "SWE-Llama 13b": 5.19,
+     "SWE-Llama 7b": 4.0
+    },
+    "note": "Full 12-repo x 5-model table in source; requests highest, seaborn 0.00 for all."
+   },
+   "conditions": "'Oracle' retrieval.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 19 (% Resolved for models per repository)"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E028",
+   "kind": "observation",
+   "summary": "In the oracle setting Claude 2 and SWE-Llama 13b resolve 110 and 91 instances respectively; Claude 2 solves only 42% of the instances SWE-Llama solved.",
+   "value": {
+    "claude2_instances": 110,
+    "swellama13b_instances": 91,
+    "overlap_pct": "42%"
+   },
+   "conditions": "'Oracle' retrieval setting.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 5 'Difficulty differs across repositories'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E029",
+   "kind": "observation",
+   "summary": "32% of matplotlib and 10% of seaborn instances contain embedded images in issue text vs 2% of all instances.",
+   "value": {
+    "matplotlib": "32%",
+    "seaborn": "10%",
+    "all": "2%"
+   },
+   "conditions": "Images encoded in issue markdown.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 5 (embedded images in issues)"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E030",
+   "kind": "result",
+   "summary": "Average edits of model-generated vs gold patches (oracle retrieval, successfully applied) (Table 8).",
+   "value": {
+    "Claude 2": {
+     "total": 19.6,
+     "added": 12.0,
+     "removed": 5.8,
+     "functions": 1.1,
+     "files": 1.0
+    },
+    "Claude 2 Gold": {
+     "total": 44.1,
+     "added": 4.2,
+     "removed": 1.9,
+     "functions": 2.1,
+     "files": 1.2
+    },
+    "ChatGPT-3.5": {
+     "total": 30.1,
+     "added": 9.5,
+     "removed": 6.1,
+     "functions": 1.6,
+     "files": 1.0
+    },
+    "ChatGPT-3.5 Gold": {
+     "total": 39.6,
+     "added": 3.8,
+     "removed": 2.7,
+     "functions": 1.9,
+     "files": 1.2
+    },
+    "All Gold": {
+     "total": 74.5,
+     "added": 22.3,
+     "removed": 10.5,
+     "functions": 3.0,
+     "files": 1.7
+    }
+   },
+   "conditions": "'Oracle' retrieval; successfully applied patches; Gold macro-averaged over each model's respective gold patches; All Gold unconditioned.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 8 (Total/Added/Removed/Functions/Files per model & Gold)"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Column layout in the extracted text is partially reordered; values transcribed from Table 8 rows. Additional per-model rows (GPT-4, SWE-Llama 7b/13b) also present."
+  },
+  {
+   "id": "E031",
+   "kind": "observation",
+   "summary": "Model-generated applied patches are less than half the total length of gold patches (74.5 versus 30.1 lines) and rarely edit more than a single file.",
+   "value": {
+    "gold_total_lines": 74.5,
+    "model_lines": 30.1
+   },
+   "conditions": "'Oracle' retrieval, successfully applied patches.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 5 'Language models tend to generate shorter, simpler edits'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Comparison basis is ambiguous: 74.5 is All-Gold total lines (Table 8) while 30.1 is ChatGPT-3.5 generated total; see missing_evidence."
+  },
+  {
+   "id": "E032",
+   "kind": "result",
+   "summary": "Regenerating whole files performs worse than generating patches for Claude 2 (2.2% vs 4.8% oracle; 3.9% vs 7.8% on the shorter half by input tokens).",
+   "value": {
+    "whole_file_oracle": 2.2,
+    "patch_oracle": 4.8,
+    "whole_file_shorter_half": 3.9,
+    "patch_shorter_half": 7.8,
+    "unit": "percent resolved"
+   },
+   "conditions": "'Oracle' retrieval; Claude 2.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 5 'Generating patches is easier than generating whole files'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Stated only in prose; no backing table."
+  },
+  {
+   "id": "E033",
+   "kind": "negative_result",
+   "summary": "Fine-tuned SWE-Llama 7b and 13b perform surprisingly poorly (0.70% each) with BM25-retrieved context.",
+   "value": {
+    "SWE-Llama 7b": 0.7,
+    "SWE-Llama 13b": 0.7,
+    "unit": "percent resolved (BM25)"
+   },
+   "conditions": "BM25 retrieval; models fine-tuned using oracle retrieval as context.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 5 'Finetuned models are sensitive to context distribution shifts'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Resolve values corroborated by Table 5 (E018). Authors attribute the drop to context distribution shift (hypothesis E054)."
+  },
+  {
+   "id": "E034",
+   "kind": "negative_result",
+   "summary": "Off-the-shelf CodeLlama variants cannot follow instructions for repository-wide edits and typically output placeholder responses or unrelated code.",
+   "value": null,
+   "conditions": "Before fine-tuning; motivated supervised fine-tuning into SWE-Llama.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 3 SWE-LLAMA (motivation)"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E035",
+   "kind": "negative_result",
+   "summary": "As total context length increases, Claude 2's (and other models') resolve performance drops considerably.",
+   "value": null,
+   "conditions": "Tasks partitioned by total input length and by issue length; BM25 (Table 2) and Figure 5.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 5 'Difficulty correlates with context length'; Figure 5"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Figure 5 source data not provided; values read only qualitatively."
+  },
+  {
+   "id": "E036",
+   "kind": "result",
+   "summary": "Categorization of successfully applied patch generations into six outcome cases (Table 23).",
+   "value": {
+    "Claude 2": {
+     "applied": 1078,
+     "resolved": 110,
+     "breaking_resolved": 26,
+     "partially_resolved": 15,
+     "work_in_progress": 20,
+     "no_op": 471,
+     "regression": 436
+    },
+    "ChatGPT-3.5": {
+     "applied": 284,
+     "resolved": 12,
+     "breaking_resolved": 2,
+     "partially_resolved": 4,
+     "work_in_progress": 2,
+     "no_op": 174,
+     "regression": 90
+    },
+    "GPT-4*": {
+     "applied": 76,
+     "resolved": 10,
+     "breaking_resolved": 3,
+     "partially_resolved": 3,
+     "work_in_progress": 1,
+     "no_op": 30,
+     "regression": 29
+    },
+    "SWE-Llama 7b": {
+     "applied": 1257,
+     "resolved": 69,
+     "breaking_resolved": 17,
+     "partially_resolved": 17,
+     "work_in_progress": 17,
+     "no_op": 716,
+     "regression": 421
+    },
+    "SWE-Llama 13b": {
+     "applied": 1196,
+     "resolved": 91,
+     "breaking_resolved": 10,
+     "partially_resolved": 10,
+     "work_in_progress": 16,
+     "no_op": 672,
+     "regression": 397
+    }
+   },
+   "conditions": "'Oracle' retrieval; *GPT-4 on 25% subset (574 instances).",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 23 (Applied / Resolved / ... / No-Op / Regression)"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E037",
+   "kind": "observation",
+   "summary": "Among non-resolved applied patches, most are No-Op or Regression; within those, the majority (60% to 70%) are No-Op.",
+   "value": {
+    "no_op_share_of_zero_f2p": "60% to 70%"
+   },
+   "conditions": "Applied patches not resolving any F2P test.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section C.5 F2P, P2P RATE ANALYSIS"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E038",
+   "kind": "implementation_detail",
+   "summary": "SWE-Llama LoRA fine-tuning hyperparameters.",
+   "value": {
+    "lora_r": 16,
+    "lora_alpha": 16,
+    "dropout": 0.05,
+    "learning_rate": "6e-4",
+    "batch_size": 32,
+    "max_epochs": 4,
+    "checkpoint_interval_steps": 50,
+    "validation_holdout_instances": 100,
+    "targets": "query, key, value, and output projection matrices of every attention sublayer"
+   },
+   "conditions": "Supervised fine-tuning.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section B.1 'Optimization'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E039",
+   "kind": "implementation_detail",
+   "summary": "SWE-Llama training time and hardware.",
+   "value": {
+    "7b": {
+     "init": "CodeLlama-Python 7b",
+     "hours": 20,
+     "gpus": "4 NVIDIA A100s"
+    },
+    "13b": {
+     "init": "CodeLlama-Python 13b",
+     "hours": 47,
+     "gpus": "8 NVIDIA A100s"
+    }
+   },
+   "conditions": "Long-context training with DeepSpeed Ulysses and Flash Attention.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section B.1 'Optimization'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E040",
+   "kind": "method_detail",
+   "summary": "Only the attention sublayer weights are fine-tuned via LoRA; sequences over 30,000 tokens excluded.",
+   "value": null,
+   "conditions": "Memory-efficient fine-tuning.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 3 'Training details'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E041",
+   "kind": "method_detail",
+   "summary": "Inference uses greedy decoding and a single generated patch per instance (Pass@1).",
+   "value": {
+    "patches_per_instance": 1,
+    "decoding": "greedy"
+   },
+   "conditions": "All models.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section D.2 INFERENCE SETTINGS"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Implies resolve rates are single-run point estimates with no variance across seeds/samples."
+  },
+  {
+   "id": "E042",
+   "kind": "method_detail",
+   "summary": "Three-stage construction pipeline: (I) scrape PRs, (II) attribute-based filter, (III) execution-based filter.",
+   "value": null,
+   "conditions": "Benchmark construction.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 2.1 BENCHMARK CONSTRUCTION; Figure 2"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E043",
+   "kind": "observation",
+   "summary": "Execution-based validation generally removes about half of candidate task instances.",
+   "value": {
+    "removed": "about half"
+   },
+   "conditions": "With moderate variation across repositories.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section A.3 'Validation Engine'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E044",
+   "kind": "method_detail",
+   "summary": "Repositories sourced from the top 5,000 most-downloaded PyPI libraries (August 2023), selecting the top 100 packages.",
+   "value": {
+    "pypi_pool": 5000,
+    "selected_packages": 100,
+    "period": "August 2023"
+   },
+   "conditions": "Pull request scraping.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section A.1 'Pull request scraping'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E045",
+   "kind": "result",
+   "summary": "Categories of issue tags across SWE-bench task instances (Table 13).",
+   "value": {
+    "total_tags": 2289,
+    "Bug": 442,
+    "Feature": 167,
+    "Regression": 39,
+    "Other": 1641
+   },
+   "conditions": "Tags inspected per issue.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 13 (Category / Count)"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E046",
+   "kind": "observation",
+   "summary": "Median SWE-bench task instance characteristics from CDF analysis.",
+   "value": {
+    "problem_words_median": 140,
+    "files_median": "just shy of 1900",
+    "lines_median": "400K",
+    "functions_edited": "single",
+    "lines_edited": "~15",
+    "f2p_tests": 1,
+    "p2p_tests": 51
+   },
+   "conditions": "Median values from Figure 9 CDFs.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section A.5 'Attribute Distributions'; Figure 9"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E047",
+   "kind": "result",
+   "summary": "Patch generation / apply / fix statistics per model and retrieval setting (Table 14).",
+   "value": {
+    "note": "Out of 2,294 instances. Selected rows:",
+    "Claude 2 BM25 13k": {
+     "generations": 2281,
+     "applies": 988,
+     "fixed": 302,
+     "fix_pct": "30.57%"
+    },
+    "Claude 2 Oracle": {
+     "generations": 2138,
+     "applies": 1441,
+     "fixed": 360,
+     "fix_pct": "24.98%"
+    },
+    "SWE-Llama 13b Oracle": {
+     "generations": 2125,
+     "applies": 1532,
+     "fixed": 378,
+     "fix_pct": "24.67%"
+    },
+    "GPT-4 BM25 27k": {
+     "generations": 573,
+     "applies": 85,
+     "fixed": 59,
+     "fix_pct": "69.41%"
+    }
+   },
+   "conditions": "Per [model, retrieval setting]; GPT-4 BM25 27k & Oracle on 25% subset; GPT-4 Oracle-collapsed on full set.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 14 (Generations / Applies / Fixed / Patch Fix %)"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Full 13-row table in source; representative rows transcribed."
+  },
+  {
+   "id": "E048",
+   "kind": "result",
+   "summary": "Development-set test-count statistics.",
+   "value": {
+    "f2p": {
+     "mean": 19.9,
+     "median": 2
+    },
+    "p2p": {
+     "mean": 171.3,
+     "median": 79.0
+    },
+    "total": {
+     "mean": 191.2,
+     "median": 101.0
+    }
+   },
+   "conditions": "Across the 225-instance development set.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section A.6 (development set test statistics)"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Stated in prose of A.6."
+  },
+  {
+   "id": "E049",
+   "kind": "observation",
+   "summary": "Software-engineering-metric case study: Claude 2 patch raises Cyclomatic complexity of HTTPAdapter from 3 to 5; gold solution changes get_connection 2->3 and InvalidHeader 0->1.",
+   "value": {
+    "claude2_HTTPAdapter": "3 -> 5",
+    "gold_get_connection": "2 -> 3",
+    "gold_InvalidHeader": "0 -> 1"
+   },
+   "conditions": "Single case study, task instance psf/requests-4356, oracle retrieval.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section C.7; Figure 10 caption"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Prose (line ~1449) names the new error 'InvalidProxyURL' while Figure 10 caption reads 'InvalidHeader'; minor internal inconsistency. Single case study only."
+  },
+  {
+   "id": "E050",
+   "kind": "limitation_noted",
+   "summary": "All SWE-bench task instances are in Python.",
+   "value": null,
+   "conditions": null,
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 7 'Limitations and future directions'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "'SWE-bench task instances are all in Python; we hope to apply SWE-bench's task instance collection procedure to expand its coverage to more programming languages and domains.'"
+  },
+  {
+   "id": "E051",
+   "kind": "limitation_noted",
+   "summary": "Experiments aim only to establish a baseline of the simplest, most straightforward approaches.",
+   "value": null,
+   "conditions": null,
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 7 'Limitations and future directions'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "'our experiments aim to establish a baseline of the simplest and most straight-forward approaches for this task'."
+  },
+  {
+   "id": "E052",
+   "kind": "limitation_noted",
+   "summary": "Execution-based testing alone is insufficient to guarantee reliable performance of model generations.",
+   "value": null,
+   "conditions": null,
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 7 'Limitations and future directions'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "'relying solely on this method is insufficient to guarantee reliable performance of model generations, as we find automated code generations from LMs can frequently be less comprehensive, efficient, or readable'."
+  },
+  {
+   "id": "E053",
+   "kind": "assumption",
+   "summary": "The 'oracle' retrieval setting is less realistic because an engineer may not know a priori which files to modify, and edited files may not include all needed context.",
+   "value": null,
+   "conditions": null,
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 4.1 '“Oracle” retrieval'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E054",
+   "kind": "hypothesis_stated",
+   "summary": "Authors suspect the context distribution shift (BM25 vs the oracle context used in fine-tuning) makes SWE-Llama unreliable under BM25.",
+   "value": null,
+   "conditions": null,
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 5 'Finetuned models are sensitive to context distribution shifts'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "'we suspect this shift in context makes it difficult for the model to perform reliably.'"
+  },
+  {
+   "id": "E055",
+   "kind": "assumption",
+   "summary": "The hints_text field is not used in the reported experiments but is retained as potentially useful for future work.",
+   "value": null,
+   "conditions": null,
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section A.2 'Problem Statement'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E056",
+   "kind": "method_detail",
+   "summary": "GPT-4 was evaluated on a 25% random subset (574 instances) of SWE-bench due to budget constraints, in the 'oracle' and BM25 27k settings only.",
+   "value": {
+    "subset_pct": "25%",
+    "instances": 574
+   },
+   "conditions": "GPT-4 only.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 18 / Table 20 footnotes"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E057",
+   "kind": "external_fact",
+   "summary": "SWE-bench Verified is a subset of 500 problems that software engineers confirmed are solvable (collaboration with OpenAI Preparedness).",
+   "value": {
+    "instances": 500,
+    "date": "Aug. 13, 2024"
+   },
+   "conditions": "README news item.",
+   "locator": {
+    "path": "README_1.md",
+    "anchor": "News: '[Aug. 13, 2024]: Introducing SWE-bench Verified!'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E058",
+   "kind": "external_fact",
+   "summary": "SWE-bench Multimodal v2 is fully open source with 480 tasks available for local evaluation.",
+   "value": {
+    "tasks": 480,
+    "date": "Sep. 1, 2026"
+   },
+   "conditions": "README news item.",
+   "locator": {
+    "path": "README_1.md",
+    "anchor": "News: '[Sep. 1, 2026]: SWE-bench Multimodal v2 is now fully open source, with 480 tasks'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E059",
+   "kind": "external_fact",
+   "summary": "SWE-bench is released under the MIT license, supports Python 3.8+, and its dataset is available on HuggingFace.",
+   "value": {
+    "license": "MIT",
+    "python": "3.8+",
+    "dataset": "princeton-nlp/SWE-bench (also SWE-bench/SWE-bench)"
+   },
+   "conditions": null,
+   "locator": {
+    "path": "README_1.md",
+    "anchor": "Badges / 'Citation & license'; load_dataset snippet"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E060",
+   "kind": "external_fact",
+   "summary": "Recommended evaluation hardware and worker settings.",
+   "value": {
+    "arch": "x86_64",
+    "storage": "at least 120GB free",
+    "ram": "16GB",
+    "cpu_cores": 8,
+    "max_workers": "fewer than min(0.75 * os.cpu_count(), 24)"
+   },
+   "conditions": "README warning; arm64 support experimental.",
+   "locator": {
+    "path": "README_1.md",
+    "anchor": "WARNING block under Usage"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E061",
+   "kind": "external_fact",
+   "summary": "The evaluation harness caches results by run_id and instance_id only; re-running the same pair reuses cached results even with a different prediction diff.",
+   "value": null,
+   "conditions": "README note on result caching.",
+   "locator": {
+    "path": "README_1.md",
+    "anchor": "NOTE: 'Result Caching'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E062",
+   "kind": "hypothesis_stated",
+   "summary": "SWE-bench can be continually updated with new instances created after a model's training date, ensuring solutions were not in the training corpus.",
+   "value": null,
+   "conditions": "Feature claim about the collection process.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Section 2.3 'Continually updatable'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Design property asserted; partially supported by temporal analysis (E025, E026)."
+  }
+ ],
+ "generated_at": "(redacted)",
+ "generated_by": "evidence agent"
+}

@@ -1,0 +1,110 @@
+{
+  "questions": {
+    "Q1": {
+      "q1a": "present"
+    },
+    "Q2": {
+      "q2a": "overstated"
+    },
+    "Q3": {
+      "q3a": "absent"
+    },
+    "Q4": {
+      "q4a": "present",
+      "q4b": "weakened"
+    },
+    "Q5": {
+      "q5a": "weakened"
+    },
+    "Q6": {
+      "q6a": "present",
+      "q6b": "absent"
+    },
+    "Q7": {
+      "q7a": "present",
+      "q7b": "present"
+    },
+    "Q8": {
+      "q8a": "overstated",
+      "q8b": "absent"
+    },
+    "Q9": {
+      "q9a": "absent",
+      "q9b": "present"
+    },
+    "Q10": {
+      "q10a": "absent"
+    },
+    "Q11": {
+      "q11a": "present",
+      "q11b": "absent",
+      "q11c": "absent"
+    },
+    "Q12": {
+      "q12a": "present"
+    }
+  },
+  "intrusions": [
+    {
+      "question": "Q1",
+      "text": "It asks whether rolling-window normalization (RWN) removes that error.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q2",
+      "text": "A further motivation is that prior evaluations confounded normalization changes with model-size changes, so a clean, capacity-controlled test was lacking.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q3",
+      "text": "RQ1: does per-window (rolling-window) normalization reduce error under level shift without harming unshifted accuracy? RQ2: how much of any gain depends on continued adaptation of the statistics?",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q4",
+      "text": "identification of a boundary at the largest shift (s=0.8) where benefit disappears",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q4",
+      "text": "an ablation (RWN-fixed) attributing about one third of the gain to continued adaptation",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q5",
+      "text": "A synthetic hourly series 'SynthLoad' was generated following protocol [R4], with level shifts of s in {0.2,0.4,0.6,0.8} training standard deviations added. Three conditions: baseline (training statistics), RWN (statistics of most recent 48 steps), RWN-fixed (statistics frozen after the first 48 post-shift steps). All use the same MLP, run with 5 seeds.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q6",
+      "text": "Evaluation reports MAE as mean ± standard deviation across 5 random seeds. The same MLP capacity is held fixed across conditions.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q7",
+      "text": "Freezing statistics (RWN-fixed) recovered about two thirds of the gain (i.e., ~one third attributed to continued adaptation).",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q9",
+      "text": "an untuned normalization window",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q10",
+      "text": "The only dataset is SynthLoad, a synthetic hourly series generated following protocol [R4]. No real-world benchmark is used, and the generation details cannot be determined because [R4] is omitted.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q11",
+      "text": "RWN's advantage holds for shifts up to 0.6 training standard deviations and disappears at 0.8, where no benefit can be claimed.",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q12",
+      "text": "at no cost to unshifted accuracy, and that continued adaptation matters (about a third of the benefit), but the evidence is confined to a single synthetic series and breaks down at large shifts",
+      "tag": "benign_elaboration"
+    }
+  ],
+  "notes": "Grading summary: 17 gold nuggets total. Present: 8 (q1a, q4a, q6a, q7a, q7b, q9b, q11a, q12a). Weakened: 2 (q4b, q5a). Overstated: 2 (q2a, q8a). Absent: 7 (q3a, q6b, q8b, q9a, q10a, q11b, q11c). Contradicted: 0. RR (present only) = 8/17 = 0.47. RR (present+weakened) = 10/17 = 0.59. DR = (2+2+0)/17 = 0.24. MMF = 7/17 = 0.41. Core nuggets (Q1, Q3, Q4a, Q7, Q8a, Q10, Q12): 3/7 present = 0.43 Core RR. All intrusions are benign elaborations (true statements from paper appearing in non-matching questions)."
+}

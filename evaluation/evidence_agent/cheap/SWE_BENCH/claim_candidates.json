@@ -1,0 +1,431 @@
+{
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "SWE-bench comprises 2,294 validated task instances sourced from 12 popular open-source Python repositories, with issues averaging 195 words and codebases averaging 3,010 files and 438,000 lines of code.",
+      "claim_type": "measured",
+      "evidence": ["E001", "E002", "E003", "E005", "E007"],
+      "scope": {
+        "datasets": ["SWE-bench"],
+        "conditions": "Full evaluation set after 3-stage filtering"
+      },
+      "confidence": "high",
+      "confidence_reasons": [
+        "all evidence is hard (measured/logged)",
+        "multiple independent sources confirm each dimension",
+        "reflects validated final dataset"
+      ],
+      "author_confirmation": "pending",
+      "origin": "author_stated",
+      "quote": "2,294 software engineering problems drawn from real GitHub issues and corresponding pull requests across 12 popular Python repositories"
+    },
+    {
+      "id": "C002",
+      "statement": "Claude 2 achieved the best performance among evaluated models with 1.96-1.97% resolution rate on SWE-bench using BM25 retrieval.",
+      "claim_type": "measured",
+      "evidence": ["E015", "E016"],
+      "scope": {
+        "datasets": ["SWE-bench"],
+        "retrieval": "BM25",
+        "models": ["Claude 2"]
+      },
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "all evidence is hard",
+        "single measurement (no seeds/replications reported)",
+        "minor conflict between sources (1.96% vs 1.97%)"
+      ],
+      "limitations": ["L001"],
+      "author_confirmation": "pending",
+      "origin": "author_stated",
+      "quote": "The best-performing model, Claude 2, is able to solve a mere 1.96% of the issues"
+    },
+    {
+      "id": "C003",
+      "statement": "Performance on SWE-bench inversely correlates with input context length: Claude 2 achieves 1.96% at 13k tokens, 1.87% at 27k tokens, and 1.22% at 50k tokens.",
+      "claim_type": "observed",
+      "evidence": ["E025"],
+      "scope": {
+        "model": "Claude 2",
+        "retrieval": "BM25",
+        "context_windows": ["13k", "27k", "50k"]
+      },
+      "confidence": "high",
+      "confidence_reasons": [
+        "hard evidence from controlled experiments",
+        "consistent pattern across multiple context sizes",
+        "directly measured performance metric"
+      ],
+      "author_confirmation": "pending",
+      "origin": "author_stated",
+      "quote": "as total context length increases, Claude 2's performance drops considerably"
+    },
+    {
+      "id": "C004",
+      "statement": "Claude 2 resolves 4.80% of SWE-bench issues with oracle retrieval (actual edited files), compared to 1.96% with BM25 retrieval, indicating that context selection is a major bottleneck.",
+      "claim_type": "derived",
+      "evidence": ["E015", "E023"],
+      "derived_from": ["E015", "E023"],
+      "scope": {
+        "model": "Claude 2",
+        "task": "resolution_rate_improvement"
+      },
+      "confidence": "high",
+      "confidence_reasons": [
+        "both measurements are hard evidence",
+        "controlled comparison between retrieval methods",
+        "2.4x improvement is substantial and consistent"
+      ],
+      "permitted_verbs": ["improves", "increases"],
+      "author_confirmation": "pending",
+      "origin": "inferred"
+    },
+    {
+      "id": "C005",
+      "statement": "SWE-Llama 7b and 13b are sensitive to context distribution shifts, performing poorly with BM25 retrieval (0.70% resolution) despite being trained on oracle retrieval context.",
+      "claim_type": "observation",
+      "evidence": ["E020", "E021", "E064"],
+      "scope": {
+        "models": ["SWE-Llama 7b", "SWE-Llama 13b"],
+        "retrieval_shift": "oracle_to_bm25"
+      },
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "hard evidence for performance metric",
+        "soft evidence for mechanistic explanation",
+        "single evaluation setting"
+      ],
+      "author_confirmation": "pending",
+      "origin": "author_stated",
+      "quote": "finetuned models SWE-Llama 7b and 13b perform surprisingly poorly with BM25 retrieved context"
+    },
+    {
+      "id": "C006",
+      "statement": "Models tend to generate patches substantially shorter than reference solutions: Claude 2's applied patches average 19.6 lines compared to 74.5 lines in gold patches.",
+      "claim_type": "observed",
+      "evidence": ["E042", "E044", "E045"],
+      "scope": {
+        "model": "Claude 2",
+        "setting": "oracle retrieval, successfully applied patches"
+      },
+      "confidence": "high",
+      "confidence_reasons": [
+        "hard measurements from Table 8",
+        "consistent pattern observed across models",
+        "substantial gap (3.8x difference)"
+      ],
+      "permitted_verbs": ["tend to generate", "average"],
+      "author_confirmation": "pending",
+      "origin": "author_stated",
+      "quote": "compared to an average gold patch, model generated patch files that apply correctly are less than half the total length"
+    },
+    {
+      "id": "C007",
+      "statement": "SWE-bench Lite (300 instances) achieves higher resolution rates than full SWE-bench for all models, with Claude 2 achieving 3.00% on Lite vs 1.97% on full benchmark.",
+      "claim_type": "observed",
+      "evidence": ["E062", "E016"],
+      "scope": {
+        "datasets": ["SWE-bench", "SWE-bench Lite"],
+        "model": "Claude 2",
+        "retrieval": "BM25"
+      },
+      "confidence": "high",
+      "confidence_reasons": [
+        "hard measurements for both conditions",
+        "1.5x improvement on filtered subset",
+        "consistent with design intent (Lite focuses on simpler problems)"
+      ],
+      "author_confirmation": "pending",
+      "origin": "inferred"
+    },
+    {
+      "id": "C008",
+      "statement": "Gold patch solutions edit 1.7 files and 3.0 functions on average, with 32.8 lines changed (mean of 22.3 lines added and 10.5 lines removed).",
+      "claim_type": "measured",
+      "evidence": ["E010", "E011", "E009"],
+      "scope": {
+        "dataset": "SWE-bench",
+        "condition": "all gold patches"
+      },
+      "confidence": "high",
+      "confidence_reasons": [
+        "all hard measurements from Table 1",
+        "micro-averaged statistics across all instances",
+        "well-defined metrics"
+      ],
+      "author_confirmation": "pending",
+      "origin": "author_stated",
+      "quote": "averaging 1.7 files, 3.0 functions, and 32.8 lines (added or removed)"
+    },
+    {
+      "id": "C009",
+      "statement": "The 3-stage filtering pipeline reduced ~90,000 initial PRs to 11,407 candidates (Stage II) to 2,294 final validated instances (Stage III), with approximately 97.5% removal rate.",
+      "claim_type": "derived",
+      "evidence": ["E055", "E056", "E057"],
+      "derived_from": ["E055", "E056", "E057"],
+      "scope": {
+        "process": "SWE-bench construction"
+      },
+      "confidence": "high",
+      "confidence_reasons": [
+        "all measurements are hard",
+        "reflects rigorous validation methodology",
+        "consistent with quality-first design philosophy"
+      ],
+      "permitted_verbs": ["reduced", "filtered"],
+      "author_confirmation": "pending",
+      "origin": "inferred"
+    },
+    {
+      "id": "C010",
+      "statement": "BM25 retrieval achieves 29.58% average recall of oracle files at 13k tokens, improving to 44.41% at 27k tokens and 51.06% at 50k tokens.",
+      "claim_type": "measured",
+      "evidence": ["E026", "E027", "E028"],
+      "scope": {
+        "retrieval": "BM25",
+        "metric": "recall vs oracle files"
+      },
+      "confidence": "high",
+      "confidence_reasons": [
+        "all hard measurements",
+        "consistent improvement pattern",
+        "well-defined metric"
+      ],
+      "author_confirmation": "pending",
+      "origin": "author_stated",
+      "quote": "average recall with respect to oracle files for different maximum context lengths"
+    },
+    {
+      "id": "C011",
+      "statement": "Among 2,294 task instances, 442 are categorized as bug fixes, 167 as feature requests, 39 as regressions, and 1,641 as other types, indicating SWE-bench covers diverse problem categories.",
+      "claim_type": "observed",
+      "evidence": ["E058", "E059"],
+      "scope": {
+        "dataset": "SWE-bench",
+        "classification": "issue tags"
+      },
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "hard counts from Table 13",
+        "tags are author-assigned from issue system",
+        "sum (2,289) is slightly less than total instances (2,294)"
+      ],
+      "author_confirmation": "pending",
+      "origin": "author_stated",
+      "quote": "bug fixes...regressions...diverse set of code changes with purposes beyond debugging"
+    },
+    {
+      "id": "C012",
+      "statement": "SWE-Llama was fine-tuned on 10,000 instances (reduced from 19,000 due to context length filtering) from 37 disjoint repositories using LoRA with 4 NVIDIA A100s for 20 hours (7b) or 8 A100s for 47 hours (13b).",
+      "claim_type": "measured",
+      "evidence": ["E031", "E032", "E033"],
+      "scope": {
+        "models": ["SWE-Llama 7b", "SWE-Llama 13b"],
+        "training": "supervised fine-tuning"
+      },
+      "confidence": "high",
+      "confidence_reasons": [
+        "all hard measurements",
+        "exact training parameters reported",
+        "reproducible training setup"
+      ],
+      "author_confirmation": "pending",
+      "origin": "author_stated",
+      "quote": "10,000 instances...fine-tune only the weights of the attention sublayer using LoRA"
+    },
+    {
+      "id": "C013",
+      "statement": "At 27k token context limit, BM25 retrieves a superset of oracle files in ~40% of instances and none of the oracle files in ~50% of instances, indicating poor correlation with ground truth.",
+      "claim_type": "observed",
+      "evidence": ["E029", "E030"],
+      "scope": {
+        "retrieval": "BM25 at 27k tokens",
+        "metric": "oracle coverage"
+      },
+      "confidence": "high",
+      "confidence_reasons": [
+        "hard measurements from Figure 5 analysis",
+        "substantial gap between retrieval quality and ground truth",
+        "direct implication for model performance"
+      ],
+      "author_confirmation": "pending",
+      "origin": "author_stated",
+      "quote": "in approximately 40% of instances, BM25 retrieves a superset of the oracle files...in almost half of the instances"
+    },
+    {
+      "id": "C014",
+      "statement": "ChatGPT-3.5 (16k tokens) can fit only 58.1% of SWE-bench instances in its context, while GPT-4 (32k) fits 84.1%, and Claude 2 (100k) fits 96.4%, with SWE-Llama fitting ≥94.8%.",
+      "claim_type": "measured",
+      "evidence": ["E034", "E035", "E036", "E037", "E038", "E039"],
+      "scope": {
+        "models": ["ChatGPT-3.5", "GPT-4", "Claude 2", "SWE-Llama"],
+        "metric": "context window coverage"
+      },
+      "confidence": "high",
+      "confidence_reasons": [
+        "all hard measurements from Table 4",
+        "directly impacts which models can be evaluated",
+        "reflects well-known model capabilities"
+      ],
+      "author_confirmation": "pending",
+      "origin": "author_stated",
+      "quote": "We compare the different context lengths and proportion of the oracle retrieval setting covered"
+    },
+    {
+      "id": "C015",
+      "statement": "ChatGPT-3.5, GPT-4, and GPT-4-turbo achieve very low resolution rates (0.17%, 1.31%, and 1.31% respectively with BM25), suggesting OpenAI models struggle with SWE-bench despite their capabilities.",
+      "claim_type": "observed",
+      "evidence": ["E018", "E019"],
+      "scope": {
+        "models": ["ChatGPT-3.5", "GPT-4", "GPT-4-turbo"],
+        "retrieval": "BM25",
+        "benchmark": "SWE-bench"
+      },
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "hard measurements",
+        "GPT-4 evaluated on 25% subset only",
+        "limited replications"
+      ],
+      "author_confirmation": "pending",
+      "origin": "inferred"
+    },
+    {
+      "id": "C016",
+      "statement": "Development set (225 instances from 6 repositories) has average 19.9 fail-to-pass tests per instance (median 2) and 171.3 pass-to-pass tests (median 79), providing substantial test coverage for hyperparameter tuning.",
+      "claim_type": "measured",
+      "evidence": ["E050", "E051", "E052", "E053", "E054"],
+      "scope": {
+        "dataset": "SWE-bench development set"
+      },
+      "confidence": "high",
+      "confidence_reasons": [
+        "all hard measurements from Appendix",
+        "well-characterized statistics",
+        "mean vs median consistency indicates reasonable distribution"
+      ],
+      "author_confirmation": "pending",
+      "origin": "author_stated",
+      "quote": "19,000 non-testing task instances derived from 37 repositories"
+    },
+    {
+      "id": "C017",
+      "statement": "Models struggle with localizing problematic code within large codebases, becoming less effective as context length increases, suggesting attention capacity issues rather than lack of knowledge.",
+      "claim_type": "interpretation",
+      "evidence": ["E025", "E063"],
+      "scope": {
+        "phenomenon": "context overload",
+        "models": "all evaluated"
+      },
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "hard evidence for performance degradation",
+        "soft evidence for mechanistic explanation",
+        "corroborated by other findings (Table 2, Liu et al. 2023b)"
+      ],
+      "limitations": ["L002"],
+      "author_confirmation": "pending",
+      "origin": "author_stated",
+      "quote": "they seem to frequently struggle with localizing problematic code needing to be updated"
+    },
+    {
+      "id": "C018",
+      "statement": "Expanding context from oracle-collapsed (±15 lines around edits) to full oracle retrieval reduces Claude 2 performance from 5.93% to 4.80%, demonstrating that extraneous context actively harms performance.",
+      "claim_type": "observed",
+      "evidence": ["E024", "E023"],
+      "scope": {
+        "model": "Claude 2",
+        "retrieval": "oracle variants"
+      },
+      "confidence": "high",
+      "confidence_reasons": [
+        "both are hard measurements",
+        "controlled comparison with single variable change",
+        "counterintuitive result suggests context overload is real"
+      ],
+      "author_confirmation": "pending",
+      "origin": "inferred"
+    },
+    {
+      "id": "C019",
+      "statement": "Issues resolved by Claude 2 and SWE-Llama 13b in oracle setting overlap minimally: of 110 and 91 instances respectively, Claude 2 solves only 42% of those solved by SWE-Llama, indicating complementary model capabilities.",
+      "claim_type": "observed",
+      "evidence": ["E023"],
+      "scope": {
+        "models": ["Claude 2", "SWE-Llama 13b"],
+        "setting": "oracle retrieval"
+      },
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "hard measurements",
+        "single observation point",
+        "suggests different failure modes"
+      ],
+      "author_confirmation": "pending",
+      "origin": "author_stated",
+      "quote": "Claude 2 and SWE-Llama 13b perform comparably...Yet of these instances, Claude 2 only solves 42% of the instances solved by SWE-Llama"
+    },
+    {
+      "id": "C020",
+      "statement": "Instances with embedded images (32% in matplotlib, 10% in seaborn, 2% overall) may require multi-modal capabilities or external tools, creating an implicit evaluation barrier for text-only models.",
+      "claim_type": "hypothesis",
+      "evidence": ["E060"],
+      "scope": {
+        "phenomena": "multimodal content in issues",
+        "repositories": ["matplotlib", "seaborn"]
+      },
+      "confidence": "low",
+      "confidence_reasons": [
+        "hard observation of image prevalence",
+        "soft hypothesis about impact on models",
+        "no direct measurement of performance on image-containing issues"
+      ],
+      "author_confirmation": "pending",
+      "origin": "author_stated",
+      "quote": "Some repositories naturally feature more instances with images...Solving these instances may require multi-modal LMs"
+    }
+  ],
+  "limitations": [
+    {
+      "id": "L001",
+      "statement": "Discrepancy in reported Claude 2 performance: abstract and Section 5 state 1.96%, while Table 5 shows 1.97% - minor but unresolved conflict",
+      "affects_claims": ["C002"],
+      "effect_on_interpretation": "Negligible practical impact (0.01% difference), but creates uncertainty about measurement precision",
+      "evidence": ["E015", "E016"],
+      "resolution": "Use 1.96% as primary value (multiple mentions in text) but note the discrepancy"
+    },
+    {
+      "id": "L002",
+      "statement": "Mechanistic explanation for context overload (attention capacity vs. retrieval quality) is inferred rather than directly measured",
+      "affects_claims": ["C017"],
+      "effect_on_interpretation": "Interpretation relies on external citation (Liu et al. 2023b) and cannot be independently verified from SWE-bench data alone",
+      "evidence": ["E025", "E063"],
+      "resolution": "Clearly label as interpretation; cite supporting evidence from prior work"
+    },
+    {
+      "id": "L003",
+      "statement": "SWE-Llama evaluation uses 25% random subset for GPT-4 due to budget constraints, creating asymmetric comparison",
+      "affects_claims": ["C015"],
+      "effect_on_interpretation": "GPT-4 results may not be fully comparable to other models evaluated on full set; authors note subset is representative",
+      "evidence": ["E019"],
+      "resolution": "Always note budget constraint when citing GPT-4 results; acknowledge potential bias"
+    },
+    {
+      "id": "L004",
+      "statement": "SWE-bench is limited to Python; generalization to other languages is not evaluated",
+      "affects_claims": ["C001"],
+      "effect_on_interpretation": "Results are specifically about Python software engineering; applicability to other domains unclear",
+      "evidence": ["E047"],
+      "resolution": "Explicitly state language scope in all claims; note as future work direction"
+    },
+    {
+      "id": "L005",
+      "statement": "Execution-based testing does not guarantee reliable performance; generated code may be less comprehensive, efficient, or readable than human solutions",
+      "affects_claims": ["C002", "C006", "C008"],
+      "effect_on_interpretation": "Resolution rate measures test passing, not code quality; better solutions might fail tests while worse solutions might pass",
+      "evidence": ["E048"],
+      "resolution": "Qualify performance claims as 'test resolution rate' not 'solution quality'"
+    }
+  ],
+  "negative_result_decisions": []
+}

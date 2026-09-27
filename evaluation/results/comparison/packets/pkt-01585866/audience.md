@@ -1,0 +1,3 @@
+Intended readers: machine-learning researchers from other subfields (adjacent researchers). They know general ML, deep learning, standard evaluation practice and statistics, but not this project's subfield-specific terminology, datasets or prior work.
+Binding reader types for this review: A (domain expert), B (adjacent-domain researcher), E (verifying reviewer).
+Venue type: journal-length research article.

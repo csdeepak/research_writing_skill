@@ -1,0 +1,30 @@
+{
+  "step": 17,
+  "gates": {
+    "G1": "passed (spine bound to claims; every claim has >=1 evidence ID or is typed hypothesis/future; no open STOP-class failure; author confirmation could not be collected — no human available, see accepted_risks)",
+    "G2": "passed (skeleton self-reconstruction: Q1-Q12 answerable from plan/skeleton.md)",
+    "G3": "passed (tools/lint_draft.py --rcs .rcs reports 0 errors on .rcs/drafts/v001/paper.md; all {C###} tags resolve)",
+    "G4": "not evaluated — blind REVIEW_AGENT evaluation (steps 18-20) is out of scope for this run per run-specific constraints; run stops after step 17",
+    "G5": "not applicable — step 21 (final line edit, tag stripping) is not performed in this run"
+  },
+  "open_failures": [
+    {"state":"CONFLICTING_EVIDENCE","id":"F001","location":"SWE-Bench Lite, CodeActAgent v1.8 + gpt-4o-mini-2024-07-18","detail":"6.3% (Table 3) vs 7.0% (Table 4)","raised_by":"evidence agent (E012/E013)","raised_at_step":2,"class":"ASK","resolution":null},
+    {"state":"CONFLICTING_EVIDENCE","id":"F002","location":"GPQA diamond, expert-human accuracy","detail":"81.3% (Table 6) vs 81.2% (Table 7)","raised_by":"evidence agent (E061/E066)","raised_at_step":2,"class":"ASK","resolution":null},
+    {"state":"MISSING_RESULT","id":"F003","location":"Table 4 (ML-Bench/BioCoder/Gorilla APIBench/ToolQA rows)","detail":"per-model row attribution unrecoverable from linearized text (E115)","raised_by":"evidence agent","raised_at_step":2,"class":"MARK","resolution":"marked and excluded from the draft with a stated reason (§4, §7)"},
+    {"state":"MISSING_RESULT","id":"F004","location":"Table 7 GPQA main/extended set columns","detail":"per-method attribution unrecoverable (E068)","raised_by":"evidence agent","raised_at_step":2,"class":"MARK","resolution":"marked and excluded from the draft with a stated reason (§5.3, §7)"},
+    {"state":"VENUE_UNKNOWN","id":"F005","location":"plan/venue_profile.yaml","detail":"no venue specified for this run and no web access to retrieve one","raised_by":"AUTHOR","raised_at_step":6,"class":"MARK","resolution":"generic profile used, all rules marked assumed"},
+    {"state":"INSUFFICIENT_LITERATURE","id":"F006","location":"corpus/source_registry.json","detail":"literature mode restricted to citations already present in the supplied evidence package; no web search performed (run-specific constraint)","raised_by":"AUTHOR","raised_at_step":7,"class":"ASK","resolution":"gap statement scoped to the 9 registered sources (story/lit_gap_chain.md); no human available to expand the search, so scoping was chosen as the most defensible option"},
+    {"state":"AUTHOR_CONFIRMATION_PENDING","id":"F007","location":"claims/claim_evidence_map.json (all claims)","detail":"no human author available in this run to confirm inferred/author_stated claims","raised_by":"AUTHOR","raised_at_step":4,"class":"ASK","resolution":"left pending and disclosed in open_issues.md, per run-specific override (no ASK/STOP blocking; proceed and record as accepted risk)"}
+  ],
+  "accepted_risks": [
+    "No human reviewer is available in this run (per TASK.md run-specific constraints). Wherever the skill would ASK or STOP, the most defensible option was chosen from the evidence and recorded here instead of blocking.",
+    "CONFLICTING_EVIDENCE (F001, F002): resolved by disclosing both values in the draft rather than averaging, picking one, or omitting the comparison; this is the most defensible option because nothing in the evidence adjudicates between them.",
+    "UNCLEAR/VENUE_UNKNOWN (F005): resolved by using the generic venue profile with all rules marked assumed, rather than blocking on a venue choice.",
+    "INSUFFICIENT_LITERATURE (F006): resolved by scoping the gap/related-work claims strictly to the 9 sources already cited in the supplied evidence package, since no web search is permitted in this run; no broader novelty or 'first' claim is made.",
+    "AUTHOR_CONFIRMATION_PENDING (F007, all claims C001-C020): resolved by proceeding with claims at the confidence level the evidence supports and disclosing every claim as author_confirmation=pending in open_issues.md, rather than waiting on a human who is not available.",
+    "CORPUS_AGENT role performed by AUTHOR (this run) directly, per run-specific instruction, having read rce/skill/agents/corpus_agent.md; review_agent.md, recon_grader.md, and skill_agent.md were not read, per run-specific instruction.",
+    "Steps 1-2 (evidence-building) were supplied as a pre-built package (project/research_evidence.json, claim_candidates.json, missing_evidence.json) per the EVIDENCE INTERFACE note in TASK.md, copied into .rcs/evidence and .rcs/claims, and treated as validated CORPUS_AGENT output rather than rebuilt from a raw project folder.",
+    "Evidence locators point to paper.txt/README_*.md of the original OpenHands project, which this run cannot open; tools/validate_artifacts.py's 'locator path does not exist' errors for these files are expected and not treated as defects, per the EVIDENCE INTERFACE note."
+  ],
+  "run_note": "Run stops after step 17 per run-specific override. Steps 18-20 (blind REVIEW_AGENT evaluation) and step 21 (final line edit, tag stripping, disclosure gate G5) are out of scope for this run. Final artifacts: .rcs/drafts/v001/paper.md (claim tags kept) and ./paper.md (identical copy), plus .rcs/packets/audience.md and .rcs/packets/objective.md, per the run-specific instruction."
+}

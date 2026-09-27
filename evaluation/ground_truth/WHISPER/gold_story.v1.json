@@ -1,0 +1,72 @@
+{
+  "project": "WHISPER",
+  "verified": true,
+  "approved_by_researcher": false,
+  "approval_date": null,
+  "questions": {
+    "Q1": [
+      {"id": "Q1a", "text": "Speech recognition systems built on unsupervised pre-trained audio encoders lack an equivalently high-quality decoder, so they require dataset-specific fine-tuning to be usable.", "strength": "context", "evidence_ids": ["paper §1 L11", "paper §1 L16"]},
+      {"id": "Q1b", "text": "The goal is a speech recognition system that works reliably out of the box across environments without needing supervised fine-tuning for every deployment distribution.", "strength": "context", "evidence_ids": ["paper §1 L16"]}
+    ],
+    "Q2": [
+      {"id": "Q2a", "text": "Fine-tuned models can reach superhuman accuracy on one dataset while still making basic errors on other datasets, because they exploit dataset-specific quirks rather than general skills.", "strength": "context", "evidence_ids": ["paper §1 L15"]},
+      {"id": "Q2b", "text": "Combining existing high-quality supervised datasets yields limited data: SpeechStew mixes 7 datasets totalling 5,140 hours, tiny compared with the 1,000,000 hours of unlabeled speech used in unsupervised pre-training.", "strength": "context", "evidence_ids": ["paper §1 L17"]},
+      {"id": "Q2c", "text": "Fine-tuning requires a skilled practitioner and can be a complex process, limiting the practical usefulness and impact of encoder-only pre-trained systems.", "strength": "context", "evidence_ids": ["paper §1 L11"]}
+    ],
+    "Q3": [
+      {"id": "Q3a", "text": "Existing weakly supervised speech datasets (10,000-30,000 hours) were only a few times larger than the sum of existing high-quality datasets and much smaller than unsupervised-era data scales.", "strength": "context", "evidence_ids": ["paper §1 L24-25"]},
+      {"id": "Q3b", "text": "The work aims to close this gap by scaling weakly supervised speech recognition the next order of magnitude, to 680,000 hours of labeled audio, while broadening it beyond English-only recognition to multilingual and multitask training.", "strength": "context", "evidence_ids": ["paper §1 L25-26"]}
+    ],
+    "Q4": [
+      {"id": "Q4a", "text": "The authors trained an encoder-decoder Transformer to predict raw transcript text from 680,000 hours of audio-transcript pairs collected from the internet, with minimal text standardization.", "strength": "measured", "evidence_ids": ["paper §2.1 L30-34", "paper §1 L25-26"]},
+      {"id": "Q4b", "text": "Training data included 117,000 hours covering 96 non-English languages and 125,000 hours of X-to-English translation pairs.", "strength": "measured", "evidence_ids": ["paper §1 L26"]},
+      {"id": "Q4c", "text": "A single multitask token format lets one model perform transcription, translation, language identification, and voice activity detection by specifying task via special decoder tokens.", "strength": "measured", "evidence_ids": ["paper §2.3 L53", "paper Fig. 1 L209"]},
+      {"id": "Q4d", "text": "Models were evaluated in a strictly zero-shot setting, without using any training split of the evaluation datasets.", "strength": "measured", "evidence_ids": ["paper §3.1 L244"]}
+    ],
+    "Q5": [
+      {"id": "Q5a", "text": "The authors chose an off-the-shelf encoder-decoder Transformer architecture specifically to avoid confounding their findings with model-architecture improvements.", "strength": "interpretation", "evidence_ids": ["paper §2.2 L47"]},
+      {"id": "Q5b", "text": "The multitask format was chosen so that a single model performs more of the speech-processing pipeline than core recognition (e.g., voice activity detection and language identification), reducing the complexity of systems built from separate components.", "strength": "interpretation", "evidence_ids": ["paper §2.3 L50-52", "paper Fig. 1 L209"]}
+    ],
+    "Q6": [
+      {"id": "Q6a", "text": "Zero-shot English speech recognition robustness was compared against supervised LibriSpeech-trained models and a human transcriber using an effective-robustness framework.", "strength": "measured", "evidence_ids": ["paper §3.3 L278-279", "paper Fig. 2 L276"]},
+      {"id": "Q6b", "text": "Multilingual speech recognition was evaluated on Multilingual LibriSpeech, VoxPopuli, and Fleurs.", "strength": "measured", "evidence_ids": ["paper §3.4 L398", "paper §3.4 L622"]},
+      {"id": "Q6c", "text": "X-to-English speech translation was evaluated on CoVoST2 and on Fleurs repurposed as a translation dataset.", "strength": "measured", "evidence_ids": ["paper §3.5 L710-711"]},
+      {"id": "Q6d", "text": "Long-form transcription was evaluated on seven datasets against four commercial ASR services and an NVIDIA STT model.", "strength": "measured", "evidence_ids": ["paper §3.8 L727-758"]}
+    ],
+    "Q7": [
+      {"id": "Q7a", "text": "Against wav2vec 2.0 Large (no LM), which has the same 2.7 WER on LibriSpeech test-clean, zero-shot Whisper Large V2 achieves an average relative error reduction of 55.2% on the other datasets in Table 2 (average WER 12.8 vs 29.3).", "strength": "measured", "evidence_ids": ["paper Table 2 L283-393", "paper §3.3 L395"]},
+      {"id": "Q7b", "text": "Whisper achieves a new state of the art of 29.1 BLEU on the CoVoST2 X-to-English benchmark (All languages), zero-shot and without using CoVoST2 training data.", "strength": "measured", "evidence_ids": ["paper Table 4 L630-663", "paper §3.5 L710"]},
+      {"id": "Q7c", "text": "On the Fleurs multilingual speech recognition task, the squared correlation coefficient between log word error rate and log training hours per language is 0.83.", "strength": "derived", "evidence_ids": ["paper §3.4 L622"]},
+      {"id": "Q7d", "text": "In the medium-sized-model dataset-scaling study, going from 3,405 to 681,070 training hours lowers English WER from 30.5 to 9.9, multilingual WER from 92.4 to 29.2, and raises X-to-English BLEU from 0.2 to 24.8.", "strength": "measured", "evidence_ids": ["paper §4.2 L794", "paper Table 6 L875-887"]},
+      {"id": "Q7e", "text": "Zero-shot Whisper reaches 64.5% language-identification accuracy on Fleurs, below prior supervised results of 71.4% (w2v-bert-51) and 77.7% (mSLAM-CTC).", "strength": "measured", "evidence_ids": ["paper Table 5 L665-673", "paper §3.6 L715"]}
+    ],
+    "Q8": [
+      {"id": "Q8a", "text": "The results show that a single zero-shot model trained at scale on weak supervision is far more robust out of distribution than supervised LibriSpeech-trained models of equal in-distribution accuracy.", "strength": "derived", "evidence_ids": ["paper Table 2 L283-393", "paper §3.3 L279", "paper §3.3 L395"]},
+      {"id": "Q8b", "text": "The results establish that increasing training-data scale improves performance across English ASR, multilingual ASR, and translation, though with diminishing returns at the largest scales tested.", "strength": "measured", "evidence_ids": ["paper Table 6 L875-887", "paper §4.2 L889-892"]},
+      {"id": "Q8c", "text": "Adding the long-form decoding heuristics lowers average long-form WER over seven datasets from 11.0 (greedy) to 10.0, though temperature fallback and the initial-timestamp constraint leave the average unchanged and gains are uneven across datasets.", "strength": "measured", "evidence_ids": ["paper Table 7 L976-998", "paper §4.5 L1000"]},
+      {"id": "Q8d", "text": "Joint multilingual and multitask training causes negative transfer for small models but positive transfer for the largest models, which outperform English-only models trained with the same compute.", "strength": "measured", "evidence_ids": ["paper §4.3 L895-932", "paper Fig. 9 L930"]}
+    ],
+    "Q9": [
+      {"id": "Q9a", "text": "The paper does not establish which architectural component (encoder, decoder, or both) is responsible for Whisper's robustness benefits; the authors state this is currently unclear.", "strength": "hypothesis", "evidence_ids": ["paper §6 L1018"]},
+      {"id": "Q9b", "text": "The paper only studied zero-shot transfer performance and explicitly did not study fine-tuning Whisper on high-quality supervised data.", "strength": "context", "evidence_ids": ["paper §6 L1017"]},
+      {"id": "Q9c", "text": "The commercial ASR comparison in long-form transcription may not accurately reflect relative robustness, since some commercial systems may have already been trained on the public benchmark datasets used.", "strength": "context", "evidence_ids": ["paper §3.8 L758"]},
+      {"id": "Q9d", "text": "The paper does not resolve whether diminishing returns from dataset scaling mean the models are under-trained or that dataset-size scaling gains are nearing their end; the authors state further analysis is needed.", "strength": "hypothesis", "evidence_ids": ["paper §4.2 L893"]}
+    ],
+    "Q10": [
+      {"id": "Q10a", "text": "The primary contribution is showing that simply scaling weakly supervised, multilingual, multitask training to 680,000 hours, without self-supervision or self-training, yields zero-shot models that are often competitive with fully supervised results and substantially more robust.", "strength": "derived", "evidence_ids": ["paper Abstract L8", "paper §7 L1023"]},
+      {"id": "Q10b", "text": "The authors release inference code and model weights as a foundation for further work on robust speech processing.", "strength": "context", "evidence_ids": ["paper Abstract L8", "paper §1 L27"]}
+    ],
+    "Q11": [
+      {"id": "Q11a", "text": "Remaining long-form transcription errors include repeat loops, dropped first/last words, and complete hallucination, which the authors describe as non-human/perceptual failure modes not fully solved by their decoding heuristics.", "strength": "context", "evidence_ids": ["paper §6 L1015"]},
+      {"id": "Q11b", "text": "Speech recognition performance is still poor on many lower-resource languages, attributed by the authors to an English-centric data collection pipeline leaving most languages under 1,000 hours of training data.", "strength": "context", "evidence_ids": ["paper §6 L1016"]},
+      {"id": "Q11c", "text": "Whisper models are trained on 30-second audio chunks and cannot consume longer audio inputs directly, requiring a buffered windowing procedure for long-form transcription.", "strength": "context", "evidence_ids": ["paper §3.8 L724-726"]},
+      {"id": "Q11d", "text": "The paper does not use unsupervised pre-training or self-teaching techniques common in other state-of-the-art speech recognition systems, though the authors note this could still be added.", "strength": "context", "evidence_ids": ["paper §6 L1021"]}
+    ],
+    "Q12": [
+      {"id": "Q12a", "text": "Whisper is a single encoder-decoder Transformer trained on 680,000 hours of weakly supervised, multilingual, multitask audio-transcript data from the internet and evaluated zero-shot.", "strength": "measured", "evidence_ids": ["paper §1 L25-26", "paper §2.2 L47"]},
+      {"id": "Q12b", "text": "Its zero-shot English ASR substantially outperforms supervised LibriSpeech-trained models out of distribution and, per the authors, comes close to human transcriber accuracy.", "strength": "derived", "evidence_ids": ["paper Table 2 L283-393", "paper §3.3 L395", "paper §3.9 L760"]},
+      {"id": "Q12c", "text": "It achieves state-of-the-art zero-shot X-to-English translation BLEU on CoVoST2 (29.1) without using any CoVoST2 training data.", "strength": "measured", "evidence_ids": ["paper Table 4 L630-663", "paper §3.5 L710"]},
+      {"id": "Q12d", "text": "Its main acknowledged weaknesses are poor performance on lower-resource languages and residual long-form decoding failure modes like hallucination.", "strength": "context", "evidence_ids": ["paper §6 L1015-1016"]}
+    ]
+  }
+}

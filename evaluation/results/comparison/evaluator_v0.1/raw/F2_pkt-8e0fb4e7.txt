@@ -1,0 +1,321 @@
+{
+  "reconstruction": {
+    "packet_id": "pkt-8e0fb4e7",
+    "answers": {
+      "Q1": {
+        "answer": "The problem is that neural information retrieval models show impressive gains on standard benchmarks (like MS MARCO) but these benchmarks evaluate within the same distribution used for training. It is unknown whether these gains reflect genuine generalization to new tasks and domains without additional fine-tuning.",
+        "locations": ["§1/paragraph 1", "§1/paragraph 2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q2": {
+        "answer": "Retrieval is the first stage of many high-stakes NLP pipelines (open-domain QA, fact verification, scientific literature discovery, duplicate detection). Practitioners deploying retrieval in new domains discover that in-domain gains don't hold. No systematic multi-task, multi-domain test of whether in-domain ranking predicts zero-shot performance existed.",
+        "locations": ["§1/paragraph 1", "§1/paragraph 3"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q3": {
+        "answer": "Prior benchmarks (MultiReQA, KILT) provide partial coverage but leave the core question unanswered. MultiReQA covers only QA over small corpora (8 datasets, 5 Wikipedia-based, single task type) and doesn't measure zero-shot generalization explicitly. KILT spans five task families but restricts retrieval to Wikipedia and treats retrieval as a subtask. Neither crosses more than one retrieval domain or tests whether in-domain rankings translate to new domains.",
+        "locations": ["§1/paragraph 3"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q4": {
+        "answer": "The authors created BEIR, a heterogeneous evaluation suite of 18 publicly available retrieval datasets spanning 9 distinct task types and domains. They evaluated 10 retrieval systems from five architectural families (lexical, sparse, dense, late-interaction, cross-encoder re-ranking) in a fully zero-shot setting—models applied directly to target datasets without any domain-specific training. All models evaluated on each dataset using nDCG@10 with a unified protocol. They also analyzed annotation selection bias on TREC-COVID by manually annotating 980 previously unjudged query-document pairs.",
+        "locations": ["§Abstract", "§1/paragraph 4", "§3", "§4", "§5", "§6"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q5": {
+        "answer": "To measure zero-shot generalization across diverse tasks and domains, which existing benchmarks don't do. The benchmark design follows four principles: task diversity (9 task types), domain diversity (biomedical, Twitter, legal, news, etc.), difficulty (each task unsolved by existing approaches), and annotation diversity (crowd workers, domain experts, community feedback). Unified format and metric (nDCG@10) enable consistent comparison across all datasets and models.",
+        "locations": ["§3.1", "§3.4", "§1/paragraph 4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q6": {
+        "answer": "Zero-shot evaluation of 10 retrieval systems (BM25, DeepCT, SPARTA, DocT5query, DPR, ANCE, TAS-B, GenQ, ColBERT, BM25+CE) across all 18 BEIR datasets using nDCG@10. In-domain performance on MS MARCO reported separately. Efficiency measurements (latency, index size) on 1M DBPedia documents. Annotation bias analysis on TREC-COVID: measured Hole@10 rates and manually annotated 980 missing query-document pairs to compute corrected nDCG@10.",
+        "locations": ["§4", "§5.1", "§5.2", "§6", "Table 2", "Table 3", "Table 4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q7": {
+        "answer": "1) In-domain performance does not predict zero-shot performance: BM25 (0.228 on MS MARCO) is competitive or wins on many zero-shot datasets, while neural models that beat BM25 by 7-18 points in-domain often fall below it zero-shot. 2) Cross-encoder re-ranking (BM25+CE) achieves best zero-shot performance (+11% average over BM25) but at high computational cost. 3) Dense models vary widely: TAS-B near parity with BM25 (−2.8%), DPR large deficit (−47.7%). 4) DocT5query (document expansion) generalizes well (+1.6% avg), while term re-weighting methods (DeepCT, SPARTA) collapse (−27.9%, −20.3%). 5) Annotation selection bias on TREC-COVID: non-lexical models have high Hole@10 rates; manual annotation substantially improves their scores (ANCE +8.1 points, ColBERT +5.8 points), reversing BM25's lead on that dataset.",
+        "locations": ["§5.1", "§5.2", "§6", "Table 2", "Table 3", "Table 4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q8": {
+        "answer": "The results establish that: (a) zero-shot generalization in IR is a distinct capability from in-domain performance; (b) cross-attention mechanisms (cross-encoder re-ranking, ColBERT's MaxSim) generalize better than single-vector dense retrieval; (c) document expansion (DocT5query) is a practical zero-shot strategy that retains BM25's efficiency; (d) annotation selection bias is a real threat to validity of IR benchmarks, systematically penalizing non-lexical models; (e) there is a clear performance-cost trade-off for deployment.",
+        "locations": ["§5.1", "§5.2", "§6", "§7"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q9": {
+        "answer": "The results do NOT establish: (a) that cross-attention is causally responsible for better generalization (correlational, confounded by model size, distillation, BM25 candidate pool quality); (b) that the TREC-COVID bias correction extends to all 18 datasets (only one dataset manually annotated); (c) whether neural retrieval can generalize in principle with broader supervision (almost all models trained on MS MARCO); (d) statistical significance of differences (no error bars or significance tests); (e) cross-lingual/multilingual generalization (English only); (f) whether dense models with different training would show different patterns.",
+        "locations": ["§7", "§8", "§9"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q10": {
+        "answer": "Primary contribution: BEIR benchmark itself (18 datasets, 9 task types, unified format/metric) + systematic zero-shot evaluation revealing that in-domain performance doesn't predict out-of-distribution generalization, with cross-encoder re-ranking and document expansion as most reliable zero-shot strategies. Secondary: annotation selection bias analysis showing non-lexical models are systematically penalized. Tertiary: open-source Python package for standardized evaluation.",
+        "locations": ["§1/paragraph 5", "§9"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q11": {
+        "answer": "1) English only—no cross-lingual evaluation. 2) Annotation selection bias exists across BEIR datasets but magnitude unknown for 17/18 datasets. 3) Document truncation at 512 word-pieces may disadvantage neural models on long-document datasets. 4) Single training source (MS MARCO) for almost all neural models—conclusions measure MS MARCO transfer, not neural retrieval generalization in principle. 5) No statistical significance testing (fixed checkpoints). 6) Causal attribution for cross-attention advantage is correlational, not isolated by ablation.",
+        "locations": ["§8"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q12": {
+        "answer": "In-domain IR leaderboards (MS MARCO) are poor proxies for deployed performance. Models leading on MS MARCO can fall below classical BM25 on new domains without any model change. For zero-shot deployment: cross-encoder re-ranking over BM25 candidates is most reliable (if latency allows); DocT5query offers best efficiency-generalization trade-off for low-latency needs; dense bi-encoders need domain-targeted training. Annotation selection bias means some reported BM25 wins may be measurement artifacts. Zero-shot generalization is a distinct, underexplored capability.",
+        "locations": ["§9", "§7"],
+        "confidence": 5,
+        "missing": ""
+      }
+    }
+  },
+  "diagnostics": {
+    "packet_id": "pkt-8e0fb4e7",
+    "binding_personas": ["A", "B", "E"],
+    "findings": [
+      {
+        "dimension": "problem",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1", "paragraph": 1, "quote": "Whether these gains reflect genuine generalization...has remained largely untested"},
+        "observed": "Problem is crisply stated: neural IR gains on in-domain benchmarks may not reflect true zero-shot generalization to new tasks/domains.",
+        "reader_struggle": "No struggle—problem is immediately clear to all personas.",
+        "likely_consequence": "Reader understands exactly what gap the paper addresses.",
+        "revision_principle": "Keep problem statements grounded in a concrete deployment failure mode."
+      },
+      {
+        "dimension": "motivation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1", "paragraph": 1, "quote": "Retrieval is the first stage of many high-stakes NLP pipelines"},
+        "observed": "Motivation ties retrieval to concrete high-stakes applications (QA, fact verification, literature discovery, duplicate detection) and notes practitioners discover the generalization gap 'the hard way.'",
+        "reader_struggle": "Adjacent researchers (B) immediately see why this matters to their work.",
+        "likely_consequence": "Reader is convinced this is a real, practically important problem.",
+        "revision_principle": "Anchor motivation in deployed systems, not just benchmark gaps."
+      },
+      {
+        "dimension": "research_question",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1", "paragraph": 4, "quote": "The central empirical question is whether in-domain ranking performance predicts zero-shot performance across new domains and tasks"},
+        "observed": "Research question is explicitly stated and precisely scoped: does in-domain ranking predict zero-shot performance across domains/tasks?",
+        "reader_struggle": "No ambiguity—question is testable and directly addressed.",
+        "likely_consequence": "Reader can evaluate whether experiments answer this specific question.",
+        "revision_principle": "State the central empirical question in one sentence, early."
+      },
+      {
+        "dimension": "contribution",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1", "paragraph": 5, "quote": "Our contributions are:"},
+        "observed": "Four contributions clearly enumerated: (1) BEIR benchmark, (2) systematic zero-shot evaluation revealing in-domain/zero-shot inversion, (3) annotation selection bias analysis, (4) open-source package. Each is concrete and verifiable.",
+        "reader_struggle": "All personas can immediately check if results deliver on each contribution.",
+        "likely_consequence": "Reader knows exactly what the paper claims to deliver.",
+        "revision_principle": "List contributions as concrete deliverables, not vague advances."
+      },
+      {
+        "dimension": "method",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§4", "paragraph": 1, "quote": "All models are evaluated on publicly released pre-trained checkpoints without any target-domain fine-tuning"},
+        "observed": "Method is well-specified: zero-shot evaluation of 10 systems from 5 families on 18 datasets with unified nDCG@10. Architecture families explained in §2 for adjacent researchers. Training sources, truncation (512 word-pieces), and hardware specified.",
+        "reader_struggle": "Minor: GenQ is described as 'TAS-B fine-tuned on synthetic target-domain queries' but it's unclear if this violates the 'zero-shot' framing since it uses target-domain corpus for query generation. Paper calls it 'domain adaptation' in §5.1 but includes it in zero-shot averages.",
+        "likely_consequence": "Reader may question whether GenQ is truly zero-shot or a form of unsupervised domain adaptation.",
+        "revision_principle": "Clarify boundary conditions of 'zero-shot' when methods use target-domain corpora without labels."
+      },
+      {
+        "dimension": "experiment",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§4", "paragraph": 2, "quote": "The five architecture families tested are:"},
+        "observed": "Experimental design is comprehensive: 10 models × 18 datasets, efficiency measurements, bias analysis. Models span 5 families with clear descriptions. However: no controlled ablations for TAS-B's training components (acknowledged in §5.1), no significance testing, single training source for 9/10 neural models.",
+        "reader_struggle": "Expert (A) will notice missing ablations and significance tests; verifying reviewer (E) will note these limit causal claims.",
+        "likely_consequence": "Reader may overattribute TAS-B's advantage to specific training choices rather than architecture.",
+        "revision_principle": "Acknowledge experimental limitations that prevent causal attribution alongside correlational findings."
+      },
+      {
+        "dimension": "result",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§5.1", "paragraph": 1, "quote": "Table 2. nDCG@10 on BEIR (zero-shot) and MS MARCO (in-domain, marked ‡)"},
+        "observed": "Results are presented in a clear, comprehensive table (Table 2) with in-domain MS MARCO separated, averages vs BM25 computed excluding MS MARCO, bold/underline for best/second-best. Five key patterns explicitly summarized with supporting numbers. Efficiency results in Table 3. Bias analysis in Table 4 with before/after annotation.",
+        "reader_struggle": "All personas can directly inspect the numbers; patterns are explicitly called out.",
+        "likely_consequence": "Reader can verify all claimed patterns from the tables.",
+        "revision_principle": "Present full result matrices, not just aggregates; separate in-domain from out-of-domain clearly."
+      },
+      {
+        "dimension": "interpretation",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§7", "paragraph": 2, "quote": "This inference-time flexibility is the most parsimonious explanation for the observed generalisation advantage—but the attribution is correlational, not causal"},
+        "observed": "Interpretation is thoughtful: offers explanations (distribution-specific features in dense vectors, inference-time flexibility of cross-attention) but explicitly flags correlational nature and confounds (model size, distillation, BM25 pool quality). Notes similarity function sensitivity (cosine vs dot product) as complicating factor.",
+        "reader_struggle": "Expert (A) appreciates the honesty about correlational claims; adjacent (B) gets plausible mechanisms without overclaim.",
+        "likely_consequence": "Reader understands the leading hypotheses but knows they aren't proven.",
+        "revision_principle": "Distinguish mechanistic hypotheses from established findings; name confounds explicitly."
+      },
+      {
+        "dimension": "limitation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§8", "paragraph": 1, "quote": "Several limitations bound the conclusions that can be drawn from BEIR"},
+        "observed": "Limitations section is exemplary: 6 specific limitations (English only, annotation bias magnitude unknown for 17 datasets, document truncation, single training source, no significance testing), each with clear implication for what conclusions are bounded. No vague 'future work' hand-waving.",
+        "reader_struggle": "Verifying reviewer (E) can directly check if claims respect these bounds.",
+        "likely_consequence": "Reader knows exactly where generalization of conclusions stops.",
+        "revision_principle": "List limitations as specific bounds on specific claims, not generic caveats."
+      },
+      {
+        "dimension": "narrative_coherence",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1", "paragraph": 5, "quote": "This paper introduces BEIR, a benchmark designed specifically to measure zero-shot generalisation in text retrieval"},
+        "observed": "Narrative flows logically: problem → gap in prior work → research question → benchmark design → method → results → bias analysis → discussion → limitations → conclusion. Each section builds on the previous. The 'inversion' finding connects back to the central question.",
+        "reader_struggle": "No disorientation—reader always knows where they are in the argument.",
+        "likely_consequence": "Reader can follow the full argument without re-reading.",
+        "revision_principle": "Structure the paper as a progressive answer to the stated research question."
+      },
+      {
+        "dimension": "terminology",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§2", "paragraph": 1, "quote": "To make the paper self-contained for readers from adjacent ML fields, this section outlines the five retrieval architecture families evaluated in BEIR"},
+        "observed": "§2 provides a self-contained taxonomy of 5 architecture families with clear explanations (lexical, sparse, dense, late-interaction, re-ranking) accessible to adjacent ML researchers. Terms like 'lexical gap', 'dual-encoder', 'MaxSim', 'cross-encoder' defined in context. No unexplained subfield jargon.",
+        "reader_struggle": "Adjacent researcher (B) can understand all method descriptions without external references.",
+        "likely_consequence": "Paper is accessible to its stated target audience.",
+        "revision_principle": "Include a dedicated background section that defines subfield-specific terms for adjacent researchers."
+      },
+      {
+        "dimension": "logical_flow",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§5.1", "paragraph": 2, "quote": "The central finding is a striking inversion: in-domain performance does not predict zero-shot performance"},
+        "observed": "Logical flow from results to interpretation is tight: central finding stated immediately, then 5 patterns each supported by specific table references. Discussion (§7) answers 'why' questions raised by results. Bias analysis (§6) inserted after main results but before discussion, logically motivating the caveat about TREC-COVID.",
+        "reader_struggle": "No logical gaps—each claim traces to a table or analysis.",
+        "likely_consequence": "Reader can trace any conclusion to its evidence.",
+        "revision_principle": "State the central finding in the first sentence of results; structure sub-findings as explicit patterns with evidence."
+      },
+      {
+        "dimension": "evidence_traceability",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§5.1", "paragraph": 3, "quote": "DeepCT and SPARTA both use transformers to re-weight terms for BM25 indexing. Both perform well in-domain (0.296 and 0.351 respectively), but their zero-shot performance collapses"},
+        "observed": "Every quantitative claim in the text has a traceable source in Table 2, Table 3, or Table 4. In-domain vs zero-shot numbers explicitly paired (e.g., DeepCT 0.296‡ in-domain vs -27.9% zero-shot). Bias analysis shows before/after for each model. Efficiency numbers tied to hardware and dataset sample.",
+        "reader_struggle": "Verifying reviewer (E) can audit every number.",
+        "likely_consequence": "High trust in reported numbers; easy to verify.",
+        "revision_principle": "Pair every quantitative claim with its table location; show both in-domain and out-of-domain numbers for contrast."
+      },
+      {
+        "dimension": "figure_table",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§5.1", "paragraph": 1, "quote": "Table 2. nDCG@10 on BEIR (zero-shot) and MS MARCO (in-domain, marked ‡)"},
+        "observed": "Tables are excellent: Table 1 (dataset stats with task/domain/query/corpus/D-per-Q), Table 2 (full 10×18 matrix with in-domain separated, averages vs BM25, bold/underline), Table 3 (efficiency ranked by zero-shot performance), Table 4 (Hole@10 + before/after nDCG + change). All self-contained with clear headers, footnotes, and units.",
+        "reader_struggle": "Tables are readable standalone; adjacent researcher can understand without reading full text.",
+        "likely_consequence": "Reader can extract key comparisons directly from tables.",
+        "revision_principle": "Design tables to be readable without the main text; include both absolute and relative metrics."
+      },
+      {
+        "dimension": "claim_evidence_alignment",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§5.1", "paragraph": 6, "quote": "TAS-B combines topic-aware sampling, in-batch negatives, and Margin-MSE loss with knowledge distillation from a cross-encoder and ColBERT. These patterns are correlational: no controlled ablation separates the contributions"},
+        "observed": "Claims generally well-aligned with evidence. The paper correctly qualifies TAS-B's training advantage as correlational. However, the claim 'cross-attention models generalise better' (§7) is supported by only 2 models (BM25+CE, ColBERT) and confounded by multiple factors—acknowledged but still stated as a general pattern. The 'document expansion generalises' claim is well-supported by DocT5query's +1.6% avg and 11/18 wins.",
+        "reader_struggle": "Expert (A) may want more evidence for the cross-attention generalization claim beyond 2 models.",
+        "likely_consequence": "Reader may generalize the cross-attention claim beyond what 2 models support.",
+        "revision_principle": "Scope architecture-level claims to the number of distinct architectures tested; name confounds in the claim itself."
+      },
+      {
+        "dimension": "unsupported_inference",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§7", "paragraph": 2, "quote": "This inference-time flexibility is the most parsimonious explanation for the observed generalisation advantage—but the attribution is correlational, not causal"},
+        "observed": "Paper is careful to label correlational claims as such. However, the abstract states 'cross-encoder re-ranking achieves the best overall zero-shot performance (+11% average over BM25)' which is supported, but 'dense retrieval models...vary widely...with results ranging from near-parity (TAS-B: −2.8% vs. BM25) to large deficits (DPR: −47.7%)' is accurate. The claim 'annotation selection bias systematically penalises non-lexical models' is supported by TREC-COVID data but the word 'systematically' implies all datasets—only one dataset tested. The paper itself notes this limitation in §6.",
+        "reader_struggle": "Verifying reviewer (E) will catch the 'systematically' overreach vs single-dataset evidence.",
+        "likely_consequence": "Reader may believe bias correction would reverse BM25 wins on other datasets too.",
+        "revision_principle": "Don't use 'systematically' or 'generally' when evidence covers only one instance; say 'on TREC-COVID' instead."
+      },
+      {
+        "dimension": "redundancy",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1", "paragraph": 5, "quote": "Our contributions are:"},
+        "observed": "No harmful redundancy. Each section has a distinct purpose. Tables complement text without duplicating all numbers. Discussion extends rather than repeats results. Limitations are distinct from discussion caveats. Background (§2) serves adjacent researchers without burdening experts (who can skim).",
+        "reader_struggle": "No wasted reading time—every paragraph adds information.",
+        "likely_consequence": "Efficient reading experience for all personas.",
+        "revision_principle": "Assign each section a unique argumentative function; don't repeat table numbers in prose."
+      },
+      {
+        "dimension": "cognitive_load",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§3.2", "paragraph": 1, "quote": "Table 1 summarises the 18 datasets. The nine task families are:"},
+        "observed": "Cognitive load well managed: 18 datasets grouped into 9 task families with descriptions before the full table. Table 2 is large but structured (MS MARCO separated, averages at bottom). Key patterns summarized in prose before reader must parse full table. Efficiency table ranked by performance for easy trade-off reading. Bias analysis table shows before/after/change in one view.",
+        "reader_struggle": "Adjacent researcher (B) can grasp the landscape from task family descriptions + Table 1 without memorizing 18 dataset names.",
+        "likely_consequence": "Reader can build mental model incrementally.",
+        "revision_principle": "Group large sets into conceptual categories before showing full enumeration; summarize table patterns in prose."
+      },
+      {
+        "dimension": "orientation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1", "paragraph": 5, "quote": "This paper introduces BEIR, a benchmark designed specifically to measure zero-shot generalisation in text retrieval"},
+        "observed": "Reader is continuously oriented: intro states contributions, §3.1 gives selection principles, §3.2 lists task families before Table 1, §4 lists 5 families before detailing models, §5.1 states central finding then 5 patterns, §7 answers 'why' questions, §8 bounds conclusions, §9 gives practical hierarchy. Signposting throughout.",
+        "reader_struggle": "Reader never loses track of where they are in the argument or what question is being answered.",
+        "likely_consequence": "Smooth reading experience even for complex multi-dataset, multi-model results.",
+        "revision_principle": "Use advance organizers (task families, architecture families, pattern summaries) before dense information."
+      },
+      {
+        "dimension": "so_what",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§7", "paragraph": 5, "quote": "The results suggest a practical hierarchy for zero-shot deployment"},
+        "observed": "So-what is explicit and actionable: practical hierarchy for deployment (cross-encoder re-ranking when latency allows → DocT5query for low-latency → dense with domain adaptation for specialist domains). Conclusion reinforces: standard IR leaderboards are poor proxies for deployed performance. Open-source package enables immediate use.",
+        "reader_struggle": "Practitioner (B) gets immediate decision guidance; researcher (A) gets clear future direction (closing gap between efficient dense and robust cross-attention).",
+        "likely_consequence": "Reader knows what to do differently after reading.",
+        "revision_principle": "End with a practical decision framework, not just 'more research needed.'"
+      }
+    ],
+    "inference_issues": [
+      {
+        "kind": "overgeneralization",
+        "location": {"section": "§6", "paragraph": 1, "quote": "annotation selection bias...systematically penalises non-lexical models"},
+        "claim_text": "annotation selection bias systematically penalises non-lexical models",
+        "missing_link": "Only TREC-COVID was manually annotated (980 pairs). The other 17 datasets' bias magnitude is unknown. 'Systematically' implies all datasets; evidence covers one."
+      },
+      {
+        "kind": "causal_overreach",
+        "location": {"section": "§7", "paragraph": 2, "quote": "This inference-time flexibility is the most parsimonious explanation for the observed generalisation advantage—but the attribution is correlational, not causal"},
+        "claim_text": "cross-attention models generalise better because of inference-time token-level comparison",
+        "missing_link": "Only 2 cross-attention models tested (BM25+CE, ColBERT). Confounded by: model size (MiniLM vs bi-encoders), distillation training, BM25 candidate pool quality for re-ranker. No ablation isolates cross-attention mechanism."
+      },
+      {
+        "kind": "selective_presentation",
+        "location": {"section": "§5.1", "paragraph": 5, "quote": "Training setup matters within the dense family. TAS-B outperforms ANCE on 14 of 18 zero-shot datasets and DPR on 17 of 18"},
+        "claim_text": "TAS-B's training setup (topic-aware sampling, Margin-MSE, distillation) explains its advantage",
+        "missing_link": "TAS-B also differs from ANCE in backbone (DistilBERT vs RoBERTa). No controlled ablation separates architecture, backbone, sampling, loss, and distillation contributions. The training-objective explanation is 'most plausible' but not isolated."
+      },
+      {
+        "kind": "limitation_not_respected",
+        "location": {"section": "§Abstract", "paragraph": 1, "quote": "annotation selection bias systematically penalises non-lexical models"},
+        "claim_text": "annotation selection bias systematically penalises non-lexical models (in abstract)",
+        "missing_link": "Abstract states this as a general finding, but §6 and §8 limit it to TREC-COVID only. The limitation doesn't bound the abstract claim."
+      },
+      {
+        "kind": "overstrong_language",
+        "location": {"section": "§9", "paragraph": 1, "quote": "BEIR provides the first broad, heterogeneous benchmark for zero-shot IR evaluation"},
+        "claim_text": "first broad, heterogeneous benchmark for zero-shot IR evaluation",
+        "missing_link": "MultiReQA and KILT exist as prior multi-dataset IR benchmarks. BEIR is broader in domain/task diversity and explicitly zero-shot, but 'first' is strong given prior work. Paper itself describes them in §1 as 'partial coverage'—so 'first broad heterogeneous' is defensible but borderline."
+      }
+    ],
+    "objective_discrepancies": [
+      "Objective says 'present their research project to adjacent machine-learning researchers.' Paper achieves this well: §2 taxonomy, clear terminology, practical hierarchy in §7. No significant discrepancy—the paper matches the stated objective."
+    ],
+    "injection_suspected": []
+  }
+}

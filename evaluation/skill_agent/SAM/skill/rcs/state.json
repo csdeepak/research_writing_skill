@@ -1,0 +1,63 @@
+{
+  "step": 21,
+  "gates": {
+    "G1": "passed — spine bound to claims; all claims bound to evidence IDs or typed hypothesis/gap",
+    "G2": "passed — skeleton self-reconstruction: all 12 Q1-Q12 answerable from skeleton",
+    "G3": "passed — all {C###} tags resolve; section contracts checked",
+    "G4": "passed — step 18 blind review complete; step 19 structural revisions applied; step 20 skipped per run constraints",
+    "G5": "passed — all {C###}/{E###}/{L###} tags stripped; claim map unchanged (15 claims, 5 limitations); lint: no orphan tags, no [MISSING] markers remaining unresolved"
+  },
+  "open_failures": [],
+  "accepted_risks": [
+    "No human available: audience confirmed as B (adjacent ML researcher) from task instructions.",
+    "Venue unknown: paper written as generic conference/journal manuscript with standard ML structure (abstract, numbered sections, references).",
+    "Literature mode limited to cited works in project/paper.txt: registered with verification.method=user_supplied_file, read_depth=abstract.",
+    "Step 18 (blind review) external per run-specific constraints: diagnostics supplied in .rcs/diagnostics/v001_1/.",
+    "Step 20 skipped per run-specific constraints (no further review rounds).",
+    "No figures produced (task prohibits images): key quantitative results reproduced in Markdown tables.",
+    "Table 7 (dataset descriptions) not reproduced: 23 datasets listed in Section 5.1 text with domain coverage.",
+    "Oracle mIoU values per dataset not available from evidence: reported as ranges/counts only.",
+    "Statistical significance of 8.1 vs. 7.9 human-rating gap not reported in source; noted as open issue."
+  ],
+  "completed_steps": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21],
+  "step19_structural_changes": [
+    "Abstract: removed 'superior to'; revised to 'competitive with...trailing on standard automatic precision metrics'",
+    "§1.2: added explicit research question sentence before contribution list",
+    "§2.1: fixed 'Three variants' → 'Three standard paradigms plus one interaction mode'; clarified interactive as mode not variant",
+    "§3.1: defined 'amortization principle' inline on first use",
+    "§3.4: added explanation of dynamic-weight mechanism",
+    "§4.2: added NMS gloss; added logit-values gloss",
+    "§4.3: added metric-mismatch caveat for 94%/>90%-IoU vs 85-91%-mean-IoU comparison",
+    "§5.1: added full definitions for ODS/OIS/AP/R50 edge metrics",
+    "§5.2: noted ~47 IoU points is maximum not typical; hedged oracle-confidence causal attribution",
+    "§5.3: added Sobel filter gloss; added Training column context in Table 1 caption",
+    "§5.4: CRITICAL FIX — corrected 'trails on small and frequent objects' to 'trails only on small objects'; Table 2 shows SAM leads on frequent (63.9>63.1)",
+    "§5.5: hedged annotation-bias causal claim to 'consistent with but not uniquely confirmed'; added significance caveat for 8.1 vs 7.9",
+    "§6: added transition sentence bridging from performance evaluation",
+    "§7.1: hedged 'SAM fits this definition' with caveat about semantic/panoptic gap",
+    "§8: removed duplicate CLIP/composability analogy; trimmed to forward-looking framing"
+  ],
+  "step21_edits": [
+    "Stripped all {C###}, {E###}, {L###} inline claim tags (verified: 0 matches in final paper.md)",
+    "Claim-invariance check: 15 claims and 5 limitations in claim_evidence_map.json; all claims present in paper.md with equal or lesser strength — no claims upgraded",
+    "No [MISSING] or [CITATION NEEDED] markers remaining in paper.md (none were unresolved in v001 draft)",
+    "Word count: approximately 3,800 words (within 3,000-4,500 target)"
+  ],
+  "artifacts": {
+    "project_inventory": ".rcs/evidence/project_inventory.json",
+    "research_evidence": ".rcs/evidence/research_evidence.json",
+    "spine": ".rcs/story/spine.md",
+    "claim_evidence_map": ".rcs/claims/claim_evidence_map.json",
+    "audience_profile": ".rcs/plan/audience_profile.json",
+    "source_registry": ".rcs/corpus/source_registry.json",
+    "skeleton": ".rcs/plan/skeleton.md",
+    "draft_v001": ".rcs/drafts/v001/paper.md",
+    "reconstruction_audit": ".rcs/audits/v001/reconstruction_self.md",
+    "audience_packet": ".rcs/packets/audience.md",
+    "objective_packet": ".rcs/packets/objective.md",
+    "diagnostics_v001_1": ".rcs/diagnostics/v001_1/diagnostics.json",
+    "reconstruction_v001_1": ".rcs/diagnostics/v001_1/reconstruction.json",
+    "final_paper": "paper.md",
+    "open_issues": ".rcs/open_issues.md"
+  }
+}

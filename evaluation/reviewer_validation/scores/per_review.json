@@ -1,0 +1,2452 @@
+[
+ {
+  "key": "F1_s1_pkt-5ff4438a",
+  "family": "F1",
+  "seed": "s1",
+  "variant": "G_citation_misuse.md",
+  "parse_ok": true,
+  "validation_problems": 22,
+  "dims": {
+   "problem": 4,
+   "motivation": 3,
+   "research_question": 4,
+   "contribution": 3,
+   "method": 2,
+   "experiment": 3,
+   "result": 3,
+   "interpretation": 2,
+   "limitation": 3,
+   "narrative_coherence": 4,
+   "terminology": 3,
+   "logical_flow": 4,
+   "evidence_traceability": 1,
+   "figure_table": 2,
+   "claim_evidence_alignment": 3,
+   "unsupported_inference": 2,
+   "redundancy": 4,
+   "cognitive_load": 3,
+   "orientation": 4,
+   "so_what": 3
+  },
+  "n_inference_issues": 6,
+  "inference_kinds": [
+   "causal_overreach",
+   "limitation_not_respected",
+   "overgeneralization",
+   "overstrong_language",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 1,
+    "present": 15,
+    "overstated": 1,
+    "contradicted": 0,
+    "weakened": 2
+   },
+   "RR": 0.842,
+   "DR": 0.053,
+   "IR": 0.158,
+   "MMF": 0.711,
+   "CoreRR": 0.944,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 0.0,
+    "Q3": 1.0,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 0.5,
+    "Q9": 1.0,
+    "Q10": 0.5,
+    "Q11": 1.0,
+    "Q12": 0.5
+   },
+   "RR_question_macro": 0.792,
+   "distortions": {
+    "Q2": [
+     "q2a"
+    ]
+   }
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "overstated"
+   },
+   "Q3": {
+    "q3a": "present"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "absent",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "weakened"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "weakened"
+   }
+  }
+ },
+ {
+  "key": "F1_s1_pkt-70599dc0",
+  "family": "F1",
+  "seed": "s1",
+  "variant": "A_clean.md",
+  "parse_ok": true,
+  "validation_problems": 23,
+  "dims": {
+   "problem": 5,
+   "motivation": 3,
+   "research_question": 5,
+   "contribution": 5,
+   "method": 4,
+   "experiment": 3,
+   "result": 4,
+   "interpretation": 5,
+   "limitation": 5,
+   "narrative_coherence": 5,
+   "terminology": 4,
+   "logical_flow": 5,
+   "evidence_traceability": 3,
+   "figure_table": 3,
+   "claim_evidence_alignment": 4,
+   "unsupported_inference": 4,
+   "redundancy": 4,
+   "cognitive_load": 4,
+   "orientation": 5,
+   "so_what": 4
+  },
+  "n_inference_issues": 4,
+  "inference_kinds": [
+   "causal_overreach",
+   "overgeneralization",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 0,
+    "present": 18,
+    "overstated": 0,
+    "contradicted": 0,
+    "weakened": 1
+   },
+   "RR": 0.974,
+   "DR": 0.0,
+   "IR": 0.0,
+   "MMF": 0.974,
+   "CoreRR": 1.0,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 0.5,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 1.0,
+    "Q9": 1.0,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 0.958,
+   "distortions": {}
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "present"
+   },
+   "Q3": {
+    "q3a": "weakened"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "present",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "present"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "present"
+   }
+  }
+ },
+ {
+  "key": "F1_s1_pkt-766e9734",
+  "family": "F1",
+  "seed": "s1",
+  "variant": "B_poor_ordering.md",
+  "parse_ok": true,
+  "validation_problems": 23,
+  "dims": {
+   "problem": 4,
+   "motivation": 2,
+   "research_question": 3,
+   "contribution": 4,
+   "method": 4,
+   "experiment": 3,
+   "result": 4,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 3,
+   "terminology": 3,
+   "logical_flow": 3,
+   "evidence_traceability": 3,
+   "figure_table": 3,
+   "claim_evidence_alignment": 3,
+   "unsupported_inference": 2,
+   "redundancy": 3,
+   "cognitive_load": 3,
+   "orientation": 2,
+   "so_what": 3
+  },
+  "n_inference_issues": 5,
+  "inference_kinds": [
+   "causal_overreach",
+   "overgeneralization",
+   "overstrong_language",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 0,
+    "present": 18,
+    "overstated": 0,
+    "contradicted": 0,
+    "weakened": 1
+   },
+   "RR": 0.974,
+   "DR": 0.0,
+   "IR": 0.0,
+   "MMF": 0.974,
+   "CoreRR": 1.0,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 0.5,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 1.0,
+    "Q9": 1.0,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 0.958,
+   "distortions": {}
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "present"
+   },
+   "Q3": {
+    "q3a": "weakened"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "present",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "present"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "present"
+   }
+  }
+ },
+ {
+  "key": "F1_s1_pkt-84ad5868",
+  "family": "F1",
+  "seed": "s1",
+  "variant": "D_result_dumping.md",
+  "parse_ok": true,
+  "validation_problems": 22,
+  "dims": {
+   "problem": 4,
+   "motivation": 1,
+   "research_question": 2,
+   "contribution": 2,
+   "method": 2,
+   "experiment": 2,
+   "result": 3,
+   "interpretation": 1,
+   "limitation": 2,
+   "narrative_coherence": 3,
+   "terminology": 2,
+   "logical_flow": 3,
+   "evidence_traceability": 3,
+   "figure_table": 1,
+   "claim_evidence_alignment": 2,
+   "unsupported_inference": 2,
+   "redundancy": 3,
+   "cognitive_load": 3,
+   "orientation": 3,
+   "so_what": 2
+  },
+  "n_inference_issues": 5,
+  "inference_kinds": [
+   "limitation_not_respected",
+   "overgeneralization",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 1,
+    "present": 14,
+    "overstated": 0,
+    "contradicted": 0,
+    "weakened": 4
+   },
+   "RR": 0.842,
+   "DR": 0.0,
+   "IR": 0.053,
+   "MMF": 0.816,
+   "CoreRR": 0.944,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 0.5,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 0.25,
+    "Q9": 0.75,
+    "Q10": 0.5,
+    "Q11": 1.0,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 0.833,
+   "distortions": {}
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "present"
+   },
+   "Q3": {
+    "q3a": "weakened"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "absent",
+    "q8b": "weakened"
+   },
+   "Q9": {
+    "q9a": "weakened",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "weakened"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "present"
+   }
+  }
+ },
+ {
+  "key": "F1_s1_pkt-c0b734ff",
+  "family": "F1",
+  "seed": "s1",
+  "variant": "F_buried_contribution.md",
+  "parse_ok": true,
+  "validation_problems": 20,
+  "dims": {
+   "problem": 3,
+   "motivation": 1,
+   "research_question": 1,
+   "contribution": 2,
+   "method": 3,
+   "experiment": 3,
+   "result": 4,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 2,
+   "terminology": 2,
+   "logical_flow": 2,
+   "evidence_traceability": 2,
+   "figure_table": 2,
+   "claim_evidence_alignment": 3,
+   "unsupported_inference": 2,
+   "redundancy": 2,
+   "cognitive_load": 3,
+   "orientation": 2,
+   "so_what": 2
+  },
+  "n_inference_issues": 5,
+  "inference_kinds": [
+   "causal_overreach",
+   "overgeneralization",
+   "overstrong_language",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 0,
+    "present": 18,
+    "overstated": 0,
+    "contradicted": 0,
+    "weakened": 1
+   },
+   "RR": 0.974,
+   "DR": 0.0,
+   "IR": 0.0,
+   "MMF": 0.974,
+   "CoreRR": 1.0,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 0.5,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 1.0,
+    "Q9": 1.0,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 0.958,
+   "distortions": {}
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "present"
+   },
+   "Q3": {
+    "q3a": "weakened"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "present",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "present"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "present"
+   }
+  }
+ },
+ {
+  "key": "F1_s1_pkt-cb16d676",
+  "family": "F1",
+  "seed": "s1",
+  "variant": "E_unsupported_interpretation.md",
+  "parse_ok": true,
+  "validation_problems": 21,
+  "dims": {
+   "problem": 3,
+   "motivation": 2,
+   "research_question": 2,
+   "contribution": 2,
+   "method": 3,
+   "experiment": 2,
+   "result": 2,
+   "interpretation": 1,
+   "limitation": 0,
+   "narrative_coherence": 2,
+   "terminology": 2,
+   "logical_flow": 2,
+   "evidence_traceability": 2,
+   "figure_table": 1,
+   "claim_evidence_alignment": 1,
+   "unsupported_inference": 1,
+   "redundancy": 3,
+   "cognitive_load": 3,
+   "orientation": 2,
+   "so_what": 2
+  },
+  "n_inference_issues": 8,
+  "inference_kinds": [
+   "causal_overreach",
+   "limitation_not_respected",
+   "overgeneralization",
+   "overstrong_language",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 4,
+    "present": 9,
+    "overstated": 3,
+    "contradicted": 1,
+    "weakened": 2
+   },
+   "RR": 0.526,
+   "DR": 0.211,
+   "IR": 0.053,
+   "MMF": 0.289,
+   "CoreRR": 0.833,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 0.0,
+    "Q3": 0.0,
+    "Q4": 1.0,
+    "Q5": 0.0,
+    "Q6": 1.0,
+    "Q7": 0.75,
+    "Q8": 0.0,
+    "Q9": 0.25,
+    "Q10": 0.0,
+    "Q11": 1.0,
+    "Q12": 0.0
+   },
+   "RR_question_macro": 0.417,
+   "distortions": {
+    "Q2": [
+     "q2a"
+    ],
+    "Q9": [
+     "q9a"
+    ],
+    "Q10": [
+     "q10a"
+    ],
+    "Q12": [
+     "q12a"
+    ]
+   }
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "overstated"
+   },
+   "Q3": {
+    "q3a": "absent"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "absent"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "weakened",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "absent",
+    "q8b": "absent"
+   },
+   "Q9": {
+    "q9a": "contradicted",
+    "q9b": "weakened"
+   },
+   "Q10": {
+    "q10a": "overstated"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "overstated"
+   }
+  }
+ },
+ {
+  "key": "F1_s1_pkt-e2bf3043",
+  "family": "F1",
+  "seed": "s1",
+  "variant": "C_jargon.md",
+  "parse_ok": true,
+  "validation_problems": 23,
+  "dims": {
+   "problem": 3,
+   "motivation": 1,
+   "research_question": 4,
+   "contribution": 4,
+   "method": 3,
+   "experiment": 4,
+   "result": 3,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 4,
+   "terminology": 0,
+   "logical_flow": 3,
+   "evidence_traceability": 2,
+   "figure_table": 2,
+   "claim_evidence_alignment": 4,
+   "unsupported_inference": 3,
+   "redundancy": 4,
+   "cognitive_load": 1,
+   "orientation": 2,
+   "so_what": 3
+  },
+  "n_inference_issues": 5,
+  "inference_kinds": [
+   "causal_overreach",
+   "overgeneralization",
+   "overstrong_language",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 0,
+    "present": 19,
+    "overstated": 0,
+    "contradicted": 0,
+    "weakened": 0
+   },
+   "RR": 1.0,
+   "DR": 0.0,
+   "IR": 0.0,
+   "MMF": 1.0,
+   "CoreRR": 1.0,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 1.0,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 1.0,
+    "Q9": 1.0,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 1.0,
+   "distortions": {}
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "present"
+   },
+   "Q3": {
+    "q3a": "present"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "present",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "present"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "present"
+   }
+  }
+ },
+ {
+  "key": "F1_s2_pkt-5ff4438a",
+  "family": "F1",
+  "seed": "s2",
+  "variant": "G_citation_misuse.md",
+  "parse_ok": true,
+  "validation_problems": 22,
+  "dims": {
+   "problem": 4,
+   "motivation": 2,
+   "research_question": 5,
+   "contribution": 4,
+   "method": 3,
+   "experiment": 3,
+   "result": 3,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 4,
+   "terminology": 2,
+   "logical_flow": 4,
+   "evidence_traceability": 1,
+   "figure_table": 2,
+   "claim_evidence_alignment": 2,
+   "unsupported_inference": 2,
+   "redundancy": 4,
+   "cognitive_load": 4,
+   "orientation": 3,
+   "so_what": 4
+  },
+  "n_inference_issues": 6,
+  "inference_kinds": [
+   "causal_overreach",
+   "limitation_not_respected",
+   "overgeneralization",
+   "overstrong_language",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 0,
+    "present": 18,
+    "overstated": 1,
+    "contradicted": 0,
+    "weakened": 0
+   },
+   "RR": 0.947,
+   "DR": 0.053,
+   "IR": 0.0,
+   "MMF": 0.895,
+   "CoreRR": 1.0,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 0.0,
+    "Q3": 1.0,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 1.0,
+    "Q9": 1.0,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 0.917,
+   "distortions": {
+    "Q2": [
+     "q2a"
+    ]
+   }
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "overstated"
+   },
+   "Q3": {
+    "q3a": "present"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "present",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "present"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "present"
+   }
+  }
+ },
+ {
+  "key": "F1_s2_pkt-70599dc0",
+  "family": "F1",
+  "seed": "s2",
+  "variant": "A_clean.md",
+  "parse_ok": true,
+  "validation_problems": 23,
+  "dims": {
+   "problem": 5,
+   "motivation": 3,
+   "research_question": 5,
+   "contribution": 4,
+   "method": 3,
+   "experiment": 4,
+   "result": 4,
+   "interpretation": 4,
+   "limitation": 5,
+   "narrative_coherence": 5,
+   "terminology": 4,
+   "logical_flow": 5,
+   "evidence_traceability": 2,
+   "figure_table": 2,
+   "claim_evidence_alignment": 4,
+   "unsupported_inference": 3,
+   "redundancy": 4,
+   "cognitive_load": 5,
+   "orientation": 5,
+   "so_what": 3
+  },
+  "n_inference_issues": 4,
+  "inference_kinds": [
+   "causal_overreach",
+   "overgeneralization",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 0,
+    "present": 19,
+    "overstated": 0,
+    "contradicted": 0,
+    "weakened": 0
+   },
+   "RR": 1.0,
+   "DR": 0.0,
+   "IR": 0.0,
+   "MMF": 1.0,
+   "CoreRR": 1.0,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 1.0,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 1.0,
+    "Q9": 1.0,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 1.0,
+   "distortions": {}
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "present"
+   },
+   "Q3": {
+    "q3a": "present"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "present",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "present"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "present"
+   }
+  }
+ },
+ {
+  "key": "F1_s2_pkt-766e9734",
+  "family": "F1",
+  "seed": "s2",
+  "variant": "B_poor_ordering.md",
+  "parse_ok": true,
+  "validation_problems": 23,
+  "dims": {
+   "problem": 4,
+   "motivation": 2,
+   "research_question": 2,
+   "contribution": 3,
+   "method": 3,
+   "experiment": 3,
+   "result": 3,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 2,
+   "terminology": 2,
+   "logical_flow": 2,
+   "evidence_traceability": 2,
+   "figure_table": 2,
+   "claim_evidence_alignment": 3,
+   "unsupported_inference": 3,
+   "redundancy": 3,
+   "cognitive_load": 2,
+   "orientation": 2,
+   "so_what": 3
+  },
+  "n_inference_issues": 4,
+  "inference_kinds": [
+   "causal_overreach",
+   "overgeneralization",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 0,
+    "present": 18,
+    "overstated": 0,
+    "contradicted": 0,
+    "weakened": 1
+   },
+   "RR": 0.974,
+   "DR": 0.0,
+   "IR": 0.0,
+   "MMF": 0.974,
+   "CoreRR": 1.0,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 0.5,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 1.0,
+    "Q9": 1.0,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 0.958,
+   "distortions": {}
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "present"
+   },
+   "Q3": {
+    "q3a": "weakened"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "present",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "present"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "present"
+   }
+  }
+ },
+ {
+  "key": "F1_s2_pkt-84ad5868",
+  "family": "F1",
+  "seed": "s2",
+  "variant": "D_result_dumping.md",
+  "parse_ok": true,
+  "validation_problems": 22,
+  "dims": {
+   "problem": 4,
+   "motivation": 1,
+   "research_question": 5,
+   "contribution": 2,
+   "method": 2,
+   "experiment": 3,
+   "result": 2,
+   "interpretation": 1,
+   "limitation": 2,
+   "narrative_coherence": 3,
+   "terminology": 2,
+   "logical_flow": 2,
+   "evidence_traceability": 3,
+   "figure_table": 2,
+   "claim_evidence_alignment": 2,
+   "unsupported_inference": 2,
+   "redundancy": 2,
+   "cognitive_load": 3,
+   "orientation": 3,
+   "so_what": 2
+  },
+  "n_inference_issues": 5,
+  "inference_kinds": [
+   "limitation_not_respected",
+   "overgeneralization",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 0,
+    "present": 15,
+    "overstated": 0,
+    "contradicted": 0,
+    "weakened": 4
+   },
+   "RR": 0.895,
+   "DR": 0.0,
+   "IR": 0.0,
+   "MMF": 0.895,
+   "CoreRR": 0.889,
+   "per_question_RR": {
+    "Q1": 0.5,
+    "Q2": 1.0,
+    "Q3": 0.5,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 0.75,
+    "Q9": 1.0,
+    "Q10": 0.5,
+    "Q11": 1.0,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 0.854,
+   "distortions": {}
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "weakened"
+   },
+   "Q2": {
+    "q2a": "present"
+   },
+   "Q3": {
+    "q3a": "weakened"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "present",
+    "q8b": "weakened"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "weakened"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "present"
+   }
+  }
+ },
+ {
+  "key": "F1_s2_pkt-c0b734ff",
+  "family": "F1",
+  "seed": "s2",
+  "variant": "F_buried_contribution.md",
+  "parse_ok": true,
+  "validation_problems": 20,
+  "dims": {
+   "problem": 3,
+   "motivation": 1,
+   "research_question": 2,
+   "contribution": 2,
+   "method": 4,
+   "experiment": 4,
+   "result": 3,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 2,
+   "terminology": 3,
+   "logical_flow": 3,
+   "evidence_traceability": 2,
+   "figure_table": 2,
+   "claim_evidence_alignment": 4,
+   "unsupported_inference": 3,
+   "redundancy": 3,
+   "cognitive_load": 3,
+   "orientation": 2,
+   "so_what": 2
+  },
+  "n_inference_issues": 5,
+  "inference_kinds": [
+   "causal_overreach",
+   "overgeneralization",
+   "overstrong_language",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 0,
+    "present": 18,
+    "overstated": 0,
+    "contradicted": 0,
+    "weakened": 1
+   },
+   "RR": 0.974,
+   "DR": 0.0,
+   "IR": 0.0,
+   "MMF": 0.974,
+   "CoreRR": 1.0,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 0.5,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 1.0,
+    "Q9": 1.0,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 0.958,
+   "distortions": {}
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "present"
+   },
+   "Q3": {
+    "q3a": "weakened"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "present",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "present"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "present"
+   }
+  }
+ },
+ {
+  "key": "F1_s2_pkt-cb16d676",
+  "family": "F1",
+  "seed": "s2",
+  "variant": "E_unsupported_interpretation.md",
+  "parse_ok": true,
+  "validation_problems": 22,
+  "dims": {
+   "problem": 3,
+   "motivation": 2,
+   "research_question": 2,
+   "contribution": 1,
+   "method": 3,
+   "experiment": 2,
+   "result": 3,
+   "interpretation": 1,
+   "limitation": 0,
+   "narrative_coherence": 1,
+   "terminology": 2,
+   "logical_flow": 1,
+   "evidence_traceability": 1,
+   "figure_table": 1,
+   "claim_evidence_alignment": 0,
+   "unsupported_inference": 0,
+   "redundancy": 2,
+   "cognitive_load": 2,
+   "orientation": 3,
+   "so_what": 2
+  },
+  "n_inference_issues": 8,
+  "inference_kinds": [
+   "causal_overreach",
+   "limitation_not_respected",
+   "overgeneralization",
+   "overstrong_language",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 4,
+    "present": 10,
+    "overstated": 1,
+    "contradicted": 1,
+    "weakened": 3
+   },
+   "RR": 0.605,
+   "DR": 0.105,
+   "IR": 0.053,
+   "MMF": 0.474,
+   "CoreRR": 0.833,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 0.0,
+    "Q3": 0.0,
+    "Q4": 1.0,
+    "Q5": 0.0,
+    "Q6": 1.0,
+    "Q7": 0.75,
+    "Q8": 0.5,
+    "Q9": 0.5,
+    "Q10": 0.5,
+    "Q11": 0.833,
+    "Q12": 0.0
+   },
+   "RR_question_macro": 0.507,
+   "distortions": {
+    "Q2": [
+     "q2a"
+    ],
+    "Q9": [
+     "q9a"
+    ]
+   }
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "overstated"
+   },
+   "Q3": {
+    "q3a": "absent"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "absent"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "weakened",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "absent",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "contradicted",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "weakened"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "weakened"
+   },
+   "Q12": {
+    "q12a": "absent"
+   }
+  }
+ },
+ {
+  "key": "F1_s2_pkt-e2bf3043",
+  "family": "F1",
+  "seed": "s2",
+  "variant": "C_jargon.md",
+  "parse_ok": true,
+  "validation_problems": 22,
+  "dims": {
+   "problem": 3,
+   "motivation": 2,
+   "research_question": 4,
+   "contribution": 4,
+   "method": 3,
+   "experiment": 2,
+   "result": 3,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 3,
+   "terminology": 1,
+   "logical_flow": 3,
+   "evidence_traceability": 1,
+   "figure_table": 2,
+   "claim_evidence_alignment": 2,
+   "unsupported_inference": 2,
+   "redundancy": 3,
+   "cognitive_load": 1,
+   "orientation": 2,
+   "so_what": 3
+  },
+  "n_inference_issues": 5,
+  "inference_kinds": [
+   "causal_overreach",
+   "overgeneralization",
+   "overstrong_language",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 0,
+    "present": 19,
+    "overstated": 0,
+    "contradicted": 0,
+    "weakened": 0
+   },
+   "RR": 1.0,
+   "DR": 0.0,
+   "IR": 0.0,
+   "MMF": 1.0,
+   "CoreRR": 1.0,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 1.0,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 1.0,
+    "Q9": 1.0,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 1.0,
+   "distortions": {}
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "present"
+   },
+   "Q3": {
+    "q3a": "present"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "present",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "present"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "present"
+   }
+  }
+ },
+ {
+  "key": "F2_s1_pkt-5ff4438a",
+  "family": "F2",
+  "seed": "s1",
+  "variant": "G_citation_misuse.md",
+  "parse_ok": true,
+  "validation_problems": 1,
+  "dims": {
+   "problem": 4,
+   "motivation": 3,
+   "research_question": 4,
+   "contribution": 4,
+   "method": 3,
+   "experiment": 3,
+   "result": 3,
+   "interpretation": 4,
+   "limitation": 5,
+   "narrative_coherence": 4,
+   "terminology": 4,
+   "logical_flow": 4,
+   "evidence_traceability": 2,
+   "figure_table": 1,
+   "claim_evidence_alignment": 3,
+   "unsupported_inference": 3,
+   "redundancy": 5,
+   "cognitive_load": 4,
+   "orientation": 4,
+   "so_what": 4
+  },
+  "n_inference_issues": 5,
+  "inference_kinds": [
+   "overgeneralization",
+   "overstrong_language",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 0,
+    "present": 15,
+    "overstated": 4,
+    "contradicted": 0,
+    "weakened": 0
+   },
+   "RR": 0.789,
+   "DR": 0.211,
+   "IR": 0.053,
+   "MMF": 0.553,
+   "CoreRR": 0.889,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 0.0,
+    "Q3": 1.0,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 0.5,
+    "Q9": 1.0,
+    "Q10": 0.0,
+    "Q11": 1.0,
+    "Q12": 0.0
+   },
+   "RR_question_macro": 0.708,
+   "distortions": {
+    "Q2": [
+     "q2a"
+    ],
+    "Q8": [
+     "q8a"
+    ],
+    "Q10": [
+     "q10a"
+    ],
+    "Q12": [
+     "q12a"
+    ]
+   }
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "overstated"
+   },
+   "Q3": {
+    "q3a": "present"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "overstated",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "overstated"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "overstated"
+   }
+  }
+ },
+ {
+  "key": "F2_s1_pkt-70599dc0",
+  "family": "F2",
+  "seed": "s1",
+  "variant": "A_clean.md",
+  "parse_ok": true,
+  "validation_problems": 8,
+  "dims": {
+   "problem": 5,
+   "motivation": 4,
+   "research_question": 5,
+   "contribution": 5,
+   "method": 4,
+   "experiment": 4,
+   "result": 5,
+   "interpretation": 5,
+   "limitation": 5,
+   "narrative_coherence": 5,
+   "terminology": 4,
+   "logical_flow": 5,
+   "evidence_traceability": 4,
+   "figure_table": 3,
+   "claim_evidence_alignment": 5,
+   "unsupported_inference": 5,
+   "redundancy": 5,
+   "cognitive_load": 5,
+   "orientation": 5,
+   "so_what": 5
+  },
+  "n_inference_issues": 0,
+  "inference_kinds": [],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 0,
+    "present": 18,
+    "overstated": 0,
+    "contradicted": 0,
+    "weakened": 1
+   },
+   "RR": 0.974,
+   "DR": 0.0,
+   "IR": 0.053,
+   "MMF": 0.947,
+   "CoreRR": 1.0,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 0.5,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 1.0,
+    "Q9": 1.0,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 0.958,
+   "distortions": {}
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "present"
+   },
+   "Q3": {
+    "q3a": "weakened"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "present",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "present"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "present"
+   }
+  }
+ },
+ {
+  "key": "F2_s1_pkt-766e9734",
+  "family": "F2",
+  "seed": "s1",
+  "variant": "B_poor_ordering.md",
+  "parse_ok": true,
+  "validation_problems": 0,
+  "dims": {
+   "problem": 4,
+   "motivation": 2,
+   "research_question": 4,
+   "contribution": 4,
+   "method": 3,
+   "experiment": 3,
+   "result": 4,
+   "interpretation": 4,
+   "limitation": 4,
+   "narrative_coherence": 3,
+   "terminology": 4,
+   "logical_flow": 3,
+   "evidence_traceability": 3,
+   "figure_table": 2,
+   "claim_evidence_alignment": 4,
+   "unsupported_inference": 4,
+   "redundancy": 4,
+   "cognitive_load": 4,
+   "orientation": 3,
+   "so_what": 4
+  },
+  "n_inference_issues": 3,
+  "inference_kinds": [
+   "limitation_not_respected",
+   "overgeneralization",
+   "selective_presentation"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 0,
+    "present": 18,
+    "overstated": 0,
+    "contradicted": 0,
+    "weakened": 1
+   },
+   "RR": 0.974,
+   "DR": 0.0,
+   "IR": 0.0,
+   "MMF": 0.974,
+   "CoreRR": 0.944,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 1.0,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 1.0,
+    "Q9": 1.0,
+    "Q10": 0.5,
+    "Q11": 1.0,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 0.958,
+   "distortions": {}
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "present"
+   },
+   "Q3": {
+    "q3a": "present"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "present",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "weakened"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "present"
+   }
+  }
+ },
+ {
+  "key": "F2_s1_pkt-84ad5868",
+  "family": "F2",
+  "seed": "s1",
+  "variant": "D_result_dumping.md",
+  "parse_ok": true,
+  "validation_problems": 6,
+  "dims": {
+   "problem": 3,
+   "motivation": 2,
+   "research_question": 5,
+   "contribution": 3,
+   "method": 3,
+   "experiment": 2,
+   "result": 4,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 4,
+   "logical_flow": 4,
+   "evidence_traceability": 4,
+   "claim_evidence_alignment": 4,
+   "unsupported_inference": 4,
+   "redundancy": 5,
+   "cognitive_load": 5,
+   "orientation": 3
+  },
+  "n_inference_issues": 4,
+  "inference_kinds": [
+   "overgeneralization",
+   "overstrong_language",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 1,
+    "present": 14,
+    "overstated": 0,
+    "contradicted": 1,
+    "weakened": 3
+   },
+   "RR": 0.816,
+   "DR": 0.053,
+   "IR": 0.0,
+   "MMF": 0.763,
+   "CoreRR": 1.0,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 0.5,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 0.0,
+    "Q9": 0.75,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 0.5
+   },
+   "RR_question_macro": 0.812,
+   "distortions": {
+    "Q8": [
+     "q8b"
+    ]
+   }
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "present"
+   },
+   "Q3": {
+    "q3a": "weakened"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "absent",
+    "q8b": "contradicted"
+   },
+   "Q9": {
+    "q9a": "weakened",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "present"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "weakened"
+   }
+  }
+ },
+ {
+  "key": "F2_s1_pkt-c0b734ff",
+  "family": "F2",
+  "seed": "s1",
+  "variant": "F_buried_contribution.md",
+  "parse_ok": true,
+  "validation_problems": 0,
+  "dims": {
+   "problem": 2,
+   "motivation": 2,
+   "research_question": 1,
+   "contribution": 2,
+   "method": 2,
+   "experiment": 2,
+   "result": 3,
+   "interpretation": 4,
+   "limitation": 4,
+   "narrative_coherence": 2,
+   "terminology": 4,
+   "logical_flow": 3,
+   "evidence_traceability": 2,
+   "figure_table": 1,
+   "claim_evidence_alignment": 3,
+   "unsupported_inference": 3,
+   "redundancy": 4,
+   "cognitive_load": 3,
+   "orientation": 4,
+   "so_what": 3
+  },
+  "n_inference_issues": 4,
+  "inference_kinds": [
+   "overgeneralization",
+   "selective_presentation"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 1,
+    "present": 18,
+    "overstated": 0,
+    "contradicted": 0,
+    "weakened": 0
+   },
+   "RR": 0.947,
+   "DR": 0.0,
+   "IR": 0.0,
+   "MMF": 0.947,
+   "CoreRR": 1.0,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 0.0,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 1.0,
+    "Q9": 1.0,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 0.917,
+   "distortions": {}
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "present"
+   },
+   "Q3": {
+    "q3a": "absent"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "present",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "present"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "present"
+   }
+  }
+ },
+ {
+  "key": "F2_s1_pkt-cb16d676",
+  "family": "F2",
+  "seed": "s1",
+  "variant": "E_unsupported_interpretation.md",
+  "parse_ok": true,
+  "validation_problems": 0,
+  "dims": {
+   "problem": 2,
+   "motivation": 1,
+   "research_question": 2,
+   "contribution": 2,
+   "method": 2,
+   "experiment": 1,
+   "result": 2,
+   "interpretation": 0,
+   "limitation": 0,
+   "narrative_coherence": 3,
+   "terminology": 2,
+   "logical_flow": 1,
+   "evidence_traceability": 2,
+   "figure_table": 2,
+   "claim_evidence_alignment": 0,
+   "unsupported_inference": 0,
+   "redundancy": 5,
+   "cognitive_load": 4,
+   "orientation": 1,
+   "so_what": 1
+  },
+  "n_inference_issues": 10,
+  "inference_kinds": [
+   "causal_overreach",
+   "limitation_not_respected",
+   "overgeneralization",
+   "overstrong_language",
+   "selective_presentation",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 3,
+    "present": 10,
+    "overstated": 2,
+    "contradicted": 1,
+    "weakened": 3
+   },
+   "RR": 0.605,
+   "DR": 0.158,
+   "IR": 0.158,
+   "MMF": 0.368,
+   "CoreRR": 0.889,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 0.0,
+    "Q3": 0.0,
+    "Q4": 1.0,
+    "Q5": 0.0,
+    "Q6": 1.0,
+    "Q7": 0.75,
+    "Q8": 0.25,
+    "Q9": 0.5,
+    "Q10": 0.5,
+    "Q11": 1.0,
+    "Q12": 0.0
+   },
+   "RR_question_macro": 0.5,
+   "distortions": {
+    "Q8": [
+     "q8a"
+    ],
+    "Q9": [
+     "q9a"
+    ],
+    "Q12": [
+     "q12a"
+    ]
+   }
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "absent"
+   },
+   "Q3": {
+    "q3a": "absent"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "absent"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "weakened",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "overstated",
+    "q8b": "weakened"
+   },
+   "Q9": {
+    "q9a": "contradicted",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "weakened"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "overstated"
+   }
+  }
+ },
+ {
+  "key": "F2_s1_pkt-e2bf3043",
+  "family": "F2",
+  "seed": "s1",
+  "variant": "C_jargon.md",
+  "parse_ok": true,
+  "validation_problems": 1,
+  "dims": {
+   "problem": 4,
+   "motivation": 3,
+   "research_question": 5,
+   "contribution": 4,
+   "method": 3,
+   "experiment": 3,
+   "result": 4,
+   "interpretation": 4,
+   "limitation": 5,
+   "narrative_coherence": 5,
+   "terminology": 2,
+   "logical_flow": 5,
+   "evidence_traceability": 4,
+   "figure_table": 4,
+   "claim_evidence_alignment": 5,
+   "unsupported_inference": 3,
+   "redundancy": 5,
+   "cognitive_load": 4,
+   "orientation": 5,
+   "so_what": 5
+  },
+  "n_inference_issues": 2,
+  "inference_kinds": [
+   "overgeneralization",
+   "unsupported_conclusion"
+  ],
+  "recon": {
+   "nuggets": 19,
+   "counts": {
+    "absent": 0,
+    "present": 18,
+    "overstated": 0,
+    "contradicted": 0,
+    "weakened": 1
+   },
+   "RR": 0.974,
+   "DR": 0.0,
+   "IR": 0.0,
+   "MMF": 0.974,
+   "CoreRR": 0.944,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 1.0,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 1.0,
+    "Q9": 1.0,
+    "Q10": 0.5,
+    "Q11": 1.0,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 0.958,
+   "distortions": {}
+  },
+  "grading_problems": [],
+  "grader1_labels": {
+   "Q1": {
+    "q1a": "present"
+   },
+   "Q2": {
+    "q2a": "present"
+   },
+   "Q3": {
+    "q3a": "present"
+   },
+   "Q4": {
+    "q4a": "present",
+    "q4b": "present"
+   },
+   "Q5": {
+    "q5a": "present"
+   },
+   "Q6": {
+    "q6a": "present",
+    "q6b": "present"
+   },
+   "Q7": {
+    "q7a": "present",
+    "q7b": "present"
+   },
+   "Q8": {
+    "q8a": "present",
+    "q8b": "present"
+   },
+   "Q9": {
+    "q9a": "present",
+    "q9b": "present"
+   },
+   "Q10": {
+    "q10a": "weakened"
+   },
+   "Q11": {
+    "q11a": "present",
+    "q11b": "present",
+    "q11c": "present"
+   },
+   "Q12": {
+    "q12a": "present"
+   }
+  }
+ }
+]

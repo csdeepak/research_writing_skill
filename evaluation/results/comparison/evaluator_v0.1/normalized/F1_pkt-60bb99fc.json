@@ -1,0 +1,597 @@
+{
+ "reconstruction": {
+  "packet_id": "pkt-60bb99fc",
+  "answers": {
+   "Q1": {
+    "answer": "The paper addresses the absence of a general-purpose foundation model for image segmentation. Unlike NLP, where web-scale text enables such models, segmentation masks are expensive to trace at pixel precision and not naturally abundant online, so the standard web-scale data-collection recipe is inapplicable and no general promptable segmentation model has existed.",
+    "locations": [
+     "Abstract",
+     "§1.1",
+     "§4.1"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q2": {
+    "answer": "Foundation models pre-trained on broad data have transformed NLP and vision-language (e.g., CLIP) via prompt-based zero-shot transfer. Segmentation underlies scene understanding, medical imaging, robotics, and most vision pipelines, so bringing the foundation-model paradigm to segmentation is highly valuable but blocked by data scarcity.",
+    "locations": [
+     "Abstract",
+     "§1.1"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q3": {
+    "answer": "Central question: can a promptable segmentation task, a model architecture designed for amortized inference, and a scalable data engine together produce a zero-shot foundation model for image segmentation?",
+    "locations": [
+     "§1.2"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q4": {
+    "answer": "Three tightly coupled contributions: (1) a new task — promptable segmentation; (2) a new model — SAM (image encoder + prompt encoder + mask decoder); (3) a new dataset — SA-1B (11M licensed images, 1.1B masks, 400× larger than prior datasets), collected via a three-stage model-in-the-loop data engine. Both model (Apache 2.0) and dataset are released publicly.",
+    "locations": [
+     "Abstract",
+     "§1.2",
+     "§8"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q5": {
+    "answer": "SAM uses amortization: a heavyweight ViT-H/16 image encoder (MAE-initialized, ~636M params) runs once per image to make a 64×64×256 embedding; a lightweight prompt encoder maps points/boxes/masks/text (text via CLIP text encoder) to embeddings; a two-layer Transformer mask decoder with bidirectional cross-attention and a dynamic linear classifier predicts three masks per prompt with an IoU-confidence head to handle ambiguity. Prompt encoder + decoder run in ~50 ms on CPU. Training uses a simulated-prompt objective with minimum-loss backprop over the three outputs. The SA-1B data engine has three stages (assisted-manual, semi-automatic, fully automatic).",
+    "locations": [
+     "§3.1-§3.5",
+     "§4.2"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q6": {
+    "answer": "Zero-shot transfer experiments across 23 diverse benchmarks: (1) single-point mask evaluation vs RITM (automatic mIoU + human 1–10 study); (2) zero-shot edge detection on BSDS500; (3) object proposals on LVIS (AR@1000); (4) instance segmentation on COCO/LVIS using ViTDet boxes (AP + human study); (5) text-to-mask proof of concept; (6) ablations on data-engine stages, data volume, and encoder scale; (7) Responsible AI analysis of geographic, gender, age, skin-tone, and clothing fairness.",
+    "locations": [
+     "§5.1-§5.7",
+     "§6"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q7": {
+    "answer": "Single point: SAM beats RITM on 16/23 datasets (all 23 with oracle mask selection); human ratings 7–9, above RITM. Edge: ODS .768, near trained HED (.788), far above classical zero-shot (Canny .600). Proposals: AR@1000 59.3 vs supervised ViTDet-H 63.0, matching/surpassing on medium/large/frequent/common/rare, trailing on small. Instance: 46.5 COCO AP / 44.7 LVIS AP, trailing ViTDet-H by 4.5/1.9, but human raters preferred SAM (8.1 vs 7.9). Ablations: automatic-only training loses only ~0.5 mIoU; 1M images ≈ full 11M; ViT-H > ViT-B, marginal over ViT-L.",
+    "locations": [
+     "§5.2-§5.5",
+     "§5.7",
+     "Tables 1-3"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q8": {
+    "answer": "The authors interpret SAM's underperformance on automatic ground-truth metrics as artifacts of those metrics: they penalize valid-but-different interpretations of ambiguous prompts, and supervised baselines exploit dataset-specific annotation conventions (COCO/LVIS mask styles). Human intrinsic-quality ratings therefore favor SAM. The oracle-vs-confidence gap is attributed mainly to genuine prompt ambiguity (with possible confidence-head miscalibration). Supervised training on the scalable SA-1B, not the MAE init, is credited as the primary source of capability.",
+    "locations": [
+     "§5.2",
+     "§5.5",
+     "§7.1"
+    ],
+    "confidence": 4,
+    "missing": "No controlled experiment isolates annotation-convention bias (authors acknowledge this)."
+   },
+   "Q9": {
+    "answer": "Limitations: misses fine structures / hallucinates small components; less crisp boundaries than iterative-crop methods; outperformed by dedicated interactive methods with many prompts; end-to-end inference (heavy ViT-H) is not real-time; no clear prompting strategy for semantic/panoptic segmentation; text-to-mask not yet robust; domain-specific tools expected to outperform SAM. Clothing segmentation shows a significant gender gap.",
+    "locations": [
+     "§7.3",
+     "§6",
+     "§5.6"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q10": {
+    "answer": "SA-1B: 11M high-resolution licensed images (avg 3300×4950, released at 1500px shortest side) with 1.1B masks (99.1% fully automatic in Stage 3), ~100 masks/image, 11× more images and 400× more masks than Open Images. Quality check on 500 images (~50k masks): 94% of auto-vs-human-corrected pairs >90% IoU, 97% >75% IoU.",
+    "locations": [
+     "§4.3"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q11": {
+    "answer": "Baselines: RITM (primary interactive baseline), plus SimpleClick and FocalClick for multi-point; HED and EDETR (trained) and Canny, Felzenszwalb & Huttenlocher, Sobel (classical zero-shot) for edges; ViTDet-H with cascade Mask R-CNN (fully supervised) for proposals and instance segmentation; LVIS ground-truth masks in the human study.",
+    "locations": [
+     "§5.2-§5.5",
+     "Tables 1-3"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q12": {
+    "answer": "Significance: SAM demonstrates that a promptable, amortized, composable segmentation model trained on data-engine-generated scale can transfer zero-shot across five task types and 23 domains, producing masks humans rate as competitive with or preferred over supervised methods. Public release aims to make SAM a composable building block for larger vision systems; lasting foundational impact depends on community adoption and progress on semantic/panoptic prompting, fine structures, and text-to-mask robustness.",
+    "locations": [
+     "§7.2",
+     "§8",
+     "Abstract"
+    ],
+    "confidence": 5,
+    "missing": ""
+   }
+  }
+ },
+ "diagnostics": {
+  "packet_id": "pkt-60bb99fc",
+  "binding_personas": [
+   "A",
+   "B",
+   "E"
+  ],
+  "findings": [
+   {
+    "dimension": "problem",
+    "score": 5,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§1.1",
+     "paragraph": "2",
+     "quote": "segmentation masks must be traced by human annotators at pixel precision, making them expensive to collect"
+    },
+    "observed": "The core obstacle (mask scarcity, no promptable model) is stated crisply and early.",
+    "reader_struggle": "None; adjacent readers immediately grasp the gap.",
+    "likely_consequence": "Reader oriented to why the work is non-trivial.",
+    "revision_principle": "Preserve; problem framing is exemplary."
+   },
+   {
+    "dimension": "motivation",
+    "score": 5,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§1.1",
+     "paragraph": "1",
+     "quote": "This foundation model paradigm ... has extended to vision-language domains through models such as CLIP"
+    },
+    "observed": "Motivation is grounded in a familiar NLP/CLIP analogy accessible to adjacent readers.",
+    "reader_struggle": "Minimal.",
+    "likely_consequence": "Strong buy-in.",
+    "revision_principle": "Keep the analogy-driven motivation."
+   },
+   {
+    "dimension": "research_question",
+    "score": 5,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§1.2",
+     "paragraph": "1",
+     "quote": "can a promptable segmentation task, a model architecture designed for amortized inference, and a scalable data engine together produce a zero-shot foundation model"
+    },
+    "observed": "A single explicit research question binds the three contributions.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Clear evaluative lens for the rest of the paper.",
+    "revision_principle": "Preserve explicit question framing."
+   },
+   {
+    "dimension": "contribution",
+    "score": 5,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§1.2",
+     "paragraph": "2",
+     "quote": "These components are entangled by design"
+    },
+    "observed": "Three contributions enumerated and their interdependence made explicit.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Reader understands the coupling of task/model/data.",
+    "revision_principle": "Keep."
+   },
+   {
+    "dimension": "method",
+    "score": 5,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§3.4",
+     "paragraph": "1",
+     "quote": "a dynamically generated linear classifier — whose weights are produced by an MLP applied to an output token"
+    },
+    "observed": "Architecture described at a level enabling reconstruction, including the dynamic-weight amortization rationale.",
+    "reader_struggle": "Adjacent reader may need to re-read the bidirectional cross-attention description, but it is complete.",
+    "likely_consequence": "Method is reproducible in outline.",
+    "revision_principle": "Consider a small architecture figure to reduce load (none provided)."
+   },
+   {
+    "dimension": "experiment",
+    "score": 5,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§5.1",
+     "paragraph": "1",
+     "quote": "SAM receives no images, annotations, or gradient updates from any evaluation benchmark"
+    },
+    "observed": "Zero-shot protocol is explicitly and strictly defined; metrics are defined inline.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Verifier can trust the transfer claims are genuinely zero-shot.",
+    "revision_principle": "Keep the protocol statement prominent."
+   },
+   {
+    "dimension": "result",
+    "score": 4,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§5.2",
+     "paragraph": "2",
+     "quote": "SAM outperforms RITM on 16 of 23 datasets by mIoU, with gains ranging up to ~47 IoU points"
+    },
+    "observed": "Results reported with counts and ranges rather than a full per-dataset table.",
+    "reader_struggle": "Verifier cannot see the per-dataset distribution or the 7 losing datasets' magnitudes.",
+    "likely_consequence": "Slightly reduced traceability of the aggregate claim.",
+    "revision_principle": "Add a per-dataset appendix table or plot for §5.2."
+   },
+   {
+    "dimension": "interpretation",
+    "score": 4,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§5.5",
+     "paragraph": "3",
+     "quote": "this reversal stems in part from annotation bias"
+    },
+    "observed": "Interpretation of the human-vs-automatic reversal is plausible and appropriately hedged ('in part', 'not uniquely confirmed').",
+    "reader_struggle": "Reader must accept a causal story not directly tested.",
+    "likely_consequence": "Acceptable given hedging; low risk of overclaim.",
+    "revision_principle": "Retain the explicit acknowledgment that no controlled experiment isolates the bias."
+   },
+   {
+    "dimension": "limitation",
+    "score": 5,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§7.3",
+     "paragraph": "1",
+     "quote": "SAM is not a complete or universal segmentation solution."
+    },
+    "observed": "Limitations are concrete, enumerated, and tied back to specific evaluation observations.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Balanced impression; trust increased.",
+    "revision_principle": "Keep the itemized limitation list."
+   },
+   {
+    "dimension": "narrative_coherence",
+    "score": 5,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§1.2",
+     "paragraph": "2",
+     "quote": "The remainder of this paper describes each component"
+    },
+    "observed": "Task→model→data→experiments→RAI→discussion flow mirrors the three-contribution thesis consistently.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Easy to follow end-to-end.",
+    "revision_principle": "Preserve structure."
+   },
+   {
+    "dimension": "terminology",
+    "score": 5,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§2.1",
+     "paragraph": "1",
+     "quote": "The standard quality metric is Intersection over Union (IoU)"
+    },
+    "observed": "Subfield terms (IoU, AP, mIoU, instance/semantic/panoptic, NMS, Sobel, MAE) are defined inline for adjacent readers.",
+    "reader_struggle": "Very low; primer sections do heavy lifting.",
+    "likely_consequence": "Adjacent audience fully served.",
+    "revision_principle": "Model example of audience-aware terminology handling."
+   },
+   {
+    "dimension": "logical_flow",
+    "score": 4,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§4.2",
+     "paragraph": "3",
+     "quote": "threshold 88.0 ... IoU ≥ 95.0"
+    },
+    "observed": "Stage-3 filtering thresholds appear without derivation or ablation of their sensitivity.",
+    "reader_struggle": "Verifier cannot tell whether these magic numbers are robust or tuned.",
+    "likely_consequence": "Minor gap in the automation-quality logic.",
+    "revision_principle": "Note how thresholds were chosen or their sensitivity."
+   },
+   {
+    "dimension": "evidence_traceability",
+    "score": 4,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§5.7",
+     "paragraph": "2",
+     "quote": "Subsampling SA-1B to 1 million images ... achieves results comparable to the full 11 million"
+    },
+    "observed": "Ablation conclusions are stated qualitatively without the supporting numbers/table.",
+    "reader_struggle": "Verifier cannot check 'comparable' or 'large decline' quantitatively.",
+    "likely_consequence": "Weakens verifiability of ablation claims.",
+    "revision_principle": "Provide the ablation table with mIoU values."
+   },
+   {
+    "dimension": "figure_table",
+    "score": 5,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§5.3",
+     "paragraph": "3",
+     "quote": "Table 1. Zero-shot edge detection on BSDS500."
+    },
+    "observed": "Tables 1–3 are clearly captioned, separate trained vs zero-shot rows, and include per-size/per-frequency breakdowns.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Strong support for headline claims.",
+    "revision_principle": "Keep; add missing cells (dashes explained) if possible."
+   },
+   {
+    "dimension": "claim_evidence_alignment",
+    "score": 4,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "Abstract",
+     "paragraph": "1",
+     "quote": "remain competitive with fully supervised methods on measures of intrinsic mask quality"
+    },
+    "observed": "Abstract claim is well-aligned with §5.5 human study and appropriately paired with the caveat about trailing on automatic AP.",
+    "reader_struggle": "Reader must note the 8.1-vs-7.9 gap is tiny; abstract says 'competitive' which is defensible.",
+    "likely_consequence": "Low overclaim risk due to explicit trade-off framing.",
+    "revision_principle": "Retain the dual claim (human-competitive / auto-trailing)."
+   },
+   {
+    "dimension": "unsupported_inference",
+    "score": 3,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§5.5",
+     "paragraph": "2",
+     "quote": "SAM a mean rating of 8.1 ± 0.07 vs. ViTDet-H's 7.9 ± 0.08"
+    },
+    "observed": "A ranking 'reversal' is asserted from an 8.1 vs 7.9 difference; the paper itself flags no significance test.",
+    "reader_struggle": "Verifier questions whether the reversal is real given near-touching CIs.",
+    "likely_consequence": "Could be read as slightly overstated if 'reversal' is emphasized.",
+    "revision_principle": "The paper already hedges ('suggestive rather than definitively significant'); ensure that hedge travels with every restatement (e.g., abstract)."
+   },
+   {
+    "dimension": "redundancy",
+    "score": 3,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§4.3",
+     "paragraph": "2",
+     "quote": "11× larger in images and 400× larger in masks"
+    },
+    "observed": "The 400×/scale and ~50 ms latency figures are repeated across abstract, intro, §3, §4, and conclusion.",
+    "reader_struggle": "Mild fatigue from repeated headline statistics.",
+    "likely_consequence": "Slight cognitive-load cost, no comprehension harm.",
+    "revision_principle": "Trim redundant restatements of the same two statistics."
+   },
+   {
+    "dimension": "cognitive_load",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§3.4",
+     "paragraph": "1",
+     "quote": "self-attention over prompt tokens; ... cross-attention from the image embedding to prompt tokens"
+    },
+    "observed": "Dense architectural prose with no accompanying diagram increases load for adjacent readers.",
+    "reader_struggle": "Adjacent reader must build a mental model of bidirectional attention unaided.",
+    "likely_consequence": "Some readers skim the decoder details.",
+    "revision_principle": "Add an architecture schematic to offload working memory."
+   },
+   {
+    "dimension": "orientation",
+    "score": 5,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§2.1",
+     "paragraph": "1",
+     "quote": "For readers from adjacent ML fields: image segmentation asks a model to return a pixel-level binary mask"
+    },
+    "observed": "Explicit 'primer' orientation cues target the stated audience precisely.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Adjacent readers never lost.",
+    "revision_principle": "Exemplary; retain."
+   },
+   {
+    "dimension": "so_what",
+    "score": 5,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§7.2",
+     "paragraph": "1",
+     "quote": "SAM can be inserted as the segmentation module in larger systems"
+    },
+    "observed": "Broader significance (composability, foundational infrastructure) is argued concretely with examples.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Reader understands downstream value beyond benchmarks.",
+    "revision_principle": "Keep the composability framing."
+   },
+   {
+    "dimension": "evidence_traceability",
+    "score": 4,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§4.3",
+     "paragraph": "3",
+     "quote": "94% of pairs exceeded 90% IoU ... prior work estimates inter-annotator consistency at 85–91% IoU"
+    },
+    "observed": "The paper explicitly warns the two numbers are not commensurable, protecting traceability.",
+    "reader_struggle": "Reader must resist the natural but invalid direct comparison.",
+    "likely_consequence": "Low risk due to the explicit caveat.",
+    "revision_principle": "Retain caveat; if possible report SA-1B mean IoU for a like-for-like comparison."
+   },
+   {
+    "dimension": "result",
+    "score": 4,
+    "persona": [
+     "A"
+    ],
+    "location": {
+     "section": "§6",
+     "paragraph": "4",
+     "quote": "81.0 ± 1.2 for masculine vs. 76.3 ± 1.1 for feminine perceived gender"
+    },
+    "observed": "Fairness finding reported with CIs and correctly identified as statistically significant (disjoint CIs).",
+    "reader_struggle": "None.",
+    "likely_consequence": "Credible, actionable limitation.",
+    "revision_principle": "Keep quantified fairness reporting."
+   }
+  ],
+  "inference_issues": [
+   {
+    "kind": "overstrong_language",
+    "location": {
+     "section": "§5.5",
+     "paragraph": "2",
+     "quote": "the human study reverses this ranking"
+    },
+    "claim_text": "Human study 'reverses' the instance-segmentation ranking (8.1 vs 7.9).",
+    "missing_link": "No significance test; CIs (±0.07/±0.08) nearly touch. 'Reversal' overstates a near-tie, though the paper does add a hedge in the following sentences."
+   },
+   {
+    "kind": "causal_overreach",
+    "location": {
+     "section": "§5.5",
+     "paragraph": "3",
+     "quote": "this reversal stems in part from annotation bias"
+    },
+    "claim_text": "Annotation-convention bias causes SAM's higher human ratings.",
+    "missing_link": "No controlled experiment isolates annotation-convention bias from other mask-style differences; the paper acknowledges this, so the causal attribution remains unconfirmed."
+   },
+   {
+    "kind": "selective_presentation",
+    "location": {
+     "section": "§5.6",
+     "paragraph": "1",
+     "quote": "Qualitative results demonstrate segmentation of objects described by simple phrases"
+    },
+    "claim_text": "Text-to-mask capability is demonstrated.",
+    "missing_link": "Only qualitative examples are shown, with no quantitative benchmark or failure-rate; capability breadth is unverifiable (paper labels it a proof of concept)."
+   },
+   {
+    "kind": "overgeneralization",
+    "location": {
+     "section": "§8",
+     "paragraph": "1",
+     "quote": "generalizes zero-shot across five qualitatively different task types and 23 diverse image domains"
+    },
+    "claim_text": "Broad zero-shot generalization across tasks and domains.",
+    "missing_link": "Coverage excludes semantic/panoptic segmentation (no prompting strategy) and text-to-mask is unreliable; the generality claim is narrower than 'the full segmentation task space' (partly caveated in §7.1)."
+   },
+   {
+    "kind": "unsupported_conclusion",
+    "location": {
+     "section": "§4.2",
+     "paragraph": "4",
+     "quote": "Confident masks are selected by the model's predicted IoU score (threshold 88.0), and stable masks are retained"
+    },
+    "claim_text": "Fully automatic masks are high quality via fixed thresholds.",
+    "missing_link": "No sensitivity analysis or justification for the specific thresholds (88.0, IoU≥95.0) is given, so their contribution to the reported 94%/97% quality is not established."
+   }
+  ],
+  "objective_discrepancies": [
+   "Objective targets adjacent ML researchers; the paper serves them well via primers, but §3.4's decoder description lacks the architecture figure that would most help this audience.",
+   "Several quantitative claims relied on by the narrative (per-dataset single-point mIoU in §5.2; ablation numbers in §5.7) are stated only qualitatively, which weakens the verifying reviewer (persona E) objective even while satisfying the expository objective for personas A/B."
+  ],
+  "injection_suspected": []
+ },
+ "dim_scores": {
+  "problem": 5,
+  "motivation": 5,
+  "research_question": 5,
+  "contribution": 5,
+  "method": 5,
+  "experiment": 5,
+  "result": 4,
+  "interpretation": 4,
+  "limitation": 5,
+  "narrative_coherence": 5,
+  "terminology": 5,
+  "logical_flow": 4,
+  "evidence_traceability": 4,
+  "figure_table": 5,
+  "claim_evidence_alignment": 4,
+  "unsupported_inference": 3,
+  "redundancy": 3,
+  "cognitive_load": 4,
+  "orientation": 5,
+  "so_what": 5
+ },
+ "validation_problems": [
+  "diagnostics $.findings[0].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[1].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[2].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[3].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[4].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[5].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[6].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[7].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[8].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[9].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[10].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[11].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[12].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[13].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[14].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[15].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[16].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[17].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[18].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[19].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[20].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[21].location.paragraph: expected type ['integer'], got str"
+ ]
+}

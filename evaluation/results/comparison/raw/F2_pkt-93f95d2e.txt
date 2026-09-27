@@ -1,0 +1,316 @@
+{
+  "reconstruction": {
+    "packet_id": "pkt-93f95d2e",
+    "answers": {
+      "Q1": {
+        "answer": "The paper presents OpenHands, an open-source platform for building and evaluating AI agents that interact with the world through software development actions (writing/executing code, running shell commands, browsing the web). It addresses the lack of shared, open infrastructure for building, comparing, and extending LLM-backed agents.",
+        "locations": ["§1/para 1-4", "§Abstract"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q2": {
+        "answer": "Software is the primary medium through which humans shape the world; if AI can autonomously develop, debug, and deploy software, it could unlock new levels of automation across many domains simultaneously. Current agent research is fragmented — individual systems are brittle, narrowly scoped, or expensive to reproduce — slowing cumulative progress.",
+        "locations": ["§1/para 1-2", "§1/para 3"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q3": {
+        "answer": "Existing frameworks each address only part of the problem: LangChain provides modular blocks but limited runtime support; AutoGen enables multi-agent conversation but uses stateless command execution; SWE-Agent defines a strong Agent-Computer Interface but is narrowly focused on software engineering. None combines a safe sandboxed execution environment, reusable skill library, multi-agent collaboration, GUI, and broad evaluation framework in a single system.",
+        "locations": ["§1/para 4-5"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q4": {
+        "answer": "The authors built OpenHands, a platform with four core capabilities: (1) an event-stream architecture connecting agents, environments, and UIs; (2) a Docker-sandboxed runtime executing arbitrary agent-generated code (Python, bash, browser); (3) an extensible AgentSkills library of reusable utilities (file editing, multi-modal parsing, code search); (4) multi-agent delegation for cooperative task solving. They integrated 15 established benchmarks and evaluated the default CodeActAgent across all of them without task-specific prompt engineering.",
+        "locations": ["§Abstract", "§2", "§3", "§4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q5": {
+        "answer": "The design treats programming languages as a universal action space because they are expressive enough to call any API, orchestrate any tool, and manipulate any digital artifact. The event-stream architecture decouples components for interchangeability. Docker sandboxing provides safe execution with support for arbitrary base images. AgentSkills are plain Python functions to lower contribution barriers. Multi-agent delegation enables specialization without requiring a single agent to master all tasks.",
+        "locations": ["§1/para 5", "§2.1", "§2.2", "§2.3", "§2.4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q6": {
+        "answer": "The authors evaluated the CodeActAgent (and BrowsingAgent, GPTSwarm) on 15 benchmarks across three categories: Software Engineering (SWE-Bench Lite, HumanEvalFix, BIRD, BioCoder, ML-Bench, Gorilla APIBench, ToolQA), Web Browsing (WebArena, MiniWoB++), and Miscellaneous Assistance (GAIA, GPQA, AgentBench, MINT, Entity Deduction Arena, ProofWriter). All evaluations used the same unmodified CodeActAgent without task-specific prompt engineering. Comparisons are against open-source reproducible baselines without manual prompt engineering on benchmark content.",
+        "locations": ["§4.1", "§4.2", "§4.3", "§4.4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q7": {
+        "answer": "Key results: SWE-Bench Lite: 26.0% resolve rate with claude-3-5-sonnet (competitive with specialized SWE systems); GPQA Diamond: 52.0% with claude-3-5-sonnet / 53.1% with GPT-4o (substantially exceeding GPT-4 CoT at 38.8%); WebArena: 15.5% success with claude-3-5-sonnet (competitive among domain-general prompting); HumanEvalFix: 79.3% with GPT-4o (significantly outperforming non-agentic approaches); ML-Bench: 76.5% with GPT-4o vs 42.6% for GPT-4o prompting alone; ProofWriter: 78.8% with GPT-4o (near Logic-LM's 79.6% with symbolic solver).",
+        "locations": ["§4.2", "§4.3", "§4.4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q8": {
+        "answer": "The results establish that a single generalist agent (CodeActAgent) using a software-centric action space (code execution, bash, browser) can achieve competitive performance across diverse task domains — software engineering, web browsing, and general assistance — without per-task customization. The platform's architecture supports this generality. The evaluation framework enables systematic tracking across 15 benchmarks.",
+        "locations": ["§4.5", "§Abstract", "§8"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q9": {
+        "answer": "The results do NOT establish that the generalist agent matches or exceeds specialized agents in their target domains (specialists often match or exceed it). They do not establish production readiness — agents still struggle with complex long-horizon tasks and cannot reliably handle high-stakes settings. They do not establish that the platform itself causes better performance — it's an infrastructure paper, not an agent-design ablation. They do not establish human-level web browsing (15.5% vs human-level performance). They do not establish superiority over all baselines on all benchmarks (e.g., MINT code subset: 50.0% vs baseline 59.6%).",
+        "locations": ["§4.5", "§7", "§4.4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q10": {
+        "answer": "The primary contribution is OpenHands as a community-driven open platform that combines (a) an event-stream architecture, (b) Docker-sandboxed runtime with arbitrary image support, (c) extensible AgentSkills library, (d) multi-agent delegation, and (e) a broad evaluation framework (15 benchmarks) in a single system — and demonstrates that a single unmodified generalist agent achieves competitive performance across diverse domains using a software-centric action space.",
+        "locations": ["§1/para 6", "§Abstract", "§8"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q11": {
+        "answer": "Main limitations: (1) Long-file editing remains difficult — agents struggle to load/process large codebase context. (2) Web browsing performance is substantially below human-level due to precise low-level interaction requirements and long-horizon planning difficulty. (3) Multi-modal support relies on external model calls rather than native context integration, introducing latency and limiting integration. (4) Automatic workflow generation (moving from handcrafted pipelines to learned/optimized workflows) is an open direction. (5) Agents cannot yet reliably handle complex long-horizon tasks in high-stakes production settings.",
+        "locations": ["§7"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q12": {
+        "answer": "OpenHands is an open platform showing that a single generalist agent using code as a universal action space can competitively handle software engineering, web browsing, and general assistance tasks — providing shared infrastructure for agentic AI research rather than optimizing a single agent for leaderboards.",
+        "locations": ["§8", "§4.5", "§Abstract"],
+        "confidence": 5,
+        "missing": ""
+      }
+    }
+  },
+  "diagnostics": {
+    "packet_id": "pkt-93f95d2e",
+    "binding_personas": ["A", "B", "E"],
+    "findings": [
+      {
+        "dimension": "problem",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 1, "quote": "Software is arguably the most powerful medium through which humans currently shape the world"},
+        "observed": "The problem is clearly articulated: lack of shared open infrastructure for building, comparing, and extending LLM-backed agents that interact via software.",
+        "reader_struggle": "No struggle — the problem is motivated from first principles (software as universal medium) and framed as a field-level gap.",
+        "likely_consequence": "Readers immediately understand why this platform is needed and what gap it fills.",
+        "revision_principle": "Maintain the first-principles framing; it grounds the work beyond leaderboard chasing."
+      },
+      {
+        "dimension": "motivation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 3, "quote": "Individual research systems are often brittle, narrowly scoped, or too expensive to reproduce"},
+        "observed": "Motivation connects fragmentation of current research to the need for community infrastructure, citing concrete pain points (brittleness, narrow scope, cost).",
+        "reader_struggle": "Adjacent researchers (B) can immediately relate to the reproduction cost problem; domain experts (A) recognize the fragmentation.",
+        "likely_consequence": "Readers accept this as a genuine infrastructure need, not just another agent paper.",
+        "revision_principle": "Keep the motivation tied to community-level progress, not just the authors' agent performance."
+      },
+      {
+        "dimension": "research_question",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 1, "quote": "if we can build AI systems that develop, debug, and deploy software autonomously"},
+        "observed": "The implicit research question is: can a single platform with a software-centric action space support a generalist agent that performs competitively across diverse domains? This is clear from the evaluation design but not explicitly stated as a question.",
+        "reader_struggle": "Verifying reviewer (E) may want an explicit question to anchor the evaluation claims; the paper implies it through the evaluation design rather than stating it.",
+        "likely_consequence": "Readers infer the question from the evaluation structure, but an explicit statement would strengthen claim-evidence alignment.",
+        "revision_principle": "State the core research question explicitly in the introduction to anchor the evaluation."
+      },
+      {
+        "dimension": "contribution",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 6, "quote": "The platform's key technical contributions are:"},
+        "observed": "Five technical contributions are clearly enumerated (event-stream, Docker runtime, AgentSkills, multi-agent delegation, evaluation framework) plus the community artifact significance.",
+        "reader_struggle": "No struggle — contributions are explicit, scoped, and distinguishable from prior work.",
+        "likely_consequence": "Readers can clearly separate platform contributions from agent performance results.",
+        "revision_principle": "Keep the bulleted contribution list; it serves as a contract for the rest of the paper."
+      },
+      {
+        "dimension": "method",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "2", "paragraph": 1, "quote": "OpenHands is organized around three tightly integrated components"},
+        "observed": "The architecture is described with precise technical detail: event stream semantics, three action primitives, Docker sandbox with three internal services, arbitrary image support with dual-tagging, AgentSkills as plain Python functions, multi-agent delegation via AgentDelegateAction.",
+        "reader_struggle": "Adjacent researchers (B) can implement or extend based on this description; domain experts (A) can assess design choices (e.g., why IPython vs. plain Python).",
+        "likely_consequence": "The method is reproducible and the design rationale is traceable.",
+        "revision_principle": "Preserve the level of implementation detail — it enables both reproduction and informed critique."
+      },
+      {
+        "dimension": "experiment",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.1", "paragraph": 2, "quote": "the same agent (CodeActAgent) is evaluated on all benchmarks without task-specific modifications"},
+        "observed": "Evaluation covers 15 benchmarks across 3 categories with the same unmodified agent — a strong design for testing generality. Baselines are open-source reproducible systems without manual prompt engineering on benchmark content.",
+        "reader_struggle": "Verifying reviewer (E) notes: some baselines use different models (e.g., SWE-Agent uses gpt-4-1106-preview vs CodeActAgent's gpt-4o/claude-3.5-sonnet), making direct comparison imperfect. The paper acknowledges model differences but doesn't control for them systematically.",
+        "likely_consequence": "Readers may overattribute performance differences to architecture rather than model capability.",
+        "revision_principle": "When comparing across systems with different base models, explicitly note the confound and avoid phrasing that implies architectural superiority alone."
+      },
+      {
+        "dimension": "result",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.2", "paragraph": 3, "quote": "OH CodeActAgent v1.8 | claude-3-5-sonnet | 26.0"},
+        "observed": "Results are presented in clear tables with model versions, benchmark subsets, and baseline comparisons. Key numbers are highlighted in text with context (e.g., SWE-Bench Lite cost ~$6,900 for full set).",
+        "reader_struggle": "No struggle — numbers are precise, located, and contextualized.",
+        "likely_consequence": "Readers can verify claims against the tables and assess practical significance.",
+        "revision_principle": "Maintain the table + narrative format; it serves both quick scanning and detailed verification."
+      },
+      {
+        "dimension": "interpretation",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.5", "paragraph": 1, "quote": "the most important finding is that a single unmodified agent — CodeActAgent — achieves competitive performance"},
+        "observed": "The interpretation correctly frames the generality result as the main finding, acknowledges the modest performance cost relative to specialists, and positions this as the right trade-off for research infrastructure.",
+        "reader_struggle": "Verifying reviewer (E) notes the claim 'competitive performance' is reasonable for SWE-Bench and GPQA but WebArena 15.5% is far from human-level — the interpretation could more explicitly calibrate 'competitive' per domain.",
+        "likely_consequence": "Readers may overgeneralize 'competitive' to mean 'near human-level' across all domains.",
+        "revision_principle": "Qualify 'competitive' per benchmark category; distinguish 'competitive with other generalist agents' from 'competitive with human performance'."
+      },
+      {
+        "dimension": "limitation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "7", "paragraph": 1, "quote": "First, agents currently struggle with long-file editing"},
+        "observed": "Limitations are explicitly listed (4 technical + 1 general), specific, and acknowledged as open challenges. They bound the claims appropriately (e.g., web browsing below human-level, not production-ready).",
+        "reader_struggle": "No struggle — limitations are honest, specific, and don't undermine the platform contribution.",
+        "likely_consequence": "Readers trust the claims more because limitations are forthright.",
+        "revision_principle": "Keep limitations concrete and tied to specific system components, not vague 'future work'."
+      },
+      {
+        "dimension": "narrative_coherence",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 5, "quote": "OpenHands treats software — specifically an LLM-backed agent's ability to write and execute code — as the universal interface"},
+        "observed": "The paper follows a clear arc: problem → gap → platform design → agent implementations → broad evaluation → generality finding → limitations → conclusion. Each section builds on the previous.",
+        "reader_struggle": "No struggle — the narrative is logical and signposted.",
+        "likely_consequence": "Readers can follow the argument without backtracking.",
+        "revision_principle": "Maintain the problem-solution-evaluation arc; don't interleave architecture details with results."
+      },
+      {
+        "dimension": "terminology",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "2.1", "paragraph": 2, "quote": "An agent in OpenHands is defined by a single function: it takes the current state ... and returns a single action"},
+        "observed": "Core terms (event stream, action space, AgentSkills, CodeAct, delegation) are defined at first use. Some subfield-specific terms (SWE-Bench, WebArena, GPQA) assume familiarity but are standard in the target audience (adjacent ML researchers).",
+        "reader_struggle": "Newcomers (C) might need brief descriptions of what each benchmark tests, but the binding personas (A, B, E) know them.",
+        "likely_consequence": "Binding personas follow without friction; non-binding personas may need to look up benchmarks.",
+        "revision_principle": "Add a one-sentence descriptor for each benchmark at first mention (e.g., 'SWE-Bench: resolving real GitHub issues') for broader accessibility."
+      },
+      {
+        "dimension": "logical_flow",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "2", "paragraph": 1, "quote": "three tightly integrated components: an agent abstraction ... a runtime environment ... and a skill library"},
+        "observed": "Architecture → AgentHub → Evaluation → Quality Control → Related Work → Limitations → Conclusion. Each section has a clear purpose and transitions are explicit.",
+        "reader_struggle": "No struggle — the flow serves the argument that the platform enables the generality result.",
+        "likely_consequence": "The paper reads as a coherent system description, not a collection of parts.",
+        "revision_principle": "Preserve the top-down system description before diving into evaluation."
+      },
+      {
+        "dimension": "evidence_traceability",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.2", "paragraph": 1, "quote": "All results are reported without the optional 'hint text'"},
+        "observed": "Experimental conditions are well-specified (model versions, subsets, hint text exclusion, zero-shot vs one-shot). However, some details are missing: random seeds, number of runs for stochastic benchmarks, compute budget per task, and whether delegation was used for CodeActAgent on non-web benchmarks.",
+        "reader_struggle": "Verifying reviewer (E) cannot fully reproduce without these details; adjacent researchers (B) may wonder about variance.",
+        "likely_consequence": "Readers trust the reported numbers but cannot assess statistical reliability or reproduce exactly.",
+        "revision_principle": "Report seeds, run counts, compute budgets, and delegation usage per benchmark in an appendix or supplementary material."
+      },
+      {
+        "dimension": "figure_table",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.2", "paragraph": 3, "quote": "SWE-Bench Lite (%)"},
+        "observed": "Tables are clear, well-formatted, and contain all necessary columns (Agent, Model, Score). The benchmark categorization table (§4.1) is helpful. No figures are present in the provided text — only tables.",
+        "reader_struggle": "Tables are self-contained but a system architecture diagram would help visual learners grasp the event-stream/runtime/skills/delegation relationships.",
+        "likely_consequence": "Readers can parse results easily but must mentally construct the architecture from text.",
+        "revision_principle": "Include at least one architecture figure showing component relationships and data flow."
+      },
+      {
+        "dimension": "claim_evidence_alignment",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "Abstract", "paragraph": 1, "quote": "the platform's default CodeAct agent achieves competitive performance — including a 26% resolve rate on SWE-Bench Lite and 52% accuracy on GPQA"},
+        "observed": "The main claims (generality, competitive performance, platform capabilities) are supported by the 15-benchmark evaluation. The claim 'without task-specific prompt engineering' is validated by the consistent agent across benchmarks. However, 'competitive' is not uniformly calibrated across domains (see interpretation).",
+        "reader_struggle": "Verifying reviewer (E) can trace each headline number to a table, but the blanket 'competitive' claim requires per-benchmark verification.",
+        "likely_consequence": "Readers accept the platform contribution but may overestimate agent generality if they don't check per-domain results.",
+        "revision_principle": "Pair each 'competitive' claim with the specific benchmark and baseline it competes with; avoid a single adjective for heterogeneous results."
+      },
+      {
+        "dimension": "unsupported_inference",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.5", "paragraph": 1, "quote": "Purpose-built specialists ... often match or exceed it in their target domain, but they cannot be transferred"},
+        "observed": "The paper claims specialists 'cannot be transferred' but doesn't provide evidence of transfer failure — it's a design assertion. Also, the claim that OpenHands is 'the only system' combining all features (§6) is a strong uniqueness claim that would require a systematic survey to fully support.",
+        "reader_struggle": "Domain expert (A) may know of other systems with overlapping features; the 'only' claim is risky without a feature matrix.",
+        "likely_consequence": "Readers may discount the uniqueness claim if they know counterexamples, reducing credibility.",
+        "revision_principle": "Replace 'only system' with 'among surveyed systems, the only one combining all these features' and provide a feature comparison table in related work."
+      },
+      {
+        "dimension": "redundancy",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4", "paragraph": 1, "quote": "The breadth is intentional: the same agent (CodeActAgent) is evaluated on all benchmarks"},
+        "observed": "No harmful redundancy. Each benchmark result adds a data point to the generality claim. Related work is concise and focused on differentiation. Quality control (§5) adds a distinct software-engineering contribution.",
+        "reader_struggle": "No struggle — every section earns its place.",
+        "likely_consequence": "The paper feels dense but not bloated.",
+        "revision_principle": "Maintain the current density; each benchmark serves the generality argument."
+      },
+      {
+        "dimension": "cognitive_load",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4", "paragraph": 1, "quote": "15 established benchmarks organized into three categories"},
+        "observed": "15 benchmarks in 3 categories is a lot to track. The categorization table helps, but the results sections are dense with numbers. The summary (§4.5) effectively reduces cognitive load by extracting the key pattern.",
+        "reader_struggle": "Adjacent researchers (B) may skim the detailed tables and rely on the summary; verifying reviewer (E) must parse all tables to check claims.",
+        "likely_consequence": "Readers either invest high effort or trust the summary — the summary is accurate, so trust is warranted.",
+        "revision_principle": "Keep the summary section; consider moving detailed per-benchmark tables to an appendix with only summary tables in the main text."
+      },
+      {
+        "dimension": "orientation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 6, "quote": "The platform's key technical contributions are:"},
+        "observed": "The paper orients readers early with a contributions list, a clear architecture overview, and a roadmap (AgentHub, Evaluation, Quality Control). Section headers are descriptive. The reader always knows where they are in the argument.",
+        "reader_struggle": "No struggle — excellent signposting throughout.",
+        "likely_consequence": "Readers can navigate to sections of interest (e.g., just architecture, just results) without reading linearly.",
+        "revision_principle": "Keep the contributions list and descriptive section headers as orientation anchors."
+      },
+      {
+        "dimension": "so_what",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "8", "paragraph": 1, "quote": "OpenHands is a community-driven open platform for building and evaluating AI agents that interact with the world through software"},
+        "observed": "The 'so what' is clear: this is shared infrastructure for the field, not just another agent. The generality result validates the platform's design philosophy. Community adoption metrics (32K stars, 188+ contributors) signal traction.",
+        "reader_struggle": "No struggle — the significance for the research community is explicit.",
+        "likely_consequence": "Readers understand this as a platform paper with a validated design, not an agent paper chasing a leaderboard.",
+        "revision_principle": "Frame the contribution as infrastructure first, agent performance as validation — this distinguishes it from agent-design papers."
+      }
+    ],
+    "inference_issues": [
+      {
+        "kind": "overstrong_language",
+        "location": {"section": "6", "paragraph": 2, "quote": "OpenHands differentiates itself from all of these on two dimensions simultaneously: (a) it is the only system among those surveyed that combines"},
+        "claim_text": "OpenHands is the only system combining sandboxed code execution, full web browser, reusable tool library, multi-agent delegation, GUI, and evaluation framework in a single open platform.",
+        "missing_link": "No systematic feature matrix or survey methodology is provided to support 'only system among those surveyed'. The claim relies on the authors' knowledge rather than presented evidence."
+      },
+      {
+        "kind": "unsupported_conclusion",
+        "location": {"section": "4.5", "paragraph": 1, "quote": "Purpose-built specialists ... often match or exceed it in their target domain, but they cannot be transferred"},
+        "claim_text": "Specialist agents cannot be transferred to other domains.",
+        "missing_link": "The paper shows specialists excel in their target domains but does not present transfer experiments (e.g., trying to use SWE-Agent on WebArena) to demonstrate they 'cannot be transferred'. This is an architectural assertion, not an empirical finding."
+      },
+      {
+        "kind": "selective_presentation",
+        "location": {"section": "4.4", "paragraph": 5, "quote": "On the code subset (136 instances), it achieves 50.0% vs. 59.6% for the baseline"},
+        "claim_text": "CodeActAgent achieves competitive performance across all benchmarks.",
+        "missing_link": "On MINT code subset, the baseline outperforms CodeActAgent (59.6% vs 50.0%). This is reported but not discussed in the summary (§4.5), which emphasizes competitiveness without noting this exception."
+      },
+      {
+        "kind": "overgeneralization",
+        "location": {"section": "Abstract", "paragraph": 1, "quote": "the platform's default CodeAct agent achieves competitive performance — including a 26% resolve rate on SWE-Bench Lite and 52% accuracy on GPQA"},
+        "claim_text": "CodeActAgent achieves competitive performance across diverse tasks.",
+        "missing_link": "WebArena success rate of 15.5% is far from human-level and the paper acknowledges web browsing is 'substantially below human-level' (§7). 'Competitive' means different things in different domains — competitive with other generalist agents vs. competitive with human performance. The abstract glosses this distinction."
+      }
+    ],
+    "objective_discrepancies": [
+      "The objective states the paper is 'meant to present their research project to adjacent machine-learning researchers.' The paper succeeds at this — it provides sufficient technical detail for adjacent researchers to understand the architecture, reproduce the system, and evaluate the generality claim. No significant discrepancy.",
+      "However, the paper includes community metrics (32K stars, 188+ contributors) which are more relevant to an 'adoption/impact' narrative than a pure research presentation. This slightly exceeds the stated objective but doesn't contradict it."
+    ],
+    "injection_suspected": []
+  }
+}

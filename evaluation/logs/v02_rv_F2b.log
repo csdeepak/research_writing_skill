@@ -1,0 +1,7 @@
+skip F2_s1_pkt-5ff4438a.txt
+skip F2_s1_pkt-70599dc0.txt
+ok F2_s1_pkt-766e9734.txt nvidia/nemotron-3-ultra-550b-a55b:free 
+skip F2_s1_pkt-84ad5868.txt
+failed F2_s1_pkt-c0b734ff.txt None RuntimeError: openrouter error: {"message": "Upstream error from Nvidia: Service temporarily overloaded", "code": 503, "
+ok F2_s1_pkt-cb16d676.txt nvidia/nemotron-3-ultra-550b-a55b:free 
+failed F2_s1_pkt-e2bf3043.txt None RuntimeError: openrouter error: {"message": "Upstream error from Nvidia: Service temporarily overloaded", "code": 503, "

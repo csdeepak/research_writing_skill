@@ -1,0 +1,25 @@
+{
+  "missing_items": [
+    {
+      "id": "M001",
+      "description": "No variance (standard deviation, confidence interval) reported for any reference model accuracy result (E009, E010, E013, E016, E020). Single-run results only.",
+      "affects": ["E009", "E010", "E013", "E016", "E020"],
+      "severity": "minor",
+      "action": "Mark results as incomplete; note limitation in paper."
+    },
+    {
+      "id": "M002",
+      "description": "Figure 5 (energy and latency reference results) mentioned in text; figure was damaged in extraction; specific numerical values for latency and energy on NUCLEO-L4R5ZI not available from text alone.",
+      "affects": ["E002"],
+      "severity": "minor",
+      "action": "Cannot include specific reference hardware numbers. Describe measurement procedure instead."
+    },
+    {
+      "id": "M003",
+      "description": "No detailed quantitative comparison of MLPerf Tiny vs. CoreMark/MLMark/MLPerf inference metrics provided; the gap is argued qualitatively.",
+      "affects": ["E035"],
+      "severity": "minor",
+      "action": "Present gap argument as qualitative observation from §3."
+    }
+  ]
+}

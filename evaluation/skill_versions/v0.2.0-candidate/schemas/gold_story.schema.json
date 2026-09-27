@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rce/gold_story.schema.json",
+  "title": "Researcher-approved gold story for reconstruction grading",
+  "type": "object",
+  "required": ["project", "approved_by_researcher", "questions"],
+  "properties": {
+    "project": {"type": "string"},
+    "approved_by_researcher": {"type": "boolean"},
+    "approval_date": {"type": ["string", "null"]},
+    "questions": {
+      "type": "object",
+      "required": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12"],
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["id", "text", "strength"],
+          "properties": {
+            "id": {"type": "string"},
+            "text": {"type": "string"},
+            "strength": {"enum": ["measured", "observed", "derived", "literature", "interpretation",
+                                  "hypothesis", "speculation", "future", "context"]},
+            "evidence_ids": {"type": "array", "items": {"type": "string"}}
+          }
+        }
+      }
+    }
+  }
+}

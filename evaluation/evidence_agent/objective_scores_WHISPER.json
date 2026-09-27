@@ -1,0 +1,90 @@
+{
+ "cheap": {
+  "present": true,
+  "evidence_schema_errors": 1,
+  "n_evidence": 32,
+  "kinds": {
+   "result": 17,
+   "method_detail": 2,
+   "dataset": 1,
+   "observation": 2,
+   "limitation_noted": 3,
+   "hypothesis_stated": 1,
+   "negative_result": 2,
+   "training_detail": 1,
+   "implementation_detail": 1,
+   "assumption": 1,
+   "external_fact": 1
+  },
+  "n_negative_results": 2,
+  "n_limitations_noted": 3,
+  "numbers_checked": 148,
+  "numbers_not_in_source": 5,
+  "numeric_grounding_rate": 0.9662,
+  "ungrounded_examples": [
+   "0.65",
+   "2.65",
+   "681"
+  ],
+  "strength_counts": {
+   "hard": 24,
+   "soft": 8
+  },
+  "n_claims": 20,
+  "claim_types": {
+   "measured": 7,
+   "observed": 9,
+   "derived": 2,
+   "literature": 0,
+   "interpretation": 1,
+   "hypothesis": 0,
+   "speculation": 0,
+   "future": 0
+  },
+  "claims_with_unresolved_evidence": 0,
+  "claims_without_evidence_needing_it": 0,
+  "n_missing": 18
+ },
+ "strong": {
+  "present": true,
+  "evidence_schema_errors": 0,
+  "n_evidence": 48,
+  "kinds": {
+   "dataset": 4,
+   "result": 12,
+   "method_detail": 7,
+   "implementation_detail": 5,
+   "metric": 1,
+   "external_fact": 1,
+   "negative_result": 3,
+   "observation": 7,
+   "limitation_noted": 5,
+   "hypothesis_stated": 2,
+   "assumption": 1
+  },
+  "n_negative_results": 3,
+  "n_limitations_noted": 5,
+  "numbers_checked": 260,
+  "numbers_not_in_source": 0,
+  "numeric_grounding_rate": 1.0,
+  "ungrounded_examples": [],
+  "strength_counts": {
+   "hard": 0,
+   "soft": 48
+  },
+  "n_claims": 22,
+  "claim_types": {
+   "measured": 12,
+   "observed": 4,
+   "derived": 2,
+   "literature": 0,
+   "interpretation": 1,
+   "hypothesis": 1,
+   "speculation": 1,
+   "future": 1
+  },
+  "claims_with_unresolved_evidence": 0,
+  "claims_without_evidence_needing_it": 0,
+  "n_missing": 10
+ }
+}

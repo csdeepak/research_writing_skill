@@ -1,0 +1,334 @@
+{
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "SWE-bench comprises 2,294 validated task instances sourced from 12 popular open-source Python repositories, with issue text averaging 195.1 words (max 4,477) and codebases averaging 3,010 non-test files (max 5,890) and 438,000 non-test lines of code (max 886,000).",
+      "claim_type": "measured",
+      "evidence": ["E001", "E002", "E003", "E004", "E005", "E006", "E007", "E008"],
+      "scope": {"datasets": ["SWE-bench"], "conditions": "Full evaluation set after 3-stage filtering"},
+      "confidence": "high",
+      "confidence_reasons": ["all evidence is hard (measured/logged)", "multiple independent sources confirm each dimension", "reflects validated final dataset"],
+      "limitations": ["L004"],
+      "permitted_verbs": ["comprises", "averages"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously (no human available); all evidence items hard and locator-resolved.",
+      "used_in": []
+    },
+    {
+      "id": "C002",
+      "statement": "Claude 2 resolves 1.96% of SWE-bench task instances with BM25 retrieval (a figure that appears as 1.97% in the results table; see L001); the source text describes Claude 2 as the best-performing model, while the full results table separately reports a higher figure of 3.79% for Claude 3 Opus under the same BM25/full-benchmark condition (see L006).",
+      "claim_type": "measured",
+      "evidence": ["E015", "E016", "E022"],
+      "scope": {"datasets": ["SWE-bench"], "retrieval": "BM25", "models": ["Claude 2", "Claude 3 Opus"]},
+      "confidence": "moderate",
+      "confidence_reasons": ["all evidence is hard", "single measurement (no seeds/replications reported)", "minor conflict between sources (1.96% vs 1.97%)", "unresolved conflict between the prose's 'best-performing' framing and the higher Claude 3 Opus table figure"],
+      "limitations": ["L001", "L005", "L006"],
+      "permitted_verbs": ["resolved", "achieved"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously; per evidence_model.md the two conflicting numeric values (L001) and the conflicting 'best-performing' framing vs. the Claude 3 Opus figure (L006) are both disclosed rather than silently resolved.",
+      "used_in": []
+    },
+    {
+      "id": "C003",
+      "statement": "Claude 2's resolution rate on SWE-bench falls as the input context length available to the retriever grows: 1.96% at a 13k-token limit, 1.87% at 27k, and 1.22% at 50k, under BM25 retrieval.",
+      "claim_type": "observed",
+      "evidence": ["E025"],
+      "scope": {"model": "Claude 2", "retrieval": "BM25", "context_windows": ["13k", "27k", "50k"]},
+      "confidence": "high",
+      "confidence_reasons": ["hard evidence from controlled experiments", "consistent pattern across multiple context sizes", "directly measured performance metric"],
+      "permitted_verbs": ["drops", "decreases"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously.",
+      "used_in": []
+    },
+    {
+      "id": "C004",
+      "statement": "Claude 2 resolves 4.80% of SWE-bench issues when given oracle retrieval (the actual files edited by the reference patch), compared to 1.96% with BM25 retrieval, an improvement consistent with context selection being a major bottleneck to current performance.",
+      "claim_type": "derived",
+      "evidence": ["E015", "E023"],
+      "scope": {"model": "Claude 2", "task": "resolution_rate_improvement, oracle vs BM25 retrieval"},
+      "confidence": "high",
+      "confidence_reasons": ["both measurements are hard evidence", "controlled comparison between retrieval methods", "consistent, substantial improvement"],
+      "permitted_verbs": ["improves", "increases", "is consistent with"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously; interpretive clause downgraded to 'consistent with' per evidence_model.md verb rules for a derived comparison, not a controlled causal ablation.",
+      "used_in": []
+    },
+    {
+      "id": "C005",
+      "statement": "SWE-Llama 7b and 13b, fine-tuned models trained on oracle-retrieval context, perform poorly under BM25-retrieved context at evaluation time (0.70% resolution for both), which is consistent with sensitivity to a shift between training and evaluation context distributions.",
+      "claim_type": "observed",
+      "evidence": ["E020", "E021", "E064"],
+      "scope": {"models": ["SWE-Llama 7b", "SWE-Llama 13b"], "retrieval_shift": "oracle_to_bm25"},
+      "confidence": "moderate",
+      "confidence_reasons": ["hard evidence for performance metric", "soft evidence for the mechanistic explanation", "single evaluation setting"],
+      "limitations": ["L003"],
+      "permitted_verbs": ["is consistent with", "suggests"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously; mechanistic clause kept at 'consistent with' strength.",
+      "used_in": []
+    },
+    {
+      "id": "C006",
+      "statement": "Model-generated patches that apply successfully tend to be substantially shorter than reference solutions: Claude 2's applied patches under oracle retrieval average 19.6 total changed lines (4.2 added, 1.9 removed) compared to 74.5 total lines (10.5 added) in gold patches, and models rarely edit more than one file.",
+      "claim_type": "observed",
+      "evidence": ["E040", "E041", "E042", "E043", "E044", "E045", "E046"],
+      "scope": {"model": "Claude 2", "setting": "oracle retrieval, successfully applied patches"},
+      "confidence": "high",
+      "confidence_reasons": ["hard measurements from the patch-size table", "consistent pattern noted across models", "substantial, consistent gap"],
+      "permitted_verbs": ["tend to generate", "average"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously.",
+      "used_in": []
+    },
+    {
+      "id": "C007",
+      "statement": "Models achieve higher resolution rates on SWE-bench Lite (a 300-instance, self-contained subset) than on the full benchmark: Claude 2 resolves 3.00% on Lite vs 1.96-1.97% on the full set, and Claude 3 Opus resolves 4.33% on Lite vs 3.79% on the full set.",
+      "claim_type": "observed",
+      "evidence": ["E062", "E016", "E015", "E061", "E022", "E049"],
+      "scope": {"datasets": ["SWE-bench", "SWE-bench Lite"], "models": ["Claude 2", "Claude 3 Opus"], "retrieval": "BM25"},
+      "confidence": "high",
+      "confidence_reasons": ["hard measurements for both conditions and both models", "consistent direction across two models", "consistent with SWE-bench Lite's design intent (self-contained bug fixes)"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously; broadened from a single-model observation to the two models with direct evidence (Claude 2, Claude 3 Opus).",
+      "used_in": []
+    },
+    {
+      "id": "C008",
+      "statement": "SWE-bench gold-patch solutions edit 1.7 files and 3.0 functions on average, with a mean of 32.8 lines changed per instance.",
+      "claim_type": "measured",
+      "evidence": ["E009", "E010", "E011"],
+      "scope": {"dataset": "SWE-bench", "condition": "all gold patches"},
+      "confidence": "high",
+      "confidence_reasons": ["all hard measurements", "micro-averaged statistics across all instances", "well-defined metrics"],
+      "permitted_verbs": ["averages", "edits"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously.",
+      "used_in": []
+    },
+    {
+      "id": "C009",
+      "statement": "SWE-bench's construction pipeline filtered roughly 90,000 initial pull requests across 12 repositories down to 11,407 candidates after attribute-based filtering, and further down to 2,294 final validated instances after execution-based filtering, a reduction of about 97.5% overall.",
+      "claim_type": "derived",
+      "evidence": ["E055", "E056", "E057"],
+      "scope": {"process": "SWE-bench construction"},
+      "confidence": "high",
+      "confidence_reasons": ["all measurements are hard", "reflects the documented multi-stage validation methodology"],
+      "permitted_verbs": ["reduced", "filtered"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously; the ~97.5% figure is a direct arithmetic derivation from E055 and E057 (2,294/90,000 ≈ 2.5% retained).",
+      "used_in": []
+    },
+    {
+      "id": "C010",
+      "statement": "BM25 retrieval recovers on average 29.58% of the oracle (ground-truth edited) files at a 13k-token context limit, rising to 44.41% at 27k tokens and 51.06% at 50k tokens.",
+      "claim_type": "measured",
+      "evidence": ["E026", "E027", "E028"],
+      "scope": {"retrieval": "BM25", "metric": "recall vs oracle files"},
+      "confidence": "high",
+      "confidence_reasons": ["all hard measurements", "consistent improvement pattern with larger context", "well-defined metric"],
+      "permitted_verbs": ["recovers", "achieves"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously.",
+      "used_in": []
+    },
+    {
+      "id": "C011",
+      "statement": "Among the 2,289 task instances with an assigned issue-category tag, 442 are categorized as bug fixes and 167 as feature requests, with the remainder spanning other categories, indicating SWE-bench spans a range of engineering task types rather than bug-fixing alone.",
+      "claim_type": "observed",
+      "evidence": ["E058", "E059"],
+      "scope": {"dataset": "SWE-bench", "classification": "issue tags"},
+      "confidence": "moderate",
+      "confidence_reasons": ["hard counts for bug and feature categories", "tags are author-assigned from the issue tracker, not independently verified", "the two reported categories do not account for all 2,289 tagged instances, so the full distribution across all categories is not independently evidenced here"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously; statement narrowed to only the two categories with a directly traceable evidence item (E058, E059) rather than asserting unevidenced regression/other counts.",
+      "used_in": []
+    },
+    {
+      "id": "C012",
+      "statement": "SWE-Llama (7b and 13b) was fine-tuned from an initial pool of 19,000 issue-PR pairs, reduced to an effective training set of 10,000 instances after excluding sequences longer than 30,000 tokens, drawn from 37 Python repositories disjoint from the 12 evaluation repositories.",
+      "claim_type": "measured",
+      "evidence": ["E031", "E032", "E033"],
+      "scope": {"models": ["SWE-Llama 7b", "SWE-Llama 13b"], "training": "supervised fine-tuning"},
+      "confidence": "high",
+      "confidence_reasons": ["all hard measurements", "exact training-set sizes reported", "repository disjointness stated by the authors"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously.",
+      "used_in": []
+    },
+    {
+      "id": "C013",
+      "statement": "At a 27k-token context limit, BM25 retrieves a superset of the oracle files in about 40% of instances but retrieves none of the oracle files in about 50% of instances, indicating that a retriever's larger recall does not translate into precise, targeted context.",
+      "claim_type": "observed",
+      "evidence": ["E029", "E030"],
+      "scope": {"retrieval": "BM25 at 27k tokens", "metric": "oracle coverage"},
+      "confidence": "high",
+      "confidence_reasons": ["hard measurements", "the two figures describe complementary failure modes at the same setting", "direct implication for what a model actually sees"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously.",
+      "used_in": []
+    },
+    {
+      "id": "C014",
+      "statement": "The fraction of SWE-bench instances that fit within a model's context window varies sharply by model: 58.1% for ChatGPT-3.5 (16,385-token limit), 84.1% for GPT-4 (32,768-token limit), and 96.4% for Claude 2 (100,000-token limit).",
+      "claim_type": "measured",
+      "evidence": ["E034", "E035", "E036", "E037", "E038", "E039"],
+      "scope": {"models": ["ChatGPT-3.5", "GPT-4", "Claude 2"], "metric": "context window coverage"},
+      "confidence": "high",
+      "confidence_reasons": ["all hard measurements", "directly determines which instances a model can even be evaluated on", "consistent with each model's documented context window"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously.",
+      "used_in": []
+    },
+    {
+      "id": "C015",
+      "statement": "ChatGPT-3.5, GPT-4-turbo, and Claude 2 all resolve a small minority of SWE-bench issues under BM25 retrieval (0.17%, 1.31%, and 1.96% respectively), showing that low resolution rates are a pattern across model providers rather than isolated to any one system.",
+      "claim_type": "observed",
+      "evidence": ["E015", "E018", "E019"],
+      "scope": {"models": ["ChatGPT-3.5", "GPT-4-turbo", "Claude 2"], "retrieval": "BM25", "benchmark": "SWE-bench"},
+      "confidence": "moderate",
+      "confidence_reasons": ["hard measurements", "GPT-4-turbo evaluated on a 25% subset only", "limited replications (single run per model)"],
+      "limitations": ["L003", "L005"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously; corrected E019's model label to GPT-4-turbo to match the evidence item, and removed the earlier draft's implied causal 'struggle' framing in favor of the directly observed pattern.",
+      "used_in": []
+    },
+    {
+      "id": "C016",
+      "statement": "The SWE-bench development set (225 instances across 6 repositories, held out for hyperparameter tuning) averages 19.9 fail-to-pass tests per instance (median 2) and 171.3 pass-to-pass tests per instance on average.",
+      "claim_type": "measured",
+      "evidence": ["E050", "E051", "E052", "E053", "E054"],
+      "scope": {"dataset": "SWE-bench development set"},
+      "confidence": "high",
+      "confidence_reasons": ["all hard measurements", "well-characterized statistics", "mean/median reported together for the skewed fail-to-pass count"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously; dropped an unevidenced median pass-to-pass figure that had no corresponding item in research_evidence.json.",
+      "used_in": []
+    },
+    {
+      "id": "C017",
+      "statement": "Models' resolution rate falls as retrieved context grows and models frequently fail to localize the code that needs to change, a pattern consistent with a limited capacity to make use of long, mostly irrelevant context rather than a lack of underlying coding knowledge.",
+      "claim_type": "interpretation",
+      "evidence": ["E025", "E063"],
+      "scope": {"phenomenon": "context overload", "models": "all evaluated models under BM25 retrieval"},
+      "confidence": "moderate",
+      "confidence_reasons": ["hard evidence for the performance-degradation pattern", "soft evidence (qualitative analysis) for the localization-failure explanation", "corroborated by an external source (Liu et al. 2023b) on long-context use"],
+      "limitations": ["L002"],
+      "permitted_verbs": ["is consistent with", "suggests"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously; kept as an interpretation, not a measured causal finding.",
+      "used_in": []
+    },
+    {
+      "id": "C018",
+      "statement": "Restricting oracle-retrieved context to the lines directly around each edit (oracle-collapsed) raises Claude 2's resolution rate to 5.93%, versus 4.80% with the full oracle files, indicating that additional context beyond the edited region can actively reduce performance rather than only being neutral.",
+      "claim_type": "observed",
+      "evidence": ["E023", "E024"],
+      "scope": {"model": "Claude 2", "retrieval": "oracle vs oracle-collapsed"},
+      "confidence": "high",
+      "confidence_reasons": ["both are hard measurements", "controlled comparison changing a single variable (context scope)", "consistent with the broader context-length degradation pattern (C003)"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously.",
+      "used_in": []
+    },
+    {
+      "id": "C019",
+      "statement": "Under oracle retrieval, Claude 2 and SWE-Llama 13b resolve a comparable number of instances overall, but Claude 2 solves only 42% of the specific instances that SWE-Llama 13b resolves, indicating the two models tend to succeed on different subsets of problems rather than a shared, strictly easier/harder ordering.",
+      "claim_type": "observed",
+      "evidence": ["E023"],
+      "scope": {"models": ["Claude 2", "SWE-Llama 13b"], "setting": "oracle retrieval"},
+      "confidence": "moderate",
+      "confidence_reasons": ["directly quoted from the source text", "single observation point, not replicated across settings", "specific instance counts (110/91) referenced in the source quote are not independently traceable to a discrete evidence item in this package"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously; the 42% overlap figure is kept because it is directly quoted in claim_candidates.json's origin quote, but the un-evidenced raw instance counts (110, 91) from the earlier draft statement are not asserted as independently measured here.",
+      "used_in": []
+    },
+    {
+      "id": "C020",
+      "statement": "Some repositories' issues embed images at a much higher rate than others (32% of matplotlib instances, 10% of seaborn instances, versus 2% across all instances); such instances may pose an implicit barrier to text-only models, though this is untested by the evaluation.",
+      "claim_type": "hypothesis",
+      "evidence": ["E060"],
+      "scope": {"phenomena": "multimodal content in issues", "repositories": ["matplotlib", "seaborn"]},
+      "confidence": "low",
+      "confidence_reasons": ["hard observation of image prevalence", "the downstream effect on model performance is a stated hypothesis, not a direct measurement", "no reported performance breakdown for image-containing vs. text-only instances"],
+      "permitted_verbs": ["may", "we hypothesize"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously as a labeled, untested hypothesis; not used as a finding.",
+      "used_in": []
+    },
+    {
+      "id": "C021",
+      "statement": "In a small qualitative review (11 generations), model outputs tended toward primitive Python code that underused existing library or codebase idioms, and toward a 'greedy' style that satisfies the immediate fix without regard to broader code style or constraints.",
+      "claim_type": "observed",
+      "evidence": ["E065", "E066"],
+      "scope": {"sample": "11 qualitative generations reviewed", "models": "not individually specified in the evidence package"},
+      "confidence": "low",
+      "confidence_reasons": ["soft/qualitative evidence", "very small, non-random sample (11 generations)", "no systematic coding of failure types across the full evaluation set (see missing_evidence.json)"],
+      "author_confirmation": "confirmed",
+      "confirmation_note": "Confirmed autonomously; explicitly scoped to the small qualitative sample size to avoid overclaiming a general pattern.",
+      "used_in": []
+    }
+  ],
+  "limitations": [
+    {
+      "id": "L001",
+      "statement": "Claude 2's BM25 resolution rate is reported as 1.96% in the running text and 1.97% in the results table; the discrepancy is small (0.01 percentage points) but unresolved in the underlying source.",
+      "affects_claims": ["C002"],
+      "effect_on_interpretation": "Negligible practical impact on any comparison or ranking, but signals limited precision in how the headline number is reported.",
+      "evidence": ["E015", "E016"],
+      "resolution": "1.96% is used as the primary value (it is the figure repeated in prose) and the table figure is disclosed alongside it."
+    },
+    {
+      "id": "L002",
+      "statement": "The explanation that performance degradation with longer context reflects a model attention/capacity limitation, rather than purely a retrieval-quality artifact, is an interpretation supported by an external source, not a mechanism directly isolated within SWE-bench's own experiments.",
+      "affects_claims": ["C017"],
+      "effect_on_interpretation": "The interpretation should be read as plausible and externally corroborated, not as a controlled ablation performed by this project.",
+      "evidence": ["E025", "E063"],
+      "resolution": "Clearly labeled as an interpretation in the text and attributed to the corroborating source (Liu et al., 2023b) where relevant."
+    },
+    {
+      "id": "L003",
+      "statement": "GPT-4/GPT-4-turbo results are based on a 25% random subset of SWE-bench due to evaluation budget constraints, which is not identical in composition to the full-set evaluations used for other models.",
+      "affects_claims": ["C015"],
+      "effect_on_interpretation": "Cross-model comparisons involving GPT-4/GPT-4-turbo should be read as approximate rather than on an identical evaluation footing.",
+      "evidence": ["E019"],
+      "resolution": "The subset condition is stated explicitly wherever GPT-4/GPT-4-turbo figures are cited."
+    },
+    {
+      "id": "L004",
+      "statement": "SWE-bench's task instances are drawn exclusively from Python repositories.",
+      "affects_claims": ["C001"],
+      "effect_on_interpretation": "All findings about model capability are scoped to Python software engineering; they do not establish anything about other programming languages.",
+      "evidence": ["E047"],
+      "resolution": "Language scope is stated explicitly in the paper's scope/limitations discussion."
+    },
+    {
+      "id": "L005",
+      "statement": "Resolution rate is an execution-based (tests-pass) metric; it does not evaluate code quality, efficiency, readability, or maintainability of the generated patch.",
+      "affects_claims": ["C002", "C006", "C008", "C015"],
+      "effect_on_interpretation": "A 'resolved' instance means the generated patch passed the specified tests, not that it is a good engineering solution by other standards; conversely a correct-but-untested-aspect fix could fail to 'resolve' an instance.",
+      "evidence": ["E048"],
+      "resolution": "All performance claims are phrased as 'resolution rate' / 'test resolution', never as general solution quality."
+    },
+    {
+      "id": "L006",
+      "statement": "The evidence package's quoted source text calls Claude 2 'the best-performing model' at 1.96%, but the results table separately reports Claude 3 Opus at a higher 3.79% resolution rate under the same BM25/full-benchmark condition (E022). This is an unresolved conflict in the underlying source, not merely a rounding discrepancy: it is possible the 'best-performing' sentence was written before Claude 3 Opus results were added to the table, but the evidence package provides no locator confirming this.",
+      "affects_claims": ["C002", "C007"],
+      "effect_on_interpretation": "The paper reports both figures rather than asserting a single 'best model' ranking; Claude 3 Opus's higher table figure is treated as the most complete comparative evidence available, while Claude 2 is retained as the model most extensively analyzed elsewhere in the source (context-length sweep, oracle retrieval, patch-length statistics).",
+      "evidence": ["E015", "E016", "E022"],
+      "resolution": "Both figures are stated explicitly in the results section with the conflict disclosed, and downstream text avoids asserting a single unqualified 'best model' claim."
+    }
+  ],
+  "negative_result_decisions": [
+    {
+      "evidence": "E018",
+      "decision": "reported_main",
+      "reason": "ChatGPT-3.5's very low resolution rate (0.17%) is a directly relevant negative result showing that raw model capability alone, without adequate context handling, is insufficient; reported alongside other models' results."
+    },
+    {
+      "evidence": "E068",
+      "decision": "reported_supplement",
+      "reason": "GPT-4's 0.0% resolution rate on the after-2023 temporal split is evaluated on a 25% subset under budget constraints (L003); reported as a secondary, scope-qualified data point rather than a headline result."
+    }
+  ]
+}

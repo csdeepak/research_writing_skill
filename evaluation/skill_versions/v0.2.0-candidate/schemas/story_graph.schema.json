@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rce/story_graph.schema.json",
+  "title": "Research story graph",
+  "type": "object",
+  "required": ["pattern", "nodes", "edges"],
+  "properties": {
+    "pattern": {"enum": ["imrad", "question_led", "method_first", "finding_first", "ocar"]},
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "text"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^N[0-9]{2,}$"},
+          "type": {"enum": ["PROBLEM", "SIGNIFICANCE", "KNOWN", "GAP", "RQ", "HYPOTHESIS", "OBJECTIVE",
+                            "APPROACH", "DESIGN", "OBSERVATION", "RESULT", "INTERPRETATION",
+                            "CONTRIBUTION", "LIMITATION", "IMPLICATION", "FUTURE", "BACKGROUND_CONCEPT"]},
+          "text": {"type": "string"},
+          "claims": {"type": "array", "items": {"type": "string"}},
+          "evidence": {"type": "array", "items": {"type": "string"}},
+          "sources": {"type": "array", "items": {"type": "string"}},
+          "audience_note": {"type": "string"}
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "type"],
+        "properties": {
+          "from": {"type": "string"},
+          "to": {"type": "string"},
+          "type": {"enum": ["motivates", "establishes", "addresses", "operationalizes", "implements",
+                            "tests", "produces", "supports", "contradicts", "answers", "grounds",
+                            "limits", "implies", "opens", "requires"]}
+        }
+      }
+    },
+    "experiment_chains": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["experiment", "rq", "hypothesis", "design_rationale", "next"],
+        "properties": {
+          "experiment": {"type": "string"},
+          "rq": {"type": "string"},
+          "hypothesis": {"type": "string"},
+          "falsifier": {"type": "string"},
+          "design_rationale": {"type": "string"},
+          "observations": {"type": "array", "items": {"type": "string"}},
+          "claims": {"type": "array", "items": {"type": "string"}},
+          "limitations": {"type": "array", "items": {"type": "string"}},
+          "next": {"type": "string"}
+        }
+      }
+    }
+  }
+}

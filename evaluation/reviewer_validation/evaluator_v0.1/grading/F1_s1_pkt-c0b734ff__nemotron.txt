@@ -1,0 +1,95 @@
+{
+  "questions": {
+    "Q1": {
+      "q1a": "present"
+    },
+    "Q2": {
+      "q2a": "present"
+    },
+    "Q3": {
+      "q3a": "absent"
+    },
+    "Q4": {
+      "q4a": "absent",
+      "q4b": "weakened"
+    },
+    "Q5": {
+      "q5a": "present"
+    },
+    "Q6": {
+      "q6a": "present",
+      "q6b": "present"
+    },
+    "Q7": {
+      "q7a": "present",
+      "q7b": "present"
+    },
+    "Q8": {
+      "q8a": "present",
+      "q8b": "absent"
+    },
+    "Q9": {
+      "q9a": "present",
+      "q9b": "present"
+    },
+    "Q10": {
+      "q10a": "present"
+    },
+    "Q11": {
+      "q11a": "present",
+      "q11b": "present",
+      "q11c": "present"
+    },
+    "Q12": {
+      "q12a": "present"
+    }
+  },
+  "intrusions": [
+    {
+      "question": "Q3",
+      "text": "Does per-window (rolling) normalization lower MAE under level shift while not harming no-shift accuracy, and how much of the benefit requires ongoing adaptation of the statistics?",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q5",
+      "text": "64 hidden units",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q5",
+      "text": "SynthLoad",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q5",
+      "text": "48 steps",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q7",
+      "text": "RWN 0.409±0.007 vs baseline 0.412±0.006",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q7",
+      "text": "RWN 0.712±0.021 vs baseline 0.731±0.015",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q7",
+      "text": "RWN-fixed reached 0.518 at s=0.6",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q10",
+      "text": "The no-shift and s=0.8 claims are backed by explicit numbers; the 11–29% and two-thirds claims rest on numbers not shown.",
+      "tag": "unsupported_belief"
+    }
+  ],
+  "notes": "The reconstruction captures most gold nuggets. Key misses: Q3 literature gap (q3a) absent; Q4 method comparison (q4a) absent; Q8 gain attribution (q8b) absent from Q8 answer (though appears in Q7). Q4b weakened due to lack of explicit 'same model and budget' and exact shift range. Intrusions are mostly benign experimental details (model size, dataset, window length, specific numbers) plus two unsupported beliefs: the research question (Q3) and a meta-comment about which numbers are explicitly reported (Q10).",
+  "RR": 0.842,
+  "DR": 0.0,
+  "IR": 0.421,
+  "MMF": 0.421,
+  "Core_RR": 0.857
+}

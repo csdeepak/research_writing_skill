@@ -1,0 +1,80 @@
+[ERROR] evidence/E001: locator path does not exist: paper.txt
+[ERROR] evidence/E002: locator path does not exist: paper.txt
+[ERROR] evidence/E003: locator path does not exist: paper.txt
+[ERROR] evidence/E004: locator path does not exist: paper.txt
+[ERROR] evidence/E005: locator path does not exist: paper.txt
+[ERROR] evidence/E006: locator path does not exist: paper.txt
+[ERROR] evidence/E007: locator path does not exist: paper.txt
+[ERROR] evidence/E008: locator path does not exist: paper.txt
+[ERROR] evidence/E009: locator path does not exist: paper.txt
+[ERROR] evidence/E010: locator path does not exist: paper.txt
+[ERROR] evidence/E011: locator path does not exist: paper.txt
+[ERROR] evidence/E012: locator path does not exist: paper.txt
+[ERROR] evidence/E013: locator path does not exist: paper.txt
+[ERROR] evidence/E014: locator path does not exist: paper.txt
+[ERROR] evidence/E015: locator path does not exist: paper.txt
+[ERROR] evidence/E016: locator path does not exist: paper.txt
+[ERROR] evidence/E017: locator path does not exist: paper.txt
+[ERROR] evidence/E018: locator path does not exist: paper.txt
+[ERROR] evidence/E019: locator path does not exist: paper.txt
+[ERROR] evidence/E020: locator path does not exist: paper.txt
+[ERROR] evidence/E021: locator path does not exist: paper.txt
+[ERROR] evidence/E022: locator path does not exist: paper.txt
+[ERROR] evidence/E023: locator path does not exist: paper.txt
+[ERROR] evidence/E024: locator path does not exist: paper.txt
+[ERROR] evidence/E025: locator path does not exist: paper.txt
+[ERROR] evidence/E026: locator path does not exist: paper.txt
+[ERROR] evidence/E027: locator path does not exist: paper.txt
+[ERROR] evidence/E028: locator path does not exist: paper.txt
+[ERROR] evidence/E029: locator path does not exist: paper.txt
+[ERROR] evidence/E030: locator path does not exist: paper.txt
+[ERROR] evidence/E031: locator path does not exist: paper.txt
+[ERROR] evidence/E032: locator path does not exist: paper.txt
+[ERROR] evidence/E033: locator path does not exist: paper.txt
+[ERROR] evidence/E034: locator path does not exist: paper.txt
+[ERROR] evidence/E035: locator path does not exist: paper.txt
+[ERROR] evidence/E036: locator path does not exist: paper.txt
+[ERROR] evidence/E037: locator path does not exist: paper.txt
+[ERROR] evidence/E038: locator path does not exist: paper.txt
+[ERROR] evidence/E039: locator path does not exist: paper.txt
+[ERROR] evidence/E040: locator path does not exist: paper.txt
+[ERROR] evidence/E041: locator path does not exist: paper.txt
+[ERROR] evidence/E042: locator path does not exist: paper.txt
+[ERROR] evidence/E043: locator path does not exist: paper.txt
+[ERROR] evidence/E044: locator path does not exist: paper.txt
+[ERROR] evidence/E045: locator path does not exist: paper.txt
+[ERROR] evidence/E046: locator path does not exist: paper.txt
+[ERROR] evidence/E047: locator path does not exist: paper.txt
+[ERROR] evidence/E048: locator path does not exist: paper.txt
+[ERROR] evidence/E049: locator path does not exist: paper.txt
+[ERROR] evidence/E050: locator path does not exist: paper.txt
+[ERROR] evidence/E051: locator path does not exist: paper.txt
+[ERROR] evidence/E052: locator path does not exist: paper.txt
+[ERROR] evidence/E053: locator path does not exist: paper.txt
+[ERROR] evidence/E054: locator path does not exist: paper.txt
+[ERROR] evidence/E055: locator path does not exist: paper.txt
+[ERROR] evidence/E056: locator path does not exist: paper.txt
+[ERROR] evidence/E057: locator path does not exist: README_1.md
+[ERROR] evidence/E058: locator path does not exist: README_1.md
+[ERROR] evidence/E059: locator path does not exist: README_1.md
+[ERROR] evidence/E060: locator path does not exist: README_1.md
+[ERROR] evidence/E061: locator path does not exist: README_1.md
+[ERROR] evidence/E062: locator path does not exist: paper.txt
+[WARN] claims/C001: author_confirmation pending
+[WARN] claims/C002: author_confirmation pending
+[WARN] claims/C003: author_confirmation pending
+[WARN] claims/C004: author_confirmation pending
+[WARN] claims/C005: author_confirmation pending
+[WARN] claims/C006: author_confirmation pending
+[WARN] claims/C007: author_confirmation pending
+[WARN] claims/C008: author_confirmation pending
+[WARN] claims/C009: author_confirmation pending
+[WARN] claims/C010: author_confirmation pending
+[WARN] claims/C011: author_confirmation pending
+[WARN] claims/C012: author_confirmation pending
+[WARN] claims/C013: author_confirmation pending
+[WARN] claims/C014: author_confirmation pending
+[WARN] claims/C015: author_confirmation pending
+[WARN] claims/C016: author_confirmation pending
+
+62 error(s), 16 warning(s)

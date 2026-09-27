@@ -1,0 +1,5 @@
+Intended readers: machine-learning researchers from other subfields (adjacent researchers) — they know general ML, deep learning, standard evaluation practice, and statistics, but not speech-processing terminology, datasets, or prior work.
+They can be assumed to know: supervised learning, encoder-decoder Transformers, zero-shot evaluation, train/test splits, distribution shift, multitask learning.
+They cannot be assumed to know: Word Error Rate (WER) and how it is computed, BLEU, speech-specific datasets (LibriSpeech, Fleurs, VoxPopuli, CoVoST2, MLS, TED-LIUM3, etc.), the self-supervised speech-pretraining literature, or the effective-robustness evaluation methodology.
+Binding reader types for this review: A (specialist reader who happens to review this) — precise deltas and full rigor still expected; B (adjacent researcher, the primary target) — subfield terms must be defined and the gap explained; E (mixed audience) — should work whether skimmed at a high level or read in full technical depth.
+Venue type: standalone manuscript (no specific venue given; a generic research-article structure was assumed).

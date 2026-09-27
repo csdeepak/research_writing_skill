@@ -1,0 +1,620 @@
+[
+ {
+  "family": "F1",
+  "project": "SAM",
+  "condition": "plain",
+  "words_main": 4365,
+  "dim_mean": 3.35,
+  "recon": {
+   "MMF": 0.653,
+   "RR": 0.819,
+   "CoreRR": 0.933,
+   "DR": 0.056,
+   "IR": 0.222,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 1.0,
+    "Q4": 1.0,
+    "Q5": 0.833,
+    "Q6": 1.0,
+    "Q7": 0.75,
+    "Q8": 0.75,
+    "Q9": 0.25,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 0.667
+   }
+  }
+ },
+ {
+  "family": "F1",
+  "project": "BEIR",
+  "condition": "plain",
+  "words_main": 4250,
+  "dim_mean": 3.75,
+  "recon": {
+   "MMF": 0.662,
+   "RR": 0.713,
+   "CoreRR": 0.778,
+   "DR": 0.0,
+   "IR": 0.1,
+   "per_question_RR": {
+    "Q1": 0.75,
+    "Q2": 0.5,
+    "Q3": 0.667,
+    "Q4": 1.0,
+    "Q5": 0.5,
+    "Q6": 0.75,
+    "Q7": 0.7,
+    "Q8": 0.5,
+    "Q9": 0.833,
+    "Q10": 0.875,
+    "Q11": 0.5,
+    "Q12": 0.833
+   }
+  }
+ },
+ {
+  "family": "F1",
+  "project": "WHISPER",
+  "condition": "skill",
+  "words_main": 5888,
+  "dim_mean": 4.4,
+  "recon": {
+   "MMF": 0.525,
+   "RR": 0.625,
+   "CoreRR": 0.676,
+   "DR": 0.05,
+   "IR": 0.1,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 0.5,
+    "Q3": 0.5,
+    "Q4": 0.75,
+    "Q5": 0.5,
+    "Q6": 0.75,
+    "Q7": 0.6,
+    "Q8": 0.25,
+    "Q9": 0.5,
+    "Q10": 1.0,
+    "Q11": 0.375,
+    "Q12": 1.0
+   }
+  }
+ },
+ {
+  "family": "F1",
+  "project": "SAM",
+  "condition": "skill",
+  "words_main": 4704,
+  "dim_mean": 4.4,
+  "recon": {
+   "MMF": 0.611,
+   "RR": 0.722,
+   "CoreRR": 0.733,
+   "DR": 0.028,
+   "IR": 0.167,
+   "per_question_RR": {
+    "Q1": 0.5,
+    "Q2": 1.0,
+    "Q3": 1.0,
+    "Q4": 0.625,
+    "Q5": 0.667,
+    "Q6": 0.833,
+    "Q7": 0.75,
+    "Q8": 0.625,
+    "Q9": 0.375,
+    "Q10": 1.0,
+    "Q11": 0.875,
+    "Q12": 0.833
+   }
+  }
+ },
+ {
+  "family": "F1",
+  "project": "BEIR",
+  "condition": "skill",
+  "words_main": 5071,
+  "dim_mean": 4.35,
+  "recon": {
+   "MMF": 0.787,
+   "RR": 0.812,
+   "CoreRR": 0.861,
+   "DR": 0.0,
+   "IR": 0.05,
+   "per_question_RR": {
+    "Q1": 0.75,
+    "Q2": 0.5,
+    "Q3": 0.833,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 0.875,
+    "Q7": 0.9,
+    "Q8": 0.75,
+    "Q9": 0.5,
+    "Q10": 0.875,
+    "Q11": 0.667,
+    "Q12": 0.833
+   }
+  }
+ },
+ {
+  "family": "F1",
+  "project": "OPENHANDS",
+  "condition": "plain",
+  "words_main": 3967,
+  "dim_mean": 3.05,
+  "recon": {
+   "MMF": 0.675,
+   "RR": 0.725,
+   "CoreRR": 0.841,
+   "DR": 0.0,
+   "IR": 0.1,
+   "per_question_RR": {
+    "Q1": 0.5,
+    "Q2": 0.5,
+    "Q3": 0.167,
+    "Q4": 1.0,
+    "Q5": 0.75,
+    "Q6": 0.625,
+    "Q7": 0.75,
+    "Q8": 0.5,
+    "Q9": 0.667,
+    "Q10": 0.75,
+    "Q11": 1.0,
+    "Q12": 1.0
+   }
+  }
+ },
+ {
+  "family": "F1",
+  "project": "SWE_BENCH",
+  "condition": "skill",
+  "words_main": 4662,
+  "dim_mean": 3.25,
+  "recon": {
+   "MMF": 0.663,
+   "RR": 0.675,
+   "CoreRR": 0.778,
+   "DR": 0.0,
+   "IR": 0.025,
+   "per_question_RR": {
+    "Q1": 0.833,
+    "Q2": 0.333,
+    "Q3": 0.25,
+    "Q4": 0.875,
+    "Q5": 0.5,
+    "Q6": 0.75,
+    "Q7": 0.75,
+    "Q8": 0.625,
+    "Q9": 0.667,
+    "Q10": 1.0,
+    "Q11": 0.5,
+    "Q12": 0.833
+   }
+  }
+ },
+ {
+  "family": "F1",
+  "project": "MLPERF_TINY",
+  "condition": "skill",
+  "words_main": 4257,
+  "dim_mean": 3.15,
+  "recon": {
+   "MMF": 0.5,
+   "RR": 0.575,
+   "CoreRR": 0.765,
+   "DR": 0.025,
+   "IR": 0.1,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 0.25,
+    "Q3": 0.833,
+    "Q4": 0.875,
+    "Q5": 0.2,
+    "Q6": 0.5,
+    "Q7": 1.0,
+    "Q8": 0.333,
+    "Q9": 0.5,
+    "Q10": 0.5,
+    "Q11": 0.5,
+    "Q12": 0.667
+   }
+  }
+ },
+ {
+  "family": "F1",
+  "project": "OPENHANDS",
+  "condition": "skill",
+  "words_main": 4468,
+  "dim_mean": 3,
+  "recon": {
+   "MMF": 0.325,
+   "RR": 0.438,
+   "CoreRR": 0.568,
+   "DR": 0.05,
+   "IR": 0.125,
+   "per_question_RR": {
+    "Q1": 0.5,
+    "Q2": 0.5,
+    "Q3": 0.0,
+    "Q4": 1.0,
+    "Q5": 0.5,
+    "Q6": 0.625,
+    "Q7": 0.375,
+    "Q8": 0.0,
+    "Q9": 0.0,
+    "Q10": 1.0,
+    "Q11": 0.3,
+    "Q12": 0.25
+   }
+  }
+ },
+ {
+  "family": "F1",
+  "project": "MLPERF_TINY",
+  "condition": "plain",
+  "words_main": 4792,
+  "dim_mean": 3.3,
+  "recon": {
+   "MMF": 0.688,
+   "RR": 0.725,
+   "CoreRR": 0.765,
+   "DR": 0.0,
+   "IR": 0.075,
+   "per_question_RR": {
+    "Q1": 0.75,
+    "Q2": 0.75,
+    "Q3": 1.0,
+    "Q4": 0.875,
+    "Q5": 0.7,
+    "Q6": 0.5,
+    "Q7": 0.875,
+    "Q8": 0.667,
+    "Q9": 0.25,
+    "Q10": 0.5,
+    "Q11": 0.7,
+    "Q12": 0.833
+   }
+  }
+ },
+ {
+  "family": "F1",
+  "project": "SWE_BENCH",
+  "condition": "plain",
+  "words_main": 4030,
+  "dim_mean": 2.85,
+  "recon": {
+   "MMF": 0.575,
+   "RR": 0.7,
+   "CoreRR": 0.778,
+   "DR": 0.025,
+   "IR": 0.2,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 0.5,
+    "Q3": 0.5,
+    "Q4": 0.625,
+    "Q5": 0.5,
+    "Q6": 0.75,
+    "Q7": 0.75,
+    "Q8": 0.625,
+    "Q9": 0.667,
+    "Q10": 1.0,
+    "Q11": 0.667,
+    "Q12": 0.833
+   }
+  }
+ },
+ {
+  "family": "F1",
+  "project": "WHISPER",
+  "condition": "plain",
+  "words_main": 4459,
+  "dim_mean": 2.9,
+  "recon": {
+   "MMF": 0.6,
+   "RR": 0.688,
+   "CoreRR": 0.765,
+   "DR": 0.05,
+   "IR": 0.075,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 0.667,
+    "Q3": 0.75,
+    "Q4": 0.75,
+    "Q5": 1.0,
+    "Q6": 0.625,
+    "Q7": 0.7,
+    "Q8": 0.375,
+    "Q9": 0.25,
+    "Q10": 1.0,
+    "Q11": 0.625,
+    "Q12": 1.0
+   }
+  }
+ },
+ {
+  "family": "F2",
+  "project": "SAM",
+  "condition": "plain",
+  "words_main": 4365,
+  "dim_mean": 4.684,
+  "recon": {
+   "MMF": 0.75,
+   "RR": 0.806,
+   "CoreRR": 0.833,
+   "DR": 0.0,
+   "IR": 0.111,
+   "per_question_RR": {
+    "Q1": 0.5,
+    "Q2": 1.0,
+    "Q3": 0.5,
+    "Q4": 0.875,
+    "Q5": 0.833,
+    "Q6": 1.0,
+    "Q7": 0.75,
+    "Q8": 0.625,
+    "Q9": 0.625,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 1.0
+   }
+  }
+ },
+ {
+  "family": "F2",
+  "project": "BEIR",
+  "condition": "plain",
+  "words_main": 4250,
+  "dim_mean": 4.95,
+  "recon": {
+   "MMF": 0.6,
+   "RR": 0.65,
+   "CoreRR": 0.583,
+   "DR": 0.0,
+   "IR": 0.1,
+   "per_question_RR": {
+    "Q1": 0.75,
+    "Q2": 0.5,
+    "Q3": 0.667,
+    "Q4": 0.875,
+    "Q5": 0.5,
+    "Q6": 0.75,
+    "Q7": 0.2,
+    "Q8": 0.75,
+    "Q9": 0.667,
+    "Q10": 0.875,
+    "Q11": 0.333,
+    "Q12": 1.0
+   }
+  }
+ },
+ {
+  "family": "F2",
+  "project": "WHISPER",
+  "condition": "skill",
+  "words_main": 5888,
+  "dim_mean": 4.947,
+  "recon": {
+   "MMF": 0.55,
+   "RR": 0.65,
+   "CoreRR": 0.529,
+   "DR": 0.025,
+   "IR": 0.15,
+   "per_question_RR": {
+    "Q1": 0.5,
+    "Q2": 0.667,
+    "Q3": 0.5,
+    "Q4": 0.75,
+    "Q5": 1.0,
+    "Q6": 0.75,
+    "Q7": 0.6,
+    "Q8": 0.75,
+    "Q9": 0.5,
+    "Q10": 0.0,
+    "Q11": 0.5,
+    "Q12": 1.0
+   }
+  }
+ },
+ {
+  "family": "F2",
+  "project": "SAM",
+  "condition": "skill",
+  "words_main": 4704,
+  "dim_mean": 4.9,
+  "recon": {
+   "MMF": 0.597,
+   "RR": 0.75,
+   "CoreRR": 0.833,
+   "DR": 0.028,
+   "IR": 0.25,
+   "per_question_RR": {
+    "Q1": 0.5,
+    "Q2": 1.0,
+    "Q3": 0.75,
+    "Q4": 0.75,
+    "Q5": 0.5,
+    "Q6": 0.667,
+    "Q7": 0.875,
+    "Q8": 0.625,
+    "Q9": 0.5,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 1.0
+   }
+  }
+ },
+ {
+  "family": "F2",
+  "project": "BEIR",
+  "condition": "skill",
+  "words_main": 5071,
+  "dim_mean": 4.8,
+  "recon": {
+   "MMF": null,
+   "RR": null,
+   "CoreRR": null,
+   "DR": null,
+   "IR": null,
+   "per_question_RR": null
+  }
+ },
+ {
+  "family": "F2",
+  "project": "OPENHANDS",
+  "condition": "plain",
+  "words_main": 3967,
+  "dim_mean": 4.55,
+  "recon": {
+   "MMF": 0.45,
+   "RR": 0.55,
+   "CoreRR": 0.682,
+   "DR": 0.025,
+   "IR": 0.15,
+   "per_question_RR": {
+    "Q1": 0.0,
+    "Q2": 0.5,
+    "Q3": 0.167,
+    "Q4": 1.0,
+    "Q5": 0.0,
+    "Q6": 0.375,
+    "Q7": 0.5,
+    "Q8": 0.75,
+    "Q9": 0.333,
+    "Q10": 0.5,
+    "Q11": 1.0,
+    "Q12": 0.75
+   }
+  }
+ },
+ {
+  "family": "F2",
+  "project": "SWE_BENCH",
+  "condition": "skill",
+  "words_main": 4662,
+  "dim_mean": 4.316,
+  "recon": {
+   "MMF": 0.588,
+   "RR": 0.688,
+   "CoreRR": 0.75,
+   "DR": 0.025,
+   "IR": 0.15,
+   "per_question_RR": {
+    "Q1": 0.667,
+    "Q2": 0.833,
+    "Q3": 0.0,
+    "Q4": 0.75,
+    "Q5": 0.5,
+    "Q6": 0.75,
+    "Q7": 0.75,
+    "Q8": 0.625,
+    "Q9": 0.667,
+    "Q10": 1.0,
+    "Q11": 0.667,
+    "Q12": 0.833
+   }
+  }
+ },
+ {
+  "family": "F2",
+  "project": "MLPERF_TINY",
+  "condition": "skill",
+  "words_main": 4257,
+  "dim_mean": null,
+  "recon": {
+   "MMF": null,
+   "RR": null,
+   "CoreRR": null,
+   "DR": null,
+   "IR": null,
+   "per_question_RR": null
+  }
+ },
+ {
+  "family": "F2",
+  "project": "OPENHANDS",
+  "condition": "skill",
+  "words_main": 4468,
+  "dim_mean": 4.5,
+  "recon": {
+   "MMF": 0.462,
+   "RR": 0.6,
+   "CoreRR": 0.636,
+   "DR": 0.025,
+   "IR": 0.225,
+   "per_question_RR": {
+    "Q1": 0.25,
+    "Q2": 0.5,
+    "Q3": 0.167,
+    "Q4": 0.9,
+    "Q5": 0.5,
+    "Q6": 0.75,
+    "Q7": 0.625,
+    "Q8": 0.5,
+    "Q9": 0.667,
+    "Q10": 0.5,
+    "Q11": 0.6,
+    "Q12": 0.75
+   }
+  }
+ },
+ {
+  "family": "F2",
+  "project": "MLPERF_TINY",
+  "condition": "plain",
+  "words_main": 4792,
+  "dim_mean": 4.3,
+  "recon": {
+   "MMF": 0.713,
+   "RR": 0.775,
+   "CoreRR": 0.853,
+   "DR": 0.0,
+   "IR": 0.125,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 0.5,
+    "Q3": 1.0,
+    "Q4": 1.0,
+    "Q5": 0.8,
+    "Q6": 0.5,
+    "Q7": 0.875,
+    "Q8": 1.0,
+    "Q9": 0.5,
+    "Q10": 1.0,
+    "Q11": 0.6,
+    "Q12": 0.667
+   }
+  }
+ },
+ {
+  "family": "F2",
+  "project": "SWE_BENCH",
+  "condition": "plain",
+  "words_main": 4030,
+  "dim_mean": 4.947,
+  "recon": {
+   "MMF": 0.387,
+   "RR": 0.512,
+   "CoreRR": 0.583,
+   "DR": 0.075,
+   "IR": 0.1,
+   "per_question_RR": {
+    "Q1": 0.833,
+    "Q2": 0.333,
+    "Q3": 0.5,
+    "Q4": 0.75,
+    "Q5": 0.333,
+    "Q6": 0.5,
+    "Q7": 0.417,
+    "Q8": 0.5,
+    "Q9": 0.667,
+    "Q10": 0.75,
+    "Q11": 0.333,
+    "Q12": 0.333
+   }
+  }
+ }
+]

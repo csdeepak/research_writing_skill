@@ -1,0 +1,322 @@
+{
+  "reconstruction": {
+    "packet_id": "pkt-ba793105",
+    "answers": {
+      "Q1": {
+        "answer": "The paper addresses the fragmentation of infrastructure for building and evaluating AI agents that act through software (code execution, shell commands, web browsing). Existing frameworks are incompatible, single-purpose, and lack systematic evaluation across diverse task categories, making it difficult to compare approaches or measure genuine progress toward generalist agents.",
+        "locations": ["§1 (Introduction), paragraphs 3-4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q2": {
+        "answer": "Software is the most powerful interface humans have for interacting with the world — a skilled programmer can automate processes, orchestrate workflows, and interface with any digital service. Using software as the primary action space for AI agents is expressive, reproducible, and universal. Without shared infrastructure, progress on generalist agents is hindered by conflated framework/model comparisons and inability to reuse components.",
+        "locations": ["§1, paragraph 2; §1, paragraph 3"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q3": {
+        "answer": "Existing frameworks address only pieces: some provide multi-agent communication (AutoGen, MetaGPT), some target software engineering specifically (SWE-Agent), some focus on web browsing (BrowserGym-based agents). None combines safe sandboxed code execution, modular extensibility, multi-agent delegation, AND systematic evaluation across a broad set of benchmarks in a single platform.",
+        "locations": ["§1, paragraph 3; §2, last paragraph"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q4": {
+        "answer": "The authors built OpenHands, an open platform with: (1) event-stream architecture decoupling agent logic from environment, (2) Docker-sandboxed runtime with bash, Jupyter, and Playwright browser, (3) AgentSkills extensible tool library, (4) multi-agent delegation via AgentDelegateAction, (5) evaluation framework integrating 15 benchmarks across software engineering, web browsing, and general assistance. They instantiated CodeActAgent (a generalist agent using code as primary action) and evaluated it across all 15 benchmarks without task-specific modification.",
+        "locations": ["§1, paragraph 5-6; §3; §4; §5"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q5": {
+        "answer": "The design chooses code as the primary action space because code is Turing-complete — any tool, computation, or workflow expressible in software becomes available without pre-specification. The event-stream architecture separates agent logic from execution details. Docker sandboxing enables safe execution on arbitrary OS images. AgentSkills adds capabilities LLMs can't reliably generate themselves or that require external models. Multi-agent delegation allows composing specialists without a monolithic agent.",
+        "locations": ["§2, paragraphs 2-3; §3.1; §3.2; §3.3; §3.4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q6": {
+        "answer": "Evaluated CodeActAgent (and BrowsingAgent, GPTSwarm) on 15 benchmarks: 7 software engineering (SWE-Bench Lite, HumanEvalFix, BIRD, BioCoder, ML-Bench, Gorilla APIBench, ToolQA), 2 web browsing (WebArena, MiniWoB++), 6 miscellaneous assistance (GAIA, GPQA, AgentBench OS, MINT, Entity Deduction Arena, ProofWriter). All evaluations zero-shot, no task-specific prompt engineering, no hint text on SWE-Bench. SWE-Bench used 300-instance Lite subset. Reported single runs without variance estimates.",
+        "locations": ["§5; §6.1; §6.2; §6.3; Tables 1-3"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q7": {
+        "answer": "CodeActAgent (claude-3-5-sonnet): 26.0% on SWE-Bench Lite (vs. SWE-Agent 18.0%, Aider 26.3%); 79.3% on HumanEvalFix zero-shot (vs. StarCoder2-15B non-agentic 48.6%, SWE-Agent 87.7% with 1-shot); 64.4% on ML-Bench (vs. SWE-Agent 42.6%); 47.2% on Gorilla APIBench (vs. Gorilla fine-tuned 36.4%); BrowsingAgent (claude-3-5-sonnet): 15.5% on WebArena (vs. WebArena baseline 14.4%); CodeActAgent (claude-3-5-sonnet): 52.0% on GPQA Diamond (vs. GPT-4 few-shot CoT 38.8%); GPTSwarm: 32.1% on GAIA L1 (vs. AutoGPT 13.2%); AgentBench OS: 57.6% (vs. baseline 42.4%); MINT math: 77.3% (vs. 65.8%); ProofWriter: 78.8% (near Logic-LM 79.6%).",
+        "locations": ["§6.1; §6.2; §6.3; Tables 1-3"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q8": {
+        "answer": "A single generalist agent (CodeActAgent) without task-specific modification achieves competitive performance across three qualitatively different task categories: software engineering (comparable to specialist open-source agents), web browsing (competitive with domain-general web agents), and general assistance (surpassing non-agentic GPT-4 on GPQA). The expressive power of code-based actions enables this generality. Shared infrastructure reveals that backbone model choice is the dominant variable (4x range on SWE-Bench Lite from gpt-4o-mini to claude-3-5-sonnet). Tool use amplifies capability on knowledge-intensive tasks (GPQA).",
+        "locations": ["§7, paragraphs 1-3; §6.1; §6.2; §6.3"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q9": {
+        "answer": "The results do NOT establish: (1) that the action-space design alone causes the generality (no ablation isolates action-space from backbone strength or scaffold design); (2) that tool access alone explains the GPQA gain (the comparison conflates claude-3-5-sonnet vs GPT-4 AND tool access); (3) that LLM capability is fully isolated even within OpenHands (prompt-scaffold interactions differ across models); (4) transfer to production systems or private codebases; (5) meaningful performance distinctions for sub-1% differences (no variance estimates); (6) that the agent outperforms all specialists (e.g., Entity Deduction Arena shows 38.0% vs 40.0% GPT-4 zero-shot).",
+        "locations": ["§7, paragraphs 1-3; §6.3; §7 Limitations"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q10": {
+        "answer": "Primary contribution is the OpenHands platform itself — an open, shared infrastructure combining safe sandboxed execution, unified action space, extensible tools, multi-agent delegation, and systematic multi-benchmark evaluation. The empirical evaluation validates that the infrastructure supports the breadth of capability its design targets, showing one unmodified generalist agent is simultaneously competitive across three task categories.",
+        "locations": ["§1, Contributions paragraph; §9, first paragraph"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q11": {
+        "answer": "Main limitations: (1) No variance estimates across random seeds/LLM sampling — sub-1% differences not meaningful; (2) Agents struggle with long-file editing due to context window limits; (3) Workflow design (which agents to invoke in what sequence) requires substantial handcrafting; (4) Evaluation only on benchmarks, not production systems or private codebases; (5) No ablation isolating action-space contribution from backbone/scaffold; (6) GPQA comparison conflates model and tool access.",
+        "locations": ["§7, Limitations paragraph; §7, paragraph 2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q12": {
+        "answer": "OpenHands is an open platform that unifies fragmented agent infrastructure. Its key empirical finding: a single generalist agent using code as its primary action space achieves competitive results across software engineering, web browsing, and general assistance — without task-specific modification. This validates software-grounded action spaces as more general than domain-specific alternatives, and shows shared infrastructure is essential for clean scientific comparison (backbone model matters more than framework differences).",
+        "locations": ["§9; §7, paragraph 1"],
+        "confidence": 5,
+        "missing": ""
+      }
+    }
+  },
+  "diagnostics": {
+    "packet_id": "pkt-ba793105",
+    "binding_personas": ["A", "B", "E"],
+    "findings": [
+      {
+        "dimension": "problem",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1", "paragraph": 3, "quote": "None combines safe sandboxed code execution, modular extensibility, multi-agent delegation, and systematic evaluation across a broad set of benchmarks."},
+        "observed": "Problem is crisply stated: infrastructure fragmentation across incompatible single-purpose frameworks prevents comparison, progress measurement, and component reuse.",
+        "reader_struggle": "No struggle — the problem is concrete and well-motivated from the first paragraph.",
+        "likely_consequence": "Reader immediately understands what gap this work fills.",
+        "revision_principle": "Keep problem statements grounded in specific missing capabilities rather than vague 'lack of infrastructure.'"
+      },
+      {
+        "dimension": "motivation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1", "paragraph": 2, "quote": "A skilled programmer can, with a few lines of code, automate repetitive processes, orchestrate complex workflows, and interface with virtually any digital service."},
+        "observed": "Motivation ties the technical choice (code as action space) to a fundamental property of software as universal interface, making the 'why' intuitive for adjacent researchers.",
+        "reader_struggle": "None — the software-as-universal-interface argument is accessible to any ML researcher.",
+        "likely_consequence": "Reader buys into the design philosophy before seeing architecture details.",
+        "revision_principle": "Anchor design motivations in properties of the action medium, not just benchmark gaps."
+      },
+      {
+        "dimension": "research_question",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1", "paragraph": 4, "quote": "can a single generalist agent — operating through code as its primary action space and without task-specific modification — achieve competitive performance simultaneously across software engineering, web browsing, and general-assistance tasks"},
+        "observed": "Explicit, concrete empirical question stated in the introduction, directly addressed by the evaluation.",
+        "reader_struggle": "None — the question is unambiguous and the evaluation design maps to it.",
+        "likely_consequence": "Reader can judge for themselves whether the results answer the question.",
+        "revision_principle": "State the research question explicitly early; don't make readers infer it from the evaluation design."
+      },
+      {
+        "dimension": "contribution",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1", "paragraph": 6, "quote": "Contributions. (1) We describe the OpenHands platform and its architecture. (2) We instantiate and evaluate CodeActAgent... (3) We evaluate agents across 15 benchmarks..."},
+        "observed": "Three contributions clearly enumerated, distinguishing platform (primary) from agent integration and cross-domain evaluation (secondary).",
+        "reader_struggle": "None — the contribution list is explicit and matches what the paper delivers.",
+        "likely_consequence": "No confusion about what is novel vs. what is integration/evaluation.",
+        "revision_principle": "Separate platform contributions from agent contributions; don't claim novelty for borrowed designs (CodeAct)."
+      },
+      {
+        "dimension": "method",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§3.1", "paragraph": 1, "quote": "an agent is a function that takes the current state — a data structure containing the full history of actions and observations — and returns the next action"},
+        "observed": "Core abstractions (event stream, action types, sandboxed runtime, AgentSkills, delegation) are well explained with enough detail for an adjacent researcher to understand the design. The event-stream architecture is particularly clean.",
+        "reader_struggle": "Minor: §3.2's dual-tagging scheme for Docker images is described but its practical impact on reproducibility vs. convenience could use a concrete example. The BrowserGym integration (§3.1, BrowseInteractiveAction) is mentioned but the action space details are deferred to a citation.",
+        "likely_consequence": "Reader understands the architecture but may not grasp how image tagging prevents configuration drift in practice.",
+        "revision_principle": "For infrastructure papers, include one concrete scenario showing how a reproducibility feature (e.g., hash-based tags) prevents a real problem."
+      },
+      {
+        "dimension": "experiment",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§5", "paragraph": 1, "quote": "All OpenHands evaluations compare against open-source baselines that do not perform manual prompt engineering targeted at specific benchmarks. Each OpenHands agent is evaluated in zero-shot mode (no task demonstrations) unless otherwise stated."},
+        "observed": "Evaluation scope is impressive (15 benchmarks, 3 categories). Protocol is clearly stated: zero-shot, no task-specific prompt engineering, open-source baselines. SWE-Bench Lite subset used for cost reasons with cost estimate given.",
+        "reader_struggle": "The paper doesn't specify number of seeds/runs for any benchmark, only noting in Limitations that results are single runs. For a journal-length article, this is a notable omission that the verifying reviewer (E) would flag.",
+        "likely_consequence": "Reader cannot assess statistical reliability of reported numbers; may overinterpret small differences.",
+        "revision_principle": "Always report variance estimates or explicitly state single-run limitation in the results tables themselves, not just in Limitations."
+      },
+      {
+        "dimension": "result",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§6.1", "paragraph": 2, "quote": "All results in this paper are single runs without variance estimates (see §7 Limitations), so sub-1% differences — such as the gap with Aider — should not be treated as meaningful performance distinctions."},
+        "observed": "Results are presented clearly in tables with relevant baselines. The paper commendably self-corrects in-text about the Aider gap and the 4x backbone range. Strongest numbers (26.0% SWE-Bench, 52.0% GPQA, 15.5% WebArena) are highlighted.",
+        "reader_struggle": "Tables mix models across rows (gpt-4o, claude-3-5-sonnet, gpt-4o-mini) making direct framework comparison harder. The GPQA table compares claude-3-5-sonnet+tools vs GPT-4 no-tools — two variables changed. The verifying reader must mentally disentangle these.",
+        "likely_consequence": "Reader may attribute gains to framework when they're from backbone, or vice versa. The paper acknowledges this but the table design doesn't prevent the confusion.",
+        "revision_principle": "In multi-model evaluations, structure tables to isolate one variable at a time (same model across frameworks, or same framework across models)."
+      },
+      {
+        "dimension": "interpretation",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§7", "paragraph": 1, "quote": "The authors attribute this to the expressive power of code-based actions... This interpretation is consistent with the results, but no ablation in the paper isolates the action-space contribution from backbone strength or scaffold design; the attribution remains an explanatory hypothesis."},
+        "observed": "Interpretation is careful: the paper explicitly labels the action-space attribution as a hypothesis, not a proven conclusion. It acknowledges the GPQA comparison conflates two variables. This honesty is a strength.",
+        "reader_struggle": "The interpretation of 'generality' could be sharper — the paper shows competitive performance on benchmarks, but 'generality' implies more than benchmark coverage. The Discussion doesn't address what 'generalist' means beyond these 15 benchmarks.",
+        "likely_consequence": "Reader may conflate benchmark breadth with true generality. The paper's own caveats mitigate this but don't eliminate it.",
+        "revision_principle": "Distinguish 'broad benchmark coverage' from 'generality' — the latter requires out-of-distribution or transfer evidence."
+      },
+      {
+        "dimension": "limitation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§7", "paragraph": 4, "quote": "The evaluation results are reported without variance estimates across random seeds or LLM sampling runs; given the stochastic nature of LLM decoding, performance differences smaller than a few percentage points should be interpreted cautiously."},
+        "observed": "Limitations section is thorough and specific: no variance estimates, long-file editing struggles, handcrafted workflows, benchmark-only evaluation, no action-space ablation, GPQA conflation. Each limitation is concrete and bounds the relevant claims.",
+        "reader_struggle": "None — limitations are front-loaded in Discussion, not buried.",
+        "likely_consequence": "Reader can calibrate confidence in each claim appropriately.",
+        "revision_principle": "State limitations as specific bounds on specific claims, not generic 'future work' items."
+      },
+      {
+        "dimension": "narrative_coherence",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1", "paragraph": 5, "quote": "We introduce OpenHands... OpenHands provides: 1. An event-stream architecture... 2. A Docker-sandboxed runtime... 3. An AgentSkills library... 4. Multi-agent delegation... 5. An evaluation framework..."},
+        "observed": "Narrative flows logically: problem → gap → research question → platform design → agent hub → evaluation framework → results → discussion → conclusion. Each section builds on the previous. The Contributions list in §1 matches the paper structure.",
+        "reader_struggle": "None — the paper is easy to follow from start to finish.",
+        "likely_consequence": "Reader never loses the thread; the 'so what' is maintained throughout.",
+        "revision_principle": "Use the introduction's contribution list as a structural contract for the rest of the paper."
+      },
+      {
+        "dimension": "terminology",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§2", "paragraph": 1, "quote": "An AI agent is a system that observes its environment, selects an action, and updates its state based on the result. This loop is familiar from reinforcement learning..."},
+        "observed": "Terminology is accessible to adjacent ML researchers. Key terms (action space, event stream, CodeAct, sandboxed runtime) are defined on first use with analogies to familiar RL concepts. No subfield-specific jargon unexplained.",
+        "reader_struggle": "None — an ML researcher from another subfield can read without constant lookup.",
+        "likely_consequence": "Low cognitive barrier to entry for the binding audience (B).",
+        "revision_principle": "Define terms by analogy to the reader's likely background (RL, standard LLM usage), not by reference to niche prior work."
+      },
+      {
+        "dimension": "logical_flow",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§3", "paragraph": 1, "quote": "The core abstraction in OpenHands is simple: an agent is a function that takes the current state... and returns the next action."},
+        "observed": "Each architectural component (event stream, runtime, skills, delegation) is introduced with its motivation, then its design, then how it connects to the whole. The flow from abstraction to concrete implementation is smooth.",
+        "reader_struggle": "None.",
+        "likely_consequence": "Reader builds a coherent mental model of the platform incrementally.",
+        "revision_principle": "Present architecture bottom-up: core abstraction first, then layers that depend on it."
+      },
+      {
+        "dimension": "evidence_traceability",
+        "score": 3,
+        "persona": ["E"],
+        "location": {"section": "§6.1", "paragraph": 1, "quote": "SWE-Bench Lite evaluates agents on real GitHub issue resolution: given a repository and an issue description... the agent must modify the code so that the repository's test suite passes."},
+        "observed": "Benchmark descriptions are clear and traceable to citations. However, the paper provides no links to raw results, logs, or reproduction scripts. The verifying reviewer (E) cannot trace a specific result (e.g., 26.0% on SWE-Bench) to an executable artifact from the paper alone.",
+        "reader_struggle": "E-reader cannot verify results independently. The paper says 'released under MIT license' but doesn't point to a specific commit or reproduction package for these exact numbers.",
+        "likely_consequence": "Results are credible but not independently verifiable from the paper artifact alone.",
+        "revision_principle": "For infrastructure papers claiming systematic evaluation, include a reproducibility appendix or link to a tagged release with exact evaluation scripts."
+      },
+      {
+        "dimension": "figure_table",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§6.1", "paragraph": 2, "quote": "Table 1: SWE-Bench Lite and HumanEvalFix results (selected agents)"},
+        "observed": "Tables 1-3 are well-formatted, include model names, and report the key metrics. They include the critical self-correction about single-run variance in the caption/text. The 'selected agents' labeling is honest about not being exhaustive.",
+        "reader_struggle": "Tables mix models and frameworks in ways that make isolation hard (see 'result' dimension). Table 3 compares GPQA results with different models and tool access in the same column — the reader must read the text to understand the confound.",
+        "likely_consequence": "Casual table-reading may mislead; careful reading of text is required to interpret correctly.",
+        "revision_principle": "Design tables so the primary comparison (framework vs framework, or model vs model) is readable without prose explanation."
+      },
+      {
+        "dimension": "claim_evidence_alignment",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§7", "paragraph": 2, "quote": "However, the nature of the tasks makes tool access a plausible contributor: GPQA questions require precise computation and retrieval of domain-specific information... that demonstrably exceed parametric knowledge."},
+        "observed": "Claims are generally well-aligned with evidence. The paper explicitly qualifies the GPQA claim ('cannot be attributed to tool use alone'). The 'generality' claim is supported by breadth of benchmarks but the paper acknowledges it's not proven by ablation.",
+        "reader_struggle": "The claim 'CodeActAgent... achieves competitive performance across all three task categories without task-specific modification' is well-supported by the data. The weaker claim about 'action space generality' is labeled as hypothesis.",
+        "likely_consequence": "Reader's trust is maintained because overclaims are self-corrected.",
+        "revision_principle": "When evidence supports a weaker claim than the motivational narrative, state the weaker claim as the conclusion and the stronger as a hypothesis."
+      },
+      {
+        "dimension": "unsupported_inference",
+        "score": 4,
+        "persona": ["E"],
+        "location": {"section": "§7", "paragraph": 1, "quote": "The authors attribute this to the expressive power of code-based actions: any tool, computation, or web request can be expressed as code, which means the agent's action vocabulary is effectively unlimited without pre-specification of tools."},
+        "observed": "The inference that code-based action space *causes* the cross-domain generality is not directly tested (no ablation). The paper admits this ('attribution remains an explanatory hypothesis'). The GPQA gain inference (tool access helps) is plausible but confounded. No causal language ('prove', 'first', 'SOTA') is used inappropriately.",
+        "reader_struggle": "The verifying reader sees the hypothesis clearly labeled, so no misleading inference occurs. But the paper could be stronger if it designed an experiment to test the action-space hypothesis.",
+        "likely_consequence": "Reader understands this is a hypothesis, not a finding.",
+        "revision_principle": "Label explanatory hypotheses explicitly; don't let them read as conclusions."
+      },
+      {
+        "dimension": "redundancy",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§8", "paragraph": 1, "quote": "AutoGPT (Gravitas, 2023) and LangChain (Chase, 2022) provide foundational components for LLM-based agents but lack integrated sandboxed execution."},
+        "observed": "Related work is concise and focused on positioning, not exhaustive survey. No redundant restatement of results. Each section adds new information.",
+        "reader_struggle": "None — the paper respects the reader's time.",
+        "likely_consequence": "High information density without fatigue.",
+        "revision_principle": "In Related Work, position rather than summarize; assume the reader knows the landmark papers."
+      },
+      {
+        "dimension": "cognitive_load",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§5", "paragraph": 1, "quote": "To assess agent generality, OpenHands integrates 15 benchmarks across three categories:"},
+        "observed": "15 benchmarks is a lot to track. The paper groups them by category and summarizes each in 1-2 sentences, which helps. The results section walks through categories sequentially. However, the reader must hold many benchmark names and metrics in mind.",
+        "reader_struggle": "Moderate: an adjacent researcher unfamiliar with SWE-Bench, WebArena, GPQA, GAIA, etc. must absorb many benchmark descriptions quickly. The paper mitigates this with clear categorization but doesn't provide a summary table of benchmark→metric→task type.",
+        "likely_consequence": "Reader may lose track of which benchmark tests what; a cheat-sheet table would help.",
+        "revision_principle": "When evaluating on many benchmarks, include a summary table mapping benchmark → category → metric → task description."
+      },
+      {
+        "dimension": "orientation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§1", "paragraph": 5, "quote": "OpenHands provides: 1. An event-stream architecture... 2. A Docker-sandboxed runtime... 3. An AgentSkills library... 4. Multi-agent delegation... 5. An evaluation framework..."},
+        "orientation": "The paper orients the reader at multiple levels: Introduction gives the 5-component overview; §3 details each; §4 introduces agents; §5 lists benchmarks by category; each results subsection reminds the reader what the benchmark tests. Signposting is consistent.",
+        "reader_struggle": "None — the reader always knows where they are in the argument.",
+        "likely_consequence": "Easy navigation; reader can jump to sections of interest.",
+        "revision_principle": "Repeat the high-level structure at the start of each major section."
+      },
+      {
+        "dimension": "so_what",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "§9", "paragraph": 1, "quote": "These findings carry three implications. First, software-grounded action spaces are more general than domain-specific alternatives... Second, shared infrastructure is a precondition for measuring agent generality... Third, the platform is designed for low-overhead reuse..."},
+        "observed": "Conclusion distills three clear implications for the field: (1) code as universal action space, (2) infrastructure enables clean science, (3) platform designed for reuse. Each is tied to specific evidence from the paper.",
+        "reader_struggle": "None — the takeaway is unambiguous and actionable.",
+        "likely_consequence": "Reader leaves with a clear understanding of why this work matters for their own research.",
+        "revision_principle": "End with implications for the reader's work, not just a summary of what you did."
+      }
+    ],
+    "inference_issues": [
+      {
+        "kind": "unsupported_conclusion",
+        "location": {"section": "§7", "paragraph": 1, "quote": "The authors attribute this to the expressive power of code-based actions..."},
+        "claim_text": "The cross-domain generality of CodeActAgent is caused by the expressive power of code-based actions.",
+        "missing_link": "No ablation study isolates action-space design from backbone model strength, scaffold design, or prompt engineering. The attribution is explicitly labeled a hypothesis."
+      },
+      {
+        "kind": "causal_overreach",
+        "location": {"section": "§6.3", "paragraph": 2, "quote": "CodeActAgent with tool use achieves 52.0% on the GPQA diamond set, above GPT-4 few-shot chain-of-thought (38.8%)... The two baselines differ in both backbone (claude-3-5-sonnet vs. GPT-4) and tool access, so the 13-point gap cannot be attributed to tool use alone."},
+        "claim_text": "Tool use amplifies LLM capability on knowledge-intensive tasks (GPQA).",
+        "missing_link": "The comparison changes two variables simultaneously (model + tool access). No controlled experiment (same model with/without tools) is reported."
+      },
+      {
+        "kind": "overgeneralization",
+        "location": {"section": "§9", "paragraph": 1, "quote": "software-grounded action spaces are more general than domain-specific alternatives: any tool or workflow expressible in code is available to the agent without pre-specification, and the benchmarks show this generalizes across three qualitatively different task categories"},
+        "claim_text": "Software-grounded action spaces are more general than domain-specific alternatives.",
+        "missing_link": "Generality is demonstrated only on the 15 selected benchmarks. No evidence of generalization to unseen task distributions, production environments, or private codebases. 'Generality' here means benchmark breadth, not proven out-of-distribution robustness."
+      },
+      {
+        "kind": "selective_presentation",
+        "location": {"section": "§6.3", "paragraph": 3, "quote": "On Entity Deduction Arena... CodeActAgent reaches 38.0% — slightly below the GPT-4 zero-shot baseline (40.0%) — representing one of the few cases where the agentic approach does not improve over direct prompting."},
+        "claim_text": "Agentic approach is competitive across all categories.",
+        "missing_link": "The paper acknowledges this counterexample but doesn't analyze why the agentic approach fails here. The 'few cases' phrasing suggests there may be others not discussed."
+      },
+      {
+        "kind": "limitation_not_respected",
+        "location": {"section": "§6.1", "paragraph": 2, "quote": "CodeActAgent v1.8 with claude-3-5-sonnet achieves 26.0% on SWE-Bench Lite, above SWE-Agent (18.0%) and AutoCodeRover (19.0%), and within 0.3 percentage points of Aider (26.3%)."},
+        "claim_text": "CodeActAgent achieves 26.0% on SWE-Bench Lite, comparable to Aider at 26.3%.",
+        "missing_link": "The paper itself notes (same paragraph) that all results are single runs without variance estimates and sub-1% differences should not be treated as meaningful. Yet the claim 'within 0.3 percentage points' is presented as a comparative fact in the results narrative."
+      }
+    ],
+    "objective_discrepancies": [
+      "The objective states the paper is 'meant to present their research project to adjacent machine-learning researchers.' The paper succeeds at this — it is accessible, well-structured, and explains terminology for adjacent researchers. No significant discrepancy.",
+      "The objective doesn't specify claims about 'generality' or 'SOTA' — the paper appropriately avoids SOTA claims and qualifies generality as a hypothesis. Alignment is good."
+    ],
+    "injection_suspected": []
+  }
+}

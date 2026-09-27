@@ -1,0 +1,132 @@
+{
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "Existing LM benchmarks have saturated and rely on self-contained, short-context tasks that do not reflect real software engineering.",
+      "claim_type": "background_fact",
+      "evidence_ids": ["E001", "E002"],
+      "confidence": "high",
+      "permitted_verbs": ["argue", "note", "observe"],
+      "author_confirmation": "confirmed",
+      "limitations": []
+    },
+    {
+      "id": "C002",
+      "statement": "No prior benchmark evaluated LMs on authentic repository-scale code editing requiring multi-file, multi-function changes driven by real issue descriptions.",
+      "claim_type": "gap",
+      "evidence_ids": [],
+      "confidence": "medium",
+      "permitted_verbs": ["argue", "note"],
+      "author_confirmation": "confirmed",
+      "limitations": ["L001"]
+    },
+    {
+      "id": "C003",
+      "statement": "SWE-bench asks: can LMs resolve real-world GitHub issues by editing codebases to pass existing tests?",
+      "claim_type": "research_question",
+      "evidence_ids": ["E001"],
+      "confidence": "high",
+      "permitted_verbs": ["ask", "investigate"],
+      "author_confirmation": "confirmed",
+      "limitations": []
+    },
+    {
+      "id": "C004",
+      "statement": "SWE-bench comprises 2,294 task instances from 12 Python repositories, constructed via a 3-stage pipeline (scraping, attribute filtering, execution validation), with task instances requiring models to produce patch files that pass pre-existing tests.",
+      "claim_type": "method",
+      "evidence_ids": ["E001", "E002", "E030", "E039"],
+      "confidence": "high",
+      "permitted_verbs": ["present", "describe", "construct"],
+      "author_confirmation": "confirmed",
+      "limitations": ["L002"]
+    },
+    {
+      "id": "C005",
+      "statement": "All evaluated LMs fail to resolve the vast majority of SWE-bench issues; the best BM25 result is Claude 3 Opus at 3.79%; with oracle-collapsed context Claude 3 Opus reaches 9.39%; performance degrades significantly with longer context inputs.",
+      "claim_type": "result",
+      "evidence_ids": ["E011", "E012", "E013", "E014", "E015", "E016", "E017", "E018", "E019", "E020", "E021", "E023"],
+      "confidence": "high",
+      "permitted_verbs": ["show", "find", "observe", "demonstrate"],
+      "author_confirmation": "confirmed",
+      "limitations": ["L003", "L004"]
+    },
+    {
+      "id": "C006",
+      "statement": "SWE-bench serves as a sustainable, continuously updatable testbed for evaluating LM progress on practical software engineering; the benchmark's design ensures temporal robustness against memorization.",
+      "claim_type": "contribution",
+      "evidence_ids": ["E028", "E033"],
+      "confidence": "high",
+      "permitted_verbs": ["argue", "claim", "present"],
+      "author_confirmation": "confirmed",
+      "limitations": ["L001", "L002"]
+    },
+    {
+      "id": "C007",
+      "statement": "SWE-bench is currently limited to Python repositories; baselines use retrieval-only approaches; test passage alone does not guarantee code quality or comprehensive solutions.",
+      "claim_type": "limitation",
+      "evidence_ids": ["E041", "E042", "E043"],
+      "confidence": "high",
+      "permitted_verbs": ["acknowledge", "note", "state"],
+      "author_confirmation": "confirmed",
+      "limitations": []
+    },
+    {
+      "id": "C008",
+      "statement": "Model-generated patches that apply correctly are less than half the length of corresponding gold patches (30.1 vs 74.5 total lines) and rarely edit more than one file.",
+      "claim_type": "result",
+      "evidence_ids": ["E026", "E027"],
+      "confidence": "high",
+      "permitted_verbs": ["show", "find", "observe"],
+      "author_confirmation": "confirmed",
+      "limitations": []
+    },
+    {
+      "id": "C009",
+      "statement": "BM25 retrieval quality is poor: at 27k context, only 51.27% of instances have any oracle file retrieved, and ~50% have none.",
+      "claim_type": "result",
+      "evidence_ids": ["E024", "E025"],
+      "confidence": "high",
+      "permitted_verbs": ["show", "find"],
+      "author_confirmation": "confirmed",
+      "limitations": []
+    },
+    {
+      "id": "C010",
+      "statement": "SWE-Llama fine-tuned models suffer a context distribution shift when evaluated with BM25 context, since training used oracle-retrieved files.",
+      "claim_type": "observation",
+      "evidence_ids": ["E029"],
+      "confidence": "medium",
+      "permitted_verbs": ["suggest", "observe"],
+      "author_confirmation": "confirmed",
+      "limitations": ["L005"]
+    },
+    {
+      "id": "C011",
+      "statement": "Performance does not correlate with issue creation date (before vs after 2023), suggesting models cannot trivially solve issues by memorizing observed repository states.",
+      "claim_type": "result",
+      "evidence_ids": ["E028"],
+      "confidence": "medium",
+      "permitted_verbs": ["suggest", "find"],
+      "author_confirmation": "confirmed",
+      "limitations": ["L006"]
+    },
+    {
+      "id": "C012",
+      "statement": "SWE-bench-train provides 19,000 issue-PR pairs from 37 additional repositories (disjoint from the test set) for fine-tuning open-access models.",
+      "claim_type": "contribution",
+      "evidence_ids": ["E031"],
+      "confidence": "high",
+      "permitted_verbs": ["release", "provide"],
+      "author_confirmation": "confirmed",
+      "limitations": []
+    }
+  ],
+  "limitations": [
+    {"id": "L001", "description": "Prior work comparison is by citation only (no within-paper evaluation against prior benchmarks)."},
+    {"id": "L002", "description": "Only Python repositories; other languages not covered."},
+    {"id": "L003", "description": "Single greedy decoding per instance (Pass@1); no variance reported."},
+    {"id": "L004", "description": "GPT-4 evaluated on 25% subset only due to budget constraints."},
+    {"id": "L005", "description": "Distribution shift hypothesis is a post-hoc interpretation, not controlled experiment."},
+    {"id": "L006", "description": "Temporal analysis uses a coarse pre/post-2023 partition; training data cutoffs not precisely known for all models."}
+  ]
+}

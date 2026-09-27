@@ -1,0 +1,1309 @@
+{
+ "project_root": "./project/",
+ "items": [
+  {
+   "id": "E001",
+   "kind": "external_fact",
+   "summary": "OpenHands is reported to have more than 2.1K contributions from over 188 contributors.",
+   "value": {
+    "contributions": "2.1K",
+    "contributors": 188
+   },
+   "conditions": "As stated in the abstract and §1; self-reported, time-varying.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Abstract; also §1 'OpenHands has gained significant traction'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Quote: 'more than 2.1K contributions from over 188 contributors'. Self-reported community metric."
+  },
+  {
+   "id": "E002",
+   "kind": "external_fact",
+   "summary": "OpenHands is reported to have 32K GitHub stars.",
+   "value": {
+    "github_stars": "32K"
+   },
+   "conditions": "§1 (Introduction); self-reported, time-varying at time of writing.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§1 'with 32K GitHub stars'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Time-varying metric stated in prose."
+  },
+  {
+   "id": "E003",
+   "kind": "method_detail",
+   "summary": "OpenHands is released under a permissive MIT license allowing commercial use.",
+   "value": "MIT license",
+   "conditions": "Abstract and §1.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Abstract 'Released under the permissive MIT license'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E004",
+   "kind": "method_detail",
+   "summary": "OpenHands includes an agent hub with over 10 implemented agents.",
+   "value": {
+    "agents": "over 10"
+   },
+   "conditions": "§1 and §3.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§1 'an agent hub with over 10 implemented agents'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E005",
+   "kind": "method_detail",
+   "summary": "The evaluation framework integrates 15 established benchmarks across software, web, and misc. assistance.",
+   "value": {
+    "benchmarks": 15
+   },
+   "conditions": "§4 and Table 2. Abstract phrases this as 'evaluation of agents over 15 challenging tasks'.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§4 'we integrate 15 established benchmarks'; Table 2"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Table 2 enumerates 7 software, 2 web, 6 misc-assistance benchmarks = 15."
+  },
+  {
+   "id": "E010",
+   "kind": "result",
+   "summary": "OpenHands CodeActAgent v1.8 (claude-3-5-sonnet@20240620) resolve rate on SWE-Bench Lite.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 26.0,
+    "unit": "%",
+    "n": 300,
+    "spread": null
+   },
+   "conditions": "SWE-Bench Lite, 300 instances, w/o Hint, 0-shot prompting.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 4, SWE-Bench Lite section, OH CodeActAgent v1.8 claude-3-5-sonnet@20240620 = 26.0"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Prose §4.2 restates as 'a competitive resolve rate of 26%'. No variance/seeds reported. Avg cost 1.10 (Table 4)."
+  },
+  {
+   "id": "E011",
+   "kind": "result",
+   "summary": "OpenHands CodeActAgent v1.8 (gpt-4o-2024-05-13) success rate on SWE-Bench Lite.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 22.0,
+    "unit": "%",
+    "n": 300,
+    "spread": null
+   },
+   "conditions": "SWE-Bench Lite, 300 instances, w/o Hint, 0-shot.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 4 OH CodeActAgent v1.8 gpt-4o-2024-05-13 = 22.0; also Table 3 = 22.0"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Avg cost 1.72 (Table 4). No variance reported. Table 3 and Table 4 agree (22.0)."
+  },
+  {
+   "id": "E012",
+   "kind": "result",
+   "summary": "OpenHands CodeActAgent v1.8 (gpt-4o-mini-2024-07-18) SWE-Bench Lite success rate, as reported in Table 4.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 7.0,
+    "unit": "%",
+    "n": 300,
+    "spread": null
+   },
+   "conditions": "SWE-Bench Lite, 300 instances, w/o Hint, 0-shot.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 4 OH CodeActAgent v1.8 gpt-4o-mini-2024-07-18 = 7.0"
+   },
+   "strength": "hard",
+   "status": "conflicting",
+   "conflicts_with": [
+    "E013"
+   ],
+   "notes": "Conflicts with the value 6.3 reported for the same model/benchmark in Table 3."
+  },
+  {
+   "id": "E013",
+   "kind": "result",
+   "summary": "OpenHands CodeActAgent v1.8 (gpt-4o-mini-2024-07-18) SWE-Bench Lite success rate, as reported in Table 3.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 6.3,
+    "unit": "%",
+    "n": 300,
+    "spread": null
+   },
+   "conditions": "SWE-Bench Lite, Software (§4.2) column of Table 3 (selected results).",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 3, OpenHands Agents, CodeActAgent v1.8 gpt-4o-mini-2024-07-18 = 6.3"
+   },
+   "strength": "hard",
+   "status": "conflicting",
+   "conflicts_with": [
+    "E012"
+   ],
+   "notes": "Conflicts with the value 7.0 reported for the same model/benchmark in Table 4. Not resolved by CORPUS_AGENT."
+  },
+  {
+   "id": "E014",
+   "kind": "baseline",
+   "summary": "Agentless (gpt-4o) SWE-Bench Lite success rate (baseline reported in paper).",
+   "value": {
+    "metric": "Success Rate",
+    "value": 27.3,
+    "unit": "%",
+    "n": 300,
+    "spread": null
+   },
+   "conditions": "SWE-Bench Lite, from Table 3 (selected results).",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 3, Agentless (Xia et al., 2024) gpt-4o = 27.3"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Highest SWE-Bench Lite baseline in Table 3; exceeds OH 26.0."
+  },
+  {
+   "id": "E015",
+   "kind": "baseline",
+   "summary": "Moatless Tools (claude-3.5-sonnet) SWE-Bench Lite success rate (baseline).",
+   "value": {
+    "metric": "Success Rate",
+    "value": 26.7,
+    "unit": "%",
+    "n": 300,
+    "spread": null
+   },
+   "conditions": "SWE-Bench Lite, Table 3.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 3, Moatless Tools (Orwall) claude-3.5-sonnet = 26.7"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E016",
+   "kind": "baseline",
+   "summary": "Aider (gpt-4o & claude-3-opus) SWE-Bench Lite success rate (baseline).",
+   "value": {
+    "metric": "Success Rate",
+    "value": 26.3,
+    "unit": "%",
+    "n": 300,
+    "spread": null
+   },
+   "conditions": "SWE-Bench Lite, Table 3/Table 4.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 4, Aider (Gauthier) gpt-4o & claude-3-opus = 26.3"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E017",
+   "kind": "method_detail",
+   "summary": "SWE-Bench Lite is a 300-instance canonical subset; all results reported without hint text.",
+   "value": {
+    "instances": 300
+   },
+   "conditions": "SWE-Bench Lite used by default for cost-saving; results reported without hint text.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§4.2 'A canonical subset, SWE-bench Lite ... 300 instances, w/o Hint' (Table 4 caption)"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E018",
+   "kind": "observation",
+   "summary": "Estimated cost to run the complete SWE-Bench set (2294 instances).",
+   "value": {
+    "cost_usd": "6.9k",
+    "per_instance_estimate_usd": 3,
+    "instances": 2294
+   },
+   "conditions": "Conservative estimate of $3 per instance (footnote 2).",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§4.2 footnote 2 'Running the complete set of 2294 instances costs $6.9k'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Explicitly labeled a conservative estimate, not a measured aggregate."
+  },
+  {
+   "id": "E019",
+   "kind": "observation",
+   "summary": "Reported cost of a SWE-Bench Lite evaluation with gpt-4o.",
+   "value": {
+    "cost_usd": "around 600",
+    "model": "gpt-4o"
+   },
+   "conditions": "§E footnote 4.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§E footnote 4 'Running a SWE-Bench Lite ... evaluation with gpt-4o costs around 600 USD'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E020",
+   "kind": "result",
+   "summary": "OpenHands CodeActAgent v1.5 (gpt-4o-2024-05-13) HumanEvalFix Python pass rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 79.3,
+    "unit": "%",
+    "n": 164,
+    "spread": null
+   },
+   "conditions": "HumanEvalFix Python subset, 164 instances, 0-shot self-debug over multiple turns, pass@k setup.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 4 HumanEvalFix, OH CodeActAgent v1.5 gpt-4o-2024-05-13 = 79.3"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Prose §4.2.1: 'successfully fixes 79.3% of bugs in the Python split'. No variance reported."
+  },
+  {
+   "id": "E021",
+   "kind": "baseline",
+   "summary": "SWE-Agent (gpt-4-turbo, 1-shot) HumanEvalFix pass rate (baseline).",
+   "value": {
+    "metric": "Success Rate",
+    "value": 87.7,
+    "unit": "%",
+    "n": 164,
+    "spread": null
+   },
+   "conditions": "HumanEvalFix, 1-shot (full demonstration trajectory provided); differs from OH 0-shot.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 4 HumanEvalFix, SWE-agent 1-shot gpt-4-turbo = 87.7"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Paper notes SWE-Agent used 1-shot demonstration vs OpenHands 0-shot."
+  },
+  {
+   "id": "E022",
+   "kind": "baseline",
+   "summary": "StarCoder2-15B HumanEvalFix pass rate (non-agentic baseline).",
+   "value": {
+    "metric": "Success Rate",
+    "value": 48.6,
+    "unit": "%",
+    "n": 164,
+    "spread": null
+   },
+   "conditions": "HumanEvalFix, non-agentic approach.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 4 HumanEvalFix, StarCoder2-15B = 48.6"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Paper: OH 'almost doubling the performance of StarCoder2-15B'."
+  },
+  {
+   "id": "E023",
+   "kind": "result",
+   "summary": "OpenHands CodeActAgent v1.5 (gpt-3.5-turbo-16k-0613) HumanEvalFix pass rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 20.1,
+    "unit": "%",
+    "n": 164,
+    "spread": null
+   },
+   "conditions": "HumanEvalFix Python, 0-shot.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 4 HumanEvalFix, OH CodeActAgent v1.5 gpt-3.5-turbo-16k-0613 = 20.1"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "No variance reported."
+  },
+  {
+   "id": "E030",
+   "kind": "result",
+   "summary": "OpenHands BrowsingAgent v1.0 (claude-3-5-sonnet-20240620) WebArena success rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 15.5,
+    "unit": "%",
+    "n": 812,
+    "spread": null
+   },
+   "conditions": "WebArena, 812 instances, zero-shot prompting.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 5 WebArena, OH BrowsingAgent v1.0 claude-3-5-sonnet-20240620 = 15.5"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Avg cost 0.10. No variance reported."
+  },
+  {
+   "id": "E031",
+   "kind": "result",
+   "summary": "OpenHands BrowsingAgent v1.0 (gpt-4o-2024-05-13) WebArena success rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 14.8,
+    "unit": "%",
+    "n": 812,
+    "spread": null
+   },
+   "conditions": "WebArena, 812 instances.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 5 WebArena, OH BrowsingAgent v1.0 gpt-4o-2024-05-13 = 14.8"
+   },
+   "strength": "hard",
+   "status": "incomplete"
+  },
+  {
+   "id": "E032",
+   "kind": "result",
+   "summary": "OpenHands CodeActAgent v1.8 via delegation to BrowsingAgent v1.0 (claude-3-5-sonnet) WebArena success rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 15.3,
+    "unit": "%",
+    "n": 812,
+    "spread": null
+   },
+   "conditions": "WebArena, 812 instances, CodeActAgent delegating to BrowsingAgent.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 5 WebArena delegation, claude-3-5-sonnet = 15.3; also Table 3 web column"
+   },
+   "strength": "hard",
+   "status": "incomplete"
+  },
+  {
+   "id": "E033",
+   "kind": "baseline",
+   "summary": "Best WebArena baselines reported in paper (Auto Eval & Refine, AutoWebGLM).",
+   "value": {
+    "Auto_Eval_and_Refine": 20.2,
+    "AutoWebGLM": 18.2,
+    "unit": "%",
+    "n": 812
+   },
+   "conditions": "WebArena, 812 instances. Auto Eval & Refine uses GPT-4 + Reflexion w/ GPT-4V reward model; AutoWebGLM is a trained 7B model.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 5 WebArena, Auto Eval & Refine = 20.2, AutoWebGLM = 18.2"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Both baselines exceed OpenHands' best WebArena result (15.5)."
+  },
+  {
+   "id": "E040",
+   "kind": "result",
+   "summary": "OpenHands BrowsingAgent v1.0 (gpt-4o-2024-05-13) MiniWoB++ success rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 40.8,
+    "unit": "%",
+    "n": 125,
+    "spread": null
+   },
+   "conditions": "MiniWoB++, 125 environments, full set (including vision-requiring tasks).",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 5 MiniWoB++, OH BrowsingAgent v1.0 gpt-4o-2024-05-13 = 40.8"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Avg cost 0.05. Reported on full set including tasks requiring vision."
+  },
+  {
+   "id": "E041",
+   "kind": "baseline",
+   "summary": "CC-NET MiniWoB++ success rate (trained specialist baseline).",
+   "value": {
+    "metric": "Success Rate",
+    "value": 91.1,
+    "unit": "%",
+    "n": 125,
+    "spread": null
+   },
+   "conditions": "MiniWoB++, 125 environments; trained specialist model with RL and human-annotated BC.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 5 MiniWoB++, CC-NET (Humphreys et al., 2022) = 91.1"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Trained specialist; far exceeds OpenHands' 40.8 (different training paradigm)."
+  },
+  {
+   "id": "E042",
+   "kind": "baseline",
+   "summary": "Workflow Guided Exploration MiniWoB++ success rate (trained specialist baseline).",
+   "value": {
+    "metric": "Success Rate",
+    "value": 34.6,
+    "unit": "%",
+    "n": 125,
+    "spread": null
+   },
+   "conditions": "MiniWoB++, 125 environments; trained specialist with environment exploration.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 5 MiniWoB++, Workflow Guided Exploration (Liu et al., 2018) = 34.6"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E043",
+   "kind": "result",
+   "summary": "OpenHands CodeActAgent v1.8 via delegation (gpt-4o) MiniWoB++ success rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 39.8,
+    "unit": "%",
+    "n": 125,
+    "spread": null
+   },
+   "conditions": "MiniWoB++, 125 environments, delegation to BrowsingAgent v1.0.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 5 MiniWoB++ delegation, gpt-4o-2024-05-13 = 39.8"
+   },
+   "strength": "hard",
+   "status": "incomplete"
+  },
+  {
+   "id": "E050",
+   "kind": "result",
+   "summary": "OpenHands GPTSwarm v1.0 (gpt-4o-2024-05-13) GAIA L1 validation success rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 32.1,
+    "unit": "%",
+    "n": 53,
+    "spread": null
+   },
+   "conditions": "GAIA, L1 validation set, 53 instances.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 GAIA, OH GPTSwarm v1.0 gpt-4o-2024-05-13 = 32.1"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Also appears in Table 3 misc column (32.1)."
+  },
+  {
+   "id": "E051",
+   "kind": "result",
+   "summary": "OpenHands GPTSwarm v1.0 (gpt-4-0125-preview) GAIA L1 validation success rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 30.2,
+    "unit": "%",
+    "n": 53,
+    "spread": null
+   },
+   "conditions": "GAIA, L1 validation set, 53 instances.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 GAIA, OH GPTSwarm v1.0 gpt-4-0125-preview = 30.2"
+   },
+   "strength": "hard",
+   "status": "incomplete"
+  },
+  {
+   "id": "E052",
+   "kind": "baseline",
+   "summary": "AutoGPT (gpt-4-turbo) GAIA L1 validation success rate (baseline).",
+   "value": {
+    "metric": "Success Rate",
+    "value": 13.2,
+    "unit": "%",
+    "n": 53,
+    "spread": null
+   },
+   "conditions": "GAIA, L1 validation set, 53 instances.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 GAIA, AutoGPT (Gravitas, 2023) gpt-4-turbo = 13.2"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E053",
+   "kind": "dataset",
+   "summary": "GAIA consists of 466 curated tasks across three levels.",
+   "value": {
+    "tasks": 466,
+    "levels": 3
+   },
+   "conditions": "§4.4; OpenHands evaluates on the L1 validation subset (53 instances).",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§4.4 'GAIA consists of 466 curated tasks across three levels'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E060",
+   "kind": "result",
+   "summary": "OpenHands CodeActAgent v1.8 (claude-3-5-sonnet) GPQA diamond set accuracy.",
+   "value": {
+    "metric": "Accuracy",
+    "value": 52.0,
+    "unit": "%",
+    "n": 198,
+    "spread": null
+   },
+   "conditions": "GPQA diamond set, 198 instances.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 GPQA, OH CodeActAgent v1.8 claude-3-5-sonnet-20240620 = 52.0"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Also in Table 3 misc column (52.0). No variance reported."
+  },
+  {
+   "id": "E061",
+   "kind": "baseline",
+   "summary": "Expert human accuracy on GPQA diamond set, as reported in Table 6 (§4.4).",
+   "value": {
+    "metric": "Accuracy",
+    "value": 81.3,
+    "unit": "%",
+    "n": 198,
+    "spread": null
+   },
+   "conditions": "GPQA diamond set, 198 instances; expert human validators (Rein et al., 2023).",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 GPQA, Human Expert = 81.3"
+   },
+   "strength": "hard",
+   "status": "conflicting",
+   "conflicts_with": [
+    "E066"
+   ],
+   "notes": "Conflicts with Table 7 (§G) which reports 81.2 for expert human on the diamond set."
+  },
+  {
+   "id": "E062",
+   "kind": "baseline",
+   "summary": "Non-expert human accuracy on GPQA diamond set (Table 6).",
+   "value": {
+    "metric": "Accuracy",
+    "value": 21.9,
+    "unit": "%",
+    "n": 198,
+    "spread": null
+   },
+   "conditions": "GPQA diamond set, 198 instances; non-expert human validators.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 GPQA, Human Non-expert = 21.9"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Table 7 diamond set non-expert value (21.9) agrees."
+  },
+  {
+   "id": "E063",
+   "kind": "baseline",
+   "summary": "Few-shot CoT GPT-4 accuracy on GPQA diamond set (Table 6).",
+   "value": {
+    "metric": "Accuracy",
+    "value": 38.8,
+    "unit": "%",
+    "n": 198,
+    "spread": null
+   },
+   "conditions": "GPQA diamond set; Few-shot Prompting + Chain-of-Thought, gpt-4.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 GPQA, Few-shot CoT gpt-4 = 38.8"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Consistent with Table 7 GPT-4 diamond value (38.8)."
+  },
+  {
+   "id": "E064",
+   "kind": "result",
+   "summary": "OpenHands CodeActAgent v1.5 (GPT-4o) GPQA diamond set accuracy (Table 7, §G).",
+   "value": {
+    "metric": "Accuracy",
+    "value": 53.1,
+    "unit": "%",
+    "n": 198,
+    "spread": null
+   },
+   "conditions": "GPQA diamond set, 198 instances, CodeActAgent v1.5 + GPT-4o.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 7 (§G), OpenHands + CodeActAgent v1.5 + GPT4o, Diamond Set = 53.1"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Matches the starred '53.1' in Table 3 (marked as v1.5 numbers). Avg cost 0.054 (Table 7)."
+  },
+  {
+   "id": "E065",
+   "kind": "result",
+   "summary": "OpenHands CodeActAgent v1.5 (GPT-4-turbo) GPQA diamond set accuracy (Table 7, §G).",
+   "value": {
+    "metric": "Accuracy",
+    "value": 51.8,
+    "unit": "%",
+    "n": 198,
+    "spread": null
+   },
+   "conditions": "GPQA diamond set, 198 instances, CodeActAgent v1.5 + GPT-4-turbo.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 7 (§G), OpenHands + CodeActAgent v1.5 + GPT4-turbo, Diamond Set = 51.8"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Avg cost 0.501 (Table 7)."
+  },
+  {
+   "id": "E066",
+   "kind": "baseline",
+   "summary": "Expert human accuracy on GPQA diamond set, as reported in Table 7 (§G).",
+   "value": {
+    "metric": "Accuracy",
+    "value": 81.2,
+    "unit": "%",
+    "n": 198,
+    "spread": null
+   },
+   "conditions": "GPQA diamond set; Expert Human Validators (Table 7).",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 7 (§G), Expert Human Validators, Diamond Set = 81.2"
+   },
+   "strength": "hard",
+   "status": "conflicting",
+   "conflicts_with": [
+    "E061"
+   ],
+   "notes": "Conflicts with Table 6 which reports 81.3 for expert human on the diamond set. Not resolved."
+  },
+  {
+   "id": "E067",
+   "kind": "observation",
+   "summary": "Average per-instance cost for OpenHands CodeActAgent v1.5 GPQA runs (Table 7).",
+   "value": {
+    "gpt3.5_turbo_usd": 0.012,
+    "gpt4_turbo_usd": 0.501,
+    "gpt4o_usd": 0.054
+   },
+   "conditions": "GPQA, CodeActAgent v1.5, per Table 7 Avg Cost column.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 7 (§G), Avg Cost ($) column: 0.012 / 0.501 / 0.054"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E068",
+   "kind": "result",
+   "summary": "Table 7 (§G) also reports GPQA Main Set and Extended Set accuracies for all methods, but per-cell row/column assignment is not cleanly recoverable from the provided text extraction.",
+   "value": null,
+   "conditions": "GPQA main set and extended set columns exist in Table 7.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 7 (§G) 'Accuracy by subset (%): Diamond Set / Main Set / Extended Set'"
+   },
+   "strength": "hard",
+   "status": "unverifiable",
+   "notes": "The linearized table text scrambled the Main/Extended columns; diamond-set values (E061-E066) were cross-checked against Table 3/Table 6, but Main/Extended values are not attributed to avoid misassignment. See missing_evidence."
+  },
+  {
+   "id": "E070",
+   "kind": "result",
+   "summary": "OpenHands CodeActAgent v1.5 (gpt-4o) AgentBench OS (bash) subset success rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 57.6,
+    "unit": "%",
+    "n": 144,
+    "spread": null
+   },
+   "conditions": "AgentBench OS (bash) subset, 144 instances.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 AgentBench, OH CodeActAgent v1.5 gpt-4o-2024-05-13 = 57.6"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Exceeds AgentBench baseline gpt-4 (42.4)."
+  },
+  {
+   "id": "E071",
+   "kind": "baseline",
+   "summary": "AgentBench baseline agent (gpt-4) OS subset success rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 42.4,
+    "unit": "%",
+    "n": 144,
+    "spread": null
+   },
+   "conditions": "AgentBench OS subset, 144 instances.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 AgentBench, AgentBench Baseline Agent gpt-4 = 42.4"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E072",
+   "kind": "result",
+   "summary": "OpenHands CodeActAgent v1.5 (gpt-3.5-turbo-0125) AgentBench OS subset success rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 11.8,
+    "unit": "%",
+    "n": 144,
+    "spread": null
+   },
+   "conditions": "AgentBench OS subset, 144 instances.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 AgentBench, OH CodeActAgent v1.5 gpt-3.5-turbo-0125 = 11.8"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Below AgentBench baseline gpt-3.5-turbo (32.6) with this weaker model."
+  },
+  {
+   "id": "E080",
+   "kind": "result",
+   "summary": "OpenHands CodeActAgent v1.5 (gpt-4o) MINT math subset success rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 77.3,
+    "unit": "%",
+    "n": 225,
+    "spread": null
+   },
+   "conditions": "MINT math subset, 225 instances, up to 5 interaction turns, 2 solution attempts.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 MINT math, OH CodeActAgent v1.5 gpt-4o-2024-05-13 = 77.3"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Exceeds MINT baseline gpt-4-0613 math (65.8)."
+  },
+  {
+   "id": "E081",
+   "kind": "baseline",
+   "summary": "MINT baseline agent (gpt-4-0613) math subset success rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 65.8,
+    "unit": "%",
+    "n": 225,
+    "spread": null
+   },
+   "conditions": "MINT math subset, 225 instances.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 MINT math, MINT Baseline Agent gpt-4-0613 = 65.8"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E082",
+   "kind": "negative_result",
+   "summary": "OpenHands CodeActAgent v1.5 (gpt-4o) MINT code subset success rate is below the MINT baseline.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 50.0,
+    "unit": "%",
+    "n": 136,
+    "spread": null
+   },
+   "conditions": "MINT code subset, 136 instances.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 MINT code, OH CodeActAgent v1.5 gpt-4o-2024-05-13 = 50.0"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Lower than MINT baseline gpt-4-0613 code (59.6, E083). Recorded as an underperformance/negative result relative to baseline."
+  },
+  {
+   "id": "E083",
+   "kind": "baseline",
+   "summary": "MINT baseline agent (gpt-4-0613) code subset success rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 59.6,
+    "unit": "%",
+    "n": 136,
+    "spread": null
+   },
+   "conditions": "MINT code subset, 136 instances.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 MINT code, MINT Baseline Agent gpt-4-0613 = 59.6"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E084",
+   "kind": "method_detail",
+   "summary": "MINT evaluation setup: agent allowed up to five interaction iterations with two chances to propose solutions.",
+   "value": {
+    "max_iterations": 5,
+    "solution_attempts": 2
+   },
+   "conditions": "Following the original MINT paper; coding and math subsets from Yuan et al. (2024).",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§4.4 MINT 'allow the agent to interact with up to five iterations with two chances to propose solutions'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E090",
+   "kind": "result",
+   "summary": "OpenHands CodeActAgent v1.5 (gpt-4o) ProofWriter success rate.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 78.8,
+    "unit": "%",
+    "n": 600,
+    "spread": null
+   },
+   "conditions": "ProofWriter, 600 instances, most challenging 5-hop reasoning subset; logical forms from Logic-LM used.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 ProofWriter, OH CodeActAgent v1.5 gpt-4o-2024-05-13 = 78.8"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Slightly below Logic-LM (79.6, E091); above Few-shot CoT gpt4 (68.1)."
+  },
+  {
+   "id": "E091",
+   "kind": "baseline",
+   "summary": "Logic-LM (gpt4 + symbolic solver) ProofWriter success rate (baseline).",
+   "value": {
+    "metric": "Success Rate",
+    "value": 79.6,
+    "unit": "%",
+    "n": 600,
+    "spread": null
+   },
+   "conditions": "ProofWriter, 600 instances, 5-hop subset.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 ProofWriter, Logic-LM (Pan et al., 2023) gpt4 + symbolic solver = 79.6"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E092",
+   "kind": "baseline",
+   "summary": "Few-shot CoT (gpt4) ProofWriter success rate (baseline).",
+   "value": {
+    "metric": "Success Rate",
+    "value": 68.1,
+    "unit": "%",
+    "n": 600,
+    "spread": null
+   },
+   "conditions": "ProofWriter, 600 instances, 5-hop subset.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 ProofWriter, Few-shot CoT gpt4 = 68.1"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E093",
+   "kind": "assumption",
+   "summary": "For ProofWriter, OpenHands uses the logical forms provided by Logic-LM to minimize semantic-parsing errors.",
+   "value": null,
+   "conditions": "ProofWriter evaluation setup.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§4.4 ProofWriter 'we use the logical forms provided by Logic-LM'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Design choice that qualifies the comparison to Logic-LM."
+  },
+  {
+   "id": "E100",
+   "kind": "negative_result",
+   "summary": "OpenHands CodeActAgent v1.5 (gpt-4o) Entity Deduction Arena success rate is below the gpt-4 baseline.",
+   "value": {
+    "metric": "Success Rate",
+    "value": 38.0,
+    "unit": "%",
+    "n": 200,
+    "spread": null
+   },
+   "conditions": "EDA, 200 instances (avg over 'Things' and 'Celebrities', 100 each).",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 EDA, OH CodeActAgent v1.5 gpt-4o-2024-05-13 = 38.0"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Lower than zero-shot gpt-4-0314 baseline (40.0, E101). Recorded as underperformance relative to baseline."
+  },
+  {
+   "id": "E101",
+   "kind": "baseline",
+   "summary": "Zero-shot prompting (gpt-4-0314) Entity Deduction Arena success rate (baseline).",
+   "value": {
+    "metric": "Success Rate",
+    "value": 40.0,
+    "unit": "%",
+    "n": 200,
+    "spread": null
+   },
+   "conditions": "EDA, 200 instances.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 EDA, Zero-shot Prompting gpt-4-0314 = 40.0"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E102",
+   "kind": "dataset",
+   "summary": "Entity Deduction Arena evaluated on two datasets ('Things' and 'Celebrities'), 100 instances each, reporting average success rate.",
+   "value": {
+    "datasets": [
+     "Things",
+     "Celebrities"
+    ],
+    "instances_each": 100,
+    "total": 200
+   },
+   "conditions": "§4.4 EDA.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§4.4 EDA 'each comprising 100 instances, and report the average success rate'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E110",
+   "kind": "dataset",
+   "summary": "ML-Bench comprises 9,641 tasks spanning 169 ML problems across 18 GitHub repositories; OpenHands evaluates on the quarter subset.",
+   "value": {
+    "tasks": 9641,
+    "problems": 169,
+    "repositories": 18,
+    "eval_instances": 68,
+    "subset": "quarter"
+   },
+   "conditions": "§4.2 ML-Bench; Table 4 caption states 68 instances.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§4.2 ML-Bench 'comprises 9,641 tasks spanning 169 diverse ML problems' ... 'quarter subset'; Table 4 '68 instances'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E111",
+   "kind": "dataset",
+   "summary": "Gorilla APIBench evaluation uses 1775 instances (TorchHub, TensorHub, HuggingFace); correctness judged by API-domain match.",
+   "value": {
+    "instances": 1775
+   },
+   "conditions": "§4.2 Gorilla APIBench; Table 4 caption.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 4 'Gorilla APIBench (Patil et al., 2023), 1775 instances'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E112",
+   "kind": "dataset",
+   "summary": "ToolQA evaluation uses the 800-instance easy subset.",
+   "value": {
+    "instances": 800,
+    "subset": "easy"
+   },
+   "conditions": "§4.2 ToolQA; Table 4 caption.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 4 'ToolQA (Zhuang et al., 2024), 800 instances'; §4.2 'adopt the easy subset'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E113",
+   "kind": "dataset",
+   "summary": "BioCoder consists of 157 Python and 50 Java functions; OpenHands evaluates the Python subset (157 instances) with context removed.",
+   "value": {
+    "python_functions": 157,
+    "java_functions": 50,
+    "eval_instances": 157
+   },
+   "conditions": "§4.2 BioCoder; Table 4 caption 'BioCoder (Python) ... 157 instances'.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§4.2 BioCoder 'consists of 157 Python and 50 Java functions'; Table 4 caption"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E114",
+   "kind": "dataset",
+   "summary": "BIRD evaluation selects 300 samples from the dev set, evaluated on execution accuracy with multi-turn interaction allowed.",
+   "value": {
+    "instances": 300,
+    "metric": "execution accuracy"
+   },
+   "conditions": "§4.2 BIRD; Table 4 caption.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§4.2 BIRD 'We select 300 samples from the dev set'; Table 4 '300 instances'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E115",
+   "kind": "result",
+   "summary": "Table 4 reports OpenHands CodeActAgent v1.5 success rates for ML-Bench, BioCoder, Gorilla APIBench, and ToolQA, but the per-model row assignment of these numeric cells is not cleanly recoverable from the provided linearized table text.",
+   "value": null,
+   "conditions": "Software engineering benchmarks in Table 4 beyond SWE-Bench/HumanEvalFix/BIRD.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 4 (§4.2), ML-Bench / BioCoder / Gorilla APIBench / ToolQA sections"
+   },
+   "strength": "hard",
+   "status": "unverifiable",
+   "notes": "Success-rate values are present in the text (e.g., a block including 11.0, 22.1, 26.2, 42.6, 64.4, 76.5, 58.8, 13.2, ... 47.2) but the mapping of value to agent/model row is scrambled by PDF-to-text linearization and is not confirmed in prose. Not attributed to avoid fabrication. See missing_evidence."
+  },
+  {
+   "id": "E120",
+   "kind": "observation",
+   "summary": "Author-stated observation that the same CodeAct agent, without system-prompt modifications, is competitive across three task categories (software, web, misc).",
+   "value": null,
+   "conditions": "§4.1 Result Overview, based on Table 3.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§4.1 'the same CodeAct agent, without any modifications to its system prompt, demonstrates competitive performance across three major task categories'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Author interpretation of Table 3 results; 'competitive' is not defined with a threshold."
+  },
+  {
+   "id": "E121",
+   "kind": "limitation_noted",
+   "summary": "Authors acknowledge OpenHands agents may not achieve top performance in every benchmark category.",
+   "value": null,
+   "conditions": "§4.1.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§4.1 'While OpenHands agents may not achieve top performance in every category, they are designed with generality in mind'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Consistent with negative results E082 (MINT code), E100 (EDA), E030/E033 (WebArena below baselines), E040/E041 (MiniWoB++ below CC-NET)."
+  },
+  {
+   "id": "E122",
+   "kind": "observation",
+   "summary": "Authors note OpenHands HumanEvalFix result is 0-shot while the higher SWE-Agent result is 1-shot, and that OpenHands 'almost doubles' StarCoder2-15B.",
+   "value": null,
+   "conditions": "§4.2.1.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§4.2.1 'While SWE-Agent achieves 87.7%, ... provides ... a full demonstration (1-shot), whereas our evaluation of OpenHands is 0-shot'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E130",
+   "kind": "limitation_noted",
+   "summary": "Authors state current agents still struggle with complex tasks.",
+   "value": null,
+   "conditions": "§A Limitations and Future Work ('Stronger agents').",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§A 'Current agents still struggle with complex tasks'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E131",
+   "kind": "limitation_noted",
+   "summary": "Authors state the current agent suffers a lot when editing long files.",
+   "value": null,
+   "conditions": "§A ('Agent editing improvements').",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§A 'Current agent suffers a lot when editing long files'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E132",
+   "kind": "limitation_noted",
+   "summary": "Authors state OpenHands's workflow still requires a substantial handcrafted workload.",
+   "value": null,
+   "conditions": "§A ('Automatic workflow generation').",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§A 'OpenHands's workflow still requires a substantial handcrafted workload'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E133",
+   "kind": "limitation_noted",
+   "summary": "Authors note most AI agents today lack the ability to perform complex, long-horizon real-world tasks reliably.",
+   "value": null,
+   "conditions": "§B Ethics Statement.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§B 'still research artifacts and lack the ability to perform complex, long-horizon tasks in the real world reliably'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E134",
+   "kind": "hypothesis_stated",
+   "summary": "Authors state that achieving 100% on HumanEvalFix is entirely feasible and that they seek to do so in future iterations.",
+   "value": null,
+   "conditions": "§4.2.1 HumanEvalFix.",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "§4.2.1 'achieving 100% on this benchmark is entirely feasible, which we seek to do in future iterations'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Untested aspiration / future work; not a measured result."
+  },
+  {
+   "id": "E140",
+   "kind": "external_fact",
+   "summary": "The benchmarks repository (README) lists active benchmarks and states a migration from OpenHands V0 to the V1 Agent SDK is in progress.",
+   "value": {
+    "active_benchmarks": [
+     "SWE-Bench",
+     "SWE-Bench Pro",
+     "GAIA",
+     "Commit0",
+     "OpenAgentSafety",
+     "ProgramBench"
+    ]
+   },
+   "conditions": "README_1 (OpenHands Benchmarks). Reflects current tooling, distinct from the paper's evaluation set.",
+   "locator": {
+    "path": "README_1.md",
+    "anchor": "'Available Benchmarks' table; 'Migration in Progress' note"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "SWE-Bench Pro, Commit0, OpenAgentSafety, and ProgramBench are not in the paper's 15-benchmark set; these are later additions in the codebase."
+  },
+  {
+   "id": "E141",
+   "kind": "external_fact",
+   "summary": "The benchmarks README states the SDK critic module (openhands.sdk.critic) was introduced at SDK commit 79868ae5 on November 17, 2025.",
+   "value": {
+    "commit": "79868ae5",
+    "date": "November 17, 2025"
+   },
+   "conditions": "README_1, SDK Compatibility section.",
+   "locator": {
+    "path": "README_1.md",
+    "anchor": "'Example: SDK Critic Module' — commit 79868ae5 (November 17, 2025)"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E142",
+   "kind": "external_fact",
+   "summary": "Agent Canvas (README) is a self-hosted control center distributed as npm package @openhands/agent-canvas and Docker image agent-canvas:1.23.0, requiring Node.js 22.12.x or later.",
+   "value": {
+    "npm_package": "@openhands/agent-canvas",
+    "docker_image_tag": "1.23.0",
+    "node_version": "22.12.x+",
+    "status": "beta"
+   },
+   "conditions": "README_2 (Agent Canvas).",
+   "locator": {
+    "path": "README_2.md",
+    "anchor": "Quickstart / badges; 'ghcr.io/openhands/agent-canvas:1.23.0'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Describes the current product, not the ICLR 2025 paper's platform snapshot."
+  }
+ ],
+ "generated_at": "(redacted)",
+ "generated_by": "evidence agent"
+}

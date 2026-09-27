@@ -1,0 +1,14 @@
+{
+  "files": [
+    {
+      "path": "project/paper.txt",
+      "classification": "result",
+      "description": "Full text of ICLR 2024 paper: SWE-bench: Can Language Models Resolve Real-World GitHub Issues? (2645 lines). Contains abstract, introduction, benchmark construction, evaluation, results, related work, appendices with detailed tables."
+    },
+    {
+      "path": "project/README_1.md",
+      "classification": "reference",
+      "description": "Official GitHub README for SWE-bench repository. Contains setup, usage, download links, news items."
+    }
+  ]
+}

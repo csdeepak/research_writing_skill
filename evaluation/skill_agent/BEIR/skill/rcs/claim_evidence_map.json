@@ -1,0 +1,147 @@
+{
+  "claims": [
+    {
+      "id": "C001",
+      "text": "Neural IR models are evaluated in narrow, in-domain settings that do not reflect zero-shot generalization",
+      "type": "background_observation",
+      "evidence": ["E004", "E021"],
+      "confidence": "high",
+      "permitted_verbs": ["show", "demonstrate", "reveal", "indicate"],
+      "limitations": ["L003"]
+    },
+    {
+      "id": "C002",
+      "text": "Prior multi-dataset IR benchmarks cover only a single task type or domain and do not test zero-shot generalization",
+      "type": "gap_claim",
+      "evidence": ["S011", "S012"],
+      "confidence": "high",
+      "permitted_verbs": ["note", "observe", "show"],
+      "limitations": []
+    },
+    {
+      "id": "C003",
+      "text": "BEIR contains 18 datasets across 9 retrieval tasks from diverse domains",
+      "type": "factual_claim",
+      "evidence": ["E001"],
+      "confidence": "high",
+      "permitted_verbs": ["contains", "spans", "covers"],
+      "limitations": ["L001"]
+    },
+    {
+      "id": "C004",
+      "text": "BEIR evaluates 10 retrieval systems across five architecture families using nDCG@10",
+      "type": "factual_claim",
+      "evidence": ["E002", "E003", "E022"],
+      "confidence": "high",
+      "permitted_verbs": ["evaluates", "includes"],
+      "limitations": []
+    },
+    {
+      "id": "C005",
+      "text": "BM25 is a strong zero-shot baseline: it underperforms neural models 7-18 nDCG points in-domain (MS MARCO) yet outperforms many neural models in zero-shot settings",
+      "type": "result_claim",
+      "evidence": ["E004", "E005"],
+      "confidence": "high",
+      "permitted_verbs": ["show", "reveal", "demonstrate"],
+      "limitations": ["L002"]
+    },
+    {
+      "id": "C006",
+      "text": "BM25+CE (cross-encoder reranking) achieves the best average zero-shot performance, +11% vs BM25, outperforming on 16/18 datasets",
+      "type": "result_claim",
+      "evidence": ["E005", "E007"],
+      "confidence": "high",
+      "permitted_verbs": ["achieves", "outperforms"],
+      "limitations": ["L001"]
+    },
+    {
+      "id": "C007",
+      "text": "Dense models frequently underperform BM25: DPR -47.7%, ANCE -7.4%, TAS-B -2.8% on average",
+      "type": "result_claim",
+      "evidence": ["E005"],
+      "confidence": "high",
+      "permitted_verbs": ["show", "underperform", "demonstrate"],
+      "limitations": ["L002"]
+    },
+    {
+      "id": "C008",
+      "text": "docT5query (document expansion) performs competitively: +1.6% vs BM25 on average, outperforming on 11/18 datasets",
+      "type": "result_claim",
+      "evidence": ["E005", "E006"],
+      "confidence": "high",
+      "permitted_verbs": ["achieves", "outperforms"],
+      "limitations": []
+    },
+    {
+      "id": "C009",
+      "text": "Re-ranking and late-interaction models have latency >350ms (GPU) versus dense models <20ms (GPU)",
+      "type": "result_claim",
+      "evidence": ["E009", "E018"],
+      "confidence": "high",
+      "permitted_verbs": ["show", "require"],
+      "limitations": []
+    },
+    {
+      "id": "C010",
+      "text": "ColBERT requires ~900GB index for BioASQ (15M docs) vs BM25 18GB",
+      "type": "result_claim",
+      "evidence": ["E011"],
+      "confidence": "high",
+      "permitted_verbs": ["requires"],
+      "limitations": []
+    },
+    {
+      "id": "C011",
+      "text": "Lexical methods have lower Hole@10 rates in TREC-COVID (BM25: 6.4%, docT5query: 2.8%) than dense models (TAS-B: 31.8%, ANCE: 14.4%)",
+      "type": "result_claim",
+      "evidence": ["E012"],
+      "confidence": "high",
+      "permitted_verbs": ["show", "reveal"],
+      "limitations": []
+    },
+    {
+      "id": "C012",
+      "text": "After manually annotating 980 missing judgments in TREC-COVID, ANCE improves from 0.654 to 0.735, ColBERT from 0.677 to 0.735, while BM25 improves only from 0.656 to 0.668",
+      "type": "result_claim",
+      "evidence": ["E013", "E014"],
+      "confidence": "high",
+      "permitted_verbs": ["improve", "show"],
+      "limitations": ["L002"]
+    },
+    {
+      "id": "C013",
+      "text": "TAS-B shows better zero-shot generalization than ANCE (outperforms on 14/18 datasets) and DPR (17/18 datasets) among dense models",
+      "type": "result_claim",
+      "evidence": ["E019"],
+      "confidence": "high",
+      "permitted_verbs": ["outperforms", "shows"],
+      "limitations": []
+    },
+    {
+      "id": "C014",
+      "text": "Similarity function (cosine vs dot-product) affects document length preference and dataset-specific performance",
+      "type": "result_claim",
+      "evidence": ["E028", "E020"],
+      "confidence": "medium",
+      "permitted_verbs": ["suggest", "indicate"],
+      "limitations": ["L003"]
+    }
+  ],
+  "limitations": [
+    {
+      "id": "L001",
+      "text": "All 18 datasets are English only; multilingual generalization is not tested",
+      "evidence": ["E025"]
+    },
+    {
+      "id": "L002",
+      "text": "Annotation pools for several datasets were built with lexical systems, creating selection bias that underestimates non-lexical model performance",
+      "evidence": ["E012", "E013"]
+    },
+    {
+      "id": "L003",
+      "text": "Document truncation at 512 word pieces disadvantages long-document retrieval; no error bars reported (models evaluated from fixed pre-trained checkpoints)",
+      "evidence": ["E025"]
+    }
+  ]
+}

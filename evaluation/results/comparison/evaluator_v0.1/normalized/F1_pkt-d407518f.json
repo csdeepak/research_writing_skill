@@ -1,0 +1,615 @@
+{
+ "reconstruction": {
+  "packet_id": "pkt-d407518f",
+  "answers": {
+   "Q1": {
+    "answer": "The paper addresses the lack of a realistic benchmark for evaluating LLMs on software engineering. Existing code benchmarks (e.g., HumanEval) test self-contained function synthesis and have saturated, failing to capture real-world tasks that require navigating large multi-file codebases, understanding cross-module dependencies, and producing structured patch edits. SWE-bench is proposed to fill this gap using real GitHub issues and their resolving pull requests.",
+    "locations": [
+     "Abstract",
+     "§1 Introduction ¶1-2"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q2": {
+    "answer": "LMs are increasingly deployed in software tooling (autocomplete, refactoring, bug-fixing), yet the benchmarks tracking their progress are disconnected from the complexity of production software work. A benchmark grounded in actual issue resolution with execution-based correctness would measure capabilities directly relevant to practical deployment and provide a durable, hard challenge.",
+    "locations": [
+     "§1 Introduction ¶1",
+     "§8 Conclusion"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q3": {
+    "answer": "The central question, echoed in the title, is: can language models resolve real-world GitHub issues—i.e., given an issue description and a full codebase snapshot, generate a patch that resolves the issue and passes the repository's automated (fail-to-pass and pass-to-pass) test suite?",
+    "locations": [
+     "Title",
+     "Abstract",
+     "§2.2 Task Formulation"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q4": {
+    "answer": "Contributions: (1) SWE-bench, 2,294 task instances from real issue/PR pairs across 12 Python repos, with execution-based evaluation; (2) a three-stage, continually updatable collection pipeline; (3) SWE-Llama, fine-tuned CodeLlama 7B/13B open-model baselines; (4) evaluation of proprietary and open models showing <2% resolution under realistic conditions; (5) analyses identifying failure modes (localization, patch completeness, context sensitivity); (6) SWE-bench Lite, a 300-instance subset.",
+    "locations": [
+     "Abstract",
+     "§1 ¶3-5",
+     "§2.4",
+     "§3"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q5": {
+    "answer": "Methodology: a three-stage pipeline (repository scraping via GitHub API; attribute filtering for issue-resolving PRs that modify test files; execution-based validation requiring clean install, clean patch application, and at least one fail-to-pass test). Each task provides problem statement, codebase snapshot, test patch, and (hidden) gold patch. Models get retrieved context (BM25 sparse retrieval at 13k/27k/50k limits, or oracle files) and output a .patch applied with unix patch; success requires all F2P tests pass and P2P tests still pass. SWE-Llama is fine-tuned with LoRA (r=16) on oracle-retrieved contexts from 37 disjoint repos.",
+    "locations": [
+     "§2.1",
+     "§2.2",
+     "§3",
+     "§4.1"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q6": {
+    "answer": "Experiments evaluate ChatGPT-3.5, GPT-4/GPT-4-turbo, Claude 2, Claude 3 Opus, and SWE-Llama 7b/13b. Conditions: BM25 retrieval (full set and Lite), oracle retrieval, and 'oracle-collapsed' (non-edited code removed). Additional analyses cover per-repository difficulty, context-length sensitivity, a before/after-2023 temporal split, patch statistics vs. gold, full-file vs. diff generation, and a six-way outcome taxonomy. All models use greedy decoding, single patch (Pass@1).",
+    "locations": [
+     "§4.2",
+     "§5.1-5.7"
+    ],
+    "confidence": 5,
+    "missing": "Section 4.2 lists only ChatGPT-3.5, GPT-4, Claude 2, SWE-Llama, but Table 3 also reports Claude 3 Opus and GPT-4-turbo, which are never introduced in setup."
+   },
+   "Q7": {
+    "answer": "All models resolve very few issues. Under BM25, best realistic result is Claude 2 at 1.96% (Table 3 lists 1.97 and adds Claude 3 Opus at 3.79%). Under oracle retrieval Claude 2 reaches 4.80%, SWE-Llama 13b 3.97%. Oracle-collapsed further raises results (Claude 2 5.93%, Claude 3 Opus 9.39%). Longer BM25 context lowers performance (1.96%→1.22%). Temporal split shows no memorization gap. Fine-tuned SWE-Llama collapses under BM25 vs oracle. Model patches are shorter/simpler and edit fewer files than gold; No-Op and regression dominate unsolved applied patches.",
+    "locations": [
+     "§5.1 Tables 3-4",
+     "§5.3 Tables 5-6",
+     "§5.4 Table 7",
+     "§5.5",
+     "§5.6 Table 8",
+     "§5.7 Table 9"
+    ],
+    "confidence": 4,
+    "missing": "Abstract/Intro claim Claude 2 is 'best-performing,' yet Table 3 shows Claude 3 Opus higher (3.79%)."
+   },
+   "Q8": {
+    "answer": "Authors interpret results as three findings: (1) localization is the primary bottleneck—models fail even with oracle files, and removing surrounding code (oracle-collapsed) sharply helps, so identifying the right lines within files is the hard part; (2) models produce shorter, symptom-focused patches lacking the structural completeness of human fixes; (3) context length is double-edged—more context raises recall but adds noise the models cannot navigate ('lost in the middle').",
+    "locations": [
+     "§7.1",
+     "§5.3",
+     "§5.6"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q9": {
+    "answer": "Limitations: SWE-bench is Python-only, limiting cross-language generalization; baselines use simple BM25 retrieval and single-pass generation (no agentic/iterative methods); and execution-based testing may not capture solution quality dimensions such as efficiency, readability, or maintainability (explored briefly via cyclomatic/Halstead complexity).",
+    "locations": [
+     "§7.2"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q10": {
+    "answer": "So-what: state-of-the-art LMs are far from autonomous software engineering (resolving <2% of real issues under realistic conditions), and SWE-bench provides a challenging, realistic, continually updatable, execution-grounded benchmark whose controlled analyses pinpoint the failure modes (localization, patch completeness, context sensitivity) that future LM research and training paradigms must address.",
+    "locations": [
+     "Abstract",
+     "§7.1",
+     "§8"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q11": {
+    "answer": "Materials: ~90,000 (Table: 93,139) PRs crawled from 12 popular open-source Python repositories (selected from top-100 PyPI packages, Aug 2023), filtered to 2,294 task instances. Each instance includes issue text, codebase snapshot (avg 3,010 non-test files, 438K lines), test patch, and gold patch. SWE-Llama training used 19,000 issue-PR pairs (≈10,000 after 30k-token filtering) from 37 repositories disjoint from the evaluation set.",
+    "locations": [
+     "§2.1 Table 1",
+     "§2.3 Table 2",
+     "§3 Training data"
+    ],
+    "confidence": 5,
+    "missing": "Text says 'approximately 90,000 PRs' while Table 1 total is 93,139."
+   },
+   "Q12": {
+    "answer": "Future directions: agentic and iterative tool-augmented LMs, richer context-construction/retrieval strategies beyond BM25 single-pass; extension beyond Python to other languages; and using SWE-bench as a testbed for safety/alignment of code-generating agents (faithful intent implementation, avoiding undetected regressions/vulnerabilities). SWE-bench Lite is offered for cheaper iterative development.",
+    "locations": [
+     "§7.2",
+     "§7.3",
+     "§2.4"
+    ],
+    "confidence": 5,
+    "missing": ""
+   }
+  }
+ },
+ "diagnostics": {
+  "packet_id": "pkt-d407518f",
+  "binding_personas": [
+   "A",
+   "B",
+   "E"
+  ],
+  "findings": [
+   {
+    "dimension": "problem",
+    "score": 5,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§1 Introduction",
+     "paragraph": "¶1-2",
+     "quote": "the benchmarks used to track LM progress on code remain largely disconnected from the complexity of real software engineering"
+    },
+    "observed": "The problem—benchmark saturation and lack of realism—is stated crisply and contrasted with HumanEval-style tasks.",
+    "reader_struggle": "Minimal; adjacent readers grasp the gap immediately.",
+    "likely_consequence": "Strong framing that motivates the rest of the paper.",
+    "revision_principle": "Retain; optionally cite the saturation claim with a quantitative source."
+   },
+   {
+    "dimension": "motivation",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§1 Introduction",
+     "paragraph": "¶1",
+     "quote": "Language models are increasingly deployed in software development tooling"
+    },
+    "observed": "Deployment relevance motivates the work, but the leap from autocomplete tools to full issue resolution is asserted rather than evidenced.",
+    "reader_struggle": "Adjacent readers may wonder whether resolving whole issues is a realistic near-term use case worth benchmarking.",
+    "likely_consequence": "Slightly weakens urgency for skeptics.",
+    "revision_principle": "Add a sentence linking current tooling trajectories to the whole-issue-resolution target."
+   },
+   {
+    "dimension": "research_question",
+    "score": 5,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "Title",
+     "paragraph": "title",
+     "quote": "Can Language Models Resolve Real-World GitHub Issues?"
+    },
+    "observed": "The research question is explicit, operationalized as patch generation passing test suites.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Clear evaluation target.",
+    "revision_principle": "Keep."
+   },
+   {
+    "dimension": "contribution",
+    "score": 4,
+    "persona": [
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§1 Introduction",
+     "paragraph": "¶3-5",
+     "quote": "Several properties distinguish SWE-bench from prior coding benchmarks"
+    },
+    "observed": "Contributions are enumerated (realism, execution eval, updatability, diversity, SWE-Llama), but SWE-bench Lite and the outcome taxonomy are not flagged as contributions in the intro.",
+    "reader_struggle": "Reader forms an incomplete picture of scope until later sections.",
+    "likely_consequence": "Undersells the deliverables.",
+    "revision_principle": "Consolidate a single explicit contributions list including Lite and the taxonomy."
+   },
+   {
+    "dimension": "method",
+    "score": 4,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§2.1",
+     "paragraph": "Stage III",
+     "quote": "at least one test transitions from fail before the patch to pass after"
+    },
+    "observed": "The pipeline is well described and reproducible; fail-to-pass criterion is clear.",
+    "reader_struggle": "Adjacent readers may not know how flaky-test noise or environment nondeterminism is handled during validation.",
+    "likely_consequence": "Slight doubt about oracle reliability.",
+    "revision_principle": "Note how nondeterministic/flaky tests are excluded or handled."
+   },
+   {
+    "dimension": "experiment",
+    "score": 3,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§4.2",
+     "paragraph": "Models Evaluated",
+     "quote": "We evaluate: ChatGPT-3.5 ... GPT-4 ... Claude 2 ... SWE-Llama 7b and 13b"
+    },
+    "observed": "The setup lists five model families, yet Table 3 reports Claude 3 Opus and GPT-4-turbo that are never introduced or configured in §4.2.",
+    "reader_struggle": "Verifying reviewer cannot map results back to described experimental configuration (context window, version).",
+    "likely_consequence": "Broken evidence traceability; reader distrusts the model roster.",
+    "revision_principle": "Introduce every evaluated model (version, context length) in the setup section."
+   },
+   {
+    "dimension": "result",
+    "score": 3,
+    "persona": [
+     "E",
+     "B"
+    ],
+    "location": {
+     "section": "§5.1",
+     "paragraph": "Table 3-4",
+     "quote": "Claude 3 Opus | 3.79 | 46.56 ... Claude 2 | 1.97 | 43.07"
+    },
+    "observed": "Model sets differ between tables (Table 3 has Claude 3 Opus/GPT-4-turbo; Table 4 has GPT-4/no Opus), so cross-condition comparison is inconsistent.",
+    "reader_struggle": "Reader cannot compare the same models across BM25 vs oracle vs oracle-collapsed.",
+    "likely_consequence": "Weakens the central 'oracle helps' comparison.",
+    "revision_principle": "Report a consistent model set across all condition tables or explicitly mark absences."
+   },
+   {
+    "dimension": "interpretation",
+    "score": 4,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§7.1",
+     "paragraph": "1",
+     "quote": "Localization is the bottleneck."
+    },
+    "observed": "Interpretation ties oracle vs oracle-collapsed gap to line-level localization convincingly.",
+    "reader_struggle": "Reader may want confirmation this isn't just context-length noise reduction rather than 'localization' per se.",
+    "likely_consequence": "Mostly persuasive; minor conflation risk.",
+    "revision_principle": "Disentangle 'less noise' from 'localization' with a control that keeps length but shuffles relevant lines."
+   },
+   {
+    "dimension": "limitation",
+    "score": 4,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§7.2",
+     "paragraph": "1",
+     "quote": "SWE-bench is currently Python-only, limiting cross-language generalizability."
+    },
+    "observed": "Limitations are candid (language scope, weak baselines, quality dimensions).",
+    "reader_struggle": "The test-suite-as-oracle limitation (incomplete tests can reward wrong patches) is not raised.",
+    "likely_consequence": "Overtrust in resolved==correct.",
+    "revision_principle": "Acknowledge that passing tests is a necessary, not sufficient, proxy for correctness."
+   },
+   {
+    "dimension": "narrative_coherence",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§3",
+     "paragraph": "1",
+     "quote": "SWE-Llama: Fine-Tuning a Long-Context Model"
+    },
+    "observed": "SWE-Llama is introduced before the experimental setup that uses it, but the narrative remains followable.",
+    "reader_struggle": "Minor ordering friction (baseline details precede retrieval/eval definition).",
+    "likely_consequence": "Small reread cost.",
+    "revision_principle": "Consider moving retrieval/eval setup before model-specific fine-tuning, or forward-reference §4."
+   },
+   {
+    "dimension": "terminology",
+    "score": 3,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§2.2",
+     "paragraph": "resolved definition",
+     "quote": "all fail-to-pass tests now pass and all previously passing tests (pass-to-pass tests) continue to pass"
+    },
+    "observed": "Core jargon (fail-to-pass, pass-to-pass, oracle retrieval, gold patch, oracle-collapsed) is defined, but 'oracle-collapsed' and '% Apply' definitions arrive later than their first mention in some tables.",
+    "reader_struggle": "Adjacent reader meets terms in table captions before formal definition.",
+    "likely_consequence": "Momentary confusion at first table encounter.",
+    "revision_principle": "Define all evaluation terms in a glossary block before Results tables."
+   },
+   {
+    "dimension": "logical_flow",
+    "score": 4,
+    "persona": [
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§5.3",
+     "paragraph": "Table 6",
+     "quote": "GPT-4 jumps from 1.31% (BM25) to 3.40% (oracle-collapsed)"
+    },
+    "observed": "The comparison mixes GPT-4 (BM25 Table 3 lists GPT-4-turbo at 1.31, not GPT-4) with an oracle-collapsed GPT-4 number, blurring which variant is compared.",
+    "reader_struggle": "Reader cannot tell if the 1.31%→3.40% jump is the same model.",
+    "likely_consequence": "Apparent effect size may be an artifact of comparing different variants.",
+    "revision_principle": "Fix model naming so within-comparison chains use one identical model."
+   },
+   {
+    "dimension": "evidence_traceability",
+    "score": 2,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§5.6",
+     "paragraph": "2",
+     "quote": "Gold patches average 74.5 total lines and 1.7 files edited; the best model averages 30.1 lines"
+    },
+    "observed": "The 74.5-line gold figure is not in any table and conflicts with Table 2 (gold lines edited = 32.8) and Table 8 gold columns; '30.1 lines' is ChatGPT-3.5 (Table 8), not the highest-resolving model.",
+    "reader_struggle": "Verifier cannot reconcile 74.5 vs 32.8, nor which 'best model' is meant.",
+    "likely_consequence": "Numeric claims appear internally inconsistent, undermining trust.",
+    "revision_principle": "Source every number to a table and define 'total lines' vs 'lines edited'; clarify 'best' metric."
+   },
+   {
+    "dimension": "figure_table",
+    "score": 3,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§2.1",
+     "paragraph": "Table 1",
+     "quote": "Total | 93,139 | 11,407 | 2,294"
+    },
+    "observed": "Table 1 total (93,139) contradicts the body text's 'approximately 90,000 PRs'; column header 'Post-Conversion' is undefined.",
+    "reader_struggle": "Reader unsure what 'Post-Conversion' filtering means and which PR count is authoritative.",
+    "likely_consequence": "Minor credibility erosion at the very first data table.",
+    "revision_principle": "Define 'Post-Conversion' and reconcile the ~90k vs 93,139 phrasing."
+   },
+   {
+    "dimension": "claim_evidence_alignment",
+    "score": 2,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "Abstract",
+     "paragraph": "1",
+     "quote": "the best-performing model, Claude 2, resolves only 1.96% of issues"
+    },
+    "observed": "Abstract and Intro name Claude 2 as best-performing, but Table 3 shows Claude 3 Opus resolving 3.79% (BM25) and 9.39% (oracle-collapsed)—clearly higher.",
+    "reader_struggle": "Reader sees a direct contradiction between headline claim and results table.",
+    "likely_consequence": "Undermines the central quantitative takeaway.",
+    "revision_principle": "Either scope the claim to the originally evaluated models or update the headline to reflect Claude 3 Opus."
+   },
+   {
+    "dimension": "unsupported_inference",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§5.4",
+     "paragraph": "final",
+     "quote": "The absence of a temporal gap suggests models are genuinely reasoning about code changes rather than reciting memorized solutions"
+    },
+    "observed": "A no-gap result is interpreted as 'genuine reasoning,' a strong cognitive claim; GPT-4 was excluded (25% subset) and low absolute rates make the split noisy.",
+    "reader_struggle": "Reader may over-read a null result as evidence for reasoning.",
+    "likely_consequence": "Overclaim about model cognition.",
+    "revision_principle": "State only that no memorization advantage was detected; avoid 'genuine reasoning' language."
+   },
+   {
+    "dimension": "redundancy",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§5.6 / §7.1",
+     "paragraph": "patch findings",
+     "quote": "Models generate shorter, simpler patches than human developers."
+    },
+    "observed": "The 'shorter patches / symptom-only fixes' finding is repeated across §5.6 and §7.1 with similar phrasing.",
+    "reader_struggle": "Mild repetition.",
+    "likely_consequence": "Slight bloat; acceptable in a journal-length article.",
+    "revision_principle": "Compress §7.1 to reference §5.6 rather than restating statistics."
+   },
+   {
+    "dimension": "cognitive_load",
+    "score": 3,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§5",
+     "paragraph": "Tables 3-9",
+     "quote": "Table 9. Outcome distribution for successfully applied patches"
+    },
+    "observed": "Seven results tables with shifting model rosters, retrieval regimes, and metrics impose high tracking load on an adjacent reader.",
+    "reader_struggle": "Hard to hold which condition/model/metric each number belongs to.",
+    "likely_consequence": "Reader skims and misses key comparisons.",
+    "revision_principle": "Add a summary figure and a consistent model×condition matrix."
+   },
+   {
+    "dimension": "orientation",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§4.1",
+     "paragraph": "1",
+     "quote": "codebases contain far more tokens than any model's context window"
+    },
+    "observed": "The retrieval section orients the reader well to why context selection is needed.",
+    "reader_struggle": "Minimal; the oracle-vs-BM25 distinction is clear.",
+    "likely_consequence": "Good grounding for the results.",
+    "revision_principle": "Keep; add a one-line roadmap of which retrieval setting each results table uses."
+   },
+   {
+    "dimension": "so_what",
+    "score": 5,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§8 Conclusion",
+     "paragraph": "1",
+     "quote": "state-of-the-art models resolve fewer than 2% of issues under realistic conditions underscores how far current systems are from autonomous software engineering"
+    },
+    "observed": "The takeaway is explicit and consequential, connecting low scores to a research agenda.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Reader leaves with clear significance.",
+    "revision_principle": "Keep; ensure the headline number matches the strongest model reported."
+   },
+   {
+    "dimension": "result",
+    "score": 3,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§5.1",
+     "paragraph": "2",
+     "quote": "Claude 2 achieves 1.96% resolution on the full set (1.97% is reported in Table 3 with a minor rounding difference)"
+    },
+    "observed": "Two different figures (1.96 vs 1.97) for the same quantity, self-acknowledged as rounding, but the abstract fixes 1.96 while the table shows 1.97.",
+    "reader_struggle": "Verifier must reconcile a headline number that differs from the table.",
+    "likely_consequence": "Small but avoidable inconsistency.",
+    "revision_principle": "Standardize to a single reported precision throughout."
+   },
+   {
+    "dimension": "interpretation",
+    "score": 3,
+    "persona": [
+     "A"
+    ],
+    "location": {
+     "section": "§5.2",
+     "paragraph": "3",
+     "quote": "Models without vision capabilities cannot process these images, which may explain lower performance on visual repositories"
+    },
+    "observed": "Image-content correlation is offered as an explanatory factor for matplotlib/seaborn difficulty, but it is a hedged correlation, not tested.",
+    "reader_struggle": "Reader may treat a plausible correlate as an established cause.",
+    "likely_consequence": "Mild causal suggestion without controlled evidence.",
+    "revision_principle": "Report resolution on image vs non-image subsets to substantiate the claim."
+   }
+  ],
+  "inference_issues": [
+   {
+    "kind": "unsupported_conclusion",
+    "location": {
+     "section": "Abstract / §1",
+     "paragraph": "abstract; intro ¶5",
+     "quote": "the best-performing model, Claude 2, resolves only 1.96% of issues"
+    },
+    "claim_text": "Claude 2 is the best-performing model at 1.96%.",
+    "missing_link": "Table 3 reports Claude 3 Opus at 3.79% (and 9.39% oracle-collapsed), so Claude 2 is not the best-performing model; the headline claim is not supported by the results tables."
+   },
+   {
+    "kind": "overstrong_language",
+    "location": {
+     "section": "§5.4",
+     "paragraph": "final",
+     "quote": "models are genuinely reasoning about code changes rather than reciting memorized solutions"
+    },
+    "claim_text": "No temporal gap implies genuine reasoning rather than memorization.",
+    "missing_link": "A null difference at very low absolute rates (and with GPT-4 excluded) does not license a positive claim about reasoning; alternative explanations (uniform difficulty, floor effects) are not ruled out."
+   },
+   {
+    "kind": "causal_overreach",
+    "location": {
+     "section": "§5.2",
+     "paragraph": "3",
+     "quote": "Models without vision capabilities cannot process these images, which may explain lower performance on visual repositories"
+    },
+    "claim_text": "Embedded images explain lower matplotlib/seaborn performance.",
+    "missing_link": "No comparison of resolution on image-containing vs image-free instances is provided to isolate the image factor from other repository-specific difficulty."
+   },
+   {
+    "kind": "overgeneralization",
+    "location": {
+     "section": "§7.1",
+     "paragraph": "1",
+     "quote": "Localization is the bottleneck."
+    },
+    "claim_text": "Localization is THE bottleneck for LM issue resolution.",
+    "missing_link": "Oracle-collapsed also reduces total context length; the effect could partly reflect length/noise reduction rather than localization specifically, and even oracle-collapsed rates stay under 10%, implying other bottlenecks remain."
+   },
+   {
+    "kind": "selective_presentation",
+    "location": {
+     "section": "§4.1",
+     "paragraph": "Sparse retrieval",
+     "quote": "We evaluate multiple maximum context lengths (13k, 27k, and 50k tokens) and report best performance for each model."
+    },
+    "claim_text": "Reported BM25 results use the best context length per model.",
+    "missing_link": "Per-model cherry-picking of the best context limit inflates comparability across models; a fixed-length comparison or full per-length disclosure is needed for fair reading."
+   },
+   {
+    "kind": "limitation_not_respected",
+    "location": {
+     "section": "§2.2 / §8",
+     "paragraph": "resolved definition; conclusion",
+     "quote": "the instance is considered resolved if and only if all fail-to-pass tests now pass and all previously passing tests continue to pass"
+    },
+    "claim_text": "Passing the test suite equates to resolving the real issue.",
+    "missing_link": "Test suites can be incomplete; a patch may pass F2P/P2P without truly resolving the issue. This necessary-not-sufficient caveat is not acknowledged where 'resolved' is treated as ground-truth correctness."
+   }
+  ],
+  "objective_discrepancies": [
+   "For an adjacent-researcher audience, several evaluation models appearing in results (Claude 3 Opus, GPT-4-turbo) are never introduced or configured in §4.2, and model rosters differ across Tables 3, 4, and 6, hampering the fair comparison such readers need.",
+   "The headline result presented to the audience (Claude 2 as best at ~1.96%) is contradicted by the paper's own tables (Claude 3 Opus higher), creating a misleading takeaway for readers unfamiliar with the subfield.",
+   "Numeric claims meant to convey key findings (e.g., gold patches '74.5 total lines', 'best model averages 30.1 lines') are untraceable to or inconsistent with Tables 2 and 8, weakening the paper's presentation to a verifying reader."
+  ],
+  "injection_suspected": []
+ },
+ "dim_scores": {
+  "problem": 5,
+  "motivation": 4,
+  "research_question": 5,
+  "contribution": 4,
+  "method": 4,
+  "experiment": 3,
+  "result": 3,
+  "interpretation": 3,
+  "limitation": 4,
+  "narrative_coherence": 4,
+  "terminology": 3,
+  "logical_flow": 4,
+  "evidence_traceability": 2,
+  "figure_table": 3,
+  "claim_evidence_alignment": 2,
+  "unsupported_inference": 3,
+  "redundancy": 4,
+  "cognitive_load": 3,
+  "orientation": 4,
+  "so_what": 5
+ },
+ "validation_problems": [
+  "diagnostics $.findings[0].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[1].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[2].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[3].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[4].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[5].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[6].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[7].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[8].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[9].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[10].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[11].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[12].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[13].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[14].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[15].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[16].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[17].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[18].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[19].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[20].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[21].location.paragraph: expected type ['integer'], got str"
+ ]
+}

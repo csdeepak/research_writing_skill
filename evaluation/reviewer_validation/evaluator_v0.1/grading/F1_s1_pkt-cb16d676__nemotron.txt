@@ -1,0 +1,120 @@
+{
+  "questions": {
+    "Q1": {
+      "q1a": "present"
+    },
+    "Q2": {
+      "q2a": "present"
+    },
+    "Q3": {
+      "q3a": "absent"
+    },
+    "Q4": {
+      "q4a": "absent",
+      "q4b": "absent"
+    },
+    "Q5": {
+      "q5a": "absent"
+    },
+    "Q6": {
+      "q6a": "present",
+      "q6b": "absent"
+    },
+    "Q7": {
+      "q7a": "weakened",
+      "q7b": "present"
+    },
+    "Q8": {
+      "q8a": "present",
+      "q8b": "absent"
+    },
+    "Q9": {
+      "q9a": "absent",
+      "q9b": "absent"
+    },
+    "Q10": {
+      "q10a": "absent"
+    },
+    "Q11": {
+      "q11a": "present",
+      "q11b": "absent",
+      "q11c": "absent"
+    },
+    "Q12": {
+      "q12a": "weakened"
+    }
+  },
+  "intrusions": [
+    {
+      "question": "Q1",
+      "text": "No evidence that stale normalization is actually the dominant cause; it is asserted rather than established.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q2",
+      "text": "No citations or data support 'dominant cause' or 'existing methods ignore normalization entirely'.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q3",
+      "text": "The paper never states the question this cleanly; it must be inferred from setup and ablation.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q4",
+      "text": "Claimed contributions: (1) RWN, described as the first shift-robust normalization; (2) state-of-the-art results beating the baseline at every shift level; (3) a claim that adaptation drives robustness.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q4",
+      "text": "Contributions are framed as proven claims rather than tested hypotheses.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q5",
+      "text": "MLP architecture, window/horizon lengths, loss, and how MAE is computed (normalized vs original scale) are unspecified.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q6",
+      "text": "SynthLoad generation process, data size, and no-shift condition definition are not described; no real-world dataset is used.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q7",
+      "text": "Numeric results for s=0.2, 0.4, 0.8 are not reported; no standard deviations across the 5 seeds are given.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q8",
+      "text": "The RWN-fixed result (0.518 < baseline 0.641) actually shows freezing still helps substantially, undercutting 'adaptation causes robustness'; capacity was never varied so 'no role' is unsupported.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q9",
+      "text": "The paper contains no limitations discussion; scope caveats are absent and instead replaced by overgeneralization.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q10",
+      "text": "No real-world or multi-dataset evidence supports the generalization claim.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q11",
+      "text": "Benchmark provenance, difficulty, and representativeness are not described for non-specialist readers.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q12",
+      "text": "The gap between the sweeping stated so-what and the single-synthetic-dataset evidence is not acknowledged.",
+      "tag": "unsupported_belief"
+    }
+  ],
+  "notes": "Grading based on 19 gold nuggets. RR (Recall Rate) = (present + weakened) / 19 = 8/19 ≈ 0.421. DR (Distortion Rate) = (overstated + contradicted) / 19 = 0. IR (Intrusion Rate) = 13 intrusions / 19 nuggets ≈ 0.684. Core nuggets defined as derived/interpretation strength (7 nuggets: q7a,q7b,q8a,q8b,q9a,q10a,q12a). Core RR = 4/7 ≈ 0.571. MMF (Major Missing Fraction) on core = 3/7 ≈ 0.429. Reader captures high-level problem and result at s=0.6 but misses gap (Q3), experimental design details (Q4,Q5,Q6b), gain attribution (q8b), limitations (Q9), takeaway nuance (Q10,Q12), and several context nuggets (Q11b,c). Many intrusions are critical assessments in 'missing' fields not reflected in gold story.",
+  "RR": 0.421,
+  "DR": 0.0,
+  "IR": 0.684,
+  "MMF": 0.429,
+  "Core_RR": 0.571
+}

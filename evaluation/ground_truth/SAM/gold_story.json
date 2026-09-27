@@ -1,0 +1,70 @@
+{
+  "project": "SAM",
+  "approved_by_researcher": false,
+  "approval_date": null,
+  "questions": {
+    "Q1": [
+      {"id": "Q1a", "text": "The goal is to build a foundation model for image segmentation that can be prompted, similar to how language models are prompted, and that generalizes zero-shot to new data distributions and tasks.", "strength": "context", "evidence_ids": ["paper §1 L49"]},
+      {"id": "Q1b", "text": "The paper frames the problem as three entangled questions: what task enables zero-shot generalization, what model architecture fits it, and what data can power it.", "strength": "context", "evidence_ids": ["paper §1 L50-51"]}
+    ],
+    "Q2": [
+      {"id": "Q2a", "text": "Foundation models pre-trained on web-scale data have driven strong zero-shot and few-shot generalization in NLP and, to a lesser extent, vision-language tasks.", "strength": "context", "evidence_ids": ["paper §1 L45, L48"]},
+      {"id": "Q2b", "text": "Segmentation covers a wide range of computer vision problems for which abundant training data does not exist, unlike text-image pairs available on the web.", "strength": "context", "evidence_ids": ["paper §1 L48"]}
+    ],
+    "Q3": [
+      {"id": "Q3a", "text": "There is no web-scale data source for segmentation masks, unlike the web-scale text and image-text corpora that power other foundation models.", "strength": "context", "evidence_ids": ["paper §1 L55"]},
+      {"id": "Q3b", "text": "Prior multi-task segmentation systems perform a fixed set of tasks where training and test tasks are the same, unlike a model that can perform new tasks at inference time via prompting.", "strength": "context", "evidence_ids": ["paper §2 L92"]}
+    ],
+    "Q4": [
+      {"id": "Q4a", "text": "The authors introduce a promptable segmentation task, the Segment Anything Model (SAM) with an image encoder, prompt encoder, and mask decoder, and a data engine used to collect the SA-1B dataset.", "strength": "context", "evidence_ids": ["paper Abstract L43", "paper §1 L57"]},
+      {"id": "Q4b", "text": "SAM predicts multiple (by default 3) candidate masks per prompt along with a predicted IoU confidence score to handle prompt ambiguity.", "strength": "measured", "evidence_ids": ["paper §3 L122-124"]},
+      {"id": "Q4c", "text": "The data engine has three stages: assisted-manual annotation, semi-automatic annotation, and fully automatic mask generation, which together collected 1.1B masks on 11M images.", "strength": "measured", "evidence_ids": ["paper §4 L128, L135"]},
+      {"id": "Q4d", "text": "Given a precomputed image embedding, the prompt encoder and mask decoder predict a mask in about 50 milliseconds in a web browser.", "strength": "measured", "evidence_ids": ["paper §1 L57", "paper §3 L125"]}
+    ],
+    "Q5": [
+      {"id": "Q5a", "text": "The model separates a heavyweight image encoder (run once per image) from a lightweight prompt encoder and mask decoder so the image embedding cost can be amortized across many different prompts.", "strength": "interpretation", "evidence_ids": ["paper §1 L57"]},
+      {"id": "Q5b", "text": "SAM predicts multiple masks per ambiguous prompt because a single averaged mask would be invalid when a prompt (e.g., a point on a shirt) could refer to more than one object.", "strength": "interpretation", "evidence_ids": ["paper §3 L122"]},
+      {"id": "Q5c", "text": "The authors chose an MAE-pretrained Vision Transformer image encoder, motivated by scalability and access to strong pretraining.", "strength": "interpretation", "evidence_ids": ["paper §A L947"]}
+    ],
+    "Q6": [
+      {"id": "Q6a", "text": "The paper reports five zero-shot transfer experiments: single-point valid mask evaluation on 23 datasets, edge detection on BSDS500, object proposal generation on LVIS, instance segmentation on COCO/LVIS, and a text-to-mask proof-of-concept.", "strength": "context", "evidence_ids": ["paper §7 L289-293"]},
+      {"id": "Q6b", "text": "The paper also runs a Responsible AI fairness analysis measuring SAM's segmentation performance across perceived gender presentation, age group, and skin tone.", "strength": "context", "evidence_ids": ["paper §6 L223-224"]},
+      {"id": "Q6c", "text": "Ablation experiments vary the data-engine training stage, the amount of SA-1B training data (0.1M/1M/11M images), and the image encoder size (ViT-B/L/H).", "strength": "context", "evidence_ids": ["paper §7.6 Fig. 13"]}
+    ],
+    "Q7": [
+      {"id": "Q7a", "text": "SAM produces higher mIoU than the RITM baseline on 16 of 23 zero-shot single-point segmentation datasets, by as much as about 47 IoU.", "strength": "measured", "evidence_ids": ["paper §7.1 L461"]},
+      {"id": "Q7b", "text": "Using an oracle that picks the best of SAM's 3 predicted masks, SAM outperforms RITM on all 23 datasets.", "strength": "measured", "evidence_ids": ["paper §7.1 L461"]},
+      {"id": "Q7c", "text": "On BSDS500 zero-shot edge detection, SAM scores ODS .768, OIS .786, AP .794, R50 .928, compared to the learned HED baseline's ODS .788, OIS .808, AP .840, R50 .923.", "strength": "measured", "evidence_ids": ["paper Table 3"]},
+      {"id": "Q7d", "text": "On LVIS instance segmentation, SAM achieves AP 44.7 versus the fully-supervised ViTDet-H's AP 46.6; on COCO, SAM achieves AP 46.5 versus ViTDet-H's AP 51.0.", "strength": "measured", "evidence_ids": ["paper Table 5, §7.4 L600-616"]},
+      {"id": "Q7e", "text": "In a human 1-10 mask-quality rating study, SAM (mean 8.1) rated higher than ViTDet-H (mean 7.9) on LVIS despite SAM's lower AP.", "strength": "measured", "evidence_ids": ["paper §7.4 Fig. 11, L622-630"]},
+      {"id": "Q7f", "text": "On a 500-image sample of automatically generated masks, 94% of pairs (automatic vs. professionally corrected) exceeded 90% IoU agreement, and 97% exceeded 75% IoU.", "strength": "measured", "evidence_ids": ["paper §5 L142"]}
+    ],
+    "Q8": [
+      {"id": "Q8a", "text": "The results establish that SAM's zero-shot single-point segmentation is competitive with, and often better than, a strong prior interactive segmentation baseline (RITM) across a diverse 23-dataset suite.", "strength": "derived", "evidence_ids": ["paper §7.1 L461"]},
+      {"id": "Q8b", "text": "The results establish that automatically generated SA-1B masks are of high quality, closely matching professional corrections at a level exceeding reported prior inter-annotator consistency.", "strength": "measured", "evidence_ids": ["paper §5 L142"]},
+      {"id": "Q8c", "text": "The results establish that SAM can be composed with an existing object detector (ViTDet) to perform zero-shot instance segmentation, trailing but reasonably close to the fully-supervised specialist model in AP.", "strength": "measured", "evidence_ids": ["paper §7.4 L596, Table 5"]},
+      {"id": "Q8d", "text": "The fairness analysis establishes that within most gender, age, and skin-tone groupings, SAM's person-segmentation performance confidence intervals overlap, with older vs. middle age being the stated exception.", "strength": "observed", "evidence_ids": ["paper Table 2 caption L286"]}
+    ],
+    "Q9": [
+      {"id": "Q9a", "text": "The results do not establish a quantitative measure of the text-to-mask capability; it is presented only as a qualitative proof-of-concept that the authors call exploratory and not entirely robust.", "strength": "context", "evidence_ids": ["paper §7.5 L671", "paper §8 L735"]},
+      {"id": "Q9b", "text": "The results do not establish that SAM matches dedicated interactive segmentation methods when many points are provided; the authors state such methods are expected to outperform SAM in that regime.", "strength": "context", "evidence_ids": ["paper §8 L735"]},
+      {"id": "Q9c", "text": "The fairness-by-skin-tone results rely on a proprietary dataset not released with the paper, so that part of the analysis cannot be independently reproduced from released artifacts.", "strength": "context", "evidence_ids": ["paper §6 L288"]},
+      {"id": "Q9d", "text": "The paper does not claim SAM's overall pipeline is real-time when using the heavy image encoder; only the prompt encoder and mask decoder stage is near-real-time given a precomputed embedding.", "strength": "context", "evidence_ids": ["paper §8 L735"]}
+    ],
+    "Q10": [
+      {"id": "Q10a", "text": "The authors state their principal contributions are a new task (promptable segmentation), a new model (SAM), and a new dataset (SA-1B) intended to bring image segmentation into the era of foundation models.", "strength": "context", "evidence_ids": ["paper Conclusion L736"]}
+    ],
+    "Q11": [
+      {"id": "Q11a", "text": "SAM can miss fine structures, occasionally hallucinates small disconnected components, and does not produce boundaries as crisp as more computationally intensive zoom-in methods.", "strength": "context", "evidence_ids": ["paper §8 L735"]},
+      {"id": "Q11b", "text": "Dedicated interactive segmentation methods are expected to outperform SAM when many points are provided, since SAM is designed for generality rather than high-IoU interactive segmentation.", "strength": "context", "evidence_ids": ["paper §8 L735"]},
+      {"id": "Q11c", "text": "SAM's overall performance is not real-time when using a heavy image encoder, even though the prompt encoder and mask decoder run in about 50ms.", "strength": "context", "evidence_ids": ["paper §8 L735"]},
+      {"id": "Q11d", "text": "It is unclear how to design simple prompts that implement semantic and panoptic segmentation with SAM.", "strength": "context", "evidence_ids": ["paper §8 L735"]},
+      {"id": "Q11e", "text": "SA-1B, as released, includes only the automatically generated masks from the final data-engine stage, not the manual or semi-automatic stage masks.", "strength": "context", "evidence_ids": ["paper §5 L141"]}
+    ],
+    "Q12": [
+      {"id": "Q12a", "text": "Segment Anything introduces a promptable segmentation task, the SAM model, and the SA-1B dataset of over 1.1 billion masks on 11 million images, aiming to make segmentation a foundation-model-style capability.", "strength": "context", "evidence_ids": ["paper Abstract L43"]},
+      {"id": "Q12b", "text": "SAM's zero-shot performance is often competitive with or superior to prior fully supervised results across several segmentation-related tasks, though it generally trails specialist fully-supervised models on strict AP metrics.", "strength": "context", "evidence_ids": ["paper Abstract L43", "paper §7.4 Table 5"]},
+      {"id": "Q12c", "text": "The model, given a precomputed image embedding, produces a mask from a prompt in about 50 milliseconds, enabling real-time interactive use in a browser.", "strength": "measured", "evidence_ids": ["paper §3 L125"]}
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "mode": "B",
+  "label": "Adjacent ML researcher",
+  "description": "Machine-learning researchers from subfields other than speech processing (e.g., NLP, computer vision, RL). Know general deep learning, Transformers, standard supervised training, evaluation practice, and statistics. Do NOT know: ASR-specific terminology (WER, CER, AM, LM, hybrid systems, GMM-HMM), speech-specific datasets (LibriSpeech, CommonVoice, Fleurs, CoVoST2, VoxPopuli), or prior ASR model families (Wav2Vec, HuBERT, CTC).",
+  "assumed_knowledge": [
+    "Encoder-decoder Transformer architectures",
+    "Self-supervised / unsupervised pretraining concepts",
+    "Transfer learning and fine-tuning paradigms",
+    "The concept of zero-shot evaluation",
+    "Sequence-to-sequence learning",
+    "Standard ML metrics (accuracy, F1, BLEU for translation)",
+    "Scaling laws: performance vs. model size and data size",
+    "Multitask learning concepts",
+    "Distribution shift / domain generalization"
+  ],
+  "terms_to_define": [
+    "Word error rate (WER)",
+    "Automatic speech recognition (ASR)",
+    "Weak supervision in speech context",
+    "LibriSpeech (as the standard reference benchmark)",
+    "Mel spectrogram (brief, at first use)",
+    "Voice activity detection (VAD)",
+    "Language identification (LangID)",
+    "Byte-pair encoding (BPE)",
+    "Effective robustness (Taori et al., 2020)"
+  ],
+  "term_budget": 12,
+  "binding_personas": [
+    "NLP researcher familiar with large language models who wants to understand the speech equivalent of CLIP-style pretraining",
+    "Computer vision researcher curious whether weak supervision at scale works as well for audio as for images"
+  ]
+}

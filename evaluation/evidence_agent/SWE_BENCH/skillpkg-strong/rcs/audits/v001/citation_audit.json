@@ -1,0 +1,4 @@
+{
+ "citations_checked": [],
+ "note": "No author-year or et al. citation patterns were found anywhere in the evidence package (research_evidence.json, claim_candidates.json, missing_evidence.json). Per citation_rules.md Sec.1 ('never cite from model memory') and the run's no-web constraint, no source_registry.json was built and no external works are cited in the draft. The Related Work section states this explicitly rather than fabricating citations. Failure state INSUFFICIENT_LITERATURE raised and accepted (see state.json accepted_risks)."
+}

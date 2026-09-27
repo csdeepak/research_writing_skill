@@ -1,0 +1,59 @@
+{
+ "missing": [
+  {
+   "what": "No variance / confidence intervals on any resolve or apply rate. Inference used greedy decoding and a single patch per instance (Pass@1), so all percentages are single-run point estimates.",
+   "why_it_matters": "Small headline numbers (e.g., 0.70%-4.80%) cannot be assessed for stability, and sub-tenth-of-a-point differences (e.g., 1.96 vs 1.97 for Claude 2) are indistinguishable from noise. No claim of one model being 'better' can be statistically supported.",
+   "location": "paper.txt Tables 2, 5, 6, 18, 19, 20, 21, 23; Section D.2 INFERENCE SETTINGS"
+  },
+  {
+   "what": "Unresolved discrepancy in Claude 2's BM25 resolve rate: 1.96% (Abstract, Section 1, Section 5, Table 2 @13k) versus 1.97% (Table 5).",
+   "why_it_matters": "The paper's central headline metric is inconsistent across the text and the main results table; a downstream writer must not silently pick one value.",
+   "location": "paper.txt Abstract / Section 5 vs Table 5 (Claude 2 % Resolved)"
+  },
+  {
+   "what": "No statistical significance tests for any model-to-model or setting-to-setting comparison (e.g., Claude 2 vs SWE-Llama 13b 'perform comparably', oracle vs oracle-collapsed increases).",
+   "why_it_matters": "Comparative language relies on raw single-run percentage differences with no test, so 'comparable', 'better', or 'increase' claims are unquantified.",
+   "location": "paper.txt Section 5 ('Difficulty differs across repositories'; 'Generating patches is easier than generating whole files')"
+  },
+  {
+   "what": "SWE-bench Lite full filtering criteria and construction details are absent; Appendix A.7 text is truncated ('SWE-bench Lite is a canonical subset ... SWE-bench is').",
+   "why_it_matters": "The 300-instance Lite subset is used in Table 5 results, but how instances were selected cannot be verified from the provided text.",
+   "location": "paper.txt Section A.7 SWE-BENCH LITE CHARACTERIZATION (lines ~1070-1071)"
+  },
+  {
+   "what": "GPT-4 full-set results are not reported; GPT-4 was evaluated only on a 25% random subset (574 instances) in the oracle and BM25 27k settings.",
+   "why_it_matters": "GPT-4's numbers are not directly comparable to full-set results for the other models, and Table 5's GPT-4-turbo row is a different model/config than the GPT-4 rows elsewhere.",
+   "location": "paper.txt Table 18 / Table 20 footnotes; Table 5"
+  },
+  {
+   "what": "Source data behind figures (Figure 3 repository distribution, Figure 4 per-repo bars, Figure 5 length partitions, Figure 9 CDFs) is not provided; only rendered/described figures exist.",
+   "why_it_matters": "Per-repository and length-partition numbers underlying qualitative claims cannot be independently verified against the figures.",
+   "location": "paper.txt Figures 3, 4, 5, 9"
+  },
+  {
+   "what": "No raw results logs or data files (CSV/JSON/logs) are present in the project; the only sources are paper.txt and README_1.md.",
+   "why_it_matters": "Numeric claims cannot be reproduced from underlying files, so evidence strength is capped (paper prose treated as soft; only the paper's numbered results tables treated as hard).",
+   "location": "project/ (directory inventory)"
+  },
+  {
+   "what": "The prose comparison 'model generated patch files ... are less than half the total length (74.5 versus 30.1 lines)' mixes references: 74.5 is the All-Gold total-lines average while 30.1 is the ChatGPT-3.5 generated total-lines value.",
+   "why_it_matters": "The stated 'less than half' comparison is not a like-for-like (single model vs its own gold), so the quantitative framing is ambiguous.",
+   "location": "paper.txt Section 5 ('Language models tend to generate shorter, simpler edits') vs Table 8"
+  },
+  {
+   "what": "Software-engineering-metric analysis (Cyclomatic/Halstead complexity, Section C.7) is a single case study (psf/requests-4356) with no aggregate statistics; the caption also names 'InvalidHeader' while the body text names 'InvalidProxyURL'.",
+   "why_it_matters": "No generalizable complexity finding is supported, and the naming inconsistency should be flagged rather than resolved.",
+   "location": "paper.txt Section C.7; Figure 10 caption vs body (line ~1449)"
+  },
+  {
+   "what": "A development set (225 instances, 6 repositories) is characterized, but no model evaluation results on the development set are reported.",
+   "why_it_matters": "The stated purpose (tuning hyperparameters before the test set) is not evidenced by any dev-set numbers.",
+   "location": "paper.txt Section A.6 DEVELOPMENT SET CHARACTERIZATION; Table 17"
+  },
+  {
+   "what": "Table 1 / Figure 3 gold-patch averages (1.7 files, 3.0 functions, 32.8 lines) report no spread despite being aggregates over 2,294 instances.",
+   "why_it_matters": "Distributional spread is needed to interpret how representative the means are; only means and maxima are given.",
+   "location": "paper.txt Table 1; Figure 3; Section 2.3"
+  }
+ ]
+}

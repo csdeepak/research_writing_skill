@@ -1,0 +1,6 @@
+ok SWE_BENCH__cheap.txt
+ok SWE_BENCH__strong.txt
+ok WHISPER__cheap.txt
+failed WHISPER__strong.txt
+failed OPENHANDS__cheap.txt
+failed OPENHANDS__strong.txt

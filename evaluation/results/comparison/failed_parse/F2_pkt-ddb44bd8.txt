@@ -1,0 +1,315 @@
+{
+  "reconstruction": {
+    "packet_id": "pkt-ddb44bd8",
+    "answers": {
+      "Q1": {
+        "answer": "The paper solves the problem of building speech recognition systems that are robust to distribution shift—i.e., that generalize well to new datasets, languages, noise conditions, and recording setups without requiring fine-tuning on each target domain.",
+        "locations": ["§1/paragraph 1-3", "§1/paragraph 4-5", "§3.1/paragraph 1"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q2": {
+        "answer": "Current ASR systems achieve 'superhuman' performance on benchmarks like LibriSpeech by exploiting dataset-specific patterns, but fail on out-of-distribution data. This creates a misleading evaluation where high in-distribution performance is equated with human-level capability, while real-world deployment requires out-of-distribution robustness. The paper argues zero-shot evaluation aligns machine and human conditions.",
+        "locations": ["§1/paragraph 2-3", "§4.1/paragraph 3-4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q3": {
+        "answer": "Existing approaches have three gaps: (1) Self-supervised pre-training (wav2vec 2.0) lacks a powerful decoder and requires fine-tuning, which hurts robustness. (2) Multi-dataset supervised training (SpeechStew) only reaches ~5,000 hours, far below the 1M+ hours used in semi-supervised pipelines. (3) Weakly supervised efforts (GigaSpeech, People's Speech) only reach 10K-30K hours. The gap is scaling weakly supervised data by the next order of magnitude (to 680K hours) while maintaining quality through filtering.",
+        "locations": ["§1/paragraph 4-6"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q4": {
+        "answer": "The authors collected 680,000 hours of audio-transcript pairs from the internet, applied automated filtering (removing machine-generated transcripts, language mismatches, deduplication), trained a standard encoder-decoder Transformer (5 sizes from 39M to 1.55B params) with a unified multitask format using special tokens for transcription, translation, language ID, VAD, and timestamps, and evaluated zero-shot on 12+ English datasets, multilingual benchmarks, translation, language ID, noise robustness, and long-form transcription.",
+        "locations": ["§2.1", "§2.2", "§2.3", "§2.4", "§3", "§4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q5": {
+        "answer": "They chose a standard encoder-decoder Transformer to avoid confounding data scaling with model innovations. The unified multitask format with special tokens allows a single model to replace multiple pipeline components (VAD, language ID, ITN). Training on massive diverse data with zero-shot evaluation targets robustness directly. No data augmentation or regularization was used initially, relying on dataset diversity; later Large V2 added SpecAugment, Stochastic Depth, BPE Dropout.",
+        "locations": ["§2.2/paragraph 2", "§2.3", "§2.4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q6": {
+        "answer": "Experiments: (1) English ASR zero-shot on LibriSpeech (reference) + 12 out-of-distribution datasets vs. wav2vec 2.0 Large and human. (2) Multilingual ASR on MLS, VoxPopuli, Fleurs (102 languages). (3) X→English translation on CoVoST2 (21 language pairs). (4) Language ID on Fleurs. (5) Noise robustness: white noise and pub noise at varying SNRs on LibriSpeech. (6) Long-form transcription on 7 datasets (TED-LIUM3, Late Show, podcasts, earnings calls, CORAAL) vs. open-source and commercial systems. (7) Ablations: model scaling (5 sizes), dataset scaling (6 subsets), long-form decoding heuristics.",
+        "locations": ["§4.1", "§4.2", "§4.3", "§4.4", "§4.5", "§4.6", "§5.1", "§5.2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q7": {
+        "answer": "Strongest results: (1) Whisper Large V2: 2.7% WER on LibriSpeech test-clean (matching wav2vec 2.0), but 55.2% average relative error reduction across 12 OOD datasets (avg WER 12.8% vs 29.3%). (2) Zero-shot translation: 29.1 BLEU on CoVoST2 All, new SOTA, especially strong on low-resource (+6.7 BLEU over mSLAM). (3) Long-form: outperforms best open-source (NVIDIA Conformer) on all 7 datasets, competes with commercial services, within ~1.15 pp of computer-assisted human, ~0.5 pp of pure human. (4) Scaling: multilingual/multitask models show positive transfer at large scale; dataset scaling shows power-law trends up to 54K hours.",
+        "locations": ["§4.1/Table 2", "§4.3/Table 4", "§4.6/Table 6", "§5.1", "§5.2/Table 7"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q8": {
+        "answer": "The results establish that: (1) Scaling weakly supervised data to 680K hours with a standard architecture achieves human-level robustness on English ASR in zero-shot transfer. (2) The 55.2% relative error reduction demonstrates that matching in-distribution performance (LibriSpeech) does NOT imply matching out-of-distribution robustness. (3) A single multitask model can handle transcription, translation, language ID, VAD, and timestamps across 99 languages. (4) Dataset diversity matters more than model innovations for robustness—an off-the-shelf Transformer suffices. (5) Scaling laws for speech recognition show diminishing returns after ~54K hours, suggesting undertraining.",
+        "locations": ["§4.1", "§4.6", "§5.1", "§5.2", "§8"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q9": {
+        "answer": "They do NOT establish: (1) That Whisper surpasses fine-tuned models on in-distribution benchmarks—it matches mid-2019 supervised performance on LibriSpeech. (2) That the decoder alone or encoder alone causes robustness—the paper explicitly says this is unclear (§7). (3) That zero-shot is always better than fine-tuning—they note fine-tuning likely improves further (§7). (4) Strong multilingual performance on all languages—low-resource and non-Indo-European languages underperform. (5) That language ID is SOTA—it's below mSLAM/w2v-bert, though limited by training coverage. (6) That the scaling saturates due to irreducible error vs. undertraining—the paper suggests undertraining.",
+        "locations": ["§4.1", "§4.2", "§4.4", "§7"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q10": {
+        "answer": "The primary contribution is demonstrating that simply scaling weakly supervised speech recognition to 680,000 hours with a standard encoder-decoder Transformer, evaluated in a zero-shot transfer setting, achieves human-level accuracy and robustness across diverse English benchmarks and 99 languages—closing the gap between in-distribution benchmark performance and real-world deployment robustness. The unified multitask format is a secondary but practical contribution.",
+        "locations": ["§1/paragraph 6", "§8"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q11": {
+        "answer": "Main limitations: (1) Decoding reliability in long-form: repetition loops, hallucinations, boundary errors, only partially fixed by heuristics. (2) Low-resource language coverage: heavily English-biased dataset; WER strongly predicted by data volume; unique-script/typologically distant languages underperform. (3) Zero-shot only evaluation: no fine-tuning comparisons with prior work's standard protocol. (4) Role of decoder vs. encoder unclear for robustness. (5) No unsupervised pre-training used—could potentially help. (6) Translation data quality issues: language ID errors create spurious translation pairs (e.g., Welsh).",
+        "locations": ["§7"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q12": {
+        "answer": "One day later, a reader should remember: Whisper shows that massive diverse supervised data (680K hours) + standard Transformer + zero-shot evaluation = human-level robustness, exposing the flaw in equating in-distribution benchmark scores with real-world capability. The 55% relative error reduction on OOD data while matching LibriSpeech is the headline result. A single model does transcription, translation, language ID, VAD, timestamps across 99 languages. Models and code are public.",
+        "locations": ["§8", "§4.1"],
+        "confidence": 5,
+        "missing": ""
+      }
+    }
+  },
+  "diagnostics": {
+    "packet_id": "pkt-ddb44bd8",
+    "binding_personas": ["A", "B", "E"],
+    "findings": [
+      {
+        "dimension": "problem",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 2, "quote": "Models that achieve \"superhuman\" performance on a benchmark can still make many basic errors in other settings"},
+        "observed": "The problem is crisply framed: current ASR evaluation conflates in-distribution generalization with human-level capability, and fine-tuning creates dataset-specific brittleness.",
+        "reader_struggle": "No struggle—the problem is motivated with concrete examples (ImageNet fine-tuning, Geirhos et al.) and tied to real deployment needs.",
+        "likely_consequence": "Reader immediately grasps why zero-shot robustness matters and why current benchmarks are misleading.",
+        "revision_principle": "Keep the problem framing anchored to a concrete evaluation gap, not just a performance gap."
+      },
+      {
+        "dimension": "motivation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 4, "quote": "SpeechStew (Chan et al., 2021), for instance, mixes 7 existing datasets totalling 5,140 hours. Yet this is still small compared to the 1,000,000 hours of unlabeled data"},
+        "observed": "Motivation builds a clear ladder: unsupervised scales to 1M hours but needs fine-tuning → multi-dataset supervised only 5K hours → weak supervision 10K-30K hours → this work closes the gap at 680K hours.",
+        "reader_struggle": "No struggle—the quantitative progression (5K → 10K → 30K → 680K) makes the motivation immediately graspable.",
+        "likely_consequence": "Reader sees the exact niche this work fills and why the scale matters.",
+        "revision_principle": "Use quantitative milestones to show where prior work stops and your work begins."
+      },
+      {
+        "dimension": "research_question",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 6", "quote": "This work closes the remaining gap by scaling weakly supervised speech recognition by the next order of magnitude to 680,000 hours of labeled audio"},
+        "observed": "The research question is implicit but clear: Can scaling weakly supervised data by an order of magnitude, with a standard architecture and zero-shot evaluation, achieve human-level robustness without self-supervision?",
+        "reader_struggle": "Slight implicitness—the question isn't stated as a question, but the contribution paragraph makes it unmistakable.",
+        "likely_consequence": "Reader infers the question correctly from the contribution statement.",
+        "revision_principle": "Consider stating the research question explicitly for maximum accessibility."
+      },
+      {
+        "dimension": "contribution",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "8", "paragraph": 1", "quote": "Whisper demonstrates that the simple approach of scaling weakly supervised pre-training for speech recognition has been underappreciated relative to unsupervised pre-training methods"},
+        "observed": "The contribution is clearly stated in both Introduction and Conclusion: (1) 680K-hour weakly supervised dataset, (2) standard architecture, (3) zero-shot evaluation showing human-level robustness, (4) unified multitask format across 99 languages.",
+        "reader_struggle": "No struggle—contributions are enumerated and the headline number (55.2% RER) is repeated.",
+        "likely_consequence": "Reader can articulate the contribution precisely.",
+        "revision_principle": "Repeat the core contribution with the headline metric in both Introduction and Conclusion."
+      },
+      {
+        "dimension": "method",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "2.1", "paragraph": 3", "quote": "An audio language detector, obtained by fine-tuning a prototype model on VoxLingua107"},
+        "observed": "Method is well-described: data collection/filtering pipeline, architecture, multitask token format, training details. However, the language detector is a 'prototype model'—circularity risk: the detector used to filter data comes from a model trained on related data. Not fully specified how the prototype was built.",
+        "reader_struggle": "Persona B/E might wonder: how was the 'prototype model' trained? Is there leakage? The paper doesn't say.",
+        "likely_consequence": "Reader may question whether the language filtering step introduces circularity or bias.",
+        "revision_principle": "Specify the provenance of any model used in data filtering to avoid circularity concerns."
+      },
+      {
+        "dimension": "experiment",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "3.1", "paragraph": 1", "quote": "The defining evaluation setting for Whisper is zero-shot transfer: no training data from any evaluation dataset is used"},
+        "observed": "Experimental design is rigorous: zero-shot protocol clearly defined, text normalization addressed (critical for fair zero-shot comparison), multiple task evaluations, noise robustness, long-form, ablations for model/dataset scaling. The normalization comparison with FairSpeech adds credibility.",
+        "reader_struggle": "No struggle—the zero-shot protocol is the right choice for the claim, and normalization is handled transparently.",
+        "likely_consequence": "Reader trusts the evaluation methodology.",
+        "revision_principle": "When evaluating zero-shot, always address text normalization mismatches explicitly."
+      },
+      {
+        "dimension": "result",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.1", "paragraph": 2", "quote": "Despite matching on the reference distribution (both achieving 2.7% WER on LibriSpeech test-clean), the zero-shot Whisper model achieves an average relative error reduction of 55.2%"},
+        "observed": "Results are presented with precise numbers, clear tables, and the key comparison (matched in-distribution, diverging OOD) is visually and numerically unambiguous. Human comparison on Kincaid46 adds a rare and valuable anchor.",
+        "reader_struggle": "No struggle—tables are readable, the 55.2% figure is unmissable.",
+        "likely_consequence": "Reader retains the headline robustness result.",
+        "revision_principle": "Pair matched in-distribution performance with diverging OOD performance in the same table to make the robustness gap undeniable."
+      },
+      {
+        "dimension": "interpretation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.1", "paragraph": 3", "quote": "This finding highlights a systematic evaluation problem: machine learning systems that are fine-tuned on the evaluation distribution are measuring in-distribution generalization, while humans are demonstrating out-of-distribution generalization"},
+        "observed": "Interpretation goes beyond numbers to identify a systemic evaluation flaw. The human comparison is framed correctly: Whisper and humans both do OOD generalization; supervised models do in-distribution. The r²=0.83 scaling law for multilingual WER vs data volume is a strong interpretive finding.",
+        "reader_struggle": "No struggle—the interpretation connects the result to a broader methodological lesson.",
+        "likely_consequence": "Reader understands why the result matters beyond ASR.",
+        "revision_principle": "Interpret results as evidence about evaluation methodology, not just model performance."
+      },
+      {
+        "dimension": "limitation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "7", "paragraph": 1", "quote": "Many remaining errors in long-form transcription are not perceptual in nature. They include sequence-to-sequence failure modes such as repetition loops, hallucinated text unrelated to the audio"},
+        "observed": "Limitations section is honest and specific: decoding failures, low-resource language bias, zero-shot-only eval, decoder/encoder role unclear, no unsupervised pre-training, translation data noise. Each limitation is concrete and bounded.",
+        "reader_struggle": "No struggle—limitations are not downplayed; they're presented as research directions.",
+        "likely_consequence": "Reader knows exactly where the work falls short and what to do next.",
+        "revision_principle": "State limitations as specific failure modes with hypothesized causes, not vague caveats."
+      },
+      {
+        "dimension": "narrative_coherence",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1", "paragraph": 1", "quote": "Progress in automatic speech recognition (ASR) has been energized by unsupervised pre-training techniques such as Wav2Vec 2.0"},
+        "observed": "Narrative flows logically: problem (fine-tuning brittleness) → prior attempts (multi-dataset, weak supervision) → gap (scale) → solution (Whisper) → method → evaluation → results → analysis → limitations. Each section motivates the next.",
+        "reader_struggle": "No struggle—the story is self-contained and cumulative.",
+        "likely_consequence": "Reader can follow the argument from start to finish without backtracking.",
+        "revision_principle": "Structure the paper as a response to a specific gap, not a survey of related work."
+      },
+      {
+        "dimension": "terminology",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "2.3", "paragraph": 1", "quote": "All tasks and conditioning information are encoded as a sequence of tokens fed to the decoder before prediction begins"},
+        "observed": "Terminology is mostly accessible to adjacent ML researchers. 'Effective robustness' (Taori et al.) is defined by usage. 'Inverse text normalization' and 'transcript-ese' are explained. However, 'SpecAugment', 'Stochastic Depth', 'BPE Dropout' are named without brief explanation in §2.4—Persona B may not know these.",
+        "reader_struggle": "Persona B might not know SpecAugment/Stochastic Depth/BPE Dropout details; they're cited but not summarized.",
+        "likely_consequence": "Reader accepts the regularization methods on faith or must look them up.",
+        "revision_principle": "Add one-sentence parenthetical explanations for named regularization/augmentation methods when first mentioned."
+      },
+      {
+        "dimension": "logical_flow",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.1", "paragraph": 1", "quote": "The central claim is that zero-shot training on a large, diverse corpus produces models that are substantially more robust to distribution shift than fine-tuned models trained on a single dataset"},
+        "observed": "Logical flow is tight: claim → test design (LibriSpeech as reference + 12 OOD) → matched baseline → divergence shown → human comparison → interpretation. No non-sequiturs.",
+        "reader_struggle": "No struggle—each result section opens with its claim.",
+        "likely_consequence": "Reader never wonders 'why are they showing this?'",
+        "revision_principle": "State the claim at the start of each result subsection."
+      },
+      {
+        "dimension": "evidence_traceability",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.2", "paragraph": 2", "quote": "On VoxPopuli, however, Whisper falls short of prior work, likely because other models heavily use VoxPopuli as an unsupervised pre-training source"},
+        "observed": "Most claims trace to tables/figures. The 'likely because' for VoxPopuli shortfall is plausible but not directly tested—it's an inference from data composition. The Welsh translation data issue (§4.3) is traced to manual inspection. The human transcriber (Alec) is one of the authors—disclosed but notable.",
+        "reader_struggle": "Persona E notes the VoxPopuli explanation is post-hoc; the human baseline is a single author (n=1).",
+        "likely_consequence": "Reader may over-trust the VoxPopuli explanation or question the human baseline representativeness.",
+        "revision_principle": "Distinguish between evidence-backed claims and plausible hypotheses; disclose n=1 for human baselines."
+      },
+      {
+        "dimension": "figure_table",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.1", "paragraph": 2", "quote": "Table 2. Effective robustness comparison (WER %)."},
+        "observed": "Tables are clear, self-contained, and directly support the claims. Table 2 is the centerpiece—matched LibriSpeech, diverging OOD, RER column. Table 4 shows translation by resource tier. Table 6 shows incremental decoding gains. Table 7 shows dataset scaling. All readable without caption-only dependence.",
+        "reader_struggle": "No struggle—tables tell the story.",
+        "likely_consequence": "Reader can verify claims by scanning tables.",
+        "revision_principle": "Design tables so the key comparison is a single column or row difference."
+      },
+      {
+        "dimension": "claim_evidence_alignment",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "8", "paragraph": 1", "quote": "The key finding—that zero-shot Whisper models achieve 55.2% average relative error reduction over supervised LibriSpeech-trained models on out-of-distribution datasets while matching them on LibriSpeech"},
+        "observed": "Claims align precisely with evidence. The headline claim (55.2% RER) is directly from Table 2. 'Approaches human-level robustness' is supported by Kincaid46 human comparison. 'Unified multitask format' is demonstrated in §2.3 and used in all results. No claim exceeds its evidence.",
+        "reader_struggle": "No struggle—every abstract/conclusion claim has a table or experiment backing it.",
+        "likely_consequence": "Reader trusts the paper's conclusions.",
+        "revision_principle": "Ensure every sentence in the abstract and conclusion has a direct pointer to a result table or figure."
+      },
+      {
+        "dimension": "unsupported_inference",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "7", "paragraph": 4", "quote": "It remains unclear whether Whisper's robustness advantage stems from the encoder, the decoder, or both"},
+        "observed": "The paper explicitly refuses to overclaim. It does not assert causality where only correlation exists (e.g., decoder role). The VoxPopuli shortfall is labeled 'likely because.' The Welsh data issue is documented. No 'proves,' 'first,' or 'SOTA' without qualification.",
+        "reader_struggle": "No struggle—the paper models epistemic humility.",
+        "likely_consequence": "Reader learns what is known vs. what is hypothesized.",
+        "revision_principle": "Explicitly label hypotheses as hypotheses; avoid causal language for correlational findings."
+      },
+      {
+        "dimension": "redundancy",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "8", "paragraph": 1", "quote": "Whisper demonstrates that the simple approach of scaling weakly supervised pre-training for speech recognition has been underappreciated"},
+        "observed": "No harmful redundancy. The Introduction and Conclusion mirror each other appropriately for a journal article. Related work is distinct from method. Analysis sections add new ablations, not rehashing results.",
+        "reader_struggle": "No struggle—repetition serves reinforcement, not padding.",
+        "likely_consequence": "Reader gets reinforcement without fatigue.",
+        "revision_principle": "Repeat the core message in Introduction and Conclusion; avoid repeating result numbers in Analysis unless re-contextualizing."
+      },
+      {
+        "dimension": "cognitive_load",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "2.3", "paragraph": 2", "quote": "The decoder receives the following sequence of special tokens at inference time. First, a <|startoftranscript|> token signals the beginning of prediction"},
+        "observed": "Cognitive load is generally well-managed: the multitask token format is explained stepwise. However, the full token sequence (startoftranscript → language → nospeech → task → notimestamps → timestamps → endoftranscript → previous-text) is dense. A diagram or pseudo-code would help Persona B/E.",
+        "reader_struggle": "Persona B/E must mentally simulate the token sequence; a visual would reduce load.",
+        "likely_consequence": "Reader may miss the elegance of the unified format or misremember the token order.",
+        "revision_principle": "For complex token sequences, provide a diagram or structured pseudo-code alongside prose."
+      },
+      {
+        "dimension": "orientation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "3.1", "paragraph": 1", "quote": "This contrasts with the standard protocol for most ASR benchmarks, which assume access to the training split of the evaluation dataset for fine-tuning"},
+        "observed": "Reader is consistently oriented: zero-shot vs fine-tuning contrast is explained upfront; each result section reminds the reader of the evaluation setting; tables label columns clearly; the 'why this matters' is woven into results.",
+        "reader_struggle": "No struggle—the paper never assumes the reader knows the ASR evaluation conventions.",
+        "likely_consequence": "Adjacent researcher (Persona B) can evaluate the paper without ASR background.",
+        "revision_principle": "Explicitly contrast your evaluation protocol with the field standard at the start of the evaluation section."
+      },
+      {
+        "dimension": "so_what",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "8", "paragraph": 1", "quote": "highlights the importance of distinguishing in-distribution from out-of-distribution generalization when comparing machine and human performance"},
+        "observed": "The 'so what' is crystalline: (1) Benchmark scores ≠ real-world robustness. (2) Zero-shot evaluation fixes this. (3) Massive diverse supervised data + simple architecture works. (4) Models and code released for foundation. The paper ends with the methodological lesson, not just the model.",
+        "reader_struggle": "No struggle—the takeaway is stated in the first sentence of the Conclusion.",
+        "likely_consequence": "Reader remembers the methodological implication, not just the model name.",
+        "revision_principle": "End with the implication for how the field should evaluate, not just what your model achieves."
+      }
+    ],
+    "inference_issues": [
+      {
+        "kind": "overgeneralization",
+        "location": {"section": "4.1", "paragraph": 3", "quote": "The best zero-shot Whisper models roughly match this human's accuracy and robustness frontier"},
+        "claim_text": "Whisper models roughly match human accuracy and robustness frontier across 12 OOD datasets.",
+        "missing_link": "Human baseline is a single transcriber (Alec, an author). No inter-annotator agreement, no multiple transcribers, no statistical significance testing. n=1 human is insufficient to claim 'human-level' generally."
+      },
+      {
+        "kind": "unsupported_conclusion",
+        "location": {"section": "4.2", "paragraph": 2", "quote": "likely because other models heavily use VoxPopuli as an unsupervised pre-training source and VoxPopuli provides approximately 10× more supervised training data per language than MLS"},
+        "claim_text": "Whisper falls short on VoxPopuli because other models use it for unsupervised pre-training and have 10× more supervised data per language.",
+        "missing_link": "This is a post-hoc hypothesis. No ablation shows that adding VoxPopuli to Whisper's training closes the gap, or that removing it from baselines hurts them. The 10× figure is not sourced."
+      },
+      {
+        "kind": "selective_presentation",
+        "location": {"section": "4.5", "paragraph": 1", "quote": "At low noise levels (high SNR), many supervised LibriSpeech models outperform the zero-shot Whisper model, as expected since those models are specifically trained on LibriSpeech"},
+        "claim_text": "Supervised models outperform Whisper at high SNR; Whisper wins at low SNR.",
+        "missing_link": "Only white noise and pub noise are tested. No results on babble noise, reverberation, codec distortion, or other real-world degradations. The 'pub noise' is from a single toolbox. Generalization to 'naturalistic distribution shifts' is claimed from two noise types."
+      },
+      {
+        "kind": "limitation_not_respected",
+        "location": {"section": "4.6", "paragraph": 4", "quote": "Pure human transcription performance is only a fraction of a percentage point better than Whisper, indicating that English ASR performance is very close to human-level accuracy"},
+        "claim_text": "English ASR performance is very close to human-level accuracy.",
+        "missing_link": "The limitation §7 notes decoding failures (hallucinations, repetition loops) that are 'not perceptual in nature.' Yet the Conclusion claims 'human-level accuracy' without qualifying that these systematic non-perceptual errors remain. The claim is stronger than the limitation allows."
+      }
+    ],
+    "objective_discrepancies": [
+      "The authors state the paper is 'meant to present their research project to adjacent machine-learning researchers' (objective.md). The paper succeeds at this—it defines terms, contrasts with standard protocols, and doesn't assume subfield knowledge. No discrepancy detected."
+    ],
+    "injection_suspected": []
+  }
+}

@@ -1,0 +1,113 @@
+{
+ "packet_id": "pkt-119bcdfd",
+ "answers": {
+  "Q1": {
+   "answer": "Image segmentation lacks a foundation model because segmentation masks, unlike text or image-text pairs, are not naturally abundant on the internet \u2014 they must be traced by human annotators at pixel precision, so the standard web-scale data-collection recipe is inapplicable. The largest prior datasets have only millions of masks and no general-purpose promptable segmentation model existed.",
+   "locations": [
+    "\u00a71.1",
+    "Abstract",
+    "\u00a74.1"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q2": {
+   "answer": "Three interdependent contributions: (1) a task \u2014 promptable segmentation; (2) a model \u2014 SAM (image encoder + prompt encoder + mask decoder, ~50ms per prompt after one-time encoding); (3) a dataset \u2014 SA-1B with 1.1 billion masks on 11 million licensed images, 400\u00d7 larger than any prior segmentation dataset. They are entangled: the model must be fast enough to assist annotators, the data engine improves the model, and the model must generalize zero-shot.",
+   "locations": [
+    "\u00a71.2",
+    "Abstract",
+    "\u00a78"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q3": {
+   "answer": "Promptable segmentation: given any prompt (foreground/background points, a box, a coarse mask, or free-form text) specifying what to segment, return a valid mask \u2014 reasonable for at least one plausible interpretation even under ambiguity, rather than erroring or averaging. It is argued to be the right task because it simultaneously defines a pre-training objective (simulate prompt sequences, supervise against ground truth) and a composable inference interface that lets any prompt-expressible downstream task be solved without parameter updates.",
+   "locations": [
+    "\u00a72.2"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q4": {
+   "answer": "SAM splits computation via amortization: a heavyweight ViT-H image encoder (~636M params, MAE-initialized) runs once per image to produce a 64\u00d764\u00d7256 embedding; then a lightweight prompt encoder and a two-layer Transformer mask decoder run per prompt. Given the precomputed embedding, prompt encoder + decoder run in a browser on CPU in ~50ms, enabling interactive use.",
+   "locations": [
+    "\u00a73.1",
+    "\u00a73.2",
+    "\u00a73.4"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q5": {
+   "answer": "A three-stage model-in-the-loop data engine. Stage 1 (assisted-manual): SAM proposes masks that annotators refine; time per mask fell 34\u219214s; produced 4.3M masks/120k images. Stage 2 (semi-automatic): SAM auto-fills confident masks, annotators label the rest; +5.9M masks (10.2M cumulative). Stage 3 (fully automatic): a 32\u00d732 point grid prompts SAM, masks filtered by predicted-IoU (\u226588) and stability (\u226595) plus NMS and zoomed crops; produced 1.1B masks over all 11M images.",
+   "locations": [
+    "\u00a74.2"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q6": {
+   "answer": "SA-1B: 11M high-resolution licensed images (avg 3300\u00d74950, released at 1500px shortest side) with 1.1B masks, 99.1% generated fully automatically. It is 11\u00d7 more images and 400\u00d7 more masks than Open Images. ~100 masks/image on average. Quality check on 500 images (~50k masks): 94% of auto vs human-corrected pairs >90% IoU, 97% >75% IoU.",
+   "locations": [
+    "\u00a74.3"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q7": {
+   "answer": "Single foreground-point evaluation across 23 datasets: SAM beats RITM on 16/23 by mIoU (by up to ~47 IoU points), and on all 23 under oracle selection of its three masks. In a human 1\u201310 study on 7 datasets, SAM scored between 7 and 9, consistently above RITM (single-output SAM in between); raters preferred SAM even on datasets where it scored lower by automatic IoU. With 3\u20139 points the gap to interactive baselines narrows.",
+   "locations": [
+    "\u00a75.2"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q8": {
+   "answer": "Zero-shot edge detection on BSDS500 (never trained on edges): SAM achieves ODS=.768, OIS=.786, AP=.794, R50=.928 \u2014 close to the 2015 supervised HED (ODS=.788) and far above classical zero-shot baselines (Canny .600, F&H .610), but below SOTA supervised EDETR (.840). High R50 reflects SAM detecting more (valid but unlabeled) edges, lowering precision-oriented metrics.",
+   "locations": [
+    "\u00a75.3",
+    "Table 1"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q9": {
+   "answer": "Object proposals (LVIS, AR@1000): SAM zero-shot 59.3 vs supervised ViTDet-H 63.0 overall, matching/surpassing on medium, common, and rare objects; multi-mask output beats single-output SAM. Instance segmentation (SAM prompted with ViTDet boxes): SAM trails ViTDet-H by 4.5 AP (COCO) and 1.9 AP (LVIS), but human raters preferred SAM's masks (8.1 vs 7.9), attributed to SAM not learning dataset-specific annotation conventions.",
+   "locations": [
+    "\u00a75.4",
+    "\u00a75.5",
+    "Table 2",
+    "Table 3"
+   ],
+   "confidence": 4,
+   "missing": "Text claims SAM 'trails on frequent objects' but Table 2 shows SAM higher on frequent (63.9 vs 63.1) \u2014 internal inconsistency."
+  },
+  "Q10": {
+   "answer": "Geographic: SA-1B spans 160+ countries but over-represents Europe (49.8%) and Asia/Oceania (36.2%), under-represents Africa (2.8%), Latin America (3.5%), low-income countries (0.9%); still every region has \u226528M masks. People segmentation (MIAP): no statistically significant mIoU differences across perceived gender or skin tone (overlapping CIs); older group slightly higher but wide CI. Clothing: significant bias \u2014 masculine 81.0\u00b11.2 vs feminine 76.3\u00b11.1 (disjoint CIs), narrowing at 3 points.",
+   "locations": [
+    "\u00a76"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q11": {
+   "answer": "Limitations: misses fine structures / hallucinates small disconnected components; less crisp boundaries than crop-based methods; dedicated interactive methods beat it with many prompts; not real-time end-to-end (heavy ViT-H encoder); no clear prompting strategy for semantic/panoptic segmentation; text-to-mask not yet robust; domain-specific tools expected to outperform it in their areas.",
+   "locations": [
+    "\u00a77.3"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q12": {
+   "answer": "SAM is framed as a foundation model for segmentation: trained on broad data at scale and adaptable zero-shot to many tasks. A noted distinction is that its capability comes primarily from large-scale supervised training on SA-1B (MAE only provides initialization), unlike self-supervised NLP foundation models. Its promptable, valid-output-for-any-prompt design makes it a composable module (analogous to CLIP inside DALL\u00b7E) that can slot into novel pipelines not anticipated at design time.",
+   "locations": [
+    "\u00a77.1",
+    "\u00a77.2",
+    "\u00a78"
+   ],
+   "confidence": 5,
+   "missing": ""
+  }
+ }
+}

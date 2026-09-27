@@ -1,0 +1,110 @@
+{
+ "packet_id": "pkt-92eb11aa",
+ "answers": {
+  "Q1": {
+   "answer": "The paper addresses whether the large gains neural IR models show on standard benchmarks reflect genuine generalization, given that those benchmarks evaluate models within the same distribution used for training. It targets the untested question of zero-shot retrieval generalization across new tasks and domains.",
+   "locations": [
+    "Abstract",
+    "\u00a71 \u00b61-2"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q2": {
+   "answer": "Retrieval is the first stage of high-stakes NLP pipelines (open-domain QA, fact verification, literature discovery, duplicate detection), so failures when models move to new domains matter in practice. Prior multi-dataset efforts (MultiReQA, KILT) give only partial coverage and do not measure zero-shot generalization explicitly, leaving the core question open.",
+   "locations": [
+    "\u00a71 \u00b61",
+    "\u00a71 \u00b63-4"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q3": {
+   "answer": "Does in-domain performance predict zero-shot (no target-domain fine-tuning) generalization across diverse retrieval tasks and domains, and which of five architecture families generalizes best under this setting?",
+   "locations": [
+    "\u00a71 \u00b64-5",
+    "Abstract"
+   ],
+   "confidence": 4,
+   "missing": "No single explicitly stated research-question sentence; inferred from objective framing."
+  },
+  "Q4": {
+   "answer": "Four contributions: (1) a curated benchmark of 18 datasets across 9 task types with unified format/metrics; (2) a systematic zero-shot evaluation of 10 systems across 5 families showing in-domain performance does not predict OOD generalization; (3) analysis of annotation selection bias showing it understates non-lexical models; (4) an open-source Python package standardising loading, integration, and evaluation.",
+   "locations": [
+    "\u00a71 (contributions list)"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q5": {
+   "answer": "BEIR is a heterogeneous zero-shot IR benchmark: 18 English datasets spanning 9 task families (bio-medical IR, QA, tweet, news, argument, duplicate-question, entity, citation, fact-checking), corpora from 3,633 to 14.9M documents, standardised on nDCG@10 via the TREC eval tool, released as a pip-installable package with unified corpus/query/qrels format.",
+   "locations": [
+    "\u00a73.1-3.5",
+    "Abstract"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q6": {
+   "answer": "Ten systems from five families (Lexical: BM25; Sparse: DeepCT, SPARTA, DocT5query; Dense: DPR, ANCE, TAS-B, GenQ; Late-interaction: ColBERT; Re-ranking: BM25+MiniLM cross-encoder) are evaluated from public pre-trained checkpoints with no target-domain fine-tuning; most trained on MS MARCO (DPR on four QA sets); documents truncated to 512 word-pieces; MS MARCO in-domain reported separately.",
+   "locations": [
+    "\u00a74"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q7": {
+   "answer": "In-domain does not predict zero-shot: BM25 (0.228 on MS MARCO) is competitive out-of-domain. Average vs BM25: BM25+CE +11% (best, wins 16/18), ColBERT +2.5% (2nd), DocT5query +1.6% (wins 11/18), TAS-B \u22122.8%, GenQ \u22123.6%, ANCE \u22127.4%, SPARTA \u221220.3%, DeepCT \u221227.9%, DPR \u221247.7% (worst). Term-reweighting fails to transfer; document expansion and cross-attention generalise.",
+   "locations": [
+    "\u00a75.1",
+    "Table 2"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q8": {
+   "answer": "There is a performance/cost trade-off: BM25+CE is best but >350ms latency (100-candidate cross-encoder); dense models are 20-30x faster (<20ms GPU) but weaker; ColBERT needs ~20GB per 1M docs (~900GB for BioASQ's 15M vs 18GB for BM25); DocT5query keeps BM25's 0.4GB index and speed while improving generalisation.",
+   "locations": [
+    "\u00a75.2",
+    "Table 3"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q9": {
+   "answer": "Annotation selection bias: pools built mostly from lexical systems mark unjudged non-lexical hits as non-relevant. Hole@10 (fraction of top-10 never shown to annotators) is low for lexical models (BM25 6.4%, DocT5query 2.8%) and high for dense (TAS-B 31.8%, DPR 30.6%). After manually annotating 980 missing TREC-COVID pairs, ANCE rises 0.654\u21920.735 (+8.1) and ColBERT 0.677\u21920.735 (+5.8), reversing BM25's apparent lead on that dataset.",
+   "locations": [
+    "\u00a76",
+    "Table 4"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q10": {
+   "answer": "Cross-attention models (BM25+CE, ColBERT) compute query-document relevance at inference over actual tokens rather than compressed embeddings, giving inference-time flexibility that aids generalization; dense bi-encoders compress documents into fixed vectors and are vulnerable to distribution shift because they may encode domain-specific features.",
+   "locations": [
+    "\u00a77 \u00b61-2"
+   ],
+   "confidence": 4,
+   "missing": "Explanations are hypothesized/qualitative, not ablated."
+  },
+  "Q11": {
+   "answer": "Limitations: English-only (no cross-lingual); annotation-bias correction covers only TREC-COVID and was done by the authors; 512 word-piece truncation may disadvantage neural models on long-document datasets; nearly all neural models trained on MS MARCO so conclusions measure MS MARCO transfer, not neural retrieval in principle; no statistical significance testing due to fixed checkpoints.",
+   "locations": [
+    "\u00a78",
+    "\u00a76 \u00b6last"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q12": {
+   "answer": "Zero-shot performance is a distinct, underexplored capability; practitioners should prefer cross-encoder re-ranking when latency allows, DocT5query for low-latency, and dense models (with domain adaptation like GenQ for specialist domains) when needed. Broadly, evaluating NLP models within a single distributional regime systematically overestimates deployment reliability.",
+   "locations": [
+    "\u00a77 \u00b63",
+    "\u00a79"
+   ],
+   "confidence": 5,
+   "missing": ""
+  }
+ }
+}

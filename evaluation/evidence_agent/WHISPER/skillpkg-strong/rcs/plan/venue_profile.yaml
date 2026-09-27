@@ -1,0 +1,23 @@
+venue: {name: "generic ML research article (no venue specified)", type: "standalone manuscript", guideline_urls: []}
+structure:
+  section_template: [Title, Abstract, Introduction, Related Work, Method, Experimental Setup, Results, Discussion, Limitations, Conclusion, References]
+  results_discussion: separate
+  related_work_position: after_intro
+  limitations_section_required: true
+  assumed: true
+limits: {pages_main: null, words_main: "3000-4500 (task requirement)", abstract_words: 200, supplement_allowed: false, assumed: true}
+style:
+  citation_style: "(FirstAuthor et al., Year), per task instruction"
+  voice_preference: "active voice; 'we' refers to the original authors of the work being presented"
+  spelling: US
+  abstract_format: unstructured
+  abstract_citations_allowed: false
+  assumed: true
+required_statements:
+  data_availability: false
+  code_availability: false
+  ai_use_disclosure: false
+  assumed: true
+  note: "No venue was specified; VENUE_UNKNOWN raised and this generic profile used per failure_states.md, recorded in state.json accepted_risks."
+checklists: []
+reporting_guideline: null

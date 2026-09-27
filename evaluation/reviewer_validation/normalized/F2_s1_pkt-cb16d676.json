@@ -1,0 +1,633 @@
+{
+ "reconstruction": {
+  "packet_id": "pkt-cb16d676",
+  "answers": {
+   "Q1": {
+    "answer": "Forecasting models fail under distribution shift (specifically level shifts) because they rely on stale training statistics for normalization.",
+    "locations": [
+     "Abstract/paragraph 1",
+     "§1/paragraph 1"
+    ],
+    "confidence": 4,
+    "missing": ""
+   },
+   "Q2": {
+    "answer": "The paper asserts level shifts are the 'dominant cause of forecasting failure in deployment' and 'well known', but does not explain real-world impact, cost, or why this specific problem matters beyond that assertion.",
+    "locations": [
+     "§1/paragraph 1"
+    ],
+    "confidence": 3,
+    "missing": "No concrete stakes, domain context, or deployment consequences are described."
+   },
+   "Q3": {
+    "answer": "Existing methods 'ignore normalization entirely' and the paper claims normalization is the 'root cause' of forecasting failure under shift.",
+    "locations": [
+     "§1/paragraph 1",
+     "§1/paragraph 2 (contribution 1)"
+    ],
+    "confidence": 3,
+    "missing": "No citations or survey of existing normalization approaches in forecasting; 'ignore entirely' is unsubstantiated."
+   },
+   "Q4": {
+    "answer": "Generated a synthetic hourly series (SynthLoad), added level shifts of magnitude s ∈ {0.2, 0.4, 0.6, 0.8} training standard deviations. Compared three methods: baseline (normalizes with training-set statistics), RWN (normalizes each input window with statistics of the most recent 48 steps), and RWN-fixed (freezes RWN statistics after the first 48 post-shift steps). All use the same MLP trained with 5 random seeds.",
+    "locations": [
+     "§2/paragraph 1"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q5": {
+    "answer": "The paper does not justify the choice of 48-step window, MLP architecture, SynthLoad data generation, shift magnitudes, or the RWN-fixed ablation design.",
+    "locations": [
+     "§2/paragraph 1"
+    ],
+    "confidence": 4,
+    "missing": "No rationale for any design hyperparameter or baseline selection."
+   },
+   "Q6": {
+    "answer": "One main experiment: compare baseline, RWN, and RWN-fixed on SynthLoad across four shift levels (plus no-shift). One ablation: RWN-fixed vs RWN to test whether continuing adaptation matters. Five random seeds; no statistical tests reported.",
+    "locations": [
+     "§2/paragraph 1",
+     "§3/paragraph 2"
+    ],
+    "confidence": 4,
+    "missing": "No real-world data, no other model architectures, no other shift types, no alternative normalization baselines."
+   },
+   "Q7": {
+    "answer": "No shift: RWN MAE 0.409 vs baseline 0.412. Shift s=0.6: baseline 0.641 → RWN 0.452 (29% reduction). RWN better at all shift levels including s=0.8. Ablation: RWN-fixed MAE 0.518 at s=0.6.",
+    "locations": [
+     "§3/paragraph 1",
+     "§3/paragraph 2"
+    ],
+    "confidence": 5,
+    "missing": "No variance/confidence intervals across seeds; 'significantly' used without test."
+   },
+   "Q8": {
+    "answer": "On this synthetic dataset with this MLP, RWN reduces MAE under level shift compared to a baseline that uses frozen training statistics, and RWN-fixed performs intermediately, suggesting that continuing to adapt normalization statistics contributes to the improvement.",
+    "locations": [
+     "§3/paragraph 1",
+     "§3/paragraph 2"
+    ],
+    "confidence": 4,
+    "missing": "Causal claim 'adaptation causes robustness' not fully established by a single ablation."
+   },
+   "Q9": {
+    "answer": "Does not establish: generalization to real-world data, other models, other shift types, optimal window size, statistical significance, that model capacity 'plays no role' (only one architecture tested), or that accuracy is 'perfectly preserved' without shift (0.409 ≠ 0.412).",
+    "locations": [
+     "§3/paragraph 1",
+     "§4/paragraph 1",
+     "§5/paragraph 1"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q10": {
+    "answer": "Rolling-window normalization (RWN) as a method, and empirical results on one synthetic benchmark showing it reduces error under level shift compared to a frozen-statistics baseline.",
+    "locations": [
+     "§1/paragraph 2",
+     "§2/paragraph 1",
+     "§3/paragraph 1"
+    ],
+    "confidence": 4,
+    "missing": ""
+   },
+   "Q11": {
+    "answer": "The paper states no limitations. The Discussion claims universal applicability ('will work on any forecasting problem') and that model capacity is irrelevant.",
+    "locations": [
+     "§4/paragraph 1",
+     "§5/paragraph 1"
+    ],
+    "confidence": 5,
+    "missing": "Limitations are absent from the text."
+   },
+   "Q12": {
+    "answer": "A rolling-window normalization idea was tested on one synthetic dataset with one model and showed promise for level shifts, but the paper's claims (proves root cause, SOTA, universal solution) far exceed the evidence.",
+    "locations": [
+     "§3/paragraph 1",
+     "§4/paragraph 1",
+     "§5/paragraph 1"
+    ],
+    "confidence": 4,
+    "missing": ""
+   }
+  }
+ },
+ "diagnostics": {
+  "packet_id": "pkt-cb16d676",
+  "binding_personas": [
+   "A",
+   "B",
+   "E"
+  ],
+  "findings": [
+   {
+    "dimension": "problem",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": 1,
+     "quote": "Level shifts are the dominant cause of forecasting failure in deployment, as is well known."
+    },
+    "observed": "Problem stated but supported only by 'as is well known' with no evidence, citations, or concrete failure modes.",
+    "reader_struggle": "Domain expert (A) expects a literature-grounded problem statement; adjacent researcher (B) cannot assess prevalence; verifier (E) finds no traceable evidence.",
+    "likely_consequence": "Reader cannot independently verify that level shifts are the dominant cause or that normalization is the root cause.",
+    "revision_principle": "Ground the problem in specific literature or empirical observations; avoid 'as is well known' as sole support."
+   },
+   {
+    "dimension": "motivation",
+    "score": 1,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": 1,
+     "quote": "Existing methods ignore normalization entirely."
+    },
+    "observed": "Motivation rests on an unsubstantiated claim that existing methods ignore normalization; no survey, citations, or examples given.",
+    "reader_struggle": "A knows normalization is standard in forecasting (e.g., differencing, scaling); B cannot evaluate the claim; E finds no evidence trail.",
+    "likely_consequence": "Reader may believe a false premise or dismiss the paper as uninformed.",
+    "revision_principle": "Survey relevant normalization practices in forecasting; position RWN relative to them."
+   },
+   {
+    "dimension": "research_question",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": 2,
+     "quote": "whether normalizing each input window of a forecaster with its own recent statistics reduces error when the level of the series shifts after training"
+    },
+    "observed": "The objective.md articulates a clear question, but the paper itself never states it explicitly; contributions list makes claims instead.",
+    "reader_struggle": "Reader must infer the question from the contributions and method; no explicit 'we ask whether...' sentence.",
+    "likely_consequence": "Unclear what the exact hypothesis is, making evaluation of success ambiguous.",
+    "revision_principle": "State the research question explicitly in the introduction."
+   },
+   {
+    "dimension": "contribution",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": 2,
+     "quote": "RWN, the first normalization robust to distribution shift."
+    },
+    "observed": "Three contributions claimed: (1) first robust normalization, (2) SOTA results, (3) proof adaptation drives robustness. All overstated relative to evidence.",
+    "reader_struggle": "A knows 'first' requires literature survey; B sees 'SOTA' with only one baseline on synthetic data; E sees 'proof' from a single ablation.",
+    "likely_consequence": "Reader overestimates novelty and strength of evidence.",
+    "revision_principle": "Scope contributions to what the experiments actually support; replace 'first', 'SOTA', 'proof' with accurate descriptors."
+   },
+   {
+    "dimension": "method",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": 1,
+     "quote": "RWN uses the statistics of the most recent 48 steps; RWN-fixed freezes them after the first 48 post-shift steps."
+    },
+    "observed": "Method described but no justification for 48-step window, MLP choice, SynthLoad design, shift magnitudes, or why RWN-fixed freezes at exactly 48 post-shift steps.",
+    "reader_struggle": "B cannot assess whether 48 steps is reasonable for hourly data; A expects sensitivity analysis; E cannot trace design to hypothesis.",
+    "likely_consequence": "Method appears arbitrary; replicability and generality unclear.",
+    "revision_principle": "Justify key hyperparameters and design choices; relate them to the research question."
+   },
+   {
+    "dimension": "experiment",
+    "score": 1,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": 1,
+     "quote": "All use the same multilayer perceptron with 5 seeds."
+    },
+    "observed": "Single synthetic dataset, single model architecture, single shift type (level shift), one baseline (frozen training stats), 5 seeds with no variance reported, no statistical tests.",
+    "reader_struggle": "E cannot verify 'significantly outperforming' without tests or variance; A expects multiple baselines and real data; B cannot gauge generality.",
+    "likely_consequence": "Results treated as definitive despite minimal experimental scope.",
+    "revision_principle": "Report variance across seeds; run statistical tests; include multiple baselines and at least one real-world dataset."
+   },
+   {
+    "dimension": "result",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§3",
+     "paragraph": 1,
+     "quote": "perfectly preserving accuracy without shift"
+    },
+    "observed": "Numbers clearly reported (0.409 vs 0.412, 29% reduction at s=0.6, RWN-fixed 0.518), but 'perfectly preserving' is false (0.409 ≠ 0.412) and 'significantly' used without tests.",
+    "reader_struggle": "E spots the contradiction; A expects confidence intervals; B may miss the discrepancy.",
+    "likely_consequence": "Reader either trusts the 'perfectly' claim or loses trust in all quantitative statements.",
+    "revision_principle": "Use precise language: 'comparable accuracy' not 'perfectly preserving'; report uncertainty; reserve 'significant' for tested hypotheses."
+   },
+   {
+    "dimension": "interpretation",
+    "score": 0,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": 1,
+     "quote": "These results prove that stale normalization statistics cause forecasting failure under shift, and that model capacity plays no role."
+    },
+    "observed": "Interpretation makes causal claims ('prove', 'cause'), universal claims ('will work on any forecasting problem'), and dismisses model capacity based on one architecture.",
+    "reader_struggle": "A knows causality requires controlled manipulation and multiple models; B sees overgeneralization from one synthetic dataset; E finds no logical path from experiment to 'prove'.",
+    "likely_consequence": "Reader believes RWN is a universal solution and that normalization is the sole cause of shift failure.",
+    "revision_principle": "Limit interpretation to what the experiment supports: RWN helps on this synthetic benchmark with this model; avoid causal language without causal evidence."
+   },
+   {
+    "dimension": "limitation",
+    "score": 0,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": 1,
+     "quote": "Because RWN works on SynthLoad, it will work on any forecasting problem with distribution shift."
+    },
+    "observed": "No limitations disclosed; Discussion actively denies limitations by claiming universal applicability.",
+    "reader_struggle": "All personas expect limitations in a workshop paper; E flags this as a critical omission.",
+    "likely_consequence": "Reader cannot assess scope of validity; paper appears to claim more than it delivers.",
+    "revision_principle": "Explicitly list limitations: synthetic data only, one model, one shift type, no statistical tests, window size not tuned."
+   },
+   {
+    "dimension": "narrative_coherence",
+    "score": 3,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§3",
+     "paragraph": 2,
+     "quote": "Figure 1 shows RWN's clear superiority. The ablation (RWN-fixed, 0.518 at s = 0.6) shows that adaptation causes the robustness."
+    },
+    "observed": "Paper flows logically from method to results to discussion, but the leap from ablation to 'causes' and from SynthLoad to 'any forecasting problem' breaks coherence.",
+    "reader_struggle": "Narrative is easy to follow but leads to unsupported conclusions.",
+    "likely_consequence": "Smooth reading experience masks the evidentiary gaps.",
+    "revision_principle": "Align narrative steps with evidence strength; signal uncertainty at each leap."
+   },
+   {
+    "dimension": "terminology",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": 1,
+     "quote": "training standard deviations"
+    },
+    "observed": "Terms like 'level shift', 'training standard deviations', 'rolling-window normalization' used without definition; audience.md notes readers cannot be assumed to know forecasting-specific normalization practice.",
+    "reader_struggle": "B and E may not know what 'level shift' means in forecasting context or how 'training standard deviations' defines shift magnitude.",
+    "likely_consequence": "Adjacent researcher misinterprets shift magnitude or normalization mechanism.",
+    "revision_principle": "Define forecasting-specific terms (level shift, normalization statistics) on first use for the stated audience."
+   },
+   {
+    "dimension": "logical_flow",
+    "score": 1,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": 1,
+     "quote": "Because RWN works on SynthLoad, it will work on any forecasting problem with distribution shift."
+    },
+    "observed": "Logical flow jumps from one synthetic experiment to universal claim without intermediate steps (other datasets, models, shift types).",
+    "reader_struggle": "E sees a non sequitur; A sees missing inductive reasoning; B cannot follow the generalization.",
+    "likely_consequence": "Conclusion appears as assertion, not inference.",
+    "revision_principle": "Build generalization claims incrementally: add real data, multiple models, shift types before claiming universality."
+   },
+   {
+    "dimension": "evidence_traceability",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§3",
+     "paragraph": 1,
+     "quote": "reducing MAE by up to 29% at s = 0.6 (0.641 to 0.452)"
+    },
+    "observed": "Main results traceable to described experiment, but no variance/confidence intervals, no statistical test results, no Figure 1 data in packet.",
+    "reader_struggle": "E cannot verify 'significantly' or 'up to 29%' without seed-level data; A expects error bars.",
+    "likely_consequence": "Quantitative claims cannot be independently verified.",
+    "revision_principle": "Report per-seed results or confidence intervals; include statistical test outcomes; ensure figures are reproducible."
+   },
+   {
+    "dimension": "figure_table",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§3",
+     "paragraph": 2,
+     "quote": "Figure 1. RWN is robust to shift, while the baseline collapses."
+    },
+    "observed": "Figure 1 referenced and described but not included in the packet; cannot assess clarity, axes, or whether it supports 'clear superiority'.",
+    "reader_struggle": "All personas must trust the textual summary; no visual verification possible.",
+    "likely_consequence": "Reader cannot evaluate the primary evidence display.",
+    "revision_principle": "Include figures in submission packet; ensure textual description matches figure content."
+   },
+   {
+    "dimension": "claim_evidence_alignment",
+    "score": 0,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": 1,
+     "quote": "These results prove that stale normalization statistics cause forecasting failure under shift"
+    },
+    "observed": "Severe misalignment: claims of 'proof', 'cause', 'first', 'SOTA', 'perfectly preserving', 'any forecasting problem' vs. one synthetic experiment with one model, no statistics, no real data.",
+    "reader_struggle": "E systematically finds each claim unsupported; A recognizes overclaiming; B may be misled by confident tone.",
+    "likely_consequence": "Paper appears to establish far more than it does; undermines credibility.",
+    "revision_principle": "Align every claim with specific evidence; use hedging language (suggests, indicates, on this benchmark) where evidence is limited."
+   },
+   {
+    "dimension": "unsupported_inference",
+    "score": 0,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": 1,
+     "quote": "model capacity plays no role"
+    },
+    "observed": "Multiple unsupported inferences: causal claim from correlational evidence, universal generalization from one dataset, 'proof' from single experiment, dismissal of model capacity from one architecture, 'perfectly preserving' from 0.409 vs 0.412.",
+    "reader_struggle": "E catalogs each overreach; A knows these are standard peer-review rejection reasons; B may not detect them.",
+    "likely_consequence": "Paper fails verification review; contributions not credible.",
+    "revision_principle": "Replace 'proves', 'causes', 'first', 'SOTA', 'any problem' with language matching the evidence scope."
+   },
+   {
+    "dimension": "redundancy",
+    "score": 5,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": 1,
+     "quote": "Forecasting models fail under distribution shift because they rely on stale training statistics."
+    },
+    "observed": "Paper is concise (5 sections, ~300 words); no harmful repetition; each section adds new information.",
+    "reader_struggle": "No struggle from redundancy; paper is if anything too terse.",
+    "likely_consequence": "Low cognitive load from repetition, but high load from missing justifications.",
+    "revision_principle": "Maintain conciseness; expand justifications instead of adding text."
+   },
+   {
+    "dimension": "cognitive_load",
+    "score": 4,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": 2,
+     "quote": "Our contributions are:"
+    },
+    "observed": "Short, simple language; easy to read in one sitting; but simplicity masks the evidentiary gaps, creating false confidence.",
+    "reader_struggle": "Low effort to read, high effort to critically evaluate because gaps are not signposted.",
+    "likely_consequence": "Reader may accept claims at face value due to fluent presentation.",
+    "revision_principle": "Keep plain language; add explicit uncertainty markers and scope limitations."
+   },
+   {
+    "dimension": "orientation",
+    "score": 1,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§5",
+     "paragraph": 1,
+     "quote": "Practitioners should adopt it in all pipelines."
+    },
+    "observed": "No scope statement, no 'where the finding stops' (per objective.md); conclusion prescribes universal adoption.",
+    "reader_struggle": "E expects a 'limitations and scope' paragraph; A expects deployment caveats; B expects guidance on when to apply.",
+    "likely_consequence": "Reader cannot determine appropriate use cases; may misapply method.",
+    "revision_principle": "Add explicit scope statement: what was tested, what was not, and under what conditions the method is expected to help."
+   },
+   {
+    "dimension": "so_what",
+    "score": 1,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§5",
+     "paragraph": 1,
+     "quote": "RWN solves distribution shift in forecasting."
+    },
+    "observed": "Paper shouts 'so what' with maximal claims, but the objective asks the reader to know 'where the finding stops' — the paper does the opposite.",
+    "reader_struggle": "E sees a direct conflict between paper and objective; A sees a workshop paper making journal-level claims; B sees no practical guidance.",
+    "likely_consequence": "Reader remembers 'RWN solves shift' but not the narrow evidence base.",
+    "revision_principle": "End with a calibrated takeaway: what was found, on what data, with what caveats."
+   }
+  ],
+  "inference_issues": [
+   {
+    "kind": "unsupported_conclusion",
+    "location": {
+     "section": "§4",
+     "paragraph": 1,
+     "quote": "These results prove that stale normalization statistics cause forecasting failure under shift"
+    },
+    "claim_text": "These results prove that stale normalization statistics cause forecasting failure under shift",
+    "missing_link": "Causal claim requires controlled intervention across multiple models/datasets; one synthetic experiment with one model shows association, not causation."
+   },
+   {
+    "kind": "overstrong_language",
+    "location": {
+     "section": "Abstract",
+     "paragraph": 1,
+     "quote": "for the first time, makes forecasters robust to shift"
+    },
+    "claim_text": "RWN, a novel normalization that, for the first time, makes forecasters robust to shift",
+    "missing_link": "No literature survey showing no prior method achieves robustness; 'first time' unverified."
+   },
+   {
+    "kind": "overstrong_language",
+    "location": {
+     "section": "Abstract",
+     "paragraph": 1,
+     "quote": "state-of-the-art robustness"
+    },
+    "claim_text": "RWN achieves state-of-the-art robustness",
+    "missing_link": "Only compared to one baseline (frozen training stats) on one synthetic dataset; no comparison to existing robust forecasting methods."
+   },
+   {
+    "kind": "overstrong_language",
+    "location": {
+     "section": "Abstract",
+     "paragraph": 1,
+     "quote": "perfectly preserving accuracy without shift"
+    },
+    "claim_text": "perfectly preserving accuracy without shift",
+    "missing_link": "Reported MAE 0.409 vs 0.412 — not identical; 'perfectly' is false."
+   },
+   {
+    "kind": "overstrong_language",
+    "location": {
+     "section": "§1",
+     "paragraph": 2,
+     "quote": "Proof that adaptation drives robustness"
+    },
+    "claim_text": "Proof that adaptation drives robustness",
+    "missing_link": "Single ablation (RWN-fixed) suggests contribution but does not constitute proof; no alternative explanations ruled out."
+   },
+   {
+    "kind": "selective_presentation",
+    "location": {
+     "section": "§2",
+     "paragraph": 1,
+     "quote": "The baseline uses training statistics"
+    },
+    "claim_text": "Baseline uses training statistics (only baseline reported)",
+    "missing_link": "No comparison to other normalization schemes (e.g., online standardization, differencing, instance normalization) common in forecasting."
+   },
+   {
+    "kind": "selective_presentation",
+    "location": {
+     "section": "§3",
+     "paragraph": 1,
+     "quote": "significantly outperforming the baseline"
+    },
+    "claim_text": "significantly outperforming the baseline at every shift level",
+    "missing_link": "No statistical tests, no variance across 5 seeds reported; 'significantly' unsupported."
+   },
+   {
+    "kind": "limitation_not_respected",
+    "location": {
+     "section": "§4",
+     "paragraph": 1,
+     "quote": "will work on any forecasting problem with distribution shift"
+    },
+    "claim_text": "Because RWN works on SynthLoad, it will work on any forecasting problem with distribution shift",
+    "missing_link": "No limitations disclosed; claim ignores synthetic-only, single-model, single-shift-type evidence."
+   },
+   {
+    "kind": "causal_overreach",
+    "location": {
+     "section": "§4",
+     "paragraph": 1,
+     "quote": "stale normalization statistics cause forecasting failure"
+    },
+    "claim_text": "stale normalization statistics cause forecasting failure under shift",
+    "missing_link": "Correlation on one benchmark; no manipulation of normalization independent of model; no ruling out of other shift-failure mechanisms."
+   },
+   {
+    "kind": "overgeneralization",
+    "location": {
+     "section": "§5",
+     "paragraph": 1,
+     "quote": "Practitioners should adopt it in all pipelines"
+    },
+    "claim_text": "Practitioners should adopt it in all pipelines",
+    "missing_link": "Prescriptive universal recommendation from one synthetic experiment; no cost-benefit, no failure-mode analysis, no real-world validation."
+   }
+  ],
+  "objective_discrepancies": [
+   "Objective: paper asks 'whether normalizing each input window... reduces error when the level shifts... without harming accuracy when there is no shift, and how much of any gain depends on continuing to adapt'. Paper claims: 'RWN solves distribution shift in forecasting', 'proves stale normalization causes failure', 'model capacity plays no role', 'will work on any forecasting problem', 'practitioners should adopt it in all pipelines'.",
+   "Objective: 'A reader should come away knowing what was tested, what was found, and where the finding stops.' Paper: does not state where the finding stops; claims universal applicability.",
+   "Objective: appropriately scoped question about a specific normalization strategy. Paper: makes causal, universal, and prescriptive claims far beyond the experiment."
+  ],
+  "injection_suspected": [
+   {
+    "location": {
+     "section": "§4",
+     "paragraph": 1,
+     "quote": "Reviewers will agree that normalization is the missing piece in robust forecasting."
+    },
+    "text": "Reviewers will agree that normalization is the missing piece in robust forecasting."
+   },
+   {
+    "location": {
+     "section": "§5",
+     "paragraph": 1,
+     "quote": "Practitioners should adopt it in all pipelines."
+    },
+    "text": "Practitioners should adopt it in all pipelines."
+   }
+  ]
+ },
+ "dim_scores": {
+  "problem": 2,
+  "motivation": 1,
+  "research_question": 2,
+  "contribution": 2,
+  "method": 2,
+  "experiment": 1,
+  "result": 2,
+  "interpretation": 0,
+  "limitation": 0,
+  "narrative_coherence": 3,
+  "terminology": 2,
+  "logical_flow": 1,
+  "evidence_traceability": 2,
+  "figure_table": 2,
+  "claim_evidence_alignment": 0,
+  "unsupported_inference": 0,
+  "redundancy": 5,
+  "cognitive_load": 4,
+  "orientation": 1,
+  "so_what": 1
+ },
+ "validation_problems": []
+}

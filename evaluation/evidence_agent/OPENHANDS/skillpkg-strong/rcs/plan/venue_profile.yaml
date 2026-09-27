@@ -1,0 +1,25 @@
+# VENUE_UNKNOWN: no venue was specified for this run and no official guideline is reachable
+# (no web access permitted). Using the generic fallback profile with all rules marked assumed.
+# This is logged as an open failure state (see state.json) and in open_issues.md.
+venue: {name: "generic ML research article (assumed; no venue specified)", type: journal, guideline_urls: []}
+structure:
+  section_template: [Title, Abstract, Introduction, Background and Related Evaluation Methods, The OpenHands Platform, Evaluation Setup, Results, Discussion, Limitations, Conclusion, References]
+  results_discussion: separate
+  related_work_position: after_intro
+  limitations_section_required: true
+  assumed: true
+limits: {pages_main: null, words_main: "3000-4500 (run-specific requirement, not venue-derived)", abstract_words: 250, supplement_allowed: false, assumed: true}
+style:
+  citation_style: "author-year, (FirstAuthor et al., Year), as required by the run's task instructions"
+  voice_preference: "active voice; 'we' for author actions, matching the project's own voice"
+  spelling: US
+  abstract_format: unstructured
+  abstract_citations_allowed: false
+  assumed: true
+required_statements:
+  data_availability: false
+  code_availability: false
+  ai_use_disclosure: "see ./disclosure.md (not requested as a paper section by TASK.md; kept as a separate artifact)"
+  assumed: true
+checklists: []
+reporting_guideline: null

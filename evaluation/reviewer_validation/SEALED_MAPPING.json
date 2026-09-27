@@ -1,0 +1,105 @@
+{
+  "pkt-70599dc0": {
+    "variant": "A_clean.md",
+    "sanitization": [
+      {
+        "removed": "html_comments",
+        "count": 1
+      },
+      {
+        "removed": "claim_tags",
+        "count": 27
+      }
+    ],
+    "replacements": []
+  },
+  "pkt-766e9734": {
+    "variant": "B_poor_ordering.md",
+    "sanitization": [
+      {
+        "removed": "html_comments",
+        "count": 1
+      },
+      {
+        "removed": "claim_tags",
+        "count": 18
+      }
+    ],
+    "replacements": []
+  },
+  "pkt-e2bf3043": {
+    "variant": "C_jargon.md",
+    "sanitization": [
+      {
+        "removed": "html_comments",
+        "count": 1
+      },
+      {
+        "removed": "claim_tags",
+        "count": 27
+      }
+    ],
+    "replacements": []
+  },
+  "pkt-84ad5868": {
+    "variant": "D_result_dumping.md",
+    "sanitization": [
+      {
+        "removed": "html_comments",
+        "count": 1
+      },
+      {
+        "removed": "claim_tags",
+        "count": 13
+      }
+    ],
+    "replacements": []
+  },
+  "pkt-cb16d676": {
+    "variant": "E_unsupported_interpretation.md",
+    "sanitization": [
+      {
+        "removed": "html_comments",
+        "count": 1
+      },
+      {
+        "removed": "claim_tags",
+        "count": 14
+      }
+    ],
+    "replacements": []
+  },
+  "pkt-c0b734ff": {
+    "variant": "F_buried_contribution.md",
+    "sanitization": [
+      {
+        "removed": "html_comments",
+        "count": 1
+      },
+      {
+        "removed": "claim_tags",
+        "count": 16
+      }
+    ],
+    "replacements": []
+  },
+  "pkt-5ff4438a": {
+    "variant": "G_citation_misuse.md",
+    "sanitization": [
+      {
+        "removed": "html_comments",
+        "count": 1
+      },
+      {
+        "removed": "claim_tags",
+        "count": 16
+      }
+    ],
+    "replacements": [
+      [
+        "[R1]\u2013[R6] Synthetic placeholders. The benchmark's expected-answers file defines what each placeholder actually \"contains\".",
+        "[R1]\u2013[R6] Reference list omitted in this manuscript version."
+      ]
+    ]
+  }
+}

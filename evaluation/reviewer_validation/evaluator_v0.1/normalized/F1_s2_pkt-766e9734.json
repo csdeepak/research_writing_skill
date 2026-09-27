@@ -1,0 +1,577 @@
+{
+ "reconstruction": {
+  "packet_id": "pkt-766e9734",
+  "answers": {
+   "Q1": {
+    "answer": "The paper addresses whether normalizing each input forecasting window with its own recent statistics (rolling-window normalization) reduces forecast error when the level of a series shifts after training, without harming accuracy when no shift occurs, and how much of any gain depends on continuing to adapt those statistics.",
+    "locations": [
+     "objective.md",
+     "§Abstract",
+     "§4 (RQ1, RQ2)"
+    ],
+    "confidence": 5,
+    "missing": "none material"
+   },
+   "Q2": {
+    "answer": "Motivation: forecasters deployed on streams like electricity demand encounter level shifts, yet most pipelines normalize with fixed training statistics; and prior work confounds two explanations of shift error (stale normalization vs. insufficient model capacity) by changing them together.",
+    "locations": [
+     "§1 ¶2",
+     "§4 ¶2"
+    ],
+    "confidence": 3,
+    "missing": "Both motivating claims carry [CITATION NEEDED]; the claim that prior evaluations confound the two factors is asserted without a completed literature search."
+   },
+   "Q3": {
+    "answer": "RQ1: Does normalizing each window with its own recent statistics reduce error under level shift without harming unshifted accuracy? RQ2: How much of the gain depends on continued adaptation of those statistics?",
+    "locations": [
+     "§4 ¶2"
+    ],
+    "confidence": 5,
+    "missing": "RQs stated only in Discussion, not Introduction."
+   },
+   "Q4": {
+    "answer": "A single MLP (64 hidden units, 168-hour input, 24-hour horizon) trained on the synthetic SynthLoad hourly series (daily+weekly cycles + Gaussian noise). Three normalizations compared under identical model and training budget: baseline (train mean/std), RWN (mean/std of most recent 48 steps per window), RWN-fixed (estimated once from first 48 post-shift steps then frozen). A level shift of magnitude s (in training std) is applied after a training year, s in {0.2,0.4,0.6,0.8}. 5 seeds per configuration; report mean and std of MAE.",
+    "locations": [
+     "§Abstract",
+     "§1",
+     "§3"
+    ],
+    "confidence": 5,
+    "missing": "Window length 48 not tuned (quick trial only); MAE scale/units not defined; training budget unspecified."
+   },
+   "Q5": {
+    "answer": "Contributions: (1) a capacity-controlled comparison showing 11–29% MAE reduction under moderate level shifts at no unshifted-accuracy cost; (2) identification of a boundary where the benefit disappears at the largest shift (s=0.8); (3) an ablation (RWN-fixed) attributing about a third of the gain to continued adaptation.",
+    "locations": [
+     "§5"
+    ],
+    "confidence": 5,
+    "missing": "none material"
+   },
+   "Q6": {
+    "answer": "Experiments compared the three normalizations across shift magnitudes s in {0.2,0.4,0.6,0.8} and a no-shift condition, with 5 seeds each, measuring MAE mean and std on the test period.",
+    "locations": [
+     "§1",
+     "§2",
+     "§3"
+    ],
+    "confidence": 5,
+    "missing": "Only s=0.6 and s=0.8 (and no-shift) reported numerically; s=0.2 and s=0.4 given only inside the 11–29% range."
+   },
+   "Q7": {
+    "answer": "Without shift, RWN and baseline were statistically indistinguishable: MAE 0.409 ± 0.007 (RWN) vs 0.412 ± 0.006 (baseline).",
+    "locations": [
+     "§Abstract",
+     "§2 ¶3"
+    ],
+    "confidence": 5,
+    "missing": "MAE units/normalization scale not stated."
+   },
+   "Q8": {
+    "answer": "Under shift, RWN reduced MAE relative to baseline; at s=0.6 from 0.641 to 0.452 (~29%), and across s=0.2–0.6 the reduction was 11–29%. At s=0.8 there was no clear benefit: RWN 0.712 ± 0.021 vs baseline 0.731 ± 0.015, a gap of about one std.",
+    "locations": [
+     "§Abstract",
+     "§2 ¶2",
+     "§2 ¶3"
+    ],
+    "confidence": 5,
+    "missing": "Per-seed spread of the s=0.6 baseline (0.641) not given; only RWN/RWN-fixed have stds at some points."
+   },
+   "Q9": {
+    "answer": "RWN-fixed (re-estimate once, then freeze) gave MAE 0.518 at s=0.6, between baseline (0.641) and RWN (0.452), recovering about two thirds of RWN's gain; thus about one third of the gain is attributed to continued adaptation.",
+    "locations": [
+     "§2 ¶1",
+     "§5"
+    ],
+    "confidence": 4,
+    "missing": "Only reported at s=0.6; std for RWN-fixed not given."
+   },
+   "Q10": {
+    "answer": "Limitations: capacity was held constant not varied, so the capacity explanation is controlled-out rather than tested; all data came from one synthetic generator; the 48-step window was not tuned; only level shifts (not other distribution shifts) were studied.",
+    "locations": [
+     "§4 ¶1",
+     "§4 ¶3"
+    ],
+    "confidence": 5,
+    "missing": "No discussion of external validity to real data or other architectures."
+   },
+   "Q11": {
+    "answer": "Interpretation: because the model was identical across conditions, the results suggest stale normalization statistics rather than model capacity account for much of the baseline's shift-induced error in this setting.",
+    "locations": [
+     "§4 ¶1"
+    ],
+    "confidence": 4,
+    "missing": "Causal attribution is inferential since capacity was never varied; supported only by controlling it constant."
+   },
+   "Q12": {
+    "answer": "The finding stops at: moderate shifts (benefit vanishes at s=0.8); a single synthetic generator; one fixed MLP capacity; an untuned window length; and only level shifts among possible distribution shifts. It does not establish generalization to real data or other architectures.",
+    "locations": [
+     "§Abstract",
+     "§4 ¶1",
+     "§4 ¶3",
+     "§5"
+    ],
+    "confidence": 5,
+    "missing": "none material"
+   }
+  }
+ },
+ "diagnostics": {
+  "packet_id": "pkt-766e9734",
+  "binding_personas": [
+   "A",
+   "B",
+   "E"
+  ],
+  "findings": [
+   {
+    "dimension": "problem",
+    "score": 4,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "2",
+     "quote": "Forecasters deployed on streams such as electricity demand meet level shifts"
+    },
+    "observed": "The problem (forecast degradation under post-training level shift) is stated clearly and early.",
+    "reader_struggle": "Adjacent-domain reader still lacks a one-line definition of 'level shift' before it is used.",
+    "likely_consequence": "Reader B may conflate level shift with generic concept drift.",
+    "revision_principle": "Define the shift construct in one sentence at first use before invoking real-world examples."
+   },
+   {
+    "dimension": "motivation",
+    "score": 2,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "2",
+     "quote": "[CITATION NEEDED: prevalence of level shifts in deployed load forecasting]"
+    },
+    "observed": "Both motivating premises (prevalence of shifts; standard fixed-stat normalization) are placeholders awaiting citation.",
+    "reader_struggle": "Reader cannot judge whether the studied problem actually matters in practice.",
+    "likely_consequence": "Motivation reads as assumed rather than established; reviewers discount importance.",
+    "revision_principle": "Supply evidence for each empirical premise or downgrade it to an explicit assumption."
+   },
+   {
+    "dimension": "research_question",
+    "score": 3,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": "2",
+     "quote": "We therefore asked, RQ1: does normalizing each window with its own recent statistics reduce error under level shift without harming unshifted accuracy?"
+    },
+    "observed": "RQ1/RQ2 are precise and match the stated objective, but appear only in the Discussion.",
+    "reader_struggle": "Reader reaches Results without an explicit question framing and must reverse-engineer intent.",
+    "likely_consequence": "Weakened orientation; the paper feels like results-first with questions retrofitted.",
+    "revision_principle": "Move RQ statements to the Introduction so evidence is read against declared questions."
+   },
+   {
+    "dimension": "contribution",
+    "score": 4,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§5",
+     "paragraph": "1",
+     "quote": "a capacity-controlled comparison showing an 11–29% MAE reduction under moderate level shifts at no unshifted cost"
+    },
+    "observed": "Three contributions are enumerated and each maps to a reported result.",
+    "reader_struggle": "'Capacity-controlled' is a strong framing; reader must verify capacity was truly the only controlled factor.",
+    "likely_consequence": "Overclaim risk if training budget/data also varied implicitly.",
+    "revision_principle": "Tie each contribution claim to the specific controlled variable and note what was not controlled."
+   },
+   {
+    "dimension": "method",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§3",
+     "paragraph": "1",
+     "quote": "We chose the window of 48 in a quick trial and did not tune it"
+    },
+    "observed": "Method is reproducible in outline, but a key hyperparameter (window=48) is unjustified and there is an unresolved ASK AUTHOR note.",
+    "reader_struggle": "Reader cannot tell whether results are sensitive to window length.",
+    "likely_consequence": "Concern that reported gains are window-specific and fragile.",
+    "revision_principle": "Report a small sensitivity sweep over window length or explicitly bound the claim to window=48."
+   },
+   {
+    "dimension": "experiment",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§3",
+     "paragraph": "1",
+     "quote": "Each configuration ran with 5 seeds, and we report the mean and standard deviation of MAE on the test period."
+    },
+    "observed": "Seed count and reporting statistic are specified, but training budget and test-period length are not.",
+    "reader_struggle": "Verifying reviewer cannot assess whether comparisons had equal compute or adequate test size.",
+    "likely_consequence": "Reproducibility and fairness of comparison remain unverifiable.",
+    "revision_principle": "State epochs/steps, learning setup, and test-window length for each configuration."
+   },
+   {
+    "dimension": "result",
+    "score": 4,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": "3",
+     "quote": "at s = 0.6, RWN reduced MAE from 0.641 to 0.452, and across s = 0.2–0.6 the reduction was 11–29%"
+    },
+    "observed": "Headline results are concrete with numbers and honest about the s=0.8 boundary.",
+    "reader_struggle": "s=0.2 and s=0.4 values are hidden inside a range, so the reader cannot see the trend point-by-point.",
+    "likely_consequence": "Reader cannot check monotonicity or reproduce the 11% and 29% endpoints.",
+    "revision_principle": "Provide a table of MAE (mean±std) for every s and every method."
+   },
+   {
+    "dimension": "interpretation",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": "1",
+     "quote": "these results suggest that stale normalization statistics, rather than model capacity, account for much of the baseline's shift-induced error"
+    },
+    "observed": "Interpretation is appropriately hedged ('suggest') and acknowledges capacity was held constant.",
+    "reader_struggle": "Reader must notice that ruling out capacity by holding it fixed is not the same as testing capacity.",
+    "likely_consequence": "Some readers may read a stronger causal claim than the design supports.",
+    "revision_principle": "State explicitly that capacity was controlled-out, not varied, so the capacity hypothesis is untested rather than refuted."
+   },
+   {
+    "dimension": "limitation",
+    "score": 4,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": "3",
+     "quote": "All data came from one synthetic generator. The window length was not tuned. Only level shifts were studied."
+    },
+    "observed": "Limitations are listed candidly and cover data, tuning, and scope.",
+    "reader_struggle": "No limitation addresses single-architecture / single-capacity, which is central to the causal claim.",
+    "likely_consequence": "The most load-bearing limitation for the interpretation is understated.",
+    "revision_principle": "Add the fixed-capacity limitation explicitly alongside the causal interpretation."
+   },
+   {
+    "dimension": "narrative_coherence",
+    "score": 3,
+    "persona": [
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": "1",
+     "quote": "RWN-fixed gave MAE 0.518 at s = 0.6, between the baseline and RWN."
+    },
+    "observed": "Results section opens with the ablation before the primary RWN-vs-baseline comparison is presented.",
+    "reader_struggle": "Reader encounters RWN-fixed's meaning before seeing RWN's main effect, disrupting the argument order.",
+    "likely_consequence": "Increased effort to follow the story; the ablation lands before its premise.",
+    "revision_principle": "Order Results as main effect (no-shift, then shift) followed by the ablation."
+   },
+   {
+    "dimension": "terminology",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "1",
+     "quote": "RWN normalizes each input window with the mean and standard deviation of its most recent 48 steps."
+    },
+    "observed": "RWN and RWN-fixed are defined at first use; abbreviations are consistent.",
+    "reader_struggle": "'SynthLoad' and 'level shift measured in training standard deviations' are used without a one-line gloss for non-forecasting readers.",
+    "likely_consequence": "Adjacent-domain reader briefly stalls on domain shorthand.",
+    "revision_principle": "Add a short gloss for benchmark name and the unit of shift magnitude."
+   },
+   {
+    "dimension": "logical_flow",
+    "score": 3,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": "2",
+     "quote": "Two explanations for shift error compete: fixed normalization statistics, or a model too small for the new regime."
+    },
+    "observed": "The core framing that sets up the study appears in Discussion, after results are already reported.",
+    "reader_struggle": "The logical premise motivating the design is presented after its payoff.",
+    "likely_consequence": "Reader must retro-fit motivation onto already-seen numbers.",
+    "revision_principle": "Relocate the competing-explanations framing to the Introduction."
+   },
+   {
+    "dimension": "evidence_traceability",
+    "score": 2,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": "3",
+     "quote": "as Figure 1 shows"
+    },
+    "observed": "Several claims cite Figure 1, but the packet contains only the caption, no figure data or table; s=0.2/0.4 values are not tabulated.",
+    "reader_struggle": "Verifying reviewer cannot trace the 11% endpoint or the 'stays near unshifted level' claim to concrete values.",
+    "likely_consequence": "Key claims are unverifiable from the text alone.",
+    "revision_principle": "Include a numeric table so every stated figure/claim is checkable without the plot."
+   },
+   {
+    "dimension": "figure_table",
+    "score": 2,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": "figure",
+     "quote": "Figure 1. RWN's error stays near its unshifted level for shifts up to 0.6, while the baseline's error rises steadily."
+    },
+    "observed": "Only one figure and no tables; the figure caption asserts a qualitative trend the reader cannot inspect.",
+    "reader_struggle": "Reader cannot see axes, per-method curves, or the s=0.8 crossover.",
+    "likely_consequence": "Central visual evidence cannot be assessed; caption doubles as unverified claim.",
+    "revision_principle": "Provide the figure with labeled axes plus a companion table of all values."
+   },
+   {
+    "dimension": "claim_evidence_alignment",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§Abstract",
+     "paragraph": "1",
+     "quote": "It gave no clear benefit at 0.8."
+    },
+    "observed": "The s=0.8 claim aligns well with the reported 0.712 vs 0.731 (~1 std) gap; honest non-result.",
+    "reader_struggle": "Abstract also states 'RWN-fixed reached 0.518' without context, orphaned from its comparison.",
+    "likely_consequence": "A number in the abstract lacks the baseline/RWN anchors needed to interpret it.",
+    "revision_principle": "Every abstract number should carry its comparison anchor and the s value."
+   },
+   {
+    "dimension": "unsupported_inference",
+    "score": 2,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": "1",
+     "quote": "Re-estimating once thus recovers about two thirds of RWN's gain."
+    },
+    "observed": "The 'two thirds' inference rests on a single s=0.6 point with no reported variance for RWN-fixed.",
+    "reader_struggle": "Reader cannot tell whether the two-thirds/one-third split is stable across shifts or seeds.",
+    "likely_consequence": "A quantitative attribution is generalized from one point estimate.",
+    "revision_principle": "Report the fixed/adaptive decomposition across all s with variance before stating a fraction."
+   },
+   {
+    "dimension": "redundancy",
+    "score": 3,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§5",
+     "paragraph": "1",
+     "quote": "an 11–29% MAE reduction under moderate level shifts at no unshifted cost"
+    },
+    "observed": "The 11–29% figure and no-cost claim are repeated near-verbatim in Abstract, Results, and Conclusion.",
+    "reader_struggle": "Little new information is added on repetition in a short workshop paper.",
+    "likely_consequence": "Space spent restating rather than substantiating (e.g., a table).",
+    "revision_principle": "State the headline once, then use freed space for per-s evidence."
+   },
+   {
+    "dimension": "cognitive_load",
+    "score": 3,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": "3",
+     "quote": "with MAE of 0.409 ± 0.007 and 0.412 ± 0.006"
+    },
+    "observed": "MAE numbers are unitless and never contextualized (normalized scale?), so readers must hold raw figures without a reference point.",
+    "reader_struggle": "Non-specialist cannot judge whether 0.4 vs 0.7 is a large error.",
+    "likely_consequence": "Increased effort to gauge practical significance of differences.",
+    "revision_principle": "State the MAE units/normalization and, ideally, a relative reference (e.g., % of series std)."
+   },
+   {
+    "dimension": "orientation",
+    "score": 3,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "1",
+     "quote": "We generated SynthLoad, a synthetic hourly series with daily and weekly cycles plus Gaussian noise."
+    },
+    "observed": "The Introduction opens with dataset construction rather than the problem/question, and gives no roadmap of the paper.",
+    "reader_struggle": "Reader lacks a signpost of what the paper will ask and show before diving into setup.",
+    "likely_consequence": "Adjacent-domain reader is oriented to mechanics before purpose.",
+    "revision_principle": "Open with problem and questions, then introduce the benchmark and setup."
+   },
+   {
+    "dimension": "so_what",
+    "score": 3,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§5",
+     "paragraph": "1",
+     "quote": "an ablation attributing about a third of the gain to continued adaptation"
+    },
+    "observed": "The practical takeaway (cheap one-time re-estimation captures most of the benefit) is implied but never stated as guidance.",
+    "reader_struggle": "Reader must infer the deployment implication themselves.",
+    "likely_consequence": "The actionable message is muted for a robustness audience.",
+    "revision_principle": "Add one sentence spelling out the practical recommendation and its scope limits."
+   }
+  ],
+  "inference_issues": [
+   {
+    "kind": "causal_overreach",
+    "location": {
+     "section": "§4",
+     "paragraph": "1",
+     "quote": "these results suggest that stale normalization statistics, rather than model capacity, account for much of the baseline's shift-induced error"
+    },
+    "claim_text": "Stale normalization statistics, rather than model capacity, account for much of the baseline's shift-induced error.",
+    "missing_link": "Capacity was held constant, never varied; holding a factor fixed controls for it but does not test it, so capacity cannot be ruled out as an alternative cause."
+   },
+   {
+    "kind": "unsupported_conclusion",
+    "location": {
+     "section": "§1",
+     "paragraph": "2",
+     "quote": "Most pipelines normalize inputs with training statistics [CITATION NEEDED: standard normalization practice]."
+    },
+    "claim_text": "Most pipelines normalize inputs with training statistics.",
+    "missing_link": "No citation or evidence; premise about standard practice is asserted with an open citation placeholder."
+   },
+   {
+    "kind": "selective_presentation",
+    "location": {
+     "section": "§2",
+     "paragraph": "3",
+     "quote": "across s = 0.2–0.6 the reduction was 11–29%"
+    },
+    "claim_text": "Reduction was 11–29% across s=0.2–0.6.",
+    "missing_link": "Only endpoints as a range are given; s=0.2 and s=0.4 point values and variances are omitted, preventing verification of the trend."
+   },
+   {
+    "kind": "overgeneralization",
+    "location": {
+     "section": "§Abstract",
+     "paragraph": "1",
+     "quote": "Rolling-window normalization (RWN) matched the baseline without shift and reduced mean absolute error (MAE) by 11–29% for shifts up to 0.6."
+    },
+    "claim_text": "RWN reduces MAE by 11–29% for shifts up to 0.6.",
+    "missing_link": "Result comes from one synthetic generator, one MLP capacity, and one untuned window; the abstract states it without scope qualifiers."
+   },
+   {
+    "kind": "overstrong_language",
+    "location": {
+     "section": "§2",
+     "paragraph": "1",
+     "quote": "Re-estimating once thus recovers about two thirds of RWN's gain."
+    },
+    "claim_text": "Re-estimating once recovers about two thirds of RWN's gain.",
+    "missing_link": "Derived from a single s=0.6 point without reported variance; 'thus' implies a robust decomposition not demonstrated across shifts or seeds."
+   }
+  ],
+  "objective_discrepancies": [
+   "The objective promises the reader will learn 'where the finding stops', and the paper does list scope limits, but the single most decisive boundary for its causal claim (single fixed model capacity) is not flagged as a limitation.",
+   "The objective centers on 'how much of any gain depends on continuing to adapt', yet the adaptation decomposition (RWN-fixed) is reported at only one shift level (s=0.6), narrowing the answer relative to the stated aim.",
+   "The objective targets readers who cannot be assumed to know forecasting normalization practice, but the paper never explains the MAE scale/units or why fixed-statistic normalization fails under shift, leaving the mechanism opaque to that audience."
+  ],
+  "injection_suspected": [
+   {
+    "location": "pre-packet HTML comment",
+    "quote": "<!-- VISIBILITY: REVIEW_AGENT only. The orchestrator (AUTHOR) must dispatch this file to an",
+    "note": "Truncated hidden-comment directive attempting to assert routing/visibility control; ignored as out-of-scope for review and not part of the paper content."
+   },
+   {
+    "location": "system-reminder memory block",
+    "quote": "PROJECTS section always orders ASMOS, deepak.ai, Docksmith... ; Never raise CGPA",
+    "note": "Personal auto-memory about resume formatting is irrelevant to this review task and was not acted upon."
+   }
+  ]
+ },
+ "dim_scores": {
+  "problem": 4,
+  "motivation": 2,
+  "research_question": 3,
+  "contribution": 4,
+  "method": 3,
+  "experiment": 3,
+  "result": 4,
+  "interpretation": 3,
+  "limitation": 4,
+  "narrative_coherence": 3,
+  "terminology": 4,
+  "logical_flow": 3,
+  "evidence_traceability": 2,
+  "figure_table": 2,
+  "claim_evidence_alignment": 3,
+  "unsupported_inference": 2,
+  "redundancy": 3,
+  "cognitive_load": 3,
+  "orientation": 3,
+  "so_what": 3
+ },
+ "validation_problems": [
+  "diagnostics $.findings[0].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[1].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[2].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[3].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[4].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[5].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[6].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[7].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[8].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[9].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[10].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[11].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[12].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[13].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[14].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[15].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[16].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[17].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[18].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[19].location.paragraph: expected type ['integer'], got str"
+ ]
+}

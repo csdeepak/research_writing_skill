@@ -1,0 +1,112 @@
+{
+  "missing": [
+    {
+      "what": "Variance/spread metrics for zero-shot WER results across datasets",
+      "why_it_matters": "Understanding confidence intervals would clarify whether improvements are statistically significant vs noise",
+      "location": "Tables 2-5: Performance tables report point estimates only, no std dev or confidence intervals",
+      "severity": "moderate"
+    },
+    {
+      "what": "Fine-tuning performance comparison (zero-shot vs fine-tuned on benchmarks)",
+      "why_it_matters": "Authors explicitly state this was not studied; limits understanding of model's ceiling performance",
+      "location": "Section 6: 'Studying ﬁne-tuning: while this is crucial setting to study... we only studied zero-shot transfer'",
+      "severity": "high"
+    },
+    {
+      "what": "Ablation study isolating encoder vs decoder contribution to robustness",
+      "why_it_matters": "Authors hypothesize decoder quality drives robustness but don't test this",
+      "location": "Section 6 Limitations: 'It's currently unclear to what degree the beneﬁts of Whisper stem from training its encoder, decoder, or both'",
+      "severity": "high"
+    },
+    {
+      "what": "Computational cost and inference speed benchmarks",
+      "why_it_matters": "Practical deployment decisions require understanding latency and memory requirements",
+      "location": "Not reported in paper; mentioned only briefly in README that relative speed is ~1x for Large model",
+      "severity": "moderate"
+    },
+    {
+      "what": "Error analysis beyond aggregate WER: breakdown by error type (substitution, insertion, deletion, etc.)",
+      "why_it_matters": "Would clarify whether model struggles with specific linguistic phenomena",
+      "location": "Paper focuses on WER aggregates; detailed error analysis not provided",
+      "severity": "moderate"
+    },
+    {
+      "what": "Reproducibility details: exact hyperparameter values for each model size in final training",
+      "why_it_matters": "Different model sizes may have used different hyperparameters; Appendix F mentions changes for Large V2",
+      "location": "Appendix F mentions changes for V2 (Table 18) but unclear if other sizes were similarly tuned",
+      "severity": "low"
+    },
+    {
+      "what": "Analysis of failure modes in hallucination and repetition looping mentioned in Section 6",
+      "why_it_matters": "Authors describe major remaining error classes but don't quantify their frequency",
+      "location": "Section 6: 'complete hallucination where the model will output a transcript entirely unrelated to the actual audio'",
+      "severity": "moderate"
+    },
+    {
+      "what": "Comparison of multilingual joint training vs language-specific models",
+      "why_it_matters": "Would quantify the cost of language interference vs benefit of transfer",
+      "location": "Figure 9 shows joint vs English-only, but no comparison with language-specific models",
+      "severity": "low"
+    },
+    {
+      "what": "Impact of speaker name fine-tuning mentioned in Section 2.4 on final results",
+      "why_it_matters": "Authors mention correcting speaker hallucination but results shown are post-correction",
+      "location": "Line 215-241: Text normalization was developed iteratively; unclear if other ablations were removed",
+      "severity": "low"
+    },
+    {
+      "what": "Statistical significance testing for performance differences across datasets",
+      "why_it_matters": "Some reported differences may be within noise (e.g., 2.7% vs 2.5% WER difference)",
+      "location": "No p-values or significance tests reported in benchmark comparisons",
+      "severity": "moderate"
+    },
+    {
+      "what": "Detailed breakdown of filtering heuristics effectiveness for removing machine-generated transcripts",
+      "why_it_matters": "Understanding which heuristics mattered would inform future dataset creation",
+      "location": "Section 2.1: Heuristics mentioned but no metrics on how many transcripts were removed by each",
+      "severity": "low"
+    },
+    {
+      "what": "Analysis of how data quality metrics (computed through error rate inspection) predict downstream performance",
+      "why_it_matters": "Would validate the data filtering approach empirically",
+      "location": "Section 2.1: 'sorted by a combination of both high error rate and data source size' but no details on data quality metric design",
+      "severity": "low"
+    },
+    {
+      "what": "Cross-lingual transfer analysis: does multilingual training on high-resource languages benefit low-resource languages?",
+      "why_it_matters": "Key motivation for multilingual training but not explicitly measured",
+      "location": "Figure 3 and Section 3.4 discuss correlation but not explicit transfer analysis",
+      "severity": "moderate"
+    },
+    {
+      "what": "Generalization analysis: performance on truly out-of-domain data (not in pre-training pipeline)",
+      "why_it_matters": "Internet-sourced training data coverage may be broader than realized, masking true OOD generalization",
+      "location": "Not addressed; evaluation mostly uses standard benchmarks",
+      "severity": "moderate"
+    },
+    {
+      "what": "Comparison of impact of text normalization on baseline models vs Whisper",
+      "why_it_matters": "Would isolate whether Whisper-specific normalizer gives Whisper unfair advantage",
+      "location": "Section 4.4 compares against FairSpeech normalizer but on full model comparisons only",
+      "severity": "moderate"
+    },
+    {
+      "what": "Analysis of model capacity and overfitting: performance gap between training and test splits",
+      "why_it_matters": "Authors claim no overfitting due to few epochs and dataset diversity but don't show evidence",
+      "location": "Line 212: 'Due to only training for a few epochs, over-ﬁtting is not a large concern' (assumption only)",
+      "severity": "low"
+    },
+    {
+      "what": "Detailed analysis of why certain languages are outliers (e.g., Welsh, Hebrew, Telugu, Chinese, Korean)",
+      "why_it_matters": "Would inform improvements for linguistic families underrepresented in training",
+      "location": "Section 3.4 mentions outliers but limited analysis of causal factors",
+      "severity": "moderate"
+    },
+    {
+      "what": "Comparison with supervised pre-training approaches that also scale to multiple datasets/domains",
+      "why_it_matters": "Prior work (Narayanan et al., Likhomanenko et al.) also combined multiple datasets; direct comparison unclear",
+      "location": "Section 5: Mentions SpeechStew (7 datasets, 5,140 hours) but doesn't directly compare on same benchmarks",
+      "severity": "moderate"
+    }
+  ]
+}

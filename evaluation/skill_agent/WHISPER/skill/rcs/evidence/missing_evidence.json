@@ -1,0 +1,28 @@
+{
+  "missing": [
+    {
+      "id": "M001",
+      "description": "Seed variance / confidence intervals for most WER/BLEU numbers in tables. Only Figure 9 shows 95% bootstrap CI.",
+      "impact": "Cannot report reliability of individual benchmark results. Mitigated by reporting numbers as-is per evidence.",
+      "disposition": "accepted_limitation"
+    },
+    {
+      "id": "M002",
+      "description": "Compute cost (GPU-hours) for training each model size. Paper mentions 'accelerators' and 'data parallelism' without specific hardware counts or training wall-clock times.",
+      "impact": "Cannot characterize computational budget of this approach.",
+      "disposition": "accepted_limitation"
+    },
+    {
+      "id": "M003",
+      "description": "Detailed statistics on the 680k-hour dataset beyond Appendix E (which is partially garbled in PDF extraction). Full per-language breakdown quantified only for Figure E.",
+      "impact": "Cannot report exact per-language dataset statistics for most languages.",
+      "disposition": "accepted_limitation"
+    },
+    {
+      "id": "M004",
+      "description": "No confidence intervals or significance tests for human vs. Whisper WER comparison on Kincaid46 (25 recordings only).",
+      "impact": "Human-level comparison claim must be stated carefully.",
+      "disposition": "accepted_limitation"
+    }
+  ]
+}

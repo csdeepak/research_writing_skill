@@ -1,0 +1,77 @@
+{
+ "sources": [
+  {
+   "id": "SRC-001",
+   "title": "(title not given in evidence; cited for the 'effective robustness' methodology)",
+   "authors": ["Taori"],
+   "year": 2020,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "TECHNICAL_REPORT",
+   "peer_review_known": false,
+   "domain": "machine learning robustness",
+   "level": 4,
+   "verification": {"method": "user_supplied_file", "date": "2026-09-25", "verified_by": "agent"},
+   "read_depth": "abstract",
+   "establishes": [
+    {"statement": "Defines 'effective robustness' as the difference in expected performance between a reference (in-distribution) dataset and out-of-distribution datasets.", "support_quote": "effective robustness, introduced by Taori et al. (2020)", "location": "paper.txt, Section 3.3", "strength": "soft"}
+   ],
+   "why_useful": "Supplies the methodology used to distinguish Whisper's robustness gains from ordinary in-distribution accuracy.",
+   "informs_sections": ["Related Work", "Method", "Results"],
+   "evidence_quality": "low",
+   "limitations": "Only the concept and attribution are available from the evidence package (no abstract or full text); cited here only for the definition it is credited with.",
+   "permitted_use": ["content_citation"],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-002",
+   "title": "(title not given in evidence; cited for LibriSpeech human-level error rate)",
+   "authors": ["Amodei"],
+   "year": 2015,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "TECHNICAL_REPORT",
+   "peer_review_known": false,
+   "domain": "speech recognition",
+   "level": 4,
+   "verification": {"method": "user_supplied_file", "date": "2026-09-25", "verified_by": "agent"},
+   "read_depth": "abstract",
+   "establishes": [
+    {"statement": "Reports a human-level error rate of 5.8% on LibriSpeech test-clean.", "support_quote": "reported human-level error rate of 5.8%", "location": "paper.txt, Section 3.3", "strength": "soft"}
+   ],
+   "why_useful": "Gives the human-performance reference point used to frame how close zero-shot Whisper gets to human accuracy.",
+   "informs_sections": ["Introduction", "Discussion"],
+   "evidence_quality": "low",
+   "limitations": "Only the cited figure and attribution are available, not the source's own methodology.",
+   "permitted_use": ["content_citation"],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-003",
+   "title": "(title not given in evidence; cited for LibriSpeech supervised state-of-the-art WER)",
+   "authors": ["Zhang"],
+   "year": 2021,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "TECHNICAL_REPORT",
+   "peer_review_known": false,
+   "domain": "speech recognition",
+   "level": 4,
+   "verification": {"method": "user_supplied_file", "date": "2026-09-25", "verified_by": "agent"},
+   "read_depth": "abstract",
+   "establishes": [
+    {"statement": "Reports a supervised state-of-the-art LibriSpeech test-clean WER of 1.4%, down from a prior 5.3%, a 73% drop.", "support_quote": "the SOTA WER on LibriSpeech test-clean has dropped another 73% from their 5.3% to 1.4%", "location": "paper.txt, Section 3.3", "strength": "soft"}
+   ],
+   "why_useful": "Shows how far specialized, fully supervised systems have progressed on the single benchmark used to match Whisper to a baseline, contextualizing the robustness comparison.",
+   "informs_sections": ["Introduction", "Related Work", "Discussion"],
+   "evidence_quality": "low",
+   "limitations": "Only the cited figures and attribution are available.",
+   "permitted_use": ["content_citation"],
+   "citation_count": null
+  }
+ ],
+ "note": "No web access and no source files are available in this run; only three citations with (FirstAuthor, Year) form and a support quote could be identified inside project/research_evidence.json. All other named systems (wav2vec 2.0, mSLAM, XLS-R, Maestro, VoxLingua107, and the benchmark datasets) are referred to by name only, without a citation, because the evidence package gives no first-author/year for them. This is recorded as an accepted risk in state.json rather than filled with an invented citation, per the hard rule against fabricating references."
+}

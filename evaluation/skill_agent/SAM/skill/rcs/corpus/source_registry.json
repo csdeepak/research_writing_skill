@@ -1,0 +1,22 @@
+{
+  "sources": [
+    {"id": "S001", "citation": "Brown et al., 2020", "title": "Language models are few-shot learners (GPT-3)", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S002", "citation": "Bommasani et al., 2021", "title": "On the opportunities and risks of foundation models", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S003", "citation": "Radford et al., 2021", "title": "Learning transferable visual models from natural language supervision (CLIP)", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S004", "citation": "Dosovitskiy et al., 2021", "title": "An image is worth 16x16 words: Transformers for image recognition at scale (ViT)", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S005", "citation": "He et al., 2022", "title": "Masked autoencoders are scalable vision learners (MAE)", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S006", "citation": "Sofiiuk et al., 2022", "title": "Reviving iterative training with mask guidance for interactive segmentation (RITM)", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S007", "citation": "Lin et al., 2014", "title": "Microsoft COCO: Common objects in context", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S008", "citation": "Gupta et al., 2019", "title": "LVIS: A dataset for large vocabulary instance segmentation", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S009", "citation": "Kuznetsova et al., 2020", "title": "The Open Images dataset V4", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S010", "citation": "Li et al., 2022", "title": "Exploring plain vision transformer backbones for object detection (ViTDet)", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S011", "citation": "Xie et al., 2015", "title": "Holistically-nested edge detection (HED)", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S012", "citation": "Pu et al., 2022", "title": "EDTER: Edge detection with transformer", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S013", "citation": "Chen et al., 2022", "title": "FocalClick: towards practical interactive image segmentation", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S014", "citation": "Liu et al., 2022", "title": "SimpleClick: Interactive image segmentation with simple vision transformers", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S015", "citation": "Zhou et al., 2019", "title": "Semantic understanding of scenes through the ADE20K dataset", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S016", "citation": "Ramesh et al., 2021", "title": "Zero-shot text-to-image generation (DALL-E)", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S017", "citation": "Schumann et al., 2021", "title": "A step toward more inclusive people annotations for fairness (MIAP)", "verification_method": "user_supplied_file", "read_depth": "abstract"},
+    {"id": "S018", "citation": "Martin et al., 2001", "title": "A database of human segmented natural images (BSDS)", "verification_method": "user_supplied_file", "read_depth": "abstract"}
+  ]
+}

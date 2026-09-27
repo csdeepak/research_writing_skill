@@ -1,0 +1,53 @@
+{
+  "step": 21,
+  "gates": {
+    "G1": "passed",
+    "G2": "passed",
+    "G3": "passed",
+    "G4": "passed",
+    "G5": "passed"
+  },
+  "open_failures": [],
+  "accepted_risks": [
+    {
+      "id": "AR001",
+      "description": "No user confirmation at Gate G1 — no human available. Spine and claim list accepted as defensible from paper evidence.",
+      "step": 4
+    },
+    {
+      "id": "AR002",
+      "description": "Venue profile uses generic template; venue is ICLR 2025 (conference), guidelines inferred from paper format.",
+      "step": 6
+    },
+    {
+      "id": "AR003",
+      "description": "Literature sources registered with verification.method=user_supplied_file and read_depth=abstract, as per run constraints. No web access.",
+      "step": 7
+    },
+    {
+      "id": "AR004",
+      "description": "Step 18 (blind review) performed externally per run-specific constraints.",
+      "step": 18
+    },
+    {
+      "id": "AR005",
+      "description": "Some result tables in paper.txt were partially garbled by PDF extraction (Table 3 column alignment). Numbers cross-checked against narrative text and individual tables (Tables 4-7) to ensure accuracy.",
+      "step": 2
+    },
+    {
+      "id": "AR006",
+      "description": "Title updated to match objective.md ('AI Software Developers as Generalist Agents') from v001 draft subtitle ('Building and Evaluating Generalist AI Software Agents'). Cannot verify against actual arXiv page without web access; objective.md is treated as authoritative.",
+      "step": 19
+    },
+    {
+      "id": "AR007",
+      "description": "Moatless Tools (26.7%) comparison in claim C003 has no entry in source_registry.json; the comparison was not included in paper.md. The number appears in the source PDF but no citable reference was available under run constraints.",
+      "step": 19
+    },
+    {
+      "id": "AR008",
+      "description": "GPQA comparison (52.0% vs 38.8%) involves different backbone models (claude-3-5-sonnet vs GPT-4). Paper and abstract now disclose this; the causal 'same underlying model' framing from v001 draft is removed. No same-backbone GPQA number is available to enable a clean tool-use ablation.",
+      "step": 19
+    }
+  ]
+}

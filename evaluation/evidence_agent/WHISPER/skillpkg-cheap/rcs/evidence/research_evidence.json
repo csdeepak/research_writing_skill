@@ -1,0 +1,669 @@
+{
+ "project_root": "./project/",
+ "items": [
+  {
+   "id": "E001",
+   "kind": "result",
+   "summary": "Whisper trained on 680,000 hours of multilingual and multitask audio supervision.",
+   "value": {
+    "dataset_size": 680000,
+    "unit": "hours",
+    "composition": {
+     "English_speech_recognition": 438218,
+     "translation": 125739,
+     "multilingual_speech_recognition": 117113
+    }
+   },
+   "conditions": "Full training dataset",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "line 25: '680,000 hours of labeled audio data'"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Authors state: 'scaling weakly supervised speech recognition the next order of magnitude to 680,000 hours'"
+  },
+  {
+   "id": "E002",
+   "kind": "result",
+   "summary": "Whisper supports 96 non-English languages plus English in training data.",
+   "value": {
+    "non_english_languages": 96,
+    "english_hours": 438218,
+    "x_en_translation_hours": 125739
+   },
+   "conditions": "Full training dataset composition",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "line 26: '117,000 hours cover 96 other languages. The dataset also includes 125,000 hours of X→en translation data'"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E003",
+   "kind": "method_detail",
+   "summary": "Whisper architecture: encoder-decoder Transformer with specific layer and width configurations.",
+   "value": {
+    "architecture": "Encoder-decoder Transformer",
+    "models": [
+     {
+      "name": "Tiny",
+      "layers": 4,
+      "width": 384,
+      "heads": 6,
+      "parameters": "39M"
+     },
+     {
+      "name": "Base",
+      "layers": 6,
+      "width": 512,
+      "heads": 8,
+      "parameters": "74M"
+     },
+     {
+      "name": "Small",
+      "layers": 12,
+      "width": 768,
+      "heads": 12,
+      "parameters": "244M"
+     },
+     {
+      "name": "Medium",
+      "layers": 24,
+      "width": 1024,
+      "heads": 16,
+      "parameters": "769M"
+     },
+     {
+      "name": "Large",
+      "layers": 32,
+      "width": 1280,
+      "heads": 20,
+      "parameters": "1550M"
+     }
+    ]
+   },
+   "conditions": "Architecture specification",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 1 line 237: Architecture details of the Whisper model family"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E004",
+   "kind": "result",
+   "summary": "LibriSpeech test-clean WER: Whisper Large V2 achieves 2.7% WER.",
+   "value": {
+    "metric": "WER",
+    "value": 2.7,
+    "unit": "%",
+    "dataset": "LibriSpeech test-clean"
+   },
+   "conditions": "Zero-shot evaluation on LibriSpeech test-clean using beam search and temperature fallback",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 2, line 291-293: 'Whisper Large V2 (%) 2.7 LibriSpeech Clean'"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "This is comparable to mid-2019 SOTA and roughly 0.3% improvement from prior Whisper Large (2.5% with greedy decoding)"
+  },
+  {
+   "id": "E005",
+   "kind": "result",
+   "summary": "Whisper Large V2 achieves average relative error reduction of 55.2% on multiple datasets vs supervised LibriSpeech baseline.",
+   "value": {
+    "metric": "Average WER",
+    "relative_error_reduction": 55.2,
+    "unit": "%"
+   },
+   "conditions": "12 evaluation datasets (Common Voice, CHiME-6, TED-LIUM 3, etc.) in zero-shot setting",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 2 line 395: 'average relative error reduction of 55.2%' and line 391: 'Average 12.8 55.2'"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Comparison is against wav2vec 2.0 Large (no LM) which has 29.3% average WER vs Whisper's 12.8%"
+  },
+  {
+   "id": "E006",
+   "kind": "result",
+   "summary": "Whisper achieves 0.83 correlation (r²) between log training data hours and log WER on Fleurs multilingual benchmark.",
+   "value": {
+    "metric": "squared_correlation_coefficient",
+    "value": 0.83,
+    "relationship": "log(WER) vs log(training_hours)"
+   },
+   "conditions": "Multilingual speech recognition on Fleurs dataset, across 75 languages",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Figure 3 line 435: 'r2 = 0.83' and line 622: 'We find a strong squared correlation coefﬁcient of 0.83'"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "WER halves for every 16× increase in training data per language"
+  },
+  {
+   "id": "E007",
+   "kind": "result",
+   "summary": "Whisper translation shows 0.24 correlation (r²) between log translation data hours and zero-shot BLEU performance.",
+   "value": {
+    "metric": "squared_correlation_coefficient",
+    "value": 0.24,
+    "relationship": "BLEU vs log(translation_hours)"
+   },
+   "conditions": "Zero-shot translation on Fleurs dataset",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Figure 4 line 594: 'r2 = 0.24' and line 711: 'the squared correlation coefﬁcient is much lower than the 0.83'"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Much lower than speech recognition due to noisier training data from audio language identification errors"
+  },
+  {
+   "id": "E008",
+   "kind": "result",
+   "summary": "CoVoST2 X→en speech translation: Whisper achieves 29.1 BLEU zero-shot, state-of-the-art.",
+   "value": {
+    "metric": "BLEU",
+    "value": 29.1,
+    "task": "X→en translation zero-shot"
+   },
+   "conditions": "CoVoST2 X→en subset, no use of training data",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "line 710: 'We achieve a new state of the art of 29.1 BLEU zero-shot'"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Based on 68,000 hours of X→en translation data in pre-training vs 861 hours in CoVoST2"
+  },
+  {
+   "id": "E009",
+   "kind": "result",
+   "summary": "Language identification on Fleurs: Whisper achieves 80.3% accuracy on 82 overlapping languages.",
+   "value": {
+    "metric": "accuracy",
+    "value": 80.3,
+    "unit": "%",
+    "overlapping_languages": 82
+   },
+   "conditions": "Fleurs dataset, zero-shot on languages present in training data",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "line 715: 'On the 82 overlapping languages the best Whisper model achieves 80.3% accuracy'"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Underperforms SOTA by 13.6%, but upper-bounded by 80.4% on full 102 languages due to missing training data"
+  },
+  {
+   "id": "E010",
+   "kind": "result",
+   "summary": "Noise robustness: Whisper outperforms all LibriSpeech-trained baselines under pub noise at SNR < 10 dB.",
+   "value": {
+    "metric": "WER",
+    "condition": "pub noise SNR < 10 dB",
+    "observation": "Whisper better than all 14 compared models at high noise"
+   },
+   "conditions": "White noise and pub noise from Audio Degradation Toolbox",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Figure 5 line 722: 'all models quickly degrade as the noise becomes more intensive, performing worse than the Whisper model under additive pub noise of SNR below 10 dB'"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E011",
+   "kind": "result",
+   "summary": "Long-form transcription: Whisper outperforms best open-source model (NVIDIA STT) on all 7 long-form datasets.",
+   "value": {
+    "metric": "WER",
+    "datasets": 7,
+    "comparison": "vs NVIDIA STT Conformer-CTC Large"
+   },
+   "conditions": "7 long-form datasets: TED-LIUM3, Meanwhile, Kincaid46, Rev16, Earnings-21/22, CORAAL",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Figure 6 line 755: 'Our model outperforms the best open source model (NVIDIA STT) on all datasets'"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E012",
+   "kind": "result",
+   "summary": "Human comparison: Whisper achieves 1.15% point WER difference vs professional human transcribers on Kincaid46 subset.",
+   "value": {
+    "metric": "WER",
+    "whisper_wer": "~3.8%",
+    "computer_assisted_wer": "~2.65%",
+    "pure_human_wer": "~3.8%",
+    "subset_size": 25
+   },
+   "conditions": "25 recordings from Kincaid46 dataset with human transcription",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Figure 7 line 760: 'the computer-assisted service has the lowest aggregate WER that is 1.15% point better than Whisper'"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E013",
+   "kind": "result",
+   "summary": "Model scaling: English speech recognition WER improves with model size from Tiny (6.7%) to Large V2 (4.2%).",
+   "value": {
+    "metric": "WER on LibriSpeech test-clean",
+    "tiny": 6.7,
+    "large_v2": 4.2,
+    "unit": "%"
+   },
+   "conditions": "Zero-shot evaluation on LibriSpeech test-clean",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Figure 8 / Table 8-9: WER improvements across model sizes"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Performance continues improving with model size for other tasks"
+  },
+  {
+   "id": "E014",
+   "kind": "dataset",
+   "summary": "Dataset scaling experiment: models trained on 0.5%, 1%, 2%, 4%, 8%, and 100% of full dataset.",
+   "value": {
+    "percentages": [
+     0.5,
+     1,
+     2,
+     4,
+     8,
+     100
+    ],
+    "dataset_sizes_hours": [
+     3405,
+     6811,
+     13621,
+     27243,
+     54486,
+     681070
+    ]
+   },
+   "conditions": "Medium-sized models with early stopping on validation loss",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 line 876: 'Dataset size 3405 6811 13621 27243 54486 681070'"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E015",
+   "kind": "result",
+   "summary": "English WER improves from 30.5% (3.4k hrs) to 9.9% (681k hrs) - power-law then saturation.",
+   "value": {
+    "metric": "English WER average on 12 datasets",
+    "values": [
+     30.5,
+     19.6,
+     14.4,
+     12.3,
+     10.9,
+     9.9
+    ],
+    "unit": "%",
+    "dataset_sizes": [
+     3405,
+     6811,
+     13621,
+     27243,
+     54486,
+     681070
+    ]
+   },
+   "conditions": "Scaling experiment with medium-sized models",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 line 878-879: 'English WER (↓) 30.5 19.6 14.4 12.3 10.9 9.9'"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Rapid improvement 3k-13k hours, slower 13k-54k hours, diminishing returns at full dataset"
+  },
+  {
+   "id": "E016",
+   "kind": "result",
+   "summary": "Multilingual WER improves from 92.4% (3.4k hrs) to 29.2% (681k hrs).",
+   "value": {
+    "metric": "Multilingual WER on Fleurs overlapping languages",
+    "values": [
+     92.4,
+     72.7,
+     56.6,
+     45.0,
+     36.4,
+     29.2
+    ],
+    "unit": "%",
+    "dataset_sizes": [
+     3405,
+     6811,
+     13621,
+     27243,
+     54486,
+     681070
+    ]
+   },
+   "conditions": "Scaling experiment with medium-sized models",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 line 881-882: 'Multilingual WER (↓) 92.4 72.7 56.6 45.0 36.4 29.2'"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E017",
+   "kind": "result",
+   "summary": "X→En translation BLEU improves from 0.2 (7k hrs) to 24.8 (681k hrs).",
+   "value": {
+    "metric": "X→En BLEU on CoVoST2",
+    "values": [
+     0.2,
+     1.7,
+     7.9,
+     13.9,
+     19.2,
+     24.8
+    ],
+    "dataset_sizes": [
+     3405,
+     6811,
+     13621,
+     27243,
+     54486,
+     681070
+    ]
+   },
+   "conditions": "Scaling experiment with medium-sized models",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 6 line 884-885: 'X→En BLEU (↑) 0.2 1.7 7.9 13.9 19.2 24.8'"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E018",
+   "kind": "observation",
+   "summary": "Multitask and multilingual models show negative transfer for small models but positive transfer for largest models.",
+   "value": {
+    "observation": "joint models underperform English-only models for small scales, outperform at large scales"
+   },
+   "conditions": "Comparing English-only vs multilingual+multitask on same compute",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "line 896-932: Figure 9 and analysis showing negative transfer at small scale, positive at large scale"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Authors: 'For small models trained with moderate amounts of compute, there is indeed negative transfer'"
+  },
+  {
+   "id": "E019",
+   "kind": "limitation_noted",
+   "summary": "Text normalization developed jointly with Whisper poses risk of overfitting to Whisper's peculiarities.",
+   "value": {
+    "limitation": "custom text normalizer may overfit to model-specific errors"
+   },
+   "conditions": "Text standardization for WER evaluation",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "line 933: 'there is a risk that our normalizer is overﬁtted to ﬁxing Whisper's peculiarities'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Authors verified against independent FairSpeech normalizer; mostly similar but some differences on specific datasets"
+  },
+  {
+   "id": "E020",
+   "kind": "limitation_noted",
+   "summary": "Whisper training dataset is English-heavy (65% English) due to internet source biases.",
+   "value": {
+    "english_fraction": 0.65,
+    "consequence": "Most languages have < 1000 hours training data"
+   },
+   "conditions": "Full training dataset composition",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "line 1016: 'our pre-training dataset is currently very English-heavy due to biases of our data collection pipeline'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E021",
+   "kind": "limitation_noted",
+   "summary": "Language identification system errors led to Welsh being labeled with 9,000 hours of misclassified English data.",
+   "value": {
+    "language": "Welsh (CY)",
+    "supposed_hours": 9000,
+    "actual": "mostly English misclassified"
+   },
+   "conditions": "Training data quality inspection",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "line 712-713: 'Welsh (CY) is an outlier with much worse than expected performance... majority of supposedly Welsh translation data is actually English'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E022",
+   "kind": "hypothesis_stated",
+   "summary": "Whisper's robustness may be partially due to its strong decoder as an audio-conditional language model.",
+   "value": {
+    "hypothesis": "decoder strength contributes to robustness"
+   },
+   "conditions": "Acknowledged but not directly tested",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "line 1018-1020: 'It's currently unclear to what degree the beneﬁts of Whisper stem from training its encoder, decoder, or both'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E023",
+   "kind": "negative_result",
+   "summary": "Whisper significantly underperforms on VoxPopuli (13.6% WER) compared to XLS-R and mSLAM.",
+   "value": {
+    "metric": "WER on VoxPopuli",
+    "whisper": 13.6,
+    "mslam": 9.1,
+    "xlsr": 10.6,
+    "unit": "%"
+   },
+   "conditions": "Zero-shot evaluation on VoxPopuli",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 3 line 617: 'Zero-Shot Whisper 13.6' and line 618: 'only beats the VP-10K+FT baseline'"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Authors suspect due to other models using VoxPopuli in their unsupervised pre-training"
+  },
+  {
+   "id": "E024",
+   "kind": "negative_result",
+   "summary": "Language identification on Fleurs: Whisper achieves 64.5% accuracy, underperforming SOTA by 13.6%.",
+   "value": {
+    "metric": "accuracy on Fleurs",
+    "whisper": 64.5,
+    "sota": 77.7,
+    "unit": "%"
+   },
+   "conditions": "Zero-shot language identification on Fleurs",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 5 line 673: 'Zero-shot Whisper 64.5' and line 673: 'underperforms the supervised SOTA by 13.6%'"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E025",
+   "kind": "training_detail",
+   "summary": "Whisper trained for 220 updates (2-3 passes over dataset) using AdamW with linear learning rate decay.",
+   "value": {
+    "updates": 220,
+    "passes": "2-3",
+    "optimizer": "AdamW",
+    "batch_size": 256,
+    "segments_per_batch": 256
+   },
+   "conditions": "Training configuration",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "line 212-214: 'models are trained for 220 updates which is between two and three passes over the dataset. A batch size of 256 segments was used'"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E026",
+   "kind": "implementation_detail",
+   "summary": "Whisper processes 30-second audio segments paired with aligned transcripts.",
+   "value": {
+    "segment_length": 30,
+    "unit": "seconds",
+    "alignment": "paired with subset of transcript occurring within segment"
+   },
+   "conditions": "Data processing pipeline",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "line 37: 'We break audio ﬁles into 30-second segments paired with the subset of the transcript that occurs within that time segment'"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E027",
+   "kind": "method_detail",
+   "summary": "Long-form transcription uses beam search (5 beams), temperature scheduling, and voice activity detection.",
+   "value": {
+    "beam_width": 5,
+    "temperature_range": [
+     0,
+     1.0
+    ],
+    "temperature_increment": 0.2,
+    "vad_threshold": 0.6
+   },
+   "conditions": "Long-form transcription strategy",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "line 968: 'We use beam search with 5 beams using the log probability as the score function, to reduce repetition looping'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Authors: 'These heuristics serve as a workaround for the noisy predictions of the model'"
+  },
+  {
+   "id": "E028",
+   "kind": "result",
+   "summary": "Long-form transcription ablation: Voice activity detection + previous text conditioning + initial timestamp constraint yields best performance.",
+   "value": {
+    "metric": "Average WER on 7 long-form datasets",
+    "greedy_decoding": 11.0,
+    "plus_beam_search": 10.6,
+    "plus_temperature": 10.6,
+    "plus_vad": 10.2,
+    "plus_previous_text": 10.0,
+    "plus_timestamp": 10.0,
+    "unit": "%"
+   },
+   "conditions": "Incremental addition of decoding heuristics",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 7 line 998: incremental WER improvements with each intervention"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E029",
+   "kind": "assumption",
+   "summary": "Training on large diverse dataset assumed to encourage generalization without explicit regularization.",
+   "value": {
+    "assumption": "dataset diversity replaces traditional regularization"
+   },
+   "conditions": "No data augmentation, dropout, or other regularization used",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "line 212-214: 'we do not use any data augmentation or regularization and instead rely on the diversity contained within such a large dataset'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E030",
+   "kind": "external_fact",
+   "summary": "Prior work: Wav2Vec 2.0 scaled to 1,000,000 hours of unlabeled speech.",
+   "value": {
+    "hours": 1000000,
+    "type": "unlabeled"
+   },
+   "conditions": "Background on prior work",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "line 10: 'up to 1,000,000 hours of training data' for Wav2Vec work"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E031",
+   "kind": "observation",
+   "summary": "Larger Whisper models show steady progress on perception errors (confusing words) but struggle with structural errors in long-form transcription.",
+   "value": {
+    "observation": "scaling helps acoustic perception but not sequence-level errors"
+   },
+   "conditions": "Analysis of remaining error patterns",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "line 1015-1016: 'Many remaining errors, particularly in long-form transcription seem more stubborn in nature and decidedly non-human/perceptual'"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E032",
+   "kind": "result",
+   "summary": "Multilingual LibriSpeech (MLS): Whisper Large outperforms XLS-R and mSLAM but underperforms Maestro.",
+   "value": {
+    "dataset": "MLS",
+    "whisper": 7.3,
+    "xlsr": 9.7,
+    "maestro": 7.3,
+    "unit": "WER %"
+   },
+   "conditions": "Zero-shot evaluation on Multilingual LibriSpeech",
+   "locator": {
+    "path": "paper.txt",
+    "anchor": "Table 3 line 609-610: 'MLS 10.9 9.7 - 7.3' (VP-10K+FT, XLS-R, mSLAM, Maestro, Whisper)"
+   },
+   "strength": "hard",
+   "status": "ok"
+  }
+ ],
+ "generated_at": "(redacted)",
+ "generated_by": "evidence agent"
+}

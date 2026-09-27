@@ -1,0 +1,16 @@
+{
+  "files": [
+    {
+      "path": "project/paper.txt",
+      "classification": "reference",
+      "description": "Full text of Segment Anything paper (Kirillov et al., 2023), arXiv:2304.02643v1. Includes abstract, introduction, methods, experiments, discussion, appendix, and references.",
+      "result_bearing": true
+    },
+    {
+      "path": "project/README_1.md",
+      "classification": "reference",
+      "description": "Official GitHub README for the Segment Anything project, including model checkpoints, installation, dataset format, and note about SAM 2.",
+      "result_bearing": false
+    }
+  ]
+}

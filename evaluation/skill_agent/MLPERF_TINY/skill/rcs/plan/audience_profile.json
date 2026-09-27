@@ -1,0 +1,26 @@
+{
+  "mode": "B",
+  "description": "Adjacent ML researcher: knows general ML, deep learning, standard evaluation practice and statistics, but not this project's subfield-specific terminology (TinyML, MCU, DSP, edge inference), datasets (Speech Commands, VWW, ToyADMOS), or prior work in embedded ML benchmarking.",
+  "assumed_knowledge": [
+    "Supervised learning, classification, standard metrics (top-1 accuracy, AUC-ROC)",
+    "Neural network architectures (CNN, ResNet, MobileNet)",
+    "Model quantization concept (int8 vs float32)",
+    "Benchmark design principles",
+    "Inference vs training",
+    "Standard ML datasets (CIFAR-10, MSCOCO)"
+  ],
+  "needs_explanation": [
+    "TinyML: what it is, why sub-mW matters",
+    "Microcontroller (MCU): contrast with GPU/CPU",
+    "Why energy is a first-class metric (wireless comm cost > compute cost at this scale)",
+    "Hardware heterogeneity in embedded systems (no standard clock, no OS, no debug)",
+    "Post-training quantization (PTQ) vs quantization-aware training (QAT)",
+    "Depthwise-separable convolution (DS-CNN) in context",
+    "Autoencoder anomaly detection (unsupervised)",
+    "AUC-ROC as threshold-free metric for anomaly detection",
+    "Device Under Test (DUT) and measurement harness setup",
+    "Inferences per second (IPS) as a latency proxy"
+  ],
+  "term_budget": "moderate (explain each new concept once, use consistently)",
+  "personas": ["ML researcher reading NeurIPS Datasets and Benchmarks track", "Systems ML researcher exploring edge deployment"]
+}

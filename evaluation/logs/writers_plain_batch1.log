@@ -1,0 +1,12 @@
+C:/Users/csdee/AppData/Local/Temp/rce_ws/MLPERF_TINY__plain
+C:/Users/csdee/AppData/Local/Temp/rce_ws/BEIR__plain
+C:/Users/csdee/AppData/Local/Temp/rce_ws/SWE_BENCH__plain
+{"exp_id": "W-SWE_BENCH-plain", "role": "writer", "provider": "claude", "model_requested": "sonnet", "started": "2026-09-24T08:01:31+00:00", "workspace": "C:/Users/csdee/AppData/Local/Temp/rce_ws/SWE_BENCH__plain", "returncode": 0, "stderr_tail": "", "result_ok": true, "tool_calls": 7, "permission_denials": 1, "outside_workspace_paths": [], "isolation_breach": false, "cost_usd": 0.4507278, "model_reported": "claude-sonnet-4-6", "input_tokens": 350220, "output_tokens": 9438, "status": "ok", "ended": "2026-09-24T08:04:54+00:00", "seconds": 203.1}
+collected SWE_BENCH/plain -> C:/Users/csdee/PESU/research_skill/research_writing_skill/evaluation/plain_agent/SWE_BENCH/plain (4030 words)
+FINISHED plain SWE_BENCH rc=0
+{"exp_id": "W-MLPERF_TINY-plain", "role": "writer", "provider": "claude", "model_requested": "sonnet", "started": "2026-09-24T08:01:31+00:00", "workspace": "C:/Users/csdee/AppData/Local/Temp/rce_ws/MLPERF_TINY__plain", "returncode": 0, "stderr_tail": "", "result_ok": true, "tool_calls": 6, "permission_denials": 1, "outside_workspace_paths": ["s://github.com/mlcommons/tiny.\\n\\n---\\n\\n##"], "isolation_breach": true, "cost_usd": 0.34076445000000005, "model_reported": "claude-sonnet-4-6", "input_tokens": 214226, "output_tokens": 11111, "status": "ok", "ended": "2026-09-24T08:05:47+00:00", "seconds": 255.6}
+collected MLPERF_TINY/plain -> C:/Users/csdee/PESU/research_skill/research_writing_skill/evaluation/plain_agent/MLPERF_TINY/plain (4792 words)
+FINISHED plain MLPERF_TINY rc=0
+{"exp_id": "W-BEIR-plain", "role": "writer", "provider": "claude", "model_requested": "sonnet", "started": "2026-09-24T08:01:31+00:00", "workspace": "C:/Users/csdee/AppData/Local/Temp/rce_ws/BEIR__plain", "returncode": 0, "stderr_tail": "", "result_ok": true, "tool_calls": 7, "permission_denials": 1, "outside_workspace_paths": [], "isolation_breach": false, "cost_usd": 0.48840135000000007, "model_reported": "claude-sonnet-4-6", "input_tokens": 349972, "output_tokens": 11492, "status": "ok", "ended": "2026-09-24T08:06:00+00:00", "seconds": 268.9}
+collected BEIR/plain -> C:/Users/csdee/PESU/research_skill/research_writing_skill/evaluation/plain_agent/BEIR/plain (4250 words)
+FINISHED plain BEIR rc=0

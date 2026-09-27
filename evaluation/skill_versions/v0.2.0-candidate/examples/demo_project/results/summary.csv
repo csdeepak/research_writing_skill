@@ -1,0 +1,12 @@
+method,condition,shift,mae_mean,mae_std,n_seeds
+baseline,in_dist,0.0,0.412,0.006,5
+rwn,in_dist,0.0,0.409,0.007,5
+baseline,level_shift,0.2,0.471,0.008,5
+rwn,level_shift,0.2,0.421,0.007,5
+baseline,level_shift,0.4,0.553,0.010,5
+rwn,level_shift,0.4,0.433,0.008,5
+baseline,level_shift,0.6,0.641,0.012,5
+rwn,level_shift,0.6,0.452,0.009,5
+baseline,level_shift,0.8,0.731,0.015,5
+rwn,level_shift,0.8,0.712,0.021,5
+rwn_fixed,level_shift,0.6,0.518,0.011,5

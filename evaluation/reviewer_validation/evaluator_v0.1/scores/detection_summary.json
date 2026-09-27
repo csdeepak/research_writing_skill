@@ -1,0 +1,328 @@
+{
+ "detection": [
+  {
+   "family": "F1",
+   "seed": "s1",
+   "variant": "G_citation_misuse.md",
+   "expected": [
+    "evidence_traceability"
+   ],
+   "detected": [
+    "evidence_traceability"
+   ],
+   "missed": [],
+   "sensitivity": 1.0,
+   "min_dim_variant": 1,
+   "min_dim_A": 2,
+   "any_blocking_flag": true
+  },
+  {
+   "family": "F1",
+   "seed": "s1",
+   "variant": "B_poor_ordering.md",
+   "expected": [
+    "research_question",
+    "contribution",
+    "logical_flow",
+    "orientation",
+    "narrative_coherence"
+   ],
+   "detected": [
+    "research_question",
+    "logical_flow",
+    "orientation",
+    "narrative_coherence"
+   ],
+   "missed": [
+    "contribution"
+   ],
+   "sensitivity": 0.8,
+   "min_dim_variant": 2,
+   "min_dim_A": 2,
+   "any_blocking_flag": true
+  },
+  {
+   "family": "F1",
+   "seed": "s1",
+   "variant": "D_result_dumping.md",
+   "expected": [
+    "result",
+    "interpretation",
+    "figure_table",
+    "so_what",
+    "limitation"
+   ],
+   "detected": [
+    "interpretation",
+    "figure_table",
+    "so_what",
+    "limitation"
+   ],
+   "missed": [
+    "result"
+   ],
+   "sensitivity": 0.8,
+   "min_dim_variant": 1,
+   "min_dim_A": 2,
+   "any_blocking_flag": true
+  },
+  {
+   "family": "F1",
+   "seed": "s1",
+   "variant": "F_buried_contribution.md",
+   "expected": [
+    "contribution",
+    "research_question",
+    "problem",
+    "motivation",
+    "orientation"
+   ],
+   "detected": [
+    "contribution",
+    "research_question",
+    "problem",
+    "motivation",
+    "orientation"
+   ],
+   "missed": [],
+   "sensitivity": 1.0,
+   "min_dim_variant": 1,
+   "min_dim_A": 2,
+   "any_blocking_flag": true
+  },
+  {
+   "family": "F1",
+   "seed": "s1",
+   "variant": "E_unsupported_interpretation.md",
+   "expected": [
+    "claim_evidence_alignment",
+    "unsupported_inference",
+    "limitation",
+    "evidence_traceability"
+   ],
+   "detected": [
+    "claim_evidence_alignment",
+    "unsupported_inference",
+    "limitation"
+   ],
+   "missed": [
+    "evidence_traceability"
+   ],
+   "sensitivity": 0.75,
+   "min_dim_variant": 0,
+   "min_dim_A": 2,
+   "any_blocking_flag": true
+  },
+  {
+   "family": "F1",
+   "seed": "s1",
+   "variant": "C_jargon.md",
+   "expected": [
+    "terminology",
+    "cognitive_load",
+    "method"
+   ],
+   "detected": [
+    "terminology",
+    "cognitive_load",
+    "method"
+   ],
+   "missed": [],
+   "sensitivity": 1.0,
+   "min_dim_variant": 1,
+   "min_dim_A": 2,
+   "any_blocking_flag": true
+  },
+  {
+   "family": "F1",
+   "seed": "s2",
+   "variant": "G_citation_misuse.md",
+   "expected": [
+    "evidence_traceability"
+   ],
+   "detected": [
+    "evidence_traceability"
+   ],
+   "missed": [],
+   "sensitivity": 1.0,
+   "min_dim_variant": 1,
+   "min_dim_A": 2,
+   "any_blocking_flag": true
+  },
+  {
+   "family": "F1",
+   "seed": "s2",
+   "variant": "B_poor_ordering.md",
+   "expected": [
+    "research_question",
+    "contribution",
+    "logical_flow",
+    "orientation",
+    "narrative_coherence"
+   ],
+   "detected": [
+    "research_question",
+    "logical_flow",
+    "orientation",
+    "narrative_coherence"
+   ],
+   "missed": [
+    "contribution"
+   ],
+   "sensitivity": 0.8,
+   "min_dim_variant": 2,
+   "min_dim_A": 2,
+   "any_blocking_flag": true
+  },
+  {
+   "family": "F1",
+   "seed": "s2",
+   "variant": "D_result_dumping.md",
+   "expected": [
+    "result",
+    "interpretation",
+    "figure_table",
+    "so_what",
+    "limitation"
+   ],
+   "detected": [
+    "result",
+    "interpretation",
+    "so_what",
+    "limitation"
+   ],
+   "missed": [
+    "figure_table"
+   ],
+   "sensitivity": 0.8,
+   "min_dim_variant": 2,
+   "min_dim_A": 2,
+   "any_blocking_flag": true
+  },
+  {
+   "family": "F1",
+   "seed": "s2",
+   "variant": "F_buried_contribution.md",
+   "expected": [
+    "contribution",
+    "research_question",
+    "problem",
+    "motivation",
+    "orientation"
+   ],
+   "detected": [
+    "contribution",
+    "research_question",
+    "problem",
+    "orientation"
+   ],
+   "missed": [
+    "motivation"
+   ],
+   "sensitivity": 0.8,
+   "min_dim_variant": 2,
+   "min_dim_A": 2,
+   "any_blocking_flag": true
+  },
+  {
+   "family": "F1",
+   "seed": "s2",
+   "variant": "E_unsupported_interpretation.md",
+   "expected": [
+    "claim_evidence_alignment",
+    "unsupported_inference",
+    "limitation",
+    "evidence_traceability"
+   ],
+   "detected": [
+    "claim_evidence_alignment",
+    "unsupported_inference",
+    "limitation",
+    "evidence_traceability"
+   ],
+   "missed": [],
+   "sensitivity": 1.0,
+   "min_dim_variant": 0,
+   "min_dim_A": 2,
+   "any_blocking_flag": true
+  },
+  {
+   "family": "F1",
+   "seed": "s2",
+   "variant": "C_jargon.md",
+   "expected": [
+    "terminology",
+    "cognitive_load",
+    "method"
+   ],
+   "detected": [
+    "terminology",
+    "cognitive_load"
+   ],
+   "missed": [
+    "method"
+   ],
+   "sensitivity": 0.667,
+   "min_dim_variant": 1,
+   "min_dim_A": 2,
+   "any_blocking_flag": true
+  },
+  {
+   "family": "F2",
+   "seed": "s1",
+   "variant": "G_citation_misuse.md",
+   "expected": [
+    "evidence_traceability"
+   ],
+   "detected": [
+    "evidence_traceability"
+   ],
+   "missed": [],
+   "sensitivity": 1.0,
+   "min_dim_variant": 1,
+   "min_dim_A": 4,
+   "any_blocking_flag": true
+  }
+ ],
+ "false_alarms_on_A": [
+  {
+   "family": "F1",
+   "seed": "s1",
+   "false_alarm_dims": [
+    "evidence_traceability"
+   ],
+   "false_alarm_rate": 0.05,
+   "n_inference_issues": 4
+  },
+  {
+   "family": "F1",
+   "seed": "s2",
+   "false_alarm_dims": [
+    "motivation",
+    "evidence_traceability",
+    "figure_table"
+   ],
+   "false_alarm_rate": 0.15,
+   "n_inference_issues": 4
+  },
+  {
+   "family": "F2",
+   "seed": "s1",
+   "false_alarm_dims": [],
+   "false_alarm_rate": 0.0,
+   "n_inference_issues": 0
+  }
+ ],
+ "F1": {
+  "mean_dimension_sensitivity": 0.868,
+  "variant_level_flag_rate(any dim<=2)": 1.0,
+  "mean_false_alarm_rate_on_A": 0.1,
+  "n_reviews": 14
+ },
+ "F2": {
+  "mean_dimension_sensitivity": 1.0,
+  "variant_level_flag_rate(any dim<=2)": 1.0,
+  "mean_false_alarm_rate_on_A": 0.0,
+  "n_reviews": 2
+ }
+}

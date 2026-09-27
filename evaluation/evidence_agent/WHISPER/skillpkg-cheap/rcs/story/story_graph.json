@@ -1,0 +1,546 @@
+{
+ "nodes": [
+  {
+   "id": "N01",
+   "type": "PROBLEM",
+   "text": "Speech recognition models that hit human parity on one benchmark degrade sharply when applied to other datasets/domains.",
+   "evidence": [
+    "E010",
+    "E023"
+   ],
+   "claims": [
+    "C003",
+    "C006"
+   ]
+  },
+  {
+   "id": "N02",
+   "type": "SIGNIFICANCE",
+   "text": "Robustness to distribution shift, not benchmark WER alone, determines real-world usefulness of an ASR system.",
+   "evidence": [
+    "E010",
+    "E011"
+   ],
+   "claims": [
+    "C006",
+    "C011"
+   ]
+  },
+  {
+   "id": "N03",
+   "type": "KNOWN",
+   "text": "Unsupervised pre-training (e.g., wav2vec-style encoders) scales to very large unlabeled audio (up to 1,000,000 hours) but yields only an encoder that still needs a fine-tuned decoder/LM per task.",
+   "evidence": [
+    "E030"
+   ],
+   "claims": [
+    "C014"
+   ]
+  },
+  {
+   "id": "N04",
+   "type": "KNOWN",
+   "text": "Some prior work instead pools several existing human-labeled datasets (e.g., a 5,140-hour, 7-dataset combination) to improve generality.",
+   "evidence": [
+    "E011"
+   ],
+   "claims": []
+  },
+  {
+   "id": "N05",
+   "type": "GAP",
+   "text": "Neither approach scales the supervision itself — pairing audio with text targets, however noisy — to the size that unsupervised pre-training already reaches.",
+   "evidence": [
+    "E001",
+    "E030"
+   ],
+   "claims": [
+    "C001"
+   ]
+  },
+  {
+   "id": "N06",
+   "type": "RQ",
+   "text": "Can scaling weakly supervised multitask, multilingual audio-text data by roughly an order of magnitude beyond prior supervised work produce a model that generalizes zero-shot across datasets, languages, and tasks?",
+   "evidence": [
+    "E001"
+   ],
+   "claims": [
+    "C001"
+   ]
+  },
+  {
+   "id": "N07",
+   "type": "OBJECTIVE",
+   "text": "Build and evaluate Whisper: one sequence-to-sequence model trained to predict transcript/translation/timestamp text directly from audio, using lightly filtered internet-sourced supervision at 680,000 hours.",
+   "evidence": [
+    "E001",
+    "E002",
+    "E003"
+   ],
+   "claims": [
+    "C001"
+   ]
+  },
+  {
+   "id": "N08",
+   "type": "APPROACH",
+   "text": "Encoder-decoder Transformer family (Tiny to Large, 39M-1550M params), trained multitask (transcription, X-to-English translation, language ID, timestamps) via a single text-based output format, no dataset-specific fine-tuning at evaluation time.",
+   "evidence": [
+    "E003",
+    "E025",
+    "E026"
+   ],
+   "claims": [
+    "C001",
+    "C007"
+   ]
+  },
+  {
+   "id": "N09",
+   "type": "DESIGN",
+   "text": "680,000 hours: 438,218 h English ASR, 117,113 h non-English ASR across 96 languages, 125,739 h X-to-English translation; lightweight automated filtering rather than manual QA; 30-second audio segments paired with aligned transcript text; trained ~2-3 epochs (220 updates) with AdamW, no augmentation/regularization.",
+   "evidence": [
+    "E001",
+    "E002",
+    "E026",
+    "E025",
+    "E029"
+   ],
+   "claims": [
+    "C001",
+    "C014"
+   ]
+  },
+  {
+   "id": "N10",
+   "type": "DESIGN",
+   "text": "Controlled dataset-scaling experiment: medium-sized models trained on 0.5%, 1%, 2%, 4%, 8%, 100% of the data (3,405-681,070 hours) with early stopping.",
+   "evidence": [
+    "E014"
+   ],
+   "claims": [
+    "C008",
+    "C009",
+    "C019"
+   ]
+  },
+  {
+   "id": "N11",
+   "type": "DESIGN",
+   "text": "Controlled model-scaling comparison across the five model sizes on the same task suite (recognition, multilingual recognition, translation, language ID).",
+   "evidence": [
+    "E013"
+   ],
+   "claims": [
+    "C007"
+   ]
+  },
+  {
+   "id": "N12",
+   "type": "OBSERVATION",
+   "text": "Zero-shot Whisper Large V2 reaches 2.7% WER on LibriSpeech test-clean, comparable to mid-2019 supervised SOTA.",
+   "evidence": [
+    "E004"
+   ],
+   "claims": [
+    "C002"
+   ]
+  },
+  {
+   "id": "N13",
+   "type": "RESULT",
+   "text": "Despite comparable LibriSpeech performance to supervised models, Whisper reduces error by 55.2% on average relative to a supervised LibriSpeech baseline across 12 other datasets (zero-shot).",
+   "evidence": [
+    "E005"
+   ],
+   "claims": [
+    "C003"
+   ]
+  },
+  {
+   "id": "N14",
+   "type": "RESULT",
+   "text": "Whisper is more robust to additive pub noise below 10 dB SNR than all 14 compared LibriSpeech-trained models.",
+   "evidence": [
+    "E010"
+   ],
+   "claims": [
+    "C006"
+   ]
+  },
+  {
+   "id": "N15",
+   "type": "INTERPRETATION",
+   "text": "The gap between matched benchmark performance and out-of-distribution robustness indicates that LibriSpeech-trained models overfit to that dataset's specific acoustic/textual style, while Whisper's broad training data avoids this.",
+   "evidence": [
+    "E005",
+    "E010"
+   ],
+   "claims": [
+    "C003",
+    "C006"
+   ]
+  },
+  {
+   "id": "N16",
+   "type": "RESULT",
+   "text": "On multilingual recognition (Fleurs), log(WER) correlates with log(training hours per language) at r²=0.83; WER halves for every 16x increase in per-language data.",
+   "evidence": [
+    "E006"
+   ],
+   "claims": [
+    "C004"
+   ]
+  },
+  {
+   "id": "N17",
+   "type": "RESULT",
+   "text": "On X-to-English translation, the analogous correlation is much weaker (r²=0.24) and Whisper still reaches a new zero-shot SOTA of 29.1 BLEU on CoVoST2 X-to-en.",
+   "evidence": [
+    "E007",
+    "E008"
+   ],
+   "claims": [
+    "C018",
+    "C005"
+   ]
+  },
+  {
+   "id": "N18",
+   "type": "INTERPRETATION",
+   "text": "The weaker translation correlation is attributed to noisier training labels for translation (e.g., audio language-ID errors), not to translation being inherently harder to scale.",
+   "evidence": [
+    "E007",
+    "E021"
+   ],
+   "claims": [
+    "C018"
+   ]
+  },
+  {
+   "id": "N19",
+   "type": "RESULT",
+   "text": "Whisper underperforms on VoxPopuli (13.6% WER vs 9.1-10.6% for XLS-R/mSLAM) and on Fleurs language ID (64.5% vs 77.7% SOTA on the full 102-language set; 80.3% on the 82 overlapping languages).",
+   "evidence": [
+    "E023",
+    "E024",
+    "E009"
+   ],
+   "claims": [
+    "C016",
+    "C020"
+   ]
+  },
+  {
+   "id": "N20",
+   "type": "RESULT",
+   "text": "Dataset-size scaling: English WER falls from 30.5% (3,405 h) to 9.9% (681,070 h); multilingual WER falls from 92.4% to 29.2%; X-en BLEU rises from 0.2 to 24.8; gains are rapid up to ~13k-54k hours and diminish toward the full dataset.",
+   "evidence": [
+    "E015",
+    "E016",
+    "E017"
+   ],
+   "claims": [
+    "C008",
+    "C009",
+    "C019"
+   ]
+  },
+  {
+   "id": "N21",
+   "type": "RESULT",
+   "text": "Model-size scaling: English WER on LibriSpeech test-clean falls from 6.7% (Tiny) to 4.2% (Large V2), with similar monotonic gains on multilingual, translation, and language-ID tasks.",
+   "evidence": [
+    "E013"
+   ],
+   "claims": [
+    "C007"
+   ]
+  },
+  {
+   "id": "N22",
+   "type": "RESULT",
+   "text": "Joint multitask/multilingual training underperforms English-only training at small model/compute scale but overtakes it at the largest scale tested (negative-to-positive transfer crossover).",
+   "evidence": [
+    "E018"
+   ],
+   "claims": [
+    "C010"
+   ]
+  },
+  {
+   "id": "N23",
+   "type": "RESULT",
+   "text": "On 7 long-form datasets, Whisper outperforms the best open-source system (NVIDIA STT); on a 25-recording human-transcribed subset of Kincaid46 it comes within 1.15 WER points of a computer-assisted professional transcription service.",
+   "evidence": [
+    "E011",
+    "E012"
+   ],
+   "claims": [
+    "C011",
+    "C012"
+   ]
+  },
+  {
+   "id": "N24",
+   "type": "RESULT",
+   "text": "An ablation over long-form decoding heuristics (beam search, temperature fallback, VAD, previous-text conditioning, timestamp constraints) shows each intervention incrementally reduces average WER from 11.0% to 10.0% across the 7 long-form datasets.",
+   "evidence": [
+    "E028"
+   ],
+   "claims": [
+    "C017"
+   ]
+  },
+  {
+   "id": "N25",
+   "type": "LIMITATION",
+   "text": "Training data is 65% English; most other languages have under 1,000 hours; the Whisper-developed text normalizer risks being overfit to Whisper's own output patterns (checked against an independent normalizer).",
+   "evidence": [
+    "E020",
+    "E019"
+   ],
+   "claims": [
+    "C014",
+    "C013"
+   ]
+  },
+  {
+   "id": "N26",
+   "type": "LIMITATION",
+   "text": "It remains unclear whether Whisper's robustness comes from its trained encoder, its trained decoder (acting as an audio-conditioned language model), or both; this is not directly tested. Remaining errors in long-form transcription are increasingly structural (hallucination, repetition) rather than perceptual, and scaling has not clearly fixed them.",
+   "evidence": [
+    "E022",
+    "E031"
+   ],
+   "claims": []
+  },
+  {
+   "id": "N27",
+   "type": "IMPLICATION",
+   "text": "Weakly supervised pre-training at scale is a viable, and comparatively underexplored, route to robust, general-purpose speech systems that need no per-dataset fine-tuning.",
+   "evidence": [
+    "E001",
+    "E005"
+   ],
+   "claims": [
+    "C015"
+   ]
+  },
+  {
+   "id": "N28",
+   "type": "FUTURE",
+   "text": "Authors point to targeted data collection for low-resource languages, and to studying fine-tuning and encoder/decoder ablations, as unstudied next steps.",
+   "evidence": [
+    "E020",
+    "E022"
+   ],
+   "claims": []
+  },
+  {
+   "id": "N29",
+   "type": "CONTRIBUTION",
+   "text": "Scaling weakly supervised multitask, multilingual training data to 680,000 hours produces a single ASR/translation model whose zero-shot generalization across datasets, languages, and noise conditions substantially exceeds same-benchmark-trained supervised systems, following a predictable relationship with data and model scale.",
+   "evidence": [
+    "E001",
+    "E005"
+   ],
+   "claims": [
+    "C001",
+    "C003",
+    "C015"
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "N01",
+   "to": "N02",
+   "type": "motivates"
+  },
+  {
+   "from": "N02",
+   "to": "N03",
+   "type": "implies"
+  },
+  {
+   "from": "N03",
+   "to": "N05",
+   "type": "implies"
+  },
+  {
+   "from": "N04",
+   "to": "N05",
+   "type": "implies"
+  },
+  {
+   "from": "N05",
+   "to": "N06",
+   "type": "addresses"
+  },
+  {
+   "from": "N06",
+   "to": "N07",
+   "type": "operationalizes"
+  },
+  {
+   "from": "N07",
+   "to": "N08",
+   "type": "operationalizes"
+  },
+  {
+   "from": "N08",
+   "to": "N09",
+   "type": "produces"
+  },
+  {
+   "from": "N09",
+   "to": "N12",
+   "type": "produces"
+  },
+  {
+   "from": "N09",
+   "to": "N10",
+   "type": "implies"
+  },
+  {
+   "from": "N10",
+   "to": "N20",
+   "type": "tests"
+  },
+  {
+   "from": "N11",
+   "to": "N21",
+   "type": "tests"
+  },
+  {
+   "from": "N08",
+   "to": "N12",
+   "type": "produces"
+  },
+  {
+   "from": "N12",
+   "to": "N13",
+   "type": "implies"
+  },
+  {
+   "from": "N13",
+   "to": "N15",
+   "type": "supports"
+  },
+  {
+   "from": "N14",
+   "to": "N15",
+   "type": "supports"
+  },
+  {
+   "from": "N15",
+   "to": "N06",
+   "type": "answers"
+  },
+  {
+   "from": "N16",
+   "to": "N18",
+   "type": "supports"
+  },
+  {
+   "from": "N17",
+   "to": "N18",
+   "type": "supports"
+  },
+  {
+   "from": "N19",
+   "to": "N25",
+   "type": "supports"
+  },
+  {
+   "from": "N25",
+   "to": "N27",
+   "type": "limits"
+  },
+  {
+   "from": "N26",
+   "to": "N27",
+   "type": "limits"
+  },
+  {
+   "from": "N22",
+   "to": "N27",
+   "type": "implies"
+  },
+  {
+   "from": "N23",
+   "to": "N27",
+   "type": "implies"
+  },
+  {
+   "from": "N24",
+   "to": "N23",
+   "type": "supports"
+  },
+  {
+   "from": "N27",
+   "to": "N28",
+   "type": "opens"
+  },
+  {
+   "from": "N13",
+   "to": "N29",
+   "type": "grounds"
+  },
+  {
+   "from": "N05",
+   "to": "N29",
+   "type": "grounds"
+  },
+  {
+   "from": "N29",
+   "to": "N01",
+   "type": "grounds"
+  },
+  {
+   "from": "N08",
+   "to": "N11",
+   "type": "produces"
+  },
+  {
+   "from": "N15",
+   "to": "N16",
+   "type": "implies"
+  },
+  {
+   "from": "N16",
+   "to": "N17",
+   "type": "implies"
+  },
+  {
+   "from": "N18",
+   "to": "N19",
+   "type": "implies"
+  },
+  {
+   "from": "N15",
+   "to": "N21",
+   "type": "implies"
+  },
+  {
+   "from": "N21",
+   "to": "N22",
+   "type": "implies"
+  },
+  {
+   "from": "N22",
+   "to": "N23",
+   "type": "implies"
+  },
+  {
+   "from": "N25",
+   "to": "N26",
+   "type": "implies"
+  }
+ ],
+ "orphan_experiments": [],
+ "contribution_test": "Contribution statement (node N29): 'Scaling weakly supervised multitask, multilingual training data to 680,000 hours produces a single ASR/translation model whose zero-shot generalization across datasets, languages, and noise conditions substantially exceeds same-benchmark-trained supervised systems, following a predictable relationship with data and model scale.' This is answerable from the gap (N05) and supported directly by RESULT nodes N13, N14, N16, N17, N20, N21. Contribution test: PASSED.",
+ "pattern": "imrad"
+}

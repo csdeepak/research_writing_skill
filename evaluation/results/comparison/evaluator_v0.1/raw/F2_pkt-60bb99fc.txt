@@ -1,0 +1,316 @@
+{
+  "reconstruction": {
+    "packet_id": "pkt-60bb99fc",
+    "answers": {
+      "Q1": {
+        "answer": "The problem is that image segmentation lacks a foundation model equivalent to what exists in NLP (large models pre-trained on broad data, deployed zero-shot across diverse tasks). Segmentation masks are expensive to collect at pixel precision and cannot be scraped from the internet like text, so prior datasets are orders of magnitude smaller (millions of masks vs. billions of tokens), and no general-purpose promptable segmentation model existed.",
+        "locations": ["§1.1/para1-2", "§1.2/para1"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q2": {
+        "answer": "Segmentation is a core computer vision capability underlying scene understanding, medical imaging, robot manipulation, and virtually any vision pipeline requiring pixel-level object localization. A foundation model for segmentation would enable zero-shot transfer across diverse downstream tasks via prompt engineering, similar to how LLMs and CLIP transformed NLP and vision-language tasks.",
+        "locations": ["§1.1/para2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q3": {
+        "answer": "Existing approaches are limited by: (1) small datasets — COCO (~0.9M masks), Open Images (~2.7M), LVIS (~1.5M) — far smaller than NLP corpora; (2) no general-purpose promptable segmentation model that accepts flexible prompts (points, boxes, text) and returns valid masks zero-shot; (3) interactive segmentation models require multiple clicks and are not designed for amortized inference or composability; (4) standard web-scale data collection is inapplicable because masks must be traced by human annotators.",
+        "locations": ["§1.1/para2-3", "§4.1/para1"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q4": {
+        "answer": "The authors built three interdependent components: (1) a promptable segmentation task definition accepting points, boxes, masks, or text prompts; (2) SAM model with a heavy ViT-H image encoder (run once per image), lightweight prompt encoder, and lightweight mask decoder with bidirectional cross-attention and dynamic mask classifiers, predicting 3 masks per prompt to handle ambiguity; (3) SA-1B dataset via a three-stage model-in-the-loop data engine: Stage 1 (assisted-manual, 4.3M masks, 120K images), Stage 2 (semi-automatic, 5.9M masks, 180K images), Stage 3 (fully automatic, 1.1B masks, 11M images). They evaluated zero-shot on 23 diverse benchmarks across 5 task types.",
+        "locations": ["§1.2/para2", "§3.1-3.5", "§4.2/para1-4", "§5.1-5.5"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q5": {
+        "answer": "The method is motivated by: (1) amortized inference — pay expensive image encoding once, share across many fast prompt+decoder runs (~50ms); (2) promptable task framing — defines a pre-training objective (simulate prompt sequences) and a composable inference interface; (3) data engine necessity — masks can't be scraped, so model-in-the-loop iteratively scales annotations; (4) ambiguity handling — predict 3 masks per prompt, train with min-loss gradient, add confidence head; (4) CLIP alignment for text prompts without new annotations.",
+        "locations": ["§3.1/para1-2", "§3.5/para1-2", "§4.1/para1-2", "§5.6/para1"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q6": {
+        "answer": "Experiments: (1) Single-point mask evaluation on 23 datasets (mIoU, human ratings 1-10) vs. RITM baseline; (2) Edge detection on BSDS500 (ODS, OIS, AP, R50) via 16x16 point grid + Sobel filter vs. trained (HED, EDETR) and classical (Canny, Felzenszwalb) baselines; (3) Object proposals on LVIS (AR@1000) vs. supervised ViTDet-H; (4) Instance segmentation on COCO/LVIS (AP) using ViTDet boxes as prompts vs. fully supervised ViTDet-H; (5) Text-to-mask proof-of-concept; (6) Ablations: data engine stages, training data volume (1M vs 11M images), image encoder scale (ViT-B/L/H). All zero-shot — no fine-tuning on evaluation benchmarks.",
+        "locations": ["§5.1/para1-2", "§5.2", "§5.3", "§5.4", "§5.5", "§5.6", "§5.7"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q7": {
+        "answer": "Strongest results: (1) Single-point: SAM beats RITM on 16/23 datasets by mIoU, and on all 23 with oracle mask selection; human raters prefer SAM (7-9/10) over RITM even where automatic IoU favors RITM. (2) Edge detection: zero-shot SAM ODS=.768 approaches supervised HED (.788) and far exceeds classical zero-shot baselines (Canny .600). (3) Object proposals: SAM AR@1000=59.3 vs supervised ViTDet-H 63.0; SAM matches/surpasses on medium, large, frequent, common, rare objects; only trails on small objects. (4) Instance segmentation: SAM trails supervised by 4.5 AP (COCO) and 1.9 AP (LVIS), but human raters prefer SAM masks (8.1 vs 7.9). (5) Ablation: 1M images (~10%) matches full 11M; ViT-H >> ViT-B, marginal over ViT-L.",
+        "locations": ["§5.2/para2-4", "§5.3/para3-4, Table1", "§5.4/para2-3, Table2", "§5.5/para2-3, Table3", "§5.7/para2-4"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q8": {
+        "answer": "Results establish that: (1) A promptable segmentation model trained on large-scale automatically generated masks can generalize zero-shot across 23 diverse domains (egocentric, underwater, medical, aerial, artistic, etc.) and 5 task types. (2) Human annotators consistently rate SAM's masks as higher intrinsic quality than supervised baselines, even when automatic metrics (IoU, AP) favor the supervised methods — suggesting annotation convention bias in benchmarks. (3) The three-stage data engine successfully scales to 1.1B masks with quality comparable to human annotation (94% >90% IoU vs human-corrected). (4) Amortized inference architecture enables interactive-speed prompting (~50ms after image encoding). (5) Multiple mask prediction per prompt effectively handles ambiguity.",
+        "locations": ["§5.2/para2-4", "§5.3/para3-4", "§5.4/para2-3", "§5.5/para2-3", "§4.3/para4-5", "§3.5/para1-2"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q9": {
+        "answer": "Results do NOT establish: (1) SAM outperforms supervised methods on standard automatic precision metrics (AP, mIoU) — it trails on instance segmentation AP and single-point mIoU on 7/23 datasets. (2) Text-to-mask is robust — explicitly labeled proof-of-concept, not fully reliable. (3) Semantic/panoptic segmentation — no clear prompting strategy exists. (4) Fine structure handling — SAM misses fine details and hallucinates small components. (5) Real-time end-to-end inference — ViT-H encoder is heavy. (6) Domain-specific superiority — specialized models expected to outperform in their domains (e.g., bioimaging). (7) Fairness across all subgroups — clothing segmentation shows significant gender gap (81.0 vs 76.3 mIoU). (8) Statistical significance of human preference (8.1 vs 7.9) — overlapping CIs, narrow gap.",
+        "locations": ["§5.5/para2-3", "§5.6/para1", "§7.3/bullet1-7", "§6/para3"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q10": {
+        "answer": "The primary contribution is the Segment Anything project as an integrated foundation model effort for image segmentation, comprising three interdependent components: (1) the promptable segmentation task definition, (2) the SAM model architecture designed for amortized inference and ambiguity handling, and (3) the SA-1B dataset (1.1B masks, 11M images) produced by a three-stage model-in-the-loop data engine. The critical enabling innovation is the data engine that iteratively co-develops model capability and training data to achieve 400× scale over prior datasets.",
+        "locations": ["§1.2/para2", "§8/para1"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q11": {
+        "answer": "Main limitations: (1) Fine structures missed, small disconnected components hallucinated. (2) Boundary crispness less precise than iterative zoom-in methods (e.g., FocalClick). (3) Many-prompt interactive segmentation — dedicated methods outperform when many clicks available. (4) Not real-time end-to-end (ViT-H encoder heavy). (5) No clear prompting strategy for semantic/panoptic segmentation. (6) Text-to-mask not robust. (7) Domain-specific tools expected to outperform in their areas. (8) Clothing segmentation fairness gap (masculine 81.0 vs feminine 76.3 mIoU at 1 point). (9) Geographic underrepresentation of Africa, Latin America, low-income countries.",
+        "locations": ["§7.3/bullet1-7", "§6/para2-3"],
+        "confidence": 5,
+        "missing": ""
+      },
+      "Q12": {
+        "answer": "A foundation model for segmentation (SAM) was built by defining a promptable task, designing an amortized-inference architecture, and scaling a model-in-the-loop data engine to 1.1B masks. SAM generalizes zero-shot across 23 diverse domains and 5 task types. Human annotators prefer SAM's mask quality over supervised baselines despite lower automatic metric scores, suggesting benchmark annotation bias. The model and dataset are publicly released (Apache 2.0) as a composable building block. Key open problems remain: semantic/panoptic prompting, fine structures, robust text-to-mask.",
+        "locations": ["§8/para1-2", "§7.3"],
+        "confidence": 5,
+        "missing": ""
+      }
+    }
+  },
+  "diagnostics": {
+    "packet_id": "pkt-60bb99fc",
+    "binding_personas": ["A", "B", "E"],
+    "findings": [
+      {
+        "dimension": "problem",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1.1", "paragraph": 1, "quote": "segmentation masks... are not naturally abundant on the internet, making the standard web-scale data collection recipe inapplicable"},
+        "observed": "The problem is crisply framed: segmentation lacks a foundation model because masks require expensive pixel-level annotation and cannot be scraped like text, leaving prior datasets orders of magnitude too small.",
+        "reader_struggle": "No struggle — the problem is immediately accessible even to non-specialists (Persona D) and precisely scoped for experts (Persona A).",
+        "likely_consequence": "Readers understand exactly why this problem is distinct from NLP/vision-language foundation models and why a new approach is needed.",
+        "revision_principle": "Keep the contrast with NLP foundation models and the data-scarcity argument upfront; it anchors the entire contribution."
+      },
+      {
+        "dimension": "motivation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1.1", "paragraph": 2, "quote": "Image segmentation is a core computer vision capability that underlies scene understanding, medical imaging, robot manipulation, and virtually any vision pipeline"},
+        "observed": "Motivation is broad and concrete — lists specific downstream domains (medical, robotics, scene understanding) where segmentation is essential, making the 'so what' clear for adjacent researchers (Persona B).",
+        "reader_struggle": "None — the motivation speaks directly to Persona B's interests without assuming subfield knowledge.",
+        "likely_consequence": "Adjacent researchers immediately see relevance to their own work; domain experts see the field-level significance.",
+        "revision_principle": "Maintain the concrete application listing; avoid generic 'segmentation is important' statements."
+      },
+      {
+        "dimension": "research_question",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1.2", "paragraph": 1, "quote": "can a promptable segmentation task, a model architecture designed for amortized inference, and a scalable data engine together produce a zero-shot foundation model for image segmentation?"},
+        "observed": "The research question is explicitly stated as a single integrative question linking all three components (task, model, data engine) to the target outcome (zero-shot foundation model).",
+        "reader_struggle": "None — the question is self-contained and sets up the three-contribution structure perfectly.",
+        "likely_consequence": "Readers can evaluate each section against this question; the paper's structure answers it component by component.",
+        "revision_principle": "State the integrative research question early; it organizes the entire paper."
+      },
+      {
+        "dimension": "contribution",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1.2", "paragraph": 2, "quote": "These components are entangled by design: the model must be efficient enough to assist annotators in real time; the data engine iteratively improves the model; the resulting model must generalize zero-shot to downstream tasks."},
+        "observed": "Three contributions are clearly enumerated (task, model, dataset) and their interdependence is explained — not just a list but a system where each enables the others.",
+        "reader_struggle": "None — the entanglement explanation helps Persona B understand why these three specific contributions appear together.",
+        "likely_consequence": "Readers grasp that this is a systems paper, not three independent contributions; the data engine rationale becomes clear.",
+        "revision_principle": "When contributions are interdependent, explain the coupling explicitly rather than listing them in isolation."
+      },
+      {
+        "dimension": "method",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "3.1", "paragraph": 1, "quote": "paying an expensive computation once and sharing its result across many lightweight operations that follow"},
+        "observed": "The amortized-inference principle is clearly motivated, then instantiated in a three-component architecture (heavy encoder, light prompt encoder, light decoder with bidirectional cross-attention and dynamic classifiers). Ambiguity handling (3 masks, min-loss training, confidence head) is well-specified.",
+        "reader_struggle": "Persona C (newcomer) may need to infer what 'bidirectional cross-attention' buys, but the dynamic classifier explanation ('each prompt produces a different classifier over the same precomputed image embedding') makes the computational benefit concrete.",
+        "likely_consequence": "Experts (A, E) can evaluate architectural choices; adjacent researchers (B) understand the speed/quality tradeoff rationale.",
+        "revision_principle": "Pair architectural diagrams with plain-language explanations of what each component enables computationally."
+      },
+      {
+        "dimension": "experiment",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "5.1", "paragraph": 1, "quote": "All experiments follow a strict zero-shot protocol: SAM receives no images, annotations, or gradient updates from any evaluation benchmark."},
+        "observed": "Experimental design is rigorous: strict zero-shot protocol, 23 diverse datasets spanning 5 qualitative domains, multiple task types (single-point, edge detection, object proposals, instance segmentation, text-to-mask), both automatic metrics and human evaluation, ablations for data engine stages, data volume, and encoder scale. Baselines are strong (RITM, ViTDet-H, HED/EDETR).",
+        "reader_struggle": "Persona B may not know all 23 datasets, but the domain categories (egocentric, underwater, medical, aerial, artistic) convey diversity without requiring dataset familiarity.",
+        "likely_consequence": "Verifying reviewer (E) can confirm zero-shot integrity; adjacent researcher (B) sees breadth of generalization evidence.",
+        "revision_principle": "Explicitly state the zero-shot protocol and list domain categories to convey breadth without requiring dataset expertise."
+      },
+      {
+        "dimension": "result",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "5.2", "paragraph": 3, "quote": "On datasets where SAM scored lower than RITM by automatic IoU (e.g., DRAM art paintings, IBD drone imagery), human raters still preferred SAM's masks"},
+        "observed": "Results are presented with both automatic metrics and human studies, and the paper highlights the critical divergence: human raters prefer SAM even where automatic IoU favors baselines. Specific numbers (mIoU gaps, AR@1000, AP, human ratings 7-9 vs lower for baselines) are reported with dataset names.",
+        "reader_struggle": "None — the human-vs-automatic divergence is a clear, memorable finding that all personas can grasp.",
+        "likely_consequence": "Readers understand that automatic metrics may penalize valid but different interpretations, and that SAM's masks have higher intrinsic quality.",
+        "revision_principle": "When automatic metrics and human judgment diverge, report both and explain the likely cause (annotation convention bias) rather than hiding the discrepancy."
+      },
+      {
+        "dimension": "interpretation",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "5.5", "paragraph": 3, "quote": "The authors propose that this reversal stems in part from annotation bias... No controlled experiment directly isolates annotation-convention bias from other differences in mask style, so this explanation is consistent with the observed pattern but not uniquely confirmed by it."},
+        "observed": "The paper honestly qualifies the annotation-bias explanation for the human-vs-automatic reversal as consistent but not uniquely confirmed. However, the text-to-mask 'proof of concept' claim could be more sharply bounded — it says 'not fully robust' but doesn't specify failure modes.",
+        "reader_struggle": "Persona E might want more precise failure characterization for text-to-mask; Persona B might overestimate text-to-mask readiness.",
+        "likely_consequence": "Readers may think text-to-mask works better than it does; the annotation-bias explanation is appropriately caveated but could be more explicitly labeled as a hypothesis.",
+        "revision_principle": "For proof-of-concept features, explicitly state known failure modes or conditions where they break; label post-hoc explanations as hypotheses, not conclusions."
+      },
+      {
+        "dimension": "limitation",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "7.3", "paragraph": 1, "quote": "SAM is not a complete or universal segmentation solution. The authors identify several concrete limitations:"},
+        "observed": "Limitations are concrete, specific, and numerous (7 listed in §7.3 plus fairness gaps in §6). They include technical (fine structures, boundaries, many-prompt, real-time, semantic/panoptic, text-to-mask, domain-specific) and fairness (clothing gender gap, geographic representation) limitations. The paper does not overclaim.",
+        "reader_struggle": "None — limitations are front-loaded in Discussion, not buried. Persona E can verify claims respect these bounds.",
+        "likely_consequence": "Readers trust the paper more because limitations are explicit; deployment decisions can account for known gaps.",
+        "revision_principle": "List limitations categorically (technical, fairness, scope) with concrete examples; don't minimize or relegate to a single sentence."
+      },
+      {
+        "dimension": "narrative_coherence",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1.2", "paragraph": 2, "quote": "These components are entangled by design: the model must be efficient enough to assist annotators in real time; the data engine iteratively improves the model; the resulting model must generalize zero-shot to downstream tasks."},
+        "observed": "The paper follows a tight logical arc: problem → research question → three entangled components (task, model, data) → experiments testing the integrated system → discussion of what it achieves and doesn't. Each section motivates the next.",
+        "reader_struggle": "No struggle — the narrative is one of the clearest in ML systems papers; the 'entanglement' framing prevents the components from feeling like disconnected modules.",
+        "likely_consequence": "Readers finish with a coherent mental model of the system, not just a list of results.",
+        "revision_principle": "Use an explicit 'entanglement' or 'co-design' framing when components are mutually dependent; it structures the entire narrative."
+      },
+      {
+        "dimension": "terminology",
+        "score": 5,
+        "persona": ["A", "B", "C", "D", "E"],
+        "location": {"section": "2.1", "paragraph": 1, "quote": "For readers from adjacent ML fields: image segmentation asks a model to return a pixel-level binary mask indicating which pixels belong to a specified object or region."},
+        "observed": "The paper includes a dedicated primer (§2.1) defining IoU, mIoU, AP, and the three segmentation paradigms plus interactive segmentation. Technical terms (MAE, ViT-H, NMS, CLIP alignment) are explained inline with citations. Accessible to all five personas.",
+        "reader_struggle": "None — the primer is explicitly for 'readers from adjacent ML fields' (Persona B/C) and succeeds.",
+        "likely_consequence": "Adjacent researchers and newcomers can follow the method and experiments without external references.",
+        "revision_principle": "Include a short primer for the target adjacent audience defining core task metrics and paradigms; don't assume shared subfield vocabulary."
+      },
+      {
+        "dimension": "logical_flow",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "3.1", "paragraph": 1, "quote": "motivated by the principle of amortization — paying an expensive computation once and sharing its result across many lightweight operations that follow"},
+        "observed": "Each design decision traces to a stated principle: amortization → three-component split; ambiguity → 3 masks + min-loss training; data scaling → model-in-the-loop engine. The flow from principle to mechanism to result is consistent throughout.",
+        "reader_struggle": "None — the reasoning chain is visible at each step.",
+        "likely_consequence": "Readers can evaluate not just 'what' but 'why' for each architectural and data-engine choice.",
+        "revision_principle": "State the guiding principle before the mechanism; it makes the design feel inevitable rather than arbitrary."
+      },
+      {
+        "dimension": "evidence_traceability",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4.3", "paragraph": 4, "quote": "94% of pairs exceeded 90% IoU, and 97% exceeded 75% IoU... prior work estimates inter-annotator consistency at 85–91% IoU"},
+        "observed": "Key claims are backed by specific measurements with clear methodology: mask quality validation (500 images, ~50K masks, human correction), fairness evaluation (MIAP dataset, Fitzpatrick scale, confidence intervals), ablation controls (data stages, volume, encoder scale). Tables cite exact numbers. The paper notes where comparisons are not directly commensurable (94% threshold-exceedance vs 85-91% mean IoU).",
+        "reader_struggle": "Persona E can trace every major claim to a reported measurement; the non-commensurability note prevents overinterpretation.",
+        "likely_consequence": "Verifying reviewer can confirm evidence supports claims; adjacent researcher sees rigorous validation.",
+        "revision_principle": "When comparing metrics of different types (threshold-exceedance rate vs mean), explicitly note the non-commensurability."
+      },
+      {
+        "dimension": "figure_table",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "5.3", "paragraph": 3, "quote": "Table 1. Zero-shot edge detection on BSDS500."},
+        "observed": "Tables 1-3 are self-contained with clear column headers, method categories (trained vs zero-shot), and metric definitions referenced in §5.1. The edge detection table includes classical baselines (Canny, Felzenszwalb) as lower bounds, which is excellent context. Object proposal table breaks down by size and frequency. Instance segmentation table shows COCO and LVIS with size breakdowns.",
+        "reader_struggle": "None — tables are readable without the main text; metric definitions are in §5.1.",
+        "likely_consequence": "Readers can compare methods at a glance; the classical baselines in Table 1 correctly calibrate expectations for zero-shot performance.",
+        "revision_principle": "Include classical/non-learned baselines in zero-shot tables to anchor the lower bound; break down by meaningful subgroups (size, frequency)."
+      },
+      {
+        "dimension": "claim_evidence_alignment",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "5.5", "paragraph": 3, "quote": "No significance test for the 8.1 vs. 7.9 difference is reported; given the narrow gap and overlapping confidence intervals, this result should be read as suggestive rather than definitively significant."},
+        "observed": "Claims closely match evidence: 'substantially higher quality' for human ratings (7-9 vs lower for RITM, large gap); 'competitive with fully supervised methods on intrinsic mask quality' (human study 8.1 vs 7.9, caveated as suggestive); 'trails supervised methods on standard automatic precision metrics' (4.5 AP gap on COCO). The paper explicitly flags where evidence is suggestive vs definitive.",
+        "reader_struggle": "None — the alignment is careful and the caveats are in the main text, not footnotes.",
+        "likely_consequence": "Persona E sees appropriate claim strength; no overclaiming detected.",
+        "revision_principle": "When human study results are not statistically significant, state the numeric difference, the CIs, and label as 'suggestive' in the main text."
+      },
+      {
+        "dimension": "unsupported_inference",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "5.6", "paragraph": 1, "quote": "This task is presented as a proof of concept and is explicitly described as not fully robust."},
+        "observed": "No unsupported inferences found. The paper avoids 'prove', 'first', 'state-of-the-art' without qualification. 'Foundation model' is used with a caveat (§7.1: 'clear prompting strategies for semantic and panoptic segmentation do not yet exist'). Text-to-mask is explicitly 'proof of concept' and 'not fully robust'. Human preference is 'suggestive rather than definitively significant'.",
+        "reader_struggle": "None — the language is precisely scoped.",
+        "likely_consequence": "Readers are not misled about maturity of any capability.",
+        "revision_principle": "Use 'proof of concept', 'suggestive', 'consistent with' for preliminary results; reserve 'outperforms', 'achieves' for statistically solid automatic metrics."
+      },
+      {
+        "dimension": "redundancy",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1.2", "paragraph": 2, "quote": "The remainder of this paper describes each component, presents extensive zero-shot transfer experiments, and discusses limitations and implications."},
+        "observed": "No harmful redundancy. The abstract, intro, and conclusion each serve distinct roles (summary, framing, synthesis). Method details appear once in §3-4. Experiments are organized by task type, not repeated. The discussion adds interpretation and limitations not in results.",
+        "reader_struggle": "None — the paper respects the reader's time.",
+        "likely_consequence": "Efficient reading experience; no sense of repetition.",
+        "revision_principle": "Assign each paper section a distinct function (framing, mechanism, evidence, interpretation); don't re-describe methods in results or results in discussion."
+      },
+      {
+        "dimension": "cognitive_load",
+        "score": 5,
+        "persona": ["A", "B", "C", "D", "E"],
+        "location": {"section": "2.1", "paragraph": 1, "quote": "For readers from adjacent ML fields: image segmentation asks a model to return a pixel-level binary mask"},
+        "observed": "Cognitive load is well managed: primer in §2.1, principle-before-mechanism in §3.1, explicit zero-shot protocol in §5.1, domain categories for 23 datasets, tables with clear baselines. The paper anticipates what adjacent researchers don't know and provides it inline.",
+        "reader_struggle": "Minimal — even Persona D (educated non-specialist) can follow the high-level arc; Persona C gets the primer they need.",
+        "likely_consequence": "All five personas can read productively without external lookup.",
+        "revision_principle": "Invest in a short primer for adjacent audiences; state evaluation protocols before results; group diverse datasets by domain category."
+      },
+      {
+        "dimension": "orientation",
+        "score": 5,
+        "persona": ["A", "B", "C", "D", "E"],
+        "location": {"section": "1.2", "paragraph": 2, "quote": "The remainder of this paper describes each component, presents extensive zero-shot transfer experiments, and discusses limitations and implications."},
+        "observed": "Strong orientation: intro ends with a roadmap sentence; each major section (§2-7) has a clear purpose stated at its start; the three components are introduced in §1.2 then elaborated in order (§2 task, §3 model, §4 data); experiments follow a consistent structure (task, approach, results, interpretation).",
+        "reader_struggle": "None — readers always know where they are and why.",
+        "likely_consequence": "Easy navigation; readers can jump to sections of interest without losing the thread.",
+        "revision_principle": "End the introduction with a one-sentence roadmap; start each major section with its purpose in the larger argument."
+      },
+      {
+        "dimension": "so_what",
+        "score": 5,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "8", "paragraph": 1, "quote": "The critical enabling innovation is the three-stage data engine — a model-in-the-loop annotation loop that iteratively co-develops model capability and training data, ultimately generating 1.1 billion high-quality masks without ongoing human input."},
+        "answer": "The 'so what' is clearly articulated in the conclusion and discussion: (1) The data engine is the critical innovation — it solves the mask scarcity problem via model-in-the-loop scaling. (2) SAM generalizes zero-shot across domains/tasks, validated by human preference. (3) The release enables composable vision pipelines. (4) Open problems are honestly identified for the community to pursue.",
+        "reader_struggle": "None — the takeaway is memorable and actionable.",
+        "likely_consequence": "Readers remember the data engine as the key insight and SAM as a composable building block; they know the open frontiers.",
+        "revision_principle": "In the conclusion, name the single critical innovation, state the generalization evidence, and list the open problems that define the next phase of work."
+      }
+    ],
+    "inference_issues": [
+      {
+        "kind": "overstrong_language",
+        "location": {"section": "5.2", "paragraph": 3, "quote": "human raters still preferred SAM's masks — indicating that automatic metrics penalize SAM for valid but different interpretations of ambiguous prompts"},
+        "claim_text": "automatic metrics penalize SAM for valid but different interpretations of ambiguous prompts",
+        "missing_link": "The human study shows preference for SAM, but the causal attribution to 'valid but different interpretations' vs other factors (e.g., boundary smoothness, annotator bias toward SAM's style) is not directly tested. The paper acknowledges this in §5.5 for instance segmentation but not explicitly for the single-point human study."
+      },
+      {
+        "kind": "limitation_not_respected",
+        "location": {"section": "5.5", "paragraph": 3, "quote": "annotators rating masks on the LVIS validation set... gave SAM a mean rating of 8.1 ± 0.07 vs. ViTDet-H's 7.9 ± 0.08... No significance test for the 8.1 vs. 7.9 difference is reported; given the narrow gap and overlapping confidence intervals, this result should be read as suggestive rather than definitively significant."},
+        "claim_text": "SAM trails supervised methods on standard automatic precision metrics... SAM's masks are rated by human annotators as substantially higher quality than those of the strongest interactive segmentation baseline, and remain competitive with fully supervised methods on measures of intrinsic mask quality",
+        "missing_link": "The abstract claims 'substantially higher quality' for interactive baseline (RITM) and 'competitive with fully supervised methods' — the RITM comparison shows large human-rating gaps (7-9 vs lower), but the ViTDet-H comparison shows only 8.1 vs 7.9 (suggestive, not substantial). The abstract conflates the two comparisons."
+      },
+      {
+        "kind": "selective_presentation",
+        "location": {"section": "5.2", "paragraph": 2, "quote": "SAM outperforms RITM on 16 of 23 datasets by mIoU... on the 7 datasets where RITM leads, the margins are smaller"},
+        "claim_text": "SAM outperforms RITM on 16 of 23 datasets by mIoU",
+        "missing_link": "The paper does not report which 7 datasets RITM leads on, nor their characteristics. Persona E cannot assess whether RITM's wins cluster in specific domains (e.g., medical, aerial) that would qualify the generalization claim. The 23 datasets are listed in an appendix not in this packet."
+      },
+      {
+        "kind": "causal_overreach",
+        "location": {"section": "5.7", "paragraph": 3, "quote": "Training on only automatically generated masks (Stage 3 only, with 10× oversampling of earlier-stage masks) reduces performance by only ~0.5 mIoU relative to using all data — justifying automatic-only training as the default for simplicity."},
+        "claim_text": "automatic-only training as the default for simplicity",
+        "missing_link": "The ablation uses '10× oversampling of earlier-stage masks' — this is not pure Stage 3 only; it reweights earlier data. The claim that automatic-only training is justified depends on this reweighting, which is not fully explained (why 10×? what if 1×?). The evidence doesn't fully isolate 'automatic-only' from 'automatic + reweighted manual'."
+      }
+    ],
+    "objective_discrepancies": [
+      "The authors' objective states the paper is 'meant to present their research project to adjacent machine-learning researchers.' The paper succeeds at this — it includes a primer (§2.1), explains all metrics, and structures the narrative for adjacent readers. No discrepancy: the paper matches the stated objective well.",
+      "However, the objective doesn't mention the responsible AI/fairness analysis (§6), which is a substantial addition beyond 'presenting the research project.' This is a positive discrepancy — the paper does more than the minimal objective."
+    ],
+    "injection_suspected": []
+  }
+}

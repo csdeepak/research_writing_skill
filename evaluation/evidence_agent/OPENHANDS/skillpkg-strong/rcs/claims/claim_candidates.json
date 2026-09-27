@@ -1,0 +1,438 @@
+{
+ "claims": [
+  {
+   "id": "C001",
+   "statement": "OpenHands CodeActAgent v1.8 (claude-3.5-sonnet) resolves 26.0% of SWE-Bench Lite (300 instances, without hint text, 0-shot).",
+   "claim_type": "measured",
+   "evidence": [
+    "E010",
+    "E017"
+   ],
+   "scope": {
+    "datasets": [
+     "SWE-Bench Lite"
+    ],
+    "conditions": "300 instances, w/o hint, 0-shot, claude-3-5-sonnet@20240620"
+   },
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "single run, no variance/seeds reported (incomplete)",
+    "below top reported baselines Agentless 27.3 and Moatless 26.7"
+   ],
+   "author_confirmation": "pending",
+   "origin": "author_stated",
+   "quote": "our most recent version of CodeActAgent v1.8, using claude-3.5-sonnet, achieves a competitive resolve rate of 26%"
+  },
+  {
+   "id": "C002",
+   "statement": "OpenHands CodeActAgent v1.5 (gpt-4o) fixes 79.3% of bugs on the HumanEvalFix Python subset (164 instances, 0-shot, self-debug over multiple turns).",
+   "claim_type": "measured",
+   "evidence": [
+    "E020"
+   ],
+   "scope": {
+    "datasets": [
+     "HumanEvalFix (Python)"
+    ],
+    "conditions": "164 instances, 0-shot, gpt-4o-2024-05-13"
+   },
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "single run, no variance reported"
+   ],
+   "author_confirmation": "pending",
+   "origin": "author_stated",
+   "quote": "OpenHands CodeActAgent successfully fixes 79.3% of bugs in the Python split"
+  },
+  {
+   "id": "C003",
+   "statement": "On HumanEvalFix, OpenHands' 0-shot result (79.3%) is below SWE-Agent's 1-shot result (87.7%), a comparison across different shot settings.",
+   "claim_type": "observed",
+   "evidence": [
+    "E020",
+    "E021",
+    "E122"
+   ],
+   "scope": {
+    "datasets": [
+     "HumanEvalFix (Python)"
+    ],
+    "conditions": "OpenHands 0-shot vs SWE-Agent 1-shot"
+   },
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "both single-run values",
+    "settings differ (0-shot vs 1-shot), so not a like-for-like comparison"
+   ],
+   "author_confirmation": "pending",
+   "origin": "author_stated",
+   "quote": "SWE-Agent achieves 87.7% ... provides ... a full demonstration ... whereas our evaluation of OpenHands is 0-shot"
+  },
+  {
+   "id": "C004",
+   "statement": "OpenHands CodeActAgent v1.8 (claude-3.5-sonnet) reaches 52.0% accuracy on the GPQA diamond set (198 instances).",
+   "claim_type": "measured",
+   "evidence": [
+    "E060"
+   ],
+   "scope": {
+    "datasets": [
+     "GPQA diamond"
+    ],
+    "conditions": "198 instances, claude-3-5-sonnet-20240620"
+   },
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "single run, no variance reported"
+   ],
+   "author_confirmation": "pending",
+   "origin": "inferred",
+   "quote": null
+  },
+  {
+   "id": "C005",
+   "statement": "OpenHands CodeActAgent v1.5 (GPT-4o) reaches 53.1% accuracy on the GPQA diamond set (198 instances).",
+   "claim_type": "measured",
+   "evidence": [
+    "E064"
+   ],
+   "scope": {
+    "datasets": [
+     "GPQA diamond"
+    ],
+    "conditions": "198 instances, GPT-4o, v1.5"
+   },
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "single run, no variance reported"
+   ],
+   "author_confirmation": "pending",
+   "origin": "inferred",
+   "quote": null
+  },
+  {
+   "id": "C006",
+   "statement": "OpenHands CodeActAgent v1.5 (gpt-4o) achieves 57.6% on the AgentBench OS (bash) subset (144 instances), above the AgentBench gpt-4 baseline (42.4%).",
+   "claim_type": "measured",
+   "evidence": [
+    "E070",
+    "E071"
+   ],
+   "scope": {
+    "datasets": [
+     "AgentBench OS subset"
+    ],
+    "conditions": "144 instances, gpt-4o-2024-05-13"
+   },
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "single run, no variance",
+    "baseline tuning/budget parity not stated"
+   ],
+   "author_confirmation": "pending",
+   "origin": "inferred",
+   "quote": null
+  },
+  {
+   "id": "C007",
+   "statement": "OpenHands CodeActAgent v1.5 (gpt-4o) achieves 77.3% on the MINT math subset (225 instances), above the MINT gpt-4-0613 baseline (65.8%).",
+   "claim_type": "measured",
+   "evidence": [
+    "E080",
+    "E081"
+   ],
+   "scope": {
+    "datasets": [
+     "MINT math subset"
+    ],
+    "conditions": "225 instances, up to 5 turns, 2 solution attempts"
+   },
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "single run, no variance",
+    "baseline tuning/budget parity not stated"
+   ],
+   "author_confirmation": "pending",
+   "origin": "inferred",
+   "quote": null
+  },
+  {
+   "id": "C008",
+   "statement": "On the MINT code subset (136 instances), OpenHands CodeActAgent v1.5 (gpt-4o) scores 50.0%, below the MINT gpt-4-0613 baseline (59.6%).",
+   "claim_type": "observed",
+   "evidence": [
+    "E082",
+    "E083"
+   ],
+   "scope": {
+    "datasets": [
+     "MINT code subset"
+    ],
+    "conditions": "136 instances, gpt-4o-2024-05-13"
+   },
+   "confidence": "low",
+   "confidence_reasons": [
+    "OpenHands below baseline (negative result)",
+    "single run, no variance"
+   ],
+   "negative_results": [
+    "E082"
+   ],
+   "author_confirmation": "pending",
+   "origin": "inferred",
+   "quote": null
+  },
+  {
+   "id": "C009",
+   "statement": "OpenHands BrowsingAgent v1.0 (claude-3.5-sonnet) achieves 15.5% on WebArena (812 instances), below trained/reward-model baselines such as AutoWebGLM (18.2%) and Auto Eval & Refine (20.2%).",
+   "claim_type": "measured",
+   "evidence": [
+    "E030",
+    "E033"
+   ],
+   "scope": {
+    "datasets": [
+     "WebArena"
+    ],
+    "conditions": "812 instances, zero-shot prompting"
+   },
+   "confidence": "low",
+   "confidence_reasons": [
+    "OpenHands below several baselines",
+    "single run, no variance"
+   ],
+   "author_confirmation": "pending",
+   "origin": "author_stated",
+   "quote": "our BrowsingAgent achieves competitive performance among agents that use LLMs with domain-general prompting techniques"
+  },
+  {
+   "id": "C010",
+   "statement": "OpenHands BrowsingAgent v1.0 (gpt-4o) achieves 40.8% on MiniWoB++ (125 environments, full set), far below the trained specialist CC-NET (91.1%).",
+   "claim_type": "measured",
+   "evidence": [
+    "E040",
+    "E041"
+   ],
+   "scope": {
+    "datasets": [
+     "MiniWoB++"
+    ],
+    "conditions": "125 environments, full set including vision tasks"
+   },
+   "confidence": "low",
+   "confidence_reasons": [
+    "OpenHands far below trained specialist baseline (different training paradigm)",
+    "single run, no variance"
+   ],
+   "author_confirmation": "pending",
+   "origin": "inferred",
+   "quote": null
+  },
+  {
+   "id": "C011",
+   "statement": "OpenHands GPTSwarm v1.0 (gpt-4o) achieves 32.1% on the GAIA L1 validation set (53 instances), above the AutoGPT gpt-4-turbo baseline (13.2%).",
+   "claim_type": "measured",
+   "evidence": [
+    "E050",
+    "E052"
+   ],
+   "scope": {
+    "datasets": [
+     "GAIA L1 validation"
+    ],
+    "conditions": "53 instances, gpt-4o-2024-05-13"
+   },
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "single run, no variance",
+    "small evaluation set (53 instances)"
+   ],
+   "author_confirmation": "pending",
+   "origin": "inferred",
+   "quote": null
+  },
+  {
+   "id": "C012",
+   "statement": "OpenHands CodeActAgent v1.5 (gpt-4o) achieves 78.8% on ProofWriter (600 instances, 5-hop subset), close to Logic-LM (79.6%) and above Few-shot CoT gpt4 (68.1%).",
+   "claim_type": "measured",
+   "evidence": [
+    "E090",
+    "E091",
+    "E092",
+    "E093"
+   ],
+   "scope": {
+    "datasets": [
+     "ProofWriter 5-hop"
+    ],
+    "conditions": "600 instances; uses Logic-LM logical forms"
+   },
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "single run, no variance",
+    "uses Logic-LM-provided logical forms, qualifying the comparison"
+   ],
+   "author_confirmation": "pending",
+   "origin": "inferred",
+   "quote": null
+  },
+  {
+   "id": "C013",
+   "statement": "On the Entity Deduction Arena (200 instances), OpenHands CodeActAgent v1.5 (gpt-4o) scores 38.0%, below the zero-shot gpt-4-0314 baseline (40.0%).",
+   "claim_type": "observed",
+   "evidence": [
+    "E100",
+    "E101"
+   ],
+   "scope": {
+    "datasets": [
+     "Entity Deduction Arena"
+    ],
+    "conditions": "200 instances (Things + Celebrities, avg)"
+   },
+   "confidence": "low",
+   "confidence_reasons": [
+    "OpenHands below baseline (negative result)",
+    "single run, no variance"
+   ],
+   "negative_results": [
+    "E100"
+   ],
+   "author_confirmation": "pending",
+   "origin": "inferred",
+   "quote": null
+  },
+  {
+   "id": "C014",
+   "statement": "The same CodeAct agent, without system-prompt modifications, performs competitively across software development, web interaction, and miscellaneous tasks.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "E120",
+    "E010",
+    "E060",
+    "E070"
+   ],
+   "scope": {
+    "conditions": "generalist claim across three task categories, based on Table 3"
+   },
+   "confidence": "low",
+   "confidence_reasons": [
+    "'competitive' undefined with no threshold",
+    "single-run evidence, no variance",
+    "OpenHands is not top on several benchmarks"
+   ],
+   "author_confirmation": "pending",
+   "origin": "author_stated",
+   "quote": "the same CodeAct agent, without any modifications to its system prompt, demonstrates competitive performance across three major task categories"
+  },
+  {
+   "id": "C015",
+   "statement": "OpenHands agents do not achieve top performance in every benchmark category.",
+   "claim_type": "observed",
+   "evidence": [
+    "E121",
+    "E082",
+    "E100",
+    "E033",
+    "E041"
+   ],
+   "scope": {
+    "conditions": "across the evaluated benchmark suite"
+   },
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "directly supported by multiple below-baseline results",
+    "author-acknowledged"
+   ],
+   "negative_results": [
+    "E082",
+    "E100"
+   ],
+   "author_confirmation": "pending",
+   "origin": "author_stated",
+   "quote": "OpenHands agents may not achieve top performance in every category"
+  },
+  {
+   "id": "C016",
+   "statement": "Achieving 100% on HumanEvalFix is feasible and is targeted for future iterations of OpenHands.",
+   "claim_type": "hypothesis",
+   "evidence": [
+    "E134"
+   ],
+   "scope": {
+    "datasets": [
+     "HumanEvalFix"
+    ],
+    "conditions": "untested aspiration / future work"
+   },
+   "confidence": "low",
+   "confidence_reasons": [
+    "untested statement of intent"
+   ],
+   "author_confirmation": "pending",
+   "origin": "author_stated",
+   "quote": "achieving 100% on this benchmark is entirely feasible, which we seek to do in future iterations"
+  },
+  {
+   "id": "C017",
+   "statement": "OpenHands is a community project with more than 2.1K contributions from over 188 contributors, 32K GitHub stars, and an MIT license.",
+   "claim_type": "observed",
+   "evidence": [
+    "E001",
+    "E002",
+    "E003"
+   ],
+   "scope": {
+    "conditions": "self-reported, at time of writing; time-varying"
+   },
+   "confidence": "low",
+   "confidence_reasons": [
+    "self-reported, time-varying community metrics (soft)"
+   ],
+   "author_confirmation": "pending",
+   "origin": "author_stated",
+   "quote": "32K GitHub stars and more than 2.1K contributions from over 188 contributors"
+  },
+  {
+   "id": "C018",
+   "statement": "The SWE-Bench Lite score for CodeActAgent v1.8 with gpt-4o-mini is reported inconsistently across the paper (6.3% in Table 3 vs 7.0% in Table 4).",
+   "claim_type": "observed",
+   "evidence": [
+    "E012",
+    "E013"
+   ],
+   "scope": {
+    "datasets": [
+     "SWE-Bench Lite"
+    ],
+    "conditions": "gpt-4o-mini-2024-07-18, CodeActAgent v1.8"
+   },
+   "confidence": "low",
+   "confidence_reasons": [
+    "conflicting values present between Table 3 and Table 4; not resolved"
+   ],
+   "author_confirmation": "pending",
+   "origin": "inferred",
+   "quote": null
+  },
+  {
+   "id": "C019",
+   "statement": "Running the complete SWE-Bench set (2294 instances) is estimated to cost about $6.9k (at a conservative $3 per instance).",
+   "claim_type": "derived",
+   "evidence": [
+    "E018"
+   ],
+   "scope": {
+    "conditions": "conservative cost estimate, not a measured aggregate"
+   },
+   "confidence": "low",
+   "confidence_reasons": [
+    "explicitly labeled an estimate (soft)"
+   ],
+   "author_confirmation": "pending",
+   "origin": "author_stated",
+   "quote": "Running the complete set of 2294 instances costs $6.9k, using a conservative estimate of $3 per instance"
+  }
+ ],
+ "limitations": []
+}

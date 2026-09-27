@@ -1,0 +1,24 @@
+# VENUE_UNKNOWN: no venue specified for this deliverable. Using the generic fallback profile.
+# Every rule below is assumed; recorded in open_issues.md and state.json accepted_risks.
+venue: {name: "generic research article for an adjacent-ML audience", type: "standalone paper", guideline_urls: []}
+structure:
+  section_template: [Title, Abstract, Introduction, Related Work, Platform and Method, Experimental Setup, Results, Discussion, Limitations, Conclusion, References]
+  results_discussion: separate
+  related_work_position: after_intro
+  limitations_section_required: true
+  assumed: true
+limits: {pages_main: null, words_main: "3000-4500 (task requirement)", abstract_words: 250, supplement_allowed: false, assumed: true}
+style:
+  citation_style: "(FirstAuthor et al., Year), as it appears in the source evidence"
+  voice_preference: "active voice; 'we' for author actions (reporting the original authors' work)"
+  spelling: US
+  abstract_format: unstructured
+  abstract_citations_allowed: false
+  assumed: true
+required_statements:
+  data_availability: false
+  code_availability: false
+  ai_use_disclosure: "drafted separately in disclosure.md per run instructions"
+  assumed: true
+checklists: []
+reporting_guideline: null

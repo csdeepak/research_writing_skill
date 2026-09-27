@@ -1,0 +1,11 @@
+{
+  "entries": [
+    {"id":"Q1","question":"What is an LLM agent and why would fixing code or browsing the web need one?","raised_at":"Introduction ¶1","answered_at":"Introduction ¶2"},
+    {"id":"Q2","question":"What exactly is OpenHands (platform vs. agent vs. benchmark suite)?","raised_at":"Introduction ¶3","answered_at":"§3 Platform"},
+    {"id":"Q3","question":"Is 26% on SWE-Bench Lite good?","raised_at":"§5.1 ¶1","answered_at":"§5.1 ¶1 (baseline comparison in-line)"},
+    {"id":"Q4","question":"Why does OpenHands trail on WebArena/MiniWoB++ but not on code repair?","raised_at":"§5.2","answered_at":"§6 Discussion"},
+    {"id":"Q5","question":"Can these numbers be trusted as statistically robust?","raised_at":"§5.1 ¶1","answered_at":"§7 Limitations"},
+    {"id":"Q6","question":"Why do two tables disagree on the same number?","raised_at":"§5.1 (footnote)","answered_at":"§7 Limitations"}
+  ],
+  "debt_at_end": 0
+}

@@ -1,0 +1,156 @@
+{
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "Existing benchmarks (CoreMark, MLMark, MLPerf inference) do not adequately address the unique constraints of TinyML systems: they lack energy measurement, require too much memory, or are not designed for MCU-class hardware.",
+      "claim_type": "observed",
+      "evidence": ["E035"],
+      "scope": {"benchmarks": ["CoreMark", "MLMark", "MLPerf inference"], "condition": "as of 2021"},
+      "confidence": "moderate",
+      "confidence_reasons": ["Authors' qualitative argument; no controlled comparison experiment", "CoreMark omission of ML and power is factual; MLMark memory requirement is stated as a fact"],
+      "limitations": ["L001"],
+      "permitted_verbs": ["does not", "lacked", "was not designed for"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C002",
+      "statement": "MLPerf Tiny measures three axes — accuracy, latency (inferences per second), and energy (µJ/inference) — for each of its four benchmarks.",
+      "claim_type": "measured",
+      "evidence": ["E002", "E023", "E024"],
+      "scope": {"benchmark": "MLPerf Tiny v0.5"},
+      "confidence": "high",
+      "confidence_reasons": ["Measurement protocol defined in detail in §5.3 and Appendix A"],
+      "limitations": [],
+      "permitted_verbs": ["measures", "evaluates"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C003",
+      "statement": "MLPerf Tiny v0.5 comprises four benchmarks: keyword spotting (DS-CNN, Speech Commands v2, 90% accuracy target), visual wake words (MobileNetV1, MSCOCO 2014, 80% accuracy target), image classification (ResNetv1, CIFAR-10, 85% accuracy target), and anomaly detection (FC autoencoder, DCASE2020 Toy-car, 0.85 AUC target).",
+      "claim_type": "measured",
+      "evidence": ["E003", "E008", "E012", "E015", "E018", "E011", "E014", "E017", "E020"],
+      "scope": {"benchmark": "MLPerf Tiny v0.5"},
+      "confidence": "high",
+      "confidence_reasons": ["Fully specified in paper Table 1 and §4"],
+      "limitations": [],
+      "permitted_verbs": ["comprises", "includes", "consists of"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C004",
+      "statement": "The DS-CNN KWS reference model achieves 92.2% accuracy in the authors' experiments; the quantized version achieves 91.6% on the full test set and 91.7% on a 1,000-utterance subset.",
+      "claim_type": "measured",
+      "evidence": ["E009", "E010"],
+      "scope": {"model": "DS-CNN", "dataset": "Speech Commands v2", "conditions": "authors' single-run experiment"},
+      "confidence": "moderate",
+      "confidence_reasons": ["No variance reported", "Single run"],
+      "limitations": ["L002"],
+      "permitted_verbs": ["achieved", "reached"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C005",
+      "statement": "The AD reference model (fp32) achieves AUC 0.88; the quantized version achieves AUC 0.86 on the 248-sample evaluation set.",
+      "claim_type": "measured",
+      "evidence": ["E020", "E021"],
+      "scope": {"model": "FC autoencoder", "dataset": "DCASE2020 Toy-car subset, 248 samples"},
+      "confidence": "moderate",
+      "confidence_reasons": ["No variance reported", "Single run"],
+      "limitations": ["L002"],
+      "permitted_verbs": ["achieves", "reached"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C006",
+      "statement": "The first MLPerf Tiny submission round (v0.5, June 2021) received five diverse submissions spanning ARM MCU, RISC-V MCU, neural network accelerator, software-only toolchain (Raspberry Pi 4), and FPGA platforms.",
+      "claim_type": "observed",
+      "evidence": ["E026"],
+      "scope": {"round": "v0.5", "date": "June 2021"},
+      "confidence": "high",
+      "confidence_reasons": ["Documented in Table 2 and §6.1"],
+      "limitations": [],
+      "permitted_verbs": ["received", "included"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C007",
+      "statement": "INT-8 post-training quantization is the most common numerical format across v0.5 submissions.",
+      "claim_type": "observed",
+      "evidence": ["E027"],
+      "scope": {"round": "v0.5"},
+      "confidence": "moderate",
+      "confidence_reasons": ["Table 2 lists 4 of 5 submissions using INT-8 PTQ; observation is directly supported"],
+      "limitations": ["L003"],
+      "permitted_verbs": ["was", "is observed to be"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C008",
+      "statement": "The modular closed/open division design enabled submitters with different goals — hardware performance, software optimization, precision quantization — to participate in the same benchmark round.",
+      "claim_type": "interpretation",
+      "evidence": ["E026", "E030", "E031"],
+      "scope": {"round": "v0.5"},
+      "confidence": "moderate",
+      "confidence_reasons": ["Evidence shows diverse submission types; interpretation that this is due to the modular design is stated by authors but not experimentally isolated"],
+      "limitations": ["L003"],
+      "permitted_verbs": ["suggests", "is consistent with", "enabled"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C009",
+      "statement": "No v0.5 submission modified the training dataset, suggesting TinyML design at this stage is primarily focused on models, frameworks, and hardware rather than data.",
+      "claim_type": "observed",
+      "evidence": ["E028"],
+      "scope": {"round": "v0.5"},
+      "confidence": "moderate",
+      "confidence_reasons": ["Directly observed from Table 2; causal interpretation ('suggesting') is appropriately hedged"],
+      "limitations": ["L003"],
+      "permitted_verbs": ["none modified", "suggesting"],
+      "author_confirmation": "confirmed"
+    },
+    {
+      "id": "C010",
+      "statement": "The power consumption of v0.5 platforms ranged from µWatts to Watts.",
+      "claim_type": "observed",
+      "evidence": ["E029"],
+      "scope": {"round": "v0.5"},
+      "confidence": "moderate",
+      "confidence_reasons": ["Stated in paper §6.2; exact per-platform values not given"],
+      "limitations": [],
+      "permitted_verbs": ["ranged"],
+      "author_confirmation": "confirmed"
+    }
+  ],
+  "limitations": [
+    {
+      "id": "L001",
+      "statement": "The gap characterization of prior benchmarks is qualitative; no controlled performance comparison was run.",
+      "affects_claims": ["C001"],
+      "evidence": ["E035"]
+    },
+    {
+      "id": "L002",
+      "statement": "Reference model accuracy values are single-run results with no variance reported; seed-to-seed or run-to-run stability is unknown.",
+      "affects_claims": ["C004", "C005"],
+      "evidence": ["E009", "E010", "E020"]
+    },
+    {
+      "id": "L003",
+      "statement": "The v0.5 round is the first submission round only; patterns observed (e.g. INT-8 dominance, no dataset modifications) may change in future rounds.",
+      "affects_claims": ["C007", "C008", "C009"],
+      "evidence": ["E026", "E028"]
+    },
+    {
+      "id": "L004",
+      "statement": "Pre-processing and streaming input are excluded from the measurement window, which may not reflect real-world TinyML deployment performance.",
+      "affects_claims": ["C002"],
+      "evidence": ["E032", "E034"]
+    },
+    {
+      "id": "L005",
+      "statement": "Closed division models are limited to FC and CNN architectures; RNN and other architectures are not in the reference implementations.",
+      "affects_claims": ["C003"],
+      "evidence": ["E033"]
+    }
+  ]
+}

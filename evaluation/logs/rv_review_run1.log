@@ -1,0 +1,84 @@
+ok F1_s1_pkt-5ff4438a.txt claude-opus-4-8 
+ok F1_s1_pkt-70599dc0.txt claude-opus-4-8 
+ok F1_s1_pkt-766e9734.txt claude-opus-4-8 
+ok F1_s1_pkt-84ad5868.txt claude-opus-4-8 
+ok F1_s1_pkt-c0b734ff.txt claude-opus-4-8 
+ok F1_s1_pkt-cb16d676.txt claude-opus-4-8 
+ok F1_s1_pkt-e2bf3043.txt claude-opus-4-8 
+failed F2_s1_pkt-5ff4438a.txt None RuntimeError: codex exit 1: ... 1/5
+ERROR: Reconnecting... 2/5
+ERROR: Reconnecting... 3/5
+ERROR: Reconnecting... 4/5
+ERR
+failed F2_s1_pkt-70599dc0.txt None RuntimeError: codex exit 1: ... 1/5
+ERROR: Reconnecting... 2/5
+ERROR: Reconnecting... 3/5
+ERROR: Reconnecting... 4/5
+ERR
+failed F2_s1_pkt-766e9734.txt None RuntimeError: codex exit 1: ... 1/5
+ERROR: Reconnecting... 2/5
+ERROR: Reconnecting... 3/5
+ERROR: Reconnecting... 4/5
+ERR
+failed F2_s1_pkt-84ad5868.txt None RuntimeError: codex exit 1: ... 1/5
+ERROR: Reconnecting... 2/5
+ERROR: Reconnecting... 3/5
+ERROR: Reconnecting... 4/5
+ERR
+failed F2_s1_pkt-c0b734ff.txt None RuntimeError: codex exit 1: ... 1/5
+ERROR: Reconnecting... 2/5
+ERROR: Reconnecting... 3/5
+ERROR: Reconnecting... 4/5
+ERR
+failed F2_s1_pkt-cb16d676.txt None RuntimeError: codex exit 1: ... 1/5
+ERROR: Reconnecting... 2/5
+ERROR: Reconnecting... 3/5
+ERROR: Reconnecting... 4/5
+ERR
+failed F2_s1_pkt-e2bf3043.txt None RuntimeError: codex exit 1: ... 1/5
+ERROR: Reconnecting... 2/5
+ERROR: Reconnecting... 3/5
+ERROR: Reconnecting... 4/5
+ERR
+ok F1_s2_pkt-5ff4438a.txt claude-opus-4-8 
+ok F1_s2_pkt-70599dc0.txt claude-opus-4-8 
+ok F1_s2_pkt-766e9734.txt claude-opus-4-8 
+ok F1_s2_pkt-84ad5868.txt claude-opus-4-8 
+ok F1_s2_pkt-c0b734ff.txt claude-opus-4-8 
+ok F1_s2_pkt-cb16d676.txt claude-opus-4-8 
+ok F1_s2_pkt-e2bf3043.txt claude-opus-4-8 
+failed F2_s2_pkt-5ff4438a.txt None RuntimeError: codex exit 1: ... 1/5
+ERROR: Reconnecting... 2/5
+ERROR: Reconnecting... 3/5
+ERROR: Reconnecting... 4/5
+ERR
+failed F2_s2_pkt-70599dc0.txt None RuntimeError: codex exit 1: ... 1/5
+ERROR: Reconnecting... 2/5
+ERROR: Reconnecting... 3/5
+ERROR: Reconnecting... 4/5
+ERR
+failed F2_s2_pkt-766e9734.txt None RuntimeError: codex exit 1: ... 1/5
+ERROR: Reconnecting... 2/5
+ERROR: Reconnecting... 3/5
+ERROR: Reconnecting... 4/5
+ERR
+failed F2_s2_pkt-84ad5868.txt None RuntimeError: codex exit 1: ... 1/5
+ERROR: Reconnecting... 2/5
+ERROR: Reconnecting... 3/5
+ERROR: Reconnecting... 4/5
+ERR
+failed F2_s2_pkt-c0b734ff.txt None RuntimeError: codex exit 1: ... 1/5
+ERROR: Reconnecting... 2/5
+ERROR: Reconnecting... 3/5
+ERROR: Reconnecting... 4/5
+ERR
+failed F2_s2_pkt-cb16d676.txt None RuntimeError: codex exit 1: ... 1/5
+ERROR: Reconnecting... 2/5
+ERROR: Reconnecting... 3/5
+ERROR: Reconnecting... 4/5
+ERR
+failed F2_s2_pkt-e2bf3043.txt None RuntimeError: codex exit 1: ... 1/5
+ERROR: Reconnecting... 2/5
+ERROR: Reconnecting... 3/5
+ERROR: Reconnecting... 4/5
+ERR

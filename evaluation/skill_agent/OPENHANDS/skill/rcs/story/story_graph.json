@@ -1,0 +1,89 @@
+{
+  "nodes": [
+    {
+      "id": "PROBLEM",
+      "label": "AI agents can now attempt complex real-world tasks, but the ecosystem is fragmented",
+      "evidence_ids": ["E034", "E038"]
+    },
+    {
+      "id": "WHY_IT_MATTERS",
+      "label": "Software is the most powerful human interface with the world; agents acting through software can scale human productivity",
+      "evidence_ids": ["E035"]
+    },
+    {
+      "id": "KNOWN",
+      "label": "Existing frameworks (AutoGPT, LangChain, MetaGPT, AutoGen, SWE-Agent) each address subsets of the problem; no unified platform exists",
+      "evidence_ids": ["E004", "E005", "E006"]
+    },
+    {
+      "id": "GAP",
+      "label": "No open platform combines: safe sandboxed execution, extensible skills, multi-agent delegation, and multi-benchmark evaluation for generalist agents",
+      "evidence_ids": ["E036", "E037"]
+    },
+    {
+      "id": "RQ",
+      "label": "Can a unified platform enable development and evaluation of generalist agents that act through software?",
+      "evidence_ids": []
+    },
+    {
+      "id": "APPROACH",
+      "label": "OpenHands: event-stream architecture + Docker sandbox + AgentSkills + multi-agent + 15-benchmark evaluation",
+      "evidence_ids": ["E035", "E036", "E037", "E038"]
+    },
+    {
+      "id": "DESIGN",
+      "label": "CodeActAgent as generalist baseline; 15 benchmarks spanning 3 categories; 0-shot evaluation without hint text",
+      "evidence_ids": ["E001", "E008", "E017", "E022", "E037"]
+    },
+    {
+      "id": "OBSERVATION_SWE",
+      "label": "CodeActAgent achieves 26.0% SWE-Bench Lite (claude-3-5-sonnet), competitive with open-source specialists",
+      "evidence_ids": ["E001", "E003", "E004", "E005", "E006", "E007"]
+    },
+    {
+      "id": "OBSERVATION_BUG",
+      "label": "CodeActAgent fixes 79.3% of HumanEvalFix bugs (0-shot), nearly doubling non-agentic baselines",
+      "evidence_ids": ["E008", "E009", "E010"]
+    },
+    {
+      "id": "OBSERVATION_WEB",
+      "label": "BrowsingAgent achieves 15.5% on WebArena, competitive with domain-general LLM agents",
+      "evidence_ids": ["E017", "E018", "E019", "E020"]
+    },
+    {
+      "id": "OBSERVATION_MISC",
+      "label": "CodeActAgent surpasses GPT-4 CoT on GPQA (52% vs 38.8%) and exceeds task-specific baselines on AgentBench and MINT",
+      "evidence_ids": ["E022", "E023", "E026", "E027", "E028", "E029", "E030", "E031"]
+    },
+    {
+      "id": "RESULT",
+      "label": "One generalist agent achieves competitive performance across all three task categories without modification",
+      "evidence_ids": ["E001", "E017", "E022"]
+    },
+    {
+      "id": "INTERPRETATION",
+      "label": "Code as an action space is sufficiently expressive to handle software, web, and reasoning tasks; platform infrastructure accelerates this research",
+      "evidence_ids": ["E035", "E043"]
+    },
+    {
+      "id": "CONTRIBUTION",
+      "label": "OpenHands: open platform + generalist evaluation + community ecosystem; MIT licensed",
+      "evidence_ids": ["E034", "E043"]
+    },
+    {
+      "id": "LIMITATION",
+      "label": "No variance estimates; struggles with long files; workflow generation still manual",
+      "evidence_ids": ["E040", "E041", "M001", "M002"]
+    },
+    {
+      "id": "IMPLICATION",
+      "label": "Open platforms that unify evaluation are necessary infrastructure for agent research; software-action agents generalize more than expected",
+      "evidence_ids": []
+    },
+    {
+      "id": "FUTURE",
+      "label": "Stronger training, multi-modality, automated workflow, improved file editing",
+      "evidence_ids": ["E040", "E041"]
+    }
+  ]
+}

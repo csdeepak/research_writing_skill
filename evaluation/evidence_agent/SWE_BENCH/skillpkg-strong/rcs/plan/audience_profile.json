@@ -1,0 +1,11 @@
+{
+ "mode": "B",
+ "primary": "ML researchers from other subfields (adjacent researchers): general ML/deep-learning and standard evaluation/statistics background, but not this project's subfield-specific terminology, datasets, or prior work",
+ "secondary": "readers checking whether the reported numbers and comparisons are well-supported",
+ "tertiary": "practitioners and students who later want to know what SWE-bench measures and how hard it is",
+ "assumed_known": ["supervised learning", "language models", "fine-tuning", "train/test splits", "greedy decoding", "retrieval (general concept)", "precision/recall-style metrics"],
+ "not_assumed": ["software-engineering-benchmark conventions", "BM25", "pull request / issue terminology", "unified diff / patch format", "the specific benchmark suite (SWE-bench) and its predecessors", "LoRA fine-tuning details"],
+ "binding_personas": ["A", "B", "E"],
+ "term_budget": {"per_paragraph": 2, "abstract_acronyms": 1},
+ "source": "run-specified in TASK.md; no human available, so mode B is used directly (already the exact audience description given), recorded in state.json accepted_risks"
+}

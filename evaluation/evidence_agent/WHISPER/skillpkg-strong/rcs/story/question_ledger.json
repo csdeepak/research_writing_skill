@@ -1,0 +1,13 @@
+{
+ "entries": [
+  {"id": "Q-R1", "question": "What is WER/BLEU and is lower/higher better?", "raised_at": "Introduction", "answered_at": "Introduction (first use)"},
+  {"id": "Q-R2", "question": "What does 'zero-shot' mean here?", "raised_at": "Introduction", "answered_at": "Introduction (first use)"},
+  {"id": "Q-R3", "question": "How can you tell robustness apart from just being a good model on one test set?", "raised_at": "Introduction/Method", "answered_at": "Method (effective robustness defined)"},
+  {"id": "Q-R4", "question": "Is the 55.2% figure a fair comparison?", "raised_at": "Results", "answered_at": "Results + Limitations (matching procedure and its caveats)"},
+  {"id": "Q-R5", "question": "Why does Whisper do worse on VoxPopuli and Fleurs language ID?", "raised_at": "Results", "answered_at": "Results/Discussion (data overlap and distribution differences noted)"},
+  {"id": "Q-R6", "question": "Does more data always help?", "raised_at": "Results (scaling)", "answered_at": "Results (diminishing returns) + Discussion"},
+  {"id": "Q-R7", "question": "Is 'new state of the art' justified?", "raised_at": "Results (translation)", "answered_at": "Results (benchmark, comparison set, and date named) + Limitations (not independently re-verified)"},
+  {"id": "Q-R8", "question": "Are these numbers statistically reliable?", "raised_at": "Results", "answered_at": "Limitations (single-run point estimates, no variance)"}
+ ],
+ "debt": 0
+}

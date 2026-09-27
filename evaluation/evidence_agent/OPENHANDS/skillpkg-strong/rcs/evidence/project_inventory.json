@@ -1,0 +1,12 @@
+{
+  "project_root": "./project/",
+  "note": "This run receives a pre-built evidence package (per EVIDENCE INTERFACE FOR THIS RUN in TASK.md) in place of a raw project folder. Steps 1-2 (CORPUS_AGENT, mode=evidence) were performed by a separate evidence agent; the files below are treated as their validated output and copied into .rcs/ at the paths this skill expects. AUTHOR (this run) re-read every item before use.",
+  "files": [
+    {"path": "project/research_evidence.json", "class": "evidence_map", "opened": true, "n_items": 84},
+    {"path": "project/claim_candidates.json", "class": "claim_candidates", "opened": true, "n_claims": 19},
+    {"path": "project/missing_evidence.json", "class": "missing_evidence", "opened": true, "n_items": 7}
+  ],
+  "skipped": [],
+  "original_paper_availability": "Not available to this run. All evidence locators point to paper.txt / README_1.md / README_2.md of the original OpenHands project, which this run cannot open. Locators are kept as provenance metadata; they are not re-verified against source bytes in this run (per EVIDENCE INTERFACE note: unresolvable locators are not treated as errors).",
+  "failure_state_check": "NO_EVIDENCE not raised: 84 result/method/observation-bearing evidence items are present."
+}

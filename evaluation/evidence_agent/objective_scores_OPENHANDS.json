@@ -1,0 +1,87 @@
+{
+ "cheap": {
+  "present": true,
+  "evidence_schema_errors": 0,
+  "n_evidence": 45,
+  "kinds": {
+   "external_fact": 3,
+   "observation": 6,
+   "result": 27,
+   "hypothesis_stated": 1,
+   "limitation_noted": 3,
+   "negative_result": 1,
+   "method_detail": 2,
+   "implementation_detail": 1,
+   "assumption": 1
+  },
+  "n_negative_results": 1,
+  "n_limitations_noted": 3,
+  "numbers_checked": 146,
+  "numbers_not_in_source": 3,
+  "numeric_grounding_rate": 0.9795,
+  "ungrounded_examples": [
+   "2100",
+   "32000",
+   "6900"
+  ],
+  "strength_counts": {
+   "hard": 32,
+   "soft": 13
+  },
+  "n_claims": 19,
+  "claim_types": {
+   "measured": 6,
+   "observed": 1,
+   "derived": 2,
+   "literature": 1,
+   "interpretation": 3,
+   "hypothesis": 1,
+   "speculation": 0,
+   "future": 0
+  },
+  "claims_with_unresolved_evidence": 0,
+  "claims_without_evidence_needing_it": 0,
+  "n_missing": 18
+ },
+ "strong": {
+  "present": true,
+  "evidence_schema_errors": 0,
+  "n_evidence": 72,
+  "kinds": {
+   "external_fact": 5,
+   "method_detail": 5,
+   "result": 22,
+   "baseline": 19,
+   "observation": 5,
+   "dataset": 7,
+   "negative_result": 2,
+   "assumption": 1,
+   "limitation_noted": 5,
+   "hypothesis_stated": 1
+  },
+  "n_negative_results": 2,
+  "n_limitations_noted": 5,
+  "numbers_checked": 224,
+  "numbers_not_in_source": 0,
+  "numeric_grounding_rate": 1.0,
+  "ungrounded_examples": [],
+  "strength_counts": {
+   "hard": 44,
+   "soft": 28
+  },
+  "n_claims": 19,
+  "claim_types": {
+   "measured": 10,
+   "observed": 6,
+   "derived": 1,
+   "literature": 0,
+   "interpretation": 1,
+   "hypothesis": 1,
+   "speculation": 0,
+   "future": 0
+  },
+  "claims_with_unresolved_evidence": 0,
+  "claims_without_evidence_needing_it": 0,
+  "n_missing": 8
+ }
+}

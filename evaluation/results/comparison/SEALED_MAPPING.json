@@ -1,0 +1,312 @@
+{
+ "pkt-d407518f": {
+  "project": "SWE_BENCH",
+  "condition": "plain",
+  "source": "evaluation/plain_agent/SWE_BENCH/plain/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [],
+   "words_main": 4030,
+   "words_total": 4478
+  }
+ },
+ "pkt-951b3664": {
+  "project": "SWE_BENCH",
+  "condition": "skill",
+  "source": "evaluation/skill_agent/SWE_BENCH/skill/paper.md",
+  "clean_log": {
+   "markers_removed": 1,
+   "provenance_lines_removed": [],
+   "sanitization": [],
+   "words_main": 4662,
+   "words_total": 5172
+  }
+ },
+ "pkt-19d12a6e": {
+  "project": "BEIR",
+  "condition": "plain",
+  "source": "evaluation/plain_agent/BEIR/plain/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [],
+   "words_main": 4250,
+   "words_total": 4834
+  }
+ },
+ "pkt-8e0fb4e7": {
+  "project": "BEIR",
+  "condition": "skill",
+  "source": "evaluation/skill_agent/BEIR/skill/paper.md",
+  "clean_log": {
+   "markers_removed": 1,
+   "provenance_lines_removed": [],
+   "sanitization": [],
+   "words_main": 5071,
+   "words_total": 5448
+  }
+ },
+ "pkt-c2e46500": {
+  "project": "MLPERF_TINY",
+  "condition": "plain",
+  "source": "evaluation/plain_agent/MLPERF_TINY/plain/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "warning": "internal_ids_present",
+     "ids": [
+      "N6705"
+     ],
+     "note": "internal artifact IDs leak provenance; remove from prose"
+    }
+   ],
+   "words_main": 4792,
+   "words_total": 5340
+  }
+ },
+ "pkt-9ec01847": {
+  "project": "MLPERF_TINY",
+  "condition": "skill",
+  "source": "evaluation/skill_agent/MLPERF_TINY/skill/paper.md",
+  "clean_log": {
+   "markers_removed": 2,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "warning": "internal_ids_present",
+     "ids": [
+      "N6705"
+     ],
+     "note": "internal artifact IDs leak provenance; remove from prose"
+    }
+   ],
+   "words_main": 4257,
+   "words_total": 4689
+  }
+ },
+ "pkt-01585866": {
+  "project": "SAM",
+  "condition": "plain",
+  "source": "evaluation/plain_agent/SAM/plain/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [],
+   "words_main": 4365,
+   "words_total": 5109
+  }
+ },
+ "pkt-60bb99fc": {
+  "project": "SAM",
+  "condition": "skill",
+  "source": "evaluation/skill_agent/SAM/skill/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [],
+   "words_main": 4704,
+   "words_total": 5002
+  }
+ },
+ "pkt-ddb44bd8": {
+  "project": "WHISPER",
+  "condition": "plain",
+  "source": "evaluation/plain_agent/WHISPER/plain/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [],
+   "words_main": 4459,
+   "words_total": 5516
+  }
+ },
+ "pkt-5d724771": {
+  "project": "WHISPER",
+  "condition": "skill",
+  "source": "evaluation/skill_agent/WHISPER/skill/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [],
+   "words_main": 5888,
+   "words_total": 6408
+  }
+ },
+ "pkt-93f95d2e": {
+  "project": "OPENHANDS",
+  "condition": "plain",
+  "source": "evaluation/plain_agent/OPENHANDS/plain/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [],
+   "words_main": 3967,
+   "words_total": 4993
+  }
+ },
+ "pkt-ba793105": {
+  "project": "OPENHANDS",
+  "condition": "skill",
+  "source": "evaluation/skill_agent/OPENHANDS/skill/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [],
+   "words_main": 4468,
+   "words_total": 4928
+  }
+ },
+ "pkt-6cf695b8": {
+  "project": "SWE_BENCH",
+  "condition": "skillpkg-cheap",
+  "source": "evaluation/evidence_agent/SWE_BENCH/skillpkg-cheap/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 85
+    },
+    {
+     "warning": "internal_ids_present",
+     "ids": [
+      "N01",
+      "N02",
+      "N05"
+     ],
+     "note": "internal artifact IDs leak provenance; remove from prose"
+    }
+   ],
+   "words_main": 4388,
+   "words_total": 4446
+  }
+ },
+ "pkt-2393e9c7": {
+  "project": "SWE_BENCH",
+  "condition": "skillpkg-strong",
+  "source": "evaluation/evidence_agent/SWE_BENCH/skillpkg-strong/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [
+    "*Note on references: no citable prior-work sources could be identified in the evidence available to this paper (see the sourcing note at the start of Section 2); accordingly, no References section of "
+   ],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 70
+    }
+   ],
+   "words_main": 4428,
+   "words_total": 4428
+  }
+ },
+ "pkt-44a7cab7": {
+  "project": "WHISPER",
+  "condition": "skillpkg-cheap",
+  "source": "evaluation/evidence_agent/WHISPER/skillpkg-cheap/paper.md",
+  "clean_log": {
+   "markers_removed": 4,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 90
+    },
+    {
+     "warning": "internal_ids_present",
+     "ids": [
+      "E003",
+      "E010",
+      "E011",
+      "E012",
+      "E013",
+      "E014",
+      "E019",
+      "E021",
+      "E022",
+      "E025",
+      "E026",
+      "E029",
+      "E030",
+      "E031",
+      "E032"
+     ],
+     "note": "internal artifact IDs leak provenance; remove from prose"
+    }
+   ],
+   "words_main": 4382,
+   "words_total": 4507
+  }
+ },
+ "pkt-70d8a010": {
+  "project": "OPENHANDS",
+  "condition": "skillpkg-cheap",
+  "source": "evaluation/evidence_agent/OPENHANDS/skillpkg-cheap/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 51
+    }
+   ],
+   "words_main": 4231,
+   "words_total": 4262
+  }
+ },
+ "pkt-18d4ef49": {
+  "project": "WHISPER",
+  "condition": "skillpkg-strong",
+  "source": "evaluation/evidence_agent/WHISPER/skillpkg-strong/paper.md",
+  "clean_log": {
+   "markers_removed": 5,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 57
+    },
+    {
+     "warning": "internal_ids_present",
+     "ids": [
+      "E004",
+      "E005",
+      "E008",
+      "E010",
+      "E011",
+      "E034",
+      "E035",
+      "E048"
+     ],
+     "note": "internal artifact IDs leak provenance; remove from prose"
+    }
+   ],
+   "words_main": 4398,
+   "words_total": 4415
+  }
+ },
+ "pkt-47ad65cd": {
+  "project": "OPENHANDS",
+  "condition": "skillpkg-strong",
+  "source": "evaluation/evidence_agent/OPENHANDS/skillpkg-strong/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [
+    "open_issues.md.*"
+   ],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 61
+    }
+   ],
+   "words_main": 4188,
+   "words_total": 4368
+  }
+ }
+}

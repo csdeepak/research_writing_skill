@@ -1,0 +1,13 @@
+{
+  "note": "Concepts the project materials assume the reader already knows (undefined terms in the evidence's own prose quotes). Used to see the curse-of-knowledge gap for the target audience (mode B).",
+  "assumed_by_project_without_definition": [
+    "LLM agent / agentic loop",
+    "resolve rate (SWE-Bench convention)",
+    "pass@k / self-debug",
+    "0-shot vs 1-shot demonstration",
+    "sandboxed execution environment",
+    "delegation between agents",
+    "benchmark-specific jargon: GAIA levels, MINT turns, EDA 'Things/Celebrities'"
+  ],
+  "gap_for_mode_B_reader": "An adjacent ML researcher knows supervised/RL evaluation practice and LLM basics, but not: what an 'agent scaffold' is, why software-engineering benchmarks report a 'resolve rate' instead of accuracy, what SWE-Bench/WebArena/GAIA/MINT/ProofWriter/AgentBench test, or why 0-shot vs 1-shot changes comparability. These are defined at first use in the draft (term ledger, story/term_ledger.json)."
+}

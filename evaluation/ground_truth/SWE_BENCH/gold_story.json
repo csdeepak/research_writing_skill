@@ -1,0 +1,71 @@
+{
+  "project": "SWE_BENCH",
+  "approved_by_researcher": false,
+  "approval_date": null,
+  "questions": {
+    "Q1": [
+      {"id": "Q1a", "text": "Existing LM benchmarks have become saturated and fail to capture the frontier of what state-of-the-art language models can and cannot do.", "strength": "context", "evidence_ids": ["paper §1"]},
+      {"id": "Q1b", "text": "Traditional coding benchmarks like HumanEval involve mostly self-contained problems solvable in a few lines of code, unlike real software engineering.", "strength": "context", "evidence_ids": ["paper §1"]},
+      {"id": "Q1c", "text": "Real-world bug fixing can require navigating a large repository and understanding interplay between functions across files.", "strength": "context", "evidence_ids": ["paper §1"]}
+    ],
+    "Q2": [
+      {"id": "Q2a", "text": "It is essential to study the frontier of LM capabilities to guide their future development.", "strength": "context", "evidence_ids": ["paper Abstract"]},
+      {"id": "Q2b", "text": "A good benchmark must be challenging enough to stump existing models while remaining easy to verify.", "strength": "context", "evidence_ids": ["paper §1"]},
+      {"id": "Q2c", "text": "Coding tasks are appealing because generated solutions can be automatically and rigorously verified by running unit tests.", "strength": "context", "evidence_ids": ["paper §1"]}
+    ],
+    "Q3": [
+      {"id": "Q3a", "text": "Existing multi-task benchmark collections tend to narrowly focus on one or a few skills, resulting in challenges that are too simple.", "strength": "literature", "evidence_ids": ["paper §6 (Related Work)"]},
+      {"id": "Q3b", "text": "No prior automated program repair dataset presents code context at the scale of SWE-bench.", "strength": "context", "evidence_ids": ["paper §6"]},
+      {"id": "Q3c", "text": "Prior coding benchmarks constrain edit scope to an individual function/class or use cloze-style fill-in blanks, unlike SWE-bench's unconstrained multi-location edits.", "strength": "context", "evidence_ids": ["paper §2.3"]}
+    ],
+    "Q4": [
+      {"id": "Q4a", "text": "SWE-bench comprises 2,294 task instances built from real GitHub issues and their resolving pull requests across 12 popular Python repositories.", "strength": "measured", "evidence_ids": ["paper Abstract", "paper §2.1"]},
+      {"id": "Q4b", "text": "Instances were constructed via a 3-stage pipeline: repo scraping (~90,000 PRs), attribute-based filtering (resolves an issue and adds tests), and execution-based filtering (installs and produces a fail-to-pass test).", "strength": "measured", "evidence_ids": ["paper §2.1", "paper Table 10"]},
+      {"id": "Q4c", "text": "A model is given an issue description and a codebase and must output a patch file, applied with the Unix patch program and scored by whether tests pass.", "strength": "measured", "evidence_ids": ["paper §2.2"]},
+      {"id": "Q4d", "text": "The authors additionally released SWE-bench-train (19,000 instances from 37 disjoint repositories) and fine-tuned two SWE-Llama models (7b, 13b) on it.", "strength": "measured", "evidence_ids": ["paper §1", "paper §3"]}
+    ],
+    "Q5": [
+      {"id": "Q5a", "text": "BM25 sparse retrieval was chosen over dense retrieval because dense methods are ill-suited to very long code documents queried with natural language.", "strength": "interpretation", "evidence_ids": ["paper §4.1"]},
+      {"id": "Q5b", "text": "An 'oracle' retrieval setting (using exactly the files the reference PR edited) was included for analysis, though the authors note it is less realistic than real deployment.", "strength": "interpretation", "evidence_ids": ["paper §4.1"]},
+      {"id": "Q5c", "text": "SWE-Llama was fine-tuned with LoRA on the attention sublayer projections for memory efficiency, excluding sequences longer than 30,000 tokens.", "strength": "measured", "evidence_ids": ["paper §3", "paper Appendix B.1"]}
+    ],
+    "Q6": [
+      {"id": "Q6a", "text": "Models were evaluated under BM25 retrieval at three context limits (13k, 27k, 50k tokens) and under 'oracle' retrieval.", "strength": "measured", "evidence_ids": ["paper §4.1", "paper Table 2"]},
+      {"id": "Q6b", "text": "An 'oracle-collapsed' ablation was run, keeping oracle files but collapsing code not directly modified by the PR (±15 lines buffer).", "strength": "measured", "evidence_ids": ["paper §5", "paper Table 6"]},
+      {"id": "Q6c", "text": "Models evaluated included ChatGPT-3.5, GPT-4, Claude 2, Claude 3 Opus, and fine-tuned SWE-Llama 7b/13b.", "strength": "measured", "evidence_ids": ["paper §4.3", "paper Table 5"]},
+      {"id": "Q6d", "text": "GPT-4 was evaluated on only a 25% random subset of SWE-bench due to budget constraints.", "strength": "measured", "evidence_ids": ["paper Table 5 footnote", "paper Table 7 footnote"]}
+    ],
+    "Q7": [
+      {"id": "Q7a", "text": "The best-performing model under BM25 retrieval, Claude 2, resolved only 1.96% of the full SWE-bench issues.", "strength": "measured", "evidence_ids": ["paper Abstract", "paper Table 5"]},
+      {"id": "Q7b", "text": "Under 'oracle' retrieval, Claude 2 resolved 4.80% of issues, compared to 0.52% for ChatGPT-3.5 and 3.97% for SWE-Llama 13b.", "strength": "measured", "evidence_ids": ["paper Table 18"]},
+      {"id": "Q7c", "text": "On SWE-bench Lite under BM25, Claude 3 Opus resolved 4.33% of issues, the highest reported Lite result in the paper.", "strength": "measured", "evidence_ids": ["paper Table 5"]},
+      {"id": "Q7d", "text": "Under the 'oracle-collapsed' ablation, resolve rates improved for all tested models, e.g. GPT-4 from 1.3% to 3.4% and Claude 2 from 4.8% to 5.9%.", "strength": "derived", "evidence_ids": ["paper §5", "paper Table 6"]}
+    ],
+    "Q8": [
+      {"id": "Q8a", "text": "The results establish that, as of the paper's evaluation, both proprietary and fine-tuned open LMs can resolve only the simplest real-world GitHub issues in SWE-bench.", "strength": "measured", "evidence_ids": ["paper Abstract"]},
+      {"id": "Q8b", "text": "Performance drops considerably as total input context length increases, indicating models struggle to localize relevant code amid large context.", "strength": "interpretation", "evidence_ids": ["paper §5", "paper Figure 5"]},
+      {"id": "Q8c", "text": "Model resolve rates do not correlate strongly with whether an issue's PR predates or postdates 2023, for most models tested.", "strength": "observed", "evidence_ids": ["paper §5", "paper Table 7"]}
+    ],
+    "Q9": [
+      {"id": "Q9a", "text": "SWE-bench task instances are limited to the Python programming language.", "strength": "context", "evidence_ids": ["paper §7 (stated limitation)"]},
+      {"id": "Q9b", "text": "The baseline experiments in the paper establish only the simplest and most straightforward approaches, not an exhaustive study of possible methods (e.g. agent-based or tool-augmented approaches were not tested).", "strength": "context", "evidence_ids": ["paper §7"]},
+      {"id": "Q9c", "text": "'Oracle' retrieval results do not reflect realistic deployment conditions, since an engineer would not know a priori exactly which files need editing.", "strength": "context", "evidence_ids": ["paper §4.1"]}
+    ],
+    "Q10": [
+      {"id": "Q10a", "text": "The primary contribution is SWE-bench: a 2,294-instance benchmark of real GitHub issues and pull requests across 12 Python repositories with an execution-based evaluation framework.", "strength": "context", "evidence_ids": ["paper §1", "paper §9 (Reproducibility Statement)"]},
+      {"id": "Q10b", "text": "A secondary contribution is the release of SWE-bench-train and two fine-tuned SWE-Llama models (7b, 13b) as open baselines.", "strength": "context", "evidence_ids": ["paper §1", "paper §3"]}
+    ],
+    "Q11": [
+      {"id": "Q11a", "text": "The benchmark is restricted to Python repositories, so results do not speak to other programming languages.", "strength": "context", "evidence_ids": ["paper §7"]},
+      {"id": "Q11b", "text": "GPT-4 results are based on only a 25% random subset of instances due to budget constraints, limiting direct comparability with full-set results for other models.", "strength": "context", "evidence_ids": ["paper Table 5 footnote"]},
+      {"id": "Q11c", "text": "The qualitative 'greedy code' / 'primitive Python' observations are drawn from a manual inspection of only 11 generations, a small non-statistical sample.", "strength": "context", "evidence_ids": ["paper §5.1"]},
+      {"id": "Q11d", "text": "Passing execution-based tests does not guarantee that model-generated code is as comprehensive, efficient, or readable as human-written solutions, per the authors' own caveat.", "strength": "context", "evidence_ids": ["paper §7"]}
+    ],
+    "Q12": [
+      {"id": "Q12a", "text": "SWE-bench evaluates LMs on 2,294 real GitHub issue-resolution tasks across 12 Python repos, using patch generation scored by actual repository test suites.", "strength": "measured", "evidence_ids": ["paper Abstract", "paper §2.2"]},
+      {"id": "Q12b", "text": "Even the best model tested (Claude 2, under realistic BM25 retrieval) resolved under 2% of issues, showing the benchmark is far from saturated.", "strength": "measured", "evidence_ids": ["paper Abstract", "paper Table 5"]},
+      {"id": "Q12c", "text": "Performance degrades as input context grows, and models tend to generate shorter, simpler edits than the human-written gold patches.", "strength": "interpretation", "evidence_ids": ["paper §5"]},
+      {"id": "Q12d", "text": "The benchmark and its 12-repository, Python-only scope was later extended by the community/authors (e.g. SWE-bench Verified, Multimodal, Multilingual), but those extensions are not part of this ICLR 2024 paper's own reported results.", "strength": "context", "evidence_ids": ["README (artifact fact, post-paper)"]}
+    ]
+  }
+}

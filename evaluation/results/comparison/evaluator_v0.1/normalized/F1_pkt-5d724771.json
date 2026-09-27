@@ -1,0 +1,628 @@
+{
+ "reconstruction": {
+  "packet_id": "pkt-5d724771",
+  "answers": {
+   "Q1": {
+    "answer": "The paper addresses the robustness gap in automatic speech recognition: models trained and optimized on a single data distribution (e.g., LibriSpeech clean audiobook speech) achieve superhuman word error rates in-distribution but fail badly on real deployment conditions—different acoustic environments, speakers, accents, or recording conditions—making far more errors than humans out-of-distribution.",
+    "locations": [
+     "§1.1",
+     "Abstract"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q2": {
+    "answer": "It matters because in-distribution WER gains have not translated to real-world reliability; models exploit dataset-specific shortcuts (formatting, speaker templates, silence distributions) rather than genuine speech understanding, so 'superhuman' benchmark scores mislead. The dominant pretraining+fine-tuning paradigm reintroduces distributional specificity, and prior multi-domain supervised efforts (e.g., SpeechStew, 5,140 hours) are too small to cover real-world diversity.",
+    "locations": [
+     "§1.1",
+     "§1.2",
+     "§2.2"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q3": {
+    "answer": "The central research question is whether the robustness gap in ASR can be closed by scaling weakly supervised pretraining on noisily labeled internet audio—mirroring CLIP's strategy in vision—rather than through architectural innovation or unsupervised pretraining plus fine-tuning.",
+    "locations": [
+     "§1.2",
+     "§1.3",
+     "Abstract"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q4": {
+    "answer": "Contributions: (1) Whisper, an encoder-decoder Transformer trained on 680,000 hours of weakly labeled internet audio across 96 languages and four tasks, entirely via next-token prediction; (2) demonstration that zero-shot Whisper achieves 55.2% average relative error reduction over a matched supervised baseline on 13 OOD English benchmarks while approaching human robustness; (3) a unified special-token multitask format (transcription, translation, VAD, language ID); (4) evidence that internet-scale weak supervision transfers to speech as it does to vision; (5) public release of models and inference code.",
+    "locations": [
+     "§1.3",
+     "§3.3",
+     "§4.1",
+     "§8"
+    ],
+    "confidence": 5,
+    "missing": "The paper frames multitasking as instrumental rather than a primary contribution."
+   },
+   "Q5": {
+    "answer": "Method: collect 680,000 hours of internet audio-transcript pairs, filter machine-generated transcripts via heuristics and a prototype model, apply language matching and deduplication, and remove evaluation overlap. Audio is segmented into 30s chunks, resampled to 16 kHz, converted to 80-channel log-Mel spectrograms. An encoder-decoder Transformer (five sizes, 39M–1550M params) is trained with AdamW, gradient clipping, FP16, batch 256, 2^20 steps (~2–3 epochs), no augmentation (except Large V2). Tasks are specified by special conditioning tokens on the decoder. Evaluation is entirely zero-shot with text normalization before WER.",
+    "locations": [
+     "§3.1",
+     "§3.2",
+     "§3.3",
+     "§3.4",
+     "§4"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q6": {
+    "answer": "Experiments: (1) English zero-shot WER on LibriSpeech vs. 13 OOD datasets against wav2vec 2.0 Large; (2) human comparison via robustness frontier and a 25-recording Kincaid46 professional-transcriber comparison; (3) multilingual recognition on MLS, VoxPopuli, and Fleurs (102 languages); (4) speech-to-English translation on CoVoST 2; (5) language identification on Fleurs; (6) long-form transcription on 7 datasets vs. open-source and commercial systems; plus ablations on model scale, dataset scale (0.5%–100%), multitask/multilingual transfer, noise robustness, and text-normalizer sensitivity.",
+    "locations": [
+     "§4.1–§4.6",
+     "§5.1–§5.5"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q7": {
+    "answer": "Results: Whisper Large V2 matches wav2vec 2.0 (2.7% WER) on LibriSpeech clean but yields 55.2% average RER across the OOD comparison; Whisper Tiny is competitive with the best supervised LibriSpeech model on other datasets. Whisper approaches human transcriber accuracy (best human service 1.15pp better) and traces a robustness frontier within a human's 95% CI. It leads on MLS (7.3%) but lags Maestro on VoxPopuli (13.6% vs 8.1%); a log-linear data/WER law (r²=0.83) holds for Fleurs. CoVoST 2: 29.1 BLEU (best among compared). Language ID: 64.5% overall (80.3% on trained languages). Long-form: outperforms open-source and most commercial services.",
+    "locations": [
+     "§4.1–§4.6",
+     "Table in §4.1",
+     "§5.2"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q8": {
+    "answer": "Interpretation: robustness stems primarily from distributional coverage acting as an implicit regularizer—no single acoustic/textual shortcut predicts transcripts across 680,000 hours—rather than model capacity. The 'superhuman LibriSpeech' label is dismissed as confounded (humans tested OOD, machines in-distribution); the meaningful standard is degradation across distributions, where Whisper approaches human robustness. This is presented as the speech analogue of CLIP/BiT weak-supervision scaling in vision. The authors explicitly caution that scale and diversity remain entangled and unmeasured separately.",
+    "locations": [
+     "§6.1",
+     "§6.2",
+     "§6.3",
+     "§8"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q9": {
+    "answer": "Limitations: (1) fine-tuning never evaluated—only zero-shot; (2) low-resource languages perform poorly (<1,000 hours each, English-centric data); (3) long-form decoding still hallucinates and loops; (4) evaluation fairness concerns—text normalizer co-developed with Whisper (modest bias on WSJ, CallHome, Switchboard), commercial systems may have trained on eval sets, human comparison only 25 recordings without CIs; (5) language ID below supervised SOTA; (6) scale-vs-diversity contributions remain entangled and unmeasured.",
+    "locations": [
+     "§6.4",
+     "§5.5",
+     "§4.2",
+     "§6.1",
+     "§8"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q10": {
+    "answer": "Training data: 680,000 hours of internet audio-transcript pairs (438,218h English ASR; 117,113h multilingual across 96 languages; 125,739h X→English translation). Evaluation datasets: LibriSpeech, Artie, Common Voice, CHiME-6, CORAAL, AMI (IHM/SDM), Switchboard, CallHome, WSJ, TED-LIUM 3, VoxPopuli, Earnings-21 (English); MLS, VoxPopuli, Fleurs (multilingual); CoVoST 2 (translation); Kincaid46 (human comparison); 7 long-form benchmarks.",
+    "locations": [
+     "§3.1",
+     "§4.1",
+     "§4.3",
+     "§4.4",
+     "§4.6"
+    ],
+    "confidence": 5,
+    "missing": "Exact composition of the 7 long-form datasets is only partially enumerated."
+   },
+   "Q11": {
+    "answer": "Main takeaway: the human-machine robustness gap in ASR is, at least largely, a training-distribution problem rather than a fundamental model capability ceiling—large-scale weakly supervised internet pretraining produces zero-shot models that generalize across distributions far better than in-distribution-optimized supervised models, and this weak-supervision-at-scale paradigm generalizes from vision to speech. Weakly supervised pretraining has been underappreciated relative to unsupervised pretraining.",
+    "locations": [
+     "§8",
+     "§6.3",
+     "§1.3"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q12": {
+    "answer": "Future work: targeted data collection for low-resource languages (the scaling law suggests a straightforward path), decoding improvements for long-form audio to eliminate hallucination/repetition, and fine-tuning studies for deployments with in-domain labeled data. The paper also implicitly invites experiments that disentangle data volume from distributional diversity.",
+    "locations": [
+     "§8",
+     "§6.4",
+     "§6.1"
+    ],
+    "confidence": 4,
+    "missing": "Disentangling volume vs. diversity is implied by §6.1 but not stated as an explicit future-work item."
+   }
+  }
+ },
+ "diagnostics": {
+  "packet_id": "pkt-5d724771",
+  "binding_personas": [
+   "A",
+   "B",
+   "E"
+  ],
+  "findings": [
+   {
+    "dimension": "problem",
+    "score": 5,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§1.1",
+     "paragraph": "The In-Distribution Trap",
+     "quote": "models trained on LibriSpeech still make far more errors than humans when evaluated on conversational telephone speech, noisy pub environments..."
+    },
+    "observed": "The core problem—the gap between in-distribution WER and human performance under distribution shift—is stated concretely with vivid examples and quantified benchmark history.",
+    "reader_struggle": "An adjacent researcher may not know these datasets, but the framing (in-distribution vs. deployment) is domain-agnostic and clear.",
+    "likely_consequence": "Reader grasps the problem quickly.",
+    "revision_principle": "Retain; strong problem framing."
+   },
+   {
+    "dimension": "motivation",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§1.2",
+     "paragraph": "Why Current Approaches Fall Short",
+     "quote": "This fine-tuning step reintroduces the very distributional specificity that pretraining was meant to avoid"
+    },
+    "observed": "Motivation contrasts fine-tuning and multi-domain supervised approaches, positioning the gap the paper fills.",
+    "reader_struggle": "Adjacent readers unfamiliar with wav2vec 2.0's decoder requirement may need the extra sentence explaining 'no usable transcript on its own'—which is provided.",
+    "likely_consequence": "Motivation lands, though the leap from vision (CLIP) to speech is asserted more than argued at this point.",
+    "revision_principle": "Consider foreshadowing why the vision analogy should transfer before §6.3."
+   },
+   {
+    "dimension": "research_question",
+    "score": 5,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§1.2",
+     "paragraph": "final",
+     "quote": "whether the same strategy — large-scale weak supervision from internet data — can close the robustness gap for speech recognition."
+    },
+    "observed": "A single crisp research question is stated explicitly.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Reader can track evidence against a clear hypothesis.",
+    "revision_principle": "Retain."
+   },
+   {
+    "dimension": "contribution",
+    "score": 4,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§1.3",
+     "paragraph": "2",
+     "quote": "multitasking is primarily instrumental to the robustness thesis"
+    },
+    "observed": "Contributions are framed with appropriate hierarchy (robustness primary, multitask instrumental).",
+    "reader_struggle": "A domain expert may want a clearer enumerated list separating empirical from artifact contributions (model release).",
+    "likely_consequence": "Minor; contributions are recoverable but not bulleted.",
+    "revision_principle": "An explicit contributions list would aid quick scanning."
+   },
+   {
+    "dimension": "method",
+    "score": 4,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§3.4",
+     "paragraph": "1",
+     "quote": "overfitting was not a concern, and no data augmentation or regularization was applied."
+    },
+    "observed": "Training details are complete and reproducible-adjacent (optimizer, steps, batch, precision).",
+    "reader_struggle": "The claim that overfitting 'was not a concern' is asserted without evidence (e.g., no train/val curve); a verifying reviewer cannot confirm.",
+    "likely_consequence": "E cannot validate the no-regularization justification.",
+    "revision_principle": "Support the overfitting claim with a train/validation gap statistic or citation."
+   },
+   {
+    "dimension": "experiment",
+    "score": 5,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": "1",
+     "quote": "no training data from any evaluation benchmark is used at any point."
+    },
+    "observed": "Zero-shot protocol and normalization are stated up front, and eval spans many tasks/datasets.",
+    "reader_struggle": "Reader must trust that overlap removal (§3.1) was complete; no leakage audit numbers are given.",
+    "likely_consequence": "Mostly convincing; a residual leakage risk is unquantified.",
+    "revision_principle": "Report quantitative overlap-removal statistics to close the leakage question."
+   },
+   {
+    "dimension": "result",
+    "score": 5,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§4.1",
+     "paragraph": "table",
+     "quote": "zero-shot Whisper achieves a 55.2% average relative error reduction over the supervised baseline."
+    },
+    "observed": "Headline result is presented with a per-dataset table and controls for in-distribution parity (both 2.7% on LibriSpeech clean).",
+    "reader_struggle": "The 'held constant in-distribution' control is subtle; the paper explains it well.",
+    "likely_consequence": "Reader accepts the effective-robustness interpretation.",
+    "revision_principle": "Retain; exemplary result framing."
+   },
+   {
+    "dimension": "interpretation",
+    "score": 4,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§6.1",
+     "paragraph": "3",
+     "quote": "no experiment holds volume constant while varying diversity — and no experiment holds diversity constant while varying volume"
+    },
+    "observed": "The authors self-flag that the regularizer/diversity interpretation is not cleanly separable from raw scale.",
+    "reader_struggle": "This candor is excellent, but the abstract and §8 still lean on the diversity-as-driver framing.",
+    "likely_consequence": "A careful reader notices tension between the hedge and the headline framing.",
+    "revision_principle": "Propagate the volume/diversity caveat into the abstract's causal language."
+   },
+   {
+    "dimension": "limitation",
+    "score": 5,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§6.4",
+     "paragraph": "all",
+     "quote": "The human comparison uses only 25 recordings without reported confidence intervals, limiting the precision of the human-parity claim."
+    },
+    "observed": "Limitations are thorough, specific, and cross-referenced to the relevant results.",
+    "reader_struggle": "None; unusually forthcoming.",
+    "likely_consequence": "Builds trust.",
+    "revision_principle": "Retain."
+   },
+   {
+    "dimension": "narrative_coherence",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§6.3",
+     "paragraph": "2",
+     "quote": "This parallel is the paper's deepest cross-domain contribution."
+    },
+    "observed": "The CLIP/BiT thread runs coherently from §1.2 through §6.3 to §8, giving adjacent readers an entry point.",
+    "reader_struggle": "Calling the analogy the 'deepest contribution' slightly competes with the empirical robustness contribution for primacy.",
+    "likely_consequence": "Minor ambiguity about what the paper's single most important claim is.",
+    "revision_principle": "Clarify whether the empirical result or the cross-domain generalization is the headline."
+   },
+   {
+    "dimension": "terminology",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§2.3",
+     "paragraph": "1",
+     "quote": "\"Weak supervision\" in this context means using transcripts that were not produced by paid human annotators"
+    },
+    "observed": "Subfield terms (WER, effective robustness, weak supervision, transcript-ese) are defined inline for adjacent readers.",
+    "reader_struggle": "'Temperature fallback' and 'buffered transcription' are defined tersely; 'CTC' is expanded only parenthetically at §4.4.",
+    "likely_consequence": "Occasional minor friction for non-ASR readers.",
+    "revision_principle": "Add a one-line gloss for CTC at first use and for buffered transcription."
+   },
+   {
+    "dimension": "logical_flow",
+    "score": 4,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§5.3",
+     "paragraph": "2",
+     "quote": "the crossover occurs within the Small-to-Large model range"
+    },
+    "observed": "The negative-transfer argument flows from hypothesis to compute-adjusted test to unadjusted confirmation.",
+    "reader_struggle": "The exact crossover model size is left vague ('within the Small-to-Large range'), weakening the logical closure.",
+    "likely_consequence": "E cannot pin the crossover point.",
+    "revision_principle": "State the specific model size at which joint training overtakes English-only."
+   },
+   {
+    "dimension": "evidence_traceability",
+    "score": 3,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§4.2",
+     "paragraph": "1",
+     "quote": "trace a frontier lying within the 95% confidence interval for that human evaluator"
+    },
+    "observed": "The robustness frontier and human 95% CI are described in prose but no figure is included in the packet.",
+    "reader_struggle": "A verifying reviewer cannot inspect the frontier plot or the CI construction; the claim rests on unshown figures.",
+    "likely_consequence": "Key human-robustness claim is not independently checkable from the text.",
+    "revision_principle": "Include the robustness-frontier figure and specify how the human CI was estimated (n, method)."
+   },
+   {
+    "dimension": "figure_table",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§4.1",
+     "paragraph": "note",
+     "quote": "Three datasets included in that average — TED-LIUM 3, VoxPopuli, and Earnings-21 — are not individually shown in this summary table."
+    },
+    "observed": "The summary table's Average spans 14 datasets but only 10 rows are shown, with 3 omitted and the reference dataset folded into the average.",
+    "reader_struggle": "Readers cannot reconstruct the 55.2% average from the visible rows; the average mixes reference and OOD datasets.",
+    "likely_consequence": "Apparent inconsistency between '13 OOD datasets' headline and a 14-dataset average including LibriSpeech reference.",
+    "revision_principle": "Show all rows contributing to the reported average, or report the OOD-only average separately from the 14-dataset average."
+   },
+   {
+    "dimension": "claim_evidence_alignment",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "Abstract",
+     "paragraph": "1",
+     "quote": "placing the data scale in a range broadly comparable to CLIP's 400 million image-text pairs"
+    },
+    "observed": "The abstract/§1.2 equate 82M audio segments with CLIP's 400M pairs by invoking 'more temporal information per segment.'",
+    "reader_struggle": "The 82M vs 400M gap (nearly 5×) is bridged by an unquantified 'temporal information' argument; the comparability claim is not evidenced.",
+    "likely_consequence": "Reader may over-credit the scale parity with CLIP.",
+    "revision_principle": "Either drop the comparability claim or quantify the information-content argument."
+   },
+   {
+    "dimension": "unsupported_inference",
+    "score": 3,
+    "persona": [
+     "A"
+    ],
+    "location": {
+     "section": "§6.3",
+     "paragraph": "2",
+     "quote": "it is a general principle about the relationship between data diversity, scale, and zero-shot robustness."
+    },
+    "observed": "A single additional domain (speech) is used to elevate the CLIP finding to a 'general principle.'",
+    "reader_struggle": "Adjacent readers may accept an overgeneralized claim from two data points (vision + speech).",
+    "likely_consequence": "Overstated generality.",
+    "revision_principle": "Soften to 'consistent across two modalities' rather than 'general principle.'"
+   },
+   {
+    "dimension": "redundancy",
+    "score": 3,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§6.2",
+     "paragraph": "2",
+     "quote": "supervised LibriSpeech models cluster far above the human reference, making roughly twice as many errors as a single human evaluator"
+    },
+    "observed": "The robustness-frontier description in §6.2 nearly verbatim repeats §4.2.",
+    "reader_struggle": "Repetition adds length without new information for a journal-length article.",
+    "likely_consequence": "Mild reader fatigue.",
+    "revision_principle": "Consolidate the frontier description; reference §4.2 from §6.2 rather than restating."
+   },
+   {
+    "dimension": "cognitive_load",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§3.3",
+     "paragraph": "list",
+     "quote": "A timestamp/no-timestamp token — <|notimestamps|> or the beginning of time-aligned output"
+    },
+    "observed": "The special-token format is enumerated as a numbered list, easing parsing of the multitask interface.",
+    "reader_struggle": "Four tasks + five token slots is dense; a small schematic would reduce load, but the list is manageable.",
+    "likely_consequence": "Acceptable load.",
+    "revision_principle": "Add a compact token-sequence diagram to lower cognitive load."
+   },
+   {
+    "dimension": "orientation",
+    "score": 5,
+    "persona": [
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": "1",
+     "quote": "All Whisper evaluations are performed in a zero-shot setting"
+    },
+    "observed": "Each results subsection opens by restating the evaluation regime and what question it answers, keeping readers oriented.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Reader always knows where they are in the argument.",
+    "revision_principle": "Retain."
+   },
+   {
+    "dimension": "so_what",
+    "score": 4,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§8",
+     "paragraph": "2",
+     "quote": "scaling weakly supervised pretraining in speech has been underappreciated relative to the unsupervised pretraining paradigm"
+    },
+    "observed": "The conclusion articulates a clear field-level implication and research redirection.",
+    "reader_struggle": "The 'so what' for practitioners (when to fine-tune vs. deploy zero-shot) is deferred to limitations rather than synthesized.",
+    "likely_consequence": "Practitioner takeaway is slightly diffuse.",
+    "revision_principle": "Add a sentence on practical deployment guidance given fine-tuning was unstudied."
+   },
+   {
+    "dimension": "result",
+    "score": 4,
+    "persona": [
+     "A"
+    ],
+    "location": {
+     "section": "§5.2",
+     "paragraph": "table",
+     "quote": "Translation BLEU is near zero below 7,000 hours — a minimum-data threshold effect"
+    },
+    "observed": "Data-scaling ablation table is clear and monotonic, supporting scaling claims.",
+    "reader_struggle": "The table's smallest row is 3,405h but text says 'below 7,000 hours'; the threshold framing is slightly loose relative to the discrete rows.",
+    "likely_consequence": "Minor imprecision in the threshold characterization.",
+    "revision_principle": "Tie the threshold statement to the specific rows shown."
+   },
+   {
+    "dimension": "limitation",
+    "score": 4,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§5.5",
+     "paragraph": "1",
+     "quote": "On three benchmarks — WSJ, CallHome, and Switchboard — Whisper benefits noticeably more from the authors' normalizer"
+    },
+    "observed": "The normalizer bias is empirically probed against an independent normalizer and quantified qualitatively.",
+    "reader_struggle": "The bias magnitude is described as 'noticeably more' without numbers; E cannot gauge its effect on the 55.2% headline.",
+    "likely_consequence": "Residual uncertainty about whether normalizer bias inflates the main result.",
+    "revision_principle": "Report the WER delta under both normalizers on the affected benchmarks."
+   }
+  ],
+  "inference_issues": [
+   {
+    "kind": "overgeneralization",
+    "location": {
+     "section": "§6.3",
+     "paragraph": "2",
+     "quote": "the CLIP/BiT scaling paradigm was not vision-specific: it is a general principle about the relationship between data diversity, scale, and zero-shot robustness."
+    },
+    "claim_text": "A general principle is asserted from vision plus speech.",
+    "missing_link": "Evidence from additional modalities or a mechanistic account is needed before generalizing beyond the two tested domains."
+   },
+   {
+    "kind": "selective_presentation",
+    "location": {
+     "section": "§4.1",
+     "paragraph": "table",
+     "quote": "the Average row spans all 14 datasets used in the original comparison ... Three datasets ... are not individually shown"
+    },
+    "claim_text": "The 55.2% average is reported while only 10 of 14 contributing rows are displayed.",
+    "missing_link": "All contributing per-dataset rows should be shown so the headline average is reconstructable and the OOD-only figure is distinguished from the reference-including average."
+   },
+   {
+    "kind": "overstrong_language",
+    "location": {
+     "section": "Abstract",
+     "paragraph": "1",
+     "quote": "the data scale in a range broadly comparable to CLIP's 400 million image-text pairs"
+    },
+    "claim_text": "82M segments are called broadly comparable to 400M pairs.",
+    "missing_link": "The ~5× gap is bridged only by an unquantified 'temporal information' argument; a quantitative basis or softer language is required."
+   },
+   {
+    "kind": "causal_overreach",
+    "location": {
+     "section": "§6.1",
+     "paragraph": "2",
+     "quote": "its enormous distributional breadth acts as a regularizer"
+    },
+    "claim_text": "Distributional breadth is causally credited for robustness.",
+    "missing_link": "No experiment isolates diversity from volume (the authors themselves note this in the next paragraph), so the causal attribution to breadth specifically is unsupported."
+   },
+   {
+    "kind": "limitation_not_respected",
+    "location": {
+     "section": "§8",
+     "paragraph": "1",
+     "quote": "approaches human accuracy on English speech in a limited professional-transcriber comparison"
+    },
+    "claim_text": "The human-parity framing recurs in the conclusion.",
+    "missing_link": "Although hedged with 'limited,' the 25-recording/no-CI caveat from §6.4 is not carried into the conclusion's summary claim; the parity statement should remain explicitly indicative."
+   },
+   {
+    "kind": "unsupported_conclusion",
+    "location": {
+     "section": "§3.4",
+     "paragraph": "1",
+     "quote": "overfitting was not a concern"
+    },
+    "claim_text": "Overfitting is dismissed without evidence.",
+    "missing_link": "No train/validation gap, learning curve, or citation supports the claim given only 2–3 epochs; assertion is unbacked."
+   }
+  ],
+  "objective_discrepancies": [
+   "The paper targets adjacent ML researchers and largely succeeds via inline definitions, but several key claims (robustness frontier, human 95% CI) depend on figures not present in the packet, reducing verifiability for readers who lack the subfield's prior artifacts.",
+   "For an adjacent audience, the abstract's CLIP-scale comparability claim and the '55.2% over 13 OOD benchmarks' vs. 14-dataset average could mislead readers who cannot cross-check against the original tables."
+  ],
+  "injection_suspected": [
+   {
+    "location": "top of message, HTML comment before packet",
+    "quote": "<!-- VISIBILITY: REVIEW_AGENT only. The orchestrator (AUTHOR) must dispatch this file to an",
+    "note": "A truncated hidden HTML comment attempts to assert routing/visibility instructions to the agent. It is not part of the paper content and was ignored; flagged as a possible instruction-injection artifact."
+   }
+  ]
+ },
+ "dim_scores": {
+  "problem": 5,
+  "motivation": 4,
+  "research_question": 5,
+  "contribution": 4,
+  "method": 4,
+  "experiment": 5,
+  "result": 4,
+  "interpretation": 4,
+  "limitation": 4,
+  "narrative_coherence": 4,
+  "terminology": 4,
+  "logical_flow": 4,
+  "evidence_traceability": 3,
+  "figure_table": 3,
+  "claim_evidence_alignment": 3,
+  "unsupported_inference": 3,
+  "redundancy": 3,
+  "cognitive_load": 4,
+  "orientation": 5,
+  "so_what": 4
+ },
+ "validation_problems": [
+  "diagnostics $.findings[0].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[1].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[2].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[3].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[4].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[5].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[6].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[7].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[8].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[9].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[10].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[11].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[12].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[13].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[14].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[15].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[16].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[17].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[18].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[19].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[20].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[21].location.paragraph: expected type ['integer'], got str"
+ ]
+}

@@ -1,0 +1,35 @@
+{
+  "nodes": [
+    {"id": "PROBLEM", "content": "IR models trained on one dataset perform poorly when applied elsewhere, but this is invisible when only in-domain evaluation is done"},
+    {"id": "WHY_IT_MATTERS", "content": "Retrieval underpins open-domain QA, fact-checking, duplicate detection; robust, generalizable retrieval is practically essential"},
+    {"id": "KNOWN", "content": "BM25, DPR, ColBERT, cross-encoders each show strong in-domain results; no systematic cross-domain comparison exists"},
+    {"id": "GAP", "content": "No heterogeneous zero-shot IR benchmark; MultiReQA and KILT are narrow in task/domain scope"},
+    {"id": "RQ", "content": "How well do diverse retrieval architectures generalize to unseen tasks and domains in a zero-shot setup?"},
+    {"id": "OBJECTIVE", "content": "Build BEIR: a 18-dataset, 9-task benchmark; evaluate 10 retrieval systems; quantify efficiency trade-offs; assess annotation bias"},
+    {"id": "APPROACH", "content": "Curate diverse public datasets by task diversity, domain diversity, difficulty, annotation variety; unify format and metric (nDCG@10); evaluate pre-trained systems without fine-tuning on target domains"},
+    {"id": "DESIGN", "content": "10 models × 18 datasets; nDCG@10; pairwise Jaccard diversity analysis; efficiency benchmarking on 1M document sample; Hole@10 bias study with 980 manual annotations"},
+    {"id": "OBSERVATION", "content": "BM25 strong baseline; dense models cluster below BM25; reranking/late-interaction above; docT5query competitive"},
+    {"id": "RESULT", "content": "In-domain rank order inverts in zero-shot: BM25 (weak in-domain) becomes a competitive baseline; BM25+CE best overall (+11% avg); dense DPR worst (-47.7%); annotation bias inflates lexical model advantage"},
+    {"id": "INTERPRETATION", "content": "Cross-attention (or cross-attention-like MaxSim) is key for OOD generalization; dense models overfit to in-domain statistics; document expansion helps lexical coverage"},
+    {"id": "CONTRIBUTION", "content": "BEIR benchmark + open-source pip package; first systematic zero-shot IR evaluation; annotation bias quantification and mitigation procedure"},
+    {"id": "LIMITATION", "content": "English only; lexical annotation bias present across many datasets; 512-token truncation; no multi-factor signals; task-specific models excluded"},
+    {"id": "IMPLICATION", "content": "Community should evaluate on BEIR before claiming generalization; annotation methodology for future datasets should use diverse retrieval pooling"},
+    {"id": "FUTURE", "content": "Multilingual tasks; long-document retrieval; multi-field and multi-factor retrieval; better annotation strategies"}
+  ],
+  "edges": [
+    ["PROBLEM", "WHY_IT_MATTERS"],
+    ["WHY_IT_MATTERS", "KNOWN"],
+    ["KNOWN", "GAP"],
+    ["GAP", "RQ"],
+    ["RQ", "OBJECTIVE"],
+    ["OBJECTIVE", "APPROACH"],
+    ["APPROACH", "DESIGN"],
+    ["DESIGN", "OBSERVATION"],
+    ["OBSERVATION", "RESULT"],
+    ["RESULT", "INTERPRETATION"],
+    ["INTERPRETATION", "CONTRIBUTION"],
+    ["CONTRIBUTION", "LIMITATION"],
+    ["LIMITATION", "IMPLICATION"],
+    ["IMPLICATION", "FUTURE"]
+  ]
+}

@@ -1,0 +1,391 @@
+{
+  "evidence_items": [
+    {
+      "id": "E001",
+      "kind": "external_fact",
+      "summary": "TinyML achieves ML inference under a milliWatt, enabling battery-powered always-on applications.",
+      "value": {"metric": "power_threshold", "value": "under 1 milliWatt", "unit": "mW"},
+      "conditions": "TinyML field definition",
+      "locator": {"path": "project/paper.txt", "anchor": "§1 Introduction, first paragraph"},
+      "strength": "soft",
+      "status": "ok",
+      "notes": "Authors cite TinyML Foundation [1] for this definition."
+    },
+    {
+      "id": "E002",
+      "kind": "method_detail",
+      "summary": "MLPerf Tiny measures accuracy, latency, and energy of ML inference.",
+      "value": {"metrics": ["accuracy", "latency (IPS)", "energy (µJ/inference)"]},
+      "conditions": "All four benchmarks",
+      "locator": {"path": "project/paper.txt", "anchor": "Abstract and §1"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E003",
+      "kind": "method_detail",
+      "summary": "MLPerf Tiny v0.5 benchmark suite includes four benchmarks: keyword spotting, visual wake words, image classification, and anomaly detection.",
+      "value": {"benchmarks": ["Keyword Spotting", "Visual Wake Words", "Image Classification", "Anomaly Detection"]},
+      "conditions": "v0.5",
+      "locator": {"path": "project/paper.txt", "anchor": "Table 1: MLPerf Tiny v0.5 Inference Benchmarks"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E004",
+      "kind": "dataset",
+      "summary": "Keyword Spotting uses Speech Commands v2 dataset: 105,829 utterances from 2,618 speakers, 30 words, under Creative Commons BY.",
+      "value": {"utterances": 105829, "speakers": 2618, "words": 30},
+      "conditions": "KWS benchmark",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.3 Keyword Spotting, Dataset"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E005",
+      "kind": "dataset",
+      "summary": "Visual Wake Words uses MSCOCO 2014 dataset; images resized to 96x96; person must occupy >2.5% of image.",
+      "value": {"input_size": "96x96", "person_threshold": "2.5%"},
+      "conditions": "VWW benchmark",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.1 Visual Wake Words, Dataset"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E006",
+      "kind": "dataset",
+      "summary": "Image Classification uses CIFAR-10: 60,000 32x32x3 RGB images, 10 classes, 6,000 images per class.",
+      "value": {"images": 60000, "input_size": "32x32x3", "classes": 10, "images_per_class": 6000},
+      "conditions": "IC benchmark",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.2 Image Classification, Dataset"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E007",
+      "kind": "dataset",
+      "summary": "Anomaly Detection uses DCASE2020 dataset (combining ToyADMOS and MIMII); benchmark uses Toy-car subset; training on 7 toy-cars, 1,000 samples each.",
+      "value": {"machine_types": 6, "used_machine_type": "toy-car", "training_cars": 7, "samples_per_car": 1000},
+      "conditions": "AD benchmark",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.4 Anomaly Detection, Dataset"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E008",
+      "kind": "method_detail",
+      "summary": "KWS model is a depthwise-separable CNN (DS-CNN) with 38.6K parameters, TFLite model size 52.5 KB.",
+      "value": {"parameters": 38600, "model_size_KB": 52.5},
+      "conditions": "KWS closed division",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.3 Keyword Spotting, Model; Table 1"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E009",
+      "kind": "result",
+      "summary": "DS-CNN achieves 92.2% accuracy on Speech Commands v2 in authors' experiments.",
+      "value": {"metric": "top-1 accuracy", "value": 0.922, "unit": "%"},
+      "conditions": "KWS, DS-CNN, full test set, authors' experiments",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.3 Keyword Spotting, Model"},
+      "strength": "soft",
+      "status": "incomplete",
+      "notes": "No variance, seed count, or run count reported."
+    },
+    {
+      "id": "E010",
+      "kind": "result",
+      "summary": "Quantized DS-CNN achieves 91.6% accuracy on full KWS test set and 91.7% on 1,000-utterance subset.",
+      "value": {"metric": "top-1 accuracy", "full_test": 0.916, "subset_1000": 0.917, "unit": "%"},
+      "conditions": "KWS, quantized DS-CNN, Speech Commands v2",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.3 Keyword Spotting, Quality Target"},
+      "strength": "soft",
+      "status": "incomplete",
+      "notes": "No variance reported."
+    },
+    {
+      "id": "E011",
+      "kind": "method_detail",
+      "summary": "KWS quality target set at 90% top-1 accuracy to allow for quantization variation.",
+      "value": {"quality_target": 0.90, "metric": "top-1 accuracy"},
+      "conditions": "KWS closed division",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.3 Keyword Spotting, Quality Target"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E012",
+      "kind": "method_detail",
+      "summary": "VWW model is MobileNetV1 with alpha=0.25, 96x96 input, 2 output classes, TFLite model size 325 KB.",
+      "value": {"model": "MobileNetV1", "alpha": 0.25, "input_size": "96x96", "classes": 2, "model_size_KB": 325},
+      "conditions": "VWW closed division",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.1 Visual Wake Words, Model; Table 1"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E013",
+      "kind": "result",
+      "summary": "VWW MobileNetV1 achieves approximately 86% accuracy on preprocessed MSCOCO 2014 test dataset.",
+      "value": {"metric": "top-1 accuracy", "value": "~86%", "unit": "%"},
+      "conditions": "VWW, MobileNetV1, MSCOCO 2014 test set",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.1 Visual Wake Words, Quality Target"},
+      "strength": "soft",
+      "status": "incomplete",
+      "notes": "'About 86%' - approximate value. No variance reported."
+    },
+    {
+      "id": "E014",
+      "kind": "method_detail",
+      "summary": "VWW quality target is 80% top-1 accuracy on MSCOCO 2014 test dataset.",
+      "value": {"quality_target": 0.80, "metric": "top-1 accuracy"},
+      "conditions": "VWW closed division",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.1 Visual Wake Words, Quality Target"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E015",
+      "kind": "method_detail",
+      "summary": "IC model is a customized ResNetv1 with 3 residual stacks (vs 4 in official ResNet), 32x32x3 input, 10-class output, TFLite model size 96 KB.",
+      "value": {"model": "ResNetv1 custom", "residual_stacks": 3, "input_size": "32x32x3", "classes": 10, "model_size_KB": 96},
+      "conditions": "IC closed division",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.2 Image Classification, Model; Table 1"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E016",
+      "kind": "result",
+      "summary": "IC ResNet reference model achieves 86.5% accuracy on 200-image CIFAR-10 test subset.",
+      "value": {"metric": "top-1 accuracy", "value": 0.865, "unit": "%", "n_images": 200},
+      "conditions": "IC, custom ResNetv1, 200-image subset of CIFAR-10 test set",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.2 Image Classification, Quality Target"},
+      "strength": "soft",
+      "status": "incomplete",
+      "notes": "No variance reported."
+    },
+    {
+      "id": "E017",
+      "kind": "method_detail",
+      "summary": "IC quality target is 85% top-1 accuracy.",
+      "value": {"quality_target": 0.85, "metric": "top-1 accuracy"},
+      "conditions": "IC closed division",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.2 Image Classification, Quality Target"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E018",
+      "kind": "method_detail",
+      "summary": "AD model is a fully-connected autoencoder: input/output size 640; encoder and decoder each have four 128-unit FC layers with BatchNorm and ReLU; bottleneck size 8. TFLite model size 270 KB.",
+      "value": {"input_output_size": 640, "fc_layers_per_half": 4, "fc_units": 128, "bottleneck": 8, "model_size_KB": 270},
+      "conditions": "AD closed division",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.4 Anomaly Detection, Model; Table 1"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E019",
+      "kind": "method_detail",
+      "summary": "AD anomaly score is computed as the average MSE of reconstruction errors over a sliding window of 5 frames over the central 6.4-second portion of 10-second audio; input is log-mel-spectrogram with 128 bands and 32ms frame size.",
+      "value": {"window_frames": 5, "input_size": 640, "mel_bands": 128, "frame_size_ms": 32, "eval_duration_s": 6.4},
+      "conditions": "AD benchmark inference procedure",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.4 Anomaly Detection, Model"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E020",
+      "kind": "result",
+      "summary": "AD fp32 reference model achieves AUC of 0.88; quantized version achieves AUC of 0.86; quality target set to AUC 0.85.",
+      "value": {"metric": "AUC-ROC", "fp32": 0.88, "quantized": 0.86, "quality_target": 0.85},
+      "conditions": "AD, FC-autoencoder, 248-sample evaluation set (normal and anomalous from 4 machines)",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.4 Anomaly Detection, Quality Target"},
+      "strength": "soft",
+      "status": "incomplete",
+      "notes": "No variance reported."
+    },
+    {
+      "id": "E021",
+      "kind": "method_detail",
+      "summary": "AD evaluation uses 248 samples of normal and anomalous sounds from 4 different machines; metric is AUC-ROC (parameterless, no threshold required).",
+      "value": {"eval_samples": 248, "machines_in_eval": 4, "metric": "AUC-ROC"},
+      "conditions": "AD quality evaluation",
+      "locator": {"path": "project/paper.txt", "anchor": "§4.4 Anomaly Detection, Quality Target"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E022",
+      "kind": "implementation_detail",
+      "summary": "Reference implementations run on NUCLEO-L4R5ZI board using TFLite for Microcontrollers (TFLM) in TFLite format; built with bare-metal MBED and GCC-ARM toolchain.",
+      "value": {"board": "NUCLEO-L4R5ZI", "framework": "TFLite for Microcontrollers (TFLM)", "build": "MBED + GCC-ARM"},
+      "conditions": "All four reference implementations",
+      "locator": {"path": "project/paper.txt", "anchor": "§4 Benchmarks, preamble"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E023",
+      "kind": "method_detail",
+      "summary": "Latency measurement protocol: five trials, each running inference for minimum 10 seconds and 10 iterations; score is median IPS across five runs.",
+      "value": {"trials": 5, "min_duration_s": 10, "min_iterations": 10, "score": "median IPS"},
+      "conditions": "All benchmarks, latency mode",
+      "locator": {"path": "project/paper.txt", "anchor": "§5.3 Measurement Procedure"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E024",
+      "kind": "method_detail",
+      "summary": "Energy measurement: identical to latency but additionally measures total energy; score is µJ/inference (median of 5 runs).",
+      "value": {"score": "µJ/inference", "trials": 5, "score_aggregation": "median"},
+      "conditions": "All benchmarks, energy mode",
+      "locator": {"path": "project/paper.txt", "anchor": "§5.3 Measurement Procedure"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E025",
+      "kind": "method_detail",
+      "summary": "Energy measurement hardware: electrical-isolation proxy (IO Manager, Arduino UNO), energy monitor (EMON) — supports STMicro LPM01A, Jetperch Joulescope JS110, Keysight N6705; only power to core is measured.",
+      "value": {"io_manager": "Arduino UNO", "emon_options": ["STMicro LPM01A", "Jetperch Joulescope JS110", "Keysight N6705"]},
+      "conditions": "Energy measurement configuration",
+      "locator": {"path": "project/paper.txt", "anchor": "Appendix A.1 Framework Hardware"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E026",
+      "kind": "observation",
+      "summary": "First round (v0.5, June 2021) received 5 diverse submissions: ARM MCU (TFLM baseline), RISC-V MCU, Raspberry Pi 4 (software toolchain), neural network accelerator (Syntiant TDK), and FPGA (hls4ml, open division).",
+      "value": {"submission_count": 5, "platforms": ["ARM MCU", "RISC-V MCU", "Raspberry Pi 4", "NN Accelerator (Syntiant)", "FPGA (hls4ml)"]},
+      "conditions": "MLPerf Tiny v0.5, June 2021",
+      "locator": {"path": "project/paper.txt", "anchor": "Table 2; §6.1 Submissions"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E027",
+      "kind": "observation",
+      "summary": "INT-8 post-training quantization is the most common numerical format across v0.5 submissions.",
+      "value": {"observation": "INT-8 PTQ most common in v0.5 submissions"},
+      "conditions": "v0.5 submissions",
+      "locator": {"path": "project/paper.txt", "anchor": "§6.2 Insights"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E028",
+      "kind": "observation",
+      "summary": "No v0.5 submission modified the training dataset; TinyML design is still largely model, framework, and hardware focused.",
+      "value": {"observation": "zero dataset modifications in v0.5"},
+      "conditions": "v0.5 submissions",
+      "locator": {"path": "project/paper.txt", "anchor": "§6.2 Insights"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E029",
+      "kind": "observation",
+      "summary": "Power consumption of v0.5 platforms ranged from µWatts to Watts.",
+      "value": {"range_lower": "µWatts", "range_upper": "Watts"},
+      "conditions": "v0.5 submissions, all platforms",
+      "locator": {"path": "project/paper.txt", "anchor": "§6.2 Insights"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E030",
+      "kind": "method_detail",
+      "summary": "Closed division: submitters must use the same models, datasets, and quality targets as the reference; only post-training quantization (PTQ) is permitted; no retraining or weight replacement.",
+      "value": {"allowed": "post-training quantization", "prohibited": ["retraining", "weight replacement", "model change"]},
+      "conditions": "Closed division",
+      "locator": {"path": "project/paper.txt", "anchor": "§5.2 Closed and Open Divisions"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E031",
+      "kind": "method_detail",
+      "summary": "Open division: submitters may change model, training scripts, and dataset; must use same test dataset for accuracy but need not meet accuracy threshold.",
+      "value": {"allowed": ["model change", "training script change", "dataset change"], "required": "same test dataset for accuracy"},
+      "conditions": "Open division",
+      "locator": {"path": "project/paper.txt", "anchor": "§5.2 Closed and Open Divisions"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E032",
+      "kind": "limitation_noted",
+      "summary": "Streaming inputs and pre-processing are excluded from the measurement window; limited bandwidth between host PC and DUT prevents realistic streaming scenarios.",
+      "value": {"limitation": "no streaming in measurement; pre-processing excluded"},
+      "conditions": "All benchmarks, current version",
+      "locator": {"path": "project/paper.txt", "anchor": "§8 Limitations, Streaming inputs"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E033",
+      "kind": "limitation_noted",
+      "summary": "Closed division reference models primarily use FC and CNN layers; RNN and other architectures not yet in closed division.",
+      "value": {"limitation": "no RNNs or non-FC/CNN architectures in closed division reference"},
+      "conditions": "v0.5 closed division",
+      "locator": {"path": "project/paper.txt", "anchor": "§8 Limitations, Extended coverage"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E034",
+      "kind": "limitation_noted",
+      "summary": "Excluding pre-processing creates a degenerate case risk: a submitter could define almost the entire model as 'feature extraction'.",
+      "value": {"limitation": "pre-processing exclusion creates degenerate feature-extraction boundary risk"},
+      "conditions": "Current benchmark design",
+      "locator": {"path": "project/paper.txt", "anchor": "§8 Limitations, Streaming inputs"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E035",
+      "kind": "external_fact",
+      "summary": "CoreMark does not profile full ML inference programs; MLMark models require gigabytes of memory; MLPerf inference precludes MCU-class devices.",
+      "value": {"gap": "no existing benchmark fits TinyML requirements"},
+      "conditions": "Existing benchmarks",
+      "locator": {"path": "project/paper.txt", "anchor": "§3 Related Work"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E036",
+      "kind": "method_detail",
+      "summary": "Benchmark suite is developed by more than 50 organizations from industry and academia.",
+      "value": {"organizations": ">50"},
+      "conditions": "MLPerf Tiny v0.5 development",
+      "locator": {"path": "project/paper.txt", "anchor": "Abstract, §1"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E037",
+      "kind": "method_detail",
+      "summary": "DUT firmware API requires: timestamp function (1ms resolution for latency; GPIO toggle for energy), UART Tx/Rx, input tensor loading, single inference function, output printing function.",
+      "value": {"api_functions": ["timestamp", "UART Tx/Rx", "load_input_tensor", "run_inference", "print_results"]},
+      "conditions": "All hardware platforms",
+      "locator": {"path": "project/paper.txt", "anchor": "Appendix A.2 Framework Firmware"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E038",
+      "kind": "observation",
+      "summary": "The benchmark has already acted as a standard set of tasks for TinyML research and been made into public projects on a TinyML development platform.",
+      "value": {"observation": "adopted as tasks for TinyML research [4]; public projects on development platform [16]"},
+      "conditions": "As of paper submission (Aug 2021)",
+      "locator": {"path": "project/paper.txt", "anchor": "§7 Impact"},
+      "strength": "soft",
+      "status": "ok",
+      "notes": "Authors cite Banbury et al. [4] (MicroNets) and Moreau [16] (Edge Impulse) as examples."
+    }
+  ]
+}

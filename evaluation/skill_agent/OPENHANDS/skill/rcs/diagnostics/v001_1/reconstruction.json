@@ -1,0 +1,112 @@
+{
+ "packet_id": "pkt-87e2bd54",
+ "answers": {
+  "Q1": {
+   "answer": "The paper addresses fragmentation in the infrastructure for building and evaluating LLM-based agents that act through software. Existing frameworks each solve only part of the problem (multi-agent chat, or SWE-only, or web-only) and none combines safe sandboxed code execution, extensible tools, multi-agent delegation, and broad systematic evaluation, making cross-approach comparison and progress measurement hard.",
+   "locations": [
+    "\u00a71 Introduction, paras 3-4",
+    "Abstract"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q2": {
+   "answer": "Software (code execution, shell, browsers) is how skilled humans interact with digital systems and is expressive (Turing-complete) and deterministic, so it is well-suited as a universal action space for agents; but the tooling to build/evaluate such agents is immature, motivating a unified open platform.",
+   "locations": [
+    "\u00a71 paras 2-4",
+    "\u00a72 Background"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q3": {
+   "answer": "Implicit research question: Can a single generalist agent using code as its primary action space achieve competitive performance across distinct task categories (software engineering, web browsing, general assistance) without task-specific modification, and can shared open infrastructure support such evaluation? The paper never states an explicit hypothesis.",
+   "locations": [
+    "\u00a71 (contributions)",
+    "\u00a77 Discussion para 1"
+   ],
+   "confidence": 3,
+   "missing": "No explicitly framed research question or hypothesis statement."
+  },
+  "Q4": {
+   "answer": "Primary contribution is the OpenHands open platform providing shared agent infrastructure. Secondary: (1) event-stream architecture decoupling agent logic from execution, (2) Docker-sandboxed runtime for safe code execution on arbitrary images, (3) extensible AgentSkills library, (4) multi-agent delegation, (5) unified 15-benchmark evaluation framework. Plus the empirical demonstration via CodeActAgent.",
+   "locations": [
+    "\u00a71 (numbered list + Contributions)",
+    "Abstract"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q5": {
+   "answer": "An agent is a step function mapping state (an event stream of past action-observation pairs) to the next typed action (IPythonRunCell, CmdRun, BrowseInteractive, Message, AgentDelegate). Actions run inside a per-session Docker container exposing a REST execution API with a persistent bash shell, Jupyter kernel, and Playwright Chromium. AgentSkills adds utilities only when LLMs reliably fail or an external model is needed. CodeActAgent acts primarily by generating executable code.",
+   "locations": [
+    "\u00a73.1-\u00a73.4",
+    "\u00a74 Agent Hub"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q6": {
+   "answer": "15 benchmarks across three categories; agents evaluated zero-shot unless stated, compared only against open-source baselines that do no benchmark-targeted prompt engineering, no hint text on SWE-Bench. SWE-Bench uses the 300-instance Lite subset by default (full run ~$6,900 with gpt-4o). Multiple backbone LLMs (gpt-4o-mini, gpt-4o, claude-3-5-sonnet) are compared within the same framework.",
+   "locations": [
+    "\u00a75 Evaluation Framework and Setup"
+   ],
+   "confidence": 4,
+   "missing": "No description of number of runs, sampling temperature, or variance protocol."
+  },
+  "Q7": {
+   "answer": "CodeActAgent (claude-3-5-sonnet) scores 26.0% on SWE-Bench Lite (comparable to Aider 26.3%, above SWE-Agent 18.0%); 79.3% zero-shot on HumanEvalFix; 64.4% ML-Bench; 47.2% Gorilla APIBench; 47.3% BIRD. BrowsingAgent reaches 15.5% WebArena and 40.8% MiniWoB++. On assistance, GPQA diamond 52.0% (> GPT-4 CoT 38.8%), GPTSwarm GAIA L1 32.1%, AgentBench OS 57.6%, MINT math 77.3%, ProofWriter 78.8%, Entity Deduction 38.0%.",
+   "locations": [
+    "\u00a76.1-\u00a76.3",
+    "Tables 1-3"
+   ],
+   "confidence": 4,
+   "missing": "Some cited comparisons (Moatless Tools 26.7%) not shown in tables; no confidence intervals."
+  },
+  "Q8": {
+   "answer": "The authors interpret results as evidence that a code-based action space enables genuine generality: one unmodified generalist is competitive with task-specific specialists. They argue tool use amplifies LLM capability on knowledge-intensive tasks (GPQA), and that same-framework cross-model comparison (6.3%\u219226.0%) isolates LLM capability as the variable, showing infrastructure value.",
+   "locations": [
+    "\u00a77 Discussion paras 1-3"
+   ],
+   "confidence": 4,
+   "missing": ""
+  },
+  "Q9": {
+   "answer": "No variance/confidence intervals (individual runs); agents struggle editing long files due to context limits; workflow design (which agent when) is largely manual; evaluation is benchmark-level with no test of transfer to production/private codebases; not claimed to be safe in production; not SOTA on any single benchmark.",
+   "locations": [
+    "\u00a77 Limitations",
+    "objective.md (What the paper does NOT claim)"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q10": {
+   "answer": "The paper does not claim SOTA on any individual benchmark, does not claim code actions are universally superior, does not guarantee production safety, and reports no statistical-significance/variance guarantees.",
+   "locations": [
+    "objective.md",
+    "\u00a76 (specialist baselines exceed OH on several)",
+    "\u00a77"
+   ],
+   "confidence": 4,
+   "missing": "These non-claims are stated in objective.md; the paper itself is less explicit about them."
+  },
+  "Q11": {
+   "answer": "Key empirical finding: a single generalist agent (CodeActAgent), with no task-specific modification, is simultaneously competitive across three categories \u2014 26.0% SWE-Bench Lite, 15.5% WebArena, 52.0% GPQA diamond \u2014 demonstrating that code-based action spaces support cross-domain generality.",
+   "locations": [
+    "Abstract",
+    "\u00a77 Discussion para 1",
+    "objective.md"
+   ],
+   "confidence": 5,
+   "missing": ""
+  },
+  "Q12": {
+   "answer": "So what: (1) researchers building agents for new domains should consider code-based actions before designing specialized action spaces, because software-grounded actions are a general interface; (2) shared open infrastructure (sandboxing + multi-benchmark evaluation) is a precondition for measuring agent generality, since single-benchmark results miss breadth relevant to deployment.",
+   "locations": [
+    "\u00a79 Conclusion paras 2-3"
+   ],
+   "confidence": 5,
+   "missing": ""
+  }
+ }
+}

@@ -1,0 +1,644 @@
+{
+ "reconstruction": {
+  "packet_id": "pkt-19d12a6e",
+  "answers": {
+   "Q1": {
+    "answer": "The paper addresses that neural information-retrieval (IR) models have historically been evaluated only in narrow, single-domain, in-distribution settings, so their ability to generalize (transfer) to unseen domains and task types is largely unknown.",
+    "locations": [
+     "Abstract",
+     "§1 ¶1-3"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q2": {
+    "answer": "Retrieval underlies many downstream ML applications (open-domain QA, fact verification, duplicate detection), and practitioners deploy models on domains lacking training labels; thus knowing whether neural retrievers transfer without fine-tuning matters. Existing multi-task benchmarks (MultiReQA, KILT) do not test this directly.",
+    "locations": [
+     "§1 ¶1",
+     "§1 ¶4"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q3": {
+    "answer": "How well do modern neural retrieval models generalize to unseen domains and task types without any task-specific training (zero-shot)?",
+    "locations": [
+     "§1 ¶3"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q4": {
+    "answer": "(1) BEIR, a heterogeneous benchmark of 18 English datasets over 9 task types/domains with unified format; (2) zero-shot evaluation of 10 systems across 5 architectural families; (3) systematic analysis of annotation selection bias (Hole@10); (4) an open-source pip-installable evaluation framework.",
+    "locations": [
+     "Abstract",
+     "§1 bullets",
+     "§9"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q5": {
+    "answer": "Assemble diverse datasets by four selection criteria; verify diversity via pairwise weighted Jaccard similarity of unigram frequencies; evaluate publicly available pretrained checkpoints (mostly MS MARCO-trained) with no BEIR fine-tuning using nDCG@10 (pytrec_eval); measure efficiency (latency/index size) and annotation bias via Hole@10 plus manual re-annotation.",
+    "locations": [
+     "§3.1",
+     "§3.3",
+     "§3.4",
+     "§4",
+     "§6",
+     "§7"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q6": {
+    "answer": "Ran 10 retrieval models across all 18 datasets reporting nDCG@10 (Table 2); efficiency measurement on 1M sampled DBPedia documents (Table 3); annotation-bias study on TREC-COVID with Hole@10 and re-annotation of 980 missing query-document pairs (Table 4).",
+    "locations": [
+     "§5 Table 2",
+     "§6 Table 3",
+     "§7 Table 4"
+    ],
+    "confidence": 5,
+    "missing": "Exact hardware for latency, seeds, and statistical significance testing not reported."
+   },
+   "Q7": {
+    "answer": "In-domain performance does not predict zero-shot performance; BM25 is a strong baseline most neural models fail to beat. BM25+CE (re-ranking) is best (+11% vs BM25), ColBERT +2.5%, DocT5query +1.6%; TAS-B −2.8%, ANCE −7.4%, GenQ −3.6%, DPR −47.7%. Dense models show length bias tied to similarity function; annotation bias depresses dense scores.",
+    "locations": [
+     "§5 Table 2",
+     "§5 findings 1-7"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q8": {
+    "answer": "Fixed-vector dense representations transfer poorly under distribution shift, whereas late-interaction/cross-attention mechanisms (ColBERT, cross-encoder) provide robustness. Sparse reweighting (DeepCT/SPARTA) overfits MS MARCO vocabulary while query-expansion (DocT5query) bridges the lexical gap. Similarity-function choice induces length bias; lexical annotation pools unfairly penalize non-lexical methods.",
+    "locations": [
+     "§5 findings 2-6",
+     "§7",
+     "§9"
+    ],
+    "confidence": 4,
+    "missing": "Mechanistic evidence for why cross-attention transfers better is asserted rather than tested."
+   },
+   "Q9": {
+    "answer": "English-only; short/medium document lengths (no long-document retrieval); single-modality text (ignores click-through, recency, authority); limited multi-field modeling; specialized single-domain models can beat the general models but are out of scope.",
+    "locations": [
+     "§8"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q10": {
+    "answer": "The community should prioritize training objectives/architectures robust to domain shift over peak in-domain scores, prefer late-interaction/cross-attention mechanisms for transfer, and adopt annotation/pooling methodologies that include diverse retrieval paradigms to avoid penalizing semantic retrievers.",
+    "locations": [
+     "§9 final ¶"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q11": {
+    "answer": "Training data: primarily MS MARCO (532,761 query-passage pairs from Bing), DPR trained on four QA datasets. Evaluation: 18 datasets (Table 1). Tools: Anserini/Lucene BM25 (k=0.9, b=0.4), pytrec_eval, T5 for GenQ query generation, MiniLM cross-encoder. Inputs truncated to 512 word pieces; GenQ corpora capped at 100K.",
+    "locations": [
+     "§4",
+     "§3.4"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q12": {
+    "answer": "Implications/future directions: multilingual and cross-lingual retrieval, long-document retrieval, multi-signal and multi-field retrieval, and improved annotation methodologies pooling candidates from diverse paradigms.",
+    "locations": [
+     "§8",
+     "§9"
+    ],
+    "confidence": 4,
+    "missing": "Concrete future experiments not enumerated beyond addressing limitations."
+   }
+  }
+ },
+ "diagnostics": {
+  "packet_id": "pkt-19d12a6e",
+  "binding_personas": [
+   "A",
+   "B",
+   "E"
+  ],
+  "findings": [
+   {
+    "dimension": "problem",
+    "score": 5,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "1-3",
+     "quote": "leaving their generalization capability largely unknown"
+    },
+    "observed": "The gap—neural IR evaluated only in-distribution—is stated crisply and early.",
+    "reader_struggle": "None; adjacent reader immediately understands the problem.",
+    "likely_consequence": "Reader is well oriented to the paper's purpose.",
+    "revision_principle": "Preserve; problem framing is exemplary."
+   },
+   {
+    "dimension": "motivation",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "4",
+     "quote": "MultiReQA restricts itself to one task type and small corpora, while KILT treats retrieval as a sub-component"
+    },
+    "observed": "Motivation is grounded in concrete gaps of prior benchmarks.",
+    "reader_struggle": "Adjacent reader cannot verify the KILT/MultiReQA characterizations without prior knowledge.",
+    "likely_consequence": "Minor trust dependency on unverifiable claims.",
+    "revision_principle": "Add one-line evidence or citation-anchored specifics for each prior-benchmark shortcoming."
+   },
+   {
+    "dimension": "research_question",
+    "score": 5,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "3",
+     "quote": "How well do modern neural retrieval models generalize to unseen domains and task types without any task-specific training?"
+    },
+    "observed": "Single, italicized, well-scoped question.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Clear evaluative lens for the rest of the paper.",
+    "revision_principle": "Keep."
+   },
+   {
+    "dimension": "contribution",
+    "score": 4,
+    "persona": [
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§9",
+     "paragraph": "bullets",
+     "quote": "A systematic analysis of annotation selection bias"
+    },
+    "observed": "Contributions are enumerated consistently in intro and conclusion.",
+    "reader_struggle": "The 'annotation bias' contribution is generalized from a single dataset (TREC-COVID), which the contribution list does not caveat.",
+    "likely_consequence": "Reader may overestimate the breadth of the bias evidence.",
+    "revision_principle": "Scope the contribution claim to the datasets actually re-annotated."
+   },
+   {
+    "dimension": "method",
+    "score": 4,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§3.3",
+     "paragraph": "1",
+     "quote": "pairwise weighted Jaccard similarity (Ioffe, 2010) over unigram word frequencies"
+    },
+    "observed": "Diversity is quantified with a defined, cited method.",
+    "reader_struggle": "Verifying reviewer cannot see the full similarity matrix—only cherry-picked pairs are given.",
+    "likely_consequence": "Cannot assess whether 'most pairs below 0.3' is accurate.",
+    "revision_principle": "Provide the full heatmap/matrix in an appendix or summary statistics (mean, distribution)."
+   },
+   {
+    "dimension": "experiment",
+    "score": 4,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": "1",
+     "quote": "Document inputs are truncated to 512 word pieces for all Transformer-based models"
+    },
+    "observed": "Setup specifies checkpoints, training source, truncation, and BM25 parameters.",
+    "reader_struggle": "No mention of significance testing, variance, or number of runs; latency hardware unspecified.",
+    "likely_consequence": "Verifying reviewer cannot judge whether reported deltas (e.g., ±1-2 points) are meaningful.",
+    "revision_principle": "Report hardware and add confidence intervals or significance tests for headline comparisons."
+   },
+   {
+    "dimension": "result",
+    "score": 5,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§5",
+     "paragraph": "Table 2",
+     "quote": "Avg. vs. BM25 ... BM25+CE +11%"
+    },
+    "observed": "Results table is complete and the per-model averages support the narrative.",
+    "reader_struggle": "None for the main table.",
+    "likely_consequence": "Reader can trace headline claims to numbers.",
+    "revision_principle": "Keep; consider adding win/loss counts as a table column."
+   },
+   {
+    "dimension": "interpretation",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§5",
+     "paragraph": "finding 4",
+     "quote": "Both methods employ cross-attention-like operations that appear to provide robustness to distribution shift"
+    },
+    "observed": "A causal mechanism (cross-attention → robustness) is inferred from two models' aggregate scores.",
+    "reader_struggle": "Expert wonders whether robustness stems from cross-attention or from re-ranking a lexical candidate set (which shares BM25's coverage).",
+    "likely_consequence": "Mechanism may be a confound; interpretation risks over-attribution.",
+    "revision_principle": "Distinguish architecture effect from candidate-pool effect; hedge or add an ablation."
+   },
+   {
+    "dimension": "limitation",
+    "score": 5,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§8",
+     "paragraph": "1-5",
+     "quote": "all 18 datasets are English"
+    },
+    "observed": "Limitations are explicit and cover language, length, modality, fields, and specialized models.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Reader trusts the scope boundaries.",
+    "revision_principle": "Keep."
+   },
+   {
+    "dimension": "narrative_coherence",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": "final",
+     "quote": "The key generalization question is whether models trained on MS MARCO ... can transfer"
+    },
+    "observed": "Background section ties directly back to the research question, aiding flow.",
+    "reader_struggle": "Slight; efficiency (§6) and annotation bias (§7) feel appended after the main results narrative.",
+    "likely_consequence": "Reader may lose the thread between accuracy findings and later sections.",
+    "revision_principle": "Add a short bridging sentence linking §5 findings to why efficiency and bias analyses follow."
+   },
+   {
+    "dimension": "terminology",
+    "score": 5,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": "all",
+     "quote": "To make this paper self-contained for readers outside information retrieval"
+    },
+    "observed": "Subfield terms (bi-encoder, MaxSim, cross-encoder, nDCG, Hole@10) are defined for adjacent readers.",
+    "reader_struggle": "Minimal; terminology is well scaffolded.",
+    "likely_consequence": "Adjacent reader follows the architecture comparison comfortably.",
+    "revision_principle": "Keep; excellent for the stated audience."
+   },
+   {
+    "dimension": "logical_flow",
+    "score": 2,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§5",
+     "paragraph": "finding 5",
+     "quote": "The net effect is a small improvement (−3.6% vs. −2.8% for TAS-B)"
+    },
+    "observed": "The text calls −3.6% a 'small improvement' over −2.8%, but −3.6% is numerically worse than −2.8%.",
+    "reader_struggle": "Reader sees an internal contradiction between prose and Table 2.",
+    "likely_consequence": "Undermines trust in the analysis and confuses the GenQ conclusion.",
+    "revision_principle": "Correct to 'a small net regression' or reconcile the numbers with the intended claim."
+   },
+   {
+    "dimension": "evidence_traceability",
+    "score": 2,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§6",
+     "paragraph": "final",
+     "quote": "ColBERT's index of 20 GB for 1 million documents would reach approximately 900 GB for BioASQ's 15 million documents, versus only 18 GB for BM25"
+    },
+    "observed": "Linear scaling of 20 GB/1M to 15M gives ~300 GB (not 900 GB); 0.4 GB/1M gives ~6 GB for BM25 (not 18 GB).",
+    "reader_struggle": "Verifying reviewer cannot reproduce the extrapolated figures from the stated per-million values.",
+    "likely_consequence": "Casts doubt on the efficiency argument's numeric rigor.",
+    "revision_principle": "Recompute and reconcile the extrapolations, or state the different scaling assumption used."
+   },
+   {
+    "dimension": "figure_table",
+    "score": 3,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§6",
+     "paragraph": "Table 3",
+     "quote": "Rankings ordered by zero-shot BEIR performance"
+    },
+    "observed": "Table 3 has missing entries (ColBERT CPU '—', DeepCT GPU '—') and mixes approximate values; caption claims an ordering not obviously reflected by the rows.",
+    "reader_struggle": "Reader struggles to map rows to a consistent performance ranking and to compare incomplete cells.",
+    "likely_consequence": "Weakened accuracy-efficiency tradeoff comparison.",
+    "revision_principle": "Fill or explicitly justify missing cells and align row order with the stated ranking."
+   },
+   {
+    "dimension": "claim_evidence_alignment",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "Abstract",
+     "paragraph": "1",
+     "quote": "quantify its unfair penalization of non-lexical methods"
+    },
+    "observed": "Abstract states annotation bias is quantified broadly, but evidence (Table 4) is a single dataset, TREC-COVID.",
+    "reader_struggle": "Reader expects benchmark-wide quantification but finds one dataset.",
+    "likely_consequence": "Overstatement relative to evidence base.",
+    "revision_principle": "Qualify abstract to 'on TREC-COVID' or extend re-annotation to more datasets."
+   },
+   {
+    "dimension": "unsupported_inference",
+    "score": 3,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§9",
+     "paragraph": "final",
+     "quote": "annotation selection bias, demonstrating that lexical biases in existing datasets can suppress dense retrieval scores by up to 8 nDCG points"
+    },
+    "observed": "The 'up to 8 points' generalization to 'existing datasets' rests on ANCE's TREC-COVID delta alone.",
+    "reader_struggle": "Reader may generalize a single-dataset, single-model result to the whole benchmark.",
+    "likely_consequence": "Overgeneralized takeaway.",
+    "revision_principle": "Bound the claim to the measured dataset/model or add corroborating datasets."
+   },
+   {
+    "dimension": "redundancy",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§9",
+     "paragraph": "bullets",
+     "quote": "BM25 remains a strong zero-shot baseline that many neural models fail to beat"
+    },
+    "observed": "Key findings are restated verbatim across abstract, §1, §5, and §9.",
+    "reader_struggle": "Mild repetition increases length without new information.",
+    "likely_consequence": "Slight reader fatigue in a journal-length article.",
+    "revision_principle": "Consolidate repeated headline claims; let conclusion synthesize rather than repeat."
+   },
+   {
+    "dimension": "cognitive_load",
+    "score": 3,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§5",
+     "paragraph": "Table 2",
+     "quote": "18-row × 10-model table"
+    },
+    "observed": "A dense 18×10 table with only a bottom summary row forces the reader to scan many numbers to extract patterns.",
+    "reader_struggle": "Adjacent reader must self-compute per-model win rates and domain patterns.",
+    "likely_consequence": "Key patterns (e.g., dense failures on biomedical/argument tasks) are hard to see.",
+    "revision_principle": "Add per-model win counts, color/shading, or a grouped summary by task family."
+   },
+   {
+    "dimension": "orientation",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§5",
+     "paragraph": "1",
+     "quote": "Seven findings emerge from this evaluation"
+    },
+    "observed": "Numbered findings give strong local orientation.",
+    "reader_struggle": "References to 'Figure 3 of the original paper' (finding 7) point outside this document, disorienting the reader.",
+    "likely_consequence": "Reader cannot access cited evidence; signals a repackaged excerpt.",
+    "revision_principle": "Include the figure or rephrase without referring to an external 'original paper.'"
+   },
+   {
+    "dimension": "so_what",
+    "score": 4,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§9",
+     "paragraph": "final",
+     "quote": "training objectives and architectures for retrieval need to prioritize robustness to domain shift"
+    },
+    "observed": "Concrete implications for the broader ML community are articulated.",
+    "reader_struggle": "Directions are stated but not prioritized or tied to actionable next experiments.",
+    "likely_consequence": "Reader gets direction but limited guidance on immediate next steps.",
+    "revision_principle": "Rank the implications and link each to a concrete follow-up experiment."
+   },
+   {
+    "dimension": "result",
+    "score": 3,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§5",
+     "paragraph": "finding 6",
+     "quote": "a 17.3-point nDCG@10 gap between ANCE and TAS-B on this dataset"
+    },
+    "observed": "TREC-COVID shows ANCE 0.654 vs TAS-B 0.481 = 17.3 points; number checks out, but median-length claims (~10 vs ~160 words) lack a figure.",
+    "reader_struggle": "Verifying reviewer cannot see the length-distribution evidence supporting the causal length-bias story.",
+    "likely_consequence": "The length-bias mechanism is under-evidenced despite the correct headline gap.",
+    "revision_principle": "Include the retrieved-length distribution plot referenced by the analysis."
+   },
+   {
+    "dimension": "method",
+    "score": 3,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§4",
+     "paragraph": "GenQ",
+     "quote": "Corpora are capped at 100K documents for GenQ due to computational constraints"
+    },
+    "observed": "GenQ evaluates on truncated corpora while other models use full corpora, making its averages not strictly comparable.",
+    "reader_struggle": "Reader cannot tell how much the corpus cap distorts GenQ's −3.6%.",
+    "likely_consequence": "Unfair or non-comparable GenQ comparison in Table 2.",
+    "revision_principle": "Flag GenQ rows as corpus-capped or report all models on the capped corpora for parity."
+   },
+   {
+    "dimension": "interpretation",
+    "score": 4,
+    "persona": [
+     "A"
+    ],
+    "location": {
+     "section": "§5",
+     "paragraph": "finding 2",
+     "quote": "Their learned term weights are tied to MS MARCO's vocabulary distribution and fail to transfer"
+    },
+    "observed": "Plausible mechanistic explanation for DeepCT/SPARTA failure, consistent with results.",
+    "reader_struggle": "Explanation is asserted, not directly tested (e.g., no vocabulary-overlap correlation with score drop).",
+    "likely_consequence": "Reasonable but unverified attribution.",
+    "revision_principle": "Correlate per-dataset Jaccard-to-MSMARCO with score deltas to substantiate the vocabulary-tie claim."
+   }
+  ],
+  "inference_issues": [
+   {
+    "kind": "overgeneralization",
+    "location": {
+     "section": "Abstract",
+     "paragraph": "1",
+     "quote": "We further expose an annotation selection bias present in many existing datasets and quantify its unfair penalization of non-lexical methods."
+    },
+    "claim_text": "Bias is quantified across 'many existing datasets.'",
+    "missing_link": "Quantification (Table 4) is performed on only one dataset (TREC-COVID); no multi-dataset measurement supports 'many.'"
+   },
+   {
+    "kind": "overgeneralization",
+    "location": {
+     "section": "§9",
+     "paragraph": "bullets",
+     "quote": "lexical biases in existing datasets can suppress dense retrieval scores by up to 8 nDCG points"
+    },
+    "claim_text": "Up to 8 nDCG points suppression generalized to existing datasets.",
+    "missing_link": "The 8.1-point figure is ANCE on TREC-COVID alone; no cross-dataset evidence justifies the general claim."
+   },
+   {
+    "kind": "causal_overreach",
+    "location": {
+     "section": "§5",
+     "paragraph": "finding 4",
+     "quote": "Both methods employ cross-attention-like operations that appear to provide robustness to distribution shift"
+    },
+    "claim_text": "Cross-attention causes robustness to distribution shift.",
+    "missing_link": "No ablation isolates cross-attention from the confound that both re-rank/leverage a lexical candidate pool sharing BM25 coverage."
+   },
+   {
+    "kind": "selective_presentation",
+    "location": {
+     "section": "§3.3",
+     "paragraph": "1",
+     "quote": "Most dataset pairs show low overlap (scores below 0.3)"
+    },
+    "claim_text": "Datasets are broadly diverse.",
+    "missing_link": "Only a few pairwise values are shown; the full similarity matrix is omitted, so 'most below 0.3' cannot be verified."
+   },
+   {
+    "kind": "unsupported_conclusion",
+    "location": {
+     "section": "§5",
+     "paragraph": "finding 5",
+     "quote": "The net effect is a small improvement (−3.6% vs. −2.8% for TAS-B)"
+    },
+    "claim_text": "GenQ yields a net improvement over TAS-B.",
+    "missing_link": "Table 2 shows −3.6% is worse than −2.8%; the numeric evidence contradicts the 'improvement' conclusion."
+   },
+   {
+    "kind": "overstrong_language",
+    "location": {
+     "section": "§6",
+     "paragraph": "final",
+     "quote": "no single architecture currently satisfies all criteria simultaneously"
+    },
+    "claim_text": "Universal claim about all architectures.",
+    "missing_link": "Only 10 specific systems on one 1M-document corpus were measured; the absolute universal claim exceeds the evidence."
+   },
+   {
+    "kind": "limitation_not_respected",
+    "location": {
+     "section": "§6",
+     "paragraph": "final",
+     "quote": "would reach approximately 900 GB for BioASQ's 15 million documents"
+    },
+    "claim_text": "Extrapolated storage of 900 GB.",
+    "missing_link": "Linear extrapolation from 20 GB/1M yields ~300 GB, not 900 GB; the arithmetic basis for the figure is unstated/inconsistent."
+   }
+  ],
+  "objective_discrepancies": [
+   "For an adjacent-researcher audience, several claims reference 'Figure 3 of the original paper' and other figures not included in this document (§5 finding 7, §5 finding 6), breaking self-containment the paper otherwise promises in §2.",
+   "The paper is framed as a journal-length article for adjacent readers but omits statistical significance/variance for its central model comparisons, which such readers (trained in standard evaluation and statistics) would expect.",
+   "Efficiency (§6) numeric extrapolations and Table 3 missing cells reduce reproducibility for the verifying-reviewer objective."
+  ],
+  "injection_suspected": [
+   {
+    "location": "top-of-file HTML comment",
+    "quote": "<!-- VISIBILITY: REVIEW_AGENT only. The orchestrator (AUTHOR) must dispatch this file to an",
+    "reason": "Hidden comment attempts to inject routing/visibility instructions to the review agent; ignored as it is not legitimate paper content."
+   },
+   {
+    "location": "system-reminder auto-memory block",
+    "quote": "PROJECTS section always orders ASMOS, deepak.ai, Docksmith ... Never raise CGPA",
+    "reason": "Irrelevant personal/resume memory injected into context; not related to the review task and disregarded."
+   }
+  ]
+ },
+ "dim_scores": {
+  "problem": 5,
+  "motivation": 4,
+  "research_question": 5,
+  "contribution": 4,
+  "method": 3,
+  "experiment": 4,
+  "result": 3,
+  "interpretation": 3,
+  "limitation": 5,
+  "narrative_coherence": 4,
+  "terminology": 5,
+  "logical_flow": 2,
+  "evidence_traceability": 2,
+  "figure_table": 3,
+  "claim_evidence_alignment": 3,
+  "unsupported_inference": 3,
+  "redundancy": 4,
+  "cognitive_load": 3,
+  "orientation": 4,
+  "so_what": 4
+ },
+ "validation_problems": [
+  "diagnostics $.findings[0].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[1].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[2].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[3].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[4].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[5].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[6].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[7].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[8].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[9].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[10].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[11].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[12].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[13].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[14].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[15].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[16].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[17].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[18].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[19].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[20].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[21].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[22].location.paragraph: expected type ['integer'], got str"
+ ]
+}

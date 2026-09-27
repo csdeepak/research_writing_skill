@@ -1,0 +1,623 @@
+{
+ "reconstruction": {
+  "packet_id": "pkt-9ec01847",
+  "answers": {
+   "Q1": {
+    "answer": "The paper addresses the absence of a standardized, reproducible benchmark for comparing ultra-low-power (TinyML, sub-milliwatt, microcontroller-class) ML inference systems on the metrics that matter most—accuracy, latency, and energy—across a highly heterogeneous hardware and software landscape.",
+    "locations": [
+     "Abstract",
+     "§1 ¶1-2",
+     "§2"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q2": {
+    "answer": "TinyML enables always-on, battery-powered inference near the sensor, and for such devices the energy cost of transmitting raw data to the cloud far exceeds that of local inference (Bouguera et al., 2018), making on-device inference necessary. Progress requires fair comparison, but without a common benchmark, improvement claims are made against different baselines, hardware, and metrics, so real progress cannot be judged.",
+    "locations": [
+     "§1 ¶1-2"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q3": {
+    "answer": "Can a single benchmark suite fairly measure accuracy, latency, and energy for microcontroller-class ML systems while accommodating the hardware/software heterogeneity of the field, and enable diverse contributors to demonstrate the value of their specific approach?",
+    "locations": [
+     "§1 ¶3"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q4": {
+    "answer": "Contributions: (1) MLPerf Tiny, the first industry-standard TinyML inference benchmark suite (four benchmarks) jointly measuring accuracy, latency, energy; (2) a modular two-division (closed/open) submission structure accommodating both hardware and software contributors; (3) a measurement harness/protocol with electrical isolation and supported energy monitors plus a minimal firmware API; (4) open-source reference implementations as community baselines; (5) results/analysis of the first submission round (v0.5).",
+    "locations": [
+     "Abstract",
+     "§1 ¶4",
+     "§4",
+     "§5",
+     "§6"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q5": {
+    "answer": "Four benchmarks (Table 1): Keyword Spotting (Speech Commands v2, 49×10; DS-CNN 52.5 KB; target 90% top-1); Visual Wake Words (VWW/MSCOCO, 96×96; MobileNetV1-0.25 325 KB; target 80% top-1); Image Classification (CIFAR-10, 32×32; customized ResNetv1 96 KB; target 85% top-1); Anomaly Detection (ToyADMOS/MIMII, 5×128; FC-AutoEncoder 270 KB; target 0.85 AUC-ROC). References run on STM NUCLEO-L4R5ZI Cortex-M4 with TFLM.",
+    "locations": [
+     "§4.1 Table 1",
+     "§4.2-4.5"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q6": {
+    "answer": "A two-division structure: closed division fixes model architecture, dataset, and quality target, permitting only post-training quantization (PTQ), so latency/energy differences reflect hardware and inference stack (though PTQ strategy is a residual variable). Open division allows changing model, training procedure, and training data, does not require meeting the quality threshold, but must use the same test set and document deviations.",
+    "locations": [
+     "§5.1"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q7": {
+    "answer": "Harness separates host PC (benchmark runner) from device under test (DUT) via serial. For energy, an electrical-isolation proxy (Arduino UNO IO Manager with level shifters, excluded from score) prevents host power inflating measurements, and one of three energy monitors (STM LPM01A, Joulescope JS110, Keysight N6705) supplies/measures DUT core power. DUT exposes a minimal firmware API (timestamp/GPIO toggle, UART, input load, single inference, results print). Protocol: latency/energy = median of five trials each ≥10 s and ≥10 iterations (IPS, µJ/inference); accuracy = single full-set pass; latency/energy valid only if quality target met.",
+    "locations": [
+     "§5.2",
+     "§5.3"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q8": {
+    "answer": "The first round (v0.5, June 2021) received five submissions (Table 2): closed INT-8 PTQ TFLM on ARM MCU (baseline); closed INT-8 PTQ TFLM on RISC-V MCU; closed FP32/INT-8 PTQ LEIP framework on Raspberry Pi 4 (software toolchain); closed INT-8 PTQ Syntiant TDK on an NN accelerator; and open INT-6/8 QAT HLS4ML on FPGA. Quantitative accuracy/latency/energy are NOT in the paper—only characterizations; numbers are directed to the mlcommons.org public results.",
+    "locations": [
+     "§6.1 Table 2"
+    ],
+    "confidence": 5,
+    "missing": "Actual per-submission quantitative results are absent from the paper."
+   },
+   "Q9": {
+    "answer": "Observations: INT-8 PTQ was most common (4/5) with limited accuracy loss (e.g., AUC 0.88→0.86; KWS 92.2%→91.6%); platforms spanned ~3 orders of magnitude of power (µW accelerators to watt-class Pi 4); software ranged from TFLM to custom compilers and HLS4ML; no submission modified the training dataset (multiple explanations offered); and the modular design is 'consistent with' enabling diverse contributors to produce comparable results.",
+    "locations": [
+     "§6.2"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q10": {
+    "answer": "Limitations: (1) pre-processing excluded from the measurement window (degenerate-case gaming risk) and streaming inputs not recreated due to serial bandwidth; (2) closed-division reference models cover only FC/convolutional layers—recurrent, attention, and other architectures unrepresented; (3) evidence is a single round of five submissions, so observed trends are a snapshot and may shift. Future rounds/versions plan to address these.",
+    "locations": [
+     "§7"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q11": {
+    "answer": "So-what: MLPerf Tiny provides shared, reproducible infrastructure for longitudinal, multi-year tracking of TinyML system progress across heterogeneous hardware/software, is extensible to new domains (wearable health, environmental sensing, medical), and offers a template (two-division structure + measurement harness) that other efficiency-aware ML subfields facing similar heterogeneity may adapt.",
+    "locations": [
+     "§1 ¶4",
+     "§8"
+    ],
+    "confidence": 5,
+    "missing": ""
+   },
+   "Q12": {
+    "answer": "Key terms defined for adjacent readers: TinyML (ML inference under a milliwatt on MCUs); depthwise-separable convolution; autoencoder/bottleneck reconstruction error; AUC-ROC; PTQ (post-training quantization) vs QAT (quantization-aware training); DUT, IO Manager/electrical isolation proxy, GPIO, UART; HLS/HLS4ML; Mbed. Definitions are generally inline and adequate.",
+    "locations": [
+     "§4.2",
+     "§4.5",
+     "§5.1",
+     "§5.2",
+     "§6.2"
+    ],
+    "confidence": 5,
+    "missing": ""
+   }
+  }
+ },
+ "diagnostics": {
+  "packet_id": "pkt-9ec01847",
+  "binding_personas": [
+   "A",
+   "B",
+   "E"
+  ],
+  "findings": [
+   {
+    "dimension": "problem",
+    "score": 5,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "2",
+     "quote": "Without a standard benchmark, claims of improvement are made against different baselines, on different hardware, using different metrics"
+    },
+    "observed": "The core problem—no standardized joint accuracy/latency/energy benchmark for MCU-class ML—is stated crisply and early.",
+    "reader_struggle": "Little; the gap is unambiguous.",
+    "likely_consequence": "Reader quickly grasps why the work exists.",
+    "revision_principle": "Preserve; this is exemplary problem framing."
+   },
+   {
+    "dimension": "motivation",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "1",
+     "quote": "the energy cost of wireless communication ... far exceeds the energy cost of running inference locally (Bouguera et al., 2018)"
+    },
+    "observed": "Motivation is grounded in an energy-economics argument with a citation.",
+    "reader_struggle": "Adjacent reader may want a rough magnitude of the excess to feel the force of 'far exceeds'.",
+    "likely_consequence": "Claim is accepted but not vividly quantified.",
+    "revision_principle": "Add a one-figure order-of-magnitude comparison to concretize the motivation."
+   },
+   {
+    "dimension": "research_question",
+    "score": 5,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "3",
+     "quote": "can a single benchmark suite fairly measure accuracy, latency, and energy ... while accommodating the hardware and software heterogeneity"
+    },
+    "observed": "An explicit, well-scoped design question is posed.",
+    "reader_struggle": "None; the question directly frames the rest.",
+    "likely_consequence": "Strong orientation for evaluating whether the paper answers it.",
+    "revision_principle": "Keep; ensure the conclusion revisits this question explicitly."
+   },
+   {
+    "dimension": "contribution",
+    "score": 4,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "4",
+     "quote": "MLPerf Tiny, an open-source benchmark suite designed to fill this gap"
+    },
+    "observed": "Contributions are described in prose but not enumerated as a distinct list.",
+    "reader_struggle": "Reader must synthesize the discrete contributions themselves.",
+    "likely_consequence": "Some contributions (e.g., the harness, the reference baselines) may be under-weighted.",
+    "revision_principle": "Add an explicit bulleted contribution list at the end of §1."
+   },
+   {
+    "dimension": "method",
+    "score": 4,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§5.1",
+     "paragraph": "2",
+     "quote": "The only permitted modification is post-training quantization (PTQ)"
+    },
+    "observed": "Division rules are clearly specified, including the acknowledged PTQ residual variable.",
+    "reader_struggle": "Verifier may wonder how PTQ-strategy variance is bounded or reported.",
+    "likely_consequence": "Comparability claims rest on an unquantified residual.",
+    "revision_principle": "State how PTQ variance is disclosed/constrained across submissions."
+   },
+   {
+    "dimension": "experiment",
+    "score": 2,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§6.1",
+     "paragraph": "table",
+     "quote": "Quantitative accuracy, latency (IPS), and energy (µJ/inference) per submission are available in the MLPerf Tiny v0.5 public results"
+    },
+    "observed": "The paper reports zero quantitative per-submission results, deferring entirely to an external URL.",
+    "reader_struggle": "A journal-article reader cannot evaluate the benchmark's outputs without leaving the paper.",
+    "likely_consequence": "The empirical core is unverifiable in-text; the evaluation feels like an announcement rather than an evaluation.",
+    "revision_principle": "Include at least a summary results table (per-benchmark accuracy, IPS, µJ/inference) for the five submissions."
+   },
+   {
+    "dimension": "result",
+    "score": 2,
+    "persona": [
+     "A",
+     "B",
+     "E"
+    ],
+    "location": {
+     "section": "§6.2",
+     "paragraph": "Platform diversity",
+     "quote": "The submissions span platforms ... to a general-purpose Raspberry Pi 4 (operating in the watt range)"
+    },
+    "observed": "Results are given only qualitatively (power ranges, format counts) without numeric tables or figures.",
+    "reader_struggle": "Reader cannot see the actual accuracy/latency/energy tradeoffs the benchmark was built to expose.",
+    "likely_consequence": "The paper's central promise (jointly measuring three axes) is asserted but not shown.",
+    "revision_principle": "Present the measured three-axis results, ideally as a scatter/Pareto figure."
+   },
+   {
+    "dimension": "interpretation",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§6.2",
+     "paragraph": "Dataset modification",
+     "quote": "Alternative explanations are also consistent — including the added complexity of retraining ... or the small sample of five participants"
+    },
+    "observed": "Interpretations are appropriately hedged and offer competing explanations.",
+    "reader_struggle": "Minimal; the hedging is a strength.",
+    "likely_consequence": "Reader trusts the authors' restraint.",
+    "revision_principle": "Maintain this hedged interpretive style throughout."
+   },
+   {
+    "dimension": "limitation",
+    "score": 5,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§7",
+     "paragraph": "1",
+     "quote": "a submitter could define a significant portion of the computation as 'feature extraction' rather than 'inference,' artificially improving the reported score"
+    },
+    "observed": "Limitations are candid, including a gaming risk in the measurement boundary.",
+    "reader_struggle": "None; this builds credibility.",
+    "likely_consequence": "Reviewer confidence increases.",
+    "revision_principle": "Preserve; consider noting any interim mitigation for the gaming risk."
+   },
+   {
+    "dimension": "narrative_coherence",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": "final",
+     "quote": "The mapping is as follows: low-power measurement is handled by ... memory constraints shaped the selection of reference models"
+    },
+    "observed": "An explicit challenge-to-solution mapping ties Section 2 to Sections 4-5.",
+    "reader_struggle": "Little; the scaffolding is helpful.",
+    "likely_consequence": "Strong throughline from problem to design.",
+    "revision_principle": "Keep the mapping; ensure each mapped section fulfills its promise."
+   },
+   {
+    "dimension": "terminology",
+    "score": 5,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§4.2",
+     "paragraph": "1",
+     "quote": "Depthwise-separable convolutions decompose a standard convolution into a depthwise spatial convolution followed by a pointwise (1×1) convolution"
+    },
+    "observed": "Subfield terms (DS-CNN, autoencoder, AUC-ROC, PTQ/QAT, GPIO/UART, HLS) are defined inline for adjacent readers.",
+    "reader_struggle": "Very little; definitions are timely.",
+    "likely_consequence": "Adjacent reader stays oriented without external lookups.",
+    "revision_principle": "Preserve inline definitions; audience fit is excellent here."
+   },
+   {
+    "dimension": "logical_flow",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§1",
+     "paragraph": "5",
+     "quote": "The paper is organized as follows."
+    },
+    "observed": "A clear roadmap and consistent section ordering guide the reader.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Easy navigation.",
+    "revision_principle": "Keep the roadmap."
+   },
+   {
+    "dimension": "evidence_traceability",
+    "score": 2,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§6.1",
+     "paragraph": "1",
+     "quote": "The results are publicly available at mlcommons.org (MLPerf Tiny v0.5 results round)"
+    },
+    "observed": "Key evidence lives only behind an unversioned external link with no snapshot, DOI, or date-of-access.",
+    "reader_struggle": "Verifier cannot trace specific numbers to a stable source; link may drift.",
+    "likely_consequence": "Reproducibility/verification is fragile and unauditable in the archival record.",
+    "revision_principle": "Cite a versioned/archived results artifact and reproduce the key figures in-paper."
+   },
+   {
+    "dimension": "figure_table",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§6.1",
+     "paragraph": "Table 2",
+     "quote": "| Division | Numerics | Framework | Hardware | What it demonstrates |"
+    },
+    "observed": "Table 2 is purely categorical/narrative ('What it demonstrates') and carries no measured quantities.",
+    "reader_struggle": "Reader expects a results table but gets a qualitative summary.",
+    "likely_consequence": "The table under-delivers for a results section.",
+    "revision_principle": "Add columns or a companion table with measured accuracy/IPS/µJ per benchmark."
+   },
+   {
+    "dimension": "claim_evidence_alignment",
+    "score": 2,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§6.2",
+     "paragraph": "Flexibility confirmed",
+     "quote": "to participate in the same benchmark round and produce directly comparable results on the metrics each cared about"
+    },
+    "observed": "The claim of 'directly comparable results' is not backed by any in-paper comparison of numbers.",
+    "reader_struggle": "Reader cannot confirm comparability without the underlying measurements.",
+    "likely_consequence": "A central claim is asserted rather than demonstrated.",
+    "revision_principle": "Show a side-by-side comparison that evidences comparability."
+   },
+   {
+    "dimension": "unsupported_inference",
+    "score": 3,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§4.4",
+     "paragraph": "1",
+     "quote": "CIFAR-10's low resolution makes it uniquely suited for TinyML"
+    },
+    "observed": "'Uniquely suited' is a strong claim; other small datasets (e.g., MNIST-scale) could also fit.",
+    "reader_struggle": "Adjacent reader may question the exclusivity.",
+    "likely_consequence": "Minor overreach in dataset justification.",
+    "revision_principle": "Soften to 'well suited' or justify uniqueness explicitly."
+   },
+   {
+    "dimension": "redundancy",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§8",
+     "paragraph": "1",
+     "quote": "TinyML enables always-on, battery-powered intelligent sensing on devices too constrained for cloud connectivity"
+    },
+    "observed": "The conclusion restates framing already given in the abstract and §1 with little new synthesis.",
+    "reader_struggle": "Mild sense of repetition.",
+    "likely_consequence": "Slightly diluted closing impact.",
+    "revision_principle": "Trim restatement; lead the conclusion with what v0.5 uniquely established."
+   },
+   {
+    "dimension": "cognitive_load",
+    "score": 4,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§5.2",
+     "paragraph": "2",
+     "quote": "an electrical isolation proxy (an Arduino UNO acting as an IO Manager)"
+    },
+    "observed": "The harness has several interacting components but is described with parenthetical clarifications.",
+    "reader_struggle": "Some readers may struggle to picture the wiring topology from prose alone.",
+    "likely_consequence": "Moderate load in following the measurement setup.",
+    "revision_principle": "Add a block diagram of host/IO-Manager/energy-monitor/DUT connections."
+   },
+   {
+    "dimension": "orientation",
+    "score": 5,
+    "persona": [
+     "B"
+    ],
+    "location": {
+     "section": "§2",
+     "paragraph": "1",
+     "quote": "Four challenges make this a distinct problem."
+    },
+    "observed": "Section headings and enumerated challenges keep the reader oriented to purpose.",
+    "reader_struggle": "None.",
+    "likely_consequence": "Strong sense of where each part fits.",
+    "revision_principle": "Preserve the enumerated framing."
+   },
+   {
+    "dimension": "so_what",
+    "score": 4,
+    "persona": [
+     "A",
+     "B"
+    ],
+    "location": {
+     "section": "§8",
+     "paragraph": "2",
+     "quote": "offer a template that other efficiency-aware ML subfields may adapt as they confront similar heterogeneity"
+    },
+    "observed": "The broader-impact generalization is stated but only lightly justified.",
+    "reader_struggle": "Adjacent reader may want a concrete example of another subfield adopting the template.",
+    "likely_consequence": "The generalization reads aspirational.",
+    "revision_principle": "Name a candidate subfield and the specific transferable element to ground the claim."
+   },
+   {
+    "dimension": "result",
+    "score": 3,
+    "persona": [
+     "A"
+    ],
+    "location": {
+     "section": "§4.2",
+     "paragraph": "2",
+     "quote": "achieves 92.2% top-1 accuracy in the authors' experiments; the quantized version reaches 91.6% on the full test set"
+    },
+    "observed": "Reference-model accuracies are reported, but across benchmarks the evaluation-subset sizes vary (1,000 utterances, 200 images, 248 samples) without justification.",
+    "reader_struggle": "Verifier questions why tiny/varying subsets are used for quality gating.",
+    "likely_consequence": "Doubts about the statistical stability of the quality targets.",
+    "revision_principle": "Justify subset sizes or report confidence intervals for subset-based accuracies."
+   },
+   {
+    "dimension": "interpretation",
+    "score": 3,
+    "persona": [
+     "A",
+     "E"
+    ],
+    "location": {
+     "section": "§6.2",
+     "paragraph": "Quantization format",
+     "quote": "demonstrating that the reference quality targets can be met after quantization"
+    },
+    "observed": "A general 'demonstrating' conclusion is drawn from two example numbers, generalized across all four benchmarks.",
+    "reader_struggle": "Reader cannot confirm targets were met for VWW and image classification post-quantization.",
+    "likely_consequence": "Modest overgeneralization from partial evidence.",
+    "revision_principle": "Report post-quantization accuracy for all four benchmarks before asserting the general claim."
+   },
+   {
+    "dimension": "method",
+    "score": 4,
+    "persona": [
+     "E"
+    ],
+    "location": {
+     "section": "§5.3",
+     "paragraph": "1",
+     "quote": "The score is the median inferences per second (IPS) across the five trials."
+    },
+    "observed": "Protocol is precise and justified (median of five, ≥10 s/≥10 iterations).",
+    "reader_struggle": "Verifier may want variance/spread reported alongside the median.",
+    "likely_consequence": "Point estimates without dispersion limit reproducibility assessment.",
+    "revision_principle": "Report inter-trial variance or min/max alongside the median."
+   }
+  ],
+  "inference_issues": [
+   {
+    "kind": "unsupported_conclusion",
+    "location": {
+     "section": "§6.2",
+     "paragraph": "Flexibility confirmed",
+     "quote": "to participate in the same benchmark round and produce directly comparable results on the metrics each cared about"
+    },
+    "claim_text": "The modular design produced directly comparable results across fundamentally different submissions.",
+    "missing_link": "No in-paper quantitative comparison is presented; comparability is asserted without the underlying measured numbers."
+   },
+   {
+    "kind": "overstrong_language",
+    "location": {
+     "section": "§4.4",
+     "paragraph": "1",
+     "quote": "CIFAR-10's low resolution makes it uniquely suited for TinyML"
+    },
+    "claim_text": "CIFAR-10 is uniquely suited for TinyML image classification.",
+    "missing_link": "No argument excludes other small-resolution datasets; 'uniquely' is unsupported."
+   },
+   {
+    "kind": "overgeneralization",
+    "location": {
+     "section": "§6.2",
+     "paragraph": "Quantization format",
+     "quote": "demonstrating that the reference quality targets can be met after quantization"
+    },
+    "claim_text": "Quality targets can be met after INT-8 quantization (all benchmarks).",
+    "missing_link": "Only two benchmarks' before/after numbers are cited; the generalization to all four lacks data."
+   },
+   {
+    "kind": "selective_presentation",
+    "location": {
+     "section": "§6.1",
+     "paragraph": "note",
+     "quote": "Quantitative accuracy, latency (IPS), and energy (µJ/inference) per submission are available in the MLPerf Tiny v0.5 public results"
+    },
+    "claim_text": "Submissions produced measurable three-axis results validating the benchmark.",
+    "missing_link": "The paper presents only qualitative characterizations and withholds the quantitative results it relies on, leaving the empirical claim unshown."
+   },
+   {
+    "kind": "causal_overreach",
+    "location": {
+     "section": "§6.2",
+     "paragraph": "Dataset modification",
+     "quote": "This suggests that at this stage ... optimization effort is concentrated on model architecture, inference framework, and hardware, rather than on data curation"
+    },
+    "claim_text": "The absence of dataset modification reflects where field-wide optimization effort is concentrated.",
+    "missing_link": "n=5 and run-rule complexity are equally plausible causes (the authors partly acknowledge this), so the inference about field-wide effort is not established."
+   },
+   {
+    "kind": "overgeneralization",
+    "location": {
+     "section": "§8",
+     "paragraph": "2",
+     "quote": "offer a template that other efficiency-aware ML subfields may adapt"
+    },
+    "claim_text": "The two-division structure and harness are a transferable template for other ML subfields.",
+    "missing_link": "No evidence or worked example of transfer beyond TinyML is provided."
+   }
+  ],
+  "objective_discrepancies": [
+   "For a journal-length research article aimed at adjacent researchers, the empirical core (per-submission accuracy/latency/energy) is entirely absent from the paper and deferred to an external URL, undermining self-containment and verifiability.",
+   "The stated research question emphasizes fair, comparable measurement, yet the paper never demonstrates comparability with actual numbers or a Pareto/tradeoff figure, leaving the objective only partially fulfilled in-text.",
+   "Reference-model quality is evaluated on small and inconsistent subsets (1,000 / 200 / 248 samples) without justification or uncertainty, which adjacent readers trained in standard evaluation practice will flag."
+  ],
+  "injection_suspected": []
+ },
+ "dim_scores": {
+  "problem": 5,
+  "motivation": 4,
+  "research_question": 5,
+  "contribution": 4,
+  "method": 4,
+  "experiment": 2,
+  "result": 2,
+  "interpretation": 3,
+  "limitation": 5,
+  "narrative_coherence": 4,
+  "terminology": 5,
+  "logical_flow": 4,
+  "evidence_traceability": 2,
+  "figure_table": 3,
+  "claim_evidence_alignment": 2,
+  "unsupported_inference": 3,
+  "redundancy": 4,
+  "cognitive_load": 4,
+  "orientation": 5,
+  "so_what": 4
+ },
+ "validation_problems": [
+  "diagnostics $.findings[0].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[1].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[2].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[3].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[4].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[5].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[6].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[7].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[8].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[9].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[10].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[11].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[12].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[13].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[14].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[15].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[16].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[17].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[18].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[19].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[20].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[21].location.paragraph: expected type ['integer'], got str",
+  "diagnostics $.findings[22].location.paragraph: expected type ['integer'], got str"
+ ]
+}

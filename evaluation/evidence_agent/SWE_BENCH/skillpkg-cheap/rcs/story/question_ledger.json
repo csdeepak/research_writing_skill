@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {"id": "Q_R1", "question": "What kind of tasks does the benchmark contain and how realistic are they?", "raised_at": "Introduction", "answered_at": "Approach/Benchmark construction"},
+    {"id": "Q_R2", "question": "How do you know a generated patch actually resolves the issue?", "raised_at": "Introduction", "answered_at": "Methods (FAIL_TO_PASS / PASS_TO_PASS tests)"},
+    {"id": "Q_R3", "question": "How were the 2,294 instances selected out of all GitHub activity?", "raised_at": "Approach", "answered_at": "Methods (3-stage filtering pipeline)"},
+    {"id": "Q_R4", "question": "Which models were evaluated and how did they access the codebase?", "raised_at": "Approach", "answered_at": "Methods (retrieval settings)"},
+    {"id": "Q_R5", "question": "Is a 1.96% resolution rate good or bad?", "raised_at": "Results (headline number)", "answered_at": "Results (context vs. reference-comparison: 0.17% to 3.79% range; and oracle-retrieval comparison)"},
+    {"id": "Q_R6", "question": "Why does performance fall as context grows?", "raised_at": "Results (context-length sweep)", "answered_at": "Discussion (context-selection interpretation)"},
+    {"id": "Q_R7", "question": "Is the bottleneck retrieval or the models' coding ability?", "raised_at": "Introduction", "answered_at": "Discussion (oracle vs BM25 comparison)"},
+    {"id": "Q_R8", "question": "Does a fine-tuned open model do any better?", "raised_at": "Approach", "answered_at": "Results (SWE-Llama)"},
+    {"id": "Q_R9", "question": "What are the practical limits of this benchmark and these findings?", "raised_at": "Introduction (briefly, deferred)", "answered_at": "Limitations"},
+    {"id": "Q_R10", "question": "What should future work do about the context bottleneck?", "raised_at": "Discussion", "answered_at": "Conclusion / Future directions"}
+  ],
+  "debt": 0,
+  "notes": "All questions raised in the Introduction are either answered within the same section (definitional) or explicitly deferred with a forward pointer to Results/Discussion/Limitations, consistent with the ≤3 forward-deferral allowance for the introduction."
+}
