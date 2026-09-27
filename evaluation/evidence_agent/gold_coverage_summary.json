@@ -67,5 +67,88 @@
    "Q10b",
    "Q11d"
   ]
+ },
+ "WHISPER/strong": {
+  "nuggets": 40,
+  "coverage_rate": 0.713,
+  "covered": 27,
+  "partial": 3,
+  "missing": 10,
+  "contradicted": 0,
+  "type_match": 19,
+  "type_stronger": 1,
+  "type_weaker": 3,
+  "package_errors": 2,
+  "missing_ids": [
+   "Q1a",
+   "Q1b",
+   "Q2a",
+   "Q2b",
+   "Q2c",
+   "Q3a",
+   "Q5b",
+   "Q9d",
+   "Q10b",
+   "Q11d"
+  ]
+ },
+ "OPENHANDS/cheap": {
+  "nuggets": 40,
+  "coverage_rate": 0.487,
+  "covered": 17,
+  "partial": 5,
+  "missing": 18,
+  "contradicted": 0,
+  "type_match": 7,
+  "type_stronger": 1,
+  "type_weaker": 0,
+  "package_errors": 3,
+  "missing_ids": [
+   "Q1a",
+   "Q1b",
+   "Q2a",
+   "Q2b",
+   "Q3a",
+   "Q3b",
+   "Q3c",
+   "Q4a",
+   "Q4d",
+   "Q4e",
+   "Q5b",
+   "Q7f",
+   "Q7h",
+   "Q8b",
+   "Q9c",
+   "Q10b",
+   "Q11d",
+   "Q11e"
+  ]
+ },
+ "OPENHANDS/strong": {
+  "nuggets": 40,
+  "coverage_rate": 0.6,
+  "covered": 21,
+  "partial": 6,
+  "missing": 13,
+  "contradicted": 0,
+  "type_match": 8,
+  "type_stronger": 0,
+  "type_weaker": 3,
+  "package_errors": 2,
+  "missing_ids": [
+   "Q1a",
+   "Q1b",
+   "Q2a",
+   "Q2b",
+   "Q3a",
+   "Q3b",
+   "Q3c",
+   "Q4a",
+   "Q4b",
+   "Q4d",
+   "Q5a",
+   "Q5b",
+   "Q9c"
+  ]
  }
 }

@@ -33,11 +33,11 @@
   "recon_sonnet": {
    "nuggets": 36,
    "counts": {
+    "present": 27,
     "contradicted": 1,
     "overstated": 1,
-    "absent": 2,
     "weakened": 5,
-    "present": 27
+    "absent": 2
    },
    "RR": 0.819,
    "DR": 0.056,
@@ -104,11 +104,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 20,
     "contradicted": 0,
     "overstated": 0,
-    "absent": 13,
     "weakened": 7,
-    "present": 20
+    "absent": 13
    },
    "RR": 0.588,
    "DR": 0.0,
@@ -168,11 +168,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 22,
     "contradicted": 0,
     "overstated": 0,
-    "absent": 5,
     "weakened": 13,
-    "present": 22
+    "absent": 5
    },
    "RR": 0.713,
    "DR": 0.0,
@@ -232,11 +232,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 17,
     "contradicted": 1,
     "overstated": 0,
-    "absent": 11,
     "weakened": 11,
-    "present": 17
+    "absent": 11
    },
    "RR": 0.562,
    "DR": 0.025,
@@ -300,11 +300,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 25,
     "contradicted": 1,
     "overstated": 0,
-    "absent": 10,
     "weakened": 4,
-    "present": 25
+    "absent": 10
    },
    "RR": 0.675,
    "DR": 0.025,
@@ -329,6 +329,80 @@
    "distortions": {
     "Q7": [
      "Q7e"
+    ]
+   }
+  },
+  "grading_problems_sonnet": 0
+ },
+ {
+  "family": "F1",
+  "pid": "pkt-47ad65cd",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-strong",
+  "words_main": 4188,
+  "markers_removed": 0,
+  "dims": {
+   "problem": 4,
+   "motivation": 3,
+   "research_question": 4,
+   "contribution": 3,
+   "method": 2,
+   "experiment": 3,
+   "result": 3,
+   "interpretation": 2,
+   "limitation": 4,
+   "narrative_coherence": 3,
+   "terminology": 3,
+   "logical_flow": 3,
+   "evidence_traceability": 3,
+   "figure_table": 2,
+   "claim_evidence_alignment": 2,
+   "unsupported_inference": 2,
+   "redundancy": 4,
+   "cognitive_load": 2,
+   "orientation": 3,
+   "so_what": 3
+  },
+  "dim_mean": 2.9,
+  "n_inference_issues": 10,
+  "recon_sonnet": {
+   "nuggets": 40,
+   "counts": {
+    "present": 9,
+    "contradicted": 3,
+    "overstated": 0,
+    "weakened": 5,
+    "absent": 23
+   },
+   "RR": 0.287,
+   "DR": 0.075,
+   "IR": 0.275,
+   "MMF": 0.075,
+   "CoreRR": 0.386,
+   "per_question_RR": {
+    "Q1": 0.0,
+    "Q2": 0.0,
+    "Q3": 0.0,
+    "Q4": 0.2,
+    "Q5": 0.0,
+    "Q6": 0.5,
+    "Q7": 0.562,
+    "Q8": 0.25,
+    "Q9": 0.0,
+    "Q10": 1.0,
+    "Q11": 0.2,
+    "Q12": 0.25
+   },
+   "RR_question_macro": 0.247,
+   "distortions": {
+    "Q5": [
+     "Q5a"
+    ],
+    "Q6": [
+     "Q6d"
+    ],
+    "Q12": [
+     "Q12b"
     ]
    }
   },
@@ -368,11 +442,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 23,
     "contradicted": 1,
     "overstated": 1,
-    "absent": 11,
     "weakened": 4,
-    "present": 23
+    "absent": 11
    },
    "RR": 0.625,
    "DR": 0.05,
@@ -439,11 +513,11 @@
   "recon_sonnet": {
    "nuggets": 36,
    "counts": {
+    "present": 20,
     "contradicted": 1,
     "overstated": 0,
-    "absent": 3,
     "weakened": 12,
-    "present": 20
+    "absent": 3
    },
    "RR": 0.722,
    "DR": 0.028,
@@ -507,11 +581,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 19,
     "contradicted": 4,
     "overstated": 0,
-    "absent": 11,
     "weakened": 6,
-    "present": 19
+    "absent": 11
    },
    "RR": 0.55,
    "DR": 0.1,
@@ -584,11 +658,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 13,
     "contradicted": 2,
     "overstated": 0,
-    "absent": 23,
     "weakened": 2,
-    "present": 13
+    "absent": 23
    },
    "RR": 0.35,
    "DR": 0.05,
@@ -655,11 +729,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 28,
     "contradicted": 0,
     "overstated": 0,
-    "absent": 3,
     "weakened": 9,
-    "present": 28
+    "absent": 3
    },
    "RR": 0.812,
    "DR": 0.0,
@@ -719,11 +793,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 26,
     "contradicted": 0,
     "overstated": 0,
-    "absent": 8,
     "weakened": 6,
-    "present": 26
+    "absent": 8
    },
    "RR": 0.725,
    "DR": 0.0,
@@ -783,11 +857,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 22,
     "contradicted": 0,
     "overstated": 0,
-    "absent": 8,
     "weakened": 10,
-    "present": 22
+    "absent": 8
    },
    "RR": 0.675,
    "DR": 0.0,
@@ -847,11 +921,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 18,
     "contradicted": 0,
     "overstated": 1,
-    "absent": 11,
     "weakened": 10,
-    "present": 18
+    "absent": 11
    },
    "RR": 0.575,
    "DR": 0.025,
@@ -915,11 +989,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 15,
     "contradicted": 2,
     "overstated": 0,
-    "absent": 18,
     "weakened": 5,
-    "present": 15
+    "absent": 18
    },
    "RR": 0.438,
    "DR": 0.05,
@@ -986,11 +1060,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 23,
     "contradicted": 0,
     "overstated": 0,
-    "absent": 5,
     "weakened": 12,
-    "present": 23
+    "absent": 5
    },
    "RR": 0.725,
    "DR": 0.0,
@@ -1050,11 +1124,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 24,
     "contradicted": 1,
     "overstated": 0,
-    "absent": 7,
     "weakened": 8,
-    "present": 24
+    "absent": 7
    },
    "RR": 0.7,
    "DR": 0.025,
@@ -1118,11 +1192,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 25,
     "contradicted": 1,
     "overstated": 1,
-    "absent": 8,
     "weakened": 5,
-    "present": 25
+    "absent": 8
    },
    "RR": 0.688,
    "DR": 0.05,
@@ -1188,11 +1262,11 @@
   "recon_sonnet": {
    "nuggets": 36,
    "counts": {
+    "present": 26,
     "contradicted": 0,
     "overstated": 0,
-    "absent": 4,
     "weakened": 6,
-    "present": 26
+    "absent": 4
    },
    "RR": 0.806,
    "DR": 0.0,
@@ -1252,11 +1326,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 19,
     "contradicted": 0,
     "overstated": 0,
-    "absent": 7,
     "weakened": 14,
-    "present": 19
+    "absent": 7
    },
    "RR": 0.65,
    "DR": 0.0,
@@ -1315,11 +1389,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 21,
     "contradicted": 0,
     "overstated": 1,
-    "absent": 8,
     "weakened": 10,
-    "present": 21
+    "absent": 8
    },
    "RR": 0.65,
    "DR": 0.025,
@@ -1383,11 +1457,11 @@
   "recon_sonnet": {
    "nuggets": 36,
    "counts": {
+    "present": 24,
     "contradicted": 1,
     "overstated": 0,
-    "absent": 5,
     "weakened": 6,
-    "present": 24
+    "absent": 5
    },
    "RR": 0.75,
    "DR": 0.028,
@@ -1451,11 +1525,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 28,
     "contradicted": 0,
     "overstated": 0,
-    "absent": 5,
     "weakened": 7,
-    "present": 28
+    "absent": 5
    },
    "RR": 0.787,
    "DR": 0.0,
@@ -1515,11 +1589,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 20,
     "contradicted": 0,
     "overstated": 1,
-    "absent": 15,
     "weakened": 4,
-    "present": 20
+    "absent": 15
    },
    "RR": 0.55,
    "DR": 0.025,
@@ -1582,11 +1656,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 23,
     "contradicted": 0,
     "overstated": 1,
-    "absent": 7,
     "weakened": 9,
-    "present": 23
+    "absent": 7
    },
    "RR": 0.688,
    "DR": 0.025,
@@ -1658,11 +1732,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 21,
     "contradicted": 1,
     "overstated": 0,
-    "absent": 12,
     "weakened": 6,
-    "present": 21
+    "absent": 12
    },
    "RR": 0.6,
    "DR": 0.025,
@@ -1726,11 +1800,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 27,
     "contradicted": 0,
     "overstated": 0,
-    "absent": 5,
     "weakened": 8,
-    "present": 27
+    "absent": 5
    },
    "RR": 0.775,
    "DR": 0.0,
@@ -1789,11 +1863,11 @@
   "recon_sonnet": {
    "nuggets": 40,
    "counts": {
+    "present": 16,
     "contradicted": 3,
     "overstated": 0,
-    "absent": 12,
     "weakened": 9,
-    "present": 16
+    "absent": 12
    },
    "RR": 0.512,
    "DR": 0.075,

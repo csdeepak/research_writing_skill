@@ -81,3 +81,6 @@ Each decision: context → choice → rationale → consequence/risk. Appended c
 - Candidate skill v0.2.0 (SKILL_AGENT proposal; 44/44 tests pass; canonical skill untouched) vs v0.1.0, both executed as in-session Sonnet subagents (same path; Phase 6 showed subagent writers read more skill files and ran tools, unlike CLI writers — so v0.1.0 is re-run on the subagent path instead of reusing CLI drafts), full project snapshot, workflow steps 1–17 (draft), identical TASK.md.
 - Projects: OPENHANDS (largest v0.1 loss), MLPERF_TINY (rationale loss), BEIR (only project where v0.1 helped → regression check). No project is held out (v0.2 was derived from diagnostics on all six) — overfitting risk stated.
 - Readers: F1 Claude Opus (subagent path), graded by Sonnet vs frozen gold v1. Primary: MMF, Q11/Q2/Q5 recall; regression checks: Q7/Q9 recall, DR, words.
+
+## D-18 · Migration to another machine (2026-09-27)
+- User is moving the session to another laptop. Harness temp paths made portable (OS temp dir, override `RCE_TMP`); Phase 9 workspace creation scripted (`harness/prep_phase9.py`). Phase 6 is complete. Phase 9 draft runs in progress on the old laptop are abandoned and must be re-run from `prep_phase9.py` (no partial outputs were collected). `CONTINUATION.md` is the resume guide.

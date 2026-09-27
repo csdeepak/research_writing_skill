@@ -23,7 +23,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import review_lib as RL  # noqa: E402
 
 EV = RL.ROOT / "evaluation"
-TASKS = Path("C:/Users/csdee/AppData/Local/Temp/rce_tasks")
+import os, tempfile  # noqa: E401
+TASKS = Path(os.environ.get("RCE_TMP", tempfile.gettempdir())) / "rce_tasks"   # override with RCE_TMP
 INDEX = TASKS / "index.json"
 LOG = EV / "logs" / "experiments.jsonl"
 

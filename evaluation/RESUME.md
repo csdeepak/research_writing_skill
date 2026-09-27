@@ -1,4 +1,4 @@
-# RESUME — External validation state (checkpoint 2026-09-25)
+# RESUME — superseded: see /CONTINUATION.md (checkpoint 2026-09-27). Historical checkpoint 2026-09-25 below.
 
 Read this first when resuming. Logs: `logs/PROGRESS.md`, `logs/DECISIONS.md` (D-01…D-17), `logs/experiments.jsonl`.
 

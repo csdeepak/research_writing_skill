@@ -52,6 +52,23 @@
  },
  {
   "family": "F1",
+  "project": "OPENHANDS",
+  "contrast": "skillpkg-strong - skillpkg-cheap",
+  "d_MMF": -0.15,
+  "d_RR": -0.063,
+  "d_CoreRR": -0.091,
+  "d_DR": 0.025,
+  "d_IR": 0.125,
+  "skillpkg-cheap_MMF": 0.225,
+  "skillpkg-strong_MMF": 0.075,
+  "skillpkg-cheap_DR": 0.05,
+  "skillpkg-strong_DR": 0.075,
+  "d_dim_mean": -0.15,
+  "skillpkg-cheap_words": 4231,
+  "skillpkg-strong_words": 4188
+ },
+ {
+  "family": "F1",
   "project": "SAM",
   "contrast": "skill - plain",
   "d_MMF": -0.042,

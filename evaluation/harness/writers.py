@@ -34,7 +34,8 @@ from run_model import LOG, run  # noqa: E402
 
 ROOT = RL.ROOT
 EV = ROOT / "evaluation"
-WS_ROOT = Path("C:/Users/csdee/AppData/Local/Temp/rce_ws")   # outside the repository
+import os, tempfile  # noqa: E401
+WS_ROOT = Path(os.environ.get("RCE_TMP", tempfile.gettempdir())) / "rce_ws"   # outside the repository (override with RCE_TMP)
 WRITER_MODEL = "sonnet"
 TOOLS = ["Read", "Write", "Edit", "Glob", "Grep", "Bash(python *)", "Bash(python3 *)", "PowerShell(python *)"]
 
@@ -172,7 +173,7 @@ def audit_stream(logf: Path, w: Path) -> dict:
                     tool_calls += 1
                     inp = json.dumps(c.get("input", {})).replace("\\\\", "/").lower()
                     for p in re.findall(r'(?<![a-z])[a-z]:/[^"\s]+', inp):
-                        if not p.startswith(wsn) and not p.startswith("c:/users/csdee/appdata/local/temp/rce_ws"):
+                        if not p.startswith(wsn) and not p.startswith(str(WS_ROOT).replace("\\", "/").lower()):
                             outside.append(p[:160])
                     if "research_writing_skill" in inp or "ground_truth" in inp:
                         outside.append("REPO-PATH:" + inp[:160])

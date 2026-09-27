@@ -17,3 +17,6 @@ Machine-readable per-call log: `experiments.jsonl`. Decisions: `DECISIONS.md`.
 - 2026-09-25 · Phase 5 (v0.2) F1 6/6 pairs: skill vs plain ΔRR −0.087 (5/6 lower), ΔMMF −0.074 (95% CI −0.20…+0.05), ΔDR +0.004, reviewer Δdims +0.56 (reviewer prefers skill papers while recall falls). F2 partial, mixed.
 - 2026-09-25 · Phase 8 FAILURE_ANALYSIS.md: S1 author-stated limitations replaced by writer-derived (Q11 net −7), S2 author rationale/motivation lost, S3 low process adherence, S4 length overruns.
 - 2026-09-25 · Phase 9: SKILL_AGENT candidate v0.2.0 (attribution fields + validator/lint checks, executable gates, length gate); 44/44 tests. Test runs started; interrupted by usage limit. Checkpoint: evaluation/RESUME.md.
+- 2026-09-27 · Phase 6 complete: OPENHANDS strong downstream MMF 0.075 (cheap 0.225). Package quality: strong better on all package metrics (~9× cost); downstream fidelity does not track package quality (strong better 1/3).
+- 2026-09-27 · FINAL_EXTERNAL_VALIDATION_REPORT.md drafted (Q1–Q4 answered; Phase 9 section pending).
+- 2026-09-27 · Migration checkpoint (D-18): portable harness paths, prep_phase9.py, CONTINUATION.md rewritten for resuming on another laptop. Phase 9 A/B runs to be re-run there.
