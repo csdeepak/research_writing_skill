@@ -1,0 +1,90 @@
+{
+  "project": "BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation of Information Retrieval Models",
+  "step": 17,
+  "runtime_mode": "solo_no_human_no_subagents",
+  "gates": {
+    "G1": "passed",
+    "G2": "passed",
+    "G3": "passed"
+  },
+  "gate_notes": {
+    "G1": ".rcs/audits/gates/G1_validate.json, 0 errors (refresh in progress before finishing -- see below)",
+    "G2": "no tool exists for G2 per SKILL.md; audit file is plan/skeleton.md's self-reconstruction section (Q1-Q12 all answerable from the skeleton alone)",
+    "G3": ".rcs/audits/gates/G3_lint.json, 0 errors, run against .rcs/drafts/v001/paper.md with --rcs .rcs (claim tags resolved); main text 3,670 words, within the 3,000-4,500 limit"
+  },
+  "steps_11_to_17_audits": {
+    "step11_reconstruction_self": ".rcs/audits/v001/reconstruction_self.md (Q1-Q12 all present, Core RR = 1.0)",
+    "step12_claim_audit": ".rcs/audits/v001/claim_audit.md (0 orphan claims, 0 verb/type mismatches, numeric spot-check exceeds 20%/min-10, all negative results and author-stated items covered)",
+    "step13_flow_audit": ".rcs/audits/v001/flow_audit.md (paragraph/section/transition/old-new-info checks pass; 0 question-ledger debt)",
+    "step14_term_load_audit": ".rcs/audits/v001/term_load_audit.md (term ledger compliant; 21 acronym WARNs reviewed and accepted with reasons; long sentences reviewed)",
+    "step15_figure_audit": ".rcs/audits/v001/figure_audit.md (both tables carded, referenced before appearing after one fix, takeaway in prose)",
+    "step16_citation_audit": ".rcs/audits/v001/citation_audit.json (15/15 citation instances pass the 8-step pipeline, 2 with a disclosed secondary-source caveat)",
+    "step17_overclaim_audit": ".rcs/audits/v001/overclaim_audit.md (2 flags found -- B1 novelty, B9 intensifier -- both fixed by downgrading language, never by strengthening evidence)"
+  },
+  "length_limit_words": 4500,
+  "length_limit_words_min": 3000,
+  "open_failures": [],
+  "accepted_risks": [
+    {
+      "id": "AR001",
+      "topic": "UNCLEAR_AUDIENCE / venue / no human available",
+      "decision": "Run-specific constraints direct: wherever the skill says ASK or STOP, choose the most defensible option from the evidence and continue. Applied throughout.",
+      "raised_at_step": 0
+    },
+    {
+      "id": "AR002",
+      "topic": "VENUE_UNKNOWN",
+      "decision": "No venue was specified. Used templates/venue_profile.generic.yaml as the base, with every structural/style rule marked assumed:true. The length limit is fixed by the task (3000-4500 main-text words, excluding references) and recorded in state.json.length_limit_words=4500 (upper bound), overriding venue_profile.words_main.",
+      "raised_at_step": 6
+    },
+    {
+      "id": "AR003",
+      "topic": "No web / literature mode restricted to project-cited works",
+      "decision": "Per run-specific constraints, no web search was performed. All external sources registered in corpus/source_registry.json are restricted to works cited in project/paper.txt (or, for one follow-up resource paper, described with its own abstract in project/README_1.md). Every source has verification.method='user_supplied_file' and read_depth='abstract'. No snowballing, no additional literature search, no citation-count-based exemplar selection was performed; this materially limits the depth of the lit->gap chain and the writing_patterns/anti_patterns corpus (see corpus/corpus_log.md).",
+      "raised_at_step": 7
+    },
+    {
+      "id": "AR004",
+      "topic": "CORPUS_AGENT role performed by AUTHOR (no subagents)",
+      "decision": "Per run-specific constraints, the sole agent performed the CORPUS_AGENT role directly (having read rce/skill/agents/corpus_agent.md), instead of dispatching an isolated subagent. review_agent.md, recon_grader.md and skill_agent.md were not read, and their roles (step 18 blind review, skill self-improvement) were not performed in this run.",
+      "raised_at_step": 1
+    },
+    {
+      "id": "AR005",
+      "topic": "Selective extraction of author-stated limitations/checklist items",
+      "decision": "All five numbered items in paper.txt Appendix B ('Limitations of the BEIR Benchmark') and the NeurIPS checklist's error-bar/variance answer (checklist item 3c) were extracted as limitation_noted evidence and carried into the claim map as author_stated limitations, because they bound the paper's substantive generalization/comparison claims. Checklist items about societal impact, IRB approval, and PII/offensive-content screening (checklist items 1c, 5b, 4e) were read and judged administrative disclosures that do not bound any claim in the claim map, and were not extracted as separate evidence items. This is a scope judgment, recorded here for transparency.",
+      "raised_at_step": 2
+    },
+    {
+      "id": "AR006",
+      "topic": "CONFLICTING_EVIDENCE: dataset count (18 vs 17)",
+      "decision": "project/paper.txt states 18 datasets/9 tasks (internally verifiable by summing the per-task dataset counts in Section 3 and Appendix D, which total 18) and this is treated as authoritative, hard, primary evidence. project/README_1.md's features list says '17 benchmark datasets' in an unelaborated marketing bullet, with no reconciliation of the discrepancy anywhere in either document. Per evidence_model.md (never average conflicting values), the paper's figure (18) is used throughout the draft; the README figure is recorded as evidence with status='conflicting' and is not used. No human was available to adjudicate, so the primary peer-reviewed/arXiv source with an internally-checkable count was preferred over an informal README bullet.",
+      "raised_at_step": 2
+    },
+    {
+      "id": "AR007",
+      "topic": "Voice / presentation mode",
+      "decision": "The task instructs presenting the authors' research, not reviewing it, and the skill's section contracts and examples assume first-person-plural authorial voice ('we'). The draft is therefore written in the original authors' voice (Thakur, Reimers, Ruckle, Srivastava, and Gurevych), re-explained for an adjacent-ML audience, rather than as a third-person survey of their paper. All claims, numbers, and limitations still come only from project/paper.txt and project/README_1.md.",
+      "raised_at_step": 8
+    },
+    {
+      "id": "AR009",
+      "topic": "hard vs soft evidence strength for a paper-only evidence base",
+      "decision": "This project's evidence base is the paper's own typeset text/tables rather than raw logs, CSVs, or scripts. Numeric values and specific patterns reported in the paper's formal Tables/Sections (composition stats, Table 2/3/4/9/10 numbers, the seven numbered Results-section findings, the Appendix H ablation) are classified strength='hard', since they are the camera-ready, tabulated record of the authors' own experiment and are independently checkable against the surrounding table. Pure narrative/editorial content with no measured value (limitation_noted, rationale_stated, assumption, hypothesis_stated items) is classified strength='soft'.",
+      "raised_at_step": 2
+    },
+    {
+      "id": "AR010",
+      "topic": "AUTHOR_CONFIRMATION_PENDING at Gate G1 (no human to confirm)",
+      "decision": "Workflow step 4 asks to show the spine and pending claims to the user for confirmation at Gate G1. No human is available. Claims C005, C008, C016, and C019 remain author_confirmation='pending' because each is a one-step interpretive synthesis the agent constructed by combining two or more directly authorial statements/tables (rather than a near-verbatim restatement of a single authorial sentence, which was instead marked 'confirmed'). All four are narrowly grounded in the cited evidence/claims, hedged at claim_type='interpretation' (never asserted as 'measured'), and none appears in the Abstract. validate_artifacts.py flags them as WARN (not ERROR), which is accepted here and re-verified as unchanged (still exactly these four, no new ones) before finishing.",
+      "raised_at_step": 4
+    },
+    {
+      "id": "AR008",
+      "topic": "Steps 18-21 out of scope for this run",
+      "decision": "Per run-specific constraints, blind REVIEW_AGENT evaluation (step 18) is performed externally and is out of scope here; consequently steps 19-20 (revise against that review) and step 21 (final line edit, tag-stripping, disclosure.md) are also not performed in this run. Self-audits (steps 11-17) were performed by the sole agent and defects found were fixed directly in the draft before stopping, since no separate revision round against an external review exists to defer them to.",
+      "raised_at_step": 17
+    }
+  ],
+  "notes": "Solo run: no human, no subagents, no web. Workflow executed steps 1-17; per run-specific constraints, stopped after step 17 and wrote drafts/v001/paper.md + ./paper.md + packets/audience.md + packets/objective.md."
+}

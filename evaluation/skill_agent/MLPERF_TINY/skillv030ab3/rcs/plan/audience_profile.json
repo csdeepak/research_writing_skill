@@ -1,0 +1,36 @@
+{
+  "mode": "B",
+  "primary": "Machine-learning researchers from other subfields (adjacent researchers) who know general ML, deep learning, standard evaluation practice and statistics",
+  "secondary": "Reviewers and replicators checking that numbers and rules match the project's paper",
+  "tertiary": "Later readers and practitioners looking for what MLPerf Tiny v0.5 specifies",
+  "assumed_known": [
+    "supervised learning",
+    "train/test split",
+    "top-1 accuracy",
+    "AUC-ROC",
+    "CNN and residual networks",
+    "autoencoder",
+    "quantization as a general idea",
+    "benchmark and leaderboard practice",
+    "median and repeated runs"
+  ],
+  "not_assumed": [
+    "microcontrollers and DSPs",
+    "TinyML",
+    "TFLM",
+    "post-training quantization versus quantization-aware training in embedded toolchains",
+    "keyword spotting and visual wake words tasks",
+    "DCASE, ToyADMOS, MIMII",
+    "EEMBC, CoreMark, MLMark",
+    "energy monitors and device-under-test setups",
+    "RISC-V, FPGA, hls4ml"
+  ],
+  "binding_personas": [
+    "B"
+  ],
+  "term_budget": {
+    "per_paragraph": 2,
+    "abstract_acronyms": 1
+  },
+  "source": "task statement of this run (audience given; no human available)"
+}

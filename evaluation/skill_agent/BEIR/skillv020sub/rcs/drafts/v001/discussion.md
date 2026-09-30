@@ -1,0 +1,11 @@
+## 6 Discussion
+
+Returning to our first question: does in-domain accuracy predict zero-shot performance? Our results say no. A system's rank on MS MARCO, the field's dominant single-dataset benchmark, does not carry over to its rank once evaluation moves to new tasks and domains, and an untrained lexical baseline remains a meaningful reference point that most of the trained neural systems we tested do not clear on average {C005}.
+
+Our second question was about cost as well as accuracy. Right now, the two families with the best average zero-shot accuracy -- re-ranking and late-interaction -- also require the most computation per query, while the cheaper dense and sparse families generalize less reliably and behave unevenly depending on training data, negative-sampling, and domain-adaptation choices we can point to individually but not yet predict in general {C008}. Reporting accuracy alone therefore hides a real engineering trade-off: a system chosen purely from a zero-shot leaderboard could be 20-30 times slower than an alternative that trails it by only a few points {C008}.
+
+Our third question, raised by the TREC-COVID case study, is how much to trust the exact size of these margins. Because that collection's judgments were pooled mostly from lexical systems, at least part of the measured gap between lexical and non-lexical retrieval on it is an annotation artifact, not a pure difference in retrieval quality {C019}. We did not re-run this check on the other 17 datasets, so we cannot say how much of BM25's overall zero-shot robustness reflects the same effect elsewhere; we can only say the possibility is now demonstrated on one collection, not merely hypothesized {C019}.
+
+A later resource paper built on this benchmark makes a related point about how we summarized our own results: collapsing scores from 18 heterogeneous datasets into one average, as in Table 1, is difficult to interpret on its own, and per-dataset effect-size analyses are offered as a complement (Kamalloo et al., 2024).
+
+Taken together, these three answers point to the same practical recommendation: compare retrieval architectures on broad, heterogeneous suites rather than one dataset, report accuracy alongside computational cost, and treat any single collection's absolute numbers as bounded by how that collection's judgments were built.

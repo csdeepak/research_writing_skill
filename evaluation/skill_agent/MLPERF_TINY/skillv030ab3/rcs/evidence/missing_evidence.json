@@ -1,0 +1,25 @@
+{
+  "items": [
+    {"id": "M001", "ref": "FIG-5", "kind": "figure_data",
+     "detail": "Figure 5 (energy and latency of the four reference implementations on NUCLEO-L4R5ZI) is not recoverable from the extracted text; no numeric latency (inferences per second) or energy (micro-Joules per inference) values exist in any project file. Figure FIG-5 is blocked (NO_VALID_VISUAL) and no substitute is drawn.",
+     "affects": ["C014"]},
+    {"id": "M002", "ref": "Table 2 columns", "kind": "table_cells",
+     "detail": "Table 2 check-mark/X columns (dataset, training, model, numerics, framework, hardware modification marks) are not legible in the extraction; only row contents are used.",
+     "affects": ["C015"]},
+    {"id": "M003", "ref": "Table 1 alignment", "kind": "table_layout",
+     "detail": "Table 1 cell alignment is inferred from list order; text of section 4 confirms all quality targets except the model sizes 52.5 KB (KWS) and 270 KB (AD), which appear only in Table 1.",
+     "affects": ["C004"]},
+    {"id": "M004", "ref": "Related-work comparison table", "kind": "table_missing",
+     "detail": "Section 3 says 'As Table 1 summarizes, there is a clear and distinct need'; the Table 1 in the extraction is the list of v0.5 benchmarks, so the comparison table the sentence refers to is absent. No comparison table is reproduced.",
+     "affects": ["C003"]},
+    {"id": "M005", "ref": "spread / variance", "kind": "variance",
+     "detail": "No variance, confidence interval or number of repeated training runs is reported for any accuracy or AUC value (E009, E011, E014, E017). Single values only.",
+     "affects": ["C010", "C011", "C012", "C013"]},
+    {"id": "M006", "ref": "submission measurements", "kind": "result",
+     "detail": "No measured accuracy, latency or energy values from the v0.5 submissions appear in the extracted text or README; only the descriptive Table 2 rows and the qualitative insights of section 6.2.",
+     "affects": ["C015", "C016", "C018"]},
+    {"id": "M007", "ref": "references without year", "kind": "citation",
+     "detail": "References [1] (TinyML foundation), [2] (Brainchip), [16] (Moreau, TinyMLPerf speech commands) and [19] (Torelli and Bangale, MLMark white paper) give no year in the project reference list, so they cannot be cited in the (FirstAuthor, Year) form and are not registered; they are mentioned by name only.",
+     "affects": ["C003", "C040"]}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+ "items": [
+  {
+   "figure": "V002",
+   "claim": "per-submission latency comparison",
+   "needed": "numeric values behind Figure 5",
+   "question": "Can the authors' results table for the v0.5 submission round be supplied?",
+   "effect_on_paper": "the latency comparison is described in words only"
+  }
+ ]
+}

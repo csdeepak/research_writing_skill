@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-09-27",
+  "entries": [
+    {"id": "Q1", "question": "What is an agent, and why does software matter as its interface?", "raised_at": "Introduction ¶1", "answered_at": "Introduction ¶1-2", "reader_personas": ["B", "C"]},
+    {"id": "Q2", "question": "What exactly did they build (what is OpenHands)?", "raised_at": "Introduction ¶4 (approach)", "answered_at": "Introduction ¶4 (summary) + fully in The OpenHands Platform", "reader_personas": ["A", "B"]},
+    {"id": "Q3", "question": "What's missing from prior agent frameworks that motivates a new one?", "raised_at": "Introduction ¶2-3 (gap)", "answered_at": "Introduction ¶2-3; expanded in Related Work", "reader_personas": ["A", "B"]},
+    {"id": "Q4", "question": "What exactly does this paper ask?", "raised_at": "Introduction ¶3", "answered_at": "Introduction ¶3 (explicit RQ)", "reader_personas": ["A", "B", "C"]},
+    {"id": "Q5", "question": "How was the platform/agent tested?", "raised_at": "Introduction ¶4-5 (contributions/paper map)", "answered_at": "Evaluation Setup", "reader_personas": ["A", "B"]},
+    {"id": "Q6", "question": "Is 26% on SWE-Bench Lite good -- compared to what?", "raised_at": "Results:Software Engineering, opening", "answered_at": "Results:Software Engineering, same paragraph (baseline range given)", "reader_personas": ["B", "C"]},
+    {"id": "Q7", "question": "Does OpenHands win on every benchmark?", "raised_at": "Introduction ¶5 (key finding), deferred", "answered_at": "Results:Cross-category Synthesis and Limitations", "deferred_to": "Results:Cross-category Synthesis § 'we return to where it does not lead' / Limitations", "reader_personas": ["A", "B"]},
+    {"id": "Q8", "question": "With so many numbers across 15 benchmarks, what is the one thing to take away?", "raised_at": "Results, after the third category's tables", "answered_at": "Results:Cross-category Synthesis, opening", "reader_personas": ["B", "C"]},
+    {"id": "Q9", "question": "What does the cross-category pattern mean, and for whom?", "raised_at": "end of Results", "answered_at": "Discussion, opening", "reader_personas": ["A", "B"]},
+    {"id": "Q10", "question": "What about the risk of increasingly capable, more autonomous agents?", "raised_at": "Introduction ¶2 (significance), deferred", "answered_at": "Discussion (ethics paragraph)", "deferred_to": "Discussion § safety/ethics paragraph", "reader_personas": ["B", "C", "D"]},
+    {"id": "Q11", "question": "Are these numbers statistically solid (seeds, variance)?", "raised_at": "Results:Software Engineering, first numeric claim, deferred", "answered_at": "Limitations (L001)", "deferred_to": "Limitations § first limitation", "reader_personas": ["A", "B", "C"]},
+    {"id": "Q12", "question": "Is the architecture described here still what OpenHands looks like today?", "raised_at": "The OpenHands Platform (implicitly, for a reader who knows this is a fast-moving open-source project)", "answered_at": "Limitations (L005)", "reader_personas": ["A", "B"]}
+  ],
+  "debt_check": "Introduction defers exactly 3 questions beyond the paper map (Q7, Q10, Q11), each with an explicit forward pointer, at the rule's stated ceiling. All other questions are answered within the section that raises them. Debt = 0 at the end of every section once its own forward pointers are honored downstream (checked again in step 13's flow audit)."
+}

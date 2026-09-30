@@ -1,0 +1,119 @@
+{
+ "rule": "D-29 (pre-registered)",
+ "verdict": "NOT SHOWN (no detectable difference at n=3, single seed)",
+ "better": 1,
+ "worse": 0,
+ "projects": [
+  {
+   "project": "OPENHANDS",
+   "MMF_src_v010": 0.562,
+   "MMF_src_v030": 0.712,
+   "MMF_src_v010_phase9": 0.513,
+   "effect": 0.15,
+   "noise": 0.05,
+   "call": "better",
+   "RR_v010": 0.625,
+   "RR_v030": 0.787,
+   "DR_v010": 0.0,
+   "DR_v030": 0.0,
+   "IR_v010": 0.15,
+   "IR_v030": 0.15,
+   "IR_src_v010": 0.125,
+   "IR_src_v030": 0.15,
+   "MMF_v010": 0.55,
+   "MMF_v030": 0.713,
+   "recall_v010": {
+    "Q11": 0.8,
+    "Q2": 0.5,
+    "Q5": 0.5,
+    "Q7": 0.625,
+    "Q9": 0.167
+   },
+   "words_v010": 4282,
+   "markers_v010": 0,
+   "recall_v030": {
+    "Q11": 0.9,
+    "Q2": 0.75,
+    "Q5": 1.0,
+    "Q7": 0.75,
+    "Q9": 0.333
+   },
+   "words_v030": 4234,
+   "markers_v030": 0
+  },
+  {
+   "project": "MLPERF_TINY",
+   "MMF_src_v010": 0.6,
+   "MMF_src_v030": 0.575,
+   "MMF_src_v010_phase9": 0.787,
+   "effect": -0.025,
+   "noise": 0.187,
+   "call": "no detectable difference",
+   "RR_v010": 0.713,
+   "RR_v030": 0.675,
+   "DR_v010": 0.025,
+   "DR_v030": 0.025,
+   "IR_v010": 0.175,
+   "IR_v030": 0.15,
+   "IR_src_v010": 0.175,
+   "IR_src_v030": 0.15,
+   "MMF_v010": 0.6,
+   "MMF_v030": 0.575,
+   "recall_v010": {
+    "Q11": 0.5,
+    "Q2": 0.375,
+    "Q5": 0.7,
+    "Q7": 0.875,
+    "Q9": 0.5
+   },
+   "words_v010": 4306,
+   "markers_v010": 0,
+   "recall_v030": {
+    "Q11": 0.6,
+    "Q2": 0.125,
+    "Q5": 0.6,
+    "Q7": 0.875,
+    "Q9": 0.5
+   },
+   "words_v030": 4480,
+   "markers_v030": 0
+  },
+  {
+   "project": "BEIR",
+   "MMF_src_v010": 0.813,
+   "MMF_src_v030": 0.887,
+   "MMF_src_v010_phase9": 0.737,
+   "effect": 0.074,
+   "noise": 0.076,
+   "call": "no detectable difference",
+   "RR_v010": 0.863,
+   "RR_v030": 0.95,
+   "DR_v010": 0.0,
+   "DR_v030": 0.0,
+   "IR_v010": 0.25,
+   "IR_v030": 0.275,
+   "IR_src_v010": 0.1,
+   "IR_src_v030": 0.125,
+   "MMF_v010": 0.738,
+   "MMF_v030": 0.812,
+   "recall_v010": {
+    "Q11": 0.333,
+    "Q2": 1.0,
+    "Q5": 1.0,
+    "Q7": 1.0,
+    "Q9": 0.833
+   },
+   "words_v010": 4284,
+   "markers_v010": 0,
+   "recall_v030": {
+    "Q11": 1.0,
+    "Q2": 1.0,
+    "Q5": 1.0,
+    "Q7": 1.0,
+    "Q9": 1.0
+   },
+   "words_v030": 4808,
+   "markers_v030": 0
+  }
+ ]
+}

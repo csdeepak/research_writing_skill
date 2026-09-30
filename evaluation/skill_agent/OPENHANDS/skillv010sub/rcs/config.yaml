@@ -1,0 +1,28 @@
+# Research Communication Engine run configuration
+project_root: "."
+run_mode: "no_human_in_the_loop"   # TASK.md run-specific constraint
+audience:
+  mode: "B"
+  source: "assigned by TASK.md (run-specific instruction), not elicited from a user"
+venue:
+  status: "unknown"
+  profile: "templates/venue_profile.generic.yaml (generic fallback), citation style overridden"
+deliverable:
+  type: "standalone research paper (Markdown)"
+  length_words_main_text: [3000, 4500]
+  tables: "markdown allowed"
+  images: "not allowed"
+literature_mode:
+  web_access: false
+  scope: "works cited in project/paper.txt only"
+  verification_method: "user_supplied_file"
+  read_depth: "abstract"
+subagents_available: false
+corpus_agent_role: "performed by AUTHOR (this session), per run-specific instruction"
+review_agent_role: "deferred; step 18 performed externally, per run-specific instruction"
+skill_agent_role: "not used"
+recon_grader_role: "not used"
+data_policy:
+  allowed_read_paths: ["./project/**", "./rce/**", "./.rcs/**"]
+  allowed_write_paths: ["./.rcs/**", "./paper.md"]
+  forbidden: ["reading/writing anything outside the working directory", "web access"]

@@ -1,0 +1,8 @@
+# Generic fallback profile (VENUE_UNKNOWN). Every rule assumed.
+venue: {name: "generic research article", type: journal, guideline_urls: []}
+structure:
+  section_template: [Title, Abstract, Introduction, Background and Related Work, Benchmark Design, Measurement Framework, Assessment of First Round, Discussion and Limitations, Conclusion, References]
+  assumed: true
+limits: {words_main: "3000-4500 (TASK.md)", abstract_words: 250, assumed: true}
+style: {citation_style: "(FirstAuthor et al., Year)", voice_preference: "active voice; we for author actions of the presented project reported as the authors", assumed: true}
+required_statements: {ai_use_disclosure: "not included in paper body per TASK.md", assumed: true}

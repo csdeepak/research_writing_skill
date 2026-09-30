@@ -1,0 +1,34 @@
+# VENUE_UNKNOWN: no venue, guideline URL, or deliverable template was given in the task beyond
+# "a complete research paper with title, abstract and the sections you judge appropriate", plus an
+# explicit main-text length window (3000-4500 words). Base = templates/venue_profile.generic.yaml,
+# with every structural/style rule kept as 'assumed: true' and the length overridden by the task.
+venue: {name: "generic research article, adjacent-ML audience (no venue specified)", type: journal, guideline_urls: []}
+structure:
+  section_template: [Title, Abstract, Introduction, Related Work, Method, Experimental Setup, Results, Discussion, Limitations, Conclusion, References]
+  results_discussion: separate
+  related_work_position: after_intro
+  limitations_section_required: true
+  assumed: true
+limits:
+  pages_main: null
+  words_main: 4500
+  words_main_min: 3000
+  words_main_source: "task instructions (run-specific constraint), not a venue guideline"
+  abstract_words: 200
+  supplement_allowed: false
+  assumed: true
+style:
+  citation_style: "author-year, e.g. (Robertson and Zaragoza, 2009), per task instructions (overrides the source paper's own numeric-bracket style, which is not to be copied)"
+  voice_preference: "active voice; first-person plural 'we' for the original authors' actions (task requires presenting the authors' research, not reviewing it)"
+  spelling: US
+  abstract_format: unstructured
+  abstract_citations_allowed: false
+  assumed: true
+required_statements:
+  data_availability: false
+  code_availability: false
+  ai_use_disclosure: false
+  assumed: true
+  note: "Steps 18-21 (incl. disclosure.md) are out of scope for this run per run-specific constraints; no required-statements section is added to the draft."
+checklists: []
+reporting_guideline: null

@@ -1,0 +1,104 @@
+{
+  "id": "20260929-reader-comprehension",
+  "date": "2026-09-29",
+  "from_version": "0.1.0",
+  "to_version": "0.3.0",
+  "failure_observed": "The skill's audience model (modes A-E) was prose guidance with no checkable persona; comprehension was assessed by reviewer ratings, which Phase 5 showed can rise while reconstruction falls; nothing checked that abstracts or skim text preserve scope, intervals and denominators; and there was no protocol that turns 'did readers understand it?' into a measured, blinded, pre-registered result. Real Phase 9 drafts also show writers breaking their OWN term ledgers (e.g. BEIR v0.2.0 registers 'lexical baseline' as a forbidden synonym of BM25, then uses it 3 times).",
+  "evidence": {
+    "cluster_id": "vNext Stage 3 (M02, M11, M12, M13, V5); D-27",
+    "instances": 6,
+    "metrics": {
+      "synonym_drift_on_real_phase9_drafts": "OPENHANDS v0.1.0: 4, v0.2.0: 14; BEIR v0.2.0: 17 (all against the writers' own term ledgers)",
+      "excess_precision_detector": "flags 0.7513 (95% CI 0.6121-0.8905); accepts 0.75 (0.61-0.89)",
+      "skim_check_on_drifted_abstract": "4/4 drift types caught; generated skim sheet passes its own check",
+      "m13_proxy_run": "pipeline executed end-to-end with LLM proxy readers/graders on the ASMOS acceptance project; results in evaluation/stage3_proxy/ (proxy, not human evidence)",
+      "defects_found_by_the_first_real_run": "2 pipeline defects (grader reference lacked figure captions, repeating D-24; text-only readers could not see plotted values) -> fixed, run repeated, first run archived"
+    }
+  },
+  "root_cause": "missing_check",
+  "mechanism_type": "automatic_check",
+  "components": [
+    {
+      "part": 1,
+      "summary": "M02 reader knowledge model (schemas/reader_model.schema.json, templates/reader_model.json) + tools/audit_reader.py: unknown terms, term overload, prerequisite order, unaddressed misconceptions, unanswered reader questions; persona checks only with a reader model.",
+      "tests": [
+        "T-037",
+        "T-037b"
+      ]
+    },
+    {
+      "part": 2,
+      "summary": "M11 density/terminology: excess precision vs own interval, synonym drift against the term ledger (research_story.md section 5 format), dense paragraphs.",
+      "tests": [
+        "T-036",
+        "T-037b"
+      ]
+    },
+    {
+      "part": 3,
+      "summary": "M12 tools/skim_layer.py: build a verbatim, evidence-locked skim sheet; check compressed text for number/scope/hedge/uncertainty/denominator drift and generic headings.",
+      "tests": [
+        "T-038"
+      ]
+    },
+    {
+      "part": 4,
+      "summary": "M13 tools/comprehension_kit.py: hash-frozen pre-declared key, blinded visual-only vs full packets (HTML for humans, Markdown for LLM readers incl. drawn values), participant form, blind grading sheets, LLM proxy reader/grader tasks, scoring with bootstrap CIs and Krippendorff's alpha; templates/human_study_protocol.md.",
+      "tests": [
+        "T-039",
+        "T-040"
+      ]
+    },
+    {
+      "part": 5,
+      "summary": "V5 human review: tools/record_review.py; V5 passes only with a recorded review of the current render (stale after re-render).",
+      "tests": [
+        "T-041"
+      ]
+    }
+  ],
+  "change": {
+    "files": [
+      "tools/audit_reader.py",
+      "tools/skim_layer.py",
+      "tools/comprehension_kit.py",
+      "tools/record_review.py",
+      "schemas/reader_model.schema.json",
+      "templates/reader_model.json",
+      "templates/human_study_protocol.md",
+      "tools/validate_visuals.py (V5 review staleness)",
+      "tools/validate_artifacts.py (reader model schema)",
+      "tools/tests/test_v030_reader.py",
+      "SKILL.md (one bullet)",
+      "audience_model.md",
+      "evaluation_rubric.md",
+      "workflow.md steps 11 and 18",
+      "failure_states.md (2 rows)"
+    ],
+    "summary": "All Stage 3 code is in new files except two additive hooks. Stdlib only."
+  },
+  "expected_improvement": "Tool-level: writers get machine-checkable reader and compression feedback; comprehension becomes a measured, pre-registered, blinded outcome with inter-grader agreement instead of a rating. Reader-level: NOT claimed. The spec's Stage 3 acceptance requires blinded HUMAN reconstruction results; none have been collected. The LLM proxy run is a pipeline test and a cheap signal, not that evidence.",
+  "possible_regressions": [
+    "Reader-model checks are only as good as the persona the author writes; a lazy persona (everything 'known') silences them.",
+    "Term, misconception and question matching is lexical (English); paraphrases can evade or trigger checks.",
+    "Excess-precision rule (one digit past the interval's leading digit) is a convention, not a law; some venues require fixed decimals.",
+    "LLM proxy readers see figures as text (drawn values), which is more precise than reading a bar length by eye.",
+    "Human studies need participants and time; without them Stage 3 acceptance stays pending, by design."
+  ],
+  "tests_added": [
+    "T-036..T-041 in tools/tests/test_v030_reader.py (8 tests)"
+  ],
+  "gate": {
+    "status": "passed",
+    "results": {
+      "unit_tests_candidate": "95/95 pass",
+      "proxy_run": "see evaluation/stage3_proxy/",
+      "stage3_acceptance": "NOT MET: requires blinded human reconstruction results (templates/human_study_protocol.md); tooling complete",
+      "stage": "offline gate passed; human evidence pending; promotion pending an explicit human decision",
+      "tier3_ab_vs_v010": "reader benefit NOT SHOWN under the pre-registered rule (D-29/D-30): better beyond noise on 1/3 projects (OpenHands +0.150 MMF_src), worse on none, mean +0.066; Q11 3/3 up; single run per arm, v0.1.0 run-to-run noise 0.05-0.19. evaluation/results/AB3_REPORT.md",
+      "release": "promoted into skill/ 2026-09-30 by the user's decision as a process upgrade (D-32); reader benefit not shown (tier-3 A/B, D-30)",
+      "replay_fixtures": "49/49 pass",
+      "human_acceptance": "still pending: the human reading study is the user's (kit ready in ASMOS_rce_workspace/YOUR_STEPS.md)"
+    }
+  }
+}

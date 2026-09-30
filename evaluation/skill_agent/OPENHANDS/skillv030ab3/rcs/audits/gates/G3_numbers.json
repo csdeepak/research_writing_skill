@@ -1,0 +1,9 @@
+{
+  "tool": "verify_numbers",
+  "draft": ".rcs/drafts/v001/paper.md",
+  "draft_sha256": "f275c140568fe3fad068cb787098cb0d1838eea8c0b7e9aeff5a4048c47a136a",
+  "strict": false,
+  "errors": 0,
+  "warnings": 0,
+  "findings": []
+}

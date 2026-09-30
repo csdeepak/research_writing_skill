@@ -1,0 +1,205 @@
+{
+  "tool": "validate_artifacts",
+  "errors": 0,
+  "warnings": 38,
+  "inputs": {
+    "evidence/research_evidence.json": "7fc2223649bab54bac85a7bc36c7b48ba8285acabca6f8598ebaa3543ec95077",
+    "claims/claim_evidence_map.json": "e8ff57fb7716557e2ba08b55a251213de0e083b236e75930980c1610a3882140",
+    "story/story_graph.json": "3aece19a9a20fb901197fc79fef9251de2f289f8ec5fc3737c30a78002af73fa",
+    "plan/visual_registry.json": "aa02d5063b6fad63bd1f6a56ed68f718be4a73d87e2c409a1fa8bec3df29408f",
+    "plan/reader_model.json": "66c6b16cae992942235f6c6382960aaf2e392ccd393d22e4dab31a2a8aeb6f94",
+    "story/spine.md": "c127b374a5c943c20d017a722eb0803d3541fb48ff34b208cfcc5a4abeef7527"
+  },
+  "items": [
+    {
+      "level": "WARN",
+      "where": "claims/C002",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C003",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C004",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C005",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C006",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C008",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C009",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C010",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C011",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C012",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C013",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C014",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C015",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C016",
+      "message": "measured claim not backed by any 'hard' evidence item"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C016",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C017",
+      "message": "measured claim not backed by any 'hard' evidence item"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C017",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C018",
+      "message": "measured claim not backed by any 'hard' evidence item"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C018",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C019",
+      "message": "measured claim not backed by any 'hard' evidence item"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C019",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C020",
+      "message": "measured claim not backed by any 'hard' evidence item"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C021",
+      "message": "measured claim not backed by any 'hard' evidence item"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C025",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C026",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C027",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C028",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C029",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C030",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C032",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C033",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C034",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C035",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C036",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C037",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C038",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C039",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C040",
+      "message": "author_confirmation pending"
+    }
+  ]
+}

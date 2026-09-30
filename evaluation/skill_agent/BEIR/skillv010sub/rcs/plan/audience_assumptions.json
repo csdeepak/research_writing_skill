@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-09-27",
+  "purpose": "Concepts project/paper.txt uses without defining, because it is written for an IR-specialist audience. Flagging these guards against the curse of knowledge when writing for adjacent ML researchers (who are not IR specialists).",
+  "assumed_by_source_but_not_by_target_audience": [
+    "qrels (query relevance judgements file format)",
+    "pooling (how candidate documents for annotation are chosen in IR test-collection construction)",
+    "bi-encoder vs. cross-encoder architecture distinction",
+    "in-batch negatives / hard negatives (contrastive-training vocabulary specific to retrieval)",
+    "ANN (approximate nearest neighbor) index and its role at retrieval time",
+    "nDCG@k, MRR, MAP, Recall@k as IR evaluation metrics and why they differ",
+    "the lexical gap (why bag-of-words matching misses semantically relevant documents)",
+    "document expansion (docT5query-style) as a retrieval technique",
+    "late interaction (ColBERT-style scoring) as distinct from single-vector dense retrieval",
+    "TREC-style shared-task conventions (e.g. what a 'track' or 'ad-hoc search challenge' is)",
+    "domain shift / task shift as used specifically for retrieval corpora and query types",
+    "why MS MARCO is a de-facto standard retrieval training set"
+  ],
+  "assumed_by_target_audience_and_not_redefined": [
+    "supervised fine-tuning of pretrained Transformer encoders (BERT-family)",
+    "standard train/dev/test evaluation protocol",
+    "zero-shot evaluation as a general ML concept (applying a trained model without further training on the target distribution)",
+    "basic contrastive/ranking loss intuition (adjacent researchers know this from other subfields, e.g. representation learning)",
+    "general notion of a benchmark suite aggregating multiple tasks/datasets"
+  ],
+  "resulting_action": "Every term in 'assumed_by_source_but_not_by_target_audience' must be defined at first use in the paper for audience mode B, or replaced with a plain-language description; see story/term_ledger.json."
+}

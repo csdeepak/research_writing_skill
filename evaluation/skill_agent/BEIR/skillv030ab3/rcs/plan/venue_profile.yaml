@@ -1,0 +1,23 @@
+# Generic fallback profile (VENUE_UNKNOWN). Every rule is assumed; listed in open_issues.md.
+venue: {name: "generic research article", type: journal, guideline_urls: []}
+structure:
+  section_template: [Title, Abstract, Introduction, Related Work, Method, Results, Discussion, Limitations, Conclusion, References]
+  results_discussion: separate
+  related_work_position: after_intro
+  limitations_section_required: true
+  assumed: true
+limits: {pages_main: null, words_main: 4500, abstract_words: 250, supplement_allowed: true, assumed: true}
+style:
+  citation_style: "author-year (FirstAuthor et al., Year)"
+  voice_preference: "active voice; 'the authors' for the source study's choices"
+  spelling: US
+  abstract_format: unstructured
+  abstract_citations_allowed: false
+  assumed: true
+required_statements:
+  data_availability: false
+  code_availability: false
+  ai_use_disclosure: "disclosure.md draft supplied"
+  assumed: true
+checklists: []
+reporting_guideline: null

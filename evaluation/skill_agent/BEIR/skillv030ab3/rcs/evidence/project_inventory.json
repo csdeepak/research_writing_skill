@@ -1,0 +1,14 @@
+{
+  "project_root": ".",
+  "generated_at": "2026-09-29",
+  "generated_by": "AUTHOR-as-CORPUS (no subagents)",
+  "files": [
+    {"path": "project/paper.txt", "class": "draft", "bytes": 96986, "opened": true,
+     "note": "Text extracted from the official BEIR paper (arXiv 2104.08663v4). Tables 2, 3, 4, 10 and Figures 2-5 are damaged by extraction (values in column-group order, lost bold/underline, lost axes); reconstructed cells were cross-checked against numbers stated in prose."},
+    {"path": "project/README_1.md", "class": "reference", "bytes": 27120, "opened": true,
+     "note": "Official repository README: dataset table (queries, corpus size, relevant docs per query), software, citation info."},
+    {"path": "TASK.md", "class": "other", "opened": true, "note": "Task instructions (not evidence)."},
+    {"path": "rce/", "class": "other", "opened": false, "note": "Skill and tools; not project evidence."}
+  ],
+  "skipped_with_reason": []
+}

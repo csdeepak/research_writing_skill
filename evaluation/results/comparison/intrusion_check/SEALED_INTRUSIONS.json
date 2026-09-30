@@ -1,0 +1,1532 @@
+{
+ "I-92d28c": {
+  "review": "F1_pkt-01585866",
+  "pid": "pkt-01585866",
+  "project": "SAM",
+  "condition": "plain",
+  "index": 1,
+  "question": "Q3",
+  "text": "existing segmentation datasets are orders of magnitude too small (the largest, Open Images, has 2.7M masks)"
+ },
+ "I-b959a4": {
+  "review": "F1_pkt-01585866",
+  "pid": "pkt-01585866",
+  "project": "SAM",
+  "condition": "plain",
+  "index": 3,
+  "question": "Q6",
+  "text": "Responsible AI analysis of dataset geographic/income representation"
+ },
+ "I-dac04b": {
+  "review": "F1_pkt-01585866",
+  "pid": "pkt-01585866",
+  "project": "SAM",
+  "condition": "plain",
+  "index": 4,
+  "question": "Q7",
+  "text": "SA-1B has 1.1B masks on 11M images (400x more masks than the largest prior dataset)"
+ },
+ "I-4d7619": {
+  "review": "F1_pkt-01585866",
+  "pid": "pkt-01585866",
+  "project": "SAM",
+  "condition": "plain",
+  "index": 5,
+  "question": "Q7",
+  "text": "Object proposals AR@1000 = 59.3 vs ViTDet-H's 63.0, but SAM wins on medium (81.6), large (86.9), common (63.9) and rare (65.8)"
+ },
+ "I-efbeca": {
+  "review": "F1_pkt-01585866",
+  "pid": "pkt-01585866",
+  "project": "SAM",
+  "condition": "plain",
+  "index": 6,
+  "question": "Q8",
+  "text": "Ablations establish that Stage-3 automatic masks alone suffice and that ~10% of data nearly matches full data"
+ },
+ "I-96142e": {
+  "review": "F1_pkt-01585866",
+  "pid": "pkt-01585866",
+  "project": "SAM",
+  "condition": "plain",
+  "index": 7,
+  "question": "Q9",
+  "text": "The causal attribution of the AP gap to 'annotation biases' is asserted rather than proven"
+ },
+ "I-5fac85": {
+  "review": "F1_pkt-01585866",
+  "pid": "pkt-01585866",
+  "project": "SAM",
+  "condition": "plain",
+  "index": 8,
+  "question": "Q10",
+  "text": "the automatic data engine (scaling annotation ~100x at human quality) as the practical cornerstone"
+ },
+ "I-3bf37f": {
+  "review": "F1_pkt-01585866",
+  "pid": "pkt-01585866",
+  "project": "SAM",
+  "condition": "plain",
+  "index": 10,
+  "question": "Q11",
+  "text": "Datasets still underrepresent Africa and low-income regions"
+ },
+ "I-703266": {
+  "review": "F1_pkt-18d4ef49",
+  "pid": "pkt-18d4ef49",
+  "project": "WHISPER",
+  "condition": "skillpkg-strong",
+  "index": 0,
+  "question": "Q2",
+  "text": "The usual human-versus-machine comparison may also be unfair, because machines are tested in-distribution and humans effectively out-of-distribution."
+ },
+ "I-c9c944": {
+  "review": "F1_pkt-18d4ef49",
+  "pid": "pkt-18d4ef49",
+  "project": "WHISPER",
+  "condition": "skillpkg-strong",
+  "index": 5,
+  "question": "Q9",
+  "text": "The results do not rule out overlap between the web training data and the test sets."
+ },
+ "I-01d44c": {
+  "review": "F1_pkt-18d4ef49",
+  "pid": "pkt-18d4ef49",
+  "project": "WHISPER",
+  "condition": "skillpkg-strong",
+  "index": 6,
+  "question": "Q11",
+  "text": "All results are single runs with no variance."
+ },
+ "I-ea8070": {
+  "review": "F1_pkt-18d4ef49",
+  "pid": "pkt-18d4ef49",
+  "project": "WHISPER",
+  "condition": "skillpkg-strong",
+  "index": 7,
+  "question": "Q11",
+  "text": "Several findings were read off figures."
+ },
+ "I-31a34f": {
+  "review": "F1_pkt-18d4ef49",
+  "pid": "pkt-18d4ef49",
+  "project": "WHISPER",
+  "condition": "skillpkg-strong",
+  "index": 8,
+  "question": "Q11",
+  "text": "Baselines are quoted from other publications rather than re-run."
+ },
+ "I-3190ab": {
+  "review": "F1_pkt-19d12a6e",
+  "pid": "pkt-19d12a6e",
+  "project": "BEIR",
+  "condition": "plain",
+  "index": 1,
+  "question": "Q6",
+  "text": "analysis of retrieval length bias between TAS-B and ANCE"
+ },
+ "I-abeb52": {
+  "review": "F1_pkt-19d12a6e",
+  "pid": "pkt-19d12a6e",
+  "project": "BEIR",
+  "condition": "plain",
+  "index": 2,
+  "question": "Q7",
+  "text": "Length bias produces a 17.3-point nDCG@10 gap between ANCE (0.654) and TAS-B (0.481)."
+ },
+ "I-eb9bbb": {
+  "review": "F1_pkt-19d12a6e",
+  "pid": "pkt-19d12a6e",
+  "project": "BEIR",
+  "condition": "plain",
+  "index": 3,
+  "question": "Q8",
+  "text": "similarity-function choice induces a length bias"
+ },
+ "I-69ab7e": {
+  "review": "F1_pkt-19d12a6e",
+  "pid": "pkt-19d12a6e",
+  "project": "BEIR",
+  "condition": "plain",
+  "index": 4,
+  "question": "Q9",
+  "text": "The causal mechanism for why cross-attention transfers better is asserted, not proven."
+ },
+ "I-72d98b": {
+  "review": "F1_pkt-2393e9c7",
+  "pid": "pkt-2393e9c7",
+  "project": "SWE_BENCH",
+  "condition": "skillpkg-strong",
+  "index": 0,
+  "question": "Q5",
+  "text": "fine-tuning was done because off-the-shelf CodeLlama could not follow the edit format"
+ },
+ "I-60d232": {
+  "review": "F1_pkt-2393e9c7",
+  "pid": "pkt-2393e9c7",
+  "project": "SWE_BENCH",
+  "condition": "skillpkg-strong",
+  "index": 2,
+  "question": "Q7",
+  "text": "apply rates 26-54%"
+ },
+ "I-0a46f4": {
+  "review": "F1_pkt-2393e9c7",
+  "pid": "pkt-2393e9c7",
+  "project": "SWE_BENCH",
+  "condition": "skillpkg-strong",
+  "index": 6,
+  "question": "Q11",
+  "text": "no cited prior work"
+ },
+ "I-a4fd35": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 3,
+  "question": "Q3",
+  "text": "Orchestration libraries (LangChain/LangGraph, AutoGen, CrewAI) offer basic, stateless, or limited execution and have no browser or harness."
+ },
+ "I-af3fc7": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 4,
+  "question": "Q3",
+  "text": "Capability-specific frameworks (BrowserGym, DSPy) lack a sandbox, tools, and multi-agent support."
+ },
+ "I-47eb3e": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 5,
+  "question": "Q3",
+  "text": "Task-specific agents (SWE-Agent, AutoCodeRover, Agentless) are not evaluated outside software engineering."
+ },
+ "I-21a879": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 6,
+  "question": "Q4",
+  "text": "replay-based integration tests (elaborated at Q5 as 'cached-response replay tests handle nondeterministic LLM outputs')"
+ },
+ "I-17afb5": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 7,
+  "question": "Q4",
+  "text": "a GPTSwarm agent named as part of the delegation/agent roster"
+ },
+ "I-c4a739": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 9,
+  "question": "Q6",
+  "text": "WebArena (812 tasks; Browsing Agent and delegated CodeActAgent)"
+ },
+ "I-a91b3d": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 10,
+  "question": "Q6",
+  "text": "MiniWoB++ (125 environments; two backbones)"
+ },
+ "I-f4f387": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 11,
+  "question": "Q6",
+  "text": "GAIA L1 validation (GPTSwarm agent)"
+ },
+ "I-278084": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 12,
+  "question": "Q6",
+  "text": "MINT math and code; ProofWriter 5-hop; and Entity Deduction Arena"
+ },
+ "I-6858d2": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 13,
+  "question": "Q7",
+  "text": "18.0% for SWE-Agent and 19.0% for AutoCodeRover; Agentless is higher at 27.3% (SWE-Bench Lite baselines)"
+ },
+ "I-7efa2e": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 14,
+  "question": "Q7",
+  "text": "79.3% vs 48.6% for StarCoder2-15B (HumanEvalFix baseline)"
+ },
+ "I-8ba212": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 15,
+  "question": "Q7",
+  "text": "GAIA L1: 32.1% vs 13.2% for AutoGPT"
+ },
+ "I-ee1da9": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 16,
+  "question": "Q7",
+  "text": "52.0% vs 38.8% for few-shot CoT (GPQA diamond baseline)"
+ },
+ "I-efc375": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 17,
+  "question": "Q7",
+  "text": "MINT math: 77.3% vs 65.8%"
+ },
+ "I-0cc07a": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 18,
+  "question": "Q7",
+  "text": "The paper claims the agent matches or exceeds a baseline on 9 of 11 benchmarks."
+ },
+ "I-282600": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 19,
+  "question": "Q8",
+  "text": "20.1% vs 79.3% on HumanEvalFix (the 20.1% low-backbone figure)"
+ },
+ "I-c8548a": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 20,
+  "question": "Q8",
+  "text": "11.8% to 57.6% on AgentBench OS (the 11.8% low-backbone figure)"
+ },
+ "I-717181": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 21,
+  "question": "Q9",
+  "text": "Agentless, 1-shot SWE-Agent, AutoWebGLM, Auto Eval & Refine, CC-Net, Logic-LM, and the MINT code baseline all score higher."
+ },
+ "I-3835bb": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 24,
+  "question": "Q11",
+  "text": "multi-modal files are handled only through predefined skills"
+ },
+ "I-f2678b": {
+  "review": "F1_pkt-27d90c08",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "index": 27,
+  "question": "Q12",
+  "text": "MiniWoB++: 91.1% vs 40.8%"
+ },
+ "I-8b04dd": {
+  "review": "F1_pkt-44a7cab7",
+  "pid": "pkt-44a7cab7",
+  "project": "WHISPER",
+  "condition": "skillpkg-cheap",
+  "index": 0,
+  "question": "Q5",
+  "text": "Augmentation and regularization are dropped on the bet that dataset diversity alone gives generalization."
+ },
+ "I-7c4121": {
+  "review": "F1_pkt-44a7cab7",
+  "pid": "pkt-44a7cab7",
+  "project": "WHISPER",
+  "condition": "skillpkg-cheap",
+  "index": 4,
+  "question": "Q11",
+  "text": "Label noise from automated language ID (the Welsh case), linked to weak translation scaling (r²=0.24)."
+ },
+ "I-568c59": {
+  "review": "F1_pkt-47ad65cd",
+  "pid": "pkt-47ad65cd",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-strong",
+  "index": 2,
+  "question": "Q3",
+  "text": "The paper explicitly declines to say how OpenHands compares to other agent platforms because that comparison table was lost."
+ },
+ "I-1ae8e2": {
+  "review": "F1_pkt-47ad65cd",
+  "pid": "pkt-47ad65cd",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-strong",
+  "index": 4,
+  "question": "Q6",
+  "text": "WebArena (812), MiniWoB++ (125), GAIA L1 validation (53), AgentBench OS (144), MINT math/code (225/136), ProofWriter 5-hop (600, using Logic-LM logical forms), Entity Deduction Arena (200)."
+ },
+ "I-504b96": {
+  "review": "F1_pkt-47ad65cd",
+  "pid": "pkt-47ad65cd",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-strong",
+  "index": 5,
+  "question": "Q6",
+  "text": "ML-Bench, BioCoder, Gorilla APIBench, ToolQA and GPQA main/extended were run but not reported."
+ },
+ "I-930fc6": {
+  "review": "F1_pkt-47ad65cd",
+  "pid": "pkt-47ad65cd",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-strong",
+  "index": 6,
+  "question": "Q7",
+  "text": "close to Agentless 27.3%, Moatless 26.7%, Aider 26.3%"
+ },
+ "I-a618c2": {
+  "review": "F1_pkt-47ad65cd",
+  "pid": "pkt-47ad65cd",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-strong",
+  "index": 7,
+  "question": "Q7",
+  "text": "HumanEvalFix 79.3% vs StarCoder2-15B 48.6%"
+ },
+ "I-9df172": {
+  "review": "F1_pkt-47ad65cd",
+  "pid": "pkt-47ad65cd",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-strong",
+  "index": 8,
+  "question": "Q7",
+  "text": "GAIA L1 32.1% (GPTSwarm agent) vs AutoGPT 13.2%"
+ },
+ "I-a7e59b": {
+  "review": "F1_pkt-47ad65cd",
+  "pid": "pkt-47ad65cd",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-strong",
+  "index": 9,
+  "question": "Q7",
+  "text": "MINT math 77.3% vs 65.8%"
+ },
+ "I-da8f7b": {
+  "review": "F1_pkt-47ad65cd",
+  "pid": "pkt-47ad65cd",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-strong",
+  "index": 10,
+  "question": "Q7",
+  "text": "GPQA diamond 52-53% vs few-shot CoT gpt-4 38.8%"
+ },
+ "I-3f920f": {
+  "review": "F1_pkt-47ad65cd",
+  "pid": "pkt-47ad65cd",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-strong",
+  "index": 11,
+  "question": "Q8",
+  "text": "though MiniWoB++ is above Workflow Guided Exploration"
+ },
+ "I-981c7c": {
+  "review": "F1_pkt-47ad65cd",
+  "pid": "pkt-47ad65cd",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-strong",
+  "index": 12,
+  "question": "Q11",
+  "text": "two unresolved internal numeric conflicts"
+ },
+ "I-b7f5c8": {
+  "review": "F1_pkt-47ad65cd",
+  "pid": "pkt-47ad65cd",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-strong",
+  "index": 13,
+  "question": "Q11",
+  "text": "several benchmark results omitted because attribution was lost"
+ },
+ "I-a84ac2": {
+  "review": "F1_pkt-51821427",
+  "pid": "pkt-51821427",
+  "project": "BEIR",
+  "condition": "skillv010sub",
+  "index": 2,
+  "question": "Q3",
+  "text": "mostly small corpora said to favor dense retrieval"
+ },
+ "I-8088e3": {
+  "review": "F1_pkt-51821427",
+  "pid": "pkt-51821427",
+  "project": "BEIR",
+  "condition": "skillv010sub",
+  "index": 3,
+  "question": "Q4",
+  "text": "They also measured pairwise vocabulary overlap between datasets."
+ },
+ "I-b51db1": {
+  "review": "F1_pkt-51821427",
+  "pid": "pkt-51821427",
+  "project": "BEIR",
+  "condition": "skillv010sub",
+  "index": 5,
+  "question": "Q6",
+  "text": "Pairwise vocabulary overlap (weighted Jaccard)."
+ },
+ "I-81935c": {
+  "review": "F1_pkt-51821427",
+  "pid": "pkt-51821427",
+  "project": "BEIR",
+  "condition": "skillv010sub",
+  "index": 6,
+  "question": "Q6",
+  "text": "Lengths of TAS-B vs ANCE retrieved documents."
+ },
+ "I-7ea99b": {
+  "review": "F1_pkt-51821427",
+  "pid": "pkt-51821427",
+  "project": "BEIR",
+  "condition": "skillv010sub",
+  "index": 7,
+  "question": "Q6",
+  "text": "GenQ vs TAS-B by domain."
+ },
+ "I-63d804": {
+  "review": "F1_pkt-51821427",
+  "pid": "pkt-51821427",
+  "project": "BEIR",
+  "condition": "skillv010sub",
+  "index": 8,
+  "question": "Q7",
+  "text": "ColBERT's index at BioASQ scale is about 900GB vs about 18GB for BM25."
+ },
+ "I-5c2f34": {
+  "review": "F1_pkt-51821427",
+  "pid": "pkt-51821427",
+  "project": "BEIR",
+  "condition": "skillv010sub",
+  "index": 9,
+  "question": "Q7",
+  "text": "On TREC-COVID, Hole@10 was 30.6% for DPR and 31.8% for TAS-B vs 1.6-6.4% for BM25+CE, docT5query and BM25."
+ },
+ "I-632d9d": {
+  "review": "F1_pkt-5d724771",
+  "pid": "pkt-5d724771",
+  "project": "WHISPER",
+  "condition": "skill",
+  "index": 4,
+  "question": "Q7",
+  "text": "On MLS it beats fine-tuned XLS-R (7.3% vs 10.9%)"
+ },
+ "I-c2731a": {
+  "review": "F1_pkt-5d724771",
+  "pid": "pkt-5d724771",
+  "project": "WHISPER",
+  "condition": "skill",
+  "index": 6,
+  "question": "Q8",
+  "text": "this robustness does not require the largest model"
+ },
+ "I-757842": {
+  "review": "F1_pkt-5d724771",
+  "pid": "pkt-5d724771",
+  "project": "WHISPER",
+  "condition": "skill",
+  "index": 7,
+  "question": "Q9",
+  "text": "do not cleanly establish translation SOTA (co-developed normalizer)"
+ },
+ "I-e8cc15": {
+  "review": "F1_pkt-5d724771",
+  "pid": "pkt-5d724771",
+  "project": "WHISPER",
+  "condition": "skill",
+  "index": 8,
+  "question": "Q9",
+  "text": "do not establish a mechanistic equivalence to human speech acquisition or to CLIP"
+ },
+ "I-5a8f10": {
+  "review": "F1_pkt-60bb99fc",
+  "pid": "pkt-60bb99fc",
+  "project": "SAM",
+  "condition": "skill",
+  "index": 2,
+  "question": "Q6",
+  "text": "Responsible AI analysis of geographic ... fairness"
+ },
+ "I-db90de": {
+  "review": "F1_pkt-60bb99fc",
+  "pid": "pkt-60bb99fc",
+  "project": "SAM",
+  "condition": "skill",
+  "index": 3,
+  "question": "Q7",
+  "text": "classical zero-shot ~.600 (edge detection baseline)"
+ },
+ "I-dd72b6": {
+  "review": "F1_pkt-60bb99fc",
+  "pid": "pkt-60bb99fc",
+  "project": "SAM",
+  "condition": "skill",
+  "index": 4,
+  "question": "Q7",
+  "text": "Object proposals: AR@1000 = 59.3 (vs supervised ViTDet-H 63.0), matching/surpassing on medium/large/frequent/common/rare."
+ },
+ "I-dfecff": {
+  "review": "F1_pkt-60bb99fc",
+  "pid": "pkt-60bb99fc",
+  "project": "SAM",
+  "condition": "skill",
+  "index": 5,
+  "question": "Q7",
+  "text": "Human ratings for SAM fell 7–9, above RITM."
+ },
+ "I-dbb501": {
+  "review": "F1_pkt-60bb99fc",
+  "pid": "pkt-60bb99fc",
+  "project": "SAM",
+  "condition": "skill",
+  "index": 6,
+  "question": "Q8",
+  "text": "Automatic-only training and ~1M images suffice for most performance."
+ },
+ "I-a053be": {
+  "review": "F1_pkt-60bb99fc",
+  "pid": "pkt-60bb99fc",
+  "project": "SAM",
+  "condition": "skill",
+  "index": 8,
+  "question": "Q11",
+  "text": "geographic underrepresentation of Africa, Latin America, low-income countries"
+ },
+ "I-d8cce0": {
+  "review": "F1_pkt-6cf695b8",
+  "pid": "pkt-6cf695b8",
+  "project": "SWE_BENCH",
+  "condition": "skillpkg-cheap",
+  "index": 1,
+  "question": "Q9",
+  "text": "Small differences (e.g., 1.96 vs 1.87; 4.80 vs 5.93) are not shown to be statistically reliable, and model rankings are not shown to be stable across samples."
+ },
+ "I-d74ada": {
+  "review": "F1_pkt-6cf695b8",
+  "pid": "pkt-6cf695b8",
+  "project": "SWE_BENCH",
+  "condition": "skillpkg-cheap",
+  "index": 2,
+  "question": "Q9",
+  "text": "They do not show that SWE-Llama's low score is caused by distribution shift."
+ },
+ "I-1e5820": {
+  "review": "F1_pkt-6cf695b8",
+  "pid": "pkt-6cf695b8",
+  "project": "SWE_BENCH",
+  "condition": "skillpkg-cheap",
+  "index": 3,
+  "question": "Q11",
+  "text": "The context-selection interpretation is non-mechanistic and relies on an unverified external citation."
+ },
+ "I-d9e57b": {
+  "review": "F1_pkt-70d8a010",
+  "pid": "pkt-70d8a010",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-cheap",
+  "index": 0,
+  "question": "Q2",
+  "text": "Building and running agent infrastructure is expensive (e.g., ~$6.9k per full SWE-Bench run)"
+ },
+ "I-d306d4": {
+  "review": "F1_pkt-70d8a010",
+  "pid": "pkt-70d8a010",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-cheap",
+  "index": 1,
+  "question": "Q3",
+  "text": "Among the named systems (SWE-Agent, AutoCodeRover, Aider, WebArena Agent), none is shown evaluated without per-domain changes across categories inside one reusable open framework"
+ },
+ "I-d9ea59": {
+  "review": "F1_pkt-70d8a010",
+  "pid": "pkt-70d8a010",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-cheap",
+  "index": 5,
+  "question": "Q7",
+  "text": "vs Aider 26.3%, and 6.3% with gpt-4o-mini"
+ },
+ "I-cf82c4": {
+  "review": "F1_pkt-70d8a010",
+  "pid": "pkt-70d8a010",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-cheap",
+  "index": 6,
+  "question": "Q7",
+  "text": "WebArena 15.5% (claude-3.5-sonnet) vs 6.2% baseline"
+ },
+ "I-9cacd0": {
+  "review": "F1_pkt-70d8a010",
+  "pid": "pkt-70d8a010",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-cheap",
+  "index": 7,
+  "question": "Q7",
+  "text": "38.8% GPT-4+search [on GPQA diamond]"
+ },
+ "I-3d1b41": {
+  "review": "F1_pkt-70d8a010",
+  "pid": "pkt-70d8a010",
+  "project": "OPENHANDS",
+  "condition": "skillpkg-cheap",
+  "index": 8,
+  "question": "Q7",
+  "text": "ProofWriter 78.8%; MINT math 77.3%"
+ },
+ "I-d8bce4": {
+  "review": "F1_pkt-8e0fb4e7",
+  "pid": "pkt-8e0fb4e7",
+  "project": "BEIR",
+  "condition": "skill",
+  "index": 0,
+  "question": "Q7",
+  "text": "ColBERT 0.677→0.735 (+5.8) in the TREC-COVID re-annotation, and BM25 only 0.656→0.668, reversing the ranking on that dataset"
+ },
+ "I-4ce73f": {
+  "review": "F1_pkt-8e0fb4e7",
+  "pid": "pkt-8e0fb4e7",
+  "project": "BEIR",
+  "condition": "skill",
+  "index": 3,
+  "question": "Q9",
+  "text": "the cross-attention advantage and the TAS-B training-objective explanation are explicitly correlational, confounded by model size, distillation, backbone, and candidate-pool quality"
+ },
+ "I-861ea4": {
+  "review": "F1_pkt-93f95d2e",
+  "pid": "pkt-93f95d2e",
+  "project": "OPENHANDS",
+  "condition": "plain",
+  "index": 0,
+  "question": "Q1",
+  "text": "The paper addresses the absence of a shared, open infrastructure ... Individual research systems are brittle, narrowly scoped, or too costly to reproduce, fragmenting the community."
+ },
+ "I-362e48": {
+  "review": "F1_pkt-93f95d2e",
+  "pid": "pkt-93f95d2e",
+  "project": "OPENHANDS",
+  "condition": "plain",
+  "index": 1,
+  "question": "Q3",
+  "text": "LangChain has limited runtime support"
+ },
+ "I-f47a42": {
+  "review": "F1_pkt-93f95d2e",
+  "pid": "pkt-93f95d2e",
+  "project": "OPENHANDS",
+  "condition": "plain",
+  "index": 5,
+  "question": "Q7",
+  "text": "GPQA Diamond: 53.1% (gpt-4o) vs GPT-4 CoT 38.8%; WebArena: 15.5% (BrowsingAgent, claude-3-5-sonnet); ML-Bench: 76.5% (gpt-4o); MINT math: 77.3% vs 65.8%; ProofWriter: 78.8% vs Logic-LM 79.6%"
+ },
+ "I-53d801": {
+  "review": "F1_pkt-93f95d2e",
+  "pid": "pkt-93f95d2e",
+  "project": "OPENHANDS",
+  "condition": "plain",
+  "index": 6,
+  "question": "Q9",
+  "text": "91.1% on MiniWoB++ by an RL specialist ... 59.6% MINT code baseline"
+ },
+ "I-c2b696": {
+  "review": "F1_pkt-951b3664",
+  "pid": "pkt-951b3664",
+  "project": "SWE_BENCH",
+  "condition": "skill",
+  "index": 0,
+  "question": "Q2",
+  "text": "Saturation of prior benchmarks is asserted (§8 cites Kiela 2021, Ott 2022) but no HumanEval scores for these models are shown to demonstrate the gap."
+ },
+ "I-4051fe": {
+  "review": "F1_pkt-9ec01847",
+  "pid": "pkt-9ec01847",
+  "project": "MLPERF_TINY",
+  "condition": "skill",
+  "index": 0,
+  "question": "Q3",
+  "text": "MLPerf Inference ... assumes an OS, file I/O and debug interfaces"
+ },
+ "I-3d183c": {
+  "review": "F1_pkt-9ec01847",
+  "pid": "pkt-9ec01847",
+  "project": "MLPERF_TINY",
+  "condition": "skill",
+  "index": 2,
+  "question": "Q6",
+  "text": "No experiment validates the measurement methodology itself (repeatability, cross-lab agreement, variance)."
+ },
+ "I-c6cbcf": {
+  "review": "F1_pkt-9ec01847",
+  "pid": "pkt-9ec01847",
+  "project": "MLPERF_TINY",
+  "condition": "skill",
+  "index": 3,
+  "question": "Q9",
+  "text": "closed-division differences isolate hardware from software; accuracy on small evaluation subsets (200 or 248 samples) is not tied to a statistically meaningful pass/fail margin"
+ },
+ "I-5dea3b": {
+  "review": "F1_pkt-9ec01847",
+  "pid": "pkt-9ec01847",
+  "project": "MLPERF_TINY",
+  "condition": "skill",
+  "index": 4,
+  "question": "Q11",
+  "text": "PTQ remains a residual variable in the closed division, evaluation subsets are small with no uncertainty reported, and the measurement methodology was not validated."
+ },
+ "I-c71e4a": {
+  "review": "F1_pkt-9edda269",
+  "pid": "pkt-9edda269",
+  "project": "MLPERF_TINY",
+  "condition": "skillv010sub",
+  "index": 1,
+  "question": "Q3",
+  "text": "MLMark uses gigabyte-scale models"
+ },
+ "I-fb31e0": {
+  "review": "F1_pkt-9edda269",
+  "pid": "pkt-9edda269",
+  "project": "MLPERF_TINY",
+  "condition": "skillv010sub",
+  "index": 5,
+  "question": "Q7",
+  "text": "power draw spanning roughly microwatts to watts (no values given)"
+ },
+ "I-bd1d01": {
+  "review": "F1_pkt-ba793105",
+  "pid": "pkt-ba793105",
+  "project": "OPENHANDS",
+  "condition": "skill",
+  "index": 0,
+  "question": "Q2",
+  "text": "Agent infrastructure is split across incompatible, single-purpose frameworks. That makes approaches hard to compare, genuine progress hard to measure, and components hard to reuse."
+ },
+ "I-990aa3": {
+  "review": "F1_pkt-ba793105",
+  "pid": "pkt-ba793105",
+  "project": "OPENHANDS",
+  "condition": "skill",
+  "index": 1,
+  "question": "Q3",
+  "text": "web browsing only (WebArena), or general components without integrated sandboxed execution (AutoGPT, LangChain)... none combines sandboxed stateful execution, modular extensibility, multi-agent delegation, and broad multi-benchmark evaluation."
+ },
+ "I-2e3af9": {
+  "review": "F1_pkt-ba793105",
+  "pid": "pkt-ba793105",
+  "project": "OPENHANDS",
+  "condition": "skill",
+  "index": 3,
+  "question": "Q7",
+  "text": "SWE-Bench Lite baseline scores for SWE-Agent 18.0%, AutoCodeRover 19.0%, Aider 26.3%, Agentless 27.3%; GPQA GPT-4 few-shot CoT 38.8%; ML-Bench 64.4% vs SWE-Agent 42.6%; GAIA L1 GPTSwarm 32.1% vs AutoGPT 13.2%; WebArena BrowsingAgent 15.5% vs 14.4% baseline"
+ },
+ "I-aac23c": {
+  "review": "F1_pkt-ba793105",
+  "pid": "pkt-ba793105",
+  "project": "OPENHANDS",
+  "condition": "skill",
+  "index": 4,
+  "question": "Q8",
+  "text": "On SWE-Bench Lite, backbone choice changes performance about four-fold within a fixed scaffold."
+ },
+ "I-86f16f": {
+  "review": "F1_pkt-ba793105",
+  "pid": "pkt-ba793105",
+  "project": "OPENHANDS",
+  "condition": "skill",
+  "index": 5,
+  "question": "Q11",
+  "text": "Confounded comparisons: different backbones, agent versions, few-shot vs zero-shot, and trained vs zero-shot baselines."
+ },
+ "I-57c734": {
+  "review": "F1_pkt-c2e46500",
+  "pid": "pkt-c2e46500",
+  "project": "MLPERF_TINY",
+  "condition": "plain",
+  "index": 0,
+  "question": "Q9",
+  "text": "no comparison across the three EMON devices"
+ },
+ "I-23d28d": {
+  "review": "F1_pkt-c2e46500",
+  "pid": "pkt-c2e46500",
+  "project": "MLPERF_TINY",
+  "condition": "plain",
+  "index": 1,
+  "question": "Q4",
+  "text": "a five-function DUT API"
+ },
+ "I-6ee89a": {
+  "review": "F1_pkt-c2e46500",
+  "pid": "pkt-c2e46500",
+  "project": "MLPERF_TINY",
+  "condition": "plain",
+  "index": 2,
+  "question": "Q9",
+  "text": "It does not support the qualitative claims about submissions ('outstanding performance', 'meaningful optimization', INT-8 'little impact on accuracy'), because no numbers are given."
+ },
+ "I-f13cf3": {
+  "review": "F1_pkt-d407518f",
+  "pid": "pkt-d407518f",
+  "project": "SWE_BENCH",
+  "condition": "plain",
+  "index": 0,
+  "question": "Q2",
+  "text": "LMs are being deployed in developer tooling, so progress should be measured on tasks resembling real software engineering"
+ },
+ "I-78978a": {
+  "review": "F1_pkt-d407518f",
+  "pid": "pkt-d407518f",
+  "project": "SWE_BENCH",
+  "condition": "plain",
+  "index": 2,
+  "question": "Q5",
+  "text": "SWE-Llama was built because open models could not produce well-formed patches"
+ },
+ "I-059f23": {
+  "review": "F1_pkt-d407518f",
+  "pid": "pkt-d407518f",
+  "project": "SWE_BENCH",
+  "condition": "plain",
+  "index": 5,
+  "question": "Q8",
+  "text": "fine-tuned models are sensitive to train/test context mismatch"
+ },
+ "I-774d31": {
+  "review": "F1_pkt-d407518f",
+  "pid": "pkt-d407518f",
+  "project": "SWE_BENCH",
+  "condition": "plain",
+  "index": 6,
+  "question": "Q9",
+  "text": "that the benchmark tasks are all solvable/well-specified from the issue text"
+ },
+ "I-29b68e": {
+  "review": "F1_pkt-d407518f",
+  "pid": "pkt-d407518f",
+  "project": "SWE_BENCH",
+  "condition": "plain",
+  "index": 7,
+  "question": "Q9",
+  "text": "or that tests fairly accept alternative correct fixes"
+ },
+ "I-f928fb": {
+  "review": "F1_pkt-d407518f",
+  "pid": "pkt-d407518f",
+  "project": "SWE_BENCH",
+  "condition": "plain",
+  "index": 8,
+  "question": "Q9",
+  "text": "that differences of fractions of a percent are statistically meaningful"
+ },
+ "I-7d7b7b": {
+  "review": "F1_pkt-d407518f",
+  "pid": "pkt-d407518f",
+  "project": "SWE_BENCH",
+  "condition": "plain",
+  "index": 10,
+  "question": "Q9",
+  "text": "or that 'current architectures' cannot use long context"
+ },
+ "I-9067c1": {
+  "review": "F1_pkt-d407518f",
+  "pid": "pkt-d407518f",
+  "project": "SWE_BENCH",
+  "condition": "plain",
+  "index": 11,
+  "question": "Q11",
+  "text": "best-of-context-limit selection on test data"
+ },
+ "I-788b1b": {
+  "review": "F1_pkt-ddb44bd8",
+  "pid": "pkt-ddb44bd8",
+  "project": "WHISPER",
+  "condition": "plain",
+  "index": 0,
+  "question": "Q2",
+  "text": "Benchmark results then overstate real-world reliability, and human-machine comparisons are misleading."
+ },
+ "I-9662ba": {
+  "review": "F1_pkt-ddb44bd8",
+  "pid": "pkt-ddb44bd8",
+  "project": "WHISPER",
+  "condition": "plain",
+  "index": 3,
+  "question": "Q9",
+  "text": "Human-level robustness rests on one transcriber (an author) and 25 recordings."
+ },
+ "I-201d75": {
+  "review": "F1_pkt-ddb44bd8",
+  "pid": "pkt-ddb44bd8",
+  "project": "WHISPER",
+  "condition": "plain",
+  "index": 4,
+  "question": "Q9",
+  "text": "Uncertainty is never quantified (no seeds or intervals)."
+ },
+ "I-8babbf": {
+  "review": "F1_pkt-e477c21c",
+  "pid": "pkt-e477c21c",
+  "project": "OPENHANDS",
+  "condition": "skillv010sub",
+  "index": 0,
+  "question": "Q1",
+  "text": "Whether one open agent platform (OpenHands), and one generalist agent on it using a single fixed prompt with no benchmark-specific modification, can be competitive at the same time across qualitatively different agentic task categories... rather than each category needing its own purpose-built agent."
+ },
+ "I-33aa1d": {
+  "review": "F1_pkt-e477c21c",
+  "pid": "pkt-e477c21c",
+  "project": "OPENHANDS",
+  "condition": "skillv010sub",
+  "index": 1,
+  "question": "Q1",
+  "text": "A secondary, engineering framing is that building and fairly evaluating agents has required separate infrastructure per agent or task category."
+ },
+ "I-1e0f6a": {
+  "review": "F1_pkt-e477c21c",
+  "pid": "pkt-e477c21c",
+  "project": "OPENHANDS",
+  "condition": "skillv010sub",
+  "index": 4,
+  "question": "Q3",
+  "text": "Hence there is no evidence on whether one agent design holds up when the task category changes."
+ },
+ "I-ff84e3": {
+  "review": "F1_pkt-e477c21c",
+  "pid": "pkt-e477c21c",
+  "project": "OPENHANDS",
+  "condition": "skillv010sub",
+  "index": 5,
+  "question": "Q4",
+  "text": "Wording such as 'the evaluated paper', 'the source material', 'OpenHands' authors' and 'We would add' suggests the writers are re-analyzing previously published OpenHands results rather than running new experiments, but this is never stated."
+ },
+ "I-ae0836": {
+  "review": "F1_pkt-e477c21c",
+  "pid": "pkt-e477c21c",
+  "project": "OPENHANDS",
+  "condition": "skillv010sub",
+  "index": 8,
+  "question": "Q7",
+  "text": "Aggregate: above the named comparator on 9 of 15 benchmarks, within about a point on 2, mixed on 1, below on 3."
+ },
+ "I-484a35": {
+  "review": "F1_pkt-e477c21c",
+  "pid": "pkt-e477c21c",
+  "project": "OPENHANDS",
+  "condition": "skillv010sub",
+  "index": 11,
+  "question": "Q10",
+  "text": "this paper's own contribution may instead be a cross-category synthesis (Table 2) of previously reported OpenHands results"
+ },
+ "I-f8b5c8": {
+  "review": "F1_pkt-e477c21c",
+  "pid": "pkt-e477c21c",
+  "project": "OPENHANDS",
+  "condition": "skillv010sub",
+  "index": 12,
+  "question": "Q11",
+  "text": "the evaluated versions are a dated snapshot of a since-reorganized codebase"
+ },
+ "I-091c59": {
+  "review": "F1_pkt-ff333bed",
+  "pid": "pkt-ff333bed",
+  "project": "MLPERF_TINY",
+  "condition": "skillv020sub",
+  "index": 5,
+  "question": "Q7",
+  "text": "Measured power is said to span about six orders of magnitude (microwatts to watts)."
+ },
+ "I-1d4b08": {
+  "review": "F1_pkt-ff333bed",
+  "pid": "pkt-ff333bed",
+  "project": "MLPERF_TINY",
+  "condition": "skillv020sub",
+  "index": 8,
+  "question": "Q11",
+  "text": "(c) The technology could be misused for tracking people without consent, and it adds to e-waste."
+ },
+ "I-143d99": {
+  "review": "F1_pkt-ff81c66c",
+  "pid": "pkt-ff81c66c",
+  "project": "BEIR",
+  "condition": "skillv020sub",
+  "index": 1,
+  "question": "Q3",
+  "text": "neither reports computational cost"
+ },
+ "I-c059f9": {
+  "review": "F1_pkt-ff81c66c",
+  "pid": "pkt-ff81c66c",
+  "project": "BEIR",
+  "condition": "skillv020sub",
+  "index": 6,
+  "question": "Q9",
+  "text": "In-domain accuracy having no predictive value (disputed): the two rankings in Table 1 still largely agree"
+ },
+ "I-a8d2c4": {
+  "review": "F1_pkt-ff81c66c",
+  "pid": "pkt-ff81c66c",
+  "project": "BEIR",
+  "condition": "skillv020sub",
+  "index": 7,
+  "question": "Q9",
+  "text": "Late-interaction being costly (disputed): ColBERT's latency is not reported"
+ },
+ "I-0b2da0": {
+  "review": "F1_pkt-ff81c66c",
+  "pid": "pkt-ff81c66c",
+  "project": "BEIR",
+  "condition": "skillv020sub",
+  "index": 8,
+  "question": "Q10",
+  "text": "The paper conveys the empirical finding more strongly than the resource itself, because it gives no dataset inventory and no access details"
+ },
+ "I-964438": {
+  "review": "F1_pkt-a0ca791c",
+  "pid": "pkt-a0ca791c",
+  "project": "MLPERF_TINY",
+  "condition": "skillv010ab3",
+  "index": 0,
+  "question": "Q2",
+  "text": "For always-on battery devices, radio communication costs far more energy than compute."
+ },
+ "I-de2da1": {
+  "review": "F1_pkt-a0ca791c",
+  "pid": "pkt-a0ca791c",
+  "project": "MLPERF_TINY",
+  "condition": "skillv010ab3",
+  "index": 7,
+  "question": "Q6",
+  "text": "No controlled experiments were done and no comparability test (same system in different setups, cross-submitter agreement) was run."
+ },
+ "I-0c0825": {
+  "review": "F1_pkt-a0ca791c",
+  "pid": "pkt-a0ca791c",
+  "project": "MLPERF_TINY",
+  "condition": "skillv010ab3",
+  "index": 9,
+  "question": "Q8",
+  "text": "Comparability is supported only at the design level."
+ },
+ "I-5ef733": {
+  "review": "F1_pkt-a0ca791c",
+  "pid": "pkt-a0ca791c",
+  "project": "MLPERF_TINY",
+  "condition": "skillv010ab3",
+  "index": 10,
+  "question": "Q9",
+  "text": "It is not established that results are comparable across systems, that any latency/energy ranking holds, that the modular design caused submission diversity, that INT-8 has little accuracy cost, or that monitor sampling frequency does not matter."
+ },
+ "I-fd053f": {
+  "review": "F1_pkt-a0ca791c",
+  "pid": "pkt-a0ca791c",
+  "project": "MLPERF_TINY",
+  "condition": "skillv010ab3",
+  "index": 11,
+  "question": "Q9",
+  "text": "The targets are not shown to be robust (subset evaluation, no spread)."
+ },
+ "I-cb3219": {
+  "review": "F1_pkt-a0ca791c",
+  "pid": "pkt-a0ca791c",
+  "project": "MLPERF_TINY",
+  "condition": "skillv010ab3",
+  "index": 12,
+  "question": "Q11",
+  "text": "The paper has unsupported energy-methodology claims, a single self-selected submission round, and novelty framing based on the authors' own comparison."
+ },
+ "I-5e20cf": {
+  "review": "F1_pkt-a0ca791c",
+  "pid": "pkt-a0ca791c",
+  "project": "MLPERF_TINY",
+  "condition": "skillv010ab3",
+  "index": 13,
+  "question": "Q3",
+  "text": "The gap rests on only three benchmarks and there is no systematic survey."
+ },
+ "I-4c7c13": {
+  "review": "F1_pkt-ae1077d5",
+  "pid": "pkt-ae1077d5",
+  "project": "OPENHANDS",
+  "condition": "skillv010ab3",
+  "index": 3,
+  "question": "Q6",
+  "text": "Per-benchmark instance counts and the list of benchmarks reported (WebArena 812, MiniWoB++ 125, GAIA L1 53, AgentBench OS 144, MINT 225/136, ProofWriter 600, Entity Deduction Arena 200); cost per instance reported on SWE-Bench Lite; delegation vs BrowsingAgent alone compared on web benchmarks; BIRD, BioCoder, ML-Bench, Gorilla APIBench and ToolQA not reported."
+ },
+ "I-ce8f3f": {
+  "review": "F1_pkt-ae1077d5",
+  "pid": "pkt-ae1077d5",
+  "project": "OPENHANDS",
+  "condition": "skillv010ab3",
+  "index": 4,
+  "question": "Q7",
+  "text": "SWE-Bench Lite 26.0% is within 0.3-1.3 points of best listed systems (27.3 max) and 7-8 points above SWE-Agent and AutoCodeRover; HumanEvalFix 79.3% is about 30 points above non-agentic code models; GAIA 32.1% vs 13.2% for AutoGPT; GPQA diamond 52.0% vs 38.8% for CoT GPT-4; delegation to BrowsingAgent costs at most 0.3 points on WebArena."
+ },
+ "I-4aaaed": {
+  "review": "F1_pkt-ae1077d5",
+  "pid": "pkt-ae1077d5",
+  "project": "OPENHANDS",
+  "condition": "skillv010ab3",
+  "index": 5,
+  "question": "Q8",
+  "text": "OpenHands scores fall inside the comparator range on most of ten benchmarks and above it on GAIA and AgentBench OS (with gpt-4o)."
+ },
+ "I-e20b25": {
+  "review": "F1_pkt-ae1077d5",
+  "pid": "pkt-ae1077d5",
+  "project": "OPENHANDS",
+  "condition": "skillv010ab3",
+  "index": 6,
+  "question": "Q9",
+  "text": "The paper has no ablation, no seeds or confidence intervals, no matched model/shots/training/budget comparisons; GAIA uses GPTSwarm and agents/versions/models vary; the sandbox's safety is not shown; the claim that the platform accelerates research rests only on undated adoption statistics."
+ },
+ "I-0bea7d": {
+  "review": "F1_pkt-ae1077d5",
+  "pid": "pkt-ae1077d5",
+  "project": "OPENHANDS",
+  "condition": "skillv010ab3",
+  "index": 7,
+  "question": "Q11",
+  "text": "Limitations: single values without variance, uncontrolled cross-model comparisons, heterogeneous agents and versions, five of 15 benchmarks unreported, no empirical safety evaluation of the sandbox, minor internal numeric discrepancies."
+ },
+ "I-3643b5": {
+  "review": "F1_pkt-ae1077d5",
+  "pid": "pkt-ae1077d5",
+  "project": "OPENHANDS",
+  "condition": "skillv010ab3",
+  "index": 8,
+  "question": "Q12",
+  "text": "OpenHands leads the best comparator on only 2 of 10 benchmarks, on uncontrolled single-run comparisons."
+ },
+ "I-5bc3d7": {
+  "review": "F1_pkt-b1dc7d17",
+  "pid": "pkt-b1dc7d17",
+  "project": "MLPERF_TINY",
+  "condition": "skillv030ab3",
+  "index": 4,
+  "question": "Q3",
+  "text": "The characterization of prior benchmarks rests only on the authors' description; the text states the cited works were not consulted."
+ },
+ "I-1d4133": {
+  "review": "F1_pkt-b1dc7d17",
+  "pid": "pkt-b1dc7d17",
+  "project": "MLPERF_TINY",
+  "condition": "skillv030ab3",
+  "index": 5,
+  "question": "Q6",
+  "text": "No latency or energy values for the reference implementations are given in the paper (gold says they are reported in Figure 5)."
+ },
+ "I-d25bbb": {
+  "review": "F1_pkt-b1dc7d17",
+  "pid": "pkt-b1dc7d17",
+  "project": "MLPERF_TINY",
+  "condition": "skillv030ab3",
+  "index": 6,
+  "question": "Q8",
+  "text": "The results establish feasibility and specification, not comparative performance; nothing is shown about later versions v1.0-v1.2."
+ },
+ "I-793b70": {
+  "review": "F1_pkt-b1dc7d17",
+  "pid": "pkt-b1dc7d17",
+  "project": "MLPERF_TINY",
+  "condition": "skillv030ab3",
+  "index": 7,
+  "question": "Q9",
+  "text": "The paper does not establish that comparisons are fair or reproducible, that the modular design caused the diversity of entries, or how sensitive targets are to evaluation subsets (no variance)."
+ },
+ "I-78a512": {
+  "review": "F1_pkt-b1dc7d17",
+  "pid": "pkt-b1dc7d17",
+  "project": "MLPERF_TINY",
+  "condition": "skillv030ab3",
+  "index": 8,
+  "question": "Q11",
+  "text": "Single-number accuracies on small sets without intervals, round trends resting on five entries, and fairness described but not demonstrated."
+ },
+ "I-5db7b7": {
+  "review": "F1_pkt-b1dc7d17",
+  "pid": "pkt-b1dc7d17",
+  "project": "MLPERF_TINY",
+  "condition": "skillv030ab3",
+  "index": 9,
+  "question": "Q12",
+  "text": "MLPerf Tiny is described as 'the standard' benchmark for TinyML (gold: first industry-standard suite, developed by 50+ organizations)."
+ },
+ "I-ac133e": {
+  "review": "F1_pkt-c69b0f41",
+  "pid": "pkt-c69b0f41",
+  "project": "BEIR",
+  "condition": "skillv030ab3",
+  "index": 1,
+  "question": "Q3",
+  "text": "MultiReQA has small candidate pools that favour dense retrieval."
+ },
+ "I-7c9373": {
+  "review": "F1_pkt-c69b0f41",
+  "pid": "pkt-c69b0f41",
+  "project": "BEIR",
+  "condition": "skillv030ab3",
+  "index": 2,
+  "question": "Q5",
+  "text": "Public checkpoints were used because training code is often unavailable; the controlled cosine/dot experiment was used because TAS-B and ANCE differ in several respects at once."
+ },
+ "I-dce052": {
+  "review": "F1_pkt-c69b0f41",
+  "pid": "pkt-c69b0f41",
+  "project": "BEIR",
+  "condition": "skillv030ab3",
+  "index": 3,
+  "question": "Q5",
+  "text": "Anserini over Elasticsearch, DPR Multi, and default DeepCT parameters are justified by comparisons that are not reported."
+ },
+ "I-3dc0fc": {
+  "review": "F1_pkt-c69b0f41",
+  "pid": "pkt-c69b0f41",
+  "project": "BEIR",
+  "condition": "skillv030ab3",
+  "index": 4,
+  "question": "Q6",
+  "text": "Additional analyses: document-length analysis of TAS-B vs ANCE, GenQ vs TAS-B comparison, and weighted Jaccard lexical overlap between datasets."
+ },
+ "I-866c3e": {
+  "review": "F1_pkt-c69b0f41",
+  "pid": "pkt-c69b0f41",
+  "project": "BEIR",
+  "condition": "skillv030ab3",
+  "index": 5,
+  "question": "Q7",
+  "text": "ANCE averaged -7.4% vs BM25; DeepCT/SPARTA/ANCE beat BM25 on MS MARCO."
+ },
+ "I-f0fc69": {
+  "review": "F1_pkt-c69b0f41",
+  "pid": "pkt-c69b0f41",
+  "project": "BEIR",
+  "condition": "skillv030ab3",
+  "index": 6,
+  "question": "Q7",
+  "text": "BM25+CE costs 450 ms/query on GPU (6100 ms on CPU), ColBERT 350 ms GPU with a 20GB index, vs 20 ms and 0.4GB for BM25."
+ },
+ "I-e352ac": {
+  "review": "F1_pkt-c69b0f41",
+  "pid": "pkt-c69b0f41",
+  "project": "BEIR",
+  "condition": "skillv030ab3",
+  "index": 7,
+  "question": "Q7",
+  "text": "On TREC-COVID, ColBERT rose by 5.8 points after filling holes; dot product vs cosine raised TREC-COVID nDCG@10 from 0.482 to 0.635."
+ },
+ "I-7a5742": {
+  "review": "F1_pkt-c69b0f41",
+  "pid": "pkt-c69b0f41",
+  "project": "BEIR",
+  "condition": "skillv030ab3",
+  "index": 8,
+  "question": "Q8",
+  "text": "Only re-ranking beats BM25 nearly everywhere (stated as the sole exception, excluding late-interaction)."
+ },
+ "I-d68cc8": {
+  "review": "F1_pkt-c69b0f41",
+  "pid": "pkt-c69b0f41",
+  "project": "BEIR",
+  "condition": "skillv030ab3",
+  "index": 9,
+  "question": "Q9",
+  "text": "The paper does not establish which architectural component causes the differences between systems (training data, backbone and first stage differ at once; explanations untested by ablation)."
+ },
+ "I-9458f5": {
+  "review": "F1_pkt-c69b0f41",
+  "pid": "pkt-c69b0f41",
+  "project": "BEIR",
+  "condition": "skillv030ab3",
+  "index": 10,
+  "question": "Q9",
+  "text": "Few queries on several datasets; no rank correlation reported between training-set and zero-shot scores; cost not established at other scales or hardware."
+ },
+ "I-b616f3": {
+  "review": "F1_pkt-c69b0f41",
+  "pid": "pkt-c69b0f41",
+  "project": "BEIR",
+  "condition": "skillv030ab3",
+  "index": 11,
+  "question": "Q11",
+  "text": "Undefined average in Table 2; SPARTA re-implemented; GenQ capped at 100K docs; datasets not checked for offensive content or PII; latency/index measured on one sample and one hardware pair."
+ },
+ "I-afc243": {
+  "review": "F1_pkt-ca8db917",
+  "pid": "pkt-ca8db917",
+  "project": "BEIR",
+  "condition": "skillv010ab3",
+  "index": 2,
+  "question": "Q4",
+  "text": "Analysed the length of retrieved documents (median top-10 document length, TAS-B vs ANCE)."
+ },
+ "I-b2052a": {
+  "review": "F1_pkt-ca8db917",
+  "pid": "pkt-ca8db917",
+  "project": "BEIR",
+  "condition": "skillv010ab3",
+  "index": 3,
+  "question": "Q5",
+  "text": "Anserini BM25 and DPR-Multi were chosen because they did best in the authors' tests; TREC-COVID was used for the label study because its pool comes from many systems."
+ },
+ "I-177b9e": {
+  "review": "F1_pkt-ca8db917",
+  "pid": "pkt-ca8db917",
+  "project": "BEIR",
+  "condition": "skillv010ab3",
+  "index": 4,
+  "question": "Q7",
+  "text": "MS MARCO in-domain scores of 0.296-0.413 for neural systems vs 0.228 for BM25; ANCE -7.4%, TAS-B -2.8%, GenQ -3.6% zero-shot averages relative to BM25."
+ },
+ "I-af3205": {
+  "review": "F1_pkt-ca8db917",
+  "pid": "pkt-ca8db917",
+  "project": "BEIR",
+  "condition": "skillv010ab3",
+  "index": 5,
+  "question": "Q7",
+  "text": "ColBERT index 20GB vs 0.4GB for BM25 on 1M docs (about 900GB vs 18GB on BioASQ)."
+ },
+ "I-0b2baf": {
+  "review": "F1_pkt-ca8db917",
+  "pid": "pkt-ca8db917",
+  "project": "BEIR",
+  "condition": "skillv010ab3",
+  "index": 6,
+  "question": "Q7",
+  "text": "Hole@10 on TREC-COVID ranged from 1.6% (BM25+CE) to 31.8% (TAS-B); annotation raised DPR by 11.3 points."
+ },
+ "I-9f0649": {
+  "review": "F1_pkt-ca8db917",
+  "pid": "pkt-ca8db917",
+  "project": "BEIR",
+  "condition": "skillv010ab3",
+  "index": 7,
+  "question": "Q7",
+  "text": "Switching cosine to dot product changed TREC-COVID by +15.3 points."
+ },
+ "I-2abe1d": {
+  "review": "F1_pkt-ca8db917",
+  "pid": "pkt-ca8db917",
+  "project": "BEIR",
+  "condition": "skillv010ab3",
+  "index": 8,
+  "question": "Q8",
+  "text": "A single design choice (the similarity function) can shift retrieved-document length and per-task accuracy; unjudged top-10 hits fall unevenly across systems."
+ },
+ "I-a18aeb": {
+  "review": "F1_pkt-ca8db917",
+  "pid": "pkt-ca8db917",
+  "project": "BEIR",
+  "condition": "skillv010ab3",
+  "index": 9,
+  "question": "Q9",
+  "text": "Table 3 suggests the ranking among MS MARCO-trained systems is roughly preserved, and only the comparison against BM25 flips."
+ },
+ "I-49201b": {
+  "review": "F1_pkt-ca8db917",
+  "pid": "pkt-ca8db917",
+  "project": "BEIR",
+  "condition": "skillv010ab3",
+  "index": 10,
+  "question": "Q9",
+  "text": "The bias may not be specifically lexical because the sparse neural systems DeepCT and SPARTA also gained from annotation."
+ },
+ "I-bb82b2": {
+  "review": "F1_pkt-ca8db917",
+  "pid": "pkt-ca8db917",
+  "project": "BEIR",
+  "condition": "skillv010ab3",
+  "index": 11,
+  "question": "Q11",
+  "text": "Systems are confounded (backbone, data, negatives, corpus caps; SPARTA re-implemented); summary-row formula undefined; annotation had no agreement statistics; related-work claims are second-hand."
+ },
+ "I-84e140": {
+  "review": "F1_pkt-ff362a89",
+  "pid": "pkt-ff362a89",
+  "project": "OPENHANDS",
+  "condition": "skillv030ab3",
+  "index": 0,
+  "question": "Q3",
+  "text": "No single open platform combines a sandboxed shell/Python/browser runtime, shared tool library, delegation and broad benchmark harness; SWE-Agent and AutoCodeRover target only GitHub issues."
+ },
+ "I-1961db": {
+  "review": "F1_pkt-ff362a89",
+  "pid": "pkt-ff362a89",
+  "project": "OPENHANDS",
+  "condition": "skillv030ab3",
+  "index": 4,
+  "question": "Q6",
+  "text": "Results are single reported runs; reference numbers were copied from source tables, not re-run."
+ },
+ "I-b66e40": {
+  "review": "F1_pkt-ff362a89",
+  "pid": "pkt-ff362a89",
+  "project": "OPENHANDS",
+  "condition": "skillv030ab3",
+  "index": 7,
+  "question": "Q9",
+  "text": "No variance, no ablation, and results not shown to be distinguishable from noise or to attribute gains to platform components."
+ },
+ "I-b0a47a": {
+  "review": "F1_pkt-ff362a89",
+  "pid": "pkt-ff362a89",
+  "project": "OPENHANDS",
+  "condition": "skillv030ab3",
+  "index": 8,
+  "question": "Q9",
+  "text": "No safety evaluation, no measured reduction in integration effort, no user study; not shown that one unmodified agent handled every category (delegation, GPTSwarm and mixed versions were used)."
+ },
+ "I-a4e39a": {
+  "review": "F1_pkt-ff362a89",
+  "pid": "pkt-ff362a89",
+  "project": "OPENHANDS",
+  "condition": "skillv030ab3",
+  "index": 9,
+  "question": "Q11",
+  "text": "Extraction damage and numeric discrepancies in the source (6.3 vs 7.0; inferred row alignment); isolation holds only with a sandbox; benchmark and SDK versions must match for reproduction; community figures self-reported."
+ },
+ "I-151fe8": {
+  "review": "F1_pkt-ff362a89",
+  "pid": "pkt-ff362a89",
+  "project": "OPENHANDS",
+  "condition": "skillv030ab3",
+  "index": 10,
+  "question": "Q12",
+  "text": "All comparisons are single, uncontrolled reported numbers; scores depend heavily on base model."
+ }
+}

@@ -1,0 +1,47 @@
+# Venue profile. FAILURE STATE RAISED: VENUE_UNKNOWN (class MARK; see .rcs/open_issues.md and
+# .rcs/state.json open_failures[F001]). No venue/journal/conference/guideline URL was given.
+# Fields with a concrete source below come from the task instructions themselves, not from an
+# official venue guideline; everything else falls back to the skill's generic profile
+# (templates/venue_profile.generic.yaml) and is marked assumed: true.
+venue:
+  name: "generic research article (no venue specified)"
+  type: report
+  guideline_urls: []
+structure:
+  section_template: [Title, Abstract, Introduction, Background/Related Work, The BEIR Benchmark (Methods), Experimental Setup, Results and Analysis, Annotation-Bias Case Study, Discussion, Limitations, Conclusion, References]
+  results_discussion: separate
+  related_work_position: after_intro
+  limitations_section_required: true
+  source: "task instructions: 'a complete research paper with title, abstract and the sections you judge appropriate'"
+  assumed: true   # the *choice* of exact section list is AUTHOR's judgment call, not a venue rule
+limits:
+  pages_main: null
+  words_main: [3000, 4500]
+  abstract_words: null
+  title_chars: null
+  figures_max: 0
+  references_count_limit: null
+  supplement_allowed: false
+  source: "task instructions REQUIREMENTS: 'Length: 3,000-4,500 words of main text (excluding references)'; 'Tables may be written in Markdown. No images.'"
+  assumed: false
+style:
+  citation_style: "author-year, in the exact form (FirstAuthor et al., Year), matching how each work appears in project/paper.txt"
+  voice_preference: "active voice; 'we' for the authors' actions (matches project/paper.txt's own voice)"
+  spelling: US
+  abstract_format: unstructured
+  abstract_citations_allowed: false
+  source: "task instructions REQUIREMENTS: 'Cite only works that are cited in the project materials, in the form (FirstAuthor et al., Year) as they appear there.'"
+  assumed: false
+required_statements:
+  data_availability: false
+  code_availability: false
+  ethics: false
+  conflicts_of_interest: false
+  funding: false
+  author_contributions: false
+  ai_use_disclosure: ""
+  source: "no venue policy given; this run's own disclosure is out of scope (step 21, not reached -- run stops after step 17 per task instructions)"
+checklists: []
+reporting_guideline: null
+review_criteria: []
+exemplar_papers: []

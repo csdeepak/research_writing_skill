@@ -1,0 +1,120 @@
+{
+  "project": "MLPerf Tiny Benchmark paper -> adjacent-researcher research paper",
+  "step": 17,
+  "run_stopped_after_step": 17,
+  "audience_mode": "B",
+  "length_limit_words": 4500,
+  "length_limit_min_words": 3000,
+  "final_words_main": 4192,
+  "gates": {
+    "G1": "passed",
+    "G2": "passed",
+    "G3": "passed",
+    "G4": "pending_step_18",
+    "G5": "not_reached"
+  },
+  "step_log": [
+    {"step": 1, "done": "evidence/project_inventory.json"},
+    {"step": 2, "done": "evidence/research_evidence.json (65 items), evidence/missing_evidence.json (5 items), claims/claim_candidates.json, plan/audience_assumptions.json"},
+    {"step": 3, "done": "story/spine.md (7 lines), story/story_graph.json (24 nodes, 2 experiment chains), story pattern = method_first (system/benchmark-suite paper, not a single-hypothesis experiment paper)"},
+    {"step": 4, "done": "claims/claim_evidence_map.json (33 claims C001-C033, 5 limitations L001-L005, 1 negative-result decision). Gate G1: python rce/tools/validate_artifacts.py .rcs --project-root . --out .rcs/audits/gates/G1_validate.json -> 0 errors, 0 warnings."},
+    {"step": "4b", "done": "No human available to confirm pending claims (AR-001): all 33 claims trace directly to explicit statements in project/paper.txt or project/README_1.md (author_confirmation='confirmed' throughout); none required elicitation beyond the evidence."},
+    {"step": 5, "done": "plan/audience_profile.json (mode B, adjacent ML researcher, per TASK.md AUDIENCE)."},
+    {"step": 6, "done": "plan/venue_profile.yaml (VENUE_UNKNOWN -> generic profile, assumed:true, except length/citation-style rules which come directly from TASK.md REQUIREMENTS and so are assumed:false)."},
+    {"step": 7, "done": "corpus/source_registry.json (17 sources, SRC-001..SRC-019 minus two dropped, see AR-010), corpus/literature_map.json (3-row dimension matrix), corpus/writing_patterns.json (2 patterns from the source paper's own structure), corpus/anti_patterns.json (2 watch-outs from skill/anti_patterns.md), corpus/corpus_log.md, story/lit_gap_chain.md. Re-ran validate_artifacts.py .rcs after adding these: 0 errors, 0 warnings; G1_validate.json regenerated so it is not stale."},
+    {"step": 8, "done": "plan/paper_architecture.md (30 paragraph slots + abstract, method_first pattern, planned ~4200 words), plan/figure_cards/TAB-1.md and TAB-2.md (two Markdown-table cards; no FIG cards, per TASK.md 'No images'), story/question_ledger.json (17 entries, 0 debt, 2 intro forward-deferrals), story/term_ledger.json (14 terms)."},
+    {"step": 9, "done": "plan/skeleton.md (one topic sentence per paragraph slot + Gate G2 self-reconstruction Q1-Q12, answered from the skeleton alone -> all 12 answerable). Gate G2: passed (no tool; audit file is plan/skeleton.md's own Q&A section, per SKILL.md 'G2 and G4 have no tool; cite their audit file')."},
+    {"step": 10, "done": "drafts/v001/paper.md drafted section by section. Ran lint_draft.py iteratively and fixed: 1 ERROR (B4-verb-vs-type on C030 -- 'establish' matched inside 'does not establish'; reworded to 'does not show'), then WARNs (S2-rationale-misplaced via a section-heading tweak, B1-novelty, B9-intensifier, several C1-orphan-claim, A1-late-question, A2-buried-contribution). Gate G3 first passed at words_main=4060."},
+    {"step": 11, "done": "audits/v001/reconstruction_self.md: Q1-Q12 answered from the full draft (no subagent/fresh context available, AR-002), cross-checked against spine.md and claim_evidence_map.json. 0 distortions found; 2 wording observations, both fixed (board/runtime introduced in Method before Results refers back to it; noted the 3-part Introduction contribution list for the flow audit)."},
+    {"step": 12, "done": "audits/v001/claim_audit.md: tagging completeness (0 orphan claims), verb-vs-type (0 errors), a 100%-coverage numeric spot-check (exceeds the usual 20%/min-10 sample), and a References fidelity check. Found and fixed one real defect: the Fedorov et al. reference title had been silently 'corrected' using outside knowledge instead of transcribing project/paper.txt's own (garbled) reference-list text -- reverted to match the evidence exactly, in both corpus/source_registry.json and the draft's References list."},
+    {"step": 13, "done": "audits/v001/flow_audit.md: section-level (intro ends with RQ+contributions+map; results opens with its questions; discussion answers the one RQ; limitations author-stated-first then labelled 'Additional caveats'; conclusion does not echo the abstract), paragraph-level, transitions (0 decorative-transition findings), old->new coherence, and a term-ledger cross-check against final first-use locations. 0 blocking defects."},
+    {"step": 14, "done": "audits/v001/term_load_audit.md: term ledger checks (0 use-before-definition), a new-term-per-paragraph review (3 Method paragraphs exceed the soft <=2/paragraph budget; reviewed and kept with a documented reason -- irreducible per-benchmark specification density, each term still glossed inline), and a sentence-length pass (6 of the longest sentences, 65-103 words, split; remaining long sentences individually reviewed and kept with reasons)."},
+    {"step": 15, "done": "audits/v001/table_audit.md: both Markdown-table cards (TAB-1, TAB-2) checked for completeness, reference-before-appearance, honesty (no invented per-submission scores; no asserted fine-grained Table-2 modification marks beyond what extraction preserved), and accessibility. 0 blocking defects; FIGURE_NOT_EXPLAINED not raised."},
+    {"step": 16, "done": "audits/v001/citation_audit.json: all 17 in-text citations run through the 8-step pipeline (exists/metadata/supports/strength/status/primary/purpose/integrity-not-checked-no-web). Found and fixed two real defects: the CoreMark and MLPerf-Inference sentences had lost their citation markers during drafting (restored), and claim C031 (adoption/impact, fully specified in claims/claim_evidence_map.json and corpus/source_registry.json) had never been written into the draft (added to Discussion with its citation). Bidirectional References<->in-text consistency verified programmatically: 0 orphans either direction. Two sources (MLMark; the Edge Impulse project) remain named in prose without a parenthetical citation or References entry because project/paper.txt gives no year for either (AR-005/AR-010)."},
+    {"step": 17, "done": "audits/v001/overclaim_audit.md: full anti_patterns.md SS B sweep (B1-B17). Found and fixed one real defect (B11: Discussion's mechanism-explanation paragraph was an unhedged, untagged mechanistic claim; reworded as an explicitly hedged, {C030}-tagged interpretation) and confirmed one already-adequate scope hedge (B6). 0 remaining overclaim flags. Final state: python rce/tools/validate_artifacts.py .rcs --project-root . -> 0 errors, 0 warnings (G1 and G3 gate reports regenerated fresh after all step 11-17 edits). python rce/tools/lint_draft.py .rcs/drafts/v001/paper.md --rcs .rcs -> 0 errors, 21 warnings (all A3-undefined-acronym on standard/bibliographic terms). Final words_main = 4192 (within [3000, 4500])."}
+  ],
+  "open_failures": [],
+  "accepted_risks": [
+    {
+      "id": "AR-001",
+      "risk": "NO_HUMAN_AVAILABLE",
+      "detail": "TASK.md run-specific constraints: no human is available. Wherever the skill says ASK or STOP, the most defensible option from the evidence is chosen and recorded here instead.",
+      "decision": "Proceed autonomously through step 17; record each individual assumption below as its own entry."
+    },
+    {
+      "id": "AR-002",
+      "risk": "NO_SUBAGENTS",
+      "detail": "TASK.md: there are no subagents. AUTHOR performs the CORPUS_AGENT role directly (per agents/corpus_agent.md), in the same context.",
+      "decision": "Evidence extraction, literature registration, and pattern extraction done by AUTHOR; isolation label 'none'."
+    },
+    {
+      "id": "AR-003",
+      "risk": "NO_WEB / INSUFFICIENT_LITERATURE",
+      "detail": "TASK.md: no web access. Literature mode limited to works cited in ./project/paper.txt. Every SRC-xxx is registered with verification.method='user_supplied_file', read_depth='abstract', verified_by='agent'. Support quotes for what each source establishes are taken from how project/paper.txt itself describes/uses the source, not from independently reading the source.",
+      "decision": "Gap and literature claims are scoped to 'the works the MLPerf Tiny paper itself cites' rather than to an independent systematic search. No new sources are added."
+    },
+    {
+      "id": "AR-004",
+      "risk": "VENUE_UNKNOWN",
+      "detail": "No venue was specified by the user beyond 'a research paper' for the stated audience. Generic venue profile used (templates/venue_profile.generic.yaml), all rules marked assumed:true.",
+      "decision": "Section template: Title/Abstract/Introduction/Background&RelatedWork/Method/Results/Discussion/Limitations/Conclusion/References. Citation style: author-year, per TASK.md's explicit '(FirstAuthor et al., Year)' instruction, which overrides the generic profile's default numeric style."
+    },
+    {
+      "id": "AR-005",
+      "risk": "CITATION_FORM_FOR_MISSING_YEAR_SOURCES",
+      "detail": "Two sources cited by project/paper.txt (ref [16] L. Moreau; ref [19] P. Torelli and M. Bangale) and one more (ref [1] TinyML foundation) list no publication year in the reference list.",
+      "decision": "Cite [16] as (Moreau) and [19] as (Torelli and Bangale), omitting the year rather than inventing one. Reference [1] (TinyML foundation, a URL only, no author/year) is not cited in the new paper; the term 'TinyML' is used without a formal citation, consistent with not fabricating missing bibliographic metadata."
+    },
+    {
+      "id": "AR-010",
+      "risk": "SCHEMA_YEAR_REQUIRED_BUT_SOURCE_HAS_NONE",
+      "detail": "corpus/source_registry.json's schema (schemas/source_registry.schema.json) requires an integer 'year' for every registered source, but refs [16] (Moreau) and [19] (Torelli and Bangale) give no year at all in project/paper.txt's reference list (see AR-005). Filling in any integer to satisfy the schema would be inventing a publication year, which the hard rules forbid outright.",
+      "decision": "MLMark (ref [19]) and the Moreau/Edge-Impulse project (ref [16]) are NOT given formal source_registry.json entries. They are still named in the new paper's prose exactly as the kind of thing they are (a benchmark white paper; a public development-platform project), but without a parenthetical (Author, Year) citation, since no year exists to report. claim_evidence_map.json's C004 and C031 no longer list SRC-003/SRC-017 in their 'sources' field. This keeps every registered source schema-valid without fabricating a year, and keeps every in-text citation traceable to a real reference-list entry."
+    },
+    {
+      "id": "AR-006",
+      "risk": "TWO_BANBURY_ET_AL_2021_ENTRIES",
+      "detail": "The MLPerf Tiny paper being presented is itself first-authored by Banbury (2021), and it also cites a different Banbury et al. (2021) paper (Micronets, ref [4]).",
+      "decision": "The new paper never needs to self-cite the source project. Only the Micronets citation appears, as (Banbury et al., 2021); no ambiguity results."
+    },
+    {
+      "id": "AR-007",
+      "risk": "DAMAGED_TABLE_2_EXTRACTION",
+      "detail": "TASK.md warns tables/figures may be damaged by extraction. Table 2 (v0.5 submissions) is missing its checkmark glyphs (the caption states 'X = no modification, check mark = modification', but no check marks survived extraction), so the fine-grained per-cell modification pattern cannot be read with confidence.",
+      "decision": "The new paper reports only what is unambiguous in the extracted text: each submission's division (closed/open), platform/framework/numerics, and its stated 'demonstrates' contribution. It does not assert the specific modified/unmodified status of individual cells beyond division. Logged as MISS-3 in missing_evidence.json."
+    },
+    {
+      "id": "AR-008",
+      "risk": "FIGURE_5_NOT_EXTRACTABLE",
+      "detail": "Figure 5 (latency/energy of the four reference implementations) is a chart; its underlying numeric values are not present in project/paper.txt, only the caption and one qualitative summary sentence.",
+      "decision": "The new paper reports only the qualitative summary ('wide scope...each reference meets the minimum accuracy') at confidence 'low' and marks the missing numeric values with [MISSING RESULT: ...]. Logged as MISS-1."
+    },
+    {
+      "id": "AR-009",
+      "risk": "STEP_18_DEFERRED",
+      "detail": "TASK.md: step 18 (blind review) is performed externally.",
+      "decision": "Workflow stops after step 17 (scientific overclaim audit). Draft written to .rcs/drafts/v001/paper.md (tags kept) and copied to ./paper.md. .rcs/packets/audience.md and objective.md written per templates/packet_audience_objective.md. Steps 19-21 (revise/repeat/final edit, tag stripping) are not performed; claim tags remain in ./paper.md by instruction."
+    },
+    {
+      "id": "AR-011",
+      "risk": "G4_CANNOT_BE_SELF_CERTIFIED",
+      "detail": "evaluation_rubric.md SS4's exit criteria for Gate G4 require 'Core RR >=0.8 (Q1,Q4,Q7,Q10,Q11)', which is derived from REVIEW_AGENT's blind diagnostics/reconstruction (step 18). TASK.md defers step 18 to an external process, so this run has no blind-reviewer score to certify G4 against.",
+      "decision": "G4 is recorded as 'pending_step_18', not 'passed' -- marking it passed without that score would itself be a SELF_CERTIFIED_GATE failure state. Steps 11-17's own audits (reconstruction_self.md, claim_audit.md, flow_audit.md, term_load_audit.md, table_audit.md, citation_audit.json, overclaim_audit.md) are complete and found 0 remaining blocking defects, which is the furthest this run can verify without step 18."
+    }
+  ],
+  "final_deliverables": {
+    "paper_md": "./paper.md (identical to .rcs/drafts/v001/paper.md; claim tags {C###}/{L###} kept per TASK.md override of the skill's normal step-21 tag-stripping)",
+    "words_main": 4192,
+    "required_range": [3000, 4500],
+    "packets": [".rcs/packets/audience.md", ".rcs/packets/objective.md"],
+    "audit_trail": [
+      ".rcs/audits/v001/reconstruction_self.md", ".rcs/audits/v001/claim_audit.md",
+      ".rcs/audits/v001/flow_audit.md", ".rcs/audits/v001/term_load_audit.md",
+      ".rcs/audits/v001/table_audit.md", ".rcs/audits/v001/citation_audit.json",
+      ".rcs/audits/v001/overclaim_audit.md"
+    ],
+    "gate_reports": [".rcs/audits/gates/G1_validate.json", ".rcs/audits/gates/G3_lint.json"],
+    "open_issues": "./open_issues.md"
+  },
+  "notes": "Run driven by ./TASK.md. Author acts as sole AUTHOR + CORPUS_AGENT. No web, no subagents, no human reviewer. Workflow executed steps 1-17 in full, then stopped per the run-specific override; step 18 (blind review) and steps 19-21 (revise/repeat/final edit) are out of scope for this run."
+}

@@ -1,0 +1,9 @@
+## 3 Method: Building the BEIR Benchmark
+
+We built BEIR to test retrieval architectures under conditions closer to real deployment than a single train/test split can provide. We selected datasets to jointly satisfy four criteria: they had to come from diverse retrieval tasks, from diverse subject domains, be difficult enough that no single existing approach had already solved them, and be built through diverse annotation strategies, since a benchmark whose datasets were all annotated the same way risks favoring whichever retrieval approach was used to build the annotation pool in the first place {C021}.
+
+The result is 18 datasets across 9 tasks -- fact-checking, citation prediction, duplicate-question retrieval, argument retrieval, news retrieval, question answering, tweet retrieval, biomedical retrieval, and entity retrieval -- ranging from 3,600 to 15 million documents per corpus, average query lengths of 3 to 192 words, and average document lengths of 11 to 635 words {C001}. Only 8 of the 19 datasets we report on, including MS MARCO, provide any training data at all {C001}.
+
+We score every system with a single metric, nDCG@10, across every task. We rejected the alternatives for concrete reasons: Precision and Recall ignore rank order entirely, and Mean Reciprocal Rank and Mean Average Precision assume binary relevance, which fails on the BEIR datasets that use graded relevance judgments; nDCG@10 handles both binary and graded judgments on the same scale, rewarding a relevant result more the higher it is ranked among the top 10 {C022}.
+
+Every neural system in our comparison truncates each document to its first 512 word pieces, the input limit of the Transformer encoders involved (Section 7 returns to what this bounds). BM25 -- an untrained, keyword-matching baseline that indexes both title (where present) and passage text -- is scored on every dataset as a shared, zero-shot reference point throughout the rest of this paper.

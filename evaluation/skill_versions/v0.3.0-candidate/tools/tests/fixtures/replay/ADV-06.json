@@ -1,0 +1,17 @@
+{
+ "id": "ADV-06",
+ "origin": "spec 10 case 6",
+ "title": "architecture diagram includes an attention block that is not in the code",
+ "files": {
+  "src/model.py": "class Encoder:\n    pass\n\n\nclass Decoder:\n    pass\n",
+  ".rcs/plan/figure_cards/FIG-2.md": "# FIG-2 architecture\n```yaml\nid: FIG-2\ntype: diagram\nlabel: \"schematic, derived from src/model.py\"\ncomponents:\n  - name: encoder\n    traced_to: \"src/model.py::class Encoder\"\n  - name: decoder\n    traced_to: \"src/model.py::class Decoder\"\n  - name: cross-attention block\n    traced_to: \"src/model.py::class CrossAttention\"\n```\n"
+ },
+ "checks": [
+  {
+   "tool": "validate",
+   "expect": [
+    "ERROR:UNTRACED_COMPONENT"
+   ]
+  }
+ ]
+}

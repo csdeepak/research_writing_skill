@@ -1,0 +1,551 @@
+{
+ "pattern": "question_led",
+ "nodes": [
+  {
+   "id": "N01",
+   "type": "PROBLEM",
+   "text": "When LLM agents share a memory, a system must decide for each query which agent's memory to consult; the study tests this with two agents.",
+   "claims": [
+    "C032"
+   ],
+   "audience_note": "Reader knows LLMs and retrieval in general, not multi-agent memory systems."
+  },
+  {
+   "id": "N02",
+   "type": "SIGNIFICANCE",
+   "text": "Global search consults every candidate, which costs tokens on every query.",
+   "claims": [
+    "C033"
+   ],
+   "evidence": [
+    "E014",
+    "E017"
+   ]
+  },
+  {
+   "id": "N03",
+   "type": "KNOWN",
+   "text": "Global search over all agents is the default baseline (no verified literature is available; related work is marked as missing).",
+   "claims": [
+    "C033"
+   ],
+   "sources": []
+  },
+  {
+   "id": "N04",
+   "type": "GAP",
+   "text": "Whether ownership learned from verified outcomes can cut token cost while keeping answerability is not measured against global search.",
+   "claims": [
+    "C033"
+   ]
+  },
+  {
+   "id": "N05",
+   "type": "RQ",
+   "text": "RQ1: How much does routing to a learned owner reduce LLM tokens per query relative to global search, and how certain is the size?",
+   "claims": [
+    "C001"
+   ]
+  },
+  {
+   "id": "N06",
+   "type": "RQ",
+   "text": "RQ2: What does routing do to answer accuracy and answerability?",
+   "claims": [
+    "C007",
+    "C006"
+   ]
+  },
+  {
+   "id": "N07",
+   "type": "RQ",
+   "text": "RQ3: Does the saving depend on ownership having moved from its prior (frozen-ownership ablation)?",
+   "claims": [
+    "C005"
+   ]
+  },
+  {
+   "id": "N08",
+   "type": "RQ",
+   "text": "RQ4: When a new topic appears, how quickly (cumulative regret in route@1) does ownership-based routing reach the new owner, compared with supervised classifier routers?",
+   "claims": [
+    "C009",
+    "C010"
+   ]
+  },
+  {
+   "id": "N09",
+   "type": "APPROACH",
+   "text": "Learn ownership online from verification-gated reputation and route to the learned owner with a confidence-gated fallback to global search.",
+   "claims": [
+    "C032",
+    "C039"
+   ]
+  },
+  {
+   "id": "N10",
+   "type": "DESIGN",
+   "text": "Four-arm cost experiment on a constructed 50-query corpus, 10 seeds, bootstrap CI and one-sided Wilcoxon test with a rank-biserial effect size.",
+   "claims": [
+    "C025",
+    "C026",
+    "C027",
+    "C028",
+    "C004"
+   ],
+   "evidence": [
+    "E001",
+    "E008"
+   ]
+  },
+  {
+   "id": "N11",
+   "type": "DESIGN",
+   "text": "New-topic adaptation experiment with two embedders against frozen and periodically retrained classifiers.",
+   "claims": [
+    "C009",
+    "C010"
+   ],
+   "evidence": [
+    "E058",
+    "E062"
+   ]
+  },
+  {
+   "id": "N12",
+   "type": "DESIGN",
+   "text": "Static single-agent question-answering comparison of No-Memory, RAG, ASMOS-memory and ASMOS+RAG on 24 items.",
+   "claims": [
+    "C013"
+   ],
+   "evidence": [
+    "E074",
+    "E076"
+   ]
+  },
+  {
+   "id": "N13",
+   "type": "RESULT",
+   "text": "A1 used 22.1% fewer tokens per query than A0 (95% CI 17.9% to 26.3%; W = 1141.5, p = 6.788e-09, r = 0.941 over 48 of 50 pairs); per-seed spread is negligible against the interval.",
+   "claims": [
+    "C001",
+    "C002",
+    "C003"
+   ],
+   "evidence": [
+    "E004",
+    "E007",
+    "E008",
+    "E012",
+    "E021"
+   ]
+  },
+  {
+   "id": "N14",
+   "type": "RESULT",
+   "text": "In seeds 66-110, answerability is equal for A0, A1 and A2 (0.98) but accuracy for A1 (0.68-0.70) is below A0 (0.72) in every seed.",
+   "claims": [
+    "C006",
+    "C007",
+    "C008"
+   ],
+   "evidence": [
+    "E015",
+    "E016",
+    "E017"
+   ]
+  },
+  {
+   "id": "N15",
+   "type": "RESULT",
+   "text": "With ownership frozen at the prior (A2), tokens per query are within 0.9 of global search and 38.9 above A1.",
+   "claims": [
+    "C004",
+    "C005"
+   ],
+   "evidence": [
+    "E019",
+    "E020"
+   ]
+  },
+  {
+   "id": "N16",
+   "type": "RESULT",
+   "text": "In the new-topic regime ASMOS reached regret 3.24 and 0.92 with two embedders and 0 retrains, versus 4.8 to 10.0 for classifiers; answerability does not separate the arms; the lexical-hash fallback is not routing-competitive.",
+   "claims": [
+    "C009",
+    "C010",
+    "C011",
+    "C012",
+    "C022"
+   ],
+   "evidence": [
+    "E058",
+    "E062",
+    "E061",
+    "E072"
+   ]
+  },
+  {
+   "id": "N17",
+   "type": "RESULT",
+   "text": "On static question answering ASMOS-memory scores below No-Memory and RAG and costs 353.7 total tokens versus 711.4 for RAG.",
+   "claims": [
+    "C013",
+    "C014",
+    "C015",
+    "C037"
+   ],
+   "evidence": [
+    "E078",
+    "E083",
+    "E079",
+    "E077"
+   ]
+  },
+  {
+   "id": "N18",
+   "type": "RESULT",
+   "text": "The stored effect size and z for the headline test were computed incorrectly and are superseded; W, p, the reduction and the interval did not change.",
+   "claims": [
+    "C030",
+    "C036"
+   ],
+   "evidence": [
+    "E010",
+    "E012",
+    "E027"
+   ]
+  },
+  {
+   "id": "N19",
+   "type": "INTERPRETATION",
+   "text": "The token saving on the constructed corpus is real at the stated size (RQ1 answered), with query heterogeneity dominating uncertainty.",
+   "claims": [
+    "C001",
+    "C003"
+   ]
+  },
+  {
+   "id": "N20",
+   "type": "INTERPRETATION",
+   "text": "Routing keeps answerability but costs a little accuracy on this corpus, so the saving is not at equal accuracy (RQ2 answered).",
+   "claims": [
+    "C007",
+    "C006"
+   ]
+  },
+  {
+   "id": "N21",
+   "type": "INTERPRETATION",
+   "text": "The frozen-ownership ablation collapses to global search, so it shows that the saving requires routing on ownership above the threshold, not that the evolution process itself is needed (RQ3 answered at low confidence).",
+   "claims": [
+    "C005"
+   ]
+  },
+  {
+   "id": "N22",
+   "type": "INTERPRETATION",
+   "text": "In the tested new-topic runs ASMOS reached the new owner with no retraining and had the lowest mean regret of the routers tried, without a test and without a like-for-like online baseline; it is not a question-answering method.",
+   "claims": [
+    "C009",
+    "C010",
+    "C015",
+    "C022"
+   ]
+  },
+  {
+   "id": "N23",
+   "type": "CONTRIBUTION",
+   "text": "A measured, audited estimate of the token saving of learned-ownership routing on a constructed corpus, reported with the accuracy cost, an ablation, new-topic adaptation, and scope-limiting negative results.",
+   "claims": [
+    "C001",
+    "C007",
+    "C005",
+    "C009",
+    "C015"
+   ]
+  },
+  {
+   "id": "N24",
+   "type": "LIMITATION",
+   "text": "The corpus is deliberately constructed; ownership asymmetry does not emerge organically. (limitations L004)",
+   "claims": [
+    "C001",
+    "C005"
+   ]
+  },
+  {
+   "id": "N25",
+   "type": "LIMITATION",
+   "text": "Accuracy is lower under routing by 1 to 2 of 50 questions per seed, untested and with undocumented grading; the ablation contrasts routing with no routing. (limitations L012, L013, L023)",
+   "claims": [
+    "C007",
+    "C005"
+   ]
+  },
+  {
+   "id": "N26",
+   "type": "LIMITATION",
+   "text": "Author-listed caveats (tau tuned in-corpus, descoped items, unconfirmed early embedder, interval set by query heterogeneity) and scope caveats: two agents, token accounting of the answering call only, no online classifier baseline. (limitations L001, L006, L007, L008, L021, L022, L024)",
+   "claims": [
+    "C001",
+    "C007"
+   ]
+  },
+  {
+   "id": "N27",
+   "type": "IMPLICATION",
+   "text": "Where a workload has topic-specific owners and an accuracy cost of unknown size is acceptable, learned ownership is a candidate way to lower per-query LLM usage; the whole-system cost ledger is not measured.",
+   "claims": [
+    "C001",
+    "C007"
+   ]
+  },
+  {
+   "id": "N28",
+   "type": "FUTURE",
+   "text": "Measure accuracy with a paired test, replicate on an organic workload and with more answering models, and document the classifier tuning. (limitations L012, L018)",
+   "claims": [
+    "C007",
+    "C036"
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "N01",
+   "to": "N05",
+   "type": "motivates"
+  },
+  {
+   "from": "N02",
+   "to": "N05",
+   "type": "motivates"
+  },
+  {
+   "from": "N03",
+   "to": "N04",
+   "type": "establishes"
+  },
+  {
+   "from": "N05",
+   "to": "N04",
+   "type": "addresses"
+  },
+  {
+   "from": "N06",
+   "to": "N04",
+   "type": "addresses"
+  },
+  {
+   "from": "N07",
+   "to": "N04",
+   "type": "addresses"
+  },
+  {
+   "from": "N08",
+   "to": "N04",
+   "type": "addresses"
+  },
+  {
+   "from": "N09",
+   "to": "N05",
+   "type": "operationalizes"
+  },
+  {
+   "from": "N10",
+   "to": "N13",
+   "type": "produces"
+  },
+  {
+   "from": "N10",
+   "to": "N14",
+   "type": "produces"
+  },
+  {
+   "from": "N10",
+   "to": "N15",
+   "type": "tests"
+  },
+  {
+   "from": "N10",
+   "to": "N18",
+   "type": "produces"
+  },
+  {
+   "from": "N11",
+   "to": "N16",
+   "type": "produces"
+  },
+  {
+   "from": "N12",
+   "to": "N17",
+   "type": "produces"
+  },
+  {
+   "from": "N13",
+   "to": "N19",
+   "type": "supports"
+  },
+  {
+   "from": "N14",
+   "to": "N20",
+   "type": "supports"
+  },
+  {
+   "from": "N15",
+   "to": "N21",
+   "type": "supports"
+  },
+  {
+   "from": "N16",
+   "to": "N22",
+   "type": "supports"
+  },
+  {
+   "from": "N17",
+   "to": "N22",
+   "type": "supports"
+  },
+  {
+   "from": "N19",
+   "to": "N05",
+   "type": "answers"
+  },
+  {
+   "from": "N20",
+   "to": "N06",
+   "type": "answers"
+  },
+  {
+   "from": "N21",
+   "to": "N07",
+   "type": "answers"
+  },
+  {
+   "from": "N22",
+   "to": "N08",
+   "type": "answers"
+  },
+  {
+   "from": "N13",
+   "to": "N23",
+   "type": "grounds"
+  },
+  {
+   "from": "N04",
+   "to": "N23",
+   "type": "grounds"
+  },
+  {
+   "from": "N24",
+   "to": "N13",
+   "type": "limits"
+  },
+  {
+   "from": "N25",
+   "to": "N14",
+   "type": "limits"
+  },
+  {
+   "from": "N25",
+   "to": "N21",
+   "type": "limits"
+  },
+  {
+   "from": "N26",
+   "to": "N23",
+   "type": "limits"
+  },
+  {
+   "from": "N19",
+   "to": "N27",
+   "type": "implies"
+  },
+  {
+   "from": "N25",
+   "to": "N28",
+   "type": "opens"
+  }
+ ],
+ "experiment_chains": [
+  {
+   "experiment": "Four-arm token-cost experiment (50 queries, 10 seeds)",
+   "rq": "RQ1-RQ3",
+   "hypothesis": "Routing to a learned owner uses fewer tokens per query than global search.",
+   "falsifier": "A bootstrap interval that includes zero, or a test that does not reject equal tokens.",
+   "design_rationale": "A single comparison (A0 versus A1) with a matched-pairs rank test and a Kerby effect size; a frozen-ownership arm (A2) isolates ownership evolution.",
+   "observations": [
+    "E004",
+    "E007",
+    "E008",
+    "E015",
+    "E020"
+   ],
+   "claims": [
+    "C001",
+    "C002",
+    "C007",
+    "C005"
+   ],
+   "limitations": [
+    "L004",
+    "L012",
+    "L013"
+   ],
+   "next": "The saving concerns a stationary workload, so the next question is what happens when a new topic appears."
+  },
+  {
+   "experiment": "New-topic adaptation (two embedders)",
+   "rq": "RQ4",
+   "hypothesis": "Ownership learned online adapts to a new topic without retraining.",
+   "falsifier": "Regret at or above the retrained classifiers, or failure to route the new topic.",
+   "design_rationale": "Frozen and periodically retrained classifiers as baselines, with the same evaluation queries.",
+   "observations": [
+    "E058",
+    "E059",
+    "E062",
+    "E063"
+   ],
+   "claims": [
+    "C009",
+    "C010",
+    "C011",
+    "C012"
+   ],
+   "limitations": [
+    "L009",
+    "L014",
+    "L015",
+    "L017"
+   ],
+   "next": "Adaptation is a routing property, so the last question is whether ASMOS memory helps on a static question-answering task."
+  },
+  {
+   "experiment": "Static question answering (24 items)",
+   "rq": "scope",
+   "hypothesis": "ASMOS memory is not expected to beat RAG on static single-agent question answering (authors' statement).",
+   "falsifier": "ASMOS-memory scoring above RAG.",
+   "design_rationale": "Four systems with one uniform answering call isolate the memory contribution.",
+   "observations": [
+    "E074",
+    "E076",
+    "E078",
+    "E080"
+   ],
+   "claims": [
+    "C013",
+    "C014",
+    "C015",
+    "C037"
+   ],
+   "limitations": [
+    "L002",
+    "L003",
+    "L016"
+   ],
+   "next": "This bounds where the cost result applies; the discussion synthesizes the four answers."
+  }
+ ]
+}

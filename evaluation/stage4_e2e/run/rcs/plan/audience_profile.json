@@ -1,0 +1,11 @@
+{
+ "mode": "B",
+ "primary": "Machine-learning researchers from other subfields (not working on multi-agent LLM memory or routing) who want to learn what the ASMOS project measured, how, and how far the results extend",
+ "secondary": "Reviewers and replicators checking the statistics, the constructed corpus and the traceability of every number",
+ "tertiary": "Practitioners and later readers who need a stand-alone abstract and an honest limitations section",
+ "assumed_known": ["LLMs and token-based cost", "embeddings and cosine similarity", "bootstrap confidence intervals", "paired significance tests in general", "seeds and baselines", "retrieval-augmented generation at a general level"],
+ "not_assumed": ["multi-agent LLM memory vocabulary", "ownership, route@1, answerability and regret as used in this project", "the transactive corpus and its arms A0-A3", "the RULER question-answering set", "the Kerby matched-pairs rank-biserial correlation"],
+ "binding_personas": ["A", "B", "E"],
+ "term_budget": {"per_paragraph": 2, "abstract_acronyms": 1},
+ "source": "task instruction for the AUTHOR run (audience mode B)"
+}

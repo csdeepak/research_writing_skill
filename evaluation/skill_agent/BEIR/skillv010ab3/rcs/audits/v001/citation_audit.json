@@ -1,0 +1,386 @@
+{
+ "audit": "step16",
+ "rows": [
+  {
+   "citation": "(Robertson et al., 2009)",
+   "registry": [
+    "SRC-002"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PEER-REVIEWED"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Berger et al., 2000)",
+   "registry": [
+    "SRC-026"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PEER-REVIEWED"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Nguyen et al., 2016)",
+   "registry": [
+    "SRC-001"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PREPRINT"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Guo et al., 2020)",
+   "registry": [
+    "SRC-012"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PREPRINT"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Petroni et al., 2020)",
+   "registry": [
+    "SRC-013"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PREPRINT"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Dai et al., 2020)",
+   "registry": [
+    "SRC-007"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PEER-REVIEWED"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Zhao et al., 2021)",
+   "registry": [
+    "SRC-008"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PEER-REVIEWED"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Nogueira et al., 2019)",
+   "registry": [
+    "SRC-009"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PREPRINT"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Karpukhin et al., 2020)",
+   "registry": [
+    "SRC-003"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PEER-REVIEWED"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Xiong et al., 2020)",
+   "registry": [
+    "SRC-004"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PREPRINT"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Hofst\u00e4tter et al., 2021)",
+   "registry": [
+    "SRC-005"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PEER-REVIEWED"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Liang et al., 2020)",
+   "registry": [
+    "SRC-023"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PREPRINT"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Ma et al., 2021)",
+   "registry": [
+    "SRC-024"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PREPRINT"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Khattab et al., 2020)",
+   "registry": [
+    "SRC-006"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PEER-REVIEWED"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Wang et al., 2020)",
+   "registry": [
+    "SRC-010"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PEER-REVIEWED"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Reimers et al., 2020)",
+   "registry": [
+    "SRC-020"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PREPRINT"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Van Gysel et al., 2018)",
+   "registry": [
+    "SRC-015"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PEER-REVIEWED"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Wang et al., 2013)",
+   "registry": [
+    "SRC-022"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PEER-REVIEWED"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Yang et al., 2017)",
+   "registry": [
+    "SRC-014"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PEER-REVIEWED"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Voorhees et al., 2021)",
+   "registry": [
+    "SRC-011"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PEER-REVIEWED"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Tsatsaronis et al., 2015)",
+   "registry": [
+    "SRC-017"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PEER-REVIEWED"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Suarez et al., 2018)",
+   "registry": [
+    "SRC-018"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PEER-REVIEWED"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Kamalloo et al., 2024)",
+   "registry": [
+    "SRC-021"
+   ],
+   "exists": "user_supplied_file (cited in project)",
+   "metadata": "first author/year/title from project reference list; venue as listed",
+   "supports": "BEIR paper's description of the work (read_depth abstract; work not read)",
+   "strength": "sentence attributes to authors' description; no stronger verb than source description",
+   "status": [
+    "PEER-REVIEWED"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Ioffe, 2010)",
+   "registry": [
+    "SRC-016"
+   ],
+   "exists": "user_supplied_file",
+   "metadata": "single-author work; cited without 'et al.'",
+   "supports": "BEIR paper's description (abstract-level)",
+   "strength": "ok",
+   "status": [
+    "as registered"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  },
+  {
+   "citation": "(Lipani, 2019)",
+   "registry": [
+    "SRC-019"
+   ],
+   "exists": "user_supplied_file",
+   "metadata": "single-author work; cited without 'et al.'",
+   "supports": "BEIR paper's description (abstract-level)",
+   "strength": "ok",
+   "status": [
+    "as registered"
+   ],
+   "purpose_stated": true,
+   "issues": []
+  }
+ ],
+ "notes": [
+  "All 25 in-text citations resolve to registry entries and to the reference list; every reference is cited.",
+  "(Nogueira et al., 2019) could refer to two 2019 works in the project's reference list ([47] docT5query, [48] Document Expansion by Query Prediction); only [47] is registered and the text uses it for docT5query only.",
+  "Hofstaetter et al. 2021 has two entries in the project list ([23] TAS-B, [24] Margin-MSE); only [23] is cited/registered.",
+  "No citation supports a method or result claim beyond the BEIR paper's own description (read_depth abstract); sentences attribute to 'the authors' where needed."
+ ]
+}

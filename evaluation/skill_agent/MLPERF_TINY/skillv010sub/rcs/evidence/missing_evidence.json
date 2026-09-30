@@ -1,0 +1,55 @@
+{
+  "generated_at": "2026-09-27",
+  "items": [
+    {
+      "id": "MISS-001",
+      "description": "Figure 5's actual latency and energy numbers for the four reference implementations on the NUCLEO-L4R5ZI board.",
+      "why_missing": "Figure 5 is an image; only its caption survived text extraction ('The energy and latency results of the reference implementations...'). No numeric axis values are recoverable from paper.txt.",
+      "affects": "Any specific-magnitude claim about reference-implementation latency or energy. The paper is used only to state THAT this measurement was made and by which protocol (E006), not its resulting numbers.",
+      "resolution": "None available in this run (no web, no additional files). Left as a visible gap; the paper avoids stating a specific reference latency/energy number."
+    },
+    {
+      "id": "MISS-002",
+      "description": "Seed- or retraining-variance for the four reference-model accuracy/AUC figures (E002-E005).",
+      "why_missing": "The paper reports a single accuracy/AUC figure per benchmark model with no repeated-training statistics.",
+      "affects": "C001/C002/E026 (quality-target-margin pattern) -- the stability of the reported margins under retraining is unknown.",
+      "resolution": "Recorded as an evidence-strength caveat (status: incomplete on E002-E005) and reflected in confidence_reasons for the affected claims, rather than treated as blocking; this is a benchmark-specification paper, not a repeated-trial accuracy study, so per-seed variance may never have been collected."
+    },
+    {
+      "id": "MISS-003",
+      "description": "Exact component-level (green vs. orange) list of which specific pipeline components Figure 2 marks as swappable in either division vs. open-division-only.",
+      "why_missing": "Figure 2 is an image; only its caption and the general division rules in Section 5.1-5.2 survived extraction.",
+      "affects": "Precision of the Methods description of the modular design (E023); does not affect any numeric claim.",
+      "resolution": "Described at the level the surviving prose supports (dataset/training/model/quantization/hardware, per the closed/open rules in E007/E008), without enumerating a component list the evidence doesn't contain."
+    },
+    {
+      "id": "MISS-004",
+      "description": "Table 2's per-row Dataset/Training/Model 'unmodified' (X) marks for the open-division (row 5, FPGA/hls4ml) submission.",
+      "why_missing": "Table 2's extraction linearizes all cells into one column and appears to drop at least one checkmark glyph per the damaged row; only one 'X' survives for row 5 where the closed-division rows show three each.",
+      "affects": "C006 (Table 2 content claim) and L003.",
+      "resolution": "Reconstructed the Dataset cell as unmodified using Section 6.2's explicit statement that no v0.5 submission changed the training dataset (E013); left Training and Model as 'modified' given the submission's use of quantization-aware retraining (QKeras), which the closed-division rule (E007) prohibits. Flagged in the claim map as a reconstruction, not a direct read."
+    },
+    {
+      "id": "MISS-005",
+      "description": "Full bibliographic year for references [1] (TinyML Foundation) and [16] (Moreau, Edge Impulse project page), and for [19] (Torelli and Bangale, MLMark whitepaper).",
+      "why_missing": "The reference-list entries for [1] and [16] give no publication year at all; [19] gives no year either.",
+      "affects": "Citation format compliance (TASK.md requires '(FirstAuthor et al., Year)').",
+      "resolution": "[19] is cited in the paper as '(Torelli and Bangale, n.d.)' (load-bearing for the Related Work gap and therefore kept, with the missing year disclosed rather than invented). [1] and [16] are not given inline parenthetical citations in the paper; [1]'s content (the term 'TinyML') is used descriptively without attribution, and [16]'s content (impact on a third-party dev-platform) is dropped from the main text rather than cited without a recoverable year."
+    },
+    {
+      "id": "MISS-006",
+      "description": "The referent of the citation key 'citekim20191' in Section 2 (Hardware Heterogeneity paragraph: 'memory compute citekim20191').",
+      "why_missing": "This key does not resolve to any of the 22 numbered entries in paper.txt's reference list; it looks like an unresolved LaTeX \\cite left over from the arXiv source's extraction.",
+      "affects": "Nothing load-bearing -- the surrounding sentence's general point (hardware heterogeneity includes non-MCU architectures) is independently supported by the adjacent, resolvable citation [2] (BrainChip, event-based neural processors).",
+      "resolution": "Not cited; noted in corpus_log.md's 'Suspicious/anomalous content' section per the corpus_agent.md instruction to record but not act on anomalous embedded content."
+    },
+    {
+      "id": "MISS-007",
+      "description": "Names of the organizations behind each of the five Table 2 submissions.",
+      "why_missing": "The paper itself only describes the submitters generically in Section 6.2 ('one organization', 'a hardware vendor', 'an academic research institute', 'a multi-disciplinary team'); the Acknowledgments section lists ~20 contributing organizations without mapping any of them to a specific Table 2 row.",
+      "affects": "Nothing -- this is a property of the source paper's own presentation, not a gap in the evidence relative to what the authors intended to report.",
+      "resolution": "Not treated as missing evidence; the paper's own generic framing is preserved."
+    }
+  ],
+  "no_negative_result_items_note": "This project has no results/ or notes/ directory and describes no failed run or non-beneficial ablation in the classic experimental sense (it is a benchmark-design and first-deployment-round paper, not a comparative accuracy study). The closest analogues -- the self-reported design tensions and adoption gaps -- are recorded as kind='limitation_noted' or kind='observation' evidence items (E013, E016-E018) and are surfaced in the paper's Discussion/Limitations section, in the spirit of evidence_model.md section 6 and Hard Rule 4."
+}

@@ -1,0 +1,38 @@
+{
+ "id": "ADV-05",
+ "origin": "spec 10 case 5 (real: MLPerf Tiny v0.2.0 run, Phase 9)",
+ "title": "garbled source title repaired from model memory",
+ "files": {
+  ".rcs/corpus/source_registry.json": {
+   "sources": [
+    {
+     "id": "SRC-001",
+     "title": "Attention Is All You Need",
+     "authors": [
+      "Vaswani"
+     ],
+     "year": 2017,
+     "publication_status": "PEER-REVIEWED",
+     "level": 1,
+     "verification": {
+      "method": "user_supplied_file",
+      "date": "2026-09-29"
+     },
+     "read_depth": "abstract",
+     "permitted_use": [
+      "background"
+     ],
+     "as_cited": "Atention Is Al You Ned"
+    }
+   ]
+  }
+ },
+ "checks": [
+  {
+   "tool": "validate",
+   "expect": [
+    "ERROR:TITLE_REPAIRED_FROM_MEMORY"
+   ]
+  }
+ ]
+}

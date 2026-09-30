@@ -1,0 +1,4 @@
+{
+  "assumed_known_by_project_text": ["TinyML", "MCU", "DSP", "inference latency in inferences per second", "PTQ and QAT", "INT-8", "TFLM", "keyword spotting", "wake word", "autoencoder", "log-mel-spectrogram", "AUC-ROC", "Top-1", "FPGA", "RISC-V", "SDK", "EEMBC", "DUT (device under test)", "SUT (system under test)", "closed and open division", "hls4ml"],
+  "note": "Each of these is undefined or only glossed in the paper and must be defined for an adjacent-field ML reader."
+}

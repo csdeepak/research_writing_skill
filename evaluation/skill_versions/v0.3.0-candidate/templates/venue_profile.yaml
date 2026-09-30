@@ -1,0 +1,44 @@
+# Venue profile: fill ONLY from official sources. Every rule records a source and date.
+# Rules without an official source must be marked `assumed: true` (VENUE_UNKNOWN handling).
+venue:
+  name: ""
+  type: journal | conference | workshop | thesis | report
+  guideline_urls: []          # [{url: "", retrieved: "YYYY-MM-DD"}]
+structure:
+  section_template: []        # e.g. [Abstract, Introduction, Related Work, Method, Experiments, Discussion, Limitations, Conclusion]
+  results_discussion: separate | combined
+  related_work_position: after_intro | before_conclusion | either
+  limitations_section_required: null
+  source: ""
+  assumed: false
+limits:
+  pages_main: null
+  words_main: null
+  abstract_words: null
+  title_chars: null
+  figures_max: null
+  references_count_limit: null
+  supplement_allowed: null
+  source: ""
+  assumed: false
+style:
+  citation_style: ""          # IEEE | ACM | APA | Nature | author-year | numeric ...
+  voice_preference: ""        # e.g. "active voice preferred"
+  spelling: ""                # US | UK
+  abstract_format: ""         # unstructured | structured (headings)
+  abstract_citations_allowed: null
+  source: ""
+  assumed: false
+required_statements:          # generated only from evidence + user input
+  data_availability: null
+  code_availability: null
+  ethics: null
+  conflicts_of_interest: null
+  funding: null
+  author_contributions: null
+  ai_use_disclosure: ""       # where and how (e.g. Methods / Acknowledgments), policy URL
+  source: ""
+checklists: []                # e.g. [{name: "NeurIPS Paper Checklist", url: "", items_file: ""}]
+reporting_guideline: null     # e.g. CONSORT 2025 / PRISMA 2020 / TRIPOD+AI / ARRIVE (domain-specific)
+review_criteria: []           # public reviewer criteria, if any
+exemplar_papers: []           # SRC ids of recent venue papers (Level 1)

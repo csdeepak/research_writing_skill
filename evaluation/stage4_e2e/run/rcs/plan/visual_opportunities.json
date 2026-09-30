@@ -1,0 +1,562 @@
+{
+ "budget_main": 6,
+ "opportunities": [
+  {
+   "claim_id": "C001",
+   "evidence_ids": [
+    "E004",
+    "E007",
+    "E006",
+    "E001",
+    "E019"
+   ],
+   "representation": "dot_ci",
+   "kind": "COMPARATIVE",
+   "reason": "19 categories x 4 series with intervals: show the uncertainty",
+   "shape": {
+    "categories": 19,
+    "series": 4,
+    "points": 76,
+    "uncertainty": true,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": true,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C001 show? (On the constructed 50-query transactive corpus (gpt-4o-mini, 10 seeds), transact)",
+   "needs_author_wording": true,
+   "score": 7.0,
+   "tier": "main"
+  },
+  {
+   "claim_id": "C002",
+   "evidence_ids": [
+    "E008",
+    "E012",
+    "E011",
+    "E001"
+   ],
+   "representation": "dot_ci",
+   "kind": "COMPARATIVE",
+   "reason": "18 categories x 3 series with intervals: show the uncertainty",
+   "shape": {
+    "categories": 18,
+    "series": 3,
+    "points": 54,
+    "uncertainty": true,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C002 show? (A one-sided Wilcoxon signed-rank test on the 50 per-query token differences betw)",
+   "needs_author_wording": true,
+   "score": 5.0,
+   "tier": "supplementary"
+  },
+  {
+   "claim_id": "C003",
+   "evidence_ids": [
+    "E021",
+    "E006",
+    "E007"
+   ],
+   "representation": "TABLE",
+   "kind": "ANALYTICAL",
+   "reason": "5 attributes per category: exact lookup reads best as a table",
+   "shape": {
+    "categories": 10,
+    "series": 2,
+    "points": 20,
+    "uncertainty": true,
+    "ordered": false,
+    "attrs_per_category": 5
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C003 show? (The width of the bootstrap interval (8.3 percentage points) is set by heterogene)",
+   "needs_author_wording": true,
+   "score": 2.0,
+   "tier": "supplementary"
+  },
+  {
+   "claim_id": "C004",
+   "evidence_ids": [
+    "E019",
+    "E020",
+    "E018",
+    "E013"
+   ],
+   "representation": "TABLE",
+   "kind": "ANALYTICAL",
+   "reason": "5 attributes per category: exact lookup reads best as a table",
+   "shape": {
+    "categories": 4,
+    "series": 2,
+    "points": 8,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 5
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C004 show? (Across 50 queries and 10 seeds the mean LLM tokens per query were 180.2 for A0, )",
+   "needs_author_wording": true,
+   "score": 4.67,
+   "tier": "supplementary"
+  },
+  {
+   "claim_id": "C006",
+   "evidence_ids": [
+    "E016"
+   ],
+   "representation": "bar_h",
+   "kind": "COMPARATIVE",
+   "reason": "4 non-negative magnitudes across categories",
+   "shape": {
+    "categories": 4,
+    "series": 1,
+    "points": 4,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C006 show? (In the five newest seeds (66, 77, 88, 99, 110), answerability was 0.98 for A0, A)",
+   "needs_author_wording": true,
+   "score": 1.67,
+   "tier": "supplementary"
+  },
+  {
+   "claim_id": "C007",
+   "evidence_ids": [
+    "E015"
+   ],
+   "representation": "TABLE",
+   "kind": "ANALYTICAL",
+   "reason": "5 attributes per category: exact lookup reads best as a table",
+   "shape": {
+    "categories": 4,
+    "series": 1,
+    "points": 4,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 5
+   },
+   "must_show": true,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C007 show? (In the five newest seeds (66, 77, 88, 99, 110), answer accuracy was 0.72 for A0 )",
+   "needs_author_wording": true,
+   "score": 6.67,
+   "tier": "main"
+  },
+  {
+   "claim_id": "C008",
+   "evidence_ids": [
+    "E017"
+   ],
+   "representation": "PROSE",
+   "kind": "",
+   "reason": "3 value(s): a sentence is clearer than a figure (figure_table_rules.md section 2)",
+   "shape": {
+    "categories": 3,
+    "series": 1,
+    "points": 3,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C008 show? (In the five newest seeds (66, 77, 88, 99, 110), route@1 was 0.909 for A1, 0.0 fo)",
+   "needs_author_wording": true,
+   "score": 1.5,
+   "tier": "none (prose)"
+  },
+  {
+   "claim_id": "C009",
+   "evidence_ids": [
+    "E058",
+    "E059",
+    "E060"
+   ],
+   "representation": "dot_ci",
+   "kind": "COMPARATIVE",
+   "reason": "5 categories x 1 series with intervals: show the uncertainty",
+   "shape": {
+    "categories": 5,
+    "series": 1,
+    "points": 5,
+    "uncertainty": true,
+    "ordered": false,
+    "attrs_per_category": 3
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C009 show? (In the new-topic regime with the all-mpnet-base-v2 embedder (5 seeds, 10 steps, )",
+   "needs_author_wording": true,
+   "score": 4.83,
+   "tier": "supplementary"
+  },
+  {
+   "claim_id": "C010",
+   "evidence_ids": [
+    "E062",
+    "E063",
+    "E064"
+   ],
+   "representation": "dot_ci",
+   "kind": "COMPARATIVE",
+   "reason": "5 categories x 1 series with intervals: show the uncertainty",
+   "shape": {
+    "categories": 5,
+    "series": 1,
+    "points": 5,
+    "uncertainty": true,
+    "ordered": false,
+    "attrs_per_category": 3
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C010 show? (In the new-topic regime with the bge-m3 embedder (5 seeds, 10 steps), ASMOS reac)",
+   "needs_author_wording": true,
+   "score": 1.83,
+   "tier": "supplementary"
+  },
+  {
+   "claim_id": "C012",
+   "evidence_ids": [
+    "E073",
+    "E072",
+    "E069",
+    "E066"
+   ],
+   "representation": "bar_h",
+   "kind": "COMPARATIVE",
+   "reason": "8 non-negative magnitudes across categories",
+   "shape": {
+    "categories": 8,
+    "series": 4,
+    "points": 32,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": true,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C012 show? (In a single stationary-regime run with no seeds (the number of queries is not st)",
+   "needs_author_wording": true,
+   "score": 4.0,
+   "tier": "main"
+  },
+  {
+   "claim_id": "C013",
+   "evidence_ids": [
+    "E074",
+    "E076",
+    "E078",
+    "E080",
+    "E082"
+   ],
+   "representation": "dot_ci",
+   "kind": "COMPARATIVE",
+   "reason": "7 categories x 5 series with intervals: show the uncertainty",
+   "shape": {
+    "categories": 7,
+    "series": 5,
+    "points": 35,
+    "uncertainty": true,
+    "ordered": false,
+    "attrs_per_category": 2
+   },
+   "must_show": true,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C013 show? (On 24 question-answering items from the RULER benchmark (gpt-4o-mini, single run)",
+   "needs_author_wording": true,
+   "score": 6.0,
+   "tier": "main"
+  },
+  {
+   "claim_id": "C014",
+   "evidence_ids": [
+    "E083"
+   ],
+   "representation": "PROSE",
+   "kind": "",
+   "reason": "3 value(s): a sentence is clearer than a figure (figure_table_rules.md section 2)",
+   "shape": {
+    "categories": 3,
+    "series": 1,
+    "points": 3,
+    "uncertainty": true,
+    "ordered": false,
+    "attrs_per_category": 2
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C014 show? (Paired token-F1 differences on the 24 questions: RAG exceeds ASMOS-memory by 0.3)",
+   "needs_author_wording": true,
+   "score": 0.5,
+   "tier": "none (prose)"
+  },
+  {
+   "claim_id": "C015",
+   "evidence_ids": [
+    "E078",
+    "E074",
+    "E076",
+    "E083",
+    "E084",
+    "E101"
+   ],
+   "representation": "dot_ci",
+   "kind": "COMPARATIVE",
+   "reason": "6 categories x 4 series with intervals: show the uncertainty",
+   "shape": {
+    "categories": 6,
+    "series": 4,
+    "points": 24,
+    "uncertainty": true,
+    "ordered": false,
+    "attrs_per_category": 2
+   },
+   "must_show": true,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C015 show? (On this static single-agent span-retrieval question-answering task ASMOS-memory )",
+   "needs_author_wording": true,
+   "score": 6.0,
+   "tier": "main"
+  },
+  {
+   "claim_id": "C027",
+   "evidence_ids": [
+    "E115",
+    "E038"
+   ],
+   "representation": "bar_h",
+   "kind": "COMPARATIVE",
+   "reason": "10 non-negative magnitudes across categories",
+   "shape": {
+    "categories": 10,
+    "series": 1,
+    "points": 10,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C027 show? (The number of non-zero pairs (n_eff) is reported beside every effect size becaus)",
+   "needs_author_wording": true,
+   "score": 1.0,
+   "tier": "supplementary"
+  },
+  {
+   "claim_id": "C028",
+   "evidence_ids": [
+    "E023",
+    "E008"
+   ],
+   "representation": "bar_h",
+   "kind": "COMPARATIVE",
+   "reason": "6 non-negative magnitudes across categories",
+   "shape": {
+    "categories": 6,
+    "series": 1,
+    "points": 6,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C028 show? (No multiplicity correction is applied because the analysis is a single compariso)",
+   "needs_author_wording": true,
+   "score": 2.0,
+   "tier": "supplementary"
+  },
+  {
+   "claim_id": "C029",
+   "evidence_ids": [
+    "E112",
+    "E072",
+    "E073"
+   ],
+   "representation": "bar_h",
+   "kind": "COMPARATIVE",
+   "reason": "5 non-negative magnitudes across categories",
+   "shape": {
+    "categories": 5,
+    "series": 2,
+    "points": 10,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": true,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C029 show? (The MiniLM embedder is the one used for the routing results reported in the proj)",
+   "needs_author_wording": true,
+   "score": 2.83,
+   "tier": "main"
+  },
+  {
+   "claim_id": "C030",
+   "evidence_ids": [
+    "E012",
+    "E011",
+    "E027",
+    "E008"
+   ],
+   "representation": "bar_h",
+   "kind": "COMPARATIVE",
+   "reason": "13 non-negative magnitudes across categories",
+   "shape": {
+    "categories": 13,
+    "series": 2,
+    "points": 26,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C030 show? (The effect size originally stored for the headline test (r = 0.688, labelled a r)",
+   "needs_author_wording": true,
+   "score": 2.0,
+   "tier": "supplementary"
+  },
+  {
+   "claim_id": "C033",
+   "evidence_ids": [
+    "E014",
+    "E017",
+    "E002"
+   ],
+   "representation": "bar_h",
+   "kind": "COMPARATIVE",
+   "reason": "9 non-negative magnitudes across categories",
+   "shape": {
+    "categories": 9,
+    "series": 3,
+    "points": 27,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C033 show? (Mean context tokens per query were 123.2 (A0), 83.6 (A1), 122.3 (A2) and 65.9 (A)",
+   "needs_author_wording": true,
+   "score": 5.0,
+   "tier": "supplementary"
+  },
+  {
+   "claim_id": "C034",
+   "evidence_ids": [
+    "E003"
+   ],
+   "representation": "PROSE",
+   "kind": "",
+   "reason": "3 value(s): a sentence is clearer than a figure (figure_table_rules.md section 2)",
+   "shape": {
+    "categories": 3,
+    "series": 1,
+    "points": 3,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C034 show? (On the same corpus the mean within-domain cosine similarity of topic centroids w)",
+   "needs_author_wording": true,
+   "score": 1.5,
+   "tier": "none (prose)"
+  },
+  {
+   "claim_id": "C035",
+   "evidence_ids": [
+    "E005",
+    "E004"
+   ],
+   "representation": "bar_h",
+   "kind": "COMPARATIVE",
+   "reason": "3 non-negative magnitudes across categories",
+   "shape": {
+    "categories": 3,
+    "series": 2,
+    "points": 6,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C035 show? (With 5 seeds the headline reduction recorded in the same result file was 22.109%)",
+   "needs_author_wording": true,
+   "score": 1.5,
+   "tier": "supplementary"
+  },
+  {
+   "claim_id": "C036",
+   "evidence_ids": [
+    "E028",
+    "E033",
+    "E038",
+    "E057"
+   ],
+   "representation": "bar_h",
+   "kind": "COMPARATIVE",
+   "reason": "10 non-negative magnitudes across categories",
+   "shape": {
+    "categories": 10,
+    "series": 3,
+    "points": 30,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C036 show? (Corrected signed-rank statistics are recorded for three other cost runs with 50 )",
+   "needs_author_wording": true,
+   "score": 2.0,
+   "tier": "supplementary"
+  },
+  {
+   "claim_id": "C037",
+   "evidence_ids": [
+    "E075",
+    "E077",
+    "E079",
+    "E081"
+   ],
+   "representation": "bar_h",
+   "kind": "COMPARATIVE",
+   "reason": "6 non-negative magnitudes across categories",
+   "shape": {
+    "categories": 6,
+    "series": 4,
+    "points": 24,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C037 show? (In the same four-system run, mean total tokens per question were 152.0 for No-Me)",
+   "needs_author_wording": true,
+   "score": 2.0,
+   "tier": "supplementary"
+  }
+ ],
+ "summary": {
+  "claims_considered": 38,
+  "visual": 19,
+  "prose_only": 3,
+  "main": 6
+ },
+ "note": "Proposals only. Nothing is drawn until a registry entry with real source data passes V1-V4."
+}

@@ -1,0 +1,25 @@
+{
+  "tool": "validate_artifacts",
+  "errors": 0,
+  "warnings": 2,
+  "inputs": {
+    "evidence/research_evidence.json": "002dde0bd2f95a5ae22c64df7daa724050b68d7e771bd5e6d17634e90853559f",
+    "claims/claim_evidence_map.json": "7886662b72f02cf33cdfe911bad3726b78b5b9643b9400c971b6f396478a5b14",
+    "story/story_graph.json": "643a13135f3d0662354794a9457b09ac1c2a59ee20bb5fadc6023cbea31d7547",
+    "corpus/source_registry.json": "077f309c2dcd43e77e89c5d49e552a1c966a8c694518452cdfdbae612ec8c66c",
+    "plan/reader_model.json": "e48dfc2c19b84cf048e4afb146d986b40ef896b9c0f77731f0a54ffb8b7041a1",
+    "story/spine.md": "b55ef7eafe62ddd9edf8f49dcf9b8d68b6572d224cce5705fe6917ad4ca37bee"
+  },
+  "items": [
+    {
+      "level": "WARN",
+      "where": "claims/C035",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "figure_cards/FIG-5",
+      "message": "fail-closed: blocked with a missing-evidence ticket (source data missing: project/figure5_data_not_available.csv) (VISUAL_BLOCKED)"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+ "id": "FIG-2",
+ "type": "dot_ci",
+ "visual_id": "V002",
+ "purpose": "show accuracy by arm and seed so that A1 below A0 in every seed is visible",
+ "rq": "RQ2",
+ "takeaway": "A1 answers 0.68 to 0.70 correctly in every seed against 0.72 for A0.",
+ "claims": [
+  "C007"
+ ],
+ "evidence": [
+  "E001",
+  "E015"
+ ],
+ "source_data": [
+  ".rcs/plan/data/v002_accuracy_by_seed.csv",
+  "project/data/results/n10_cost_expanded_20260726_93f9058.json"
+ ],
+ "comparison_the_eye_must_make": "A1 against A0 within each seed",
+ "uncertainty_shown": "none available: one accuracy value per arm and seed; no paired test in the package",
+ "baseline_or_reference": "A0 global search",
+ "non_conclusions": "does not bound the accuracy cost or show seeds 11 to 55 (not in the package)",
+ "honesty_checks": {
+  "axes_start": "bars none; dot and line axes do not start at zero and the caption says so",
+  "all_conditions_shown": true,
+  "dual_axis": false,
+  "three_d": false,
+  "cherry_picked": false
+ },
+ "accessibility": {
+  "colorblind_safe": true,
+  "redundant_encoding": "Okabe-Ito colours paired with marker shapes",
+  "min_font_pt_at_print": 7,
+  "alt_text": "Dot plot of answer accuracy for four routing arms in five seeds: A0 and A2 at 0.72 in every seed, A1 between 0.68 and 0.70, and A3 between 0.54 and 0.56."
+ },
+ "placement": "Section 4.2, after the accuracy paragraph",
+ "caption": "Learned-ownership routing (A1) answered 0.68 to 0.70 of questions correctly in each of five seeds, below global search (A0) at 0.72 in every seed, while ownership frozen at its prior (A2) matched A0 and similarity routing (A3) reached 0.54 to 0.56. Each point is one arm in one seed over 50 queries (seeds 66 to 110); no paired test is available. The horizontal axis does not start at zero. Source: the project's 10-seed cost result file.",
+ "source_script": ".rcs/plan/data/build_data.py"
+}

@@ -1,0 +1,194 @@
+{
+ "terms": [
+  {
+   "term": "agent",
+   "kind": "technical",
+   "definition": "an LLM-driven program that repeatedly chooses an action, receives an observation, and continues until the task ends",
+   "defined_at": "I.1",
+   "first_used_at": "I.1",
+   "uses": null,
+   "audience_modes_requiring_definition": [
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "synonyms_forbidden": [
+    "bot",
+    "assistant program"
+   ]
+  },
+  {
+   "term": "action / observation",
+   "kind": "technical",
+   "definition": "an action is one step an agent takes (run code, run a shell command, act in a browser); an observation is what the environment returns",
+   "defined_at": "I.1",
+   "first_used_at": "I.1",
+   "uses": null,
+   "audience_modes_requiring_definition": [
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "synonyms_forbidden": []
+  },
+  {
+   "term": "platform",
+   "kind": "technical",
+   "definition": "OpenHands as software that agents, tools, runtimes and benchmarks plug into; not a model",
+   "defined_at": "I.4",
+   "first_used_at": "I.4",
+   "uses": null,
+   "audience_modes_requiring_definition": [
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "synonyms_forbidden": [
+    "framework (except for prior systems)"
+   ]
+  },
+  {
+   "term": "generalist agent",
+   "kind": "technical",
+   "definition": "an agent meant to handle several task categories with one prompt and action space",
+   "defined_at": "I.3",
+   "first_used_at": "I.3",
+   "uses": null,
+   "audience_modes_requiring_definition": [
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "synonyms_forbidden": []
+  },
+  {
+   "term": "event stream",
+   "kind": "technical",
+   "definition": "the chronological record of all actions and observations of a session",
+   "defined_at": "I.4",
+   "first_used_at": "I.4",
+   "uses": null,
+   "audience_modes_requiring_definition": [
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "synonyms_forbidden": []
+  },
+  {
+   "term": "sandbox / runtime",
+   "kind": "technical",
+   "definition": "the isolated Docker container in which actions execute (sandbox) and the system that turns actions into observations (runtime)",
+   "defined_at": "I.4",
+   "first_used_at": "I.4",
+   "uses": null,
+   "audience_modes_requiring_definition": [
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "synonyms_forbidden": []
+  },
+  {
+   "term": "skill",
+   "kind": "project_specific",
+   "definition": "a Python function in the AgentSkills library that agents call from the IPython environment",
+   "defined_at": "M.4",
+   "first_used_at": "M.4",
+   "uses": null,
+   "audience_modes_requiring_definition": [
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "synonyms_forbidden": [
+    "plug-in",
+    "module"
+   ]
+  },
+  {
+   "term": "delegation",
+   "kind": "technical",
+   "definition": "an agent handing a subtask to another agent through AgentDelegateAction",
+   "defined_at": "M.5",
+   "first_used_at": "M.5",
+   "uses": null,
+   "audience_modes_requiring_definition": [
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "synonyms_forbidden": []
+  },
+  {
+   "term": "reference system",
+   "kind": "technical",
+   "definition": "another system whose score is quoted from the OpenHands paper tables",
+   "defined_at": "I.5",
+   "first_used_at": "I.5",
+   "uses": null,
+   "audience_modes_requiring_definition": [
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "synonyms_forbidden": [
+    "baseline (except when quoting the authors)"
+   ]
+  },
+  {
+   "term": "0-shot / 1-shot",
+   "kind": "technical",
+   "definition": "no demonstration vs one demonstration in the prompt",
+   "defined_at": "S.2",
+   "first_used_at": "S.2",
+   "uses": null,
+   "audience_modes_requiring_definition": [
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "synonyms_forbidden": []
+  },
+  {
+   "term": "score",
+   "kind": "technical",
+   "definition": "the percentage a benchmark reports (resolve rate, pass rate or success rate, each defined by the benchmark)",
+   "defined_at": "S.3",
+   "first_used_at": "S.3",
+   "uses": null,
+   "audience_modes_requiring_definition": [
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "synonyms_forbidden": []
+  },
+  {
+   "term": "resolve rate",
+   "kind": "technical",
+   "definition": "share of SWE-bench Lite instances whose repository tests pass after the agent edits the code",
+   "defined_at": "Rs.1",
+   "first_used_at": "Rs.1",
+   "uses": null,
+   "audience_modes_requiring_definition": [
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "synonyms_forbidden": []
+  }
+ ]
+}

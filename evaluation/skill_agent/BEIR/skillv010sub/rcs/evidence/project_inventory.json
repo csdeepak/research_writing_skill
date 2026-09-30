@@ -1,0 +1,31 @@
+{
+  "project_root": ".",
+  "generated_at": "2026-09-27",
+  "generated_by": "AUTHOR-acting-as-CORPUS_AGENT (no subagents available in this runtime)",
+  "files": [
+    {
+      "path": "project/paper.txt",
+      "type_class": "result+method+dataset+figure(text-extracted)",
+      "size_bytes": 96986,
+      "lines": 1289,
+      "opened": true,
+      "notes": "Text extracted from the project's official research paper (arXiv:2104.08663v4, 'BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation of Information Retrieval Models'). Contains abstract, introduction, related work, benchmark description, experimental setup, results (Tables 1-4, 9-10), an annotation-bias case study, conclusion, references (79 entries), a reproducibility checklist, and Appendices A-H. Tables and figures are damaged by PDF-to-text extraction: numeric table columns are frequently reordered/interleaved (see evidence/missing_evidence.json for the specific tables affected and how each was handled)."
+    },
+    {
+      "path": "project/README_1.md",
+      "type_class": "note/other (official repository README)",
+      "size_bytes": 27120,
+      "lines": 471,
+      "opened": true,
+      "notes": "Official GitHub README for the BEIR software package (beir-cellar/beir). Contains installation instructions, quick-start code examples (Sentence-BERT, LoRA/vLLM, HuggingFace, Cohere API), the available-datasets table, licensing disclaimer, citation entries (including a second, later publication: Kamalloo et al. 2024, 'Resources for Brewing BEIR', SIGIR 2024 Resource Track), and contributor list. Some content (e.g. the vLLM/LoRA/Cohere examples, the SIGIR 2024 citation) post-dates the 2021 paper and describes later evolution of the software rather than the original NeurIPS 2021 paper's own experiments; such content is treated as soft/contextual evidence about the released artifact, not as evidence for any experimental claim in paper.txt."
+    }
+  ],
+  "skipped": [],
+  "datasets_described_not_opened": [
+    {
+      "description": "The 18 BEIR benchmark datasets themselves (e.g. TREC-COVID, NQ, HotpotQA, FEVER, ...) are described only via their statistics in paper.txt Table 1 and Appendix D. Raw dataset files are not present in project/ and are not opened; only the paper's own reported statistics are used as evidence.",
+      "reason": "not included in project/; out of budget/scope and outside the read-only project folder per hard rules"
+    }
+  ],
+  "done_when": "every file in project/ is classified above; both files were opened and read in full."
+}

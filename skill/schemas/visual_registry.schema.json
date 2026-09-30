@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rce/visual_registry.schema.json",
+  "title": "Visual evidence registry (vNext Stage 2, M05; checked by tools/validate_visuals.py)",
+  "type": "object",
+  "required": ["visuals"],
+  "properties": {
+    "visuals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "representation", "reader_question", "evidence_ids"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[VT][0-9]{3,}$"},
+          "number": {"type": "integer", "minimum": 1, "description": "Figure/Table number used in the paper (V4)."},
+          "rq": {"type": "string"},
+          "tier": {"enum": ["main", "supplementary"]},
+          "kind": {"enum": ["EXPLANATORY", "ANALYTICAL", "COMPARATIVE", "QUALITATIVE", "STRUCTURAL", "CONTEXTUAL", "DECORATIVE"],
+                   "description": "DECORATIVE is rejected (M04)."},
+          "representation": {"enum": ["bar_h", "dot_ci", "line", "table", "diagram", "image_panel"]},
+          "status": {"enum": ["PROPOSED", "RENDERED", "VERIFIED", "BLOCKED", "NO_VALID_VISUAL"]},
+          "reader_question": {"type": "string", "minLength": 5},
+          "claim_ids": {"type": "array", "items": {"type": "string", "pattern": "^[CL][0-9]{3,}$"}},
+          "evidence_ids": {"type": "array", "items": {"type": "string", "pattern": "^E[0-9]{3,}$"}},
+          "title": {"type": "string"},
+          "value_label": {"type": "string"},
+          "x_label": {"type": "string", "description": "line charts: horizontal-axis title (default: the x column)"},
+          "units": {"type": "string"},
+          "domain": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"},
+                     "description": "Natural bounds of the value (e.g. [0, 1] for a proportion); values outside block rendering."},
+          "x_labels": {"type": "object"},
+          "series_labels": {"type": "object"},
+          "figure_path": {"type": "string"},
+          "data": {
+            "type": "object",
+            "required": ["file", "x", "y"],
+            "properties": {
+              "file": {"type": "string"},
+              "scope": {"type": "object", "description": "The universe of rows this figure is about; every row is drawn unless excluded with a reason."},
+              "exclude": {"type": "array", "items": {"type": "object", "required": ["x", "reason"],
+                                                      "properties": {"x": {"type": "string"}, "reason": {"type": "string"}}}},
+              "x": {"type": "string"}, "y": {"type": "string"},
+              "err_low": {"type": "string"}, "err_high": {"type": "string"}, "series": {"type": ["string", "null"]},
+              "aggregation": {"type": "string"},
+              "source_text": {"type": "string", "description": "Upstream document every plotted value must occur in (V1)."},
+              "uncertainty_note": {"type": "string", "description": "Why no interval is drawn when rows have n > 1."}
+            }
+          },
+          "caption": {"type": "string"},
+          "caption_requirements": {"type": "array", "items": {"enum": ["n", "uncertainty", "metric", "units", "source", "split", "models"]}},
+          "forbidden_implications": {"type": "array", "items": {"type": "string"}},
+          "alt_text": {"type": "string"},
+          "distinct_value": {"type": "string", "description": "Why a chart repeating a table's data is still worth its space (M06)."},
+          "external_figure": {"type": "boolean", "description": "Not generated from a declared transform: V1 needs human_review.provenance_checked."},
+          "human_review": {"type": "object", "properties": {
+            "reviewer": {"type": "string"}, "date": {"type": "string"}, "provenance_checked": {"type": "boolean"},
+            "one_second_topic": {"type": "boolean"}, "ten_second_takeaway": {"type": "boolean"}, "one_minute_detail": {"type": "boolean"}}},
+          "source_hashes": {"type": "object", "description": "Written by tools/visuals.py render."},
+          "render_sha256": {"type": "string", "description": "Written by tools/visuals.py render."}
+        }
+      }
+    }
+  }
+}

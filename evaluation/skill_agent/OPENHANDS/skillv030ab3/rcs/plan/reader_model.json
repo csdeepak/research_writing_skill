@@ -1,0 +1,132 @@
+{
+ "personas": [
+  {
+   "id": "B",
+   "description": "Adjacent-field ML researcher: knows general ML, deep learning, standard evaluation and statistics; not the LLM-agent subfield terms, datasets or prior work.",
+   "binding": true,
+   "known_terms": [
+    "ML",
+    "LLM",
+    "GPU",
+    "API",
+    "CI",
+    "accuracy",
+    "precision",
+    "recall",
+    "benchmark",
+    "zero-shot",
+    "few-shot",
+    "chain-of-thought",
+    "prompt",
+    "fine-tuning",
+    "HTML",
+    "DOM",
+    "Docker",
+    "REST",
+    "OS",
+    "PDF",
+    "UI",
+    "GUI",
+    "MIT",
+    "GitHub",
+    "SQL",
+    "BM25",
+    "RL",
+    "MD5",
+    "SDK",
+    "README",
+    "CPU",
+    "URL",
+    "JSON",
+    "Python",
+    "bash",
+    "shell"
+   ],
+   "prerequisite_concepts": [
+    {
+     "concept": "delegation",
+     "needs": [
+      "generalist agent"
+     ]
+    },
+    {
+     "concept": "SWE-bench Lite",
+     "needs": [
+      "SWE-bench"
+     ]
+    },
+    {
+     "concept": "BrowsingAgent",
+     "needs": [
+      "browser"
+     ]
+    },
+    {
+     "concept": "1-shot",
+     "needs": [
+      "0-shot"
+     ]
+    }
+   ],
+   "likely_misconceptions": [
+    {
+     "misconception": "competitive means best or state of the art",
+     "trigger_terms": [
+      "competitive"
+     ],
+     "corrective_point": "several listed references score higher than OpenHands on several benchmarks",
+     "corrective_terms": [
+      "below",
+      "higher"
+     ]
+    },
+    {
+     "misconception": "OpenHands is a model or a single agent rather than a platform",
+     "trigger_terms": [
+      "OpenHands"
+     ],
+     "corrective_point": "OpenHands is a platform on which agents run; scores belong to an agent plus a base model",
+     "corrective_terms": [
+      "platform",
+      "base model"
+     ]
+    },
+    {
+     "misconception": "reference numbers were re-run by the authors under matched conditions",
+     "trigger_terms": [
+      "reference"
+     ],
+     "corrective_point": "reference numbers are reported values from other systems with different models and prompting",
+     "corrective_terms": [
+      "reported",
+      "differ"
+     ]
+    },
+    {
+     "misconception": "success, resolve and pass rates are comparable across benchmarks",
+     "trigger_terms": [
+      "success rate"
+     ],
+     "corrective_point": "each benchmark defines its own metric",
+     "corrective_terms": [
+      "defines",
+      "own metric"
+     ]
+    }
+   ],
+   "reader_questions": [
+    "What problem does this solve and for whom?",
+    "What is the platform made of?",
+    "Why were these design choices made?",
+    "How was it evaluated and against what?",
+    "Is the difference from the references bigger than noise?",
+    "What does the paper not show?"
+   ],
+   "venue_expectations": [
+    "limitations stated by the authors reported first",
+    "numbers exactly as in the source"
+   ],
+   "new_term_budget": 3
+  }
+ ]
+}

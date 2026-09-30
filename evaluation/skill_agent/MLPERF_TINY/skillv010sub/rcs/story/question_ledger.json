@@ -1,0 +1,18 @@
+{
+  "entries": [
+    {"id": "Q-R01", "question": "What is TinyML / an MCU-class device, concretely?", "raised_at": "I.1", "answered_at": "B.1", "reader_personas": ["B", "C"]},
+    {"id": "Q-R02", "question": "Why is comparing TinyML solutions specifically hard (not just a smaller version of ordinary ML benchmarking)?", "raised_at": "I.2", "answered_at": "B.2", "reader_personas": ["B"]},
+    {"id": "Q-R03", "question": "What exactly is wrong with just using an existing benchmark?", "raised_at": "I.3", "answered_at": "RW.1-RW.3", "reader_personas": ["A", "B"]},
+    {"id": "Q-R04", "question": "What is the research question, precisely?", "raised_at": "I.4", "answered_at": "I.4", "reader_personas": ["A", "B", "E"]},
+    {"id": "Q-R05", "question": "What did the authors actually build?", "raised_at": "I.5", "answered_at": "M.1-M.5", "reader_personas": ["A", "B", "E"]},
+    {"id": "Q-R06", "question": "What do 'closed' and 'open' division mean here?", "raised_at": "I.5", "answered_at": "B.3, M.5", "reader_personas": ["B"]},
+    {"id": "Q-R07", "question": "How was each numeric quality target chosen -- is 90% or AUC 0.85 arbitrary?", "raised_at": "M.2", "answered_at": "M.3", "reader_personas": ["A", "B"]},
+    {"id": "Q-R08", "question": "How exactly are latency and energy measured, and can the numbers be gamed?", "raised_at": "M.2", "answered_at": "M.4, D.6", "reader_personas": ["A", "B"]},
+    {"id": "Q-R09", "question": "Did the design actually work once real submitters tried it?", "raised_at": "I.6", "answered_at": "R.1-R.5", "reader_personas": ["A", "B", "E"]},
+    {"id": "Q-R10", "question": "Is the diversity in Table 2 just luck, or does it show the intended design property?", "raised_at": "R.2", "answered_at": "R.5, D.1", "reader_personas": ["A", "B"]},
+    {"id": "Q-R11", "question": "What can this one round NOT show?", "raised_at": "R.5", "answered_at": "D.5-D.6", "reader_personas": ["A", "B", "E"]},
+    {"id": "Q-R12", "question": "Is this suite actually used by anyone beyond this paper?", "raised_at": "D.2", "answered_at": "D.3", "reader_personas": ["B", "E"]},
+    {"id": "Q-R13", "question": "What happens next / what is still open?", "raised_at": "D.6", "answered_at": "D.7", "reader_personas": ["A", "B", "E"]}
+  ],
+  "debt_check": "0 unanswered/undeferred questions at the end of any section. The Introduction defers Q-R06 (1 forward reference, to Background/Methods) and Q-R09 (1 forward reference, to Results) -- within the <=3 forward-deferral allowance for introductions (research_story.md section 4)."
+}

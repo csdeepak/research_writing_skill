@@ -1,0 +1,15 @@
+{
+  "terms": [
+    {"term": "TinyML", "kind": "technical", "definition": "machine-learning inference on ultra-low-power devices (the authors: under a milliWatt)", "defined_at": "Abstract/I.1", "synonyms_forbidden": ["edge ML (except when quoting)"]},
+    {"term": "microcontroller (MCU)", "kind": "technical", "definition": "small low-power processor with kilobytes to megabytes of memory; devices in the README run at 10MHz to 250MHz", "defined_at": "I.1"},
+    {"term": "device under test (DUT)", "kind": "technical", "definition": "the hardware being measured", "defined_at": "S2.1"},
+    {"term": "quality target", "kind": "project_specific", "definition": "minimum accuracy (or AUC) a closed-division submission must reach", "defined_at": "M.1"},
+    {"term": "reference implementation", "kind": "project_specific", "definition": "open-source training scripts, pre-trained models and C code that serve as the baseline", "defined_at": "I.4"},
+    {"term": "closed division / open division", "kind": "project_specific", "definition": "closed: same models, data and targets; open: model, training or data may change", "defined_at": "I.3, M.4"},
+    {"term": "post-training quantization (PTQ), quantization-aware training (QAT)", "kind": "technical", "definition": "converting a trained model to low precision without or with retraining", "defined_at": "M.3"},
+    {"term": "TFLM", "kind": "acronym", "definition": "TensorFlow Lite for Microcontrollers, the runtime of the reference implementations", "defined_at": "M.4"},
+    {"term": "keyword spotting; visual wake words; anomaly detection", "kind": "technical", "definition": "the three task families (image classification is standard)", "defined_at": "M.1"},
+    {"term": "inferences per second (IPS)", "kind": "technical", "definition": "latency score", "defined_at": "M.5"},
+    {"term": "micro-Joules per inference", "kind": "technical", "definition": "energy score", "defined_at": "M.5"}
+  ]
+}

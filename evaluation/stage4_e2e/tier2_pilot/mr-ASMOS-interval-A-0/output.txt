@@ -1,0 +1,1 @@
+{"answers": ["RAG had the highest token-F1 with a score of 0.751.", "The 95% confidence interval for RAG's advantage over ASMOS-memory is +0.149 to +0.523."]}

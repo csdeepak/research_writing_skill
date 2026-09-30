@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-09-27",
+  "items": [
+    {
+      "id": "MISS-001",
+      "description": "Table 2's full per-dataset zero-shot nDCG@10 grid for the three top-ranked systems (GenQ, ColBERT, BM25+CE) could not be reconstructed with confidence.",
+      "detail": "The text extraction of Table 2 interleaves columns; for BM25, DeepCT, SPARTA, docT5query, DPR, ANCE and TAS-B the 18-value-per-model column blocks were successfully reconstructed and cross-validated against independent prose statements (e.g. the TAS-B/ANCE gaps of 17.3 and 7.8 points on TREC-COVID/Touche-2020 reproduce exactly; abstract's stated word-length ranges reproduce exactly in Table 1). For GenQ/ColBERT/BM25+CE the value ordering does not resolve to a consistent single hypothesis beyond the first three datasets (TREC-COVID, BioASQ, NFCorpus), which do cross-validate against Table 4's TREC-COVID original nDCG@10 (ColBERT 0.677, BM25+CE 0.757). Rather than guess the remaining 45 values, this paper reports only the values that are unambiguous: each model's MS MARCO in-domain score, the 'Avg. Performance vs. BM25' summary percentage, and the specific per-dataset counts/deltas stated directly in prose (11/18, 16/18, 9/18, 14/18, 17/18, and named exceptions).",
+      "affected_locator": {"path": "project/paper.txt", "anchor": "Table 2, lines 490-531"},
+      "resolution": "excluded_from_paper_used_prose_and_validated_subset_only",
+      "handled_in": ["E012", "E013", "E018", "E021", "E022", "E024", "E026", "E062"]
+    },
+    {
+      "id": "MISS-002",
+      "description": "Table 3 (estimated per-model retrieval latency on GPU/CPU and index size for 1M DBPedia documents) could not be reliably mapped from model to numeric row.",
+      "detail": "The Rank/Model/Dim columns reconstruct cleanly and match the known 'Avg. Performance vs. BM25' ordering and the architecture descriptions in Section 4 exactly. The GPU-latency/CPU-latency/Index-size numeric columns, however, do not divide evenly across the 10 models in a way consistent with the qualitative prose (e.g. a naive row-order mapping would place BM25+CE's GPU latency below its CPU latency, which does not match the prose claim that re-ranking is 'slowest at inference' at >350ms on both). This paper therefore reports only the qualitative efficiency and index-size findings that are stated directly and unambiguously in prose, not a per-model numeric latency/index-size table.",
+      "affected_locator": {"path": "project/paper.txt", "anchor": "Table 3, lines 601-656"},
+      "resolution": "excluded_from_paper_used_prose_only",
+      "handled_in": ["E033", "E034", "E035"]
+    },
+    {
+      "id": "MISS-003",
+      "description": "Table 9 (Recall@100, the secondary metric) was not extracted into evidence items.",
+      "detail": "Table 9 shares the same column-interleaving damage as Table 2 and reports a secondary metric not used for this paper's central story (which follows the paper's own primary metric, nDCG@10). Not reconstructing it is a scoping choice, not a data-quality failure; no claim in this paper rests on Recall@100 values.",
+      "affected_locator": {"path": "project/paper.txt", "anchor": "Table 9, lines 1119-1252"},
+      "resolution": "out_of_scope_for_this_papers_claims"
+    },
+    {
+      "id": "MISS-004",
+      "description": "No seed/replicate variance (error bars) is available for any zero-shot comparison.",
+      "detail": "The source paper explicitly reports it did not compute error bars (Checklist 3c, E043), because most evaluated systems are third-party pre-trained checkpoints without accessible re-training code. This is a property of the underlying study, not an extraction gap; it is carried into this paper's Limitations as L006.",
+      "affected_locator": {"path": "project/paper.txt", "anchor": "line 816"},
+      "resolution": "reported_as_limitation_L006"
+    },
+    {
+      "id": "MISS-005",
+      "description": "Dataset licenses (Appendix E), the weighted-Jaccard formula (Appendix F) and the capped-Recall@k formula (Appendix G) were inventoried but not converted into individual evidence items.",
+      "detail": "None of the claims selected for this paper's story rests on license text or on the exact mathematical definitions of these two secondary metrics; extracting them would not change any claim, so they are noted here rather than itemized.",
+      "affected_locator": {"path": "project/paper.txt", "anchor": "lines 884-926"},
+      "resolution": "out_of_scope_for_this_papers_claims"
+    }
+  ]
+}

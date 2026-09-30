@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-09-27",
+  "purpose": "Concepts the source paper uses without defining, because it was written for a TinyML-specialist readership. This session's target audience (adjacent ML researchers) will need each of these defined at first use.",
+  "undefined_in_source": [
+    {"term": "TinyML", "source_usage": "used from the abstract onward as a field name", "note": "defined loosely once ('ML inference under a milliWatt') but never contrasted with mobile/edge ML for a non-specialist"},
+    {"term": "MCU (microcontroller unit) / MCU-class device", "note": "assumed familiar; never given a concrete resource envelope until Section 2 ('two orders of magnitude smaller' than GB-scale mobile ML) -- needs a concrete number for an adjacent reader (10 MHz-250 MHz, <50 mW, per README_1.md)"},
+    {"term": "PTQ (post-training quantization) vs. QAT (quantization-aware training)", "note": "used in Table 2 and Section 5.2 without spelling out the difference; an adjacent ML reader knows quantization exists but not this specific vocabulary or why the closed division permits only one of the two"},
+    {"term": "DUT (device under test) / SUT (system under test)", "note": "used from Section 2 onward, spelled out only once each, easy to lose track of"},
+    {"term": "AUC as used for anomaly detection", "note": "assumed the reader already accepts AUC-ROC as the natural choice for a thresholdless anomaly score; the paper gives the one-sentence reason (avoids picking a threshold) but not the general AUC definition"},
+    {"term": "DS-CNN (depthwise-separable CNN) for keyword spotting", "note": "named, and its origin cited [22], but not characterized for a reader unfamiliar with efficient conv-net design"},
+    {"term": "Closed vs. open division", "note": "core to the paper's design but the terms could be mistaken for generic ML-competition jargon (e.g. 'open leaderboard'); the specific TinyML meaning (what may vs. may not change vs. the reference) needs an explicit gloss"},
+    {"term": "EEMBC, CoreMark, MLMark, ULPMark-CM", "note": "embedded-systems benchmarking organization/benchmarks the paper assumes are recognizable; an ML researcher from another subfield will not have encountered them"},
+    {"term": "TFLite / TFLite Micro (TFLM)", "note": "assumed familiar; adjacent ML researchers may know standard TensorFlow but not the microcontroller-targeted runtime"}
+  ],
+  "implication_for_this_paper": "A short Background section defining TinyML's resource envelope, the closed/open division idea, and PTQ vs. QAT before they are first used in Methods/Results is required for the stated audience (mode B); this maps to BACKGROUND_CONCEPT nodes in the story graph and to the term ledger's defined_at <= first_used_at rule."
+}

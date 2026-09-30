@@ -1,0 +1,67 @@
+{
+ "missing": [
+  {
+   "id": "M001",
+   "what": "Per-benchmark latency (inferences per second) and energy (micro-Joules per inference) values of the reference implementations; only in Figure 5, not extractable",
+   "affects": [
+    "C011"
+   ],
+   "marker": "MISSING RESULT"
+  },
+  {
+   "id": "M002",
+   "what": "Per-submission results (latency, energy, accuracy) for the five Table 2 rows; the paper points to an external results site and does not include the numbers",
+   "affects": [
+    "C008",
+    "C009"
+   ],
+   "marker": "MISSING RESULT"
+  },
+  {
+   "id": "M003",
+   "what": "Spread or repeat count for accuracy figures of reference models",
+   "affects": [
+    "C002",
+    "C003"
+   ],
+   "marker": "MISSING RESULT"
+  },
+  {
+   "id": "M004",
+   "what": "Whether the ~86% VWW reference accuracy is fp32 or quantized is not stated",
+   "affects": [
+    "C002",
+    "C003"
+   ],
+   "marker": "ASK AUTHOR"
+  },
+  {
+   "id": "M005",
+   "what": "Rationale for choosing the 200-image, 1000-utterance and 248-sample evaluation subsets is only partly given (device flash limits, not stated as the reason)",
+   "affects": [
+    "C002"
+   ],
+   "marker": "ASK AUTHOR"
+  },
+  {
+   "id": "M006",
+   "what": "Any measurement supporting the statement that EMON sampling frequency has no impact on score",
+   "affects": [
+    "C006"
+   ],
+   "marker": "MISSING RESULT"
+  },
+  {
+   "id": "M007",
+   "what": "Reference [19] (Torelli and Bangale) and [16] (Moreau) carry no year in the project material; not citable in the required form",
+   "affects": [],
+   "marker": "CITATION NEEDED"
+  },
+  {
+   "id": "M008",
+   "what": "Apparent scope difference: paper says TinyML inference is under a milliWatt (intro) while README says devices can run inference using less than 50mW; not a conflict of a single quantity, but reported as written",
+   "affects": [],
+   "marker": "NOTE"
+  }
+ ]
+}

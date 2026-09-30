@@ -1,0 +1,563 @@
+{
+ "pattern": "question_led",
+ "nodes": [
+  {
+   "id": "N01",
+   "type": "PROBLEM",
+   "text": "Neural retrieval systems are usually trained and evaluated on one dataset, but many deployments have no training data for their target task, so their zero-shot generalization is unclear.",
+   "claims": [
+    "C006"
+   ],
+   "audience_note": "define retrieval, zero-shot, in-domain"
+  },
+  {
+   "id": "N02",
+   "type": "SIGNIFICANCE",
+   "text": "Retrieval is the first step of question answering, claim verification and duplicate-question detection; building a training corpus is time-consuming and expensive.",
+   "claims": [],
+   "audience_note": "retrieval as first stage"
+  },
+  {
+   "id": "N03",
+   "type": "KNOWN",
+   "text": "Prior benchmarks (MultiReQA, KILT) exist, and lexical retrieval such as BM25 has long dominated with neural models now widely studied.",
+   "claims": [
+    "C002"
+   ],
+   "sources": [
+    "SRC-012",
+    "SRC-013",
+    "SRC-002"
+   ]
+  },
+  {
+   "id": "N04",
+   "type": "GAP",
+   "text": "Prior benchmarks are narrow (one task, one domain, small corpora), so architectures cannot be compared for out-of-distribution generalization.",
+   "claims": [
+    "C002"
+   ],
+   "sources": [
+    "SRC-012",
+    "SRC-013"
+   ]
+  },
+  {
+   "id": "N05",
+   "type": "RQ",
+   "text": "RQ1: does in-domain performance predict zero-shot performance?",
+   "claims": [
+    "C006"
+   ]
+  },
+  {
+   "id": "N06",
+   "type": "RQ",
+   "text": "RQ2: which retrieval architectures generalize best zero-shot, and at what latency and index-size cost?",
+   "claims": [
+    "C024"
+   ]
+  },
+  {
+   "id": "N07",
+   "type": "RQ",
+   "text": "RQ3: how much does annotation selection bias affect the comparison of lexical and non-lexical systems?",
+   "claims": [
+    "C019"
+   ]
+  },
+  {
+   "id": "N08",
+   "type": "OBJECTIVE",
+   "text": "Build a heterogeneous benchmark and use it to compare ten systems from five families.",
+   "claims": [
+    "C001",
+    "C004"
+   ]
+  },
+  {
+   "id": "N09",
+   "type": "APPROACH",
+   "text": "BEIR: 18 English datasets, 9 tasks, nDCG@10, standard data format and open-source software.",
+   "claims": [
+    "C001",
+    "C003",
+    "C021"
+   ]
+  },
+  {
+   "id": "N10",
+   "type": "DESIGN",
+   "text": "Evaluate ten public systems zero-shot on the 18 datasets (in-domain MS MARCO reported separately).",
+   "claims": [
+    "C004"
+   ]
+  },
+  {
+   "id": "N11",
+   "type": "DESIGN",
+   "text": "Measure latency and index size on a 1M-document DBPedia sample.",
+   "claims": [
+    "C016"
+   ]
+  },
+  {
+   "id": "N12",
+   "type": "DESIGN",
+   "text": "Annotate unjudged top-10 hits (holes) on TREC-COVID for all systems, blind to source system, and re-score.",
+   "claims": [
+    "C017",
+    "C018"
+   ]
+  },
+  {
+   "id": "N13",
+   "type": "RESULT",
+   "text": "BM25 in-domain 0.228 vs neural; zero-shot averages relative to BM25 range from - 47.7% (DPR) to + 11% (BM25+CE).",
+   "claims": [
+    "C005",
+    "C007"
+   ],
+   "evidence": [
+    "E011",
+    "E012",
+    "E013"
+   ]
+  },
+  {
+   "id": "N14",
+   "type": "RESULT",
+   "text": "Win counts vs BM25 (16/18, 11/18, 9/18); DeepCT, SPARTA fail; BM25+CE fails on ArguAna and Touche-2020.",
+   "claims": [
+    "C007",
+    "C008"
+   ],
+   "evidence": [
+    "E014",
+    "E016",
+    "E015",
+    "E017"
+   ]
+  },
+  {
+   "id": "N15",
+   "type": "RESULT",
+   "text": "Dense-model comparisons, GenQ domain pattern, TAS-B length preference, cosine vs dot-product experiment.",
+   "claims": [
+    "C009",
+    "C010",
+    "C011",
+    "C012"
+   ],
+   "evidence": [
+    "E018",
+    "E022",
+    "E021",
+    "E031"
+   ]
+  },
+  {
+   "id": "N16",
+   "type": "RESULT",
+   "text": "Latency and index sizes: re-ranking and late-interaction slowest and largest; dense fast; ColBERT ~900GB for BioASQ.",
+   "claims": [
+    "C016"
+   ],
+   "evidence": [
+    "E024",
+    "E025"
+   ]
+  },
+  {
+   "id": "N17",
+   "type": "RESULT",
+   "text": "Hole@10 and nDCG@10 before/after annotation on TREC-COVID.",
+   "claims": [
+    "C017",
+    "C018"
+   ],
+   "evidence": [
+    "E026",
+    "E027",
+    "E028"
+   ]
+  },
+  {
+   "id": "N18",
+   "type": "INTERPRETATION",
+   "text": "In-domain performance did not predict zero-shot performance in this comparison.",
+   "claims": [
+    "C006"
+   ]
+  },
+  {
+   "id": "N19",
+   "type": "INTERPRETATION",
+   "text": "No single approach is best everywhere; effectiveness trades off against cost; cross-attention and training loss are hypothesized drivers.",
+   "claims": [
+    "C024",
+    "C014",
+    "C015",
+    "C013"
+   ]
+  },
+  {
+   "id": "N20",
+   "type": "INTERPRETATION",
+   "text": "TREC-COVID labels favour lexical systems; the same mechanism is expected but unmeasured elsewhere.",
+   "claims": [
+    "C019"
+   ]
+  },
+  {
+   "id": "N21",
+   "type": "CONTRIBUTION",
+   "text": "A benchmark and a comparative study that show zero-shot rankings differ from in-domain rankings, quantify the accuracy-cost trade-off, and expose label bias on TREC-COVID.",
+   "claims": [
+    "C001",
+    "C007",
+    "C024",
+    "C019"
+   ]
+  },
+  {
+   "id": "N22",
+   "type": "LIMITATION",
+   "text": "Single evaluation of public checkpoints without variance; systems differ in several respects.",
+   "claims": [
+    "C005"
+   ],
+   "evidence": [
+    "E036"
+   ]
+  },
+  {
+   "id": "N23",
+   "type": "LIMITATION",
+   "text": "Label-bias study covers only TREC-COVID.",
+   "claims": [
+    "C019"
+   ]
+  },
+  {
+   "id": "N24",
+   "type": "LIMITATION",
+   "text": "English only; documents truncated to 512 word pieces; text-only; no task-specific models.",
+   "claims": [
+    "C001"
+   ]
+  },
+  {
+   "id": "N25",
+   "type": "FUTURE",
+   "text": "Datasets built with diverse pooling; multilingual, long-document and multi-field tasks.",
+   "claims": [
+    "C023"
+   ]
+  },
+  {
+   "id": "N26",
+   "type": "IMPLICATION",
+   "text": "Retrieval methods should be evaluated on a broad range of datasets; later work argues for effect-size analyses across datasets.",
+   "claims": [
+    "C022"
+   ],
+   "sources": [
+    "SRC-021"
+   ]
+  },
+  {
+   "id": "N27",
+   "type": "BACKGROUND_CONCEPT",
+   "text": "Lexical vs neural retrieval; sparse, dense, late-interaction, re-ranking; nDCG@10; relevance judgments (qrels); pooling.",
+   "claims": []
+  }
+ ],
+ "edges": [
+  {
+   "from": "N01",
+   "to": "N05",
+   "type": "motivates"
+  },
+  {
+   "from": "N02",
+   "to": "N05",
+   "type": "motivates"
+  },
+  {
+   "from": "N02",
+   "to": "N06",
+   "type": "motivates"
+  },
+  {
+   "from": "N03",
+   "to": "N04",
+   "type": "establishes"
+  },
+  {
+   "from": "N05",
+   "to": "N04",
+   "type": "addresses"
+  },
+  {
+   "from": "N06",
+   "to": "N04",
+   "type": "addresses"
+  },
+  {
+   "from": "N07",
+   "to": "N04",
+   "type": "addresses"
+  },
+  {
+   "from": "N08",
+   "to": "N05",
+   "type": "operationalizes"
+  },
+  {
+   "from": "N08",
+   "to": "N06",
+   "type": "operationalizes"
+  },
+  {
+   "from": "N08",
+   "to": "N07",
+   "type": "operationalizes"
+  },
+  {
+   "from": "N09",
+   "to": "N08",
+   "type": "implements"
+  },
+  {
+   "from": "N10",
+   "to": "N05",
+   "type": "tests"
+  },
+  {
+   "from": "N10",
+   "to": "N13",
+   "type": "produces"
+  },
+  {
+   "from": "N10",
+   "to": "N14",
+   "type": "produces"
+  },
+  {
+   "from": "N10",
+   "to": "N15",
+   "type": "produces"
+  },
+  {
+   "from": "N11",
+   "to": "N06",
+   "type": "tests"
+  },
+  {
+   "from": "N11",
+   "to": "N16",
+   "type": "produces"
+  },
+  {
+   "from": "N12",
+   "to": "N07",
+   "type": "tests"
+  },
+  {
+   "from": "N12",
+   "to": "N17",
+   "type": "produces"
+  },
+  {
+   "from": "N13",
+   "to": "N18",
+   "type": "supports"
+  },
+  {
+   "from": "N14",
+   "to": "N18",
+   "type": "supports"
+  },
+  {
+   "from": "N14",
+   "to": "N19",
+   "type": "supports"
+  },
+  {
+   "from": "N15",
+   "to": "N19",
+   "type": "supports"
+  },
+  {
+   "from": "N16",
+   "to": "N19",
+   "type": "supports"
+  },
+  {
+   "from": "N17",
+   "to": "N20",
+   "type": "supports"
+  },
+  {
+   "from": "N18",
+   "to": "N05",
+   "type": "answers"
+  },
+  {
+   "from": "N19",
+   "to": "N06",
+   "type": "answers"
+  },
+  {
+   "from": "N20",
+   "to": "N07",
+   "type": "answers"
+  },
+  {
+   "from": "N13",
+   "to": "N21",
+   "type": "grounds"
+  },
+  {
+   "from": "N17",
+   "to": "N21",
+   "type": "grounds"
+  },
+  {
+   "from": "N04",
+   "to": "N21",
+   "type": "grounds"
+  },
+  {
+   "from": "N22",
+   "to": "N19",
+   "type": "limits"
+  },
+  {
+   "from": "N22",
+   "to": "N18",
+   "type": "limits"
+  },
+  {
+   "from": "N23",
+   "to": "N20",
+   "type": "limits"
+  },
+  {
+   "from": "N24",
+   "to": "N21",
+   "type": "limits"
+  },
+  {
+   "from": "N19",
+   "to": "N26",
+   "type": "implies"
+  },
+  {
+   "from": "N23",
+   "to": "N25",
+   "type": "opens"
+  },
+  {
+   "from": "N24",
+   "to": "N25",
+   "type": "opens"
+  },
+  {
+   "from": "N05",
+   "to": "N27",
+   "type": "requires"
+  }
+ ],
+ "experiment_chains": [
+  {
+   "experiment": "X1 Zero-shot comparison of ten systems on 18 datasets",
+   "rq": "N05",
+   "hypothesis": "Not stated as a formal hypothesis; the implicit expectation is that strong in-domain models also generalize.",
+   "falsifier": "Models that beat BM25 in-domain fail to beat it zero-shot.",
+   "design_rationale": "Zero-shot evaluation on heterogeneous datasets with a single metric makes results comparable; public checkpoints are used because retraining is often infeasible.",
+   "observations": [
+    "E011",
+    "E012",
+    "E014",
+    "E016",
+    "E018"
+   ],
+   "claims": [
+    "C005",
+    "C006",
+    "C007",
+    "C008",
+    "C009",
+    "C010"
+   ],
+   "limitations": [
+    "L005",
+    "L008",
+    "L009"
+   ],
+   "next": "Which architectures generalize best raises the question of what they cost to run."
+  },
+  {
+   "experiment": "X2 Length preference of dense retrievers and similarity-function control",
+   "rq": "N06",
+   "hypothesis": "Not stated as a formal hypothesis; the authors observe a length difference between TAS-B and ANCE and investigate whether the similarity function can produce it.",
+   "falsifier": "(not stated by authors)",
+   "design_rationale": "Because TAS-B and ANCE differ in backbone, loss and negative mining, the authors train two models identical except for the similarity function.",
+   "observations": [
+    "E021",
+    "E031"
+   ],
+   "claims": [
+    "C011",
+    "C012",
+    "C013"
+   ],
+   "limitations": [
+    "L010",
+    "L012"
+   ],
+   "next": "Effectiveness must be weighed against latency and index size."
+  },
+  {
+   "experiment": "X3 Latency and index size on 1M DBPedia documents",
+   "rq": "N06",
+   "hypothesis": "Not stated as a formal hypothesis; the paper reports a performance-cost trade-off.",
+   "falsifier": "(not stated by authors)",
+   "design_rationale": "A common 1M-document sample with stated hardware makes cost comparable.",
+   "observations": [
+    "E024",
+    "E025"
+   ],
+   "claims": [
+    "C016"
+   ],
+   "limitations": [
+    "L007"
+   ],
+   "next": "Since labels determine the scores, the next question is how reliable they are for non-lexical systems."
+  },
+  {
+   "experiment": "X4 Hole@10 and manual annotation on TREC-COVID",
+   "rq": "N07",
+   "hypothesis": "Stated as motivation: lexical bias in annotation disfavours non-lexical approaches, so filling unjudged hits should help them more.",
+   "falsifier": "(not stated by authors); filling holes would change all systems equally.",
+   "design_rationale": "TREC-COVID pooled many systems, so it is the most favourable case for fairness; annotators were blind to the source system to avoid preference bias.",
+   "observations": [
+    "E026",
+    "E027",
+    "E028"
+   ],
+   "claims": [
+    "C017",
+    "C018",
+    "C019"
+   ],
+   "limitations": [
+    "L006"
+   ],
+   "next": "End of chain: motivates diverse pooling for future datasets."
+  }
+ ]
+}

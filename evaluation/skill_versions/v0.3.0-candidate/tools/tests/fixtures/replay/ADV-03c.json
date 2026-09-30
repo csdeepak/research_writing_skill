@@ -1,0 +1,83 @@
+{
+ "id": "ADV-03c",
+ "origin": "spec 10 case 3",
+ "title": "a significance license that cites evidence without any test",
+ "files": {
+  "results/acc.csv": "method,accuracy\nM,0.84\nB,0.80\n",
+  ".rcs/evidence/research_evidence.json": {
+   "project_root": ".",
+   "generated_at": "2026-09-29",
+   "items": [
+    {
+     "id": "E001",
+     "kind": "result",
+     "summary": "Accuracy of M on the test split",
+     "locator": {
+      "path": "results/acc.csv"
+     },
+     "strength": "hard",
+     "status": "ok",
+     "value": {
+      "metric": "accuracy",
+      "value": 0.84
+     },
+     "conditions": {
+      "method": "M",
+      "split": "test"
+     }
+    },
+    {
+     "id": "E002",
+     "kind": "result",
+     "summary": "Accuracy of B on the test split",
+     "locator": {
+      "path": "results/acc.csv"
+     },
+     "strength": "hard",
+     "status": "ok",
+     "value": {
+      "metric": "accuracy",
+      "value": 0.8
+     },
+     "conditions": {
+      "method": "B",
+      "split": "test"
+     }
+    }
+   ]
+  },
+  ".rcs/claims/claim_evidence_map.json": {
+   "claims": [
+    {
+     "id": "C001",
+     "statement": "M improved accuracy over B.",
+     "claim_type": "derived",
+     "evidence": [
+      "E001",
+      "E002"
+     ],
+     "confidence": "moderate",
+     "author_confirmation": "confirmed",
+     "licenses": [
+      {
+       "type": "significance_test",
+       "evidence": [
+        "E001"
+       ]
+      }
+     ]
+    }
+   ],
+   "limitations": [],
+   "negative_result_decisions": []
+  }
+ },
+ "checks": [
+  {
+   "tool": "validate",
+   "expect": [
+    "ERROR:UNLICENSED_CLAIM"
+   ]
+  }
+ ]
+}

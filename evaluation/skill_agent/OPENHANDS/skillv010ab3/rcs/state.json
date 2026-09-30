@@ -1,0 +1,83 @@
+{
+ "step": 17,
+ "gates": {
+  "G1": "passed_with_accepted_risk",
+  "G2": "passed",
+  "G3": "passed",
+  "G4": "pending_external_review_step_18"
+ },
+ "open_failures": [
+  {
+   "state": "CONFLICTING_EVIDENCE",
+   "id": "F001",
+   "location": "E014/E015",
+   "detail": "gpt-4o-mini SWE-Bench Lite: 6.3 (Table 3) vs 7.0 (Table 4)",
+   "raised_by": "AUTHOR",
+   "raised_at_step": 2,
+   "class": "ASK",
+   "resolution": "no human; both values reported in the paper with their table of origin"
+  },
+  {
+   "state": "CONFLICTING_EVIDENCE",
+   "id": "F002",
+   "location": "E022/E023",
+   "detail": "GPQA expert human diamond: 81.3 (Table 6) vs 81.2 (Table 7)",
+   "raised_by": "AUTHOR",
+   "raised_at_step": 2,
+   "class": "ASK",
+   "resolution": "no human; both values reported"
+  },
+  {
+   "state": "MISSING_RESULT",
+   "id": "F003",
+   "location": "M001-M006",
+   "detail": "see evidence/missing_evidence.json",
+   "raised_by": "AUTHOR",
+   "raised_at_step": 2,
+   "class": "MARK",
+   "resolution": "stated as limitations, not filled"
+  },
+  {
+   "state": "INSUFFICIENT_LITERATURE",
+   "id": "F004",
+   "location": "corpus",
+   "detail": "no web; gap rests on authors' own related-work text",
+   "raised_by": "AUTHOR",
+   "raised_at_step": 7,
+   "class": "ASK",
+   "resolution": "gap worded as the authors' account (accepted risk)"
+  },
+  {
+   "state": "VENUE_UNKNOWN",
+   "id": "F005",
+   "location": "plan/venue_profile.yaml",
+   "detail": "generic profile",
+   "raised_by": "AUTHOR",
+   "raised_at_step": 6,
+   "class": "MARK",
+   "resolution": "generic profile used"
+  },
+  {
+   "state": "AUTHOR_CONFIRMATION_PENDING",
+   "id": "F006",
+   "location": "C012",
+   "detail": "derived comparison inferred by the agent",
+   "raised_by": "AUTHOR",
+   "raised_at_step": 4,
+   "class": "ASK",
+   "resolution": "no human; accepted risk"
+  }
+ ],
+ "accepted_risks": [
+  "No human available: author_confirmation of C012 (derived comparison) left 'pending'; all other claims restate author-written statements and are 'confirmed'.",
+  "Contribution elicitation replaced by the most defensible reading of the paper's own five-feature contribution list plus its abstract and conclusion.",
+  "Audience mode B (adjacent researcher) taken from TASK.md; venue unknown, generic profile.",
+  "Literature limited to works cited in project/paper.txt, registered as user_supplied_file with read_depth abstract; every citation is used only to attribute what the OpenHands authors say about the cited work.",
+  "Conflicting values (6.3 vs 7.0; 81.3 vs 81.2) are both reported rather than resolved.",
+  "Table 4 rows for BIRD, ML-Bench, BioCoder, Gorilla APIBench, ToolQA and the Table 6 cost column cannot be mapped reliably from the damaged extraction; those numbers are omitted and only setup is described.",
+  "Table 1 cell contents unrecoverable; no claim depends on them.",
+  "READMEs describe later project state; used only in a short clearly-labelled section.",
+  "The abstract is limited to claims of confidence >= moderate or explicitly hedged; C021 (low) appears only as the authors' interpretation."
+ ],
+ "draft": "drafts/v001/paper.md"
+}

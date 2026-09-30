@@ -1,0 +1,5 @@
+use_case,model,tflite_size_kb,quality_target
+Keyword Spotting,DS-CNN,52.5,"90% (Top-1)"
+Visual Wake Words,MobileNetV1,325,"80% (Top-1)"
+Image Classification,ResNet,96,"85% (Top-1)"
+Anomaly Detection,FC-AutoEncoder,270,".85 (AUC)"

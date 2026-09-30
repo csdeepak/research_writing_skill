@@ -1,0 +1,53 @@
+# Venue profile: VENUE_UNKNOWN (no venue named by TASK.md).
+# Base: templates/venue_profile.generic.yaml, overridden with TASK.md's own explicit, run-specific
+# rules (which take precedence as direct user instructions). All fields not given by TASK.md are
+# marked assumed: true. Recorded in state.json -> accepted_risks.
+venue:
+  name: "unspecified (TASK.md gives no venue; standalone Markdown research paper)"
+  type: report
+  guideline_urls: []
+structure:
+  section_template: [Title, Abstract, Introduction, Related Work, Method, Experimental Setup, Results, Discussion, Limitations, Conclusion, References]
+  results_discussion: separate
+  related_work_position: after_intro
+  limitations_section_required: true
+  source: "TASK.md: 'a complete research paper with title, abstract and the sections you judge appropriate'"
+  assumed: false   # the requirement to choose sections is explicit; this specific template is the writer's judgement call, noted here
+structure_assumed_note: "The specific section list above (Related Work after Introduction, a separate Limitations section, etc.) is the writer's judgement, exercised because TASK.md explicitly delegates section choice ('the sections you judge appropriate')."
+limits:
+  pages_main: null
+  words_main: 4500
+  words_main_floor: 3000
+  abstract_words: 250
+  title_chars: null
+  figures_max: 0
+  references_count_limit: null
+  supplement_allowed: false
+  source: "TASK.md: 'Length: 3,000-4,500 words of main text (excluding references)'; 'Tables may be written in Markdown. No images.'"
+  assumed: false
+style:
+  citation_style: "author-year, exact form (FirstAuthor et al., Year) as citations appear in project/paper.txt"
+  voice_preference: "active voice; 'we' for the platform's own authors' actions when reporting what they built/found, since this paper presents their research"
+  spelling: US
+  abstract_format: unstructured
+  abstract_citations_allowed: false
+  source: "TASK.md: 'Cite only works that are cited in the project materials, in the form (FirstAuthor et al., Year) as they appear there.'"
+  assumed: true   # voice/spelling/abstract_format specifics are not given by TASK.md; assumed from skill defaults
+required_statements:
+  data_availability: null
+  code_availability: null
+  ethics: null
+  conflicts_of_interest: null
+  funding: null
+  author_contributions: null
+  ai_use_disclosure: ""
+  source: "not applicable to this run: TASK.md stops the workflow after step 17 (scientific-overclaim audit); disclosure.md and required-statement generation belong to step 21 (EDIT phase), which is out of scope per run-specific constraints."
+checklists: []
+reporting_guideline: null
+review_criteria: []
+exemplar_papers: []
+run_specific_overrides:
+  - "No images (TASK.md hard rule): all visuals in the draft are Markdown tables, never figures."
+  - "Use only evidence in ./project/; no outside knowledge, no web (TASK.md hard rule)."
+  - "Report numbers exactly as they appear in the evidence (TASK.md hard rule)."
+  - "Present the authors' research, not a review of it (TASK.md hard rule): Limitations reports the authors' own conceded limitations first, then the writer's additional caveats, per SKILL.md's attribution rules -- this is not the writer second-guessing the work."

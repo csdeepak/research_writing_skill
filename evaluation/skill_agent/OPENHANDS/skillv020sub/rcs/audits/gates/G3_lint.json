@@ -1,0 +1,525 @@
+{
+  "tool": "lint_draft",
+  "draft": ".rcs/drafts/v001/paper.md",
+  "draft_sha256": "6c32735deeefec3769af4ebf387171ad39bbe6625c358648168319b94c3219d2",
+  "final": false,
+  "rcs_used": true,
+  "claim_map_sha256": "03c3b6c9d59541b194e3279b3341ed73471298bb970a862c759fd7110ca9d77f",
+  "max_words": 4500,
+  "words_main": 3739,
+  "errors": 0,
+  "warnings": 24,
+  "findings": [
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "Building an AI agent that acts on the world through real software -- writing code, running a shell, browsing the web -- currently means assembling an interactio",
+      "message": "48-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "OpenHands is an open, MIT-licensed platform that supplies all five pieces through one event-stream architecture: three core actions execute inside a Docker-sand",
+      "message": "57-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "The same CodeActAgent reaches a 26.0% resolve rate on SWE-Bench Lite, fixes 79.3% of HumanEvalFix bugs zero-shot, scores 52.0% on GPQA, and reaches 32.1% on GAI",
+      "message": "51-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "The pattern is not universal: on MiniWoB++, a trained reinforcement-learning specialist outperforms every prompted agent shown, OpenHands included, by a wide ma",
+      "message": "41-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 9,
+      "excerpt": "Building an artificial agent -- a system that repeatedly perceives its environment's state and produces an action for it, receiving an observation back -- that ",
+      "message": "76-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 11,
+      "excerpt": "Because that tooling already exists, software is also, in the same sense, an unusually complete interface for an artificial agent: whatever a human developer ca",
+      "message": "46-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 13,
+      "excerpt": "General orchestration libraries such as LangChain and LangGraph (Chase, 2022) compose language-model calls and tools into chains or graphs but provide only basi",
+      "message": "54-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 13,
+      "excerpt": "A second group specializes in one capability instead of generalizing: BrowserGym (Drouin et al., 2024) targets web browsing, and DSPy (Khattab et al., 2024) tar",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 13,
+      "excerpt": "A third group specializes by task: SWE-Agent (Yang et al., 2024), AutoCodeRover (Zhang et al., 2024b), and Agentless (Xia et al., 2024) resolve GitHub issues we",
+      "message": "85-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 15,
+      "excerpt": "Second, once such a platform exists, can a single generalist agent built on it -- with no change to its prompt from one benchmark to the next -- perform competi",
+      "message": "45-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 17,
+      "excerpt": "It is an open, MIT-licensed platform whose event-stream architecture connects an agent to a Docker-sandboxed runtime through three core actions, inspired by Cod",
+      "message": "38-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 17,
+      "excerpt": "This code-execution action space was chosen over fixed, pre-defined tool calls because it is flexible enough to express any task while staying reliable and easy",
+      "message": "48-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 19,
+      "excerpt": "Second, and the paper's central finding: the same CodeActAgent, run unmodified, reaches a 26.0% resolve rate on SWE-Bench Lite, fixes 79.3% of HumanEvalFix bugs",
+      "message": "62-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 27,
+      "excerpt": "LangChain and LangGraph (Chase, 2022) provide foundational building blocks with basic runtime support; AutoGen (Wu et al., 2023) goes further by adding real Pyt",
+      "message": "46-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 31,
+      "excerpt": "MetaGPT (Hong et al., 2023) standardizes team-like operating procedures for software generation; GPTSwarm (Zhuge et al., 2024) represents an agent system as an ",
+      "message": "38-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 33,
+      "excerpt": "SWE-Agent (Yang et al., 2024), AutoCodeRover (Zhang et al., 2024b), ChatDev (Qian et al., 2023), AgentCoder (Huang et al., 2024), and Agentless (Xia et al., 202",
+      "message": "68-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 37,
+      "excerpt": "Three actions, inspired by CodeAct (Wang et al., 2024a), cover most of what a human developer does: running Python code, running shell commands, and interacting",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 37,
+      "excerpt": "Each session executes inside a Docker sandbox -- an isolated container separate from the host machine -- built from any base image the user supplies, so the sam",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 39,
+      "excerpt": "This code-execution action space was chosen over a fixed list of pre-defined tool calls because it is a comprehensive, flexible set of primitives that stays rel",
+      "message": "41-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 39,
+      "excerpt": "Inside it, an action-execution server exposes a bash shell, a Jupyter server, and a Playwright-driven browser whose observations include the page's HTML, its ac",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 41,
+      "excerpt": "Its authors state an explicit inclusion rule -- a skill is added only if a language model cannot already write the needed code itself, or if the skill must call",
+      "message": "45-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 43,
+      "excerpt": "The default generalist agent, CodeActAgent, has only limited native support for web interaction, so it delegates browsing subtasks to a specialized Browsing Age",
+      "message": "79-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 45,
+      "excerpt": "Because agents are complex software and language-model outputs are not deterministic, OpenHands also runs an integration-test suite that intercepts every model ",
+      "message": "42-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 49,
+      "excerpt": "Concretely: one CodeActAgent -- delegating browsing subtasks to Browsing Agent, and in one case (GAIA) run through the GPTSwarm agent instead -- is evaluated ze",
+      "message": "42-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 49,
+      "excerpt": "Success is reported as a resolve rate (the percentage of SWE-Bench issues whose hidden tests pass after the agent's patch), a pass rate (the percentage of tasks",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 51,
+      "excerpt": "For software-engineering evaluation specifically, the platform defaults to the 300-instance SWE-Bench Lite subset rather than the full 2,294-instance set, and w",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 55,
+      "excerpt": "That places it inside the range covered by three specialist agents evaluated on the same 300 instances: SWE-Agent (Yang et al., 2024) at 18.0%, AutoCodeRover (Z",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 57,
+      "excerpt": "Each of these numbers is a single run, with no seed or repeat-trial variance reported, so the exact size of any gap between rows should be read as a point estim",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 59,
+      "excerpt": "On HumanEvalFix (Muennighoff et al., 2024), OpenHands' CodeActAgent v1.5 fixes 79.3% of 164 Python bugs zero-shot with gpt-4o, well ahead of the strongest non-a",
+      "message": "41-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 59,
+      "excerpt": "Only SWE-Agent (Yang et al., 2024), at 87.7%, scores higher -- but, as OpenHands' authors note directly, SWE-Agent was given a full worked demonstration of a su",
+      "message": "42-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 75,
+      "excerpt": "**Web browsing.** On WebArena (Zhou et al., 2023a), OpenHands' Browsing Agent reaches 15.5% with claude-3-5-sonnet and its CodeActAgent reaches 15.3% via delega",
+      "message": "43-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 75,
+      "excerpt": "Trained systems span a wider range around this: two score below OpenHands (Lemur at 5.3% (Xu et al., 2023); a 72B model trained with self-improvement synthetic ",
+      "message": "66-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 77,
+      "excerpt": "OpenHands' best configuration reaches 40.8% with gpt-4o, well above its own weaker-backbone configuration at 27.2%, but CC-Net (Humphreys et al., 2022), a syste",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 77,
+      "excerpt": "This is the evaluation's plainest negative result: a trained specialist outperforms every prompted agent shown here, OpenHands included, by a wide margin, and n",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 95,
+      "excerpt": "**Beyond code and browsers.** Six further benchmarks test reasoning, tool use, and planning, with little in common with either code editing or web navigation: G",
+      "message": "124-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 97,
+      "excerpt": "OpenHands' CodeActAgent, again unmodified, exceeds or matches each benchmark's own baseline agent in five of the six (Table 3): 32.1% against AutoGPT's (Gravita",
+      "message": "93-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 127,
+      "excerpt": "Holding the agent and its prompt fixed and swapping only the model moves scores by tens of points within a single benchmark -- from 11.8% to 57.6% on AgentBench",
+      "message": "58-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 127,
+      "excerpt": "An alternative explanation, that the architecture itself is tuned differently per category, is harder to sustain here, because the prompt does not change betwee",
+      "message": "43-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 129,
+      "excerpt": "Each of the five pieces earlier frameworks split across separate projects -- an interaction mechanism, a sandboxed runtime, an extensible tool library, multi-ag",
+      "message": "54-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 131,
+      "excerpt": "This is consistent with the dimension-by-dimension picture in Section 2: general orchestration frameworks lacked a full sandbox, single-capability frameworks la",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 131,
+      "excerpt": "It also extends one specific idea from that section -- that a carefully designed agent-computer interface can change performance independently of the underlying",
+      "message": "46-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 137,
+      "excerpt": "They also report that the current agent performs poorly when editing long files {L003}, and that building a new agent workflow on the platform still takes consi",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 141,
+      "excerpt": "First, the 15-benchmark comparison is not a controlled, single-variable test of the architecture alone: compared systems differ in backbone model, in how many w",
+      "message": "57-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 141,
+      "excerpt": "Second, no benchmark cell reports seed or repeat-trial variance, so small gaps -- such as the two points separating OpenHands from zero-shot prompting on the En",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 145,
+      "excerpt": "A single, unmodified generalist agent, built on one open platform, is competitive with baselines built for one task category at a time across most of the 15 ben",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 145,
+      "excerpt": "The more direct explanation on offer is that a sufficiently general interaction interface, together with a shared execution runtime, does much of the work that ",
+      "message": "51-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 147,
+      "excerpt": "The boundary on this finding is concrete, not generic: a trained specialist still wins on MiniWoB++, a baseline agent still wins narrowly on MINT's code subset ",
+      "message": "53-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B9-significance",
+      "level": "WARN",
+      "line": 157,
+      "excerpt": "(2023). *Auto-GPT: An autonomous GPT-4 experiment*. https://github.com/Significant-Gravitas/Auto-GPT",
+      "message": "'significant' without a named statistical test in the same sentence"
+    },
+    {
+      "rule": "C1-orphan-claim",
+      "level": "WARN",
+      "line": 167,
+      "excerpt": "DSPy: Compiling declarative language model calls into self-improving pipelines.",
+      "message": "claim-like sentence without {C###} tag"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 173,
+      "excerpt": "Liu, X., Yu, H., Zhang, H., Xu, Y., Lei, X., Lai, H., Gu, Y., Ding, H., Men, K., Yang, K., Zhang, S., Deng, X., Zeng, A., Du, Z., Zhang, C., Shen, S., Zhang, T.",
+      "message": "45-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "C1-orphan-claim",
+      "level": "WARN",
+      "line": 183,
+      "excerpt": "Large language models can self-improve at web agent tasks.",
+      "message": "claim-like sentence without {C###} tag"
+    },
+    {
+      "rule": "C1-orphan-claim",
+      "level": "WARN",
+      "line": 205,
+      "excerpt": "AutoCodeRover: Autonomous program improvement.",
+      "message": "claim-like sentence without {C###} tag"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 5,
+      "excerpt": "AI",
+      "message": "acronym 'AI' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 5,
+      "excerpt": "MIT",
+      "message": "acronym 'MIT' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 5,
+      "excerpt": "SWE",
+      "message": "acronym 'SWE' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 5,
+      "excerpt": "GPQA",
+      "message": "acronym 'GPQA' never defined"
+    },
+    {
+      "rule": "A3-use-before-definition",
+      "level": "WARN",
+      "line": 5,
+      "excerpt": "GAIA",
+      "message": "'GAIA' used (line 5) before its definition (line 49)"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 13,
+      "excerpt": "DSPy",
+      "message": "acronym 'DSPy' never defined"
+    },
+    {
+      "rule": "A4-rare-acronym",
+      "level": "INFO",
+      "line": 13,
+      "excerpt": "ACI",
+      "message": "'ACI' used 1x: spell out instead"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 39,
+      "excerpt": "HTML",
+      "message": "acronym 'HTML' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 77,
+      "excerpt": "CC",
+      "message": "acronym 'CC' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 95,
+      "excerpt": "MINT",
+      "message": "acronym 'MINT' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 97,
+      "excerpt": "LM",
+      "message": "acronym 'LM' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 127,
+      "excerpt": "OS",
+      "message": "acronym 'OS' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 133,
+      "excerpt": "SDK",
+      "message": "acronym 'SDK' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 157,
+      "excerpt": "GPT",
+      "message": "acronym 'GPT' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 163,
+      "excerpt": "PMLR",
+      "message": "acronym 'PMLR' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 173,
+      "excerpt": "LLMs",
+      "message": "acronym 'LLMs' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 189,
+      "excerpt": "ACL",
+      "message": "acronym 'ACL' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 189,
+      "excerpt": "IJCNLP",
+      "message": "acronym 'IJCNLP' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 191,
+      "excerpt": "LLM",
+      "message": "acronym 'LLM' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 191,
+      "excerpt": "ICML",
+      "message": "acronym 'ICML' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 193,
+      "excerpt": "ICLR",
+      "message": "acronym 'ICLR' never defined"
+    }
+  ]
+}

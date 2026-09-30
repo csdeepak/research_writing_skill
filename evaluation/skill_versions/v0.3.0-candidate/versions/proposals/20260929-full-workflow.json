@@ -1,0 +1,119 @@
+{
+  "id": "20260929-full-workflow",
+  "date": "2026-09-29",
+  "from_version": "0.1.0",
+  "to_version": "0.3.0",
+  "failure_observed": "The study never exercised the skill as designed: one agent role-played CORPUS, AUTHOR and REVIEW; every ASK/STOP was auto-resolved as an 'accepted risk' (Phase 9 writers logged 10-11 each, some resolving factual questions such as which dataset count to trust); G4 (external review addressed) and G5 were never run; and gate 'passed' values were free text (e.g. 'ALL SEVEN AUDITS COMPLETE AND PASS ...'). The skill's own review_agent.md still compressed the 12 reconstruction questions into one line, the defect D-13 had found in the harness.",
+  "evidence": {
+    "cluster_id": "vNext Stage 4 (M15, G4, G5, spec 4.3); D-28",
+    "instances": 5,
+    "metrics": {
+      "phase9_accepted_risks_per_run": "10-11 (free text, some factual)",
+      "phase9_effective_gates_v010_runs": "G1/G3 claimed 'passed' but effective NOT_RUN (no tool reports)",
+      "e2e_run": "ASMOS, 4 separate role agents: 0 validator errors, 0 role violations, 0 agent-answered checkpoints, 9/9 blocked claims absent from the paper, 19/19 blocking review items dispositioned (18 fixed, 1 deferred to checkpoint Q-005), G4 passed, G5 failed by design on 17 author-only markers; 5 tool defects found and fixed (T-045, T-047..T-050). See evaluation/stage4_e2e/E2E_REPORT.md"
+    }
+  },
+  "root_cause": "weak_gate",
+  "mechanism_type": "gate",
+  "components": [
+    {
+      "part": 1,
+      "summary": "Role separation (tools/workflow_guard.py): per-role write permissions, append-only provenance ledger with hashes, ROLE_VIOLATION / UNATTRIBUTED_CHANGE; adapter role notes.",
+      "tests": [
+        "WF-01",
+        "WF-01b",
+        "WF-02"
+      ]
+    },
+    {
+      "part": 2,
+      "summary": "Human checkpoints: ask/answer/status CLI (answers only by a named person); claims blocked by an open question must be BLOCKED (CHECKPOINT_BYPASSED); accepted risks typed workflow|factual, factual is an error (ACCEPTED_RISK_FACTUAL).",
+      "tests": [
+        "WF-03",
+        "WF-03b",
+        "WF-03c",
+        "WF-04",
+        "WF-04b",
+        "T-043"
+      ]
+    },
+    {
+      "part": 3,
+      "summary": "Executable G4 (tools/g4_check.py): review exists for the exact draft (packet manifest now records source draft hash), every blocking finding and inference issue has a disposition, 'fixed' implies a changed draft, reviewer isolation log; state.json G4 needs a fresh report.",
+      "tests": [
+        "T-044"
+      ]
+    },
+    {
+      "part": 4,
+      "summary": "Gate runner (tools/run_workflow.py): runs G1, G3, V*, G4, G5 as separate processes, writes back only validator-confirmed statuses, appends each command with exit code, report hash and tool SHA-256 to RUN_LOG.jsonl.",
+      "tests": [
+        "T-045"
+      ]
+    },
+    {
+      "part": 5,
+      "summary": "review_agent.md restates the 12 reconstruction questions verbatim with a do-not-substitute instruction (Part B(a), D-13).",
+      "tests": []
+    },
+    {
+      "part": 6,
+      "summary": "Defects found by the Stage 4 e2e run and fixed mid-run (evaluation/stage4_e2e/MIDRUN_TOOL_CHANGES.jsonl): ledger paths outside .rcs (final manuscript) crashed record(); review packets omitted linked figures (unhashed); S1/S2 vs BLOCKED-claim-used contradiction forced a placeholder claim (now S1/S2-author-statement-withheld WARN); line charts drew the value axis horizontally (renderer fixed, renderer-independent V3_AXIS_ENCODING added, real faulty figure as fixture). Also: the gate runner ran G1 before G3/V reports were refreshed (G1 now runs after them).",
+      "tests": [
+        "T-047",
+        "T-048",
+        "T-049",
+        "T-050"
+      ]
+    }
+  ],
+  "change": {
+    "files": [
+      "tools/workflow_guard.py",
+      "tools/g4_check.py",
+      "tools/run_workflow.py",
+      "tools/build_review_packet.py (source draft hash)",
+      "tools/validate_artifacts.py (guard + G4 hooks)",
+      "tools/replay_fixtures.py (guard in validate; byte-exact fixtures)",
+      "tools/tests/test_v030_workflow.py",
+      "tools/tests/fixtures/replay/WF-*.json",
+      "agents/review_agent.md",
+      "adapters/claude_code/agents/rce-corpus.md, rce-reviewer.md, rce-grader.md",
+      "SKILL.md (one bullet)",
+      "workflow.md steps 4 and 19",
+      "failure_states.md (4 rows)",
+      "evaluation/stage4_e2e/",
+      "tools/lint_draft.py (withheld author statements)",
+      "tools/visuals.py (line value axis)",
+      "tools/validate_visuals.py (V3_AXIS_ENCODING)",
+      "schemas/visual_registry.schema.json (x_label)",
+      "tools/tests/fixtures/visual/REAL-ASMOS-V003_value_axis_on_x.svg"
+    ],
+    "summary": "All checks opt in per project (ledger present, checkpoints present, guardrail v0.3), so legacy projects keep their behaviour."
+  },
+  "expected_improvement": "Tool/process level: role boundaries, human checkpoints and review uptake become verifiable instead of asserted; a run's gate history is reproducible from RUN_LOG.jsonl. Reader level: not claimed.",
+  "possible_regressions": [
+    "Bookkeeping cost: every role must record its writes; forgetting produces UNATTRIBUTED_CHANGE warnings.",
+    "Unattended runs now stop short of stating facts that need a human answer; papers may carry more [ASK AUTHOR]-blocked gaps than before (by design).",
+    "The REVIEW role cannot run tools, so an orchestrator records its ledger entries; the ledger attests which role produced the files, not which process wrote the bytes.",
+    "G4's 'fixed' check is structural (location named, draft changed); whether a fix actually resolves the finding still needs the next review round."
+  ],
+  "tests_added": [
+    "T-042..T-045, T-047..T-049 in tools/tests/test_v030_workflow.py",
+    "T-050 in tools/tests/test_v030_visuals.py",
+    "8 replay fixtures WF-01..WF-04b",
+    "1 real visual fixture (REAL-ASMOS-V003)"
+  ],
+  "gate": {
+    "status": "passed",
+    "results": {
+      "unit_tests_candidate": "95/95 pass",
+      "replay_fixtures": "49/49 pass",
+      "e2e": "process criteria met (E2E_REPORT.md); reader-level benefit not tested; promotion needs a human decision",
+      "stage2_acceptance_rerun": "PASS after the renderer change (V3 includes V3_AXIS_ENCODING)",
+      "tier3_ab_vs_v010": "reader benefit NOT SHOWN under the pre-registered rule (D-29/D-30): better beyond noise on 1/3 projects (OpenHands +0.150 MMF_src), worse on none, mean +0.066; Q11 3/3 up; single run per arm, v0.1.0 run-to-run noise 0.05-0.19. evaluation/results/AB3_REPORT.md",
+      "reviewer_calibration": "v0.3.0 review_agent.md on 7 planted-defect papers: sensitivity 0.933 (>= 0.90), false alarms 0.05 (<= 0.10): passes; reviewer_validation/scores/v030_calibration.json",
+      "release": "promoted into skill/ 2026-09-30 by the user's decision as a process upgrade (D-32); reader benefit not shown (tier-3 A/B, D-30)"
+    }
+  }
+}

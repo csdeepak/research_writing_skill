@@ -1,0 +1,44 @@
+# VENUE_UNKNOWN: no venue was specified beyond "a research paper" for the given audience.
+# Generic fallback profile (templates/venue_profile.generic.yaml), adapted where TASK.md gives an
+# explicit, overriding instruction. Every rule below is assumed unless marked otherwise; listed
+# in open_issues.md as an assumed venue rule.
+venue: {name: "generic research article (no venue specified)", type: report, guideline_urls: []}
+structure:
+  section_template: [Title, Abstract, Introduction, "Background and Related Work", Method, Results, Discussion, Limitations, Conclusion, References]
+  results_discussion: separate
+  related_work_position: after_intro
+  limitations_section_required: true
+  source: "TASK.md structure requirement: 'a complete research paper with title, abstract and the sections you judge appropriate.' Section list is AUTHOR's judgment for a systems/benchmark-suite paper (method_first story pattern) presented to adjacent ML researchers."
+  assumed: true
+limits:
+  pages_main: null
+  words_main: 4500
+  words_main_min: 3000
+  abstract_words: 250
+  title_chars: null
+  figures_max: 0
+  references_count_limit: null
+  supplement_allowed: false
+  source: "TASK.md REQUIREMENTS: 'Length: 3,000-4,500 words of main text (excluding references)'; 'Tables may be written in Markdown. No images.' No supplement/appendix mechanism exists for this deliverable (single file ./paper.md), so SUPPLEMENTARY-class content is either included in Limitations/Discussion at OPTIONAL density or omitted, never silently dropped."
+  assumed: false
+style:
+  citation_style: "author-year: (FirstAuthor et al., Year)"
+  voice_preference: "active voice; 'we'/'the authors' for the source paper's own actions, since AUTHOR is presenting MLPerf Tiny's research, not new work of AUTHOR's own"
+  spelling: US
+  abstract_format: unstructured
+  abstract_citations_allowed: false
+  source: "TASK.md REQUIREMENTS: 'Cite only works that are cited in the project materials, in the form (FirstAuthor et al., Year) as they appear there.' This explicit instruction overrides the generic profile's numeric-citation default."
+  assumed: false
+required_statements:
+  data_availability: false
+  code_availability: false
+  ethics: false
+  conflicts_of_interest: false
+  funding: false
+  author_contributions: false
+  ai_use_disclosure: "Not applicable to the deliverable itself (this is a re-presentation of the authors' published research, not a new manuscript by a human author submitting under an AI-use policy). A disclosure.md is still drafted for the record per the skill's output contract."
+  source: "No venue policy exists (VENUE_UNKNOWN); TASK.md gives no instruction to include these statements, and the underlying evidence contains no author-contribution/funding/ethics facts about THIS re-presentation task (only about the original MLPerf Tiny project, which are not statements about our authorship)."
+checklists: []
+reporting_guideline: null
+review_criteria: []
+exemplar_papers: []

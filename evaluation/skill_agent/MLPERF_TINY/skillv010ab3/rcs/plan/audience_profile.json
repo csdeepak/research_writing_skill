@@ -1,0 +1,34 @@
+{
+ "mode": "B",
+ "primary": "ML researchers from other subfields (not embedded ML or benchmarking) reading to understand what MLPerf Tiny is and what it shows",
+ "secondary": "reviewers checking claims and specification details",
+ "tertiary": "later readers and practitioners",
+ "assumed_known": [
+  "supervised learning",
+  "train/validation/test splits",
+  "accuracy, top-1, AUC-ROC",
+  "CNN, ResNet, MobileNet, autoencoder",
+  "quantization in general",
+  "latency and throughput",
+  "benchmarks and leaderboards in general"
+ ],
+ "not_assumed": [
+  "microcontroller hardware",
+  "TinyML",
+  "energy measurement setups",
+  "TensorFlow Lite Micro",
+  "the specific datasets (Speech Commands, VWW, ToyADMOS/DCASE)",
+  "post-training quantization vs QAT details",
+  "MLPerf organization and prior benchmarks"
+ ],
+ "binding_personas": [
+  "A",
+  "B",
+  "E"
+ ],
+ "term_budget": {
+  "per_paragraph": 2,
+  "abstract_acronyms": 1
+ },
+ "source": "TASK.md 2026-09-29"
+}

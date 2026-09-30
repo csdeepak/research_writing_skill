@@ -1,0 +1,33 @@
+{
+  "tool": "validate_visuals",
+  "errors": 0,
+  "registry_sha256": "sha256:7292d494617da8d2efbec34b6ca50e2f172e659f2ec1531b6e9319a6a97beb2c",
+  "draft_sha256": "75448556979603f1c09f17a6d19436d8ec816aed252bc8d823bbae95a81b8484",
+  "gates": {
+    "V1": {
+      "status": "PASSED",
+      "errors": 0
+    },
+    "V2": {
+      "status": "PASSED",
+      "errors": 0
+    },
+    "V3": {
+      "status": "PASSED",
+      "errors": 0
+    },
+    "V4": {
+      "status": "PASSED",
+      "errors": 0
+    },
+    "V5": {
+      "status": "NOT_RUN",
+      "errors": 0
+    },
+    "V6": {
+      "status": "PASSED",
+      "errors": 0
+    }
+  },
+  "items": []
+}

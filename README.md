@@ -20,8 +20,24 @@ docs/                         research and architecture phase
   05_SKILL_SPECIFICATION.md   the final skill design, and why it should beat a single agent
   SOURCES.md                  every external source, verified 2026-09-24
 skill/                        the executable skill (start at skill/SKILL.md)
-tools/                        stdlib-only Python: validator, linter, packet builder, scoring, versioning
+tools/                        stdlib-only Python: gates (validator, lint, number tracing, visuals, G4, gate runner),
+                              model-agnostic role runner (rce_llm.py, rce_roles.py), versioning
+evaluation/                   external validation study, A/B tests, end-to-end run, calibrations (see its logs/)
 ```
+
+## Use it with any model
+Follow `skill/adapters/README.md`. In short:
+- your agent reads `skill/SKILL.md` (or `skill/adapters/entrypoints/AGENTS.md`);
+- the gates are deterministic Python;
+- the blind reviewer, grader and readers run on whatever model you bind in `.rcs/models.json`: OpenAI-compatible
+  APIs (OpenAI, OpenRouter, Ollama, vLLM, LM Studio), Anthropic, Gemini, any CLI, or copy-paste into any chat UI.
+
+Calibrate a reviewer model once:
+
+```bash
+python tools/rce_roles.py calibrate --rcs .rcs
+```
+
 
 ## Foundation
 The theory comes from the course *Object Oriented Modelling & Design: Technical Writing*,
@@ -39,5 +55,19 @@ python tools/validate_artifacts.py --check-skill
 ```
 
 ## Status
-v0.1.0: design complete, tools tested on synthetic fixtures. **Not yet validated on real
-projects.** The acceptance experiment is specified in `docs/04_EVALUATION_FRAMEWORK.md` §11.
+**v0.3.0** (released 2026-09-30) adds:
+- a truth guardrail;
+- evidence-bound figures;
+- reader-comprehension tooling;
+- an enforced multi-role workflow with human checkpoints;
+- a model-agnostic runtime.
+
+Evidence (`skill/changelog.md`, `evaluation/logs/DECISIONS.md` D-25 to D-32):
+- **Checks:** 95 unit tests and 49 replay fixtures of real failure cases.
+- **ASMOS end-to-end run:** separate role agents, human answers applied, and two blind review rounds.
+- **Reviewer calibration:** passed on three model families (Claude Opus 0.933, NVIDIA Nemotron 0.945, Qwen3.8-27B
+  0.911; the bar is 0.90).
+- **Reader-level benefit is not shown:** the pre-registered A/B was better on 1 of 3 projects and worse on none.
+  v0.3.0 is released as a process upgrade.
+
+Open, and needing people: a blinded human reading study (`skill/templates/human_study_protocol.md`).

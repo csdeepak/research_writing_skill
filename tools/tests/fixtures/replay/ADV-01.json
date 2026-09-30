@@ -1,0 +1,67 @@
+{
+ "id": "ADV-01",
+ "origin": "spec 10 case 1",
+ "title": "README says 18 datasets, manifest 17: flag, never silently select",
+ "files": {
+  "README.md": "The benchmark comprises 18 datasets.\n",
+  "data/manifest.csv": "name\nds0\nds1\nds2\nds3\nds4\nds5\nds6\nds7\nds8\nds9\nds10\nds11\nds12\nds13\nds14\nds15\nds16\n",
+  ".rcs/evidence/research_evidence.json": {
+   "project_root": ".",
+   "generated_at": "2026-09-29",
+   "items": [
+    {
+     "id": "E001",
+     "kind": "dataset",
+     "summary": "README states the dataset count",
+     "locator": {
+      "path": "README.md"
+     },
+     "strength": "soft",
+     "status": "ok",
+     "value": {
+      "count": 18
+     },
+     "quantity": "num_datasets"
+    },
+    {
+     "id": "E002",
+     "kind": "dataset",
+     "summary": "Manifest lists each dataset",
+     "locator": {
+      "path": "data/manifest.csv"
+     },
+     "strength": "hard",
+     "status": "ok",
+     "value": {
+      "count": 17
+     },
+     "quantity": "num_datasets"
+    }
+   ]
+  },
+  ".rcs/claims/claim_evidence_map.json": {
+   "claims": [
+    {
+     "id": "C001",
+     "statement": "The benchmark has 17 datasets.",
+     "claim_type": "measured",
+     "evidence": [
+      "E002"
+     ],
+     "confidence": "moderate",
+     "author_confirmation": "confirmed"
+    }
+   ],
+   "limitations": [],
+   "negative_result_decisions": []
+  }
+ },
+ "checks": [
+  {
+   "tool": "validate",
+   "expect": [
+    "ERROR:UNRECONCILED_CONFLICT"
+   ]
+  }
+ ]
+}

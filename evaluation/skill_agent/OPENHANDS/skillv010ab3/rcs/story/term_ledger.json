@@ -1,0 +1,10 @@
+{"terms": [
+{"term": "agent", "kind": "technical", "definition": "an LLM-driven program that observes an environment and chooses actions", "defined_at": "I.1"},
+{"term": "event stream", "kind": "project_specific", "definition": "chronological list of actions and observations", "defined_at": "B.1"},
+{"term": "sandbox", "kind": "technical", "definition": "isolated container in which actions run", "defined_at": "I.1"},
+{"term": "success rate", "kind": "technical", "definition": "percentage of benchmark instances solved; resolve rate on SWE-Bench", "defined_at": "S.1"},
+{"term": "generalist agent", "kind": "technical", "definition": "one agent design used across task categories", "defined_at": "I.3"},
+{"term": "0-shot", "kind": "technical", "definition": "no demonstrations in the prompt", "defined_at": "S.1"},
+{"term": "AgentSkills", "kind": "project_specific", "definition": "library of tools auto-imported into the IPython environment", "defined_at": "P.4"},
+{"term": "delegation", "kind": "project_specific", "definition": "one agent handing a subtask to another", "defined_at": "P.5"}
+]}

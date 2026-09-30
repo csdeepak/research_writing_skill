@@ -1,0 +1,46 @@
+{
+ "id": "TAB-2",
+ "type": "table",
+ "visual_id": "T002",
+ "purpose": "give the four-system question-answering comparison with exact values",
+ "rq": "scope",
+ "takeaway": "ASMOS-memory scores below No-Memory and RAG on static question answering.",
+ "claims": [
+  "C013",
+  "C015",
+  "C037"
+ ],
+ "evidence": [
+  "E074",
+  "E076",
+  "E078",
+  "E080",
+  "E075",
+  "E077",
+  "E079",
+  "E081"
+ ],
+ "source_data": [
+  "project/results/summary.csv"
+ ],
+ "comparison_the_eye_must_make": "ASMOS-memory against No-Memory and RAG",
+ "uncertainty_shown": "none in the table; paired intervals are in the text",
+ "baseline_or_reference": "RAG",
+ "non_conclusions": "one run of 24 items; no p-values; metric definitions undocumented",
+ "honesty_checks": {
+  "axes_start": "n/a",
+  "all_conditions_shown": true,
+  "dual_axis": false,
+  "three_d": false,
+  "cherry_picked": false
+ },
+ "accessibility": {
+  "colorblind_safe": true,
+  "redundant_encoding": "n/a",
+  "min_font_pt_at_print": 7,
+  "alt_text": ""
+ },
+ "placement": "Section 4.5, after the comparison paragraph",
+ "caption": "In a single run of static question answering, ASMOS-memory scores below both No-Memory and RAG on both metrics; ASMOS combined with RAG is close to RAG on exact match but far below it on token-F1, and its exact match exceeds its token-F1, which standard definitions of the two metrics do not allow.",
+ "source_script": ".rcs/plan/data/build_data.py"
+}

@@ -1,0 +1,21 @@
+{
+ "assumed_by_the_paper_without_definition": [
+  "LLM agent (a language-model-driven system that perceives and acts in an environment)",
+  "docker container / sandbox",
+  "REST API",
+  "IPython / Jupyter",
+  "bash shell",
+  "Playwright / Chromium / accessibility tree / DOM",
+  "SWE-Bench and its Lite subset; resolve rate; hint text",
+  "pass@k",
+  "zero-shot vs 1-shot prompting",
+  "chain-of-thought prompting",
+  "CodeAct, ReAct",
+  "GitHub issue, pull request, unit test, integration test",
+  "WebArena, MiniWoB++, GAIA, GPQA (benchmark names)",
+  "MIT license",
+  "text-to-SQL",
+  "prompt regression"
+ ],
+ "note": "Adjacent-researcher audience: define agent, sandbox, SWE-Bench, resolve rate, hint text, CodeAct, event stream, delegation and each benchmark at first use."
+}

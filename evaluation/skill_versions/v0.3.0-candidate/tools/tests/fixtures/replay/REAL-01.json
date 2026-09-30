@@ -1,0 +1,16 @@
+{
+ "id": "REAL-01",
+ "origin": "real: BEIR v0.2.0 draft, Phase 9 (D-24)",
+ "title": "draft states 18 datasets and 'of the 19 datasets we report on'",
+ "files": {
+  "paper.md": "We introduce a benchmark of 18 datasets. It spans many domains. Evaluated across 18 datasets, BM25 is strong. Only 8 of the 19 datasets we report on provide training data.\n"
+ },
+ "checks": [
+  {
+   "tool": "lint",
+   "expect": [
+    "WARN:INCONSISTENT-COUNT"
+   ]
+  }
+ ]
+}

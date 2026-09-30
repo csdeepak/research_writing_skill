@@ -1,0 +1,1611 @@
+{
+ "sources": [
+  {
+   "id": "SRC-001",
+   "title": "Metagpt: Meta programming for a multi-agent collaborative framework",
+   "as_cited": "Metagpt: Meta programming for a multi-agent collaborative framework",
+   "title_status": "as_cited",
+   "authors": [
+    "Sirui Hong",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "The Twelfth International Conference on Learning Representations (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: multi-agent framework in the authors' related work",
+     "support_quote": "MetaGPT Hong et al. (2023) emphasizing standardized operating procedures",
+     "location": "paper.txt L901 (App.C)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "multi-agent framework in the authors' related work",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-002",
+   "title": "Autogen: Enabling next-gen llm applications via multi-agent conversation framework",
+   "as_cited": "Autogen: Enabling next-gen llm applications via multi-agent conversation framework",
+   "title_status": "as_cited",
+   "authors": [
+    "Qingyun Wu",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "arXiv preprint arXiv:2308.08155 (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: general agent framework compared in Table 1; execution features characterized in App.C",
+     "support_quote": "AutoGen Wu et al. (2023) providing a conversation framework for interactive systems",
+     "location": "paper.txt L901 (App.C)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "general agent framework compared in Table 1; execution features characterized in App.C",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-003",
+   "title": "Autoagents: A framework for automatic agent generation",
+   "as_cited": "Autoagents: A framework for automatic agent generation",
+   "title_status": "as_cited",
+   "authors": [
+    "Guangyao Chen",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: general agent framework",
+     "support_quote": "AutoAgents Chen et al. (2024) offer new paradigms for customizable agent architecture",
+     "location": "paper.txt L901 (App.C)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "general agent framework",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-004",
+   "title": "Swe-agent: Agent-computer interfaces enable automated software engineering",
+   "as_cited": "Swe-agent: Agent-computer interfaces enable automated software engineering",
+   "title_status": "as_cited",
+   "authors": [
+    "John Yang",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: software-engineering agent and reference system; source of edit utilities",
+     "support_quote": "SWE-Agent (Yang et al., 2024) highlights the importance of a carefully crafted Agent-Computer Interface (ACI, i.e., specialized tools for particular tasks) in successfully solving complex tasks.",
+     "location": "paper.txt L196 (Sec.2.3)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "software-engineering agent and reference system; source of edit utilities",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-005",
+   "title": "Autocoderover: Autonomous program improvement",
+   "as_cited": "Autocoderover: Autonomous program improvement",
+   "title_status": "as_cited",
+   "authors": [
+    "Yuntong Zhang",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: software-engineering agent and reference system",
+     "support_quote": "AutoCodeRover Zhang et al. (2024b) addresses GitHub issues via code search and abstract syntax tree manipulation",
+     "location": "paper.txt L907 (App.C)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "software-engineering agent and reference system",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-006",
+   "title": "SWE-bench: Can Language Models Resolve Real-world Github Issues?",
+   "as_cited": "SWE-bench: Can Language Models Resolve Real-world Github Issues?",
+   "title_status": "as_cited",
+   "authors": [
+    "Carlos E Jimenez",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": "The Twelfth International Conference on Learning Representations (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: benchmark description",
+     "support_quote": "SWE-Bench (Jimenez et al., 2024) is designed to assess agents’ abilities in solving real-world GitHub issues, such as bug reports or feature requests.",
+     "location": "paper.txt L464 (Sec.4.2)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "benchmark description",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-007",
+   "title": "Executable Code Actions Elicit Better LLM Agents",
+   "as_cited": "Executable Code Actions Elicit Better LLM Agents",
+   "title_status": "as_cited",
+   "authors": [
+    "Xingyao Wang",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": "ICML (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: CodeAct framework underlying the default agent",
+     "support_quote": "Inspired by CodeAct (Wang et al., 2024a), OpenHands connects an agent with the environment through a core set of general actions.",
+     "location": "paper.txt L131 (Sec.2.1)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "CodeAct framework underlying the default agent",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-008",
+   "title": "MINT: Evaluating LLMs in Multi-turn Interaction with Tools and Language Feedback",
+   "as_cited": "MINT: Evaluating LLMs in Multi-turn Interaction with Tools and Language Feedback",
+   "title_status": "as_cited",
+   "authors": [
+    "Xingyao Wang",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": "ICLR (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: benchmark description",
+     "support_quote": "MINT (Wang et al., 2024b) is a benchmark designed to evaluate agents’ ability to solve challenging tasks through multi-turn interactions using tools and natural language feedback simulated by GPT-4.",
+     "location": "paper.txt L772 (Sec.4.4)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "benchmark description",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-009",
+   "title": "Webarena: A realistic web environment for building autonomous agents",
+   "as_cited": "Webarena: A realistic web environment for building autonomous agents",
+   "title_status": "as_cited",
+   "authors": [
+    "Shuyan Zhou",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "The Twelfth International Conference on Learning Representations (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: web benchmark; also the reference agent",
+     "support_quote": "WebArena (Zhou et al., 2023a) is a self-hostable, execution-based web agent benchmark that allows agents to freely choose which path to take in completing their given tasks.",
+     "location": "paper.txt L621 (Sec.4.3)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "web benchmark; also the reference agent",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-010",
+   "title": "Workarena: How capable are web agents at solving common knowledge work tasks?",
+   "as_cited": "Workarena: How capable are web agents at solving common knowledge work tasks?",
+   "title_status": "unverifiable",
+   "authors": [
+    "Alexandre Drouin",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: source of the browsing action language (title exactly as the project cites it; unverifiable)",
+     "support_quote": "a domain-specific language for browsing introduced by BrowserGym (Drouin et al., 2024)",
+     "location": "paper.txt L131 (Sec.2.1)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "source of the browsing action language (title exactly as the project cites it; unverifiable)",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-011",
+   "title": "Octopack: Instruction tuning code large language models",
+   "as_cited": "Octopack: Instruction tuning code large language models",
+   "title_status": "as_cited",
+   "authors": [
+    "Niklas Muennighoff",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: benchmark description",
+     "support_quote": "HumanEvalFix (Muennighoff et al., 2024) tasks agents to fix a bug in a provided function with the help of provided test cases.",
+     "location": "paper.txt L466 (Sec.4.2.1)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "benchmark description",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-012",
+   "title": "Reinforcement learning on web interfaces using workflow-guided exploration",
+   "as_cited": "Reinforcement learning on web interfaces using workflow-guided exploration",
+   "title_status": "as_cited",
+   "authors": [
+    "Evan Zheran Liu",
+    "et al."
+   ],
+   "year": 2018,
+   "venue": "International Conference on Learning Representations (ICLR) (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: web benchmark",
+     "support_quote": "MiniWoB++ (Liu et al., 2018) is an interactive web benchmark, with built-in reward functions.",
+     "location": "paper.txt L622 (Sec.4.3)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "web benchmark",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-013",
+   "title": "Agentbench: Evaluating llms as agents",
+   "as_cited": "Agentbench: Evaluating llms as agents",
+   "title_status": "as_cited",
+   "authors": [
+    "Xiao Liu",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "arXiv preprint arXiv: 2308.03688 (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: benchmark description",
+     "support_quote": "AgentBench (Liu et al., 2023) evaluates agents’ reasoning and decision-making abilities in a multiturn, open-ended generation setting.",
+     "location": "paper.txt L771 (Sec.4.4)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "benchmark description",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-014",
+   "title": "GAIA: a benchmark for general AI assistants",
+   "as_cited": "GAIA: a benchmark for general AI assistants",
+   "title_status": "as_cited",
+   "authors": [
+    "Grégoire Mialon",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "CoRR, abs/2311.12983 (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: benchmark description",
+     "support_quote": "GAIA (Mialon et al., 2023) evaluates agents’ general task-solving skills, covering different real-world scenarios.",
+     "location": "paper.txt L626 (Sec.4.4)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "benchmark description",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-015",
+   "title": "GPQA: A Graduate-Level Google-Proof Q&A Benchmark",
+   "as_cited": "GPQA: A Graduate-Level Google-Proof Q&A Benchmark",
+   "title_status": "as_cited",
+   "authors": [
+    "David Rein",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "arXiv preprint arXiv:2311.12022 (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: benchmark description and source of human and prompting reference rows",
+     "support_quote": "GPQA (Rein et al., 2023) evaluates agents’ ability for coordinated tool use when solving challenging graduate-level problems.",
+     "location": "paper.txt L627 (Sec.4.4)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "benchmark description and source of human and prompting reference rows",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-016",
+   "title": "ProofWriter: Generating implications, proofs, and abductive statements over natural language",
+   "as_cited": "ProofWriter: Generating implications, proofs, and abductive statements over natural language",
+   "title_status": "as_cited",
+   "authors": [
+    "Oyvind Tafjord",
+    "et al."
+   ],
+   "year": 2021,
+   "venue": "Findings of the Association for Computational Linguistics: ACL-IJCNLP 2021 (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: benchmark description",
+     "support_quote": "ProofWriter (Tafjord et al., 2021) is a synthetic dataset created to assess deductive reasoning abilities of LLMs.",
+     "location": "paper.txt L773 (Sec.4.4)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "benchmark description",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-017",
+   "title": "Logic-lm: Empowering large language models with symbolic solvers for faithful logical reasoning",
+   "as_cited": "Logic-lm: Empowering large language models with symbolic solvers for faithful logical reasoning",
+   "title_status": "as_cited",
+   "authors": [
+    "Liangming Pan",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "arXiv preprint arXiv:2305.12295 (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: reference system with a symbolic solver",
+     "support_quote": "Same as Logic-LM (Pan et al., 2023), we focus on the most challenging subset, which contains 600 instances requiring 5-hop reasoning.",
+     "location": "paper.txt L773 (Sec.4.4)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "reference system with a symbolic solver",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-018",
+   "title": "Probing the multi-turn planning capabilities of llms via 20 question games",
+   "as_cited": "Probing the multi-turn planning capabilities of llms via 20 question games",
+   "title_status": "as_cited",
+   "authors": [
+    "Yizhe Zhang",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: benchmark description",
+     "support_quote": "Entity Deduction Arena (EDA) (Zhang et al., 2024a) evaluates agents’ ability to deduce unknown entities through strategic questioning, akin to the 20 Questions game.",
+     "location": "paper.txt L774 (Sec.4.4)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "benchmark description",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-019",
+   "title": "Can LLM already serve as a database interface? a BIg bench for large-scale database grounded text-to-SQLs",
+   "as_cited": "Can LLM already serve as a database interface? a BIg bench for large-scale database grounded text-to-SQLs",
+   "title_status": "as_cited",
+   "authors": [
+    "Jinyang Li",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "Thirty-seventh Conference on Neural Information Processing Systems Datasets and Benchmarks Track (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: benchmark description",
+     "support_quote": "BIRD (Li et al., 2023b) is a benchmark for text-to-SQL tasks (i.e., translate natural language into executable SQL) aimed at realistic and large-scale database environments.",
+     "location": "paper.txt L617 (Sec.4.2)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "benchmark description",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-020",
+   "title": "ML-Bench: Evaluating large language models and agents for machine learning tasks on repository-level code",
+   "as_cited": "ML-Bench: Evaluating large language models and agents for machine learning tasks on repository-level code",
+   "title_status": "as_cited",
+   "authors": [
+    "Xiangru Tang",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: benchmark description",
+     "support_quote": "ML-Bench (Tang et al., 2024b) evaluates agents’ ability to solve machine learning tasks across 18 GitHub repositories.",
+     "location": "paper.txt L550 (Sec.4.2)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "benchmark description",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-021",
+   "title": "BioCoder: a benchmark for bioinformatics code generation with large language models",
+   "as_cited": "BioCoder: a benchmark for bioinformatics code generation with large language models",
+   "title_status": "as_cited",
+   "authors": [
+    "Xiangru Tang",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": "Bioinformatics, 40 (Supplement_1) (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: benchmark description",
+     "support_quote": "BioCoder (Tang et al., 2024c) is a repository-level code generation benchmark that evaluates agents’ performance on bioinformatics-related tasks",
+     "location": "paper.txt L556 (Sec.4.2)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "benchmark description",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-022",
+   "title": "Gorilla: Large language model connected with massive apis",
+   "as_cited": "Gorilla: Large language model connected with massive apis",
+   "title_status": "as_cited",
+   "authors": [
+    "Shishir G. Patil",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "arXiv preprint arXiv:2305.15334 (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: benchmark description and finetuned reference row",
+     "support_quote": "Gorilla APIBench (Patil et al., 2023) evaluates agents’ abilities to use APIs.",
+     "location": "paper.txt L552 (Sec.4.2)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "benchmark description and finetuned reference row",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-023",
+   "title": "Toolqa: A dataset for llm question answering with external tools",
+   "as_cited": "Toolqa: A dataset for llm question answering with external tools",
+   "title_status": "as_cited",
+   "authors": [
+    "Yuchen Zhuang",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": "Advances in Neural Information Processing Systems, 36 (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: benchmark description",
+     "support_quote": "ToolQA (Zhuang et al., 2024) evaluates agents’ abilities to use external tools.",
+     "location": "paper.txt L554 (Sec.4.2)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "benchmark description",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-024",
+   "title": "Language agents as optimizable graphs",
+   "as_cited": "Language agents as optimizable graphs",
+   "title_status": "as_cited",
+   "authors": [
+    "Mingchen Zhuge",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": "arXiv preprint arXiv:2402.16823 (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: source of the GPTSwarm agent",
+     "support_quote": "GPTSwarm (Zhuge et al., 2024) pioneers the use of optimizable graphs to construct agent systems, unifying language agent frameworks through modularity.",
+     "location": "paper.txt L252 (Sec.3)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "source of the GPTSwarm agent",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-025",
+   "title": "Agentless: Demystifying llm-based software engineering agents",
+   "as_cited": "Agentless: Demystifying llm-based software engineering agents",
+   "title_status": "as_cited",
+   "authors": [
+    "Chunqiu Steven Xia",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": "arXiv preprint (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: reference system on SWE-Bench Lite",
+     "support_quote": "Agentless (Xia et al., 2024)",
+     "location": "paper.txt Tab.3 (L312)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "reference system on SWE-Bench Lite",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-026",
+   "title": "Autonomous evaluation and refinement of digital agents",
+   "as_cited": "Autonomous evaluation and refinement of digital agents",
+   "title_status": "as_cited",
+   "authors": [
+    "Jiayi Pan",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": "arXiv preprint arXiv:2404.06474 (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: reference system on WebArena and planned browsing component",
+     "support_quote": "Auto Eval & Refine Pan et al. (2024), an agent retry-on-error strategy with Reflexion Shinn et al. (2024) prompts and task completion reward models",
+     "location": "paper.txt L893 (App.A)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "reference system on WebArena and planned browsing component",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-027",
+   "title": "Autowebglm: Bootstrap and reinforce a large language model-based web navigating agent",
+   "as_cited": "Autowebglm: Bootstrap and reinforce a large language model-based web navigating agent",
+   "title_status": "as_cited",
+   "authors": [
+    "Hanyu Lai",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": "arXiv preprint arXiv:2404.03648 (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: trained reference system on WebArena",
+     "support_quote": "Trained 7B with human/agent hybrid annotation",
+     "location": "paper.txt Tab.5 (L568)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "trained reference system on WebArena",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-028",
+   "title": "Lemur: Harmonizing natural language and code for language agents",
+   "as_cited": "Lemur: Harmonizing natural language and code for language agents",
+   "title_status": "as_cited",
+   "authors": [
+    "Yiheng Xu",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "arXiv preprint arXiv:2310.06830 (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: reference system on WebArena",
+     "support_quote": "Lemur-chat-70b",
+     "location": "paper.txt Tab.5 (L568)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "reference system on WebArena",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-029",
+   "title": "Large language models can self-improve at web agent tasks",
+   "as_cited": "Large language models can self-improve at web agent tasks",
+   "title_status": "as_cited",
+   "authors": [
+    "Ajay Patel",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": "arXiv preprint arXiv:2405.20309 (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: trained reference system on WebArena",
+     "support_quote": "Trained 72B with self-improvement synthetic data",
+     "location": "paper.txt Tab.5 (L568)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "trained reference system on WebArena",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-030",
+   "title": "A data-driven approach for learning to control computers",
+   "as_cited": "A data-driven approach for learning to control computers",
+   "title_status": "as_cited",
+   "authors": [
+    "Peter C Humphreys",
+    "et al."
+   ],
+   "year": 2022,
+   "venue": "International Conference on Machine Learning, pp. 9466-9482. PMLR (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: trained specialist reference on MiniWoB++ (CC-NET)",
+     "support_quote": "Trained specialist model with RL and human annotated BC",
+     "location": "paper.txt Tab.5 (L586)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "trained specialist reference on MiniWoB++ (CC-NET)",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-031",
+   "title": "Evaluating large language models trained on code",
+   "as_cited": "Evaluating large language models trained on code",
+   "title_status": "as_cited",
+   "authors": [
+    "Mark Chen",
+    "et al."
+   ],
+   "year": 2021,
+   "venue": "arXiv preprint arXiv:2107.03374 (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: metric definition source",
+     "support_quote": "We follow the setup from Muennighoff et al. (2024) using pass@k (Chen et al., 2021).",
+     "location": "paper.txt L466 (Sec.4.2.1)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "metric definition source",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-032",
+   "title": "Reflexion: Language agents with verbal reinforcement learning",
+   "as_cited": "Reflexion: Language agents with verbal reinforcement learning",
+   "title_status": "as_cited",
+   "authors": [
+    "Noah Shinn",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": "Advances in Neural Information Processing Systems, 36 (as cited)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: prompting method inside a reference web agent",
+     "support_quote": "Auto Eval & Refine Pan et al. (2024), an agent retry-on-error strategy with Reflexion Shinn et al. (2024) prompts",
+     "location": "paper.txt L893 (App.A)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "prompting method inside a reference web agent",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-033",
+   "title": "Auto-gpt: An autonomous gpt-4 experiment",
+   "as_cited": "Auto-gpt: An autonomous gpt-4 experiment",
+   "title_status": "as_cited",
+   "authors": [
+    "Significant Gravitas"
+   ],
+   "year": 2023,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "DOCUMENTATION",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: general agent and GAIA reference system",
+     "support_quote": "Notable works such as Auto-GPT Gravitas (2023) harness LLMs for task completion by decomposing user goals into executable steps.",
+     "location": "paper.txt L901 (App.C)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "general agent and GAIA reference system",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-034",
+   "title": "LangChain",
+   "as_cited": "LangChain",
+   "title_status": "as_cited",
+   "authors": [
+    "Harrison Chase"
+   ],
+   "year": 2022,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "DOCUMENTATION",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: agent framework",
+     "support_quote": "LangChain and LangGraph Chase (2022) provide foundational building blocks with basic runtime support",
+     "location": "paper.txt L902 (App.C)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "agent framework",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  },
+  {
+   "id": "SRC-035",
+   "title": "CrewAI",
+   "as_cited": "CrewAI",
+   "title_status": "as_cited",
+   "authors": [
+    "CrewAI"
+   ],
+   "year": 2024,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "DOCUMENTATION",
+   "peer_review_known": false,
+   "domain": "LLM agents",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "How the OpenHands paper describes this work: agent framework",
+     "support_quote": "CrewAI CrewAI (2024) focuses on orchestrating multi-agent communications",
+     "location": "paper.txt L902 (App.C)",
+     "strength": "description by the citing authors only"
+    }
+   ],
+   "why_useful": "agent framework",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method",
+    "Results"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Registered from the project's own reference list and text; the cited work itself was not read (no web). Publication status is taken from the project's citation, or set conservatively to PREPRINT when the project gives no venue. Cite only for how the OpenHands paper describes it.",
+   "permitted_use": [
+    "content_citation"
+   ],
+   "citation_count": null
+  }
+ ]
+}

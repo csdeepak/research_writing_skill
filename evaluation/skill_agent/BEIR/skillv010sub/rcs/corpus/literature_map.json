@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-09-27",
+  "chosen_dimensions": ["task/domain coverage breadth", "whether retrieval is the primary evaluated task", "corpus scale (favors dense vs. lexical)"],
+  "rationale": "These three dimensions are exactly what BEIR's own gap argument turns on (Section 2): prior broad evaluations are narrow in task coverage, treat retrieval as secondary, and use small corpora that structurally favor one architecture family.",
+  "matrix_prior_benchmarks": [
+    {
+      "source": "SRC-019 (MultiReQA, Guo et al., 2020)",
+      "problem_framing": "cross-domain evaluation of sentence-level answer retrieval for question answering",
+      "method_family": "n/a (an evaluation suite, not a retrieval method)",
+      "key_assumption": "one task type (QA) generalizes to represent retrieval broadly",
+      "data_eval": "8 QA datasets; 5/8 Wikipedia-based; 6/8 with fewer than 100k candidate sentences",
+      "strength": "cross-domain within QA; sentence-level granularity",
+      "weakness_limit": "single task type; small corpora, a scale reported (via SRC-054) to favor dense over lexical retrieval",
+      "relation_to_beir": "BEIR extends coverage from 1 task/8 datasets to 9 tasks/18 datasets and reports large-corpus results, avoiding the small-corpus advantage for dense methods"
+    },
+    {
+      "source": "SRC-050 (KILT, Petroni et al., 2020)",
+      "problem_framing": "benchmark for knowledge-intensive language tasks (of which retrieval is one component)",
+      "method_family": "n/a (an evaluation suite)",
+      "key_assumption": "Wikipedia is a sufficient retrieval corpus for knowledge-intensive tasks",
+      "data_eval": "5 tasks / 11 datasets, all retrieving only from Wikipedia; retrieval is not the primary evaluated task",
+      "strength": "large task variety within knowledge-intensive NLP",
+      "weakness_limit": "single domain (Wikipedia); retrieval quality is not the object of evaluation",
+      "relation_to_beir": "BEIR isolates retrieval itself as the object of evaluation and spans domains beyond Wikipedia (bio-medical, finance, Twitter, news, argumentation, community forums)"
+    }
+  ],
+  "matrix_architecture_families": [
+    {"source":"SRC-055 (BM25, Robertson and Zaragoza, 2009)","problem_framing":"rank documents by lexical overlap with the query","method_family":"lexical","key_assumption":"query terms present in relevant documents (bag-of-words)","data_eval":"no training data required","strength":"no training needed; used in BEIR as the reference baseline","weakness_limit":"lexical gap: misses relevant documents with no shared vocabulary","relation_to_beir":"the one system evaluated in every BEIR dataset as the comparison point"},
+    {"source":"SRC-011 (DeepCT, Dai and Callan, 2020); SRC-079 (SPARTA, Zhao et al., 2021)","problem_framing":"learn term weights/representations on top of lexical matching","method_family":"sparse","key_assumption":"a BERT-learned term-weighting/expansion signal transfers across domains","data_eval":"trained on MS MARCO","strength":"strong in-domain (MS MARCO) performance","weakness_limit":"BEIR finds both underperform BM25 on nearly all 18 zero-shot datasets"},
+    {"source":"SRC-047 (docT5query, Nogueira and Lin, 2019)","problem_framing":"expand documents with model-generated queries, then rank lexically","method_family":"sparse (document expansion)","key_assumption":"a generative model can add domain-appropriate vocabulary a lexical matcher would otherwise miss","data_eval":"T5 trained on MS MARCO, applied to generate 40 queries/document per target dataset","strength":"BEIR finds it one of the few systems that generalizes well (beats BM25 on 11/18)","weakness_limit":"still fundamentally a lexical-matching backend"},
+    {"source":"SRC-031 (DPR, Karpukhin et al., 2020); SRC-073 (ANCE, Xiong et al., 2020); SRC-023 (TAS-B, Hofstatter et al., 2021)","problem_framing":"map queries/documents to a shared dense vector space","method_family":"dense (bi-encoder)","key_assumption":"a single learned vector captures the semantics needed for matching across domains","data_eval":"trained on MS MARCO (ANCE, TAS-B) or 4 QA datasets (DPR)","strength":"can capture semantic matches beyond shared vocabulary","weakness_limit":"BEIR finds all three underperform BM25 on average zero-shot, DPR most severely"},
+    {"source":"SRC-032 (ColBERT, Khattab and Zaharia, 2020)","problem_framing":"keep token-level representations and compare them at query time","method_family":"late-interaction","key_assumption":"preserving fine-grained token interactions improves transfer over single-vector compression","data_eval":"trained on MS MARCO","strength":"BEIR's second-best average zero-shot performance","weakness_limit":"large index (multiple vectors per document); still underperforms BM25 on 9/18 datasets"},
+    {"source":"SRC-070 (MiniLM cross-encoder re-ranker, Wang et al., 2020), used as BM25+CE","problem_framing":"re-score a first-stage candidate list with full cross-attention between query and document","method_family":"re-ranking","key_assumption":"cross-attention over the full query-document pair, applied only to a short candidate list, is affordable and effective","data_eval":"trained on MS MARCO via knowledge distillation","strength":"BEIR's best average zero-shot performance (+11% vs BM25, beats it on 16/18)","weakness_limit":"highest per-query latency (>350ms) of all systems compared"}
+  ]
+}

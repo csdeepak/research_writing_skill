@@ -1,0 +1,11 @@
+{
+  "mode": "B",
+  "primary": "ML researchers from other subfields (adjacent researchers): they know general ML, deep learning, evaluation practice and statistics",
+  "secondary": "reviewers and replicators checking numbers and setup",
+  "tertiary": "later readers wanting the abstract and limitations to stand alone",
+  "assumed_known": ["large language models", "prompting, zero-shot and few-shot", "chain-of-thought prompting", "accuracy / success rate", "train/test evaluation and baselines", "statistical variance and seeds", "REST API and container basics at a general level"],
+  "not_assumed": ["LLM agent frameworks and their vocabulary", "SWE-Bench, its Lite subset, resolve rate, hint text", "CodeAct", "IPython/Jupyter, Playwright, accessibility tree", "WebArena, MiniWoB++, GAIA, GPQA, AgentBench, MINT, ProofWriter, Entity Deduction Arena", "sandbox and docker image tagging"],
+  "binding_personas": ["A", "B", "E"],
+  "term_budget": {"per_paragraph": 2, "abstract_acronyms": 1},
+  "source": "task statement 2026-09-29"
+}

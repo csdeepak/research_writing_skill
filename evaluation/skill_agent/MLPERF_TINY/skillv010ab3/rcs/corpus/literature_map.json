@@ -1,0 +1,32 @@
+{
+ "dimensions": [
+  {
+   "name": "existing benchmarks",
+   "sources": [
+    "SRC-001",
+    "SRC-002"
+   ],
+   "achieves": "CoreMark: standard for MCU-class devices; MLPerf inference: ML inference suite",
+   "limit": "per the authors, neither covers TinyML workloads on tiny hardware with power",
+   "relation": "motivates the gap"
+  },
+  {
+   "name": "datasets and reference models",
+   "sources": [
+    "SRC-003",
+    "SRC-004",
+    "SRC-005",
+    "SRC-006",
+    "SRC-007",
+    "SRC-008",
+    "SRC-009",
+    "SRC-010",
+    "SRC-011",
+    "SRC-012",
+    "SRC-013"
+   ],
+   "relation": "provide the task data and model families reused by the benchmark"
+  }
+ ],
+ "note": "Works read at abstract level only; used only for roles stated in the project paper."
+}

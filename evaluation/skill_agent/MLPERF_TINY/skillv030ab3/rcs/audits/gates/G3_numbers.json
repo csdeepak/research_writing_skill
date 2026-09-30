@@ -1,0 +1,31 @@
+{
+  "tool": "verify_numbers",
+  "draft": ".rcs/drafts/v001/paper.md",
+  "draft_sha256": "7a7d5df5bd388acc46f51c8736d4f302dc3e2c341b2fb63c1890aa8ba2e81290",
+  "strict": false,
+  "errors": 0,
+  "warnings": 0,
+  "findings": [
+    {
+      "rule": "DERIVED_MATCH",
+      "level": "INFO",
+      "line": 83,
+      "excerpt": "1.5",
+      "message": "matches only a difference/ratio of two source numbers: confirm the derivation"
+    },
+    {
+      "rule": "DERIVED_MATCH",
+      "level": "INFO",
+      "line": 90,
+      "excerpt": "1.5",
+      "message": "matches only a difference/ratio of two source numbers: confirm the derivation"
+    },
+    {
+      "rule": "DERIVED_MATCH",
+      "level": "INFO",
+      "line": 91,
+      "excerpt": "1.6",
+      "message": "matches only a difference/ratio of two source numbers: confirm the derivation"
+    }
+  ]
+}

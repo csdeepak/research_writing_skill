@@ -1,0 +1,46 @@
+{
+ "dimensions": [
+  {
+   "dimension": "framework scope and runtime",
+   "sources": [
+    "SRC-001",
+    "SRC-002",
+    "SRC-003",
+    "SRC-004",
+    "SRC-005",
+    "SRC-006",
+    "SRC-007"
+   ],
+   "achieves": "building blocks, multi-agent conversation, orchestration; task-specific software-engineering agents",
+   "shared_limit": "per the OpenHands authors: basic runtime support, stateless command execution, limited sandboxed interpreter, single-domain focus",
+   "relation": "OpenHands combines runtime, skills, delegation and evaluation in one platform"
+  },
+  {
+   "dimension": "action interface and tools",
+   "sources": [
+    "SRC-006",
+    "SRC-008",
+    "SRC-010",
+    "SRC-041"
+   ],
+   "achieves": "code as action space; agent-computer interface; browser action language",
+   "relation": "OpenHands adopts CodeAct actions, BrowserGym language and SWE-Agent-adapted editing tools"
+  },
+  {
+   "dimension": "evaluation benchmarks",
+   "sources": [
+    "SRC-009",
+    "SRC-012",
+    "SRC-013",
+    "SRC-015",
+    "SRC-016",
+    "SRC-017",
+    "SRC-018",
+    "SRC-019",
+    "SRC-020",
+    "SRC-021"
+   ],
+   "relation": "15 benchmarks integrated (Table 2)"
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "id": "TAB-1",
+ "type": "table",
+ "visual_id": "T001",
+ "purpose": "give the four arms side by side with exact values",
+ "rq": "RQ1",
+ "takeaway": "A1 cuts tokens and keeps answerability but is lower on accuracy; A3 is cheapest but loses answerability.",
+ "claims": [
+  "C001",
+  "C004",
+  "C006",
+  "C007",
+  "C008",
+  "C033"
+ ],
+ "evidence": [
+  "E019",
+  "E014",
+  "E017",
+  "E016",
+  "E015"
+ ],
+ "source_data": [
+  "project/data/results/n10_cost_expanded_20260726_93f9058.json"
+ ],
+ "comparison_the_eye_must_make": "A1 against A0 and against A2 and A3",
+ "uncertainty_shown": "none in the table; interval and test are in the text and Figure 1",
+ "baseline_or_reference": "A0 global search",
+ "non_conclusions": "accuracy, answerability and route@1 cover seeds 66 to 110 only",
+ "honesty_checks": {
+  "axes_start": "n/a",
+  "all_conditions_shown": true,
+  "dual_axis": false,
+  "three_d": false,
+  "cherry_picked": false
+ },
+ "accessibility": {
+  "colorblind_safe": true,
+  "redundant_encoding": "n/a",
+  "min_font_pt_at_print": 7,
+  "alt_text": ""
+ },
+ "placement": "Section 4.1, after the first paragraph",
+ "caption": "Global search (A0) and ownership frozen at its prior (A2) cost about the same, learned-ownership routing (A1) costs fewer tokens per query with equal answerability but lower accuracy, and similarity routing (A3) is cheapest but answers far fewer queries.",
+ "source_script": ".rcs/plan/data/build_data.py"
+}

@@ -1,0 +1,1983 @@
+{
+ "project_root": ".",
+ "generated_at": "2026-09-29",
+ "generated_by": "AUTHOR-as-CORPUS",
+ "items": [
+  {
+   "id": "E001",
+   "kind": "dataset",
+   "summary": "BEIR contains 18 English zero-shot evaluation datasets drawn from 9 heterogeneous retrieval tasks.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 121,138"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "count": 18
+   },
+   "notes": "'In total, we include 18 English zero-shot evaluation datasets from 9 heterogeneous retrieval tasks.'",
+   "quantity": "num_zero_shot_datasets"
+  },
+  {
+   "id": "E002",
+   "kind": "dataset",
+   "summary": "Counting MS MARCO there are 19 datasets; only 8 of the 19 have training data.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 290"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "count": 19,
+    "with_training_data": 8
+   },
+   "notes": "'Only 8 out of 19 datasets (including MS MARCO) have training data denoting the practical importance for zero-shot retrieval benchmarking.'",
+   "quantity": "num_datasets_including_msmarco"
+  },
+  {
+   "id": "E003",
+   "kind": "dataset",
+   "summary": "The nine tasks are fact checking, citation prediction, duplicate question retrieval, argument retrieval, news retrieval, question answering, tweet retrieval, bio-medical IR and entity retrieval.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 121; Figure 1 lines 15-116"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "tasks": [
+     "Fact checking",
+     "Citation prediction",
+     "Duplicate question retrieval",
+     "Argument retrieval",
+     "News retrieval",
+     "Question answering",
+     "Tweet retrieval",
+     "Bio-medical IR",
+     "Entity retrieval"
+    ]
+   }
+  },
+  {
+   "id": "E004",
+   "kind": "dataset",
+   "summary": "Datasets vary in size (3.6k to 15M documents), average query length (3 to 192 words) and average document length (11 to 635 words).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 121"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "corpus_docs": "3.6k - 15M",
+    "avg_query_words": "3 - 192",
+    "avg_doc_words": "11 - 635"
+   },
+   "notes": "'datasets of various sizes (3.6k - 15M documents), and datasets with different query lengths (average query length between 3 and 192 words) and document lengths (average document length between 11 and 635 words)'"
+  },
+  {
+   "id": "E005",
+   "kind": "dataset",
+   "summary": "Per-dataset statistics from the README table: test queries, corpus size, relevant documents per query.",
+   "locator": {
+    "path": "project/README_1.md",
+    "anchor": "README table lines 340-358"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "MS MARCO": {
+     "queries": "6,980",
+     "corpus": "8.84M",
+     "rel_per_query": 1.1
+    },
+    "TREC-COVID": {
+     "queries": 50,
+     "corpus": "171K",
+     "rel_per_query": 493.5
+    },
+    "NFCorpus": {
+     "queries": 323,
+     "corpus": "3.6K",
+     "rel_per_query": 38.2
+    },
+    "BioASQ": {
+     "queries": 500,
+     "corpus": "14.91M",
+     "rel_per_query": 4.7
+    },
+    "NQ": {
+     "queries": "3,452",
+     "corpus": "2.68M",
+     "rel_per_query": 1.2
+    },
+    "HotpotQA": {
+     "queries": "7,405",
+     "corpus": "5.23M",
+     "rel_per_query": 2.0
+    },
+    "FiQA-2018": {
+     "queries": 648,
+     "corpus": "57K",
+     "rel_per_query": 2.6
+    },
+    "Signal-1M (RT)": {
+     "queries": 97,
+     "corpus": "2.86M",
+     "rel_per_query": 19.6
+    },
+    "TREC-NEWS": {
+     "queries": 57,
+     "corpus": "595K",
+     "rel_per_query": 19.6
+    },
+    "Robust04": {
+     "queries": 249,
+     "corpus": "528K",
+     "rel_per_query": 69.9
+    },
+    "ArguAna": {
+     "queries": "1,406",
+     "corpus": "8.67K",
+     "rel_per_query": 1.0
+    },
+    "Touche-2020": {
+     "queries": 49,
+     "corpus": "382K",
+     "rel_per_query": 19.0
+    },
+    "CQADupStack": {
+     "queries": "13,145",
+     "corpus": "457K",
+     "rel_per_query": 1.4
+    },
+    "Quora": {
+     "queries": "10,000",
+     "corpus": "523K",
+     "rel_per_query": 1.6
+    },
+    "DBPedia": {
+     "queries": 400,
+     "corpus": "4.63M",
+     "rel_per_query": 38.2
+    },
+    "SCIDOCS": {
+     "queries": "1,000",
+     "corpus": "25K",
+     "rel_per_query": 4.9
+    },
+    "FEVER": {
+     "queries": "6,666",
+     "corpus": "5.42M",
+     "rel_per_query": 1.2
+    },
+    "Climate-FEVER": {
+     "queries": "1,535",
+     "corpus": "5.42M",
+     "rel_per_query": 3.0
+    },
+    "SciFact": {
+     "queries": 300,
+     "corpus": "5K",
+     "rel_per_query": 1.1
+    }
+   },
+   "notes": "Agrees with paper Table 1 (e.g. TREC-COVID 171,332 docs, BioASQ 14,914,602, NFCorpus 3,633 at lines 236-245)."
+  },
+  {
+   "id": "E006",
+   "kind": "dataset",
+   "summary": "Most datasets have binary relevance judgements; some have few relevant documents per query (<2) while TREC-COVID can have up to 500. All datasets except ArguAna have short queries (a single sentence or 2-3 keywords).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 290"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'All datasets except ArguAna [67] have short queries (either a single sentence or 2-3 keywords).'"
+  },
+  {
+   "id": "E007",
+   "kind": "method_detail",
+   "summary": "BEIR provides a standard data format (corpus, queries, qrels), a Python package (pip install beir) with wrappers for existing retrieval toolkits, and IR metrics; a leaderboard is planned.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 291,296,350-351; README lines 51,64-68,80-85"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "format": "corpus, queries, qrels",
+    "install": "pip install beir"
+   },
+   "notes": "'BEIR introduces a standard format (corpus, queries and qrels) and converts existing datasets in this easy universal data format'"
+  },
+  {
+   "id": "E008",
+   "kind": "method_detail",
+   "summary": "All scores are nDCG@10 computed with the Python interface of the official TREC evaluation tool.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 353"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "metric_name": "nDCG@10"
+   }
+  },
+  {
+   "id": "E009",
+   "kind": "rationale_stated",
+   "summary": "Reason for a single metric (nDCG@10): results must be comparable across tasks and datasets; Precision/Recall are rank-unaware, MRR and MAP cannot handle graded relevance, nDCG balances both.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 353"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'we argue that it is important to leverage a single evaluation metric that can be computed comparably across all tasks. Decision support metrics such as Precision and Recall which are both rank unaware are not suitable. Binary rank-aware metrics such as MRR and MAP fail to evaluate tasks with graded relevance judgements. We find that Normalised Cumulative Discount Gain (nDCG@k) provides a good balance'"
+  },
+  {
+   "id": "E010",
+   "kind": "rationale_stated",
+   "summary": "Selection factors (i) diverse tasks and (ii) diverse domains: retrieval systems should be evaluated across query/document lengths and from generic to specialized domains.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 137"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'Retrieval systems should be evaluated in various types of domains. From broad ones like News or Wikipedia, to highly specialized ones such as scientific publications in one particular field.'"
+  },
+  {
+   "id": "E011",
+   "kind": "rationale_stated",
+   "summary": "Selection factor (iii) task difficulty: a task solved easily by any algorithm is not useful for comparing models, so tasks believed to be challenging and not yet solved were chosen.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 137"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'If a task is easily solved by any algorithm, it will not be useful to compare various models used for evaluation.'"
+  },
+  {
+   "id": "E012",
+   "kind": "rationale_stated",
+   "summary": "Selection factor (iv) diverse annotation strategies: retrieval datasets are subject to annotation biases, so datasets created in many different ways (crowd-workers, experts, online community feedback) were chosen to reduce their impact.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 137"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'Creating retrieval datasets are inherently complex and are subject to annotation biases (see Section 6 for details), which hinders a fair comparison of approaches. To reduce the impact of such biases, we selected datasets which have been created in many different ways'"
+  },
+  {
+   "id": "E013",
+   "kind": "rationale_stated",
+   "summary": "MS MARCO results are reported but excluded from the zero-shot comparison because most evaluated approaches are trained on it.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 138"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'As the majority of the evaluated approaches are trained on the MS MARCO dataset, we also report performances on this dataset, but don't include the outcome in our zero-shot comparison.'"
+  },
+  {
+   "id": "E014",
+   "kind": "rationale_stated",
+   "summary": "Only the first 512 word pieces of every document are used for all neural architectures, because of the length limits of transformer-based networks.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 355"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "max_word_pieces": 512
+   },
+   "notes": "'Due to the length limitations of transformer-based networks, we use only the first 512 word pieces within all documents'"
+  },
+  {
+   "id": "E015",
+   "kind": "method_detail",
+   "summary": "Ten publicly available systems from five architecture families are evaluated: lexical (BM25), sparse (DeepCT, SPARTA, docT5query), dense (DPR, ANCE, TAS-B, GenQ), late-interaction (ColBERT), re-ranking (BM25+CE); public checkpoints in Table 6.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 355-363, 972-974"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "count": 10
+   }
+  },
+  {
+   "id": "E016",
+   "kind": "method_detail",
+   "summary": "BM25 uses Anserini with default Lucene parameters (k=0.9, b=0.4); title and passage are indexed as separate fields.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 357"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "k": 0.9,
+    "b": 0.4
+   }
+  },
+  {
+   "id": "E017",
+   "kind": "rationale_stated",
+   "summary": "Anserini BM25 was chosen as the lexical baseline because it performed best compared with Elasticsearch BM25 and Anserini with RM3 expansion.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 357"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'we also tested Elasticsearch BM25 and Anserini + RM3 expansion, but found Anserini BM25 to perform the best.'"
+  },
+  {
+   "id": "E018",
+   "kind": "method_detail",
+   "summary": "DeepCT: bert-base-uncased trained on MS MARCO to learn term weights; produces a pseudo-document; used with BM25 (default Anserini parameters).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 360"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E019",
+   "kind": "rationale_stated",
+   "summary": "DeepCT is used with default Anserini BM25 parameters, which were empirically found to perform better than the parameters tuned on MS MARCO.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 360"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'which we empirically found to perform better over the tuned MS MARCO parameters'"
+  },
+  {
+   "id": "E020",
+   "kind": "method_detail",
+   "summary": "SPARTA: DistilBERT fine-tuned on MS MARCO; documents become sparse vectors (30k dimensional; 2,000 non-zero entries used).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 360"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "nonzero_entries": 2000,
+    "dimensions": "30k"
+   }
+  },
+  {
+   "id": "E021",
+   "kind": "rationale_stated",
+   "summary": "SPARTA was re-implemented by the authors because the original implementation is not publicly available.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 360"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'As the original implementation is not publicly available, we re-implemented the approach.'"
+  },
+  {
+   "id": "E022",
+   "kind": "method_detail",
+   "summary": "docT5query: T5 (base) trained on MS MARCO generates 40 synthetic queries per document, appended to the document; BM25 with default Anserini parameters is used for search.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 360"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "queries_per_document": 40
+   }
+  },
+  {
+   "id": "E023",
+   "kind": "method_detail",
+   "summary": "DPR: two-tower bi-encoder trained with a single BM25 hard negative and in-batch negatives; the Multi model (bert-base-uncased, trained on NQ, TriviaQA, WebQuestions and CuratedTREC) is used, not MS MARCO.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 361"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E024",
+   "kind": "rationale_stated",
+   "summary": "The DPR Multi model was used because it performed better than the single-dataset NQ model in the authors' setting.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 361"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'We found the open-sourced Multi model to perform better over the single NQ model in our setting.'"
+  },
+  {
+   "id": "E025",
+   "kind": "method_detail",
+   "summary": "ANCE: RoBERTa bi-encoder with hard negatives from an approximate-nearest-neighbour index that is updated during fine-tuning; trained on MS MARCO for 600K steps.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 361"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E026",
+   "kind": "method_detail",
+   "summary": "TAS-B: bi-encoder trained with Balanced Topic Aware Sampling and dual supervision from a cross-encoder and a ColBERT model; loss combines pairwise Margin-MSE and in-batch negatives.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 361"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E027",
+   "kind": "method_detail",
+   "summary": "GenQ: T5 (base) fine-tuned 2 epochs on MS MARCO generates 5 synthetic queries per target document (top-k 25, top-p 0.95); TAS-B is then further fine-tuned on these pairs with in-batch negatives, giving one independent model per dataset.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 361"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "queries_per_document": 5,
+    "top_k": 25,
+    "top_p": 0.95
+   }
+  },
+  {
+   "id": "E028",
+   "kind": "rationale_stated",
+   "summary": "For GenQ the number of target documents per dataset is capped at 100K because of resource constraints.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 361"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "cap_documents": "100K"
+   },
+   "notes": "'Due to resource constraints, we cap the maximum number of target documents in each dataset to 100K.'"
+  },
+  {
+   "id": "E029",
+   "kind": "method_detail",
+   "summary": "ColBERT: bert-base-uncased (max sequence length 300) trained on MS MARCO for 300K steps; used end-to-end: top candidates from faiss ANN (depth 100), then re-scored by late interaction (sum over query terms of max similarity).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 362"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E030",
+   "kind": "method_detail",
+   "summary": "BM25+CE: cross-encoder re-ranks the top-100 hits of BM25; a 6-layer, 384-hidden MiniLM cross-encoder trained on MS MARCO with knowledge distillation from three teacher models.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 363"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E031",
+   "kind": "rationale_stated",
+   "summary": "The MiniLM cross-encoder was chosen after evaluating 14 public cross-attentional re-rankers, because it offered the best performance on MS MARCO.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 363"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'We evaluated 14 different cross-attentional re-ranking models ... and found that a 6-layer, 384-h MiniLM cross-encoder model offers the best performance on MS MARCO.'"
+  },
+  {
+   "id": "E032",
+   "kind": "method_detail",
+   "summary": "Dataset processing: TREC-NEWS exponential-gain judgements converted to linear labels; Touche-2020 negative judgements (-2) replaced by zero; 25 missing Wikipedia articles added to the Climate-FEVER corpus.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 859,866,882"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E033",
+   "kind": "rationale_stated",
+   "summary": "The TREC-NEWS and Touche-2020 label conversions were made 'for simplicity'.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 859,866"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'For simplicity, we convert the original exponential gain relevant judgements to linear labels.' / 'but for simplicity we substitute them as zero.'"
+  },
+  {
+   "id": "E034",
+   "kind": "method_detail",
+   "summary": "Domain diversity is measured with a pairwise weighted Jaccard similarity on unigram word overlap between all dataset pairs.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 293, 889-891"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E035",
+   "kind": "observation",
+   "summary": "The authors observe rather low weighted Jaccard word overlap across different domains and read it as an indication that BEIR is challenging.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 293"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "conditions": "out-of-distribution domains (authors' wording)",
+   "notes": "'we observe a rather low weighted Jaccard word overlap across different domains, indicating that BEIR is a challenging benchmark where approaches must generalize well to diverse out-of-distribution domains.'"
+  },
+  {
+   "id": "E040",
+   "kind": "rationale_stated",
+   "summary": "Motivation: creating a large training corpus is time-consuming and expensive, hence many retrieval systems are applied zero-shot without training data.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 11"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'creating a large training corpus is often time-consuming and expensive and hence many retrieval systems are applied in a zero-shot setup, with no available training data to train the system.'"
+  },
+  {
+   "id": "E041",
+   "kind": "rationale_stated",
+   "summary": "Motivation: it is unclear how well trained neural retrieval models perform on other text domains or tasks, and how sparse versus dense embeddings behave on out-of-distribution data.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 120"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'it is unclear how well existing trained neural models will perform for other text domains or textual retrieval tasks. ... it is unclear how well different approaches, like sparse embeddings vs. dense embeddings, generalize to out-of-distribution data.'"
+  },
+  {
+   "id": "E042",
+   "kind": "rationale_stated",
+   "summary": "Motivation for BEIR: prior retrieval benchmarks are narrow, focusing on a single task or a certain domain; neural retrievers have been studied in homogeneous and narrow settings, limiting insight into out-of-distribution behaviour.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 7,121"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'Prior retrieval benchmarks [19, 50] have issues of a comparatively narrow evaluation focusing either only on a single task, like question-answering, or on a certain domain.'"
+  },
+  {
+   "id": "E043",
+   "kind": "external_fact",
+   "summary": "In most prior work neural retrievers are evaluated on the same dataset they are trained on (e.g. Natural Questions, 133k training examples; MS MARCO, 533k), where gains over BM25 are reported.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 10"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'In most prior work, approaches are afterward evaluated on the same dataset, where significant performance gains over lexical approaches like BM25 are demonstrated [15, 31, 46].' (the paper's own text; not verified against those sources)"
+  },
+  {
+   "id": "E044",
+   "kind": "external_fact",
+   "summary": "Characterisation of prior benchmarks as given in the paper: MultiReQA has eight QA datasets, sentence-level retrieval, five of eight from Wikipedia, six of eight with fewer than 100k candidate sentences; KILT has five knowledge-intensive tasks with eleven datasets, retrieval is not its primary task and it retrieves only from Wikipedia.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 127-131"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Description is the paper's own; the cited works were not read."
+  },
+  {
+   "id": "E045",
+   "kind": "external_fact",
+   "summary": "Retrieval is a first step in open-domain question answering, claim verification and duplicate-question detection; retrieval was traditionally dominated by lexical approaches such as TF-IDF and BM25, which suffer from the lexical gap and treat text as a bag of words.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 9,133"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'these approaches suffer from lexical gap [5] and are able to only retrieve documents containing keywords present within the query.'"
+  },
+  {
+   "id": "E046",
+   "kind": "external_fact",
+   "summary": "Neural approaches as described in the paper: document expansion (docT5query) and term weighting (DeepCT, SPARTA) keep an inverted index; dense retrievers embed queries and documents in a shared vector space (bi-encoders); ColBERT keeps token-level embeddings and a maximum-similarity function; re-rankers apply BERT cross-attention over first-stage output at high computational overhead.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 133-135"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E047",
+   "kind": "observation",
+   "summary": "Authors' summary of findings: no single approach consistently outperforms others on all datasets; in-domain performance does not correlate well with zero-shot capability; computationally expensive models (re-ranking, late interaction) perform best; efficient dense/sparse approaches can substantially underperform BM25; BM25 remains a strong baseline.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 122; abstract line 7"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'we find that no single approach consistently outperforms other approaches on all datasets. Further, we notice that the in-domain performance of a model does not correlate well with its generalization capabilities: models fine-tuned with identical training data might generalize differently.'"
+  },
+  {
+   "id": "E048",
+   "kind": "dataset",
+   "summary": "The README lists 17 preprocessed benchmark datasets; four datasets (BioASQ, Signal-1M (RT), TREC-NEWS, Robust04) are marked not public and come with reproduction instructions.",
+   "locator": {
+    "path": "project/README_1.md",
+    "anchor": "README lines 82,343-349"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "count": 17
+   },
+   "notes": "Different quantity from the 18 datasets of the paper (E001): preprocessed-and-downloadable versus benchmark members.",
+   "quantity": "num_preprocessed_datasets_readme"
+  },
+  {
+   "id": "E049",
+   "kind": "dataset",
+   "summary": "Licences: authors of 4 of the 19 datasets (NFCorpus, FiQA-2018, Quora, Climate-Fever) report no licence; TREC-NEWS, Robust04 and BioASQ archives are under copyright; others carry licences listed in Appendix E.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 885-886"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E050",
+   "kind": "result",
+   "summary": "In-domain MS MARCO dev nDCG@10 per system (DPR not trained on MS MARCO).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 2 lines 372-384,490-495"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "nDCG@10": {
+     "BM25": 0.228,
+     "DeepCT": 0.296,
+     "SPARTA": 0.351,
+     "docT5query": 0.338,
+     "DPR": 0.177,
+     "ANCE": 0.388,
+     "TAS-B": 0.408,
+     "GenQ": 0.408,
+     "ColBERT": 0.401,
+     "BM25+CE": 0.413
+    }
+   },
+   "conditions": "MS MARCO dev, 6,980 queries; double-dagger marks in-domain scores in Table 2",
+   "notes": "Table 2 columns reconstructed from extraction order; cross-checked with prose (BM25 0.228; gap of 7-18 points)."
+  },
+  {
+   "id": "E051",
+   "kind": "result",
+   "summary": "BM25 heavily underperforms neural approaches by 7-18 points on in-domain MS MARCO.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 366"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'We observe BM25 heavily underperforms neural approaches by 7-18 points on in-domain MS MARCO.'"
+  },
+  {
+   "id": "E052",
+   "kind": "result",
+   "summary": "Table 2 row 'Avg. Performance vs. BM25' (zero-shot average relative to BM25) per system.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 2 lines 433,444,455,466,477,488,511,521,531"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "DeepCT": "-27.9%",
+    "SPARTA": "-20.3%",
+    "docT5query": "+1.6%",
+    "DPR": "-47.7%",
+    "ANCE": "-7.4%",
+    "TAS-B": "-2.8%",
+    "GenQ": "-3.6%",
+    "ColBERT": "+2.5%",
+    "BM25+CE": "+11%"
+   },
+   "conditions": "18 zero-shot datasets; the paper does not define the averaging further",
+   "notes": "Values as printed, assigned to systems by column-group order (checked: BM25+CE highest, DPR lowest, consistent with prose)."
+  },
+  {
+   "id": "E060",
+   "kind": "result",
+   "summary": "Table 2 nDCG@10 of BM25 on the 18 BEIR datasets (order as in Table 1).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 2 lines 388-531"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "nDCG@10": {
+     "TREC-COVID": 0.656,
+     "BioASQ": 0.465,
+     "NFCorpus": 0.325,
+     "NQ": 0.329,
+     "HotpotQA": 0.603,
+     "FiQA-2018": 0.236,
+     "Signal-1M (RT)": 0.33,
+     "TREC-NEWS": 0.398,
+     "Robust04": 0.408,
+     "ArguAna": 0.315,
+     "Touche-2020": 0.367,
+     "CQADupStack": 0.299,
+     "Quora": 0.789,
+     "DBPedia": 0.313,
+     "SCIDOCS": 0.158,
+     "FEVER": 0.753,
+     "Climate-FEVER": 0.213,
+     "SciFact": 0.665
+    }
+   },
+   "conditions": "zero-shot except DPR on NQ (0.474, in-domain, double-dagger)",
+   "notes": "Cells recovered from the damaged Table 2 extraction by column-group order. Cross-checks that hold: TREC-COVID column equals Table 4 'original' row; TAS-B minus ANCE = 17.3 (TREC-COVID) and 7.8 (Touche); BM25+CE below BM25 on exactly ArguAna and Touche; ColBERT above BM25 on 9/18; TAS-B above ANCE on 14/18."
+  },
+  {
+   "id": "E061",
+   "kind": "result",
+   "summary": "Table 2 nDCG@10 of DeepCT on the 18 BEIR datasets (order as in Table 1).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 2 lines 388-531"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "nDCG@10": {
+     "TREC-COVID": 0.406,
+     "BioASQ": 0.407,
+     "NFCorpus": 0.283,
+     "NQ": 0.188,
+     "HotpotQA": 0.503,
+     "FiQA-2018": 0.191,
+     "Signal-1M (RT)": 0.269,
+     "TREC-NEWS": 0.22,
+     "Robust04": 0.287,
+     "ArguAna": 0.309,
+     "Touche-2020": 0.156,
+     "CQADupStack": 0.268,
+     "Quora": 0.691,
+     "DBPedia": 0.177,
+     "SCIDOCS": 0.124,
+     "FEVER": 0.353,
+     "Climate-FEVER": 0.066,
+     "SciFact": 0.63
+    }
+   },
+   "conditions": "zero-shot except DPR on NQ (0.474, in-domain, double-dagger)",
+   "notes": "Cells recovered from the damaged Table 2 extraction by column-group order. Cross-checks that hold: TREC-COVID column equals Table 4 'original' row; TAS-B minus ANCE = 17.3 (TREC-COVID) and 7.8 (Touche); BM25+CE below BM25 on exactly ArguAna and Touche; ColBERT above BM25 on 9/18; TAS-B above ANCE on 14/18."
+  },
+  {
+   "id": "E062",
+   "kind": "result",
+   "summary": "Table 2 nDCG@10 of SPARTA on the 18 BEIR datasets (order as in Table 1).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 2 lines 388-531"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "nDCG@10": {
+     "TREC-COVID": 0.538,
+     "BioASQ": 0.351,
+     "NFCorpus": 0.301,
+     "NQ": 0.398,
+     "HotpotQA": 0.492,
+     "FiQA-2018": 0.198,
+     "Signal-1M (RT)": 0.252,
+     "TREC-NEWS": 0.258,
+     "Robust04": 0.276,
+     "ArguAna": 0.279,
+     "Touche-2020": 0.175,
+     "CQADupStack": 0.257,
+     "Quora": 0.63,
+     "DBPedia": 0.314,
+     "SCIDOCS": 0.126,
+     "FEVER": 0.596,
+     "Climate-FEVER": 0.082,
+     "SciFact": 0.582
+    }
+   },
+   "conditions": "zero-shot except DPR on NQ (0.474, in-domain, double-dagger)",
+   "notes": "Cells recovered from the damaged Table 2 extraction by column-group order. Cross-checks that hold: TREC-COVID column equals Table 4 'original' row; TAS-B minus ANCE = 17.3 (TREC-COVID) and 7.8 (Touche); BM25+CE below BM25 on exactly ArguAna and Touche; ColBERT above BM25 on 9/18; TAS-B above ANCE on 14/18."
+  },
+  {
+   "id": "E063",
+   "kind": "result",
+   "summary": "Table 2 nDCG@10 of docT5query on the 18 BEIR datasets (order as in Table 1).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 2 lines 388-531"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "nDCG@10": {
+     "TREC-COVID": 0.713,
+     "BioASQ": 0.431,
+     "NFCorpus": 0.328,
+     "NQ": 0.399,
+     "HotpotQA": 0.58,
+     "FiQA-2018": 0.291,
+     "Signal-1M (RT)": 0.307,
+     "TREC-NEWS": 0.42,
+     "Robust04": 0.437,
+     "ArguAna": 0.349,
+     "Touche-2020": 0.347,
+     "CQADupStack": 0.325,
+     "Quora": 0.802,
+     "DBPedia": 0.331,
+     "SCIDOCS": 0.162,
+     "FEVER": 0.714,
+     "Climate-FEVER": 0.201,
+     "SciFact": 0.675
+    }
+   },
+   "conditions": "zero-shot except DPR on NQ (0.474, in-domain, double-dagger)",
+   "notes": "Cells recovered from the damaged Table 2 extraction by column-group order. Cross-checks that hold: TREC-COVID column equals Table 4 'original' row; TAS-B minus ANCE = 17.3 (TREC-COVID) and 7.8 (Touche); BM25+CE below BM25 on exactly ArguAna and Touche; ColBERT above BM25 on 9/18; TAS-B above ANCE on 14/18."
+  },
+  {
+   "id": "E064",
+   "kind": "result",
+   "summary": "Table 2 nDCG@10 of DPR on the 18 BEIR datasets (order as in Table 1).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 2 lines 388-531"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "nDCG@10": {
+     "TREC-COVID": 0.332,
+     "BioASQ": 0.127,
+     "NFCorpus": 0.189,
+     "NQ": 0.474,
+     "HotpotQA": 0.391,
+     "FiQA-2018": 0.112,
+     "Signal-1M (RT)": 0.155,
+     "TREC-NEWS": 0.161,
+     "Robust04": 0.252,
+     "ArguAna": 0.175,
+     "Touche-2020": 0.131,
+     "CQADupStack": 0.153,
+     "Quora": 0.248,
+     "DBPedia": 0.263,
+     "SCIDOCS": 0.077,
+     "FEVER": 0.562,
+     "Climate-FEVER": 0.148,
+     "SciFact": 0.318
+    }
+   },
+   "conditions": "zero-shot except DPR on NQ (0.474, in-domain, double-dagger)",
+   "notes": "Cells recovered from the damaged Table 2 extraction by column-group order. Cross-checks that hold: TREC-COVID column equals Table 4 'original' row; TAS-B minus ANCE = 17.3 (TREC-COVID) and 7.8 (Touche); BM25+CE below BM25 on exactly ArguAna and Touche; ColBERT above BM25 on 9/18; TAS-B above ANCE on 14/18."
+  },
+  {
+   "id": "E065",
+   "kind": "result",
+   "summary": "Table 2 nDCG@10 of ANCE on the 18 BEIR datasets (order as in Table 1).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 2 lines 388-531"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "nDCG@10": {
+     "TREC-COVID": 0.654,
+     "BioASQ": 0.306,
+     "NFCorpus": 0.237,
+     "NQ": 0.446,
+     "HotpotQA": 0.456,
+     "FiQA-2018": 0.295,
+     "Signal-1M (RT)": 0.249,
+     "TREC-NEWS": 0.382,
+     "Robust04": 0.392,
+     "ArguAna": 0.415,
+     "Touche-2020": 0.24,
+     "CQADupStack": 0.296,
+     "Quora": 0.852,
+     "DBPedia": 0.281,
+     "SCIDOCS": 0.122,
+     "FEVER": 0.669,
+     "Climate-FEVER": 0.198,
+     "SciFact": 0.507
+    }
+   },
+   "conditions": "zero-shot except DPR on NQ (0.474, in-domain, double-dagger)",
+   "notes": "Cells recovered from the damaged Table 2 extraction by column-group order. Cross-checks that hold: TREC-COVID column equals Table 4 'original' row; TAS-B minus ANCE = 17.3 (TREC-COVID) and 7.8 (Touche); BM25+CE below BM25 on exactly ArguAna and Touche; ColBERT above BM25 on 9/18; TAS-B above ANCE on 14/18."
+  },
+  {
+   "id": "E066",
+   "kind": "result",
+   "summary": "Table 2 nDCG@10 of TAS-B on the 18 BEIR datasets (order as in Table 1).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 2 lines 388-531"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "nDCG@10": {
+     "TREC-COVID": 0.481,
+     "BioASQ": 0.383,
+     "NFCorpus": 0.319,
+     "NQ": 0.463,
+     "HotpotQA": 0.584,
+     "FiQA-2018": 0.3,
+     "Signal-1M (RT)": 0.289,
+     "TREC-NEWS": 0.377,
+     "Robust04": 0.427,
+     "ArguAna": 0.429,
+     "Touche-2020": 0.162,
+     "CQADupStack": 0.314,
+     "Quora": 0.835,
+     "DBPedia": 0.384,
+     "SCIDOCS": 0.149,
+     "FEVER": 0.7,
+     "Climate-FEVER": 0.228,
+     "SciFact": 0.643
+    }
+   },
+   "conditions": "zero-shot except DPR on NQ (0.474, in-domain, double-dagger)",
+   "notes": "Cells recovered from the damaged Table 2 extraction by column-group order. Cross-checks that hold: TREC-COVID column equals Table 4 'original' row; TAS-B minus ANCE = 17.3 (TREC-COVID) and 7.8 (Touche); BM25+CE below BM25 on exactly ArguAna and Touche; ColBERT above BM25 on 9/18; TAS-B above ANCE on 14/18."
+  },
+  {
+   "id": "E067",
+   "kind": "result",
+   "summary": "Table 2 nDCG@10 of GenQ on the 18 BEIR datasets (order as in Table 1).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 2 lines 388-531"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "nDCG@10": {
+     "TREC-COVID": 0.619,
+     "BioASQ": 0.398,
+     "NFCorpus": 0.319,
+     "NQ": 0.358,
+     "HotpotQA": 0.534,
+     "FiQA-2018": 0.308,
+     "Signal-1M (RT)": 0.281,
+     "TREC-NEWS": 0.396,
+     "Robust04": 0.362,
+     "ArguAna": 0.493,
+     "Touche-2020": 0.182,
+     "CQADupStack": 0.347,
+     "Quora": 0.83,
+     "DBPedia": 0.328,
+     "SCIDOCS": 0.143,
+     "FEVER": 0.669,
+     "Climate-FEVER": 0.175,
+     "SciFact": 0.644
+    }
+   },
+   "conditions": "zero-shot except DPR on NQ (0.474, in-domain, double-dagger)",
+   "notes": "Cells recovered from the damaged Table 2 extraction by column-group order. Cross-checks that hold: TREC-COVID column equals Table 4 'original' row; TAS-B minus ANCE = 17.3 (TREC-COVID) and 7.8 (Touche); BM25+CE below BM25 on exactly ArguAna and Touche; ColBERT above BM25 on 9/18; TAS-B above ANCE on 14/18."
+  },
+  {
+   "id": "E068",
+   "kind": "result",
+   "summary": "Table 2 nDCG@10 of ColBERT on the 18 BEIR datasets (order as in Table 1).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 2 lines 388-531"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "nDCG@10": {
+     "TREC-COVID": 0.677,
+     "BioASQ": 0.474,
+     "NFCorpus": 0.305,
+     "NQ": 0.524,
+     "HotpotQA": 0.593,
+     "FiQA-2018": 0.317,
+     "Signal-1M (RT)": 0.274,
+     "TREC-NEWS": 0.393,
+     "Robust04": 0.391,
+     "ArguAna": 0.233,
+     "Touche-2020": 0.202,
+     "CQADupStack": 0.35,
+     "Quora": 0.854,
+     "DBPedia": 0.392,
+     "SCIDOCS": 0.145,
+     "FEVER": 0.771,
+     "Climate-FEVER": 0.184,
+     "SciFact": 0.671
+    }
+   },
+   "conditions": "zero-shot except DPR on NQ (0.474, in-domain, double-dagger)",
+   "notes": "Cells recovered from the damaged Table 2 extraction by column-group order. Cross-checks that hold: TREC-COVID column equals Table 4 'original' row; TAS-B minus ANCE = 17.3 (TREC-COVID) and 7.8 (Touche); BM25+CE below BM25 on exactly ArguAna and Touche; ColBERT above BM25 on 9/18; TAS-B above ANCE on 14/18."
+  },
+  {
+   "id": "E069",
+   "kind": "result",
+   "summary": "Table 2 nDCG@10 of BM25+CE on the 18 BEIR datasets (order as in Table 1).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 2 lines 388-531"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "nDCG@10": {
+     "TREC-COVID": 0.757,
+     "BioASQ": 0.523,
+     "NFCorpus": 0.35,
+     "NQ": 0.533,
+     "HotpotQA": 0.707,
+     "FiQA-2018": 0.347,
+     "Signal-1M (RT)": 0.338,
+     "TREC-NEWS": 0.431,
+     "Robust04": 0.475,
+     "ArguAna": 0.311,
+     "Touche-2020": 0.271,
+     "CQADupStack": 0.37,
+     "Quora": 0.825,
+     "DBPedia": 0.409,
+     "SCIDOCS": 0.166,
+     "FEVER": 0.819,
+     "Climate-FEVER": 0.253,
+     "SciFact": 0.688
+    }
+   },
+   "conditions": "zero-shot except DPR on NQ (0.474, in-domain, double-dagger)",
+   "notes": "Cells recovered from the damaged Table 2 extraction by column-group order. Cross-checks that hold: TREC-COVID column equals Table 4 'original' row; TAS-B minus ANCE = 17.3 (TREC-COVID) and 7.8 (Touche); BM25+CE below BM25 on exactly ArguAna and Touche; ColBERT above BM25 on 9/18; TAS-B above ANCE on 14/18."
+  },
+  {
+   "id": "E070",
+   "kind": "result",
+   "summary": "BM25+CE scores higher than BM25 on 16 of 18 datasets; it fails only on ArguAna and Touche-2020, two tasks very different from MS MARCO.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 537"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "datasets_above_BM25": 16,
+    "of": 18
+   },
+   "notes": "'is able to outperform BM25 on almost all (16/18) datasets. It only fails on ArguAna and Touche-2020, two retrieval tasks that are extremely different to the MS MARCO training dataset.'"
+  },
+  {
+   "id": "E071",
+   "kind": "negative_result",
+   "summary": "BM25+CE scores below BM25 on ArguAna (0.311 vs 0.315) and Touche-2020 (0.271 vs 0.367).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 537; Table 2"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "ArguAna": {
+     "BM25+CE": 0.311,
+     "BM25": 0.315
+    },
+    "Touche-2020": {
+     "BM25+CE": 0.271,
+     "BM25": 0.367
+    }
+   },
+   "derived_from": [
+    "E060",
+    "E069"
+   ]
+  },
+  {
+   "id": "E072",
+   "kind": "result",
+   "summary": "The late-interaction model ColBERT is a bit weaker than the cross-attentional re-ranker but scores higher than BM25 on 9 of 18 datasets.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 537"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "datasets_above_BM25": 9,
+    "of": 18
+   },
+   "notes": "'It performs a bit weaker than the cross-attentional re-ranking model, but is still able to outperform BM25 on 9/18 datasets.'"
+  },
+  {
+   "id": "E073",
+   "kind": "result",
+   "summary": "docT5query scores higher than BM25 on 11 of 18 datasets and is competitive on the remaining datasets.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 535"
+   },
+   "strength": "hard",
+   "status": "conflicting",
+   "value": {
+    "count": 11,
+    "of": 18
+   },
+   "notes": "'It outperforms BM25 on 11/18 datasets while providing a competitive performance on the remaining datasets.'",
+   "quantity": "docT5query_datasets_above_BM25",
+   "conflicts_with": [
+    "E074"
+   ],
+   "resolution": {
+    "chosen": "E073",
+    "reason": "The count is stated explicitly in the paper text, which extraction did not damage; the table-derived count depends on reconstructed columns. The discrepancy is disclosed in the paper.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E074",
+   "kind": "result",
+   "summary": "Counting datasets where the reconstructed Table 2 lists docT5query above BM25 gives 12 (not 11).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 2; derived from E063 vs E060"
+   },
+   "strength": "soft",
+   "status": "conflicting",
+   "value": {
+    "count": 12,
+    "of": 18
+   },
+   "notes": "Derived: TREC-COVID, NFCorpus, NQ, FiQA-2018, TREC-NEWS, Robust04, ArguAna, CQADupStack, Quora, DBPedia, SCIDOCS, SciFact. Not used by any claim.",
+   "quantity": "docT5query_datasets_above_BM25",
+   "conflicts_with": [
+    "E073"
+   ],
+   "derived_from": [
+    "E060",
+    "E063"
+   ]
+  },
+  {
+   "id": "E075",
+   "kind": "negative_result",
+   "summary": "DeepCT and SPARTA, which do well in-domain on MS MARCO, score below BM25 on nearly all zero-shot datasets.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 535"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'While both methods perform well in-domain on MS MARCO, they completely fail to generalize well by under performing BM25 on nearly all datasets.'"
+  },
+  {
+   "id": "E076",
+   "kind": "hypothesis_stated",
+   "summary": "Authors' explanation: docT5query can add new relevant keywords to a document, capturing out-of-domain keyword vocabulary, whereas learned term weighting does not.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 535"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'document expansion based docT5query is able to add new relevant keywords to a document and performs strong on the BEIR datasets.'"
+  },
+  {
+   "id": "E077",
+   "kind": "negative_result",
+   "summary": "Dense retrievers (esp. ANCE and TAS-B) score far below BM25 on many datasets, e.g. under large domain shift (BioASQ) or task shift (Touche-2020); DPR, the only dense model not trained on MS MARCO, performs worst overall.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 536"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "BioASQ": {
+     "BM25": 0.465,
+     "DPR": 0.127,
+     "ANCE": 0.306,
+     "TAS-B": 0.383
+    },
+    "Touche-2020": {
+     "BM25": 0.367,
+     "DPR": 0.131,
+     "ANCE": 0.24,
+     "TAS-B": 0.162
+    }
+   },
+   "notes": "'DPR, the only non-MSMARCO trained dataset overall performs the worst in generalization on the benchmark.' Numbers from the reconstructed Table 2 (soft).",
+   "derived_from": [
+    "E060",
+    "E064",
+    "E065",
+    "E066"
+   ]
+  },
+  {
+   "id": "E078",
+   "kind": "result",
+   "summary": "TAS-B is the best of the four dense systems zero-shot: it scores higher than ANCE on 14 of 18 datasets and higher than DPR on 17 of 18.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 538"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "vs_ANCE": 14,
+    "vs_DPR": 17,
+    "of": 18
+   }
+  },
+  {
+   "id": "E079",
+   "kind": "hypothesis_stated",
+   "summary": "Authors' speculation: TAS-B's strong zero-shot results may lie in its training setup, combining in-batch negatives and Margin-MSE loss with strong ensemble teachers in knowledge distillation.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 538"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'We speculate that the reason lies in a strong training setup in combination of both in-domain batch negatives and Margin-MSE losses for the TAS-B model.'"
+  },
+  {
+   "id": "E080",
+   "kind": "result",
+   "summary": "TAS-B scores below ANCE on TREC-COVID by 17.3 points and on Touche-2020 by 7.8 points; the median length of the top-10 retrieved documents is 10 words for TAS-B versus 160 for ANCE on TREC-COVID, and 14 versus 89 on Touche-2020.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 539"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "TREC-COVID": {
+     "gap_points": 17.3,
+     "median_words_TASB": 10,
+     "median_words_ANCE": 160
+    },
+    "Touche-2020": {
+     "gap_points": 7.8,
+     "median_words_TASB": 14,
+     "median_words_ANCE": 89
+    }
+   }
+  },
+  {
+   "id": "E081",
+   "kind": "result",
+   "summary": "In TREC-COVID about 42k of the 171k documents consist only of a title without an abstract; TAS-B retrieves many such documents among its top hits, ANCE retrieves documents with non-empty abstracts.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 929,952"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "title_only_docs": "approx. 42k",
+    "corpus": "171k"
+   }
+  },
+  {
+   "id": "E082",
+   "kind": "result",
+   "summary": "Controlled comparison: two distilbert-base-uncased models trained identically on MS MARCO except for the similarity function (cosine versus dot product). Dot product gains 15.3 points on TREC-COVID but is worse on a majority of the other datasets; the cosine model prefers shorter documents on all datasets.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 950-952"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "TREC-COVID_gain_points": 15.3
+   },
+   "notes": "'we observe significant performance differences for some BEIR datasets. For TREC-COVID, the dot-product model achieves the biggest improvement with 15.3 points, while for a majority on other datasets, it performs worse than the cosine-similarity model.' (the word 'significant' is the authors'; no test is reported.)"
+  },
+  {
+   "id": "E083",
+   "kind": "result",
+   "summary": "Table 10 nDCG@10 for cosine versus dot-product: TREC-COVID 0.482 vs 0.635, Signal-1M (RT) 0.261 vs 0.243, FEVER 0.670 vs 0.685.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 10 lines 1274-1284"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "TREC-COVID": {
+     "cosine": 0.482,
+     "dot": 0.635
+    },
+    "Signal-1M (RT)": {
+     "cosine": 0.261,
+     "dot": 0.243
+    },
+    "FEVER": {
+     "cosine": 0.67,
+     "dot": 0.685
+    }
+   },
+   "notes": "Order cosine-then-dot inferred from the TREC-COVID pair (0.635-0.482 = 15.3 points, as stated in the text)."
+  },
+  {
+   "id": "E084",
+   "kind": "negative_result",
+   "summary": "With dot product instead of cosine similarity the model is worse on a majority of the other BEIR datasets (Signal-1M (RT): 0.243 vs 0.261).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 950; Table 10"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "Signal-1M (RT)": {
+     "cosine": 0.261,
+     "dot": 0.243
+    }
+   }
+  },
+  {
+   "id": "E085",
+   "kind": "observation",
+   "summary": "Relevance judgements are not uniformly distributed over document length: for some datasets longer documents get higher relevance grades, for others shorter ones; in Touche-2020 most relevant documents (score 2) are longer.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 954; Figure 5 caption line 994"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E086",
+   "kind": "result",
+   "summary": "GenQ (TAS-B further fine-tuned on synthetic queries) scores higher than TAS-B on specialised domains (scientific publications, finance, StackExchange) but lower on broader domains such as Wikipedia.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 590"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'It outperforms the TAS-B model on specialized domains like scientific publications, finance or StackExchange. On broader and more generic domains, like Wikipedia, it performs weaker than the original TAS-B model.'"
+  },
+  {
+   "id": "E087",
+   "kind": "result",
+   "summary": "Per-dataset nDCG@10, GenQ vs TAS-B: TREC-COVID 0.619 vs 0.481, FiQA-2018 0.308 vs 0.300, CQADupStack 0.347 vs 0.314, SCIDOCS 0.143 vs 0.149; NQ 0.358 vs 0.463, HotpotQA 0.534 vs 0.584.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 2"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "GenQ": {
+     "TREC-COVID": 0.619,
+     "FiQA-2018": 0.308,
+     "CQADupStack": 0.347,
+     "SCIDOCS": 0.143,
+     "NQ": 0.358,
+     "HotpotQA": 0.534
+    },
+    "TAS-B": {
+     "TREC-COVID": 0.481,
+     "FiQA-2018": 0.3,
+     "CQADupStack": 0.314,
+     "SCIDOCS": 0.149,
+     "NQ": 0.463,
+     "HotpotQA": 0.584
+    }
+   },
+   "derived_from": [
+    "E066",
+    "E067"
+   ]
+  },
+  {
+   "id": "E088",
+   "kind": "negative_result",
+   "summary": "GenQ scores below TAS-B on Wikipedia-based datasets (NQ 0.358 vs 0.463; HotpotQA 0.534 vs 0.584).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 590; Table 2"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "NQ": {
+     "GenQ": 0.358,
+     "TAS-B": 0.463
+    },
+    "HotpotQA": {
+     "GenQ": 0.534,
+     "TAS-B": 0.584
+    }
+   }
+  },
+  {
+   "id": "E089",
+   "kind": "hypothesis_stated",
+   "summary": "Authors' interpretation: cross-attention and cross-attention-like operations appear to be important for good out-of-distribution performance.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 537"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'It appears that cross-attention and cross-attentional like operations are important for a good out-of-distribution generalization.'"
+  },
+  {
+   "id": "E090",
+   "kind": "method_detail",
+   "summary": "Efficiency protocol: 1 million randomly sampled DBPedia documents; exact search for dense models, approximate nearest-neighbour search for ColBERT; CPU: 8-core Intel Xeon Platinum 8168 at 2.70GHz; GPU: single Nvidia Tesla V100, CUDA 11.0.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 594-596"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "documents": "1 million"
+   }
+  },
+  {
+   "id": "E091",
+   "kind": "result",
+   "summary": "Estimated single-query latency and index size on 1M DBPedia documents (Table 3): BM25+CE GPU 450ms, CPU 6100ms, index 0.4GB; ColBERT GPU 350ms, index 20GB; TAS-B GPU 14ms, CPU 125ms, index 3GB; BM25 CPU 20ms, index 0.4GB; SPARTA CPU 20ms, index 12GB; DeepCT CPU 25ms; docT5query CPU 30ms; ANCE GPU 20ms, CPU 275ms; DPR GPU 19ms, CPU 230ms.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 3 lines 601-651"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "BM25+CE": {
+     "GPU_ms": 450,
+     "CPU_ms": 6100,
+     "index_GB": 0.4
+    },
+    "ColBERT": {
+     "GPU_ms": 350,
+     "CPU_ms": null,
+     "index_GB": 20
+    },
+    "docT5query": {
+     "GPU_ms": null,
+     "CPU_ms": 30,
+     "index_GB": 0.4
+    },
+    "BM25": {
+     "GPU_ms": null,
+     "CPU_ms": 20,
+     "index_GB": 0.4
+    },
+    "TAS-B": {
+     "GPU_ms": 14,
+     "CPU_ms": 125,
+     "index_GB": 3
+    },
+    "GenQ": {
+     "GPU_ms": 14,
+     "CPU_ms": 125,
+     "index_GB": 3
+    },
+    "ANCE": {
+     "GPU_ms": 20,
+     "CPU_ms": 275,
+     "index_GB": 3
+    },
+    "SPARTA": {
+     "GPU_ms": null,
+     "CPU_ms": 20,
+     "index_GB": 12
+    },
+    "DeepCT": {
+     "GPU_ms": null,
+     "CPU_ms": 25,
+     "index_GB": 0.4
+    },
+    "DPR": {
+     "GPU_ms": 19,
+     "CPU_ms": 230,
+     "index_GB": 3
+    }
+   },
+   "conditions": "1M DBPedia documents; ranked best to worst on zero-shot BEIR; '-' = not reported",
+   "notes": "Column values recovered from the damaged extraction by row order; consistent with prose (ColBERT largest index, SPARTA second largest, sparse models 20-25ms on CPU)."
+  },
+  {
+   "id": "E092",
+   "kind": "result",
+   "summary": "Re-ranking and late-interaction models, the best zero-shot, are the slowest (> 350 ms); dense retrievers are 20-30x faster (< 20ms) than the re-ranking models; on CPU the sparse models are fastest (20-25ms).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 598"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'come at the cost of high latency (> 350 ms), being slowest at inference. In contrast, dense retrievers are 20-30x faster (< 20ms) compared to the re-ranking models and follow a low-latency pattern. On CPU, the sparse models dominate in terms of speed (20-25ms).'"
+  },
+  {
+   "id": "E093",
+   "kind": "result",
+   "summary": "Index size: lexical, re-ranking and dense methods need less than 3GB for 1M DBPedia documents (Table 3 lists 0.4GB for BM25 and 3GB for dense models); SPARTA needs the second largest index and ColBERT the largest; for BioASQ (~15M documents) ColBERT needs ~900GB whereas BM25 needs 18GB.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 653-656"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "ColBERT_BioASQ_GB": 900,
+    "BM25_BioASQ_GB": 18
+   }
+  },
+  {
+   "id": "E100",
+   "kind": "external_fact",
+   "summary": "Annotation selection bias: relevance is judged only for documents in a pool retrieved by existing systems; unseen documents are assumed irrelevant. Many BEIR datasets show lexical bias: BioASQ candidates were retrieved by term matching with boosting tags; for Signal-1M (RT) 7 of 8 retrieval techniques relied on lexical term matching.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 660-661"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'These hits are automatically assumed to be irrelevant.' Attributed by the paper to its refs [61], [59], [39]."
+  },
+  {
+   "id": "E101",
+   "kind": "method_detail",
+   "summary": "TREC-COVID study: TREC-COVID uses pooling over participating systems; Hole@10 is the fraction of a system's top-10 hits not judged by annotators; the authors manually judged all holes for all systems following the original guidelines, unaware of which system retrieved them; 980 query-document pairs were annotated (by the authors), and nDCG@10 recomputed.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 703-704, 823-825"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "annotated_pairs": 980
+   }
+  },
+  {
+   "id": "E102",
+   "kind": "result",
+   "summary": "Hole@10 on TREC-COVID: BM25 6.4%, docT5query 2.8%, ANCE 14.4%, TAS-B 31.8%.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 704"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'BM25 and docT5query have a rather low Hole@10 value of 6.4% and 2.8% ... ANCE and TAS-B have a much higher Hole@10 of 14.4% and 31.8%'"
+  },
+  {
+   "id": "E103",
+   "kind": "result",
+   "summary": "Full Table 4 Hole@10: BM25 6.4%, DeepCT 19.4%, SPARTA 12.4%, docT5query 2.8%, DPR 30.6%, ANCE 14.4%, TAS-B 31.8%, ColBERT 12.4%, BM25+CE 1.6%. GenQ is not in the table.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 4 lines 669-697"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "BM25": "6.4%",
+    "DeepCT": "19.4%",
+    "SPARTA": "12.4%",
+    "docT5query": "2.8%",
+    "DPR": "30.6%",
+    "ANCE": "14.4%",
+    "TAS-B": "31.8%",
+    "ColBERT": "12.4%",
+    "BM25+CE": "1.6%"
+   }
+  },
+  {
+   "id": "E104",
+   "kind": "result",
+   "summary": "TREC-COVID nDCG@10 before (with holes) and after annotating holes: BM25 0.656 -> 0.668; DeepCT 0.406 -> 0.472; SPARTA 0.538 -> 0.624; docT5query 0.713 -> 0.714; DPR 0.332 -> 0.445; ANCE 0.654 -> 0.735; TAS-B 0.481 -> 0.555; ColBERT 0.677 -> 0.735; BM25+CE 0.757 -> 0.760.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 4 lines 677-698"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "original": {
+     "BM25": 0.656,
+     "DeepCT": 0.406,
+     "SPARTA": 0.538,
+     "docT5query": 0.713,
+     "DPR": 0.332,
+     "ANCE": 0.654,
+     "TAS-B": 0.481,
+     "ColBERT": 0.677,
+     "BM25+CE": 0.757
+    },
+    "annotated": {
+     "BM25": 0.668,
+     "DeepCT": 0.472,
+     "SPARTA": 0.624,
+     "docT5query": 0.714,
+     "DPR": 0.445,
+     "ANCE": 0.735,
+     "TAS-B": 0.555,
+     "ColBERT": 0.735,
+     "BM25+CE": 0.76
+    }
+   }
+  },
+  {
+   "id": "E105",
+   "kind": "result",
+   "summary": "After adding the missing judgements lexical systems change little (docT5query 0.713 to 0.714) whereas ANCE rises from 0.654 (slightly below BM25) to 0.735, 6.7 points above BM25; ColBERT shows a similar improvement (5.8 points).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 705"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'Even though many systems contributed to the TREC-COVID annotation pool, the annotation pool is still biased towards lexical approaches.'"
+  },
+  {
+   "id": "E106",
+   "kind": "observation",
+   "summary": "Authors' reading: even though many systems contributed to the TREC-COVID pool, the pool is still biased toward lexical approaches, and non-lexical approaches are disadvantaged; better datasets built with diverse pooling strategies are needed.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 123,705,710"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E110",
+   "kind": "limitation_noted",
+   "summary": "Multilingual tasks: all BEIR datasets are English because of the limited availability of multilingual retrieval datasets.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "App. B.1 line 833"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'due to the limited availability of multilingual retrieval datasets, all datasets covered in the BEIR benchmark are currently English.'"
+  },
+  {
+   "id": "E111",
+   "kind": "limitation_noted",
+   "summary": "Long document retrieval: most tasks have documents of a few hundred words; tasks with longer documents would need a fundamentally different setup because transformers often have a 512 word-piece limit.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "App. B.2 line 834"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E112",
+   "kind": "limitation_noted",
+   "summary": "Multi-factor search: BEIR focuses on pure textual search; real applications also use signals such as PageRank, recency, authority scores or click-through, which are hard to integrate.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "App. B.3 line 835"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E113",
+   "kind": "limitation_noted",
+   "summary": "Multi-field retrieval: so far only datasets with one or two fields (e.g. title and text) are included.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "App. B.4 line 836"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E114",
+   "kind": "limitation_noted",
+   "summary": "Task-specific models: BEIR evaluates models meant to cover many tasks; specialised single-task models can easily beat generic ones and are not what BEIR measures.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "App. B.5 line 837"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E115",
+   "kind": "limitation_noted",
+   "summary": "Broad statement: no benchmark is perfect and has its limitations; making them explicit is critical for understanding results on the benchmark.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "App. B line 832"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'Even though we cover a wide range of tasks and domains in BEIR, no benchmark is perfect and has its limitations.'"
+  },
+  {
+   "id": "E116",
+   "kind": "limitation_noted",
+   "summary": "No error bars: the paper does not report variance across seeds because the evaluated models are existing pre-trained checkpoints that often come without training code, so re-training is not feasible.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Checklist 3(c) line 816"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'[No] We evaluate existing available pre-trained models that often come without suitable training code. Hence, in many cases, re-training the model is not feasible.'"
+  },
+  {
+   "id": "E117",
+   "kind": "limitation_noted",
+   "summary": "Total amount of compute is not reported (only GPU and CPU types).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Checklist 3(d) line 817"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E118",
+   "kind": "limitation_noted",
+   "summary": "Offensive content and personally identifiable information were not checked in the 50+ million documents; removing content would alter the datasets.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Checklist 4(e) line 821"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E119",
+   "kind": "limitation_noted",
+   "summary": "Potential negative societal impacts of the work are not discussed.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Checklist 1(c) line 809"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'Did you discuss any potential negative societal impacts of your work? [No]'"
+  },
+  {
+   "id": "E120",
+   "kind": "limitation_noted",
+   "summary": "Even with many systems contributing to the TREC-COVID pool, the annotation pool is still biased towards lexical approaches, which disfavours non-lexical retrieval; fair comparison needs better, less biased datasets.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines 123,705,710"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'This can give an unfair disadvantage to non-lexical approaches.'"
+  },
+  {
+   "id": "E121",
+   "kind": "limitation_noted",
+   "summary": "Difference between TAS-B and ANCE cannot be attributed to one cause: they differ in backbone (DistilBERT vs RoBERTa-base), loss (InfoNCE vs Margin-MSE with in-batch negatives) and hard-negative mining.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "App. H line 930"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'Identifying the source for this contrasting behaviour is difficult, as TAS-B and ANCE use different models ... a different loss function ... and different hard negative mining strategies.'"
+  },
+  {
+   "id": "E122",
+   "kind": "limitation_noted",
+   "summary": "Dataset disclaimer (README): the datasets were downloaded and prepared, and the maintainers do not vouch for their quality or fairness or claim that users have a licence.",
+   "locator": {
+    "path": "project/README_1.md",
+    "anchor": "README line 393"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'we do not vouch for their quality or fairness, or claim that you have license to use the dataset.'"
+  },
+  {
+   "id": "E130",
+   "kind": "dataset",
+   "summary": "SCIDOCS corpus size 25,657 documents (Table 1).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Table 1 line 245"
+   },
+   "strength": "hard",
+   "status": "conflicting",
+   "value": {
+    "count": 25657
+   },
+   "quantity": "scidocs_corpus_size",
+   "conflicts_with": [
+    "E131"
+   ],
+   "resolution": {
+    "chosen": "E130",
+    "reason": "Table 1 gives the exact count and the README lists 25K; the appendix's '30K' is an approximate description.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E131",
+   "kind": "dataset",
+   "summary": "Appendix D.8 describes the SCIDOCS corpus as a '30K held-out pool of scientific papers'.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 876"
+   },
+   "strength": "hard",
+   "status": "conflicting",
+   "value": {
+    "count": 30000
+   },
+   "quantity": "scidocs_corpus_size",
+   "conflicts_with": [
+    "E130"
+   ]
+  },
+  {
+   "id": "E132",
+   "kind": "observation",
+   "summary": "The text says dataset selection is motivated by 'three factors' but lists four, (i)-(iv).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 137"
+   },
+   "strength": "hard",
+   "status": "conflicting",
+   "value": {
+    "count": 3
+   },
+   "quantity": "num_selection_factors",
+   "conflicts_with": [
+    "E133"
+   ],
+   "resolution": {
+    "chosen": "E133",
+    "reason": "The four enumerated factors are the checkable list; the stated count of three does not match it.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E133",
+   "kind": "observation",
+   "summary": "Four selection factors are enumerated: diverse tasks, diverse domains, task difficulties, diverse annotation strategies.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 137"
+   },
+   "strength": "hard",
+   "status": "conflicting",
+   "value": {
+    "count": 4
+   },
+   "quantity": "num_selection_factors",
+   "conflicts_with": [
+    "E132"
+   ]
+  },
+  {
+   "id": "E134",
+   "kind": "rationale_stated",
+   "summary": "To isolate the source of TAS-B's and ANCE's different document-length preferences, the authors harmonised the training set-up and changed only the similarity function (cosine versus dot product).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "App. H line 930"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'Hence, we decided to harmonize the training setup and to alter the training by just one aspect: The similarity function.'"
+  },
+  {
+   "id": "E135",
+   "kind": "rationale_stated",
+   "summary": "During the TREC-COVID hole annotation the authors were unaware of which system had retrieved each missing document, to avoid a preference bias.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 704"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'During annotation, we were unaware of the system who retrieved the missing annotation to avoid a preference bias.'"
+  },
+  {
+   "id": "E136",
+   "kind": "hypothesis_stated",
+   "summary": "Authors' attribution: TAS-B's preference for shorter (and ANCE's for longer) documents is due to the loss function used, as discussed in Appendix H.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line 539"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "'As discussed in Appendix H, this preference for shorter or longer documents is due to the used loss function.'"
+  },
+  {
+   "id": "E140",
+   "kind": "external_fact",
+   "summary": "The paper text is marked 'Preprint. Under review.' (arXiv 2104.08663v4); the README lists it as NeurIPS 2021 Datasets and Benchmarks Track and points to a 2024 companion resource paper (Kamalloo et al., 2024).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "paper line 13; README lines 59-60,414"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "The README states of the 2024 companion: comparisons on BEIR reduce heterogeneous scores to a single average that is difficult to interpret (abstract quoted in README line 425)."
+  }
+ ]
+}

@@ -1,0 +1,478 @@
+{
+ "candidates": [
+  {
+   "id": "C001",
+   "statement": "The authors motivate zero-shot evaluation by the cost of training data: creating a large training corpus is time-consuming and expensive, so many retrieval systems are applied zero-shot.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "E040"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C002",
+   "statement": "The authors state that it is unclear how well trained neural retrieval models perform on other text domains or tasks, and how sparse versus dense embeddings behave on out-of-distribution data.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "E041"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C003",
+   "statement": "The authors motivate BEIR by the narrowness of prior evaluation: prior retrieval benchmarks focus on a single task or domain, and neural retrievers have been studied in homogeneous, narrow settings.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "E042",
+    "E044"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C004",
+   "statement": "According to the BEIR paper, most prior work evaluates neural retrievers on the same dataset they were trained on (for example Natural Questions or MS MARCO), where gains over BM25 are reported.",
+   "claim_type": "literature",
+   "evidence": [
+    "E043"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C005",
+   "statement": "The BEIR paper describes two earlier benchmarks: MultiReQA (eight question-answering datasets, sentence-level answers, five of eight from Wikipedia, small candidate pools) and KILT (five knowledge-intensive tasks, eleven datasets, retrieval not the primary task, Wikipedia only).",
+   "claim_type": "literature",
+   "evidence": [
+    "E044"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C006",
+   "statement": "Retrieval feeds question answering, claim verification and duplicate-question detection; it has traditionally been dominated by lexical methods such as BM25, which suffer from the lexical gap; the neural families the paper evaluates address this gap in different ways.",
+   "claim_type": "literature",
+   "evidence": [
+    "E045",
+    "E046"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C010",
+   "statement": "The authors select BEIR datasets by four factors: diverse tasks, diverse domains, task difficulty (a task solved easily by any algorithm is uninformative for comparing models) and diverse annotation strategies (to reduce the impact of annotation biases).",
+   "claim_type": "interpretation",
+   "evidence": [
+    "E010",
+    "E011",
+    "E012",
+    "E133"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C011",
+   "statement": "The authors use nDCG@10 as the single metric because it is comparable across tasks: precision and recall are rank-unaware, and MRR and MAP cannot handle graded relevance.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "E009",
+    "E008"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C012",
+   "statement": "MS MARCO scores are reported but excluded from the zero-shot comparison because most evaluated systems were trained on it.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "E013"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C013",
+   "statement": "Only the first 512 word pieces of each document are used for all neural systems because of the length limits of transformer networks.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "E014"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C014",
+   "statement": "Baseline settings were chosen empirically: Anserini BM25 because it beat Elasticsearch BM25 and RM3 expansion; default rather than MS-MARCO-tuned BM25 parameters for DeepCT; the DPR Multi model over the NQ-only model; the MiniLM cross-encoder because it was best on MS MARCO among 14 public re-rankers.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "E017",
+    "E019",
+    "E024",
+    "E031"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C015",
+   "statement": "Practical constraints shaped some settings: SPARTA was re-implemented because the original code is not public; GenQ was capped at 100K target documents per dataset because of resource constraints; TREC-NEWS and Touche-2020 labels were converted 'for simplicity'.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "E021",
+    "E028",
+    "E033"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C016",
+   "statement": "To isolate why TAS-B and ANCE retrieve documents of different lengths, the authors trained two otherwise identical models that differ only in similarity function (cosine versus dot product).",
+   "claim_type": "interpretation",
+   "evidence": [
+    "E134"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C017",
+   "statement": "During the TREC-COVID re-annotation the annotators did not know which system had retrieved a document, to avoid preference bias.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "E135"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C020",
+   "statement": "BEIR has 18 English zero-shot datasets from 9 retrieval tasks, ranging from 3.6k to 15M documents, with average query lengths of 3 to 192 words and average document lengths of 11 to 635 words; 8 of the 19 datasets (counting MS MARCO) have training data.",
+   "claim_type": "measured",
+   "evidence": [
+    "E001",
+    "E002",
+    "E003",
+    "E004",
+    "E005",
+    "E006"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C021",
+   "statement": "BEIR supplies a standard data format (corpus, queries, qrels), a Python package (pip install beir) with wrappers for existing retrieval toolkits and IR metrics, and a planned leaderboard; the README lists 17 preprocessed datasets, four of which are not public and come with reproduction instructions.",
+   "claim_type": "observed",
+   "evidence": [
+    "E007",
+    "E048"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C022",
+   "statement": "Ten public systems from five architecture families are evaluated: lexical (BM25), sparse (DeepCT, SPARTA, docT5query), dense (DPR, ANCE, TAS-B, GenQ), late-interaction (ColBERT) and re-ranking (BM25+CE).",
+   "claim_type": "observed",
+   "evidence": [
+    "E015",
+    "E016",
+    "E018",
+    "E020",
+    "E022",
+    "E023",
+    "E025",
+    "E026",
+    "E027",
+    "E029",
+    "E030"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C023",
+   "statement": "The authors observe a rather low weighted Jaccard word overlap between datasets from different domains.",
+   "claim_type": "observed",
+   "evidence": [
+    "E034",
+    "E035"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C024",
+   "statement": "The authors read the low cross-domain word overlap as an indication that BEIR is challenging for systems that must handle out-of-distribution domains.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "C023",
+    "E035"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C030",
+   "statement": "On in-domain MS MARCO, BM25 scores nDCG@10 0.228 and every MS-MARCO-trained neural system scores higher (0.296 to 0.413); the authors describe the gap as 7-18 points. DPR, which was not trained on MS MARCO, scores 0.177.",
+   "claim_type": "measured",
+   "evidence": [
+    "E050",
+    "E051"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C031",
+   "statement": "Zero-shot, averaged over the 18 datasets and expressed relative to BM25, BM25+CE is +11%, ColBERT +2.5%, docT5query +1.6%, TAS-B -2.8%, GenQ -3.6%, ANCE -7.4%, SPARTA -20.3%, DeepCT -27.9% and DPR -47.7% (Table 2 last row; the averaging method is not defined in the text).",
+   "claim_type": "measured",
+   "evidence": [
+    "E052"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C032",
+   "statement": "BM25+CE scores higher than BM25 on 16 of 18 zero-shot datasets and falls below it on exactly two, ArguAna (0.311 vs 0.315) and Touche-2020 (0.271 vs 0.367).",
+   "claim_type": "measured",
+   "evidence": [
+    "E070",
+    "E071",
+    "E060",
+    "E069"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C033",
+   "statement": "ColBERT scores higher than BM25 on 9 of 18 zero-shot datasets and a bit below the cross-attentional re-ranker.",
+   "claim_type": "measured",
+   "evidence": [
+    "E072",
+    "E060",
+    "E068"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C034",
+   "statement": "docT5query scores higher than BM25 on 11 of 18 zero-shot datasets and is competitive on the rest (the text's count is used; the reconstructed Table 2 lists 12).",
+   "claim_type": "measured",
+   "evidence": [
+    "E073"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C035",
+   "statement": "DeepCT and SPARTA, which score well in-domain, score below BM25 on nearly all zero-shot datasets.",
+   "claim_type": "measured",
+   "evidence": [
+    "E075",
+    "E060",
+    "E061",
+    "E062"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C036",
+   "statement": "Among dense retrievers TAS-B is best zero-shot (higher than ANCE on 14 of 18 datasets and higher than DPR on 17 of 18); dense retrievers fall far below BM25 on some datasets, for example BioASQ (BM25 0.465; TAS-B 0.383; ANCE 0.306; DPR 0.127), and DPR performs worst overall.",
+   "claim_type": "measured",
+   "evidence": [
+    "E078",
+    "E077",
+    "E060",
+    "E064",
+    "E065",
+    "E066"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C037",
+   "statement": "TAS-B scores below ANCE on TREC-COVID by 17.3 points and on Touche-2020 by 7.8 points; on TREC-COVID its top-10 documents have a median length of 10 words versus 160 for ANCE, and on Touche-2020 14 versus 89.",
+   "claim_type": "measured",
+   "evidence": [
+    "E080",
+    "E081"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C038",
+   "statement": "In a controlled comparison of two otherwise identical models, switching from cosine similarity to dot product raised TREC-COVID nDCG@10 by 15.3 points (0.482 to 0.635), lowered it on a majority of other datasets (Signal-1M (RT) 0.261 to 0.243), and shifted retrieval toward longer documents.",
+   "claim_type": "measured",
+   "evidence": [
+    "E082",
+    "E083",
+    "E084"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C039",
+   "statement": "GenQ (TAS-B further fine-tuned on synthetic queries) scores higher than TAS-B on specialised domains (for example TREC-COVID 0.619 vs 0.481, FiQA-2018 0.308 vs 0.300, CQADupStack 0.347 vs 0.314) and lower on Wikipedia-based datasets (NQ 0.358 vs 0.463, HotpotQA 0.534 vs 0.584); on SCIDOCS it is lower (0.143 vs 0.149).",
+   "claim_type": "measured",
+   "evidence": [
+    "E086",
+    "E087",
+    "E088"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C040",
+   "statement": "On 1M DBPedia documents the estimated single-query latency is 450 ms on GPU and 6100 ms on CPU for BM25+CE, 350 ms on GPU for ColBERT, 14 ms on GPU for TAS-B and 20 ms on CPU for BM25; index sizes are 20GB for ColBERT, 12GB for SPARTA, 3GB for dense models and 0.4GB for BM25. For BioASQ (~15M documents) ColBERT needs ~900GB and BM25 18GB.",
+   "claim_type": "measured",
+   "evidence": [
+    "E090",
+    "E091",
+    "E092",
+    "E093"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C041",
+   "statement": "On TREC-COVID the share of a system's top-10 hits that annotators never judged (Hole@10) is 6.4% for BM25, 2.8% for docT5query, 14.4% for ANCE and 31.8% for TAS-B.",
+   "claim_type": "measured",
+   "evidence": [
+    "E102",
+    "E103"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C042",
+   "statement": "After the authors judged the missing documents, lexical systems changed little (docT5query 0.713 to 0.714) while ANCE rose from 0.654 to 0.735 nDCG@10, 6.7 points above the annotated BM25 score, and ColBERT improved by 5.8 points.",
+   "claim_type": "derived",
+   "evidence": [
+    "E104",
+    "E105"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C043",
+   "statement": "No single system has the highest zero-shot score on every dataset; BM25 remains a strong baseline, with BM25+CE (16 of 18) the one system scoring above it on nearly all datasets, while the two best systems on average (BM25+CE and ColBERT) are the most costly.",
+   "claim_type": "observed",
+   "evidence": [
+    "E047",
+    "C032",
+    "C033",
+    "C034",
+    "C036",
+    "C040"
+   ],
+   "origin": "writer_derived"
+  },
+  {
+   "id": "C044",
+   "statement": "The MS MARCO in-domain ordering of systems does not match their zero-shot ordering (BM25 is last in-domain among MS-MARCO-trained systems yet above most of them zero-shot), which the authors take to mean that in-domain performance does not predict zero-shot performance; the paper gives no correlation statistic.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "C030",
+    "C031",
+    "C035",
+    "E047"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C045",
+   "statement": "The authors interpret the strength of re-ranking and late-interaction systems as pointing to cross-attention and cross-attention-like operations as important for out-of-distribution performance.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "E089",
+    "C032",
+    "C033"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C046",
+   "statement": "The authors explain docT5query's zero-shot strength by document expansion adding new relevant keywords, in contrast to learned term weighting.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "E076",
+    "C034",
+    "C035"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C047",
+   "statement": "The authors speculate that TAS-B's zero-shot strength among dense models comes from its training set-up (in-batch negatives plus Margin-MSE loss with strong teacher models).",
+   "claim_type": "speculation",
+   "evidence": [
+    "E079",
+    "C036"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C048",
+   "statement": "The authors attribute TAS-B's preference for shorter documents to its loss function; in their controlled experiment the cosine-similarity model preferred shorter documents on all datasets and the dot-product model longer ones, and many TREC-COVID documents are title-only.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "C037",
+    "C038",
+    "E081",
+    "E136"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C049",
+   "statement": "The best zero-shot systems cost the most: BM25+CE and ColBERT are the slowest and, for ColBERT, have the largest index, while dense retrievers and lexical or sparse methods are faster and lighter.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "C040",
+    "C032",
+    "C033"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C051",
+   "statement": "The BEIR paper states that relevance labels come from pools built by existing systems and that unjudged documents count as irrelevant; it reports lexical bias in some source datasets (BioASQ candidates were retrieved by term matching with boosting tags; 7 of 8 techniques behind Signal-1M (RT) relied on lexical term matching).",
+   "claim_type": "literature",
+   "evidence": [
+    "E100"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C052",
+   "statement": "The authors conclude that the TREC-COVID annotation pool, although built from many systems, still favours lexical approaches and disadvantages non-lexical ones, so part of the dense retrievers' shortfall there reflects missing judgements.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "C041",
+    "C042",
+    "E106"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C053",
+   "statement": "The authors call for datasets built with diverse pooling strategies and note that integrating many systems into BEIR makes creating such pools simpler.",
+   "claim_type": "future",
+   "evidence": [
+    "E106"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C054",
+   "statement": "The authors list directions beyond the current benchmark: multilingual and cross-lingual tasks, long-document retrieval, multi-factor and multi-field search, and task-specific models.",
+   "claim_type": "future",
+   "evidence": [
+    "E110",
+    "E111",
+    "E112",
+    "E113",
+    "E114"
+   ],
+   "origin": "author_stated"
+  },
+  {
+   "id": "C056",
+   "statement": "The paper asks (i) whether in-domain performance predicts zero-shot performance, (ii) which architectures hold up across heterogeneous datasets, (iii) at what computational cost, and (iv) whether relevance annotation treats non-lexical systems fairly.",
+   "claim_type": "hypothesis",
+   "evidence": [
+    "E047",
+    "E041"
+   ],
+   "origin": "writer_derived"
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+{
+ "budget_main": 6,
+ "opportunities": [
+  {
+   "claim_id": "C001",
+   "evidence_ids": [
+    "E001"
+   ],
+   "representation": "bar_h",
+   "kind": "COMPARATIVE",
+   "reason": "4 non-negative magnitudes across categories",
+   "shape": {
+    "categories": 4,
+    "series": 1,
+    "points": 4,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": true,
+   "reader_question": "What does the evidence behind C001 show? (The four MLPerf Tiny v0.5 reference models range from 52.5 KB (DS-CNN) to 325 KB)",
+   "needs_author_wording": true,
+   "score": 1.67,
+   "tier": "main"
+  }
+ ],
+ "summary": {
+  "claims_considered": 1,
+  "visual": 1,
+  "prose_only": 0,
+  "main": 1
+ },
+ "note": "Proposals only. Nothing is drawn until a registry entry with real source data passes V1-V4."
+}

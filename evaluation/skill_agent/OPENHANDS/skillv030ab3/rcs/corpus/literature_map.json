@@ -1,0 +1,70 @@
+{
+ "dimensions": [
+  {
+   "dimension": "General agent and multi-agent frameworks",
+   "sources": [
+    "SRC-001",
+    "SRC-002",
+    "SRC-003",
+    "SRC-033",
+    "SRC-034",
+    "SRC-035",
+    "SRC-024"
+   ],
+   "achieves": "reusable building blocks, conversation frameworks, standardized operating procedures, customizable agent architectures (as described by the OpenHands authors)",
+   "shared_assumption_or_limit": "AutoGen: Python and bash execution with stateless command execution; CrewAI: sandboxed but limited code interpreter (SRC-002, SRC-035; authors' description)",
+   "relation_to_openhands": "OpenHands positions itself as adding sandboxed, stateful shell, Python and browser execution to a general framework; Table 1 feature marks not recoverable"
+  },
+  {
+   "dimension": "Software-engineering agents",
+   "sources": [
+    "SRC-004",
+    "SRC-005",
+    "SRC-025"
+   ],
+   "achieves": "automated GitHub issue fixing (SWE-Agent, AutoCodeRover, Agentless)",
+   "shared_assumption_or_limit": "domain-specific (Table 1 domain column: SWE); SWE-Agent stresses a carefully crafted agent-computer interface",
+   "relation_to_openhands": "reference systems on SWE-bench Lite; source of edit utilities adapted into AgentSkills"
+  },
+  {
+   "dimension": "Web agents",
+   "sources": [
+    "SRC-009",
+    "SRC-010",
+    "SRC-026",
+    "SRC-027",
+    "SRC-028",
+    "SRC-029",
+    "SRC-030",
+    "SRC-012"
+   ],
+   "achieves": "WebArena and MiniWoB++ results with trained or reflective agents",
+   "shared_assumption_or_limit": "several reference agents are trained specialists or use reward models, against domain-general prompting for OpenHands agents",
+   "relation_to_openhands": "references for the web results; BrowserGym supplies the action language"
+  },
+  {
+   "dimension": "Benchmarks used for evaluation",
+   "sources": [
+    "SRC-006",
+    "SRC-011",
+    "SRC-013",
+    "SRC-014",
+    "SRC-015",
+    "SRC-016",
+    "SRC-018",
+    "SRC-019",
+    "SRC-020",
+    "SRC-021",
+    "SRC-022",
+    "SRC-023",
+    "SRC-008",
+    "SRC-012",
+    "SRC-009"
+   ],
+   "achieves": "task suites for software, web and assistance abilities",
+   "shared_assumption_or_limit": "each defines its own metric and subset conventions",
+   "relation_to_openhands": "the 15 integrated benchmarks"
+  }
+ ],
+ "note": "All entries are works cited in the OpenHands paper, registered at abstract depth from the project text; nothing was read beyond how the project describes them."
+}

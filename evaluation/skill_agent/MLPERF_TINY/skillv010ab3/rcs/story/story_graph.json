@@ -1,0 +1,412 @@
+{
+ "pattern": "method_first",
+ "nodes": [
+  {
+   "id": "N01",
+   "type": "PROBLEM",
+   "text": "Ultra-low-power ML systems (TinyML) lack an accepted, reproducible way to compare accuracy, latency and energy across very different hardware and software stacks.",
+   "claims": [
+    "C009"
+   ],
+   "audience_note": "define TinyML, MCU, inference"
+  },
+  {
+   "id": "N02",
+   "type": "SIGNIFICANCE",
+   "text": "Without fair comparison, the impact of individual optimizations at any layer of the stack is hard to measure and progress is slowed.",
+   "claims": [
+    "C009"
+   ]
+  },
+  {
+   "id": "N03",
+   "type": "KNOWN",
+   "text": "CoreMark, MLMark and MLPerf inference exist, per the authors, but each falls short for TinyML (no ML workload, models too large or no power measurement, no MCU support).",
+   "claims": [
+    "C009"
+   ],
+   "sources": [
+    "SRC-001",
+    "SRC-002"
+   ]
+  },
+  {
+   "id": "N04",
+   "type": "GAP",
+   "text": "No existing benchmark, in the authors' account, gives a suite of small ML tasks with power as a first-class measure and a methodology suited to TinyML.",
+   "claims": [
+    "C009"
+   ],
+   "sources": [
+    "SRC-001",
+    "SRC-002"
+   ]
+  },
+  {
+   "id": "N05",
+   "type": "RQ",
+   "text": "RQ1: Can a benchmark specification give comparable accuracy, latency and energy results across heterogeneous TinyML systems while leaving room for submitters to show different kinds of improvement?",
+   "claims": [
+    "C001",
+    "C006",
+    "C007"
+   ]
+  },
+  {
+   "id": "N06",
+   "type": "RQ",
+   "text": "RQ2: Did the first round of submissions show that the specification accommodates diverse submitters, and what did it reveal about the field?",
+   "claims": [
+    "C010",
+    "C011",
+    "C014"
+   ]
+  },
+  {
+   "id": "N07",
+   "type": "OBJECTIVE",
+   "text": "Provide four reference tasks, a closed and an open division, a shared measurement procedure and a runner framework, all open source.",
+   "claims": [
+    "C001",
+    "C007",
+    "C008"
+   ]
+  },
+  {
+   "id": "N08",
+   "type": "APPROACH",
+   "text": "Choose four use cases with datasets, small reference models and accuracy targets; measure inference only; standardize measurement with a host-side runner and optional energy hardware.",
+   "claims": [
+    "C001",
+    "C006",
+    "C008"
+   ]
+  },
+  {
+   "id": "N09",
+   "type": "DESIGN",
+   "text": "Benchmark design: tasks, datasets, models and quality targets set from reference model accuracy.",
+   "claims": [
+    "C002",
+    "C003",
+    "C004",
+    "C005"
+   ],
+   "evidence": [
+    "E002",
+    "E005",
+    "E008",
+    "E011"
+   ]
+  },
+  {
+   "id": "N10",
+   "type": "DESIGN",
+   "text": "Measurement and division rules: median-of-five latency and energy, closed/open divisions.",
+   "claims": [
+    "C006",
+    "C007",
+    "C008"
+   ]
+  },
+  {
+   "id": "N11",
+   "type": "RESULT",
+   "text": "Reference models reach their reported accuracy figures, and targets sit below them by 0.01 AUC to about 6 points.",
+   "claims": [
+    "C004",
+    "C005"
+   ],
+   "evidence": [
+    "E004",
+    "E007",
+    "E010",
+    "E013",
+    "E038"
+   ]
+  },
+  {
+   "id": "N12",
+   "type": "RESULT",
+   "text": "First round: five Table 2 rows across ARM, RISC-V, Raspberry Pi 4, accelerator and FPGA, closed and open; INT8 most common; power from microWatts to Watts; no dataset modification.",
+   "claims": [
+    "C010",
+    "C011",
+    "C012"
+   ],
+   "evidence": [
+    "E024",
+    "E025",
+    "E026"
+   ]
+  },
+  {
+   "id": "N13",
+   "type": "INTERPRETATION",
+   "text": "The authors attribute the diversity of submissions to modular design; consistent with, not isolated by, the evidence.",
+   "claims": [
+    "C014"
+   ]
+  },
+  {
+   "id": "N14",
+   "type": "INTERPRETATION",
+   "text": "The specification appears to serve RQ1 in the sense of accommodating varied submissions; comparability across submissions is not shown in the evidence.",
+   "claims": [
+    "C014",
+    "C010"
+   ]
+  },
+  {
+   "id": "N15",
+   "type": "CONTRIBUTION",
+   "text": "An open, industry-and-academia-built specification and reference suite for measuring TinyML accuracy, latency and energy with closed/open divisions.",
+   "claims": [
+    "C001",
+    "C007",
+    "C010"
+   ]
+  },
+  {
+   "id": "N16",
+   "type": "LIMITATION",
+   "text": "Inference-only scope; no streaming; feature extraction excluded.",
+   "claims": [
+    "C016"
+   ]
+  },
+  {
+   "id": "N17",
+   "type": "LIMITATION",
+   "text": "Latency/energy numbers and per-submission results are not in the evidence; one round only.",
+   "claims": [
+    "C013",
+    "C010"
+   ]
+  },
+  {
+   "id": "N18",
+   "type": "IMPLICATION",
+   "text": "Future rounds can track the evolution of TinyML, e.g. whether data-centric changes appear.",
+   "claims": [
+    "C015",
+    "C018"
+   ]
+  },
+  {
+   "id": "N19",
+   "type": "FUTURE",
+   "text": "New domains, more layer types, pre-processing in scope, a stable long-term subset.",
+   "claims": [
+    "C018"
+   ]
+  },
+  {
+   "id": "N20",
+   "type": "BACKGROUND_CONCEPT",
+   "text": "TinyML, MCU, device under test, quantization (post-training vs quantization-aware), inferences per second.",
+   "audience_note": "defined in section 2"
+  }
+ ],
+ "edges": [
+  {
+   "from": "N01",
+   "to": "N05",
+   "type": "motivates"
+  },
+  {
+   "from": "N02",
+   "to": "N05",
+   "type": "motivates"
+  },
+  {
+   "from": "N01",
+   "to": "N06",
+   "type": "motivates"
+  },
+  {
+   "from": "N03",
+   "to": "N04",
+   "type": "establishes"
+  },
+  {
+   "from": "N05",
+   "to": "N04",
+   "type": "addresses"
+  },
+  {
+   "from": "N06",
+   "to": "N04",
+   "type": "addresses"
+  },
+  {
+   "from": "N07",
+   "to": "N05",
+   "type": "operationalizes"
+  },
+  {
+   "from": "N08",
+   "to": "N07",
+   "type": "implements"
+  },
+  {
+   "from": "N09",
+   "to": "N05",
+   "type": "produces"
+  },
+  {
+   "from": "N10",
+   "to": "N05",
+   "type": "produces"
+  },
+  {
+   "from": "N09",
+   "to": "N11",
+   "type": "produces"
+  },
+  {
+   "from": "N10",
+   "to": "N12",
+   "type": "produces"
+  },
+  {
+   "from": "N11",
+   "to": "N13",
+   "type": "supports"
+  },
+  {
+   "from": "N12",
+   "to": "N13",
+   "type": "supports"
+  },
+  {
+   "from": "N12",
+   "to": "N14",
+   "type": "supports"
+  },
+  {
+   "from": "N14",
+   "to": "N05",
+   "type": "answers"
+  },
+  {
+   "from": "N13",
+   "to": "N06",
+   "type": "answers"
+  },
+  {
+   "from": "N11",
+   "to": "N05",
+   "type": "supports"
+  },
+  {
+   "from": "N11",
+   "to": "N15",
+   "type": "grounds"
+  },
+  {
+   "from": "N12",
+   "to": "N15",
+   "type": "grounds"
+  },
+  {
+   "from": "N04",
+   "to": "N15",
+   "type": "grounds"
+  },
+  {
+   "from": "N16",
+   "to": "N11",
+   "type": "limits"
+  },
+  {
+   "from": "N16",
+   "to": "N12",
+   "type": "limits"
+  },
+  {
+   "from": "N17",
+   "to": "N12",
+   "type": "limits"
+  },
+  {
+   "from": "N17",
+   "to": "N13",
+   "type": "limits"
+  },
+  {
+   "from": "N13",
+   "to": "N18",
+   "type": "implies"
+  },
+  {
+   "from": "N17",
+   "to": "N19",
+   "type": "opens"
+  },
+  {
+   "from": "N18",
+   "to": "N19",
+   "type": "opens"
+  },
+  {
+   "from": "N01",
+   "to": "N20",
+   "type": "requires"
+  },
+  {
+   "from": "N10",
+   "to": "N11",
+   "type": "requires"
+  }
+ ],
+ "experiment_chains": [
+  {
+   "experiment": "Reference implementations",
+   "rq": "N05",
+   "hypothesis": "Small reference models on a common board can meet stated quality targets and span a wide latency/energy range",
+   "falsifier": "a reference model falling below its own quality target",
+   "design_rationale": "A reference baseline lets submitters show improvement relative to it",
+   "observations": [
+    "E004",
+    "E007",
+    "E010",
+    "E013",
+    "E027"
+   ],
+   "claims": [
+    "C004",
+    "C005",
+    "C013"
+   ],
+   "limitations": [
+    "L001",
+    "L002"
+   ],
+   "next": "Do external submitters use the suite in varied ways?"
+  },
+  {
+   "experiment": "First submission round (June 2021)",
+   "rq": "N06",
+   "hypothesis": "The modular closed/open design lets varied submitters demonstrate different contributions",
+   "falsifier": "only near-identical submissions",
+   "design_rationale": "Two divisions balance comparability and flexibility",
+   "observations": [
+    "E024",
+    "E025",
+    "E026"
+   ],
+   "claims": [
+    "C010",
+    "C011",
+    "C012",
+    "C014"
+   ],
+   "limitations": [
+    "L001",
+    "L005"
+   ],
+   "next": "What should future versions add?"
+  }
+ ]
+}

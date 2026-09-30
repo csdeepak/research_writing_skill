@@ -1,0 +1,15 @@
+{
+  "tool": "validate_artifacts",
+  "errors": 0,
+  "warnings": 0,
+  "inputs": {
+    "evidence/research_evidence.json": "3a7fc34c3de573b488ed7041c08063e927009aaebf877284de59eede9f6a4087",
+    "claims/claim_evidence_map.json": "2f551ffd920fc67cdea0923116e1d12b9834235e1a5e2e5f905c76847a176013",
+    "story/story_graph.json": "de0902ae786f844114ecf6049207834181d36ef14f6fd842feb18364930c73d5",
+    "corpus/source_registry.json": "b32208965348fdc3e71313b2fd27d7abf37b95b129def6a6ff01cf9b459e22c6",
+    "corpus/writing_patterns.json": "6869c8782bc2640b3f504a0be6c5d2db1de162ce2a5d4b8ed45f4fc99c60aabb",
+    "corpus/anti_patterns.json": "cd197ea9c735848e5e7a75c31b4b3e7207abfb67324eb788c137bb235ada909a",
+    "story/spine.md": "5f32a5d4987d7df3ee832a51c46571077464cee2abf2ab0376847060b8421605"
+  },
+  "items": []
+}

@@ -1,0 +1,11 @@
+{"items":[
+{"id":"M001","what":"Table 2 extracted with damaged column alignment; bold/underline (best/second best) marks lost. Columns reconstructed by AUTHOR and cross-checked against Table 4, findings 4-6 and the 16/18 win count.","impact":"Values in E011 are 'reconstructed'; the paper reports best/second-best marks only through the lost formatting, so the draft does not claim per-dataset winners."},
+{"id":"M002","what":"No seeds, variance, or confidence intervals for any result (authors: models are public checkpoints, retraining infeasible).","impact":"All performance differences are single-evaluation point values; no significance claims are possible. Recorded as limitation L005."},
+{"id":"M003","what":"Aggregation formula for 'Avg. Performance vs. BM25' is not defined in the extracted text.","impact":"Reported as printed and described only as the paper's summary row."},
+{"id":"M004","what":"Table 3 latency columns damaged (GPU/CPU cells misaligned).","impact":"Only prose-level latency statements and the index sizes are used."},
+{"id":"M005","what":"Table 10 shows only three datasets of the cosine vs dot-product comparison, while the text says dot-product is worse on a majority of other datasets.","impact":"The draft reports the three tabulated datasets and attributes the 'majority' statement to the text."},
+{"id":"M006","what":"Figure 2 heatmap values, Figure 3 bar values and Figures 4-5 distributions are not reliably extracted.","impact":"No numbers taken from figures except those repeated in prose."},
+{"id":"M007","what":"No ablation isolating why TAS-B generalizes better or why cross-attention helps.","impact":"Both stay hypothesis/speculation-level (C013, C014)."},
+{"id":"M008","what":"Annotation-bias (hole) study covers only TREC-COVID.","impact":"Scope limit L006."},
+{"id":"M009","what":"Rationale for choosing exactly these ten systems is only partly stated ('diverse, recent, state-of-the-art, focus on transformer-based').","impact":"Stated as the authors state it; no invented rationale."}
+]}

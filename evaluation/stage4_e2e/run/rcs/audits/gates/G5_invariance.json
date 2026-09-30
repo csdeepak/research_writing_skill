@@ -1,0 +1,16 @@
+{
+  "tool": "claim_invariance",
+  "before": ".rcs/drafts/v005/paper.md",
+  "after": ".rcs/drafts/v006/paper.md",
+  "after_sha256": "eed8cf3a51208d16a9a2d2cdeedecc5e8379f9e84d10fada59187f375cbdeb76",
+  "errors": 0,
+  "warnings": 1,
+  "findings": [
+    {
+      "rule": "CLAIM_ADDED",
+      "level": "WARN",
+      "claim": "L026",
+      "message": "tag only in the edited draft: an edit must not add claims"
+    }
+  ]
+}

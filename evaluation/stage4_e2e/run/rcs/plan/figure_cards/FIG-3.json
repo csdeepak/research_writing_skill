@@ -1,0 +1,45 @@
+{
+ "id": "FIG-3",
+ "type": "line",
+ "visual_id": "V003",
+ "purpose": "show how quickly each router reaches the new topic",
+ "rq": "RQ4",
+ "takeaway": "ASMOS rises gradually with no retraining while classifiers stay at zero until a retrain.",
+ "claims": [
+  "C009",
+  "C010"
+ ],
+ "evidence": [
+  "E058",
+  "E059",
+  "E060",
+  "E062",
+  "E063",
+  "E064"
+ ],
+ "source_data": [
+  ".rcs/plan/data/v003_new_topic_route.csv",
+  "project/data/results/e2_new_topic_20260703_182558.json",
+  "project/data/results/e2_new_topic_20260726_104315.json"
+ ],
+ "comparison_the_eye_must_make": "ASMOS lines against classifier lines over steps",
+ "uncertainty_shown": "means over 5 seeds; standard deviation recorded in the source but not drawn",
+ "baseline_or_reference": "frozen classifier at zero",
+ "non_conclusions": "does not show answerability (identical across arms) or labelling cost (counter undocumented)",
+ "honesty_checks": {
+  "axes_start": "bars none; dot and line axes do not start at zero and the caption says so",
+  "all_conditions_shown": true,
+  "dual_axis": false,
+  "three_d": false,
+  "cherry_picked": false
+ },
+ "accessibility": {
+  "colorblind_safe": true,
+  "redundant_encoding": "Okabe-Ito colours paired with marker shapes",
+  "min_font_pt_at_print": 7,
+  "alt_text": "Line plot with step 0 to 10 on the horizontal axis and route@1 on the new topic (0 to 1) on the vertical axis: ASMOS with two embedders rises gradually from 0.0 or 0.2 to 1.0, a frozen classifier stays at 0.0, and retrained classifiers stay at 0.0 until a retrain."
+ },
+ "placement": "Section 4.4, after the regret paragraph",
+ "caption": "Without any retraining, the share of new-topic queries that ASMOS sends first to the right owner rises gradually over the steps, whereas a frozen classifier stays at zero and the retrained classifiers stay at zero until their first retrain. The vertical axis is route@1 on the new topic (0 to 1) and the horizontal axis is the step (0 to 10); lines are means over 5 seeds, and ASMOS starts at 0.0 (all-mpnet-base-v2) or 0.2 (bge-m3) at step 0; classifier lines are from the all-mpnet-base-v2 run and are the same in the bge-m3 run. No error bars are drawn; the source records the standard deviation across seeds. Source: the project's new-topic result files.",
+ "source_script": ".rcs/plan/data/build_data.py"
+}

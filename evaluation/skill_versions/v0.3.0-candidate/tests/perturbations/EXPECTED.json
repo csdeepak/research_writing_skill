@@ -1,0 +1,67 @@
+{
+  "_comment": "Ground truth for the perturbation benchmark. NEVER place this file in a review packet. 'lint_must_fire' / 'lint_must_not_fire' are checked by tools/tests/test_tools.py. 'reviewer_expected_drop' lists dimensions a calibrated REVIEW_AGENT should score at least 1 point lower than on variant A; 'reconstruction_expected_degraded' lists questions expected to degrade.",
+  "base": "A_clean.md",
+  "claim_map": "skill/examples/demo_project/.rcs/claims/claim_evidence_map.json",
+  "variants": {
+    "A_clean.md": {
+      "manipulation": "none",
+      "lint_must_fire": [],
+      "lint_must_not_fire": ["ERROR", "B1-novelty", "B3-sota", "B4-proof", "B4-verb-vs-type", "B9-significance", "A6-result-dumping", "A3-undefined-acronym", "A1-late-question", "A2-buried-contribution", "C1-orphan-claim"],
+      "reviewer_expected_drop": [],
+      "reconstruction_expected_degraded": []
+    },
+    "B_poor_ordering.md": {
+      "manipulation": "Setup details open the introduction; research questions moved to the end of the Discussion; contributions moved to the Conclusion; results presented in reverse order with the figure referenced after its caption.",
+      "lint_must_fire": ["A1-late-question", "A2-buried-contribution"],
+      "lint_must_not_fire": ["B4-verb-vs-type"],
+      "reviewer_expected_drop": ["research_question", "contribution", "logical_flow", "orientation", "narrative_coherence"],
+      "reconstruction_expected_degraded": ["Q3", "Q5", "Q10"]
+    },
+    "C_jargon.md": {
+      "manipulation": "Plain terms replaced by undefined acronyms and specialist phrasing (LS, TSF, TSD, PCM, IID, OOD, AWGN, RWN-F); definitions removed.",
+      "lint_must_fire": ["A3-undefined-acronym"],
+      "lint_must_not_fire": ["B4-verb-vs-type"],
+      "reviewer_expected_drop": ["terminology", "cognitive_load", "method"],
+      "reviewer_persona_note": "drop expected mainly for personas B, C, D; persona A may be unaffected",
+      "reconstruction_expected_degraded": ["Q1", "Q4", "Q6"]
+    },
+    "D_result_dumping.md": {
+      "manipulation": "Results rewritten as a table plus a sentence-per-number listing; no takeaway, effect size, robustness, or RQ link; figure caption without takeaway and never discussed; Discussion does not answer the RQs; contributions removed.",
+      "lint_must_fire": ["A6-result-dumping", "A7-figure-not-discussed"],
+      "lint_must_not_fire": ["B4-verb-vs-type"],
+      "reviewer_expected_drop": ["result", "interpretation", "figure_table", "so_what", "limitation"],
+      "reconstruction_expected_degraded": ["Q7", "Q8", "Q9", "Q12"]
+    },
+    "E_unsupported_interpretation.md": {
+      "manipulation": "Hedges upgraded to proof/causal language; novelty and SOTA claims added; generalization beyond SynthLoad asserted; the s=0.8 null result misreported as a win; limitations removed; invented consensus.",
+      "lint_must_fire": ["B4-proof", "B3-sota", "B1-novelty", "B9-significance", "B4-verb-vs-type", "B13-invented-consensus"],
+      "lint_must_not_fire": [],
+      "reviewer_expected_drop": ["claim_evidence_alignment", "unsupported_inference", "limitation", "evidence_traceability"],
+      "reconstruction_expected_distortion": ["Q8", "Q9", "Q11", "Q12"],
+      "reconstruction_expected_degraded": ["Q9", "Q11"]
+    },
+    "F_buried_contribution.md": {
+      "manipulation": "Title and abstract made generic; no research question or contribution in the introduction; the contribution appears only late in the Discussion.",
+      "lint_must_fire": ["A1-late-question", "A2-buried-contribution"],
+      "lint_must_not_fire": ["B4-verb-vs-type"],
+      "reviewer_expected_drop": ["contribution", "research_question", "problem", "motivation", "orientation"],
+      "reconstruction_expected_degraded": ["Q2", "Q3", "Q10", "Q12"]
+    },
+    "G_citation_misuse.md": {
+      "manipulation": "Placeholder citations attached to claims they do not support; citation dumping; a secondary claim of prior success that contradicts the gap.",
+      "lint_must_fire": [],
+      "lint_must_not_fire": ["B4-verb-vs-type"],
+      "detected_by": "citation audit (workflow step 16) with the placeholder contents below; the reviewer alone can flag only the internal contradiction and the dumping",
+      "reviewer_expected_drop": ["evidence_traceability"],
+      "placeholder_contents": {
+        "R1": "Studies missing-value imputation in weather data; does not mention level shifts or failure frequencies. -> does NOT support 'most common failure mode'.",
+        "R2": "Describes min-max scaling for image classifiers. -> does NOT support forecasting normalization practice, nor 'per-window normalization fixes distribution shift in general' (claim also contradicts the stated gap).",
+        "R3": "A forecasting benchmark paper that varies model size only. -> partially relevant to 'changed together' but does not show both were changed; support too weak.",
+        "R4": "A generator for synthetic traffic data, not load data. -> 'following the protocol of' is misattributed.",
+        "R5": "Reports that per-window scaling HURT accuracy on stationary data. -> 'consistent with' is incorrect.",
+        "R6": "An opinion blog post. -> publication_status OPINION; cannot support a scientific argument without being labeled as such."
+      },
+      "expected_citation_audit": {"R1": "fail_support", "R2": "fail_support", "R3": "fail_strength", "R4": "fail_support", "R5": "fail_support_contradicts", "R6": "fail_status"}
+    }
+  }
+}

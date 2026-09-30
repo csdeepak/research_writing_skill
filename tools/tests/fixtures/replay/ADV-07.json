@@ -1,0 +1,82 @@
+{
+ "id": "ADV-07",
+ "origin": "spec 10 case 7",
+ "title": "qualitative image panel with an unconsented, identifying sample",
+ "files": {
+  "results/acc.csv": "method,accuracy\nM,0.84\nB,0.80\n",
+  "results/samples.csv": "id,pred\npatient_017,caries\n",
+  ".rcs/evidence/research_evidence.json": {
+   "project_root": ".",
+   "generated_at": "2026-09-29",
+   "items": [
+    {
+     "id": "E001",
+     "kind": "result",
+     "summary": "Accuracy of M on the test split",
+     "locator": {
+      "path": "results/acc.csv"
+     },
+     "strength": "hard",
+     "status": "ok",
+     "value": {
+      "metric": "accuracy",
+      "value": 0.84
+     },
+     "conditions": {
+      "method": "M",
+      "split": "test"
+     }
+    },
+    {
+     "id": "E002",
+     "kind": "result",
+     "summary": "Accuracy of B on the test split",
+     "locator": {
+      "path": "results/acc.csv"
+     },
+     "strength": "hard",
+     "status": "ok",
+     "value": {
+      "metric": "accuracy",
+      "value": 0.8
+     },
+     "conditions": {
+      "method": "B",
+      "split": "test"
+     }
+    }
+   ]
+  },
+  ".rcs/claims/claim_evidence_map.json": {
+   "claims": [],
+   "limitations": [],
+   "negative_result_decisions": []
+  },
+  ".rcs/plan/figure_cards/FIG-3.json": {
+   "id": "FIG-3",
+   "type": "image panel",
+   "evidence": [
+    "E001"
+   ],
+   "source_data": [
+    "results/samples.csv"
+   ],
+   "selection_rule": "random, seed 0",
+   "samples": [
+    {
+     "id": "patient_017",
+     "permission": "unknown",
+     "identifying_data": true
+    }
+   ]
+  }
+ },
+ "checks": [
+  {
+   "tool": "validate",
+   "expect": [
+    "ERROR:BLOCKED_PERMISSION"
+   ]
+  }
+ ]
+}

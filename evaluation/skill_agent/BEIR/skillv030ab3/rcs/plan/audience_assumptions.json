@@ -1,0 +1,16 @@
+{
+ "assumed_known_by_source_authors": [
+  "BM25 and TF-IDF",
+  "nDCG@10, MRR, MAP, Recall",
+  "qrels (relevance judgements)",
+  "first-stage retrieval versus re-ranking",
+  "bi-encoder versus cross-encoder",
+  "lexical gap",
+  "pooling and holes in test collections",
+  "zero-shot / in-domain / out-of-distribution",
+  "hard negatives, in-batch negatives, Margin-MSE, InfoNCE",
+  "approximate nearest neighbour search (faiss)",
+  "MS MARCO, Natural Questions, TREC tracks"
+ ],
+ "note": "These are undefined or lightly defined in the source and must be explained to an adjacent-field ML reader."
+}

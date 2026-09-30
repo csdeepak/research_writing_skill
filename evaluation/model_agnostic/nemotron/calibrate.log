@@ -1,0 +1,9 @@
+  A_clean.md                       reviewed (2 attempt(s))
+  B_poor_ordering.md               reviewed (2 attempt(s))
+  C_jargon.md                      reviewed (1 attempt(s))
+  D_result_dumping.md              reviewed (3 attempt(s))
+  E_unsupported_interpretation.md  reviewed (2 attempt(s))
+  F_buried_contribution.md         reviewed (4 attempt(s))
+  G_citation_misuse.md             reviewed (1 attempt(s))
+sensitivity 0.945 (>= 0.9), false alarms 0.0 (<= 0.1) -> CALIBRATED
+exit 0

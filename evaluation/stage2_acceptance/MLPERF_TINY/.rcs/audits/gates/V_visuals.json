@@ -1,0 +1,41 @@
+{
+  "tool": "validate_visuals",
+  "errors": 0,
+  "registry_sha256": "sha256:6267971199164869459121293012e5353eadad02066d7d7df5805422f4c43939",
+  "draft_sha256": "b6151173325d325e0bac679ab877aee96376dd8dc8c55ac4a1b6ab0c59f8d473",
+  "gates": {
+    "V1": {
+      "status": "PASSED",
+      "errors": 0
+    },
+    "V2": {
+      "status": "PASSED",
+      "errors": 0
+    },
+    "V3": {
+      "status": "PASSED",
+      "errors": 0
+    },
+    "V4": {
+      "status": "PASSED",
+      "errors": 0
+    },
+    "V5": {
+      "status": "NOT_RUN",
+      "errors": 0
+    },
+    "V6": {
+      "status": "PASSED",
+      "errors": 0
+    }
+  },
+  "items": [
+    {
+      "gate": "V1",
+      "level": "WARN",
+      "visual": "V002",
+      "code": "VISUAL_BLOCKED",
+      "message": "status NO_VALID_VISUAL: not published (fail-closed)"
+    }
+  ]
+}

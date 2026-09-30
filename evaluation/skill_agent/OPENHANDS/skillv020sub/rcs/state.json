@@ -1,0 +1,51 @@
+{
+  "step": 17,
+  "project_root": ".",
+  "audience_mode": "B",
+  "length_limit_words": 4500,
+  "length_floor_words": 3000,
+  "gates": {"G1": "passed", "G2": "passed", "G3": "passed"},
+  "gate_evidence": {
+    "G1": ".rcs/audits/gates/G1_validate.json (0 errors, 3 warnings -- author_confirmation pending on C014, C021, C041, all writer-inferred claims, accepted as-is per accepted_risks)",
+    "G2": "no tool (per SKILL.md); self-reconstruction Q1-Q12 answered from plan/skeleton.md alone, all 12 answerable -- see the check at the bottom of that file",
+    "G3": ".rcs/audits/gates/G3_lint.json (0 errors, 24 warnings, run against .rcs/drafts/v001/paper.md with --rcs .rcs; words_main=3739, max_words=4500)"
+  },
+  "open_failures": [
+    {"state": "CONFLICTING_EVIDENCE", "id": "FAIL-001", "location": "SWE-Bench Lite, OH CodeActAgent v1.8 + gpt-4o-mini-2024-07-18", "detail": "Table 3 says 6.3% (E153), Table 4 says 7.0% (E152).", "raised_by": "AUTHOR", "raised_at_step": 2, "class": "ASK", "resolution": "No human available (run-specific constraint): neither value is used in the draft; only the gpt-4o and claude-3.5-sonnet rows, which agree exactly across both tables, are cited. Recorded as accepted_risks."},
+    {"state": "VENUE_UNKNOWN", "id": "FAIL-002", "location": "plan/venue_profile.yaml", "detail": "TASK.md gives a length limit (3,000-4,500 words), a citation style, and 'no images', but no named venue.", "raised_by": "AUTHOR", "raised_at_step": 6, "class": "MARK", "resolution": "Generic profile used, filled with TASK.md's explicit run-specific rules where given; all other fields marked assumed:true. Recorded as accepted_risks."},
+    {"state": "INSUFFICIENT_LITERATURE", "id": "FAIL-003", "location": "corpus/source_registry.json", "detail": "No web access; literature limited to works already cited in project/paper.txt, each registered at read_depth=abstract / verification.method=user_supplied_file per run-specific constraints.", "raised_by": "AUTHOR", "raised_at_step": 7, "class": "MARK", "resolution": "Accepted by the run's own instructions (this is the specified method, not a deviation). Recorded as accepted_risks."},
+    {"state": "AUTHOR_CONFIRMATION_PENDING", "id": "FAIL-004", "location": "claims/claim_evidence_map.json: C014, C021, C041", "detail": "Three writer-inferred claims (backbone-scaling interpretation; the literature-gap synthesis; the post-publication-evolution observation) have no human author to confirm them.", "raised_by": "AUTHOR", "raised_at_step": 4, "class": "ASK", "resolution": "No human available. All three are conservative, evidence-grounded syntheses (not restatements of anything the authors explicitly deny), each hedged in the draft's language ('suggests', 'is consistent with') rather than asserted as the authors' own finding. Recorded as accepted_risks."}
+  ],
+  "accepted_risks": [
+    "No human reviewer is available in this run. Wherever the skill would ASK or STOP, the most defensible option was chosen from the evidence and recorded here instead, per TASK.md's run-specific constraints.",
+    "CONFLICTING_EVIDENCE (SWE-Bench Lite, OH + gpt-4o-mini: 6.3% in Table 3 [E153] vs 7.0% in Table 4 [E152]): both recorded as conflicting evidence items; neither value is used in the draft.",
+    "VENUE_UNKNOWN: no venue was named by TASK.md. Used templates/venue_profile.generic.yaml as the base, overridden with TASK.md's own explicit rules (length 3,000-4,500 words main text, citation form '(FirstAuthor et al., Year)', Markdown tables only, no images, structure left to the writer's judgement). All other venue fields are marked assumed:true.",
+    "Literature mode has no web access. Every registered source is filed with verification.method='user_supplied_file' and read_depth='abstract' and its support_quote is drawn from paper.txt's own characterization of that source (paper.txt is the only full-text material available), not from the source's own text. Documented once in corpus/corpus_log.md rather than per entry.",
+    "source_registry.schema.json's 'level' enum has no 'Level 0 / user-supplied' value; level=2 was used for every registered source as the closest defensible fit, and is recorded as an assumption rather than an independent verification claim.",
+    "Aider (Gauthier), Moatless Tools (Örwall), and Devin (Cognition.ai) are named in project/paper.txt without a publication year anywhere in its reference list. Rather than inventing a year to satisfy source_registry's required integer field, all three are omitted from the source registry and from the draft's citations (see evidence/missing_evidence.json MISS-005 and corpus/corpus_log.md).",
+    "Table 1's framework-comparison grid and parts of Table 4 (BIRD/ML-Bench/BioCoder/Gorilla-APIBench/ToolQA sub-blocks) suffered text-extraction damage (columns flattened or checkmarks lost entirely). The draft never cites a number it could not recover with confidence; see evidence/missing_evidence.json (MISS-001, MISS-002).",
+    "Per TASK.md run-specific constraints, this run stops after step 17 (scientific-overclaim audit). Steps 18-21 (blind REVIEW_AGENT, revision rounds, final line edit, tag-stripping) are out of scope for this run; the draft written to .rcs/drafts/v001/paper.md and ./paper.md therefore keeps its {C###}/{L###} claim tags, as instructed.",
+    "No subagents are available in this run. The CORPUS_AGENT role (steps 1-2, 7) was performed directly by AUTHOR, reading agents/corpus_agent.md for its task definition only (not review_agent.md, recon_grader.md, or skill_agent.md, per run-specific constraints).",
+    "Per-section draft files (drafts/v001/<section>.md) were not written separately; the assembled draft (drafts/v001/paper.md) was written directly, with the same section-by-section drafting order (Results -> Methods -> Discussion -> Related Work -> Introduction -> Conclusion -> Abstract -> Title) followed internally. This is a scope simplification given the single-session, no-subagent, fixed-deliverable nature of this run.",
+    "AUTHOR_CONFIRMATION_PENDING on C014, C021, C041 (writer-inferred, not human-confirmed): retained because each is a conservative synthesis of already-registered evidence, hedged appropriately in the draft, and flagged 'pending' rather than 'confirmed' throughout (G1 warns on this by design)."
+  ],
+  "steps_completed": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+  "artifacts_written": [
+    "evidence/project_inventory.json", "evidence/research_evidence.json", "evidence/missing_evidence.json",
+    "claims/claim_candidates.json", "claims/claim_evidence_map.json",
+    "plan/audience_assumptions.json", "plan/audience_profile.json", "plan/venue_profile.yaml",
+    "story/spine.md", "story/story_graph.json", "story/lit_gap_chain.md",
+    "story/term_ledger.json", "story/question_ledger.json",
+    "corpus/source_registry.json", "corpus/literature_map.json", "corpus/corpus_log.md",
+    "corpus/writing_patterns.json", "corpus/anti_patterns.json",
+    "plan/paper_architecture.md", "plan/figure_cards/TAB-1.md", "plan/figure_cards/TAB-2.md", "plan/figure_cards/TAB-3.md",
+    "plan/skeleton.md", "drafts/v001/paper.md",
+    "audits/gates/G1_validate.json", "audits/gates/G3_lint.json",
+    "audits/v001/reconstruction_self.md", "audits/v001/claim_evidence_audit.md", "audits/v001/flow_audit.md",
+    "audits/v001/term_load_audit.md", "audits/v001/figure_table_audit.md", "audits/v001/citation_audit.json",
+    "audits/v001/overclaim_audit.md",
+    "packets/audience.md", "packets/objective.md",
+    "../paper.md (root copy, byte-identical to drafts/v001/paper.md)", "../open_issues.md"
+  ],
+  "notes": "Steps 1-17 complete per TASK.md run-specific constraints. G1/G2/G3 passed (0 errors each). Draft assembled at drafts/v001/paper.md and copied verbatim to ./paper.md (3739 main-text words per audits/gates/G3_lint.json, within the 3,000-4,500 word requirement; claim tags kept, not stripped, since step 21 is out of scope). Audits 11-17 completed and found no unresolved OVERCLAIM, SELECTIVE_REPORTING, MISSING_RESULT, or FIGURE_NOT_EXPLAINED failure; remaining lint warnings are either accepted, disclosed trade-offs (see term_load_audit.md) or tool false-positives on bibliography text (see overclaim_audit.md). Step 18 (blind REVIEW_AGENT) and steps 19-21 are out of scope for this run and are left to the external process named in TASK.md. RUN COMPLETE."
+}

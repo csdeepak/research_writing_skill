@@ -1,0 +1,13 @@
+audience: "B (adjacent researcher) -- fixed by TASK.md: ML researchers from other subfields who know general ML/DL/statistics but not this project's subfield terms, datasets, or prior work"
+venue: "unspecified -- generic profile used (VENUE_UNKNOWN, assumed: true)"
+deliverable: "standalone Markdown research paper, 3000-4500 words main text, ./paper.md"
+model_bindings:
+  author: "Claude (this session), acting as AUTHOR"
+  corpus_agent: "same session, acting as CORPUS_AGENT (no subagents available this run)"
+  review_agent: "NOT RUN this session -- step 18 performed externally per run constraints"
+data_policy:
+  outside_directory_access: forbidden
+  web_access: forbidden
+  literature_mode: "closed corpus -- only works cited in ./project/paper.txt's own reference list may be registered/cited"
+  subagents: "none available; roles performed sequentially in this single context (isolation: none)"
+run_constraints_source: "TASK.md, read at session start"

@@ -1,0 +1,11 @@
+{
+  "mode": "B",
+  "primary": "Machine-learning researchers from other subfields (adjacent researchers) who know general ML, deep learning, standard evaluation practice and statistics.",
+  "secondary": "Reviewers and replicators checking the benchmark's construction and the reported scores.",
+  "tertiary": "Later readers who use the benchmark to evaluate their own retrieval models.",
+  "assumed_known": ["supervised and transfer learning", "transformers and BERT-style pre-training", "bi-encoders / embeddings / cosine similarity and dot product", "contrastive and distillation losses in outline", "fine-tuning", "train/validation/test splits", "GPU/CPU latency", "confidence intervals and significance tests"],
+  "not_assumed": ["information-retrieval terminology (query, corpus, relevance judgement, qrels, nDCG, recall at k)", "BM25 and the lexical gap", "pooling and unjudged 'holes' in test collections", "the specific datasets and prior benchmarks", "sparse-retrieval variants (document expansion, term weighting)", "late interaction (ColBERT)"],
+  "binding_personas": ["A", "B", "E"],
+  "term_budget": {"per_paragraph": 2, "abstract_acronyms": 1},
+  "source": "task statement 2026-09-29"
+}

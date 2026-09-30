@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-09-27",
+  "items": [
+    {
+      "id": "MISS-001",
+      "description": "Table 1's framework-comparison grid (which of AutoGPT/LangChain/MetaGPT/AutoGen/.../OpenHands has which of the 9 listed capabilities) did not survive text extraction. Only the framework names, the 'Domain' column, and the column headers remain (E021).",
+      "affected_claims": ["C021"],
+      "resolution": "Do not assert any specific framework's checkmark/x status from Table 1. The gap argument in the draft instead relies only on the qualitative sentences in the paper's own Related Work appendix (E022-E027), each independently quoted, plus the fact that OpenHands' own capabilities are each independently described and evidenced in Section 2 (E002-E020).",
+      "status": "accepted; recorded in state.json -> accepted_risks"
+    },
+    {
+      "id": "MISS-002",
+      "description": "Table 4 (software-engineering results) suffered column-flattening: agent/model labels are listed together, then all 'Success Rate (%)' values for every mini-table are concatenated into one block, then all '$ Avg. Cost' values into another. Row alignment within each block was recovered by matching each mini-table's row count to its value count, which is unambiguous for the SWE-Bench Lite and HumanEvalFix blocks (used in the draft, E050-E054) but materially less certain for the BIRD, ML-Bench, BioCoder, and Gorilla APIBench blocks (the Gorilla APIBench block's row count could not be reconciled with its value count at all).",
+      "affected_claims": [],
+      "resolution": "BIRD, ML-Bench, BioCoder, Gorilla APIBench, and ToolQA are mentioned in the draft only descriptively (task type, from the undamaged Table 2), with no benchmark-specific numeric scores cited for them. Only SWE-Bench Lite and HumanEvalFix numbers are used from Table 4.",
+      "status": "accepted; recorded in state.json -> accepted_risks"
+    },
+    {
+      "id": "MISS-003",
+      "description": "CONFLICTING_EVIDENCE: OH CodeActAgent v1.8 + gpt-4o-mini-2024-07-18 on SWE-Bench Lite is reported as 7.0% in Table 4 (E152) and 6.3% in the overview Table 3 (E153).",
+      "affected_claims": [],
+      "resolution": "No human author is available to adjudicate (run-specific constraint). Table 4 is treated as the more reliable of the two damaged tables because it is a single-benchmark block (lower risk of cross-benchmark row misalignment) and is explicitly the table the running text points to for full software results ('See Tab. 4 ... for full results', line 280). Neither value is used in the draft's prose or main tables; the draft cites only the gpt-4o and claude-3.5-sonnet rows, which agree exactly across Table 3 and Table 4.",
+      "status": "accepted; recorded in state.json -> accepted_risks"
+    },
+    {
+      "id": "MISS-004",
+      "description": "No per-seed / per-run variance, confidence interval, or repeated-trial data is reported for any of the 15 benchmarks in the extracted text: every cell is a single number.",
+      "affected_claims": ["C001", "C003", "C005", "C007", "C008", "C009", "C010", "C011"],
+      "resolution": "Confidence for every 'measured' claim built on these numbers is capped at 'moderate' (never 'high') and L007 (writer_derived) records the missing-variance caveat under Additional caveats.",
+      "status": "accepted; recorded in state.json -> accepted_risks"
+    },
+    {
+      "id": "MISS-005",
+      "description": "Two sources named as SWE-Bench Lite baselines in the paper's own tables/prose -- Aider (Gauthier) and Moatless Tools (Örwall) -- have no publication year anywhere in the reference list, so they cannot be registered in corpus/source_registry.json (year is a required integer field) without inventing a value.",
+      "affected_claims": [],
+      "resolution": "Aider and Moatless Tools are omitted from the draft's SWE-Bench Lite comparison (which already includes SWE-Agent, AutoCodeRover, and Agentless, all citable with (Author, Year)). Nothing about their scores is lost from the evidence map (E050 still records both verbatim), only from the prose/table actually drafted.",
+      "status": "accepted; recorded in state.json -> accepted_risks"
+    }
+  ]
+}

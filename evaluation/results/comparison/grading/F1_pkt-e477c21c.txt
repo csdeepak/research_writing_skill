@@ -1,0 +1,136 @@
+{
+  "questions": {
+    "Q1": {
+      "Q1a": "absent",
+      "Q1b": "absent"
+    },
+    "Q2": {
+      "Q2a": "present",
+      "Q2b": "absent"
+    },
+    "Q3": {
+      "Q3a": "absent",
+      "Q3b": "weakened",
+      "Q3c": "weakened"
+    },
+    "Q4": {
+      "Q4a": "weakened",
+      "Q4b": "present",
+      "Q4c": "present",
+      "Q4d": "weakened",
+      "Q4e": "present"
+    },
+    "Q5": {
+      "Q5a": "absent",
+      "Q5b": "present"
+    },
+    "Q6": {
+      "Q6a": "present",
+      "Q6b": "present",
+      "Q6c": "weakened",
+      "Q6d": "weakened"
+    },
+    "Q7": {
+      "Q7a": "present",
+      "Q7b": "present",
+      "Q7e": "present",
+      "Q7c": "present",
+      "Q7f": "present",
+      "Q7g": "present",
+      "Q7d": "present",
+      "Q7h": "present"
+    },
+    "Q8": {
+      "Q8a": "weakened",
+      "Q8b": "absent"
+    },
+    "Q9": {
+      "Q9a": "present",
+      "Q9b": "weakened",
+      "Q9c": "absent"
+    },
+    "Q10": {
+      "Q10a": "weakened",
+      "Q10b": "present"
+    },
+    "Q11": {
+      "Q11a": "absent",
+      "Q11b": "absent",
+      "Q11c": "absent",
+      "Q11d": "present",
+      "Q11e": "absent"
+    },
+    "Q12": {
+      "Q12a": "weakened",
+      "Q12b": "weakened"
+    }
+  },
+  "intrusions": [
+    {
+      "question": "Q1",
+      "text": "Whether one open agent platform (OpenHands), and one generalist agent on it using a single fixed prompt with no benchmark-specific modification, can be competitive at the same time across qualitatively different agentic task categories... rather than each category needing its own purpose-built agent.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q1",
+      "text": "A secondary, engineering framing is that building and fairly evaluating agents has required separate infrastructure per agent or task category.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q2",
+      "text": "The paper also cites the platform's wide adoption (2,100+ contributions, 188+ contributors, 32,000 stars).",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q2",
+      "text": "notes that more autonomous general agents raise safety questions",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q3",
+      "text": "Hence there is no evidence on whether one agent design holds up when the task category changes.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q4",
+      "text": "Wording such as 'the evaluated paper', 'the source material', 'OpenHands' authors' and 'We would add' suggests the writers are re-analyzing previously published OpenHands results rather than running new experiments, but this is never stated.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q4",
+      "text": "replay-based integration tests",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q6",
+      "text": "extended benchmark roster and configuration detail beyond what the gold nuggets cover: BIRD, ML-Bench (quarter subset), BioCoder, Gorilla APIBench, ToolQA (easy subset), WebArena (812 tasks), MiniWoB++ (125 tasks), GAIA (53 validation tasks; GPTSwarm), AgentBench OS subset, MINT math/code subsets, ProofWriter, Entity Deduction Arena",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q7",
+      "text": "Aggregate: above the named comparator on 9 of 15 benchmarks, within about a point on 2, mixed on 1, below on 3.",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q8",
+      "text": "strong backbone dependence (7.0-26.0% on SWE-Bench Lite; 2.3% vs 47.2% on ToolQA); large deficits to narrow trained specialists (CC-NET 91.1% vs 40.8%; a fine-tuned Gorilla model 75.0% vs 36.4%)",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q9",
+      "text": "the few matched pairs in the paper, Moatless 26.7% vs 26.0% on claude-3.5-sonnet, Agentless 27.3% vs 22.0% on gpt-4o, ReAct 36.8% vs 2.3% on gpt-3.5-turbo, favor the baselines",
+      "tag": "benign_elaboration"
+    },
+    {
+      "question": "Q10",
+      "text": "this paper's own contribution may instead be a cross-category synthesis (Table 2) of previously reported OpenHands results",
+      "tag": "unsupported_belief"
+    },
+    {
+      "question": "Q11",
+      "text": "the evaluated versions are a dated snapshot of a since-reorganized codebase",
+      "tag": "unsupported_belief"
+    }
+  ],
+  "notes": "Applied GRADING RULE v0.2: every gold nugget was searched across all twelve reconstruction answers (not only the same-numbered one). This cross-search upgraded two nuggets that a same-question-only pass would have missed: Q4e (matched via the WebArena line under Q6: 'CodeActAgent delegating to it [BrowsingAgent]') and Q6b (the '300 issues, no hint text' detail sits under Q6, but the 'for cost reasons' rationale only appears as a general line under Q5: 'uses reduced subsets for cost'). Systemic pattern: the reconstruction substitutes a fabricated central research question at Q1 ('can one platform/one generalist agent with a single fixed prompt be competitive across categories') for gold's actual Q1 challenges (code creation/modification/debugging in complex systems; safety/side-effect avoidance) -- neither gold nugget is satisfied anywhere in the document. This substituted framing recurs at Q2/Q3/Q8/Q10/Q12, which measurably depresses those scores: Q8a and Q12b are marked weakened because the reconstruction reports 'agents' (plural, multiple versions/backbones) obtaining merely 'non-trivial' or 'suggested, not demonstrated' performance, versus gold's confident, singular 'the same CodeAct agent... performs competitively' (derived strength); Q10a is weakened because the platform-as-primary-contribution idea is offered only as one of two hedged 'ambiguous' options, undercut by the reader's own speculation that the document might be a secondary synthesis rather than the platform paper itself. Q11 diverges sharply from gold: the reconstruction's stated limitations are entirely evaluation-methodology critiques (no seeds/variance, no backbone control, no ablation, dated codebase snapshot) that read as the reader's own analysis, whereas gold Q11's nuggets are the paper's own stated limitations (struggles with complex tasks, long-file editing, handcrafted workflow, agents as unreliable research artifacts) -- only Q11d ('not top on several benchmarks') overlaps; Q11a/b/c/e are absent. No numeric value anywhere in the reconstruction conflicted with a gold number -- all eight Q7 figures match to the stated precision exactly, so every Q7 nugget is 'present' even where the reconstruction omitted agent-version/backbone detail (treated as an acceptable paraphrase gap, not a strength violation, since the headline quantity and scope were unambiguous from context). No 'overstated' or 'contradicted' label was needed anywhere in this reconstruction. Metrics use definitions inferred from the RECON_GRADER role text, since docs/04_EVALUATION_FRAMEWORK.md §2 was not part of this task's input and was not read: RR (Recall Rate) = present / total nuggets = 18/40 = 0.450. DR (Distortion Rate) = (weakened+overstated+contradicted) / total nuggets = 11/40 = 0.275. MMF (Meaning Match Fraction) = (present+weakened) / total nuggets = 29/40 = 0.725. IR (Intrusion Rate) = unsupported_belief intrusions / total nuggets = 7/40 = 0.175 (13 intrusions total: 7 unsupported_belief, 6 benign_elaboration). Core RR = present / total restricted to nuggets whose strength sits on the measured>derived>observed>...>speculation>future ladder (i.e. excluding the 26 'context'-strength nuggets, leaving 14 core nuggets: 3 interpretation, 8 measured, 2 derived, 1 observed) = 10/14 = 0.714. If Q4a is instead credited as 'present' (a defensible alternative reading of the terse 'event-stream state' mention), RR becomes 19/40=0.475 and DR 10/40=0.250, with MMF and Core RR unchanged."
+}

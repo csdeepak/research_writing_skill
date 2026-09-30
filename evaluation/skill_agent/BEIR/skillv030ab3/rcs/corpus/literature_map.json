@@ -1,0 +1,55 @@
+{
+ "dimensions": [
+  {
+   "name": "Evaluation setting of prior neural retrieval work",
+   "sources": [
+    "SRC-006",
+    "SRC-007",
+    "SRC-018"
+   ],
+   "achieves": "large gains over BM25 when trained and tested on the same dataset",
+   "shared_assumption": "the training and test distribution coincide (as described by the BEIR paper)",
+   "evidence_of_failure": "none shown in the cited works; the BEIR paper only says evaluation is on the same dataset"
+  },
+  {
+   "name": "Prior benchmarks",
+   "sources": [
+    "SRC-001",
+    "SRC-002"
+   ],
+   "achieves": "benchmarking of retrieval question answering (MultiReQA) and knowledge-intensive tasks (KILT)",
+   "shared_assumption": "a single task or a single domain (Wikipedia)",
+   "weakness": "narrow task/domain; small corpora; retrieval not the primary task (as characterised by the BEIR paper)"
+  },
+  {
+   "name": "Architecture families evaluated",
+   "sources": [
+    "SRC-003",
+    "SRC-009",
+    "SRC-010",
+    "SRC-011",
+    "SRC-006",
+    "SRC-013",
+    "SRC-014",
+    "SRC-016",
+    "SRC-017"
+   ],
+   "achieves": "lexical, sparse, dense, late-interaction and re-ranking retrieval",
+   "shared_assumption": "training on MS MARCO (except DPR)"
+  },
+  {
+   "name": "Annotation bias and pooling",
+   "sources": [
+    "SRC-021",
+    "SRC-022",
+    "SRC-023",
+    "SRC-024",
+    "SRC-020"
+   ],
+   "achieves": "explains why unjudged retrieved documents count as irrelevant",
+   "weakness": "pools built by lexical systems disfavour non-lexical systems (per the BEIR paper)"
+  }
+ ],
+ "gap_statement_scoped": "Among the works the BEIR paper itself cites (no external search was possible in this run), the benchmarks it describes cover a single task or domain; no claim about all prior work is made.",
+ "note": "Literature mode limited to works cited in project/paper.txt (no web); sources registered from the project's reference list."
+}

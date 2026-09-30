@@ -1,0 +1,1 @@
+{"roles": {"REVIEW_AGENT": {"provider": "manual", "dir": ".rcs/llm/manual", "json_retries": 2}}, "data_policy": {"allowed_hosts": []}, "keep_transcripts": true}

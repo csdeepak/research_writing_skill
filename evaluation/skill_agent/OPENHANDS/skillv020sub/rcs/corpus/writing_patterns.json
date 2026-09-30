@@ -1,0 +1,54 @@
+{
+  "patterns": [
+    {
+      "id": "PAT-001",
+      "source": "project/paper.txt (Level 0 -- the project's own paper; the only source in this run with full read_depth)",
+      "section": "Results / HumanEvalFix (project/paper.txt line 465-466)",
+      "rhetorical_purpose": "Report a strong headline number while disclosing, in the same breath, a specific asymmetry that qualifies the comparison.",
+      "move_sequence": [
+        "state the metric and the number (79.3% pass rate)",
+        "give the comparison that makes the number meaningful (vs. the best non-agentic baseline, 48.6%)",
+        "name the one baseline that scores higher (SWE-Agent, 87.7%)",
+        "immediately disclose the specific condition asymmetry that makes that one comparison unequal (1-shot demonstration vs. their own 0-shot)"
+      ],
+      "reader_question_answered": "Is 79.3% good, and is it the best number on this benchmark, and if not, why not?",
+      "assumed_knowledge": "pass@k-style benchmark scoring; the concept of few-shot demonstrations",
+      "transition_behavior": "uses 'While X achieves Y ... whereas our evaluation ... is 0-shot' as a genuine contrast connective (the contrast is real, not decorative)",
+      "evidence_placement": "the qualifying fact sits in the very next sentence after the number it qualifies, not deferred to a separate limitations section",
+      "result_interpretation_pattern": "number -> reference point -> the one exception -> why the exception isn't a clean loss",
+      "figure_table_integration": null,
+      "limitation_framing": "the caveat is attached to the specific claim it bounds, in place, rather than stated only as a generic limitation later",
+      "contribution_framing": null,
+      "signature": "headline number immediately followed by its strongest counter-example and the specific reason the counter-example is not apples-to-apples",
+      "reader_effect": "reader trusts the headline number more, because the paper pre-empts the obvious 'but X did better' objection with a concrete reason rather than silence",
+      "repair_principle": "when citing a comparator that beats your own result, name the condition difference immediately, not as an afterthought",
+      "paraphrase_only": true,
+      "quote_permitted": false
+    },
+    {
+      "id": "PAT-002",
+      "source": "project/paper.txt",
+      "section": "4 EVALUATION, opening (project/paper.txt line 255-257, 461)",
+      "rhetorical_purpose": "Frame many individual per-benchmark numbers as evidence for one overarching claim, stated before the numbers appear.",
+      "move_sequence": [
+        "state the categories the evaluation spans (software, web, misc.) before any table",
+        "state the property under test (one unmodified agent's cross-category performance) before any table",
+        "after the tables, explicitly reconnect the numbers to that stated property ('the same CodeAct agent ... demonstrates competitive performance across three major task categories')",
+        "name what makes the comparison meaningful (baseline agents are usually built for one category)"
+      ],
+      "reader_question_answered": "Why am I being shown 15 unrelated-looking tables, and what should I conclude from all of them together?",
+      "assumed_knowledge": "none beyond general benchmark-table literacy",
+      "transition_behavior": "the synthesizing sentence after the tables uses 'Notably ... This is particularly significant when compared to' to point back at a contrast set up before the tables were shown",
+      "evidence_placement": "the synthesis sentence follows the tables, but the property it synthesizes was already named before the tables, so the reader was reading them prospectively rather than needing a payoff added after the fact",
+      "result_interpretation_pattern": "framing sentence (before) -> tables -> synthesis sentence (after) that answers the framing",
+      "figure_table_integration": "each mini-table is introduced by one sentence describing the benchmark's task, before its numbers are given",
+      "limitation_framing": null,
+      "contribution_framing": "the cross-category synthesis functions as the paper's central claim, stated once the reader already has the numbers needed to check it",
+      "signature": "state the interpretive frame before the data, then re-state it explicitly after the data, tying the two together with a named contrast",
+      "reader_effect": "prevents the 'wall of tables' feeling; the reader always knows which question a given number is supposed to help answer",
+      "repair_principle": "never let a run of results-tables stand without a framing sentence before and a synthesis sentence after",
+      "paraphrase_only": true,
+      "quote_permitted": false
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "claims": [
+    {"id": "C001", "statement": "MLPerf Tiny v0.5 specifies four benchmarks -- keyword spotting, visual wake words, image classification, and anomaly detection -- each pairing one dataset, one MCU-sized reference model (52.5-325 KB as a compiled TFLite file), and one numeric quality target.",
+     "claim_type": "measured", "evidence": ["E001"], "scope": {"suite_version": "v0.5"},
+     "confidence": "high", "confidence_reasons": ["direct, unambiguous reproduction of Table 1, cross-checked against the matching prose in Sections 4.1-4.4", "no interpretive step involved"],
+     "limitations": ["L005"], "permitted_verbs": ["specifies", "pairs", "is sized"], "author_confirmation": "confirmed", "used_in": []},
+
+    {"id": "C002", "statement": "Across all four benchmarks, the published quality target is set a small, consistent margin below the reference model's own measured accuracy/AUC on its designated evaluation set (KWS: 90% target vs. 91.6-91.7% measured; VWW: 80% vs. ~86%; Image Classification: 85% vs. 86.5%; Anomaly Detection: AUC 0.85 vs. 0.86-0.88), which the authors state is meant to absorb cross-platform quantization and rounding differences.",
+     "claim_type": "derived", "evidence": ["E001", "E002", "E003", "E004", "E005", "E026"], "scope": {"suite_version": "v0.5", "condition": "reference implementation only"},
+     "confidence": "moderate", "confidence_reasons": ["the per-benchmark rationale is stated by the authors 3 of 4 times almost verbatim; the cross-benchmark 'consistent pattern' framing is this paper's own synthesis of four individually-stated facts, not a sentence the authors write as a single generalization", "none of the four underlying accuracy/AUC figures has reported retraining or seed variance (L002)"],
+     "limitations": ["L002"], "permitted_verbs": ["is set below", "accommodates", "is consistent with"], "author_confirmation": "pending", "used_in": []},
+
+    {"id": "C003", "statement": "The benchmark framework measures latency as the median inferences-per-second (IPS) over 5 runs of >=10s/>=10 iterations each, energy with the same protocol reporting median microjoules/inference (core power only), and accuracy from a single full-validation-set pass (Top-1% or AUC), each gated by a minimum-accuracy validity check.",
+     "claim_type": "measured", "evidence": ["E006", "E025"], "scope": {"applies_to": "all four benchmarks, both divisions"},
+     "confidence": "high", "confidence_reasons": ["direct reproduction of the stated protocol, repeated twice in the source text (Section 5.3 and Appendix A.3) with no discrepancy"],
+     "limitations": ["L004", "L006"], "permitted_verbs": ["measures", "computes", "reports"], "author_confirmation": "confirmed", "used_in": []},
+
+    {"id": "C004", "statement": "The closed division fixes the dataset, model, and quality target and allows only post-training quantization (no retraining or weight replacement); the open division allows changing the dataset, training procedure, and model, drops the mandatory accuracy bar, and requires every deviation from the reference to be documented.",
+     "claim_type": "measured", "evidence": ["E007", "E008"], "scope": {"suite_version": "v0.5"},
+     "confidence": "high", "confidence_reasons": ["direct reproduction of the stated division rules"],
+     "limitations": ["L004"], "permitted_verbs": ["fixes", "allows", "requires"], "author_confirmation": "confirmed", "used_in": []},
+
+    {"id": "C005", "statement": "The first submission round (v0.5, June 2021) produced 5 total submissions spanning both divisions and 5 hardware/software categories: an ARM MCU, a RISC-V MCU, a Raspberry Pi 4 via a hardware-agnostic software toolchain, a dedicated neural-network accelerator, and an FPGA via a training-to-HLS workflow.",
+     "claim_type": "measured", "evidence": ["E009", "E010"], "scope": {"suite_version": "v0.5", "round": "first (June 2021)"},
+     "confidence": "moderate", "confidence_reasons": ["Table 2's division/numerics/framework/hardware/demonstrates cells are read directly and cleanly for 4 of 5 rows; the 5th row's dataset/training/model modification marks required reconstruction (L003)", "single round, n=5 (L001)"],
+     "limitations": ["L001", "L003"], "permitted_verbs": ["produced", "spanned"], "author_confirmation": "confirmed", "used_in": []},
+
+    {"id": "C006", "statement": "The range of divisions, hardware classes, and software stacks seen in the v0.5 round, each demonstrating a different point in the deployment stack, is consistent with the modular reference-implementation design achieving its goal of accommodating TinyML's hardware and software heterogeneity while the closed division kept results directly comparable.",
+     "claim_type": "interpretation", "evidence": ["C005", "E010", "E011", "E012"], "scope": {"suite_version": "v0.5", "round": "first (June 2021)"},
+     "confidence": "moderate", "confidence_reasons": ["the authors state this interpretation themselves in near-identical words (Section 6.2)", "based on one round with n=5 submissions and no non-modular baseline suite for comparison (L001)", "architecture coverage in the closed division is still narrow (L005)"],
+     "limitations": ["L001", "L003", "L005"], "permitted_verbs": ["is consistent with", "suggests", "accommodated"], "author_confirmation": "confirmed", "used_in": []},
+
+    {"id": "C007", "statement": "Across the five v0.5 submissions, INT-8 was the most common inference numeric format, ML frameworks ranged from open-source interpreters to hardware-specific compilers, and measured device power spanned roughly microwatts to watts.",
+     "claim_type": "observed", "evidence": ["E011"], "scope": {"suite_version": "v0.5", "round": "first (June 2021)"},
+     "confidence": "moderate", "confidence_reasons": ["author-stated descriptive summary of all 5 submissions (complete enumeration, not a sample)", "single round; no comparison round to check whether the pattern persists"],
+     "limitations": ["L001"], "permitted_verbs": ["was the most common", "ranged", "spanned"], "author_confirmation": "confirmed", "used_in": []},
+
+    {"id": "C008", "statement": "No submission in the v0.5 round modified the training dataset, unlike a broader contemporary trend in AI toward data-centric development.", "claim_type": "observed", "evidence": ["E013"], "scope": {"suite_version": "v0.5", "round": "first (June 2021)"},
+     "confidence": "moderate", "confidence_reasons": ["author-stated, complete enumeration over all 5 submissions", "single round; the authors themselves note they anticipate this may shift"],
+     "limitations": ["L001"], "permitted_verbs": ["did not modify", "unlike"], "author_confirmation": "confirmed", "used_in": []},
+
+    {"id": "C009", "statement": "CoreMark, the standard MCU-class benchmark, does not profile full programs and does not accurately represent machine-learning inference workloads.",
+     "claim_type": "literature", "evidence": ["E020"], "sources": ["SRC-009"], "scope": {"benchmark": "CoreMark"},
+     "confidence": "moderate", "confidence_reasons": ["relayed from MLPerf Tiny's own characterization of the source (read_depth=abstract for SRC-009 in this run; not independently verified against CoreMark's own text)"],
+     "limitations": [], "permitted_verbs": ["reports", "does not profile", "does not represent"], "author_confirmation": "confirmed", "used_in": []},
+
+    {"id": "C010", "statement": "MLMark benchmarks real ML inference workloads but its supported models need far too much memory (gigabyte-scale) and runtime for MCU-class devices, and it does not support power measurement.",
+     "claim_type": "literature", "evidence": ["E021"], "sources": ["SRC-019"], "scope": {"benchmark": "MLMark"},
+     "confidence": "moderate", "confidence_reasons": ["relayed from MLPerf Tiny's own characterization of the source (read_depth=abstract for SRC-019)"],
+     "limitations": [], "permitted_verbs": ["reports", "requires", "does not support"], "author_confirmation": "confirmed", "used_in": []},
+
+    {"id": "C011", "statement": "MLPerf's community ML-inference benchmark suite plans to add power measurement but currently precludes MCUs and other resource-constrained platforms for lack of small benchmarks and compatible implementations.",
+     "claim_type": "literature", "evidence": ["E022"], "sources": ["SRC-018"], "scope": {"benchmark": "MLPerf Inference"},
+     "confidence": "moderate", "confidence_reasons": ["relayed from MLPerf Tiny's own characterization of the source (read_depth=abstract for SRC-018)"],
+     "limitations": [], "permitted_verbs": ["reports", "precludes", "plans to"], "author_confirmation": "confirmed", "used_in": []},
+
+    {"id": "C012", "statement": "None of CoreMark, MLMark, or MLPerf Inference jointly measures accuracy, latency, and energy for ML inference on MCU-class hardware with a reproducible, modular methodology -- the gap MLPerf Tiny targets.",
+     "claim_type": "derived", "evidence": ["C009", "C010", "C011"], "scope": {"scope_note": "scoped to the 3 benchmarking efforts discussed in project/paper.txt's Related Work; no independent literature search was run this session"},
+     "confidence": "moderate", "confidence_reasons": ["the authors state this synthesis themselves near-verbatim (Section 3's closing sentence)", "scoped to a closed, non-searched corpus of 22 references rather than a systematic literature search"],
+     "limitations": [], "permitted_verbs": ["there is a need for", "closes this gap"], "author_confirmation": "confirmed", "used_in": []},
+
+    {"id": "C013", "statement": "MLPerf Tiny's benchmarks are already reused as a standard set of tasks in TinyML research and have been turned into public projects on a third-party TinyML development platform.",
+     "claim_type": "observed", "evidence": ["E014"], "sources": ["SRC-004"], "scope": {"as_of": "paper publication (2021, per arXiv v4 timestamp on project/paper.txt)"},
+     "confidence": "moderate", "confidence_reasons": ["author-stated, citing their own related work (SRC-004) as one instance", "single example cited by name; extent of reuse not quantified"],
+     "limitations": [], "permitted_verbs": ["has been reused", "acted as"], "author_confirmation": "confirmed", "used_in": []},
+
+    {"id": "C014", "statement": "The authors plan to extend the suite to new application domains (e.g. wearables, medical devices, environmental monitoring) while keeping a stable long-term core subset so historical progress remains trackable.",
+     "claim_type": "future", "evidence": ["E016"], "scope": {},
+     "confidence": "low", "confidence_reasons": ["forward-looking statement of intent, not yet realized"],
+     "limitations": [], "permitted_verbs": ["will include", "remains open"], "author_confirmation": "confirmed", "used_in": []},
+
+    {"id": "C015", "statement": "The authors aim, in future versions, to widen the benchmark's measurement scope to include pre-processing and streaming behavior.",
+     "claim_type": "future", "evidence": ["E017"], "scope": {},
+     "confidence": "low", "confidence_reasons": ["forward-looking statement of intent, not yet realized; the authors' own text also flags an unresolved design tension here (L004)"],
+     "limitations": ["L004"], "permitted_verbs": ["aim to", "remains open"], "author_confirmation": "confirmed", "used_in": []},
+
+    {"id": "C016", "statement": "Future reference suites may extend the closed division's architecture coverage beyond FC/CNN layers, e.g. to RNNs.",
+     "claim_type": "future", "evidence": ["E018"], "scope": {},
+     "confidence": "low", "confidence_reasons": ["forward-looking statement of intent, not yet realized"],
+     "limitations": ["L005"], "permitted_verbs": ["may include", "remains open"], "author_confirmation": "confirmed", "used_in": []}
+  ],
+  "limitations": [
+    {"id": "L001", "statement": "The evidence that the modular, dual-division design 'accommodates TinyML's heterogeneity' comes from a single submission round with 5 total submissions, and there is no non-modular baseline suite run in parallel to compare adoption or diversity against.",
+     "affects_claims": ["C005", "C006", "C007", "C008"], "effect_on_interpretation": "The interpretation (C006) is well-grounded in what actually happened, but generalizing it to 'the design will keep working as the field grows' is not yet supported by repeated rounds.",
+     "evidence": ["E009", "E010"]},
+    {"id": "L002", "statement": "The reference-model accuracy/AUC figures underlying each benchmark's quality-target margin (E002-E005) are each a single reported measurement; no retraining or seed variance is given.",
+     "affects_claims": ["C002"], "effect_on_interpretation": "The size of the quantization margin the authors chose could shift if the reference model were retrained; the paper does not bound this.",
+     "evidence": ["E002", "E003", "E004", "E005"]},
+    {"id": "L003", "statement": "Table 2's extraction is damaged; the open-division (FPGA/hls4ml) row's Dataset/Training/Model 'unmodified' marks are reconstructed from other statements in the paper (the closed-division rule, and Section 6.2's 'no dataset was modified' remark) rather than read directly off an intact table cell.",
+     "affects_claims": ["C005", "C006"], "effect_on_interpretation": "The specific claim that the FPGA submission left the dataset unmodified is well-supported by an independent, explicit sentence elsewhere in the same paper; the Training/Model cells for that row are inferred from the division rules plus the use of quantization-aware training, not read directly.",
+     "evidence": ["E010", "E013"], "resolution": "Not resolvable within this run (no web, no additional files); disclosed in the paper's table note."},
+    {"id": "L004", "statement": "The benchmark measures accuracy/latency/energy on single, non-streaming inputs and excludes feature extraction from the closed-division measurement window; the authors themselves flag that this creates a 'degenerate case' risk (a submitter could define nearly the whole model as feature extraction) and that including feature extraction instead would over-count its cost in this non-streaming protocol (about 40 feature-extraction cycles per inference cycle for 1s of audio).",
+     "affects_claims": ["C003", "C004", "C015"], "effect_on_interpretation": "The measurement protocol is reproducible and consistently applied, but its treatment of streaming/pre-processing is an acknowledged open design tension, not a solved problem.",
+     "evidence": ["E017"]},
+    {"id": "L005", "statement": "The closed division's reference architectures are based mainly on FC and CNN layers; other architecture families (e.g. RNNs) are reachable today only through open-division submissions.",
+     "affects_claims": ["C001", "C006", "C016"], "effect_on_interpretation": "The claim that the suite is representative of TinyML workloads is bounded to the layer types its closed-division references actually use.",
+     "evidence": ["E018"]},
+    {"id": "L006", "statement": "The specific latency and energy magnitudes the reference implementations achieved on the NUCLEO-L4R5ZI board (Figure 5) are not recoverable from the extracted text -- only the measurement protocol that produced them is.",
+     "affects_claims": ["C003"], "effect_on_interpretation": "This paper can state that latency and energy were measured, and how, but cannot report the resulting reference numbers.",
+     "evidence": []}
+  ],
+  "negative_result_decisions": []
+}

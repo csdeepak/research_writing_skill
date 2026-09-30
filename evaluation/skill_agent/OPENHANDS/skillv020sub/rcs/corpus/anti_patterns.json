@@ -1,0 +1,30 @@
+{
+  "patterns": [
+    {
+      "id": "ANT-001",
+      "source": "project/paper.txt",
+      "section": "Table 1 (project/paper.txt line 209-250)",
+      "rhetorical_purpose": "Compare 12 frameworks on 9 capability dimensions at a glance.",
+      "move_sequence": ["list framework names down rows", "list capability dimensions across columns", "mark each cell with a checkmark/x/asterisk"],
+      "reader_question_answered": "Which framework has which capability? (unanswerable from the extracted text)",
+      "signature": "an all-visual comparison grid with no cell carrying any text redundancy (no caption sentence stating the pattern the grid shows)",
+      "reader_effect": "when the grid is lost (here, to text extraction) or otherwise unavailable, the reader is left with zero information -- there is no prose fallback stating which frameworks have which capabilities",
+      "repair_principle": "a comparison table's headline pattern should also be stated once in prose (e.g. 'only OpenHands has all nine'), so the argument survives even if the reader cannot see the table",
+      "paraphrase_only": true,
+      "quote_permitted": false
+    },
+    {
+      "id": "ANT-002",
+      "source": "project/paper.txt",
+      "section": "C RELATED WORK, first paragraph (project/paper.txt line 900-901)",
+      "rhetorical_purpose": "Survey many prior multi-agent frameworks quickly.",
+      "move_sequence": ["name framework 1 + what it does", "name framework 2 + what it does", "name framework 3 + what it does", "... (continues for ~8 frameworks in two long sentences)"],
+      "reader_question_answered": "What exists already? (but not: why does any of this create a gap for OpenHands specifically?)",
+      "signature": "several distinct frameworks introduced in sequence, each described in a short relative clause, with no organizing dimension stated before the list starts",
+      "reader_effect": "the reader can follow individual facts but must build the 'gap' argument themselves; the paragraph reads as a survey rather than a case for necessity",
+      "repair_principle": "state the organizing dimension (e.g. capability coverage) before naming any individual framework, and end the group with one sentence naming the shared limitation the whole group has -- exactly what section_rules.md's Related-Work contract requires and what this draft's corpus/literature_map.json dimension matrix was built to support",
+      "paraphrase_only": true,
+      "quote_permitted": false
+    }
+  ]
+}

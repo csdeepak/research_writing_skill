@@ -1,0 +1,1144 @@
+{
+  "sources": [
+    {
+      "id": "SRC-029",
+      "title": "Lemur: Harmonizing Natural Language and Code for Language Agents",
+      "authors": [
+        "Yiheng Xu",
+        "Hongjin Su",
+        "Chen Xing",
+        "Boyu Mi",
+        "Qian Liu",
+        "Weijia Shi",
+        "Binyuan Hui",
+        "Fan Zhou",
+        "Yitao Liu",
+        "Tianbao Xie"
+      ],
+      "year": 2023,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Lemur-chat-70b is a WebArena baseline scoring 5.3%.",
+          "support_quote": "Lemur (Xu et al., 2023) Lemur-chat-70b 5.3",
+          "location": "project/paper.txt Table 5, lines 564-599"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-030",
+      "title": "Large Language Models Can Self-Improve at Web Agent Tasks",
+      "authors": [
+        "Ajay Patel",
+        "Markus Hofmarcher",
+        "Claudiu Leoveanu-Condrei",
+        "Marius-Constantin Dinu",
+        "Chris Callison-Burch",
+        "Sepp Hochreiter"
+      ],
+      "year": 2024,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "A 72B model trained with self-improvement synthetic data is a WebArena baseline scoring 9.4%.",
+          "support_quote": "Patel et al. (2024) Trained 72B with self-improvement synthetic data 9.4",
+          "location": "project/paper.txt Table 5, lines 565-599"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-031",
+      "title": "AutoWebGLM: Bootstrap and Reinforce a Large Language Model-based Web Navigating Agent",
+      "authors": [
+        "Hanyu Lai",
+        "Xiao Liu",
+        "Iat Long Iong",
+        "Shuntian Yao",
+        "Yuxuan Chen",
+        "Pengbo Shen",
+        "Hao Yu",
+        "Hanchen Zhang",
+        "Xiaohan Zhang",
+        "Yuxiao Dong"
+      ],
+      "year": 2024,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "A 7B model trained with human/agent hybrid annotation is a WebArena baseline scoring 18.2%.",
+          "support_quote": "AutoWebGLM (Lai et al., 2024) Trained 7B with human/agent hybrid annotation 18.2",
+          "location": "project/paper.txt Table 5, lines 566-599"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-032",
+      "title": "Logic-LM: Empowering Large Language Models with Symbolic Solvers for Faithful Logical Reasoning",
+      "authors": [
+        "Liangming Pan",
+        "Alon Albalak",
+        "Xinyi Wang",
+        "William Yang Wang"
+      ],
+      "year": 2023,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Pairs an LLM with a symbolic solver; on ProofWriter's hardest 5-hop subset this baseline reaches 79.6%, the strongest comparator OpenHands is measured against there.",
+          "support_quote": "Logic-LM (Pan et al., 2023) gpt4 + symbolic solver 79.6",
+          "location": "project/paper.txt Table 6 region, lines 726-742"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-034",
+      "title": "Agentless: Demystifying LLM-based Software Engineering Agents",
+      "authors": [
+        "Chunqiu Steven Xia",
+        "Yinlin Deng",
+        "Soren Dunn",
+        "Lingming Zhang"
+      ],
+      "year": 2024,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "A reproducible SWE-Bench-Lite baseline (Agentless) reaching 27.3% with gpt-4o.",
+          "support_quote": "Agentless (Xia et al., 2024) gpt-4o 27.3",
+          "location": "project/paper.txt Table 3 region, lines 312-317"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-033",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "authors": [
+        "Shunyu Yao",
+        "Jeffrey Zhao",
+        "Dian Yu",
+        "Nan Du",
+        "Izhak Shafran",
+        "Karthik R Narasimhan",
+        "Yuan Cao"
+      ],
+      "year": 2023,
+      "venue": "ICLR",
+      "publication_status": "PEER-REVIEWED",
+      "level": 1,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Interleaving reasoning traces with actions; used as a 0-shot ToolQA baseline (36.8% with gpt-3.5-turbo, 43.1% with gpt-3), the comparator against which OpenHands' weakest ToolQA configuration is judged.",
+          "support_quote": "ReAct, 0-shot (Yao et al., 2023; OpenAI, 2024a)",
+          "location": "project/paper.txt Table 4 region, line 520"
+        }
+      ],
+      "evidence_quality": "high",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-001",
+      "title": "Executable Code Actions Elicit Better LLM Agents",
+      "authors": [
+        "Xingyao Wang",
+        "Yangyi Chen",
+        "Lifan Yuan",
+        "Yizhe Zhang",
+        "Yunzhu Li",
+        "Hao Peng",
+        "Heng Ji"
+      ],
+      "year": 2024,
+      "venue": "ICML",
+      "publication_status": "PEER-REVIEWED",
+      "level": 1,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "A programming-language-based action space is powerful and flexible enough to perform any task with tools in different forms while remaining reliable and easy to maintain.",
+          "support_quote": "The action space based on programming languages (PL) is powerful and flexible enough to perform any task with tools in different forms ... while being reliable and easy to maintain",
+          "location": "project/paper.txt §2.1, lines 131-136"
+        }
+      ],
+      "evidence_quality": "high",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-002",
+      "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
+      "authors": [
+        "John Yang",
+        "Carlos E. Jimenez",
+        "Alexander Wettig",
+        "Kilian Lieret",
+        "Shunyu Yao",
+        "Karthik Narasimhan",
+        "Ofir Press"
+      ],
+      "year": 2024,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "A carefully crafted Agent-Computer Interface (specialized tools for particular tasks) is important for successfully solving complex agentic tasks.",
+          "support_quote": "SWE-Agent ... highlights the importance of a carefully crafted Agent-Computer Interface (ACI, i.e., specialized tools for particular tasks) in successfully solving complex tasks",
+          "location": "project/paper.txt §2.3, lines 195-196"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-003",
+      "title": "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation Framework",
+      "authors": [
+        "Qingyun Wu",
+        "Gagan Bansal",
+        "Jieyu Zhang",
+        "Yiran Wu",
+        "Shaokun Zhang",
+        "Erkang Zhu",
+        "Beibin Li",
+        "Li Jiang",
+        "Xiaoyun Zhang",
+        "Chi Wang"
+      ],
+      "year": 2023,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Advances beyond basic agent frameworks by adding Python and bash execution capabilities, though with stateless command execution.",
+          "support_quote": "AutoGen ... advances beyond basic frameworks by implementing Python and bash execution capabilities, though with stateless command execution",
+          "location": "project/paper.txt Appendix C, lines 902"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-004",
+      "title": "LangChain",
+      "authors": [
+        "Harrison Chase"
+      ],
+      "year": 2022,
+      "venue": null,
+      "publication_status": "DOCUMENTATION",
+      "level": 4,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Provides foundational agent-framework building blocks with basic runtime support.",
+          "support_quote": "LangChain and LangGraph ... provide foundational building blocks with basic runtime support",
+          "location": "project/paper.txt Appendix C, line 902; also §2.1, line 138"
+        }
+      ],
+      "evidence_quality": "low",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-005",
+      "title": "Auto-GPT: An Autonomous GPT-4 Experiment",
+      "authors": [
+        "Significant Gravitas"
+      ],
+      "year": 2023,
+      "venue": null,
+      "publication_status": "DOCUMENTATION",
+      "level": 4,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "An early generalist agent that decomposes a user goal into executable steps.",
+          "support_quote": "Auto-GPT ... harness LLMs for task completion by decomposing user goals into executable steps",
+          "location": "project/paper.txt Appendix C, line 901"
+        }
+      ],
+      "evidence_quality": "low",
+      "permitted_use": [
+        "content_citation",
+        "negative_pattern"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-007",
+      "title": "SWE-bench: Can Language Models Resolve Real-world GitHub Issues?",
+      "authors": [
+        "Carlos E Jimenez",
+        "John Yang",
+        "Alexander Wettig",
+        "Shunyu Yao",
+        "Kexin Pei",
+        "Ofir Press",
+        "Karthik R Narasimhan"
+      ],
+      "year": 2024,
+      "venue": "ICLR",
+      "publication_status": "PEER-REVIEWED",
+      "level": 1,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Defines the SWE-Bench benchmark: agents resolve real-world GitHub issues (bug reports/feature requests) by editing code, verified against a held-out human-written test suite.",
+          "support_quote": "SWE-Bench ... is designed to assess agents' abilities in solving real-world GitHub issues, such as bug reports or feature requests",
+          "location": "project/paper.txt §4.2, line 464"
+        }
+      ],
+      "evidence_quality": "high",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-008",
+      "title": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
+      "authors": [
+        "Shuyan Zhou",
+        "Frank F Xu",
+        "Hao Zhu",
+        "Xuhui Zhou",
+        "Robert Lo",
+        "Abishek Sridhar",
+        "Xianyi Cheng",
+        "Tianyue Ou",
+        "Yonatan Bisk",
+        "Daniel Fried"
+      ],
+      "year": 2023,
+      "venue": "ICLR",
+      "publication_status": "PEER-REVIEWED",
+      "level": 1,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Defines WebArena: a self-hostable, execution-based web-agent benchmark spanning shopping, forums, developer platforms, and content-management tasks.",
+          "support_quote": "WebArena ... is a self-hostable, execution-based web agent benchmark that allows agents to freely choose which path to take",
+          "location": "project/paper.txt §4.3, line 621"
+        }
+      ],
+      "evidence_quality": "high",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-009",
+      "title": "WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?",
+      "authors": [
+        "Alexandre Drouin",
+        "Maxime Gasse",
+        "Massimo Caccia",
+        "Issam H. Laradji",
+        "Manuel Del Verme",
+        "Tom Marty",
+        "Léo Boisvert",
+        "Megh Thakkar",
+        "Quentin Cappart",
+        "David Vazquez",
+        "Nicolas Chapados",
+        "Alexandre Lacoste"
+      ],
+      "year": 2024,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Introduces BrowserGym, the browser action/observation vocabulary (navigation, clicking, typing, scrolling) OpenHands' browsing actions are built on.",
+          "support_quote": "a domain-specific language for browsing introduced by BrowserGym (Drouin et al., 2024)",
+          "location": "project/paper.txt §2.1, line 131; §2.2, line 189"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-010",
+      "title": "OctoPack: Instruction Tuning Code Large Language Models",
+      "authors": [
+        "Niklas Muennighoff",
+        "Qian Liu",
+        "Armel Zebaze",
+        "Qinkai Zheng",
+        "Binyuan Hui",
+        "Terry Yue Zhuo",
+        "Swayam Singh",
+        "Xiangru Tang",
+        "Leandro von Werra",
+        "Shayne Longpre"
+      ],
+      "year": 2024,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Defines the HumanEvalFix task/protocol used for the bug-fixing benchmark (pass@k over multi-turn self-debugging).",
+          "support_quote": "We follow the setup from Muennighoff et al. (2024) using pass@k",
+          "location": "project/paper.txt §4.2.1, line 466"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-011",
+      "title": "GAIA: a Benchmark for General AI Assistants",
+      "authors": [
+        "Grégoire Mialon",
+        "Clémentine Fourrier",
+        "Craig Swift",
+        "Thomas Wolf",
+        "Yann LeCun",
+        "Thomas Scialom"
+      ],
+      "year": 2023,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Defines GAIA: 466 curated tasks across three difficulty levels requiring reasoning, multi-modal understanding, web browsing, and coding.",
+          "support_quote": "GAIA ... evaluates agents' general task-solving skills ... GAIA consists of 466 curated tasks across three levels",
+          "location": "project/paper.txt §4.4, line 626"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-012",
+      "title": "GPQA: A Graduate-Level Google-Proof Q&A Benchmark",
+      "authors": [
+        "David Rein",
+        "Betty Li Hou",
+        "Asa Cooper Stickland",
+        "Jackson Petty",
+        "Richard Yuanzhe Pang",
+        "Julien Dirani",
+        "Julian Michael",
+        "Samuel R Bowman"
+      ],
+      "year": 2023,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Defines GPQA: graduate-level, 'Google-proof' multiple-choice science questions, with expert and non-expert human baselines reported alongside model results.",
+          "support_quote": "GPQA ... evaluates agents' ability for coordinated tool use when solving challenging graduate-level problems",
+          "location": "project/paper.txt §4.4, line 627"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-013",
+      "title": "AgentBench: Evaluating LLMs as Agents",
+      "authors": [
+        "Xiao Liu",
+        "Hao Yu",
+        "Hanchen Zhang",
+        "Yifan Xu",
+        "Xuanyu Lei",
+        "Hanyu Lai",
+        "Yu Gu",
+        "Hangliang Ding",
+        "Kaiwen Men",
+        "Kejuan Yang"
+      ],
+      "year": 2023,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Defines AgentBench's OS subset: multi-turn reasoning and decision-making via bash commands against a task-specific operating system.",
+          "support_quote": "AgentBench ... evaluates agents' reasoning and decision-making abilities in a multi-turn, open-ended generation setting",
+          "location": "project/paper.txt §4.4, line 771"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-014",
+      "title": "MINT: Evaluating LLMs in Multi-turn Interaction with Tools and Language Feedback",
+      "authors": [
+        "Xingyao Wang",
+        "Zihan Wang",
+        "Jiateng Liu",
+        "Yangyi Chen",
+        "Lifan Yuan",
+        "Hao Peng",
+        "Heng Ji"
+      ],
+      "year": 2024,
+      "venue": "ICLR",
+      "publication_status": "PEER-REVIEWED",
+      "level": 1,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Defines MINT: multi-turn tasks using tools and GPT-4-simulated natural-language feedback, with math and code subsets.",
+          "support_quote": "MINT ... is a benchmark designed to evaluate agents' ability to solve challenging tasks through multi-turn interactions using tools and natural language feedback simulated by GPT-4",
+          "location": "project/paper.txt §4.4, line 772"
+        }
+      ],
+      "evidence_quality": "high",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-015",
+      "title": "ProofWriter: Generating Implications, Proofs, and Abductive Statements over Natural Language",
+      "authors": [
+        "Oyvind Tafjord",
+        "Bhavana Dalvi",
+        "Peter Clark"
+      ],
+      "year": 2021,
+      "venue": "Findings of ACL-IJCNLP 2021",
+      "publication_status": "PEER-REVIEWED",
+      "level": 1,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Defines ProofWriter, a synthetic deductive-reasoning dataset; the paper uses its hardest 5-hop-reasoning subset.",
+          "support_quote": "ProofWriter ... is a synthetic dataset created to assess deductive reasoning abilities of LLMs ... we focus on the most challenging subset ... requiring 5-hop reasoning",
+          "location": "project/paper.txt §4.4, line 773"
+        }
+      ],
+      "evidence_quality": "high",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-016",
+      "title": "Probing the Multi-turn Planning Capabilities of LLMs via 20 Question Games",
+      "authors": [
+        "Yizhe Zhang",
+        "Jiarui Lu",
+        "Navdeep Jaitly"
+      ],
+      "year": 2024,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Defines Entity Deduction Arena: deducing an unknown entity via strategic questioning, testing state tracking and planning over multi-turn dialogue.",
+          "support_quote": "Entity Deduction Arena (EDA) ... evaluates agents' ability to deduce unknown entities through strategic questioning, akin to the 20 Questions game",
+          "location": "project/paper.txt §4.4, line 774"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-017",
+      "title": "Reinforcement Learning on Web Interfaces Using Workflow-Guided Exploration",
+      "authors": [
+        "Evan Zheran Liu",
+        "Kelvin Guu",
+        "Panupong Pasupat",
+        "Tianlin Shi",
+        "Percy Liang"
+      ],
+      "year": 2018,
+      "venue": "ICLR",
+      "publication_status": "PEER-REVIEWED",
+      "level": 1,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Defines MiniWoB++, a suite of 125 synthetic minimalist web-interface tasks with built-in reward functions, and its Workflow Guided Exploration baseline.",
+          "support_quote": "MiniWoB++ ... is an interactive web benchmark, with built-in reward functions. The tasks are synthetically initialized on 125 different minimalist web interfaces",
+          "location": "project/paper.txt §4.3, line 622"
+        }
+      ],
+      "evidence_quality": "high",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-018",
+      "title": "Can LLM Already Serve as a Database Interface? A BIg Bench for Large-Scale Database Grounded Text-to-SQLs",
+      "authors": [
+        "Jinyang Li",
+        "Binyuan Hui",
+        "GE QU",
+        "Jiaxi Yang",
+        "Binhua Li",
+        "Bowen Li",
+        "Bailin Wang",
+        "Bowen Qin",
+        "Ruiying Geng",
+        "Nan Huo"
+      ],
+      "year": 2023,
+      "venue": "NeurIPS Datasets and Benchmarks Track",
+      "publication_status": "PEER-REVIEWED",
+      "level": 1,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Defines BIRD, a realistic, large-scale text-to-SQL benchmark evaluated by execution accuracy.",
+          "support_quote": "BIRD ... is a benchmark for text-to-SQL tasks ... aimed at realistic and large-scale database environments",
+          "location": "project/paper.txt §4.2.1, line 617"
+        }
+      ],
+      "evidence_quality": "high",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-019",
+      "title": "ML-Bench: Evaluating Large Language Models and Agents for Machine Learning Tasks on Repository-Level Code",
+      "authors": [
+        "Xiangru Tang",
+        "Yuliang Liu",
+        "Zefan Cai",
+        "Yanjun Shao",
+        "Junjie Lu",
+        "Yichi Zhang",
+        "Zexuan Deng",
+        "Helan Hu",
+        "Kaikai An",
+        "Ruijun Huang"
+      ],
+      "year": 2024,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Defines ML-Bench: generating bash/Python code to complete ML tasks across 18 GitHub repositories (9,641 tasks over 169 problems); OpenHands uses its quarter subset following the original protocol.",
+          "support_quote": "ML-Bench ... evaluates agents' ability to solve machine learning tasks across 18 GitHub repositories. The benchmark comprises 9,641 tasks spanning 169 diverse ML problems",
+          "location": "project/paper.txt §4.2.1, line 550"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-020",
+      "title": "BioCoder: A Benchmark for Bioinformatics Code Generation with Large Language Models",
+      "authors": [
+        "Xiangru Tang",
+        "Bill Qian",
+        "Rick Gao",
+        "Jiakang Chen",
+        "Xinyun Chen",
+        "Mark B Gerstein"
+      ],
+      "year": 2024,
+      "venue": "Bioinformatics",
+      "publication_status": "PEER-REVIEWED",
+      "level": 1,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Defines BioCoder: repository-level bioinformatics code generation with masked-out target code.",
+          "support_quote": "BioCoder ... is a repository-level code generation benchmark that evaluates agents' performance on bioinformatics-related tasks",
+          "location": "project/paper.txt §4.2.1, lines 556-558"
+        }
+      ],
+      "evidence_quality": "high",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-021",
+      "title": "Gorilla: Large Language Model Connected with Massive APIs",
+      "authors": [
+        "Shishir G. Patil",
+        "Tianjun Zhang",
+        "Xin Wang",
+        "Joseph E. Gonzalez"
+      ],
+      "year": 2023,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Defines Gorilla APIBench, an API-usage benchmark over TorchHub/TensorHub/HuggingFace, and a model fine-tuned specifically for API calls.",
+          "support_quote": "Gorilla APIBench ... evaluates agents' abilities to use APIs. it incorporates tasks on TorchHub, TensorHub, and HuggingFace",
+          "location": "project/paper.txt §4.2.1, line 552"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-022",
+      "title": "ToolQA: A Dataset for LLM Question Answering with External Tools",
+      "authors": [
+        "Yuchen Zhuang",
+        "Yue Yu",
+        "Kuan Wang",
+        "Haotian Sun",
+        "Chao Zhang"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS",
+      "publication_status": "PEER-REVIEWED",
+      "level": 1,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Defines ToolQA, with easy and hard subsets over topics like flights, prices, and reviews, each requiring different tool types.",
+          "support_quote": "ToolQA ... evaluates agents' abilities to use external tools ... It features two levels: easy and hard",
+          "location": "project/paper.txt §4.2.1, line 554"
+        }
+      ],
+      "evidence_quality": "high",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-023",
+      "title": "Language Agents as Optimizable Graphs",
+      "authors": [
+        "Mingchen Zhuge",
+        "Wenyi Wang",
+        "Louis Kirsch",
+        "Francesco Faccio",
+        "Dmitrii Khizbullin",
+        "Jurgen Schmidhuber"
+      ],
+      "year": 2024,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Introduces GPTSwarm: constructing agent systems as optimizable graphs, where nodes are operations and edges are collaboration/communication paths.",
+          "support_quote": "GPTSwarm ... pioneers the use of optimizable graphs to construct agent systems, unifying language agent frameworks through modularity",
+          "location": "project/paper.txt §3, line 252"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-024",
+      "title": "AutoCodeRover: Autonomous Program Improvement",
+      "authors": [
+        "Yuntong Zhang",
+        "Haifeng Ruan",
+        "Zhiyu Fan",
+        "Abhik Roychoudhury"
+      ],
+      "year": 2024,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "A reproducible SWE-Bench-Lite baseline agent that addresses GitHub issues via code search and abstract-syntax-tree manipulation.",
+          "support_quote": "AutoCodeRover ... addresses GitHub issues via code search and abstract syntax tree manipulation",
+          "location": "project/paper.txt Appendix C, line 907"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-025",
+      "title": "How Aider Scored SOTA 26.3% on SWE Bench Lite",
+      "authors": [
+        "Paul Gauthier"
+      ],
+      "year": 2024,
+      "venue": null,
+      "publication_status": "BLOG",
+      "level": 4,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false,
+        "notes": "year taken directly from the dated URL and 'Accessed' date printed in paper.txt's own reference entry (2024/05/22; accessed 2024-06-05), not looked up externally"
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "A reproducible SWE-Bench-Lite baseline agent (Aider) reaching 26.3% with gpt-4o & claude-3-opus.",
+          "support_quote": "Aider (Gauthier) gpt-4o & claude-3-opus 26.3",
+          "location": "project/paper.txt Table 4, line 476/529"
+        }
+      ],
+      "evidence_quality": "low",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-026",
+      "title": "Autonomous Evaluation and Refinement of Digital Agents",
+      "authors": [
+        "Jiayi Pan",
+        "Yichi Zhang",
+        "Nicholas Tomlin",
+        "Yifei Zhou",
+        "Sergey Levine",
+        "Alane Suhr"
+      ],
+      "year": 2024,
+      "venue": null,
+      "publication_status": "PREPRINT",
+      "level": 3,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "Combines a GPT-4V reward model with a Reflexion-based retry strategy to refine web-agent behavior; OpenHands' authors plan to integrate it as an optional add-on to their browsing agent.",
+          "support_quote": "Auto Eval & Refine ... an agent retry-on-error strategy with Reflexion ... prompts and task completion reward models, will be integrated as an optional component attached to our browsing agent",
+          "location": "project/paper.txt Appendix A, line 893"
+        }
+      ],
+      "evidence_quality": "medium",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    },
+    {
+      "id": "SRC-028",
+      "title": "A Data-Driven Approach for Learning to Control Computers",
+      "authors": [
+        "Peter C Humphreys",
+        "David Raposo",
+        "Tobias Pohlen",
+        "Gregory Thornton",
+        "Rachita Chhaparia",
+        "Alistair Muldal",
+        "Josh Abramson",
+        "Petko Georgiev",
+        "Adam Santoro",
+        "Timothy Lillicrap"
+      ],
+      "year": 2022,
+      "venue": "ICML",
+      "publication_status": "PEER-REVIEWED",
+      "level": 1,
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-27",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "CC-NET, a specialist model trained with RL and human-annotated behavioral cloning, is the strongest MiniWoB++ baseline shown.",
+          "support_quote": "CC-NET (Humphreys et al., 2022) ... Trained specialist model with RL and human annotated BC",
+          "location": "project/paper.txt Table 5, line 586-588"
+        }
+      ],
+      "evidence_quality": "high",
+      "permitted_use": [
+        "content_citation"
+      ],
+      "citation_count": null
+    }
+  ]
+}

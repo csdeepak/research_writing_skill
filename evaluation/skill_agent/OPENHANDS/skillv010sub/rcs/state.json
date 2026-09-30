@@ -1,0 +1,80 @@
+{
+  "step": 17,
+  "phase": "REVISE (stopped after step 17 per run-specific instruction; steps 18-21 not performed in this session)",
+  "gates": {
+    "G1": "passed -- every spine line references >=1 claim/limitation ID (validated by tools/validate_artifacts.py's check_spine); every claim has >=1 evidence ID or is typed literature/interpretation/future with sources/evidence as applicable; no open STOP-class failure. Pending-claim confirmation (13 claims) is handled per AR007 (no human available): all are carried at hedged, appropriately-typed strength (derived/observed/interpretation, never measured-with-unwarranted-certainty) and listed for the record in open_issues.md rather than blocking.",
+    "G2": "passed -- plan/skeleton.md's self-reconstruction answers Q1-Q12 from the skeleton alone (see the check appended to that file).",
+    "G3": "passed -- tools/lint_draft.py --rcs .rcs on drafts/v001/paper.md: 0 errors; all {C###}/{L###} tags resolve against claims/claim_evidence_map.json.",
+    "G4_steps_11_17": "all seven audits complete and PASS, each with disclosed reviewed-and-accepted exceptions (lint false positives from reference-list titles and proper nouns; see .rcs/audits/v001/*.md). Numeric fidelity check: 100% of the 51 distinct percentage figures in paper.md trace exactly to evidence/research_evidence.json; the one value that must not appear (E004's superseded 6.3) does not appear. Word count of paper.md's main text (title+abstract+body, excluding References): 4,479 words including table cell text, 4,144 words excluding table rows -- both within the required 3,000-4,500 range.",
+    "G5_step21": "NOT ATTEMPTED -- out of scope for this run. Claim tags are still present in both ./paper.md and .rcs/drafts/v001/paper.md, per the run-specific instruction to keep them."
+  },
+  "open_failures": [],
+  "accepted_risks": [
+    {
+      "id": "AR001",
+      "topic": "UNCLEAR_AUDIENCE",
+      "decision": "Audience mode fixed to B (adjacent researcher) directly by TASK.md: 'Machine-learning researchers from OTHER subfields (adjacent researchers): they know general ML, deep learning, standard evaluation practice and statistics, but not this project's subfield-specific terminology, datasets or prior work.' This matches audience_model.md mode B exactly; no elicitation needed."
+    },
+    {
+      "id": "AR002",
+      "topic": "VENUE_UNKNOWN",
+      "decision": "No venue was specified. Adopted templates/venue_profile.generic.yaml with every structural/format rule marked assumed:true, EXCEPT citation style, which TASK.md fixes explicitly to '(FirstAuthor et al., Year) as they appear' in the project materials -- this run-specific instruction overrides the generic profile's default 'numeric' style."
+    },
+    {
+      "id": "AR003",
+      "topic": "CONFLICTING_EVIDENCE",
+      "decision": "Table 3 of project/paper.txt (a redundant 'curated' summary that itself directs readers to Tables 4-6 for full results) gives 6.3 for {CodeActAgent v1.8, gpt-4o-mini-2024-07-18, SWE-Bench Lite}, while the dedicated Table 4 gives 7.0 for the identical cell. Table 4 is treated as authoritative because (a) two of its three sibling values in the same row-group are independently corroborated by prose elsewhere in the paper and by internal count-matching across the table's column blocks, and (b) Table 3's own extraction is independently known to be damaged (its framework-comparison analogue, Table 1, and the GPQA appendix table, Table 7, are unusable). The 6.3 value is recorded as evidence E004 with status=conflicting/superseded and is not used in paper.md. No human was available to adjudicate; this is the most defensible reading of the evidence as it stands.",
+      "evidence": ["E001", "E004"]
+    },
+    {
+      "id": "AR004",
+      "topic": "extraction damage (figures/tables)",
+      "decision": "Table 1 (framework capability comparison) and Table 7 (extended GPQA subsets) lost their cell values to text extraction (only headers/labels survived, or alignment could not be reconstructed). Both are recorded as status=unverifiable/incomplete and are not used to support any claim in paper.md, per the hard rule against creative gap-filling."
+    },
+    {
+      "id": "AR005",
+      "topic": "CORPUS_AGENT mode=patterns, no web access",
+      "decision": "Writing-pattern/anti-pattern extraction normally draws on verified exemplar papers read in full. No web access is available in this run, so no full text of any cited external work could be obtained -- only paper.txt itself. Patterns extraction is scoped down to self-exemplars drawn from paper.txt's own prose (Result Interpretation Chain usage, negative-result placement, limitations framing), and corpus/writing_patterns.json is marked accordingly rather than fabricated from unseen sources."
+    },
+    {
+      "id": "AR006",
+      "topic": "Uncitable sources (no printed year)",
+      "decision": "Two works paper.txt names are given without any printed year in its own reference list or in-text citation: 'Devin (Cognition.ai)' and 'Moatless Tools (Örwall)'. Per the hard rule against inventing facts, no year is fabricated. Both are mentioned in paper.md, where relevant, as plain system/product names (as paper.txt itself often does in table cells) rather than as formal (Author, Year) citations."
+    },
+    {
+      "id": "AR007",
+      "topic": "AUTHOR_CONFIRMATION_PENDING, no human available",
+      "decision": "Claims that directly paraphrase an explicit statement in project/paper.txt or the READMEs are marked author_confirmation=confirmed (the original project's own authors stated them). Claims that are this run's own structural or interpretive synthesis (not verbatim-stated by the source) are marked author_confirmation=pending, carried at a hedged claim strength appropriate to their type, and listed in open_issues.md under 'Claims awaiting confirmation' rather than blocking the draft."
+    },
+    {
+      "id": "AR008",
+      "topic": "Timeline mismatch between paper.txt and README_1/README_2",
+      "decision": "README_1.md and README_2.md describe a materially later and restructured state of the project (a 'V1' agent SDK, a separate 'Agent Canvas' product, new benchmarks including a dedicated safety benchmark) than the architecture and evaluation paper.txt reports (versions v1.5-v1.8, 2024). The paper's narrative and all reported results are grounded in paper.txt. README material is used only to (a) bound a limitation that the evaluated implementation is a superseded snapshot of an actively developed project, and (b) briefly frame continued community development. No result, benchmark, or claim from the READMEs' later system is presented as evaluated in this paper."
+    },
+    {
+      "id": "AR009",
+      "topic": "SELECTIVE_REPORTING risk",
+      "decision": "Every negative/underperformance case found while cross-tabulating Tables 4-6 (ToolQA with gpt-3.5-turbo-0125 at 2.3%; MiniWoB++ vs. the CC-NET specialist baseline; the MINT code subset; Entity Deduction Arena) is reported in the main Results text, near the claim it qualifies, rather than omitted or relocated to a supplement that does not exist in this deliverable."
+    },
+    {
+      "id": "AR010",
+      "topic": "Story pattern choice",
+      "decision": "Story pattern set to 'method_first' (Problem -> Platform/Method -> Experiments across task categories -> generality finding), mirroring the source paper's own organization, since no user was available to express a preference and this pattern fits a systems/platform paper with one central artifact and a multi-benchmark evaluation."
+    },
+    {
+      "id": "AR011",
+      "topic": "Step 18 (blind review) deferred",
+      "decision": "Per run-specific instruction, this run performs steps 1-17 only and stops. packets/audience.md and packets/objective.md are written for an external reviewer process; steps 18-21 (blind review, revision rounds, final line edit, disclosure.md) are not performed in this session."
+    }
+  ],
+  "notes": "No subagents available in this runtime: the AUTHOR session performs the CORPUS_AGENT role itself (rce/skill/agents/corpus_agent.md read once for role instructions). review_agent.md, recon_grader.md and skill_agent.md are not read, per run-specific instruction.",
+  "run_complete_through_step": 17,
+  "final_outputs": {
+    "manuscript": ["./paper.md", ".rcs/drafts/v001/paper.md"],
+    "manuscript_note": "identical content; claim tags {C###}/{L###} kept in both, per run-specific instruction (step 21 tag-stripping not performed)",
+    "main_text_word_count_excl_references": {"incl_table_cells": 4479, "excl_table_rows": 4144, "required_range": [3000, 4500]},
+    "review_packet_inputs": [".rcs/packets/audience.md", ".rcs/packets/objective.md"],
+    "open_issues": "./open_issues.md",
+    "audits": ".rcs/audits/v001/ (reconstruction_self.md, evidence_claim_audit.md, flow_audit.md, terminology_audit.md, figure_table_audit.md, citation_audit.md, overclaim_audit.md) -- all PASS"
+  }
+}

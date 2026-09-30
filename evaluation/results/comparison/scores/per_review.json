@@ -35,9 +35,9 @@
    "counts": {
     "present": 27,
     "contradicted": 1,
+    "absent": 2,
     "overstated": 1,
-    "weakened": 5,
-    "absent": 2
+    "weakened": 5
    },
    "RR": 0.819,
    "DR": 0.056,
@@ -106,9 +106,9 @@
    "counts": {
     "present": 20,
     "contradicted": 0,
+    "absent": 13,
     "overstated": 0,
-    "weakened": 7,
-    "absent": 13
+    "weakened": 7
    },
    "RR": 0.588,
    "DR": 0.0,
@@ -170,9 +170,9 @@
    "counts": {
     "present": 22,
     "contradicted": 0,
+    "absent": 5,
     "overstated": 0,
-    "weakened": 13,
-    "absent": 5
+    "weakened": 13
    },
    "RR": 0.713,
    "DR": 0.0,
@@ -234,9 +234,9 @@
    "counts": {
     "present": 17,
     "contradicted": 1,
+    "absent": 11,
     "overstated": 0,
-    "weakened": 11,
-    "absent": 11
+    "weakened": 11
    },
    "RR": 0.562,
    "DR": 0.025,
@@ -263,6 +263,70 @@
      "Q12b"
     ]
    }
+  },
+  "grading_problems_sonnet": 0
+ },
+ {
+  "family": "F1",
+  "pid": "pkt-27d90c08",
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "words_main": 4229,
+  "markers_removed": 0,
+  "dims": {
+   "problem": 4,
+   "motivation": 3,
+   "research_question": 3,
+   "contribution": 3,
+   "method": 3,
+   "experiment": 2,
+   "result": 3,
+   "interpretation": 2,
+   "limitation": 4,
+   "narrative_coherence": 3,
+   "terminology": 4,
+   "logical_flow": 3,
+   "evidence_traceability": 2,
+   "figure_table": 3,
+   "claim_evidence_alignment": 2,
+   "unsupported_inference": 2,
+   "redundancy": 3,
+   "cognitive_load": 3,
+   "orientation": 4,
+   "so_what": 4
+  },
+  "dim_mean": 3,
+  "n_inference_issues": 14,
+  "recon_sonnet": {
+   "nuggets": 40,
+   "counts": {
+    "present": 15,
+    "contradicted": 0,
+    "absent": 8,
+    "overstated": 0,
+    "weakened": 17
+   },
+   "RR": 0.588,
+   "DR": 0.0,
+   "IR": 0.5,
+   "MMF": 0.338,
+   "CoreRR": 0.568,
+   "per_question_RR": {
+    "Q1": 0.25,
+    "Q2": 0.25,
+    "Q3": 0.167,
+    "Q4": 0.8,
+    "Q5": 1.0,
+    "Q6": 0.75,
+    "Q7": 0.5,
+    "Q8": 0.75,
+    "Q9": 0.667,
+    "Q10": 0.5,
+    "Q11": 0.6,
+    "Q12": 0.75
+   },
+   "RR_question_macro": 0.582,
+   "distortions": {}
   },
   "grading_problems_sonnet": 0
  },
@@ -302,9 +366,9 @@
    "counts": {
     "present": 25,
     "contradicted": 1,
+    "absent": 10,
     "overstated": 0,
-    "weakened": 4,
-    "absent": 10
+    "weakened": 4
    },
    "RR": 0.675,
    "DR": 0.025,
@@ -370,9 +434,9 @@
    "counts": {
     "present": 9,
     "contradicted": 3,
+    "absent": 23,
     "overstated": 0,
-    "weakened": 5,
-    "absent": 23
+    "weakened": 5
    },
    "RR": 0.287,
    "DR": 0.075,
@@ -403,6 +467,77 @@
     ],
     "Q12": [
      "Q12b"
+    ]
+   }
+  },
+  "grading_problems_sonnet": 0
+ },
+ {
+  "family": "F1",
+  "pid": "pkt-51821427",
+  "project": "BEIR",
+  "condition": "skillv010sub",
+  "words_main": 4384,
+  "markers_removed": 0,
+  "dims": {
+   "problem": 5,
+   "motivation": 5,
+   "research_question": 4,
+   "contribution": 4,
+   "method": 3,
+   "experiment": 3,
+   "result": 3,
+   "interpretation": 2,
+   "limitation": 3,
+   "narrative_coherence": 4,
+   "terminology": 3,
+   "logical_flow": 3,
+   "evidence_traceability": 2,
+   "figure_table": 3,
+   "claim_evidence_alignment": 2,
+   "unsupported_inference": 2,
+   "redundancy": 4,
+   "cognitive_load": 3,
+   "orientation": 4,
+   "so_what": 4
+  },
+  "dim_mean": 3.3,
+  "n_inference_issues": 13,
+  "recon_sonnet": {
+   "nuggets": 40,
+   "counts": {
+    "present": 25,
+    "contradicted": 2,
+    "absent": 0,
+    "overstated": 0,
+    "weakened": 13
+   },
+   "RR": 0.787,
+   "DR": 0.05,
+   "IR": 0.175,
+   "MMF": 0.65,
+   "CoreRR": 0.833,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 0.667,
+    "Q4": 0.875,
+    "Q5": 0.833,
+    "Q6": 0.75,
+    "Q7": 0.8,
+    "Q8": 0.625,
+    "Q9": 0.833,
+    "Q10": 0.625,
+    "Q11": 1.0,
+    "Q12": 0.667
+   },
+   "RR_question_macro": 0.806,
+   "distortions": {
+    "Q8": [
+     "Q8a"
+    ],
+    "Q10": [
+     "Q10b"
     ]
    }
   },
@@ -444,9 +579,9 @@
    "counts": {
     "present": 23,
     "contradicted": 1,
+    "absent": 11,
     "overstated": 1,
-    "weakened": 4,
-    "absent": 11
+    "weakened": 4
    },
    "RR": 0.625,
    "DR": 0.05,
@@ -515,9 +650,9 @@
    "counts": {
     "present": 20,
     "contradicted": 1,
+    "absent": 3,
     "overstated": 0,
-    "weakened": 12,
-    "absent": 3
+    "weakened": 12
    },
    "RR": 0.722,
    "DR": 0.028,
@@ -583,9 +718,9 @@
    "counts": {
     "present": 19,
     "contradicted": 4,
+    "absent": 11,
     "overstated": 0,
-    "weakened": 6,
-    "absent": 11
+    "weakened": 6
    },
    "RR": 0.55,
    "DR": 0.1,
@@ -660,9 +795,9 @@
    "counts": {
     "present": 13,
     "contradicted": 2,
+    "absent": 23,
     "overstated": 0,
-    "weakened": 2,
-    "absent": 23
+    "weakened": 2
    },
    "RR": 0.35,
    "DR": 0.05,
@@ -731,9 +866,9 @@
    "counts": {
     "present": 28,
     "contradicted": 0,
+    "absent": 3,
     "overstated": 0,
-    "weakened": 9,
-    "absent": 3
+    "weakened": 9
    },
    "RR": 0.812,
    "DR": 0.0,
@@ -795,9 +930,9 @@
    "counts": {
     "present": 26,
     "contradicted": 0,
+    "absent": 8,
     "overstated": 0,
-    "weakened": 6,
-    "absent": 8
+    "weakened": 6
    },
    "RR": 0.725,
    "DR": 0.0,
@@ -859,9 +994,9 @@
    "counts": {
     "present": 22,
     "contradicted": 0,
+    "absent": 8,
     "overstated": 0,
-    "weakened": 10,
-    "absent": 8
+    "weakened": 10
    },
    "RR": 0.675,
    "DR": 0.0,
@@ -923,9 +1058,9 @@
    "counts": {
     "present": 18,
     "contradicted": 0,
+    "absent": 11,
     "overstated": 1,
-    "weakened": 10,
-    "absent": 11
+    "weakened": 10
    },
    "RR": 0.575,
    "DR": 0.025,
@@ -950,6 +1085,274 @@
    "distortions": {
     "Q12": [
      "Q12b"
+    ]
+   }
+  },
+  "grading_problems_sonnet": 0
+ },
+ {
+  "family": "F1",
+  "pid": "pkt-9edda269",
+  "project": "MLPERF_TINY",
+  "condition": "skillv010sub",
+  "words_main": 3771,
+  "markers_removed": 0,
+  "dims": {
+   "problem": 4,
+   "motivation": 4,
+   "research_question": 3,
+   "contribution": 3,
+   "method": 3,
+   "experiment": 2,
+   "result": 2,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 3,
+   "terminology": 4,
+   "logical_flow": 3,
+   "evidence_traceability": 2,
+   "figure_table": 3,
+   "claim_evidence_alignment": 2,
+   "unsupported_inference": 2,
+   "redundancy": 3,
+   "cognitive_load": 4,
+   "orientation": 4,
+   "so_what": 3
+  },
+  "dim_mean": 3.05,
+  "n_inference_issues": 14,
+  "recon_sonnet": {
+   "nuggets": 40,
+   "counts": {
+    "present": 29,
+    "contradicted": 1,
+    "absent": 3,
+    "overstated": 0,
+    "weakened": 7
+   },
+   "RR": 0.812,
+   "DR": 0.025,
+   "IR": 0.05,
+   "MMF": 0.762,
+   "CoreRR": 0.882,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 0.625,
+    "Q3": 1.0,
+    "Q4": 1.0,
+    "Q5": 0.8,
+    "Q6": 0.5,
+    "Q7": 0.875,
+    "Q8": 0.833,
+    "Q9": 0.75,
+    "Q10": 0.75,
+    "Q11": 0.8,
+    "Q12": 0.833
+   },
+   "RR_question_macro": 0.814,
+   "distortions": {
+    "Q6": [
+     "Q6b"
+    ]
+   }
+  },
+  "grading_problems_sonnet": 0
+ },
+ {
+  "family": "F1",
+  "pid": "pkt-a0ca791c",
+  "project": "MLPERF_TINY",
+  "condition": "skillv010ab3",
+  "words_main": 4306,
+  "markers_removed": 0,
+  "dims": {
+   "problem": 4,
+   "motivation": 4,
+   "research_question": 3,
+   "contribution": 3,
+   "method": 4,
+   "experiment": 2,
+   "result": 2,
+   "interpretation": 4,
+   "limitation": 4,
+   "narrative_coherence": 3,
+   "terminology": 4,
+   "logical_flow": 4,
+   "evidence_traceability": 2,
+   "figure_table": 3,
+   "claim_evidence_alignment": 3,
+   "unsupported_inference": 4,
+   "redundancy": 3,
+   "cognitive_load": 4,
+   "orientation": 4,
+   "so_what": 3
+  },
+  "dim_mean": 3.35,
+  "n_inference_issues": 13,
+  "recon_sonnet": {
+   "nuggets": 40,
+   "counts": {
+    "present": 22,
+    "contradicted": 0,
+    "absent": 4,
+    "overstated": 1,
+    "weakened": 13
+   },
+   "RR": 0.713,
+   "DR": 0.025,
+   "IR": 0.175,
+   "MMF": 0.6,
+   "CoreRR": 0.706,
+   "per_question_RR": {
+    "Q1": 0.25,
+    "Q2": 0.375,
+    "Q3": 1.0,
+    "Q4": 1.0,
+    "Q5": 0.7,
+    "Q6": 0.833,
+    "Q7": 0.875,
+    "Q8": 0.833,
+    "Q9": 0.5,
+    "Q10": 0.75,
+    "Q11": 0.5,
+    "Q12": 0.833
+   },
+   "RR_question_macro": 0.704,
+   "distortions": {
+    "Q1": [
+     "Q1b"
+    ]
+   }
+  },
+  "grading_problems_sonnet": 0
+ },
+ {
+  "family": "F1",
+  "pid": "pkt-ae1077d5",
+  "project": "OPENHANDS",
+  "condition": "skillv010ab3",
+  "words_main": 4282,
+  "markers_removed": 0,
+  "dims": {
+   "problem": 4,
+   "motivation": 3,
+   "research_question": 3,
+   "contribution": 4,
+   "method": 4,
+   "experiment": 3,
+   "result": 4,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 4,
+   "terminology": 4,
+   "logical_flow": 4,
+   "evidence_traceability": 3,
+   "figure_table": 3,
+   "claim_evidence_alignment": 3,
+   "unsupported_inference": 3,
+   "redundancy": 4,
+   "cognitive_load": 3,
+   "orientation": 3,
+   "so_what": 4
+  },
+  "dim_mean": 3.5,
+  "n_inference_issues": 10,
+  "recon_sonnet": {
+   "nuggets": 40,
+   "counts": {
+    "present": 21,
+    "contradicted": 0,
+    "absent": 11,
+    "overstated": 0,
+    "weakened": 8
+   },
+   "RR": 0.625,
+   "DR": 0.0,
+   "IR": 0.15,
+   "MMF": 0.55,
+   "CoreRR": 0.75,
+   "per_question_RR": {
+    "Q1": 0.5,
+    "Q2": 0.5,
+    "Q3": 0.333,
+    "Q4": 1.0,
+    "Q5": 0.5,
+    "Q6": 0.625,
+    "Q7": 0.625,
+    "Q8": 0.5,
+    "Q9": 0.167,
+    "Q10": 0.75,
+    "Q11": 0.8,
+    "Q12": 0.75
+   },
+   "RR_question_macro": 0.588,
+   "distortions": {}
+  },
+  "grading_problems_sonnet": 0
+ },
+ {
+  "family": "F1",
+  "pid": "pkt-b1dc7d17",
+  "project": "MLPERF_TINY",
+  "condition": "skillv030ab3",
+  "words_main": 4480,
+  "markers_removed": 0,
+  "dims": {
+   "problem": 4,
+   "motivation": 4,
+   "research_question": 3,
+   "contribution": 4,
+   "method": 4,
+   "experiment": 2,
+   "result": 2,
+   "interpretation": 4,
+   "limitation": 4,
+   "narrative_coherence": 3,
+   "terminology": 3,
+   "logical_flow": 4,
+   "evidence_traceability": 3,
+   "figure_table": 3,
+   "claim_evidence_alignment": 3,
+   "unsupported_inference": 3,
+   "redundancy": 3,
+   "cognitive_load": 3,
+   "orientation": 4,
+   "so_what": 3
+  },
+  "dim_mean": 3.3,
+  "n_inference_issues": 10,
+  "recon_sonnet": {
+   "nuggets": 40,
+   "counts": {
+    "present": 21,
+    "contradicted": 1,
+    "absent": 6,
+    "overstated": 0,
+    "weakened": 12
+   },
+   "RR": 0.675,
+   "DR": 0.025,
+   "IR": 0.15,
+   "MMF": 0.575,
+   "CoreRR": 0.824,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 0.125,
+    "Q3": 0.833,
+    "Q4": 1.0,
+    "Q5": 0.6,
+    "Q6": 0.667,
+    "Q7": 0.875,
+    "Q8": 0.5,
+    "Q9": 0.5,
+    "Q10": 0.75,
+    "Q11": 0.6,
+    "Q12": 0.833
+   },
+   "RR_question_macro": 0.69,
+   "distortions": {
+    "Q6": [
+     "Q6b"
     ]
    }
   },
@@ -991,9 +1394,9 @@
    "counts": {
     "present": 15,
     "contradicted": 2,
+    "absent": 18,
     "overstated": 0,
-    "weakened": 5,
-    "absent": 18
+    "weakened": 5
    },
    "RR": 0.438,
    "DR": 0.05,
@@ -1062,9 +1465,9 @@
    "counts": {
     "present": 23,
     "contradicted": 0,
+    "absent": 5,
     "overstated": 0,
-    "weakened": 12,
-    "absent": 5
+    "weakened": 12
    },
    "RR": 0.725,
    "DR": 0.0,
@@ -1086,6 +1489,134 @@
     "Q12": 0.833
    },
    "RR_question_macro": 0.7,
+   "distortions": {}
+  },
+  "grading_problems_sonnet": 0
+ },
+ {
+  "family": "F1",
+  "pid": "pkt-c69b0f41",
+  "project": "BEIR",
+  "condition": "skillv030ab3",
+  "words_main": 4808,
+  "markers_removed": 0,
+  "dims": {
+   "problem": 5,
+   "motivation": 4,
+   "research_question": 4,
+   "contribution": 4,
+   "method": 3,
+   "experiment": 3,
+   "result": 4,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 3,
+   "terminology": 4,
+   "logical_flow": 4,
+   "evidence_traceability": 3,
+   "figure_table": 4,
+   "claim_evidence_alignment": 3,
+   "unsupported_inference": 3,
+   "redundancy": 4,
+   "cognitive_load": 3,
+   "orientation": 4,
+   "so_what": 4
+  },
+  "dim_mean": 3.65,
+  "n_inference_issues": 12,
+  "recon_sonnet": {
+   "nuggets": 40,
+   "counts": {
+    "present": 36,
+    "contradicted": 0,
+    "absent": 0,
+    "overstated": 0,
+    "weakened": 4
+   },
+   "RR": 0.95,
+   "DR": 0.0,
+   "IR": 0.275,
+   "MMF": 0.812,
+   "CoreRR": 1.0,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 0.833,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 0.75,
+    "Q9": 1.0,
+    "Q10": 1.0,
+    "Q11": 1.0,
+    "Q12": 0.833
+   },
+   "RR_question_macro": 0.951,
+   "distortions": {}
+  },
+  "grading_problems_sonnet": 0
+ },
+ {
+  "family": "F1",
+  "pid": "pkt-ca8db917",
+  "project": "BEIR",
+  "condition": "skillv010ab3",
+  "words_main": 4284,
+  "markers_removed": 0,
+  "dims": {
+   "problem": 5,
+   "motivation": 4,
+   "research_question": 4,
+   "contribution": 4,
+   "method": 3,
+   "experiment": 3,
+   "result": 4,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 4,
+   "terminology": 4,
+   "logical_flow": 4,
+   "evidence_traceability": 3,
+   "figure_table": 3,
+   "claim_evidence_alignment": 3,
+   "unsupported_inference": 3,
+   "redundancy": 4,
+   "cognitive_load": 3,
+   "orientation": 4,
+   "so_what": 4
+  },
+  "dim_mean": 3.65,
+  "n_inference_issues": 12,
+  "recon_sonnet": {
+   "nuggets": 40,
+   "counts": {
+    "present": 30,
+    "contradicted": 0,
+    "absent": 1,
+    "overstated": 0,
+    "weakened": 9
+   },
+   "RR": 0.863,
+   "DR": 0.0,
+   "IR": 0.25,
+   "MMF": 0.738,
+   "CoreRR": 0.833,
+   "per_question_RR": {
+    "Q1": 0.75,
+    "Q2": 1.0,
+    "Q3": 0.833,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 1.0,
+    "Q7": 1.0,
+    "Q8": 0.625,
+    "Q9": 0.833,
+    "Q10": 0.875,
+    "Q11": 0.333,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 0.854,
    "distortions": {}
   },
   "grading_problems_sonnet": 0
@@ -1126,9 +1657,9 @@
    "counts": {
     "present": 24,
     "contradicted": 1,
+    "absent": 7,
     "overstated": 0,
-    "weakened": 8,
-    "absent": 7
+    "weakened": 8
    },
    "RR": 0.7,
    "DR": 0.025,
@@ -1194,9 +1725,9 @@
    "counts": {
     "present": 25,
     "contradicted": 1,
+    "absent": 8,
     "overstated": 1,
-    "weakened": 5,
-    "absent": 8
+    "weakened": 5
    },
    "RR": 0.688,
    "DR": 0.05,
@@ -1226,6 +1757,262 @@
      "Q9a"
     ]
    }
+  },
+  "grading_problems_sonnet": 0
+ },
+ {
+  "family": "F1",
+  "pid": "pkt-e477c21c",
+  "project": "OPENHANDS",
+  "condition": "skillv010sub",
+  "words_main": 4439,
+  "markers_removed": 0,
+  "dims": {
+   "problem": 4,
+   "motivation": 3,
+   "research_question": 3,
+   "contribution": 2,
+   "method": 3,
+   "experiment": 3,
+   "result": 3,
+   "interpretation": 2,
+   "limitation": 3,
+   "narrative_coherence": 3,
+   "terminology": 4,
+   "logical_flow": 4,
+   "evidence_traceability": 2,
+   "figure_table": 3,
+   "claim_evidence_alignment": 2,
+   "unsupported_inference": 2,
+   "redundancy": 4,
+   "cognitive_load": 3,
+   "orientation": 3,
+   "so_what": 3
+  },
+  "dim_mean": 2.95,
+  "n_inference_issues": 17,
+  "recon_sonnet": {
+   "nuggets": 40,
+   "counts": {
+    "present": 18,
+    "contradicted": 0,
+    "absent": 11,
+    "overstated": 0,
+    "weakened": 11
+   },
+   "RR": 0.588,
+   "DR": 0.0,
+   "IR": 0.175,
+   "MMF": 0.5,
+   "CoreRR": 0.659,
+   "per_question_RR": {
+    "Q1": 0.0,
+    "Q2": 0.5,
+    "Q3": 0.333,
+    "Q4": 0.8,
+    "Q5": 0.5,
+    "Q6": 0.75,
+    "Q7": 1.0,
+    "Q8": 0.25,
+    "Q9": 0.5,
+    "Q10": 0.75,
+    "Q11": 0.2,
+    "Q12": 0.5
+   },
+   "RR_question_macro": 0.507,
+   "distortions": {}
+  },
+  "grading_problems_sonnet": 0
+ },
+ {
+  "family": "F1",
+  "pid": "pkt-ff333bed",
+  "project": "MLPERF_TINY",
+  "condition": "skillv020sub",
+  "words_main": 4332,
+  "markers_removed": 1,
+  "dims": {
+   "problem": 4,
+   "motivation": 4,
+   "research_question": 4,
+   "contribution": 3,
+   "method": 3,
+   "experiment": 2,
+   "result": 2,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 3,
+   "terminology": 3,
+   "logical_flow": 3,
+   "evidence_traceability": 2,
+   "figure_table": 3,
+   "claim_evidence_alignment": 2,
+   "unsupported_inference": 2,
+   "redundancy": 3,
+   "cognitive_load": 3,
+   "orientation": 4,
+   "so_what": 4
+  },
+  "dim_mean": 3.05,
+  "n_inference_issues": 16,
+  "recon_sonnet": {
+   "nuggets": 40,
+   "counts": {
+    "present": 24,
+    "contradicted": 0,
+    "absent": 4,
+    "overstated": 0,
+    "weakened": 12
+   },
+   "RR": 0.75,
+   "DR": 0.0,
+   "IR": 0.05,
+   "MMF": 0.725,
+   "CoreRR": 0.794,
+   "per_question_RR": {
+    "Q1": 0.5,
+    "Q2": 0.625,
+    "Q3": 0.667,
+    "Q4": 1.0,
+    "Q5": 0.6,
+    "Q6": 0.667,
+    "Q7": 1.0,
+    "Q8": 0.833,
+    "Q9": 0.75,
+    "Q10": 0.5,
+    "Q11": 0.7,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 0.737,
+   "distortions": {}
+  },
+  "grading_problems_sonnet": 0
+ },
+ {
+  "family": "F1",
+  "pid": "pkt-ff362a89",
+  "project": "OPENHANDS",
+  "condition": "skillv030ab3",
+  "words_main": 4234,
+  "markers_removed": 0,
+  "dims": {
+   "problem": 4,
+   "motivation": 3,
+   "research_question": 4,
+   "contribution": 3,
+   "method": 4,
+   "experiment": 3,
+   "result": 3,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 3,
+   "terminology": 4,
+   "logical_flow": 4,
+   "evidence_traceability": 3,
+   "figure_table": 3,
+   "claim_evidence_alignment": 3,
+   "unsupported_inference": 3,
+   "redundancy": 3,
+   "cognitive_load": 3,
+   "orientation": 4,
+   "so_what": 3
+  },
+  "dim_mean": 3.35,
+  "n_inference_issues": 9,
+  "recon_sonnet": {
+   "nuggets": 40,
+   "counts": {
+    "present": 29,
+    "contradicted": 0,
+    "absent": 6,
+    "overstated": 0,
+    "weakened": 5
+   },
+   "RR": 0.787,
+   "DR": 0.0,
+   "IR": 0.15,
+   "MMF": 0.713,
+   "CoreRR": 0.864,
+   "per_question_RR": {
+    "Q1": 0.75,
+    "Q2": 0.75,
+    "Q3": 0.333,
+    "Q4": 1.0,
+    "Q5": 1.0,
+    "Q6": 0.875,
+    "Q7": 0.75,
+    "Q8": 0.75,
+    "Q9": 0.333,
+    "Q10": 1.0,
+    "Q11": 0.9,
+    "Q12": 1.0
+   },
+   "RR_question_macro": 0.787,
+   "distortions": {}
+  },
+  "grading_problems_sonnet": 0
+ },
+ {
+  "family": "F1",
+  "pid": "pkt-ff81c66c",
+  "project": "BEIR",
+  "condition": "skillv020sub",
+  "words_main": 3942,
+  "markers_removed": 0,
+  "dims": {
+   "problem": 5,
+   "motivation": 4,
+   "research_question": 3,
+   "contribution": 4,
+   "method": 3,
+   "experiment": 3,
+   "result": 3,
+   "interpretation": 2,
+   "limitation": 4,
+   "narrative_coherence": 3,
+   "terminology": 3,
+   "logical_flow": 4,
+   "evidence_traceability": 2,
+   "figure_table": 3,
+   "claim_evidence_alignment": 2,
+   "unsupported_inference": 2,
+   "redundancy": 4,
+   "cognitive_load": 3,
+   "orientation": 4,
+   "so_what": 4
+  },
+  "dim_mean": 3.25,
+  "n_inference_issues": 18,
+  "recon_sonnet": {
+   "nuggets": 40,
+   "counts": {
+    "present": 19,
+    "contradicted": 0,
+    "absent": 1,
+    "overstated": 0,
+    "weakened": 20
+   },
+   "RR": 0.725,
+   "DR": 0.0,
+   "IR": 0.1,
+   "MMF": 0.675,
+   "CoreRR": 0.75,
+   "per_question_RR": {
+    "Q1": 1.0,
+    "Q2": 1.0,
+    "Q3": 0.667,
+    "Q4": 0.875,
+    "Q5": 0.833,
+    "Q6": 0.625,
+    "Q7": 0.5,
+    "Q8": 0.625,
+    "Q9": 0.833,
+    "Q10": 0.625,
+    "Q11": 1.0,
+    "Q12": 0.5
+   },
+   "RR_question_macro": 0.757,
+   "distortions": {}
   },
   "grading_problems_sonnet": 0
  },
@@ -1264,9 +2051,9 @@
    "counts": {
     "present": 26,
     "contradicted": 0,
+    "absent": 4,
     "overstated": 0,
-    "weakened": 6,
-    "absent": 4
+    "weakened": 6
    },
    "RR": 0.806,
    "DR": 0.0,
@@ -1328,9 +2115,9 @@
    "counts": {
     "present": 19,
     "contradicted": 0,
+    "absent": 7,
     "overstated": 0,
-    "weakened": 14,
-    "absent": 7
+    "weakened": 14
    },
    "RR": 0.65,
    "DR": 0.0,
@@ -1391,9 +2178,9 @@
    "counts": {
     "present": 21,
     "contradicted": 0,
+    "absent": 8,
     "overstated": 1,
-    "weakened": 10,
-    "absent": 8
+    "weakened": 10
    },
    "RR": 0.65,
    "DR": 0.025,
@@ -1459,9 +2246,9 @@
    "counts": {
     "present": 24,
     "contradicted": 1,
+    "absent": 5,
     "overstated": 0,
-    "weakened": 6,
-    "absent": 5
+    "weakened": 6
    },
    "RR": 0.75,
    "DR": 0.028,
@@ -1527,9 +2314,9 @@
    "counts": {
     "present": 28,
     "contradicted": 0,
+    "absent": 5,
     "overstated": 0,
-    "weakened": 7,
-    "absent": 5
+    "weakened": 7
    },
    "RR": 0.787,
    "DR": 0.0,
@@ -1591,9 +2378,9 @@
    "counts": {
     "present": 20,
     "contradicted": 0,
+    "absent": 15,
     "overstated": 1,
-    "weakened": 4,
-    "absent": 15
+    "weakened": 4
    },
    "RR": 0.55,
    "DR": 0.025,
@@ -1658,9 +2445,9 @@
    "counts": {
     "present": 23,
     "contradicted": 0,
+    "absent": 7,
     "overstated": 1,
-    "weakened": 9,
-    "absent": 7
+    "weakened": 9
    },
    "RR": 0.688,
    "DR": 0.025,
@@ -1734,9 +2521,9 @@
    "counts": {
     "present": 21,
     "contradicted": 1,
+    "absent": 12,
     "overstated": 0,
-    "weakened": 6,
-    "absent": 12
+    "weakened": 6
    },
    "RR": 0.6,
    "DR": 0.025,
@@ -1802,9 +2589,9 @@
    "counts": {
     "present": 27,
     "contradicted": 0,
+    "absent": 5,
     "overstated": 0,
-    "weakened": 8,
-    "absent": 5
+    "weakened": 8
    },
    "RR": 0.775,
    "DR": 0.0,
@@ -1865,9 +2652,9 @@
    "counts": {
     "present": 16,
     "contradicted": 3,
+    "absent": 12,
     "overstated": 0,
-    "weakened": 9,
-    "absent": 12
+    "weakened": 9
    },
    "RR": 0.512,
    "DR": 0.075,

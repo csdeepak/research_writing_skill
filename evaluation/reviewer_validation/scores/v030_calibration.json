@@ -1,0 +1,424 @@
+{
+ "reviewer": "v0.3.0-candidate agents/review_agent.md (Opus subagent, 1 seed)",
+ "thresholds": {
+  "sensitivity_min": 0.9,
+  "false_alarm_max": 0.1
+ },
+ "mean_dimension_sensitivity": 0.933,
+ "false_alarm_dims_on_A": [
+  "figure_table"
+ ],
+ "false_alarm_rate_on_A": 0.05,
+ "mean_dim_A": 4,
+ "reconstruction_uses_Q1_Q12": true,
+ "phase4_reference_F1_harness_prompt": {
+  "mean_dimension_sensitivity": 0.956,
+  "false_alarm_rate_on_A": 0.05
+ },
+ "detection": [
+  {
+   "variant": "B_poor_ordering.md",
+   "expected": [
+    "research_question",
+    "contribution",
+    "logical_flow",
+    "orientation",
+    "narrative_coherence"
+   ],
+   "detected": [
+    "research_question",
+    "contribution",
+    "logical_flow",
+    "orientation",
+    "narrative_coherence"
+   ],
+   "missed": [],
+   "sensitivity": 1.0,
+   "mean_dim": 2
+  },
+  {
+   "variant": "C_jargon.md",
+   "expected": [
+    "terminology",
+    "cognitive_load",
+    "method"
+   ],
+   "detected": [
+    "terminology",
+    "cognitive_load",
+    "method"
+   ],
+   "missed": [],
+   "sensitivity": 1.0,
+   "mean_dim": 2.35
+  },
+  {
+   "variant": "D_result_dumping.md",
+   "expected": [
+    "result",
+    "interpretation",
+    "figure_table",
+    "so_what",
+    "limitation"
+   ],
+   "detected": [
+    "interpretation",
+    "so_what",
+    "limitation"
+   ],
+   "missed": [
+    "result",
+    "figure_table"
+   ],
+   "sensitivity": 0.6,
+   "mean_dim": 2.3
+  },
+  {
+   "variant": "E_unsupported_interpretation.md",
+   "expected": [
+    "claim_evidence_alignment",
+    "unsupported_inference",
+    "limitation",
+    "evidence_traceability"
+   ],
+   "detected": [
+    "claim_evidence_alignment",
+    "unsupported_inference",
+    "limitation",
+    "evidence_traceability"
+   ],
+   "missed": [],
+   "sensitivity": 1.0,
+   "mean_dim": 1.8
+  },
+  {
+   "variant": "F_buried_contribution.md",
+   "expected": [
+    "contribution",
+    "research_question",
+    "problem",
+    "motivation",
+    "orientation"
+   ],
+   "detected": [
+    "contribution",
+    "research_question",
+    "problem",
+    "motivation",
+    "orientation"
+   ],
+   "missed": [],
+   "sensitivity": 1.0,
+   "mean_dim": 2.1
+  },
+  {
+   "variant": "G_citation_misuse.md",
+   "expected": [
+    "evidence_traceability"
+   ],
+   "detected": [
+    "evidence_traceability"
+   ],
+   "missed": [],
+   "sensitivity": 1.0,
+   "mean_dim": 2.8
+  }
+ ],
+ "per_variant": {
+  "A_clean.md": {
+   "pid": "pkt-70599dc0",
+   "dims": {
+    "problem": 5,
+    "motivation": 4,
+    "research_question": 5,
+    "contribution": 3,
+    "method": 3,
+    "experiment": 3,
+    "result": 3,
+    "interpretation": 4,
+    "limitation": 4,
+    "narrative_coherence": 5,
+    "terminology": 4,
+    "logical_flow": 5,
+    "evidence_traceability": 3,
+    "figure_table": 2,
+    "claim_evidence_alignment": 4,
+    "unsupported_inference": 4,
+    "redundancy": 5,
+    "cognitive_load": 5,
+    "orientation": 5,
+    "so_what": 4
+   },
+   "schema_problems": 0,
+   "missing_dims": [],
+   "n_inference_issues": 7,
+   "reconstruction_keys": [
+    "Q1",
+    "Q10",
+    "Q11",
+    "Q12",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9"
+   ]
+  },
+  "B_poor_ordering.md": {
+   "pid": "pkt-766e9734",
+   "dims": {
+    "problem": 2,
+    "motivation": 2,
+    "research_question": 1,
+    "contribution": 2,
+    "method": 2,
+    "experiment": 2,
+    "result": 3,
+    "interpretation": 2,
+    "limitation": 3,
+    "narrative_coherence": 1,
+    "terminology": 3,
+    "logical_flow": 1,
+    "evidence_traceability": 2,
+    "figure_table": 2,
+    "claim_evidence_alignment": 2,
+    "unsupported_inference": 2,
+    "redundancy": 3,
+    "cognitive_load": 2,
+    "orientation": 1,
+    "so_what": 2
+   },
+   "schema_problems": 0,
+   "missing_dims": [],
+   "n_inference_issues": 8,
+   "reconstruction_keys": [
+    "Q1",
+    "Q10",
+    "Q11",
+    "Q12",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9"
+   ]
+  },
+  "C_jargon.md": {
+   "pid": "pkt-e2bf3043",
+   "dims": {
+    "problem": 2,
+    "motivation": 1,
+    "research_question": 3,
+    "contribution": 3,
+    "method": 2,
+    "experiment": 2,
+    "result": 3,
+    "interpretation": 3,
+    "limitation": 4,
+    "narrative_coherence": 3,
+    "terminology": 1,
+    "logical_flow": 3,
+    "evidence_traceability": 2,
+    "figure_table": 1,
+    "claim_evidence_alignment": 3,
+    "unsupported_inference": 2,
+    "redundancy": 4,
+    "cognitive_load": 1,
+    "orientation": 2,
+    "so_what": 2
+   },
+   "schema_problems": 0,
+   "missing_dims": [],
+   "n_inference_issues": 6,
+   "reconstruction_keys": [
+    "Q1",
+    "Q10",
+    "Q11",
+    "Q12",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9"
+   ]
+  },
+  "D_result_dumping.md": {
+   "pid": "pkt-84ad5868",
+   "dims": {
+    "problem": 3,
+    "motivation": 2,
+    "research_question": 4,
+    "contribution": 1,
+    "method": 2,
+    "experiment": 2,
+    "result": 3,
+    "interpretation": 0,
+    "limitation": 2,
+    "narrative_coherence": 2,
+    "terminology": 3,
+    "logical_flow": 3,
+    "evidence_traceability": 3,
+    "figure_table": 2,
+    "claim_evidence_alignment": 3,
+    "unsupported_inference": 3,
+    "redundancy": 2,
+    "cognitive_load": 3,
+    "orientation": 2,
+    "so_what": 1
+   },
+   "schema_problems": 0,
+   "missing_dims": [],
+   "n_inference_issues": 8,
+   "reconstruction_keys": [
+    "Q1",
+    "Q10",
+    "Q11",
+    "Q12",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9"
+   ]
+  },
+  "E_unsupported_interpretation.md": {
+   "pid": "pkt-cb16d676",
+   "dims": {
+    "problem": 3,
+    "motivation": 2,
+    "research_question": 2,
+    "contribution": 2,
+    "method": 2,
+    "experiment": 2,
+    "result": 2,
+    "interpretation": 1,
+    "limitation": 0,
+    "narrative_coherence": 2,
+    "terminology": 3,
+    "logical_flow": 2,
+    "evidence_traceability": 1,
+    "figure_table": 0,
+    "claim_evidence_alignment": 1,
+    "unsupported_inference": 0,
+    "redundancy": 4,
+    "cognitive_load": 3,
+    "orientation": 2,
+    "so_what": 2
+   },
+   "schema_problems": 0,
+   "missing_dims": [],
+   "n_inference_issues": 12,
+   "reconstruction_keys": [
+    "Q1",
+    "Q10",
+    "Q11",
+    "Q12",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9"
+   ]
+  },
+  "F_buried_contribution.md": {
+   "pid": "pkt-c0b734ff",
+   "dims": {
+    "problem": 1,
+    "motivation": 2,
+    "research_question": 1,
+    "contribution": 2,
+    "method": 2,
+    "experiment": 2,
+    "result": 3,
+    "interpretation": 2,
+    "limitation": 3,
+    "narrative_coherence": 2,
+    "terminology": 3,
+    "logical_flow": 2,
+    "evidence_traceability": 2,
+    "figure_table": 1,
+    "claim_evidence_alignment": 2,
+    "unsupported_inference": 2,
+    "redundancy": 4,
+    "cognitive_load": 3,
+    "orientation": 1,
+    "so_what": 2
+   },
+   "schema_problems": 0,
+   "missing_dims": [],
+   "n_inference_issues": 6,
+   "reconstruction_keys": [
+    "Q1",
+    "Q10",
+    "Q11",
+    "Q12",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9"
+   ]
+  },
+  "G_citation_misuse.md": {
+   "pid": "pkt-5ff4438a",
+   "dims": {
+    "problem": 4,
+    "motivation": 2,
+    "research_question": 4,
+    "contribution": 3,
+    "method": 2,
+    "experiment": 2,
+    "result": 2,
+    "interpretation": 3,
+    "limitation": 3,
+    "narrative_coherence": 3,
+    "terminology": 3,
+    "logical_flow": 3,
+    "evidence_traceability": 1,
+    "figure_table": 1,
+    "claim_evidence_alignment": 2,
+    "unsupported_inference": 2,
+    "redundancy": 5,
+    "cognitive_load": 4,
+    "orientation": 4,
+    "so_what": 3
+   },
+   "schema_problems": 0,
+   "missing_dims": [],
+   "n_inference_issues": 8,
+   "reconstruction_keys": [
+    "Q1",
+    "Q10",
+    "Q11",
+    "Q12",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9"
+   ]
+  }
+ },
+ "calibrated": true
+}

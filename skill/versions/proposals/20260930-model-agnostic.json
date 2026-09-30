@@ -1,0 +1,91 @@
+{
+  "id": "20260930-model-agnostic",
+  "date": "2026-09-30",
+  "from_version": "0.1.0",
+  "to_version": "0.3.0",
+  "failure_observed": "The user asked for the skill to be model-agnostic. The rules already referred only to logical roles, but only Claude Code had executable role definitions: on any other model the blind reviewer, grader and readers could not be run, weak models' malformed JSON was fatal, the data policy was documentation only, and a free-tier rate limit crashed the first live run.",
+  "evidence": {
+    "cluster_id": "vNext Stage 5 (user request 2026-09-30); D-31",
+    "instances": 4,
+    "metrics": {
+      "runtimes_with_executable_roles_before": 1,
+      "live_non_claude_calibration": "2 of 2 measured non-Claude families calibrated"
+    }
+  },
+  "root_cause": "missing_artifact",
+  "mechanism_type": "procedure_step",
+  "components": [
+    {
+      "part": 1,
+      "summary": "tools/rce_llm.py: provider layer (openai-compatible, anthropic, gemini, command, manual, mock), data-policy guard, env-only keys, content-free call log, JSON extraction/closer repair/validation retry, transient-error retry.",
+      "tests": [
+        "T-052",
+        "T-053",
+        "T-054",
+        "T-056",
+        "T-058"
+      ]
+    },
+    {
+      "part": 2,
+      "summary": "tools/rce_roles.py: review (packet only), calibrate (resumable, blinded), run-tasks.",
+      "tests": [
+        "T-055",
+        "T-057"
+      ]
+    },
+    {
+      "part": 3,
+      "summary": "templates/models.json, adapters/README.md, adapters/entrypoints/AGENTS.md, adapter notes, SKILL.md and workflow step 18 made model-neutral.",
+      "tests": []
+    },
+    {
+      "part": 4,
+      "summary": "Found by the ASMOS checkpoint-answer round: G4 stale on post-review claims; rejected author statements not 'withheld'.",
+      "tests": [
+        "T-059",
+        "T-060"
+      ]
+    }
+  ],
+  "change": {
+    "files": [
+      "tools/rce_llm.py",
+      "tools/rce_roles.py",
+      "templates/models.json",
+      "tests/perturbations/packet_audience.md",
+      "tests/perturbations/packet_objective.md",
+      "tools/tests/test_v030_model_agnostic.py",
+      "tools/tests/fixtures/review_outputs/",
+      "adapters/",
+      "SKILL.md",
+      "workflow.md",
+      "README.md",
+      "failure_states.md",
+      "tools/g4_check.py",
+      "tools/validate_artifacts.py",
+      "tools/lint_draft.py"
+    ],
+    "summary": "Additive: projects without .rcs/models.json behave exactly as before."
+  },
+  "expected_improvement": "The skill's single-shot roles run on any model with the same gates and data policy; reviewer quality is measured per model instead of assumed.",
+  "possible_regressions": [
+    "Closer repair could make a truncated reply parse; schema validation still decides whether it is acceptable.",
+    "Hosted models used as reviewers see the paper text (packet): allowed only when the host is listed."
+  ],
+  "tests_added": [
+    "T-052..T-058 in tools/tests/test_v030_model_agnostic.py",
+    "T-059, T-060 in test_v030_workflow.py",
+    "fixtures/review_outputs (7 real reviews)"
+  ],
+  "gate": {
+    "status": "passed",
+    "results": {
+      "release": "promoted into skill/ 2026-09-30 by the user's decision as a process upgrade (D-32); reader benefit not shown (tier-3 A/B, D-30)",
+      "unit_tests_candidate": "95/95 pass",
+      "replay_fixtures": "49/49 pass",
+      "live_reviewer_calibration": "via tools/rce_roles.py on the planted-defect benchmark: NVIDIA Nemotron-3-Ultra 0.945 / 0.00 and Qwen3.8-27B 0.911 / 0.00 (both calibrated; Claude Opus reference 0.933 / 0.05); Gemma not measured (free-tier 429). evaluation/model_agnostic/RESULTS.md",
+      "asmos_round2_review": "run through rce_roles review (manual provider): valid first attempt; G4 passed for round v005_1"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "TAB-1",
+  "type": "table",
+  "status": "planned",
+  "purpose": "Show the four benchmarks side by side: task, dataset, model, size, quality target.",
+  "rq": "RQ1",
+  "takeaway": "The suite pairs four tasks with four small models, each with a quality target between 80% and 90% Top-1 or AUC 0.85.",
+  "claims": [
+    "C004"
+  ],
+  "evidence": [
+    "E004",
+    "E005",
+    "E006",
+    "E007"
+  ],
+  "source_data": [
+    "project/paper.txt"
+  ],
+  "comparison_the_eye_must_make": "across tasks: input size, model size, target metric",
+  "non_conclusions": "Does not show measured latency or energy for the models.",
+  "placement": "Section 4.1",
+  "caption": "Table 1. The four benchmarks."
+}

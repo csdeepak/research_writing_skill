@@ -1,0 +1,163 @@
+{
+  "id": "20260929-truth-guardrail",
+  "date": "2026-09-29",
+  "from_version": "0.1.0",
+  "to_version": "0.3.0",
+  "failure_observed": "The skill's truth rules (never invent, claim strength <= evidence, cite only verified sources) were enforced by instructions and a WARN-level lint, not by fail-closed checks. Observed in this study's own runs: a README-vs-paper dataset-count conflict resolved only in free text (BEIR v0.2.0 run; the same paper then says 18 datasets in four places and 19 in one), writers inventing a rounded bound absent from the evidence ('all under 350 KB' / 'under 330 KB' when the largest model is 325 KB, MLPerf Tiny, both versions), a garbled reference title silently 'corrected' from model memory (MLPerf Tiny v0.2.0 run, caught only by the writer's own audit), and v0.1.0 runs marking G1/G3 'passed' with no tool output. The user-supplied vNext spec (docs/06_VNEXT_SPEC.md) names ten adversarial cases the guardrail must pass.",
+  "evidence": {
+    "cluster_id": "Stage 1 truth guardrail (vNext spec sections 4 and 10); D-23, D-24, D-25",
+    "instances": 16,
+    "metrics": {
+      "failure_fixtures_caught_by_v0.2.0_tools": "1/16 (only SELF_CERTIFIED_GATE)",
+      "failure_fixtures_caught_by_candidate": "16/16",
+      "negative_controls_passing_candidate": "9/9",
+      "fabricated_numbers_caught_against_real_OpenHands_paper": "35/40 (5 coincide with numbers the source contains); unrestricted derivation, rejected during development, caught 0/40",
+      "false_conflict_alarms_on_6_real_phase9_evidence_maps": 0,
+      "true_conflict_found_on_real_maps": "1 (BEIR v0.2.0: 18-vs-17 dataset count resolved only in accepted_risks)",
+      "untraced_numbers_on_6_real_phase9_drafts": "3 across 2 MLPerf drafts, all genuine writer-invented bounds; 0 on the other 4",
+      "count_inconsistency_on_real_drafts": "1 true (BEIR 18/19); 1 false positive found and fixed (restrictive-clause subset)"
+    }
+  },
+  "root_cause": "missing_check",
+  "mechanism_type": "automatic_check",
+  "components": [
+    {
+      "part": 1,
+      "summary": "Evidence conflicts: quantity/run_id keys, automatic same-quantity conflict detection (UNRECONCILED_CONFLICT), documented resolution field, BLOCKED_BY_CONFLICT and CITES_REJECTED_EVIDENCE on claims.",
+      "tests": [
+        "ADV-01",
+        "ADV-01b",
+        "ADV-01c",
+        "ADV-02",
+        "ADV-02b",
+        "ADV-00"
+      ]
+    },
+    {
+      "part": 2,
+      "summary": "Evidence-conditional language: claim licenses with evidence predicates (validator UNLICENSED_CLAIM), lint UNLICENSED-<type> fail-closed once a claim map uses licenses, WARN for legacy maps; claim basis/status provenance axis; BLOCKED-claim-used.",
+      "tests": [
+        "ADV-03",
+        "ADV-03b",
+        "ADV-03c",
+        "T-023",
+        "T-023b"
+      ]
+    },
+    {
+      "part": 3,
+      "summary": "verify_numbers.py: every draft number traced to evidence values or locator files (rounding, %, K/M/B), derivations only from evidence cited on the same line, p-values never inferred (UNTRACED_PVALUE).",
+      "tests": [
+        "REAL-02",
+        "REAL-02b",
+        "REAL-03",
+        "ADV-03",
+        "T-021",
+        "T-021b",
+        "T-022"
+      ]
+    },
+    {
+      "part": 4,
+      "summary": "Sources: as_cited + TITLE_REPAIRED_FROM_MEMORY unless verified by lookup.",
+      "tests": [
+        "ADV-05",
+        "ADV-05b"
+      ]
+    },
+    {
+      "part": 5,
+      "summary": "Fail-closed figure cards (Stage 1 scope for visual cases 4, 6, 7, 8): NO_VALID_VISUAL, VISUAL_BLOCKED, UNTRACED_COMPONENT, BLOCKED_PERMISSION, UNLABELLED_ILLUSTRATION; subset-YAML card reader.",
+      "tests": [
+        "ADV-04",
+        "ADV-06",
+        "ADV-06b",
+        "ADV-07",
+        "ADV-08",
+        "ADV-08b",
+        "T-020"
+      ]
+    },
+    {
+      "part": 6,
+      "summary": "claim_invariance.py (number, scope, strength, dropped/added tags) and effective gate status (PASSED/NOT_RUN/FAILED/STALE/PENDING/UNVERIFIED); with guardrail v0.3, G3 also requires a numbers report and G5 a numbers and an invariance report.",
+      "tests": [
+        "ADV-09",
+        "ADV-09b",
+        "ADV-10",
+        "T-025",
+        "T-026",
+        "T-028",
+        "T-028b"
+      ]
+    },
+    {
+      "part": 7,
+      "summary": "Recursive self-improvement tiers 0-1: rce_diagnostics.py (opt-in, local, content-free run records; recurring-pattern summary) and replay_fixtures.py (fixture library replayed through all checkers, machine log).",
+      "tests": [
+        "T-019",
+        "T-019b",
+        "T-027",
+        "T-027b"
+      ]
+    },
+    {
+      "part": 8,
+      "summary": "Within-draft count consistency (lint INCONSISTENT-COUNT), excluding explained subsets.",
+      "tests": [
+        "REAL-01",
+        "REAL-01b"
+      ]
+    }
+  ],
+  "change": {
+    "files": [
+      "SKILL.md",
+      "workflow.md",
+      "evidence_model.md",
+      "figure_table_rules.md",
+      "citation_rules.md",
+      "failure_states.md",
+      "schemas/research_evidence.schema.json",
+      "schemas/claim_evidence_map.schema.json",
+      "schemas/source_registry.schema.json",
+      "tools/truth_guardrail.py",
+      "tools/validate_artifacts.py",
+      "tools/lint_draft.py",
+      "tools/verify_numbers.py",
+      "tools/claim_invariance.py",
+      "tools/rce_diagnostics.py",
+      "tools/replay_fixtures.py",
+      "tools/tests/test_v030_truth_guardrail.py",
+      "tools/tests/fixtures/replay/*.json",
+      "changelog.md"
+    ],
+    "summary": "Builds on the v0.2.0 candidate (its attribution and executable-gate code is kept; v0.2.0 itself was rejected on reader outcomes, not on tool correctness). All additions are backward compatible: artifacts without the new fields validate exactly as before; the new ERROR-level rules switch on only when a project adopts them (claim-map `licenses`, state.json `guardrail: v0.3`). No existing test changed."
+  },
+  "expected_improvement": "Tool-level (acceptance criterion of spec Stage 1): all ten adversarial cases behave as specified, with machine logs and no invented evidence -- met, 16/16 failure fixtures and 9/9 controls. Paper-level: fewer untraceable numbers, silent conflict resolutions and repaired titles reaching a draft. Reader-level: NOT claimed. These are checkers, so the offline replay gate is the right acceptance test for them; whether they change reader reconstruction is unmeasured and needs a seeded live A/B (RECOMMENDED_NEXT_VERSION Part A.2).",
+  "possible_regressions": [
+    "Lint noise: UNLICENSED-* WARNs on legacy drafts (e.g. 'generalize' in a zero-shot benchmark paper is correct but unlicensed in a legacy claim map).",
+    "Writer burden: licenses, quantities and resolutions add bookkeeping; a writer may downgrade correct wording rather than record the license.",
+    "verify_numbers false alarms when a number appears in the source in another format (e.g. 32K vs 32,000 now handled; unicode minus or table damage may not be).",
+    "verify_numbers misses fabricated numbers that coincide with any number in a dense source (5/40 in the probe).",
+    "Count-consistency heuristics are English-only and pattern-based.",
+    "Scope/strength drift detection is lexical: paraphrases that change scope without trigger words pass.",
+    "SKILL.md grows from ~1,880 to ~2,240 words."
+  ],
+  "tests_added": [
+    "T-019..T-028 in tools/tests/test_v030_truth_guardrail.py (16 tests)",
+    "25 replay fixtures: ADV-00..ADV-10(b/c), REAL-01..REAL-03(b)"
+  ],
+  "gate": {
+    "status": "passed",
+    "results": {
+      "unit_tests_candidate": "95/95 pass",
+      "replay_fixtures": "49/49 pass",
+      "v0.2.0_tools_on_failure_fixtures": "1/16 caught",
+      "release_gate": "Promotion into skill/ requires an explicit human decision (RECOMMENDED_NEXT_VERSION Part D, step 'human-gated promotion'). No live reader A/B was run: Stage 1's acceptance criterion is behavioural, and the reader-level effect is not claimed.",
+      "stage": "offline gate passed; live reader gate not run (not claimed); promotion pending an explicit human decision",
+      "tier3_ab_vs_v010": "reader benefit NOT SHOWN under the pre-registered rule (D-29/D-30): better beyond noise on 1/3 projects (OpenHands +0.150 MMF_src), worse on none, mean +0.066; Q11 3/3 up; single run per arm, v0.1.0 run-to-run noise 0.05-0.19. evaluation/results/AB3_REPORT.md",
+      "release": "promoted into skill/ 2026-09-30 by the user's decision as a process upgrade (D-32); reader benefit not shown (tier-3 A/B, D-30)"
+    }
+  }
+}

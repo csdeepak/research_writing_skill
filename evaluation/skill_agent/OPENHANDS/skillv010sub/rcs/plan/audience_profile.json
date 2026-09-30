@@ -1,0 +1,26 @@
+{
+  "mode": "B",
+  "primary": "Machine-learning researchers from subfields other than LLM agents/agentic systems -- e.g. researchers in core deep learning, vision, classic NLP, or ML theory -- who know general ML, deep learning, standard evaluation practice, and statistics, but not this subfield's terminology, datasets, or prior work.",
+  "secondary": "No named venue reviewers (VENUE_UNKNOWN, see state.json AR002); treated generically as methodologists who would check that numbers trace to the source and that comparisons are fairly scoped.",
+  "tertiary": "Future readers and practitioners who might build on or cite the platform without having read the original paper.",
+  "assumed_known": [
+    "supervised/self-supervised deep learning basics",
+    "large language models (LLMs) as a technology category",
+    "standard train/validation/test and benchmark-suite evaluation practice",
+    "zero-shot / few-shot prompting terminology",
+    "reading result tables with baselines and ablations",
+    "general statistics (variance, point estimates, confounding)"
+  ],
+  "not_assumed": [
+    "what an 'LLM agent' or 'agentic system' is, beyond the LLM itself",
+    "action/observation/event-stream vocabulary for agent-environment interaction",
+    "sandboxed code execution as an agent-safety mechanism",
+    "the Agent-Computer Interface (ACI) concept",
+    "CodeAct and why 'code as action' differs from fixed JSON tool-calling",
+    "identities/task formats of SWE-Bench, WebArena, GAIA, GPQA, HumanEvalFix, MINT, AgentBench, ProofWriter, BIRD, ML-Bench, BioCoder, Gorilla APIBench, ToolQA, MiniWoB++, Entity Deduction Arena",
+    "the specific prior agent-framework landscape (AutoGPT, LangChain, MetaGPT, AutoGen, SWE-Agent, etc.)"
+  ],
+  "binding_personas": ["A", "B", "E"],
+  "term_budget": {"per_paragraph": 2, "abstract_acronyms": 1},
+  "source": "audience mode fixed by TASK.md (run-specific instruction); see state.json accepted_risk AR001. Assumed/not-assumed lists cross-checked against plan/audience_assumptions.json."
+}

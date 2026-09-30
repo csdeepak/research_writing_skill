@@ -1,0 +1,45 @@
+{
+  "patterns": [
+    {
+      "id": "PAT-001",
+      "source": "project/paper.txt §4.2.1 (HumanEvalFix paragraph, lines 465-467)",
+      "section": "Results",
+      "rhetorical_purpose": "report a headline result while pre-empting the obvious follow-up question (why is a competing number higher?)",
+      "move_sequence": ["state the benchmark and protocol", "state the agent's result with its comparator baselines", "flag the strongest baseline's result", "explain the protocol difference that qualifies the comparison (1-shot demonstration vs. 0-shot)", "note remaining headroom and future intent"],
+      "reader_question_answered": "Is 79.3% good, and why isn't it the highest number in the table?",
+      "assumed_knowledge": "0-shot vs. few-shot prompting terminology",
+      "transition_behavior": "uses 'While ... Yang et al. (2024) provides ... whereas our evaluation ... is 0-shot' to name the exact confound rather than leaving the gap unexplained",
+      "evidence_placement": "the qualifying detail (1-shot demonstration) sits in the same paragraph as the number it qualifies, not deferred to a separate limitations section",
+      "result_interpretation_pattern": "number -> comparator -> protocol caveat -> forward-looking note, in one paragraph",
+      "figure_table_integration": null,
+      "limitation_framing": "the caveat is attached to the specific claim it bounds, immediately, rather than listed generically later",
+      "contribution_framing": null,
+      "signature": "a result paragraph that names the strongest counter-example and explains the confound in the same breath",
+      "reader_effect": "reduces the 'so why didn't you win' objection before the reader forms it",
+      "repair_principle": "n/a (positive pattern to imitate, not an anti-pattern)",
+      "paraphrase_only": true,
+      "quote_permitted": false
+    },
+    {
+      "id": "PAT-002",
+      "source": "project/paper.txt §4.1 (Result Overview, line 461)",
+      "section": "Results",
+      "rhetorical_purpose": "synthesize many individual benchmark rows into one cross-cutting claim",
+      "move_sequence": ["concede the paper does not top every category", "name the one property held constant across categories (no prompt change)", "state why that constancy is the significant part, by contrast with the baselines' typical specialization"],
+      "reader_question_answered": "With so many numbers, what is the one thing I should take away?",
+      "assumed_knowledge": "none beyond having just read the category-by-category tables",
+      "transition_behavior": "'While ... may not achieve top performance ... Notably ... This is particularly significant when compared to ...' -- concession before claim, then the claim's warrant",
+      "evidence_placement": "synthesis paragraph placed immediately after the three category tables it summarizes, before the per-category deep dives",
+      "result_interpretation_pattern": "concession -> single unifying observation -> contrast with baselines' own scope",
+      "figure_table_integration": null,
+      "limitation_framing": "the concession ('may not achieve top performance in every category') is stated up front rather than held back for a separate limitations section",
+      "contribution_framing": "the cross-category constancy, not any single number, is framed as the noteworthy result",
+      "signature": "concede-then-synthesize paragraph placed right after a block of tables",
+      "reader_effect": "stops the reader from either over-crediting a single strong number or dismissing the whole section for not topping every table",
+      "repair_principle": "n/a (positive pattern to imitate)",
+      "paraphrase_only": true,
+      "quote_permitted": false
+    }
+  ],
+  "note": "Scoped down per state.json accepted_risk AR005: no web access means no full text of any exemplar paper other than project/paper.txt itself was available in this run, so patterns are drawn from paper.txt as a self-exemplar rather than from an external corpus of verified exemplar papers."
+}

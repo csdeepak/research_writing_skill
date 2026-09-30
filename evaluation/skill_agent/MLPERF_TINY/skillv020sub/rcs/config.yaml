@@ -1,0 +1,19 @@
+# RCE run configuration for this project (filled per run-specific constraints in TASK.md).
+profiles:
+  active_profile: solo_no_subagents
+  note: >
+    No subagents and no human reviewer are available in this run. AUTHOR performs the
+    CORPUS_AGENT role directly (see .rcs/state.json accepted_risks). REVIEW_AGENT (step 18) is
+    deferred to an external process per TASK.md; this run stops after step 17.
+isolation:
+  mode: none
+  note: "Single-context run; no packet isolation for a reviewer in this run."
+data_policy:
+  allowed_endpoints: [current_runtime]
+  web_search_may_include_project_text: false
+  web_access: disabled_by_task_constraints
+literature:
+  mode: project_materials_only
+  note: >
+    No web access. Literature is limited to works cited in ./project/paper.txt. Registered with
+    verification.method = "user_supplied_file" and read_depth = "abstract" per TASK.md.

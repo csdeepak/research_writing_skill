@@ -1,0 +1,12 @@
+{
+ "mode": "packet files inlined into a single task prompt; the reviewer agent had Read/Write on that folder only",
+ "files_read": [
+  "C:/Users/csdee/AppData/Local/Temp/rce_ws/ASMOS_e2e/.rcs/packets/review_v001_1/audience.md",
+  "C:/Users/csdee/AppData/Local/Temp/rce_ws/ASMOS_e2e/.rcs/packets/review_v001_1/figures/V001.svg",
+  "C:/Users/csdee/AppData/Local/Temp/rce_ws/ASMOS_e2e/.rcs/packets/review_v001_1/figures/V002.svg",
+  "C:/Users/csdee/AppData/Local/Temp/rce_ws/ASMOS_e2e/.rcs/packets/review_v001_1/figures/V003.svg",
+  "C:/Users/csdee/AppData/Local/Temp/rce_ws/ASMOS_e2e/.rcs/packets/review_v001_1/objective.md",
+  "C:/Users/csdee/AppData/Local/Temp/rce_ws/ASMOS_e2e/.rcs/packets/review_v001_1/paper.md"
+ ],
+ "task_prompt_sha256": "8776150d3e6b0d455172d63b1b545e91b3c74e90b715b4dc22bb904345a15e01"
+}

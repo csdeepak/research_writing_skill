@@ -1,0 +1,23 @@
+# Generic fallback profile (VENUE_UNKNOWN). Every rule is assumed; see state.json accepted_risks AR3.
+venue: {name: "generic research article (conference style)", type: conference, guideline_urls: []}
+structure:
+  section_template: [Title, Abstract, Introduction, Related Work, Method, Experimental Setup, Results, Discussion, Limitations, Conclusion, References]
+  results_discussion: separate
+  related_work_position: after_intro
+  limitations_section_required: true
+  assumed: true
+limits: {pages_main: null, words_main: 4500, abstract_words: 250, supplement_allowed: true, assumed: true}
+style:
+  citation_style: "author-year, (FirstAuthor et al., Year) as in the project materials"
+  voice_preference: "active voice; 'we' avoided because this paper presents the authors' work in the third person"
+  spelling: US
+  abstract_format: unstructured
+  abstract_citations_allowed: false
+  assumed: true
+required_statements:
+  data_availability: true
+  code_availability: true
+  ai_use_disclosure: "disclosure.md (AI-assisted presentation of the authors' research)"
+  assumed: true
+checklists: []
+reporting_guideline: null

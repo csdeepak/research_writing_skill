@@ -1,0 +1,91 @@
+{
+  "project": "BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation of Information Retrieval Models",
+  "step": 17,
+  "run_stopped_after_step": 17,
+  "run_stop_reason": "Task instructions: 'Step 18 (blind review) is performed externally. After step 17, write the current draft to ./.rcs/drafts/v001/paper.md (claim tags kept) and ALSO to ./paper.md, write ./.rcs/packets/audience.md and ./.rcs/packets/objective.md ..., then stop and reply DONE.'",
+  "gates": {
+    "G1": "passed (step 4; spine and claim map self-reviewed against project/paper.txt in place of user confirmation, see accepted_risks RISK-002)",
+    "G2": "passed (step 9; plan/skeleton.md self-reconstruction answers Q1-Q12 from the skeleton alone)",
+    "G3": "passed (step 10; python rce/tools/lint_draft.py .rcs/drafts/v001/paper.md --rcs .rcs -> 0 errors after the step-17 fix; all {C###}/{L###} tags resolve)",
+    "G4": "not_reached -- requires step 18's REVIEW_AGENT reconstruction score (Core RR), which is out of scope for this run per the task's run-specific constraints"
+  },
+  "open_failures": [
+    {
+      "state": "VENUE_UNKNOWN",
+      "id": "F001",
+      "location": "plan/venue_profile.yaml",
+      "detail": "No venue/journal/conference/guideline URL was given; only an audience description and the task's own length/citation-format requirements.",
+      "raised_by": "AUTHOR",
+      "raised_at_step": 6,
+      "class": "MARK",
+      "resolution": "Generic venue profile used; task-given rules (length, citation form, no images) marked assumed:false with the task instructions as source; all other structural/style rules marked assumed:true. Logged in .rcs/open_issues.md."
+    }
+  ],
+  "accepted_risks": [
+    {
+      "id": "RISK-001",
+      "context": "Run-specific constraint: no human available for this run.",
+      "decision": "Wherever the skill says ASK or STOP for user input, the most defensible option supported by the evidence was chosen and recorded here instead of pausing.",
+      "applies_to_steps": [4, 5, 6, 7, 9, 11, 18]
+    },
+    {
+      "id": "RISK-002",
+      "context": "Gate G1 normally requires showing the spine and claim list to the user for confirmation of pending claims.",
+      "decision": "AUTHOR self-reviewed every claim in claims/claim_evidence_map.json against project/paper.txt. All 22 claims restate, faithfully paraphrase, or perform a simple, transparent arithmetic derivation (declared via derived_from) of a statement explicitly present in project/paper.txt. All are marked author_confirmation:'confirmed'. No claim exceeds the strength of its source statement; hedges in the source ('we speculate', 'to our knowledge') are preserved verbatim in claim_type (speculation/literature)."
+    },
+    {
+      "id": "RISK-003",
+      "context": "No subagents available; CORPUS_AGENT role performed by AUTHOR in the same context.",
+      "decision": "Evidence extraction (steps 1-2) and literature/pattern extraction (step 7) were done by AUTHOR directly, reading agents/corpus_agent.md for the role's rules. Not a blind-review step, so ISOLATION_BREACH does not apply, but there was no independent cross-check of the extraction by a separate role."
+    },
+    {
+      "id": "RISK-004",
+      "context": "No web access; literature mode restricted to works cited in project/paper.txt.",
+      "decision": "corpus/source_registry.json registers only works appearing in project/paper.txt's own reference list, each with verification.method='user_supplied_file' and read_depth='abstract'. No external search, snowballing, DOI resolution, or retraction check was performed."
+    },
+    {
+      "id": "RISK-005",
+      "context": "PDF-to-text extraction damage in project/paper.txt for Table 2 (3 of 10 model columns) and Table 3 (latency/index-size), per evidence/missing_evidence.json (MISS-001, MISS-002).",
+      "decision": "Reported only values reconstructed and cross-validated against independent prose statements or a second, cleanly-extracted table (Table 4, Table 10 of the source). Did not guess or interpolate the remaining cells."
+    },
+    {
+      "id": "RISK-006",
+      "context": "Step 18 (blind REVIEW_AGENT audience evaluation) is explicitly out of scope for this run.",
+      "decision": "Step 11's reconstruction self-test (audits/v001/reconstruction_self.md) was run in the same context reading only the paper content, as the best available substitute, and is explicitly labeled non-blind/provisional per failure_states.md's ISOLATION_BREACH guidance ('label the review non-blind'). Gate G4 is marked not_reached rather than passed."
+    }
+  ],
+  "artifact_log": [
+    "evidence/project_inventory.json (step 1)",
+    "evidence/research_evidence.json (step 2, 60 items E001-E063 incl. cross-validated reconstructions)",
+    "evidence/missing_evidence.json (step 2)",
+    "claims/claim_candidates.json (step 2)",
+    "plan/audience_assumptions.json (step 2)",
+    "story/spine.md (step 3)",
+    "story/story_graph.json (step 3, validated 0 errors)",
+    "claims/claim_evidence_map.json (step 4, 22 claims + 8 limitations, validated 0 errors)",
+    "plan/audience_profile.json (step 5, mode B per task instructions)",
+    "plan/venue_profile.yaml (step 6, generic + VENUE_UNKNOWN mark)",
+    "corpus/source_registry.json (step 7, 35 sources)",
+    "corpus/literature_map.json (step 7)",
+    "corpus/writing_patterns.json + corpus/anti_patterns.json (step 7, validated 0 errors)",
+    "corpus/corpus_log.md (step 7)",
+    "story/lit_gap_chain.md (step 7)",
+    "plan/paper_architecture.md (step 8)",
+    "plan/figure_cards/TBL-1/2/3 (step 8)",
+    "story/question_ledger.json + story/term_ledger.json (step 8)",
+    "plan/skeleton.md (step 9, Gate G2 passed)",
+    "drafts/v001/paper.md (step 10, assembled draft; Gate G3 passed)",
+    "audits/v001/reconstruction_self.md (step 11)",
+    "audits/v001/claim_evidence_audit.md + lint_v001.json (step 12)",
+    "audits/v001/flow_audit.md (step 13)",
+    "audits/v001/term_load_audit.md (step 14)",
+    "audits/v001/figure_table_audit.md (step 15)",
+    "audits/v001/citation_audit.json (step 16)",
+    "audits/v001/overclaim_audit.md (step 17, one B4 overclaim found in the abstract and fixed)",
+    "packets/audience.md + packets/objective.md",
+    "open_issues.md",
+    "../paper.md (final copy of the step-17 draft, tags kept, at the project root)"
+  ],
+  "validator_status": "python rce/tools/validate_artifacts.py .rcs --project-root . -> 0 errors, 1 accepted warning (story/chain/EXP2 empty NEXT: EXP2 is the last experiment in the narrative, so an empty NEXT is the documented exception in workflow.md step 3 / research_story.md section 3, not an orphan). python rce/tools/lint_draft.py .rcs/drafts/v001/paper.md --rcs .rcs -> 0 errors, 41 warnings (all reviewed in audits/v001/), 49 info.",
+  "word_count": {"main_text_excl_references": 4448, "total_incl_references": 5343, "requirement": "3000-4500 main text"}
+}

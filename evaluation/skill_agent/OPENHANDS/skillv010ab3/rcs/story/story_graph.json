@@ -1,0 +1,576 @@
+{
+ "pattern": "method_first",
+ "nodes": [
+  {
+   "id": "N01",
+   "type": "PROBLEM",
+   "text": "Building and evaluating AI agents that act through software is engineering-heavy: interface, environment, interaction mechanism, benchmarks.",
+   "claims": [
+    "C001"
+   ],
+   "evidence": [],
+   "sources": [
+    "SRC-001",
+    "SRC-002",
+    "SRC-003"
+   ]
+  },
+  {
+   "id": "N02",
+   "type": "SIGNIFICANCE",
+   "text": "Software is a powerful interface to the world, so agents that write code, run commands and browse can act in complex ways; the authors also flag safety and side effects.",
+   "claims": [
+    "C001",
+    "C025"
+   ],
+   "evidence": [
+    "E036"
+   ],
+   "sources": []
+  },
+  {
+   "id": "N03",
+   "type": "KNOWN",
+   "text": "Existing frameworks: building blocks with basic runtime (LangChain), stateless execution (AutoGen), limited sandbox (CrewAI), SWE-specific agents.",
+   "claims": [
+    "C002"
+   ],
+   "evidence": [
+    "E040"
+   ],
+   "sources": [
+    "SRC-003",
+    "SRC-004",
+    "SRC-005",
+    "SRC-006",
+    "SRC-007"
+   ]
+  },
+  {
+   "id": "N04",
+   "type": "GAP",
+   "text": "No single framework, as the authors describe them, combines sandboxed execution, browser, reusable tools, delegation, a hub and evaluation for general agents.",
+   "claims": [
+    "C002"
+   ],
+   "evidence": [
+    "E041",
+    "E040"
+   ],
+   "sources": [
+    "SRC-003",
+    "SRC-004",
+    "SRC-005"
+   ]
+  },
+  {
+   "id": "N05",
+   "type": "RQ",
+   "text": "RQ1: Can one open platform supply the shared abstraction, runtime, tools, delegation and evaluation needed to develop and evaluate agents?",
+   "claims": [
+    "C027"
+   ],
+   "evidence": [],
+   "sources": []
+  },
+  {
+   "id": "N06",
+   "type": "RQ",
+   "text": "RQ2: Is a single generalist agent on this platform competitive across software, web and assistance benchmarks?",
+   "claims": [
+    "C021"
+   ],
+   "evidence": [],
+   "sources": []
+  },
+  {
+   "id": "N07",
+   "type": "OBJECTIVE",
+   "text": "Provide a community platform for generalist and specialist agents that interact with the world through software.",
+   "claims": [
+    "C027"
+   ],
+   "evidence": [
+    "E042"
+   ],
+   "sources": []
+  },
+  {
+   "id": "N08",
+   "type": "APPROACH",
+   "text": "Event stream + docker runtime (bash, IPython, browser) + AgentSkills + delegation + evaluation harness, with a hub of community agents.",
+   "claims": [
+    "C003",
+    "C004",
+    "C006",
+    "C007",
+    "C008",
+    "C009"
+   ],
+   "evidence": [],
+   "sources": [
+    "SRC-008"
+   ]
+  },
+  {
+   "id": "N09",
+   "type": "DESIGN",
+   "text": "Architecture design: agent as function from event history to action, runtime as function from action to observation, sandbox per session.",
+   "claims": [
+    "C003",
+    "C004",
+    "C005"
+   ],
+   "evidence": [
+    "E001",
+    "E003",
+    "E002",
+    "E004",
+    "E005",
+    "E006"
+   ],
+   "sources": [
+    "SRC-008",
+    "SRC-010"
+   ]
+  },
+  {
+   "id": "N10",
+   "type": "OBSERVATION",
+   "text": "The implemented system: three primitive actions, arbitrary docker images, skill library, delegation, hub, GUI, integration tests.",
+   "claims": [
+    "C003",
+    "C004",
+    "C005",
+    "C006",
+    "C007",
+    "C008",
+    "C023"
+   ],
+   "evidence": [
+    "E002",
+    "E004",
+    "E007",
+    "E008",
+    "E009",
+    "E037",
+    "E038"
+   ],
+   "sources": []
+  },
+  {
+   "id": "N11",
+   "type": "DESIGN",
+   "text": "Evaluation protocol: 15 integrated benchmarks in three categories, evaluated 0-shot without benchmark-specific prompt engineering against open-source reproducible baselines.",
+   "claims": [
+    "C009"
+   ],
+   "evidence": [
+    "E028",
+    "E029"
+   ],
+   "sources": [
+    "SRC-009",
+    "SRC-012",
+    "SRC-016",
+    "SRC-017"
+   ]
+  },
+  {
+   "id": "N12",
+   "type": "RESULT",
+   "text": "Software engineering: SWE-Bench Lite 26.0% (claude-3-5-sonnet), 22.0% (gpt-4o), 7.0% (gpt-4o-mini); HumanEvalFix 79.3%.",
+   "claims": [
+    "C011",
+    "C012",
+    "C013"
+   ],
+   "evidence": [
+    "E011",
+    "E012",
+    "E013",
+    "E017"
+   ],
+   "sources": []
+  },
+  {
+   "id": "N13",
+   "type": "RESULT",
+   "text": "Web browsing: WebArena 8.5/14.8/15.5% (BrowsingAgent); MiniWoB++ 27.2% and 40.8%.",
+   "claims": [
+    "C014",
+    "C015"
+   ],
+   "evidence": [
+    "E019",
+    "E020"
+   ],
+   "sources": []
+  },
+  {
+   "id": "N14",
+   "type": "RESULT",
+   "text": "Miscellaneous assistance: GAIA L1 30.2/32.1%; GPQA diamond 52.0%; AgentBench OS 57.6%; MINT math 77.3%, code 50.0%; ProofWriter 78.8%; EDA 38.0%.",
+   "claims": [
+    "C016",
+    "C017",
+    "C018",
+    "C019"
+   ],
+   "evidence": [
+    "E021",
+    "E022",
+    "E023",
+    "E024",
+    "E025",
+    "E026",
+    "E027"
+   ],
+   "sources": []
+  },
+  {
+   "id": "N15",
+   "type": "RESULT",
+   "text": "OpenHands agents sit below at least one listed comparator on eight benchmarks (negative result).",
+   "claims": [
+    "C020"
+   ],
+   "evidence": [
+    "E031"
+   ],
+   "sources": []
+  },
+  {
+   "id": "N16",
+   "type": "INTERPRETATION",
+   "text": "Authors: the same CodeAct agent, unmodified, is competitive across three task categories; the tables are consistent with this but rest on single values and heterogeneous comparators.",
+   "claims": [
+    "C021"
+   ],
+   "evidence": [],
+   "sources": []
+  },
+  {
+   "id": "N17",
+   "type": "INTERPRETATION",
+   "text": "The implemented components realise each of the five features the authors list; this is a description of the system rather than a measured property.",
+   "claims": [
+    "C027",
+    "C003",
+    "C004"
+   ],
+   "evidence": [],
+   "sources": []
+  },
+  {
+   "id": "N18",
+   "type": "CONTRIBUTION",
+   "text": "An open platform (five components plus 15-benchmark harness) with reference agents and reported evaluation results.",
+   "claims": [
+    "C027",
+    "C009",
+    "C011"
+   ],
+   "evidence": [],
+   "sources": []
+  },
+  {
+   "id": "N19",
+   "type": "LIMITATION",
+   "text": "Single values, no spread; comparisons uncontrolled.",
+   "claims": [
+    "C012"
+   ],
+   "evidence": [],
+   "sources": []
+  },
+  {
+   "id": "N20",
+   "type": "LIMITATION",
+   "text": "No empirical safety evaluation of sandbox and side effects.",
+   "claims": [
+    "C004",
+    "C025"
+   ],
+   "evidence": [],
+   "sources": []
+  },
+  {
+   "id": "N21",
+   "type": "LIMITATION",
+   "text": "Authors: agents struggle with complex tasks and long-file editing; workflow handcrafted.",
+   "claims": [
+    "C024"
+   ],
+   "evidence": [
+    "E032",
+    "E033",
+    "E034"
+   ],
+   "sources": []
+  },
+  {
+   "id": "N22",
+   "type": "IMPLICATION",
+   "text": "The authors expect the platform to catalyse research and applications; untested beyond adoption statistics.",
+   "claims": [
+    "C022",
+    "C010"
+   ],
+   "evidence": [
+    "E043",
+    "E010"
+   ],
+   "sources": []
+  },
+  {
+   "id": "N23",
+   "type": "FUTURE",
+   "text": "Multi-modality, browsing improvements (Auto Eval & Refine), stronger agents, better long-file editing, automatic workflow generation; later repositories (SDK, Agent Canvas).",
+   "claims": [
+    "C024",
+    "C026"
+   ],
+   "evidence": [
+    "E035",
+    "E044",
+    "E046"
+   ],
+   "sources": []
+  },
+  {
+   "id": "N24",
+   "type": "BACKGROUND_CONCEPT",
+   "text": "Concepts: LLM agent, sandbox, IPython, SWE-Bench and resolve rate, hint text, CodeAct.",
+   "claims": [],
+   "evidence": [],
+   "sources": []
+  }
+ ],
+ "edges": [
+  {
+   "from": "N01",
+   "to": "N05",
+   "type": "motivates"
+  },
+  {
+   "from": "N02",
+   "to": "N05",
+   "type": "motivates"
+  },
+  {
+   "from": "N03",
+   "to": "N04",
+   "type": "establishes"
+  },
+  {
+   "from": "N05",
+   "to": "N04",
+   "type": "addresses"
+  },
+  {
+   "from": "N06",
+   "to": "N04",
+   "type": "addresses"
+  },
+  {
+   "from": "N07",
+   "to": "N05",
+   "type": "operationalizes"
+  },
+  {
+   "from": "N08",
+   "to": "N07",
+   "type": "implements"
+  },
+  {
+   "from": "N09",
+   "to": "N10",
+   "type": "produces"
+  },
+  {
+   "from": "N11",
+   "to": "N12",
+   "type": "produces"
+  },
+  {
+   "from": "N11",
+   "to": "N13",
+   "type": "produces"
+  },
+  {
+   "from": "N11",
+   "to": "N14",
+   "type": "produces"
+  },
+  {
+   "from": "N11",
+   "to": "N15",
+   "type": "produces"
+  },
+  {
+   "from": "N12",
+   "to": "N16",
+   "type": "supports"
+  },
+  {
+   "from": "N13",
+   "to": "N16",
+   "type": "supports"
+  },
+  {
+   "from": "N14",
+   "to": "N16",
+   "type": "supports"
+  },
+  {
+   "from": "N15",
+   "to": "N16",
+   "type": "contradicts"
+  },
+  {
+   "from": "N10",
+   "to": "N17",
+   "type": "supports"
+  },
+  {
+   "from": "N16",
+   "to": "N06",
+   "type": "answers"
+  },
+  {
+   "from": "N17",
+   "to": "N05",
+   "type": "answers"
+  },
+  {
+   "from": "N12",
+   "to": "N18",
+   "type": "grounds"
+  },
+  {
+   "from": "N04",
+   "to": "N18",
+   "type": "grounds"
+  },
+  {
+   "from": "N10",
+   "to": "N18",
+   "type": "grounds"
+  },
+  {
+   "from": "N19",
+   "to": "N12",
+   "type": "limits"
+  },
+  {
+   "from": "N19",
+   "to": "N16",
+   "type": "limits"
+  },
+  {
+   "from": "N20",
+   "to": "N17",
+   "type": "limits"
+  },
+  {
+   "from": "N21",
+   "to": "N16",
+   "type": "limits"
+  },
+  {
+   "from": "N16",
+   "to": "N22",
+   "type": "implies"
+  },
+  {
+   "from": "N21",
+   "to": "N23",
+   "type": "opens"
+  },
+  {
+   "from": "N22",
+   "to": "N23",
+   "type": "opens"
+  },
+  {
+   "from": "N01",
+   "to": "N24",
+   "type": "requires"
+  }
+ ],
+ "experiment_chains": [
+  {
+   "experiment": "Software engineering benchmarks (SWE-Bench Lite, HumanEvalFix; setup for BIRD, BioCoder, ML-Bench, Gorilla APIBench, ToolQA)",
+   "rq": "N06",
+   "hypothesis": "A generalist CodeAct agent with a general action space is competitive with software-engineering specialists.",
+   "falsifier": "Scores far below open-source specialists on the same benchmark",
+   "design_rationale": "SWE-Bench Lite is the authors' default (cost saving); 0-shot without benchmark-specific prompts to test generality",
+   "observations": [
+    "E011",
+    "E012",
+    "E017"
+   ],
+   "claims": [
+    "C011",
+    "C012",
+    "C013"
+   ],
+   "limitations": [
+    "L001",
+    "L002",
+    "L003"
+   ],
+   "next": "Does the same platform also support web browsing, a different action space?"
+  },
+  {
+   "experiment": "Web browsing benchmarks (WebArena, MiniWoB++)",
+   "rq": "N06",
+   "hypothesis": "The browser action set plus delegation gives competitive results among agents using domain-general prompting.",
+   "falsifier": "Delegation from the generalist loses much relative to the dedicated browsing agent",
+   "design_rationale": "WebArena is realistic and hard; MiniWoB++ is synthetic and easier; both report the full set",
+   "observations": [
+    "E019",
+    "E020"
+   ],
+   "claims": [
+    "C014",
+    "C015"
+   ],
+   "limitations": [
+    "L001",
+    "L002"
+   ],
+   "next": "Do miscellaneous tool-use and reasoning tasks also run on the platform?"
+  },
+  {
+   "experiment": "Miscellaneous assistance benchmarks (GAIA, GPQA, AgentBench, MINT, ProofWriter, Entity Deduction Arena)",
+   "rq": "N06",
+   "hypothesis": "The platform's tools and browsing support broad assistance tasks with one agent design.",
+   "falsifier": "Results below plain-LLM baselines",
+   "design_rationale": "Covers tool use, multi-modality, OS interaction, multi-turn feedback, logic and state tracking",
+   "observations": [
+    "E021",
+    "E022",
+    "E023",
+    "E024",
+    "E025",
+    "E026",
+    "E027"
+   ],
+   "claims": [
+    "C016",
+    "C017",
+    "C018",
+    "C019",
+    "C020"
+   ],
+   "limitations": [
+    "L001",
+    "L002",
+    "L006"
+   ],
+   "next": "What do the results establish and not establish, taken together?"
+  }
+ ]
+}

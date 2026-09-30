@@ -1,0 +1,19 @@
+# VENUE_UNKNOWN for this run: generic profile, all rules assumed. The task fixes length and structure.
+venue: {name: "standalone Markdown research paper", type: journal, guideline_urls: []}
+structure:
+  section_template: [Title, Abstract, Introduction, Background and related work, The benchmark, Experimental setup, Results, Discussion, Limitations, Conclusion, References]
+  results_discussion: separate
+  related_work_position: after_intro
+  limitations_section_required: true
+  assumed: true
+limits: {pages_main: null, words_main: "3000-4500 (given in TASK.md, main text excluding references)", abstract_words: 250, supplement_allowed: false, assumed: false}
+style:
+  citation_style: "(FirstAuthor et al., Year) as in the project materials (given in TASK.md)"
+  voice_preference: "active voice; 'the authors' for the research being presented, since the paper presents the project's research on their behalf (third person)"
+  spelling: US
+  abstract_format: unstructured
+  abstract_citations_allowed: false
+  assumed: true
+required_statements: {data_availability: true, code_availability: true, ai_use_disclosure: "not required by the task", assumed: true}
+checklists: []
+reporting_guideline: null

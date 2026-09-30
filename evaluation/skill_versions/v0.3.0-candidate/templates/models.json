@@ -1,0 +1,21 @@
+{
+  "_comment": "Copy to .rcs/models.json. Binds the skill's LOGICAL roles to any model (tools/rce_llm.py). Keys are never stored here: api_key_env names an environment variable. The default binding is a local OpenAI-compatible server (Ollama/LM Studio/vLLM), so project text stays on this machine. A hosted endpoint works only after you list its host in data_policy.allowed_hosts.",
+  "roles": {
+    "REVIEW_AGENT": {"provider": "openai", "base_url": "http://localhost:11434/v1", "model": "<your strongest local model>", "temperature": 0, "json_retries": 2, "max_tokens": 16000},
+    "RECON_GRADER": {"provider": "openai", "base_url": "http://localhost:11434/v1", "model": "<a capable local model>", "temperature": 0},
+    "READER":       {"provider": "openai", "base_url": "http://localhost:11434/v1", "model": "<any small model>", "temperature": 0}
+  },
+  "data_policy": {"allowed_hosts": []},
+  "keep_transcripts": true,
+  "examples": {
+    "openai":      {"provider": "openai", "base_url": "https://api.openai.com/v1", "model": "<model id>", "api_key_env": "OPENAI_API_KEY", "json_mode": true},
+    "openrouter":  {"provider": "openai", "base_url": "https://openrouter.ai/api/v1", "model": "<vendor/model>", "api_key_env": "OPENROUTER_API_KEY"},
+    "anthropic":   {"provider": "anthropic", "model": "<model id>", "api_key_env": "ANTHROPIC_API_KEY"},
+    "gemini":      {"provider": "gemini", "model": "<model id>", "api_key_env": "GEMINI_API_KEY", "json_mode": true},
+    "groq":        {"provider": "openai", "base_url": "https://api.groq.com/openai/v1", "model": "<model id>", "api_key_env": "GROQ_API_KEY"},
+    "vllm_or_lmstudio": {"provider": "openai", "base_url": "http://localhost:8000/v1", "model": "<served model name>"},
+    "any_cli":     {"provider": "command", "command": ["ollama", "run", "<model>"], "timeout": 1800},
+    "any_chat_ui": {"provider": "manual", "dir": ".rcs/llm/manual"},
+    "_hosted_note": "for any hosted example also add its host, e.g. \"api.openai.com\", to data_policy.allowed_hosts"
+  }
+}

@@ -1,0 +1,105 @@
+{
+ "budget_main": 6,
+ "opportunities": [
+  {
+   "claim_id": "C001",
+   "evidence_ids": [
+    "E001"
+   ],
+   "representation": "dot_ci",
+   "kind": "COMPARATIVE",
+   "reason": "4 categories x 1 series with intervals: show the uncertainty",
+   "shape": {
+    "categories": 4,
+    "series": 1,
+    "points": 4,
+    "uncertainty": true,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": true,
+   "reader_question": "What does the evidence behind C001 show? (On 24 RULER QA questions, RAG reached the highest token-F1 (0.751, 95% CI 0.612-)",
+   "needs_author_wording": true,
+   "score": 1.67,
+   "tier": "main"
+  },
+  {
+   "claim_id": "C002",
+   "evidence_ids": [
+    "E001",
+    "E002"
+   ],
+   "representation": "dot_ci",
+   "kind": "COMPARATIVE",
+   "reason": "4 categories x 2 series with intervals: show the uncertainty",
+   "shape": {
+    "categories": 4,
+    "series": 2,
+    "points": 8,
+    "uncertainty": true,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": true,
+   "reader_question": "What does the evidence behind C002 show? (ASMOS+RAG answered 62.5% of questions exactly yet had token-F1 0.433, second-low)",
+   "needs_author_wording": true,
+   "score": 1.67,
+   "tier": "main"
+  },
+  {
+   "claim_id": "C003",
+   "evidence_ids": [
+    "E004"
+   ],
+   "representation": "bar_h",
+   "kind": "COMPARATIVE",
+   "reason": "4 non-negative magnitudes across categories",
+   "shape": {
+    "categories": 4,
+    "series": 1,
+    "points": 4,
+    "uncertainty": false,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": true,
+   "reader_question": "What does the evidence behind C003 show? (Mean latency rose from 1.50 s (no memory) to 1.99 s (ASMOS+RAG).)",
+   "needs_author_wording": true,
+   "score": 1.67,
+   "tier": "main"
+  },
+  {
+   "claim_id": "C004",
+   "evidence_ids": [
+    "E003"
+   ],
+   "representation": "PROSE",
+   "kind": "",
+   "reason": "1 value(s): a sentence is clearer than a figure (figure_table_rules.md section 2)",
+   "shape": {
+    "categories": 1,
+    "series": 1,
+    "points": 1,
+    "uncertainty": true,
+    "ordered": false,
+    "attrs_per_category": 1
+   },
+   "must_show": false,
+   "already_in_registry": false,
+   "reader_question": "What does the evidence behind C004 show? (RAG exceeded ASMOS-memory by +0.336 token-F1 (paired bootstrap 95% CI +0.149 to )",
+   "needs_author_wording": true,
+   "score": 1.17,
+   "tier": "none (prose)"
+  }
+ ],
+ "summary": {
+  "claims_considered": 4,
+  "visual": 3,
+  "prose_only": 1,
+  "main": 3
+ },
+ "note": "Proposals only. Nothing is drawn until a registry entry with real source data passes V1-V4."
+}

@@ -1,0 +1,19 @@
+{
+ "id": "ADV-09",
+ "origin": "spec 10 case 9",
+ "title": "a line edit changes 'on one split' to 'across datasets'",
+ "files": {
+  "before.md": "M reached 0.84 accuracy on one split {C001}. This suggests that normalization matters {C002}.\n",
+  "after.md": "M reached 0.84 accuracy across datasets {C001}. This suggests that normalization matters {C002}.\n"
+ },
+ "checks": [
+  {
+   "tool": "invariance",
+   "before": "before.md",
+   "after": "after.md",
+   "expect": [
+    "ERROR:CLAIM_DRIFT_SCOPE"
+   ]
+  }
+ ]
+}

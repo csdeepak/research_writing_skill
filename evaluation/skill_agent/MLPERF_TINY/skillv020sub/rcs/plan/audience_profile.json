@@ -1,0 +1,22 @@
+{
+  "mode": "B",
+  "primary": "Machine-learning researchers from other subfields (adjacent researchers): they know general ML, deep learning, standard evaluation practice, and statistics, but not TinyML-specific terminology, datasets, or prior work.",
+  "secondary": "Readers checking the suite's claims for accuracy: what each benchmark actually measures, how the closed/open divisions bound a fair comparison, and what the first submission round does and does not show.",
+  "tertiary": "Future readers and practitioners outside TinyML who want to know, without re-reading the source paper, what MLPerf Tiny is, why it exists, and what its first results showed.",
+  "assumed_known": [
+    "supervised classification and its standard metrics (Top-1 accuracy, AUC-ROC)",
+    "convolutional neural networks, quantization (the general idea of lower-precision numerics), and standard training/test splits",
+    "the general concept of edge/on-device inference (e.g., phone- or GPU-class deployment) and standard reporting practice (baselines, ablations, reporting negative/absent results)",
+    "general benchmarking practice in ML (train/test protocol, comparison against baselines)"
+  ],
+  "not_assumed": [
+    "TinyML-specific terminology: TFLite Micro, device under test (DUT), system under test (SUT), inferences-per-second (IPS), post-training quantization (PTQ) vs. quantization-aware training (QAT) as MCU-deployment concepts",
+    "the resource envelope of microcontroller-class hardware (clock speed, RAM/flash, power budget) relative to phone- or GPU-class deployment",
+    "the specific datasets (Speech Commands, the Visual Wake Words task, DCASE2020/ToyADMOS/MIMII) and their role in prior TinyML work",
+    "prior TinyML/embedded benchmarks (CoreMark, MLMark) and why they do not already solve this problem",
+    "MLPerf's own inference-benchmark tradition and why its existing suite does not cover this hardware class"
+  ],
+  "binding_personas": ["A", "B", "E"],
+  "term_budget": {"per_paragraph": 2, "abstract_acronyms": 1},
+  "source": "TASK.md audience specification, 2026-09-27. No human available to refine further (AR-001); mode B is also the skill's documented default recommendation for this description ('adjacent researcher')."
+}

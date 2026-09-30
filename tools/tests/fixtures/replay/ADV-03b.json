@@ -1,0 +1,117 @@
+{
+ "id": "ADV-03b",
+ "origin": "control for case 3",
+ "title": "the same wording backed by a recorded test and license: passes",
+ "files": {
+  "results/acc.csv": "method,accuracy\nM,0.84\nB,0.80\n",
+  "results/stats.csv": "test,p\npaired t-test,0.01\n",
+  ".rcs/evidence/research_evidence.json": {
+   "project_root": ".",
+   "generated_at": "2026-09-29",
+   "items": [
+    {
+     "id": "E001",
+     "kind": "result",
+     "summary": "Accuracy of M on the test split",
+     "locator": {
+      "path": "results/acc.csv"
+     },
+     "strength": "hard",
+     "status": "ok",
+     "value": {
+      "metric": "accuracy",
+      "value": 0.84
+     },
+     "conditions": {
+      "method": "M",
+      "split": "test"
+     }
+    },
+    {
+     "id": "E002",
+     "kind": "result",
+     "summary": "Accuracy of B on the test split",
+     "locator": {
+      "path": "results/acc.csv"
+     },
+     "strength": "hard",
+     "status": "ok",
+     "value": {
+      "metric": "accuracy",
+      "value": 0.8
+     },
+     "conditions": {
+      "method": "B",
+      "split": "test"
+     }
+    },
+    {
+     "id": "E003",
+     "kind": "result",
+     "summary": "Paired t-test on per-seed accuracy, M vs B",
+     "locator": {
+      "path": "results/stats.csv"
+     },
+     "strength": "hard",
+     "status": "ok",
+     "value": {
+      "metric": "accuracy_difference",
+      "value": 0.04,
+      "test": "paired t-test",
+      "p": 0.01,
+      "n": 5
+     }
+    }
+   ]
+  },
+  ".rcs/claims/claim_evidence_map.json": {
+   "claims": [
+    {
+     "id": "C001",
+     "statement": "M improved accuracy over B (0.84 vs 0.80), paired t-test p = 0.01.",
+     "claim_type": "derived",
+     "evidence": [
+      "E001",
+      "E002",
+      "E003"
+     ],
+     "confidence": "moderate",
+     "author_confirmation": "confirmed",
+     "basis": "project_file",
+     "licenses": [
+      {
+       "type": "significance_test",
+       "evidence": [
+        "E003"
+       ]
+      }
+     ]
+    }
+   ],
+   "limitations": [],
+   "negative_result_decisions": []
+  },
+  "paper.md": "M significantly improves accuracy over B, 0.84 versus 0.80 (paired t-test, p = 0.01) {C001}.\n"
+ },
+ "checks": [
+  {
+   "tool": "validate",
+   "forbid": [
+    "ERROR:*"
+   ]
+  },
+  {
+   "tool": "lint",
+   "forbid": [
+    "ERROR:*"
+   ]
+  },
+  {
+   "tool": "verify_numbers",
+   "forbid": [
+    "ERROR:*",
+    "WARN:*"
+   ]
+  }
+ ]
+}

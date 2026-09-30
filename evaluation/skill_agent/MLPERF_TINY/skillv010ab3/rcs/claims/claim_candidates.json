@@ -1,0 +1,104 @@
+{
+ "candidates": [
+  {
+   "id": "C001",
+   "statement": "MLPerf Tiny v0.5 specifies four benchmarks (keyword spotting, visual wake words, image classification, anomaly detection), each with a dataset, a model and a quality target (90% Top-1, 80% Top-1, 85% Top-1, AUC 0.85), and measures accuracy, latency and energy.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C002",
+   "statement": "TFLite model sizes are 52.5 KB (keyword spotting DS-CNN, 38.6K parameters), 325 KB (visual wake words MobileNetV1), 96 KB (image classification ResNet) and 270 KB (anomaly detection autoencoder).",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C003",
+   "statement": "Datasets and preprocessing: Speech Commands v2 reduced to 12 classes; MSCOCO 2014 reduced to person/no-person with a 2.5% area threshold at 96x96; CIFAR-10 at 32x32x3; DCASE2020 Toy-car with seven cars of 1000 normal samples each for training.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C004",
+   "statement": "Reference quality figures reported by the authors: keyword spotting quantized model 91.6% (full test set) and 91.7% (1000-utterance subset), 92.2% in their experiments; visual wake words about 86%; image classification 86.5% on 200 images; anomaly detection AUC 0.88 (fp32) and 0.86 (quantized) on 248 samples.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C005",
+   "statement": "Quality targets sit below the reference figures: about 6 points for visual wake words (about 86% vs 80%), 1.5 for image classification (86.5% vs 85%), 1.6 for keyword spotting (91.6% vs 90%) and 0.01 AUC for anomaly detection (0.86 quantized vs 0.85); the authors state that targets allow for quantization and rounding differences.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C006",
+   "statement": "The measurement window covers model inference only (no pre- or post-processing). Latency score is the median inferences per second of five runs of at least 10 s and 10 iterations; energy is micro-Joules per inference with the same median-of-five rule; accuracy comes from one pass over the whole validation set and a minimum accuracy makes a score valid.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C007",
+   "statement": "Closed division: same model, dataset and quality target as the reference, post-training quantization allowed, no retraining; open division: submitter may change model, training scripts and dataset, need not meet the accuracy threshold and must document deviations; modifying orange components of the reference forces open division.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C008",
+   "statement": "The benchmark framework couples a host PC runner to the device under test over a serial port; an energy configuration adds an isolating IO Manager and one of three supported energy monitors, excludes level-shifter power, and allows only one power supply for the core.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C009",
+   "statement": "The authors state that CoreMark does not profile full programs or represent ML inference, that MLMark uses models too large for MCU-class devices and lacks power measurement, and that the MLPerf inference suite excludes MCUs for lack of small benchmarks; on that basis they describe MLPerf Tiny as the first industry-standard TinyML suite.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C010",
+   "statement": "The first submission round (June 2021) produced results in both divisions from an ARM MCU baseline, a RISC-V MCU, a Raspberry Pi 4 running a software toolchain, a neural-network accelerator and an FPGA flow (Table 2 lists five rows).",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C011",
+   "statement": "Across the first-round submissions, 8-bit integer was the most common numerical format, frameworks ranged from open-source interpreters to hardware-specific compilers, platforms included MCUs, accelerators and FPGAs, and power consumption ranged from microWatts to Watts.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C012",
+   "statement": "None of the first-round submissions modified the training dataset.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C013",
+   "statement": "The authors report that the four reference implementations, run on the NUCLEO-L4R5ZI board, span a wide range of latency and energy and each meets its minimum accuracy; the latency and energy values are shown only in a figure whose data are not in the evidence.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C014",
+   "statement": "The authors attribute the diversity of first-round submissions to the modular design (swappable reference components plus closed and open divisions); the evidence is consistent with this but no comparison design isolates the cause.",
+   "origin": "inferred"
+  },
+  {
+   "id": "C015",
+   "statement": "The authors expect modification of the training dataset to become more common in future rounds, in line with a wider shift towards data-centric design.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C016",
+   "statement": "Leaving feature extraction outside the measurement while letting submitters choose it creates a possible degenerate case in which all layers but the last are called feature extraction; including it, one second of audio would mean one inference cycle and 40 feature extraction cycles, which would over-emphasize its cost; the authors therefore list the choice as an unresolved tradeoff.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C017",
+   "statement": "The authors present the performance versus energy tradeoff, set by supply voltage and on-board power conversion efficiency, as a key insight of the benchmark and expose voltage selection in the runner.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C018",
+   "statement": "Future versions may add application domains (wearables, medical devices, environmental monitoring), more layer types such as RNNs, pre-processing in the measured scope, and a long-term stable subset.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C019",
+   "statement": "The authors report that the benchmarks have been used as a standard set of tasks in TinyML research and as public projects on a TinyML development platform; the repository README lists further releases (v0.7, v1.0, v1.1 with release dates) and an expected v1.2 deadline.",
+   "origin": "author_stated"
+  },
+  {
+   "id": "C020",
+   "statement": "Submissions are peer-reviewed transparently by the group of submitters and a review committee, are accepted twice a year, and each is public with reproduction instructions.",
+   "origin": "author_stated"
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+  "project_root": "./project",
+  "generated_at": "2026-09-27",
+  "generated_by": "CORPUS_AGENT (performed by AUTHOR session; no subagent runtime available)",
+  "files": [
+    {
+      "path": "project/paper.txt",
+      "type_class": "draft",
+      "note": "Text extracted (OCR/PDF-to-text) from the project's official arXiv preprint, 'MLPerf Tiny Benchmark' (arXiv:2106.07597v4, [cs.LG], 24 Aug 2021). Contains abstract, 9 numbered sections, an appendix, acknowledgments, and a 22-entry reference list. Tables 1 and 2 and all 6 figures suffered extraction damage: table cell text is linearized into single-column runs (columns must be reconstructed from row order and cross-checked against prose); figures are unreadable (no pixel data, only captions).",
+      "size_bytes": 50007,
+      "modified": "2026-09-24T04:52:33",
+      "opened": true,
+      "extracted_text": true
+    },
+    {
+      "path": "project/README_1.md",
+      "type_class": "note",
+      "note": "Official repository README for mlcommons/tiny. Gives the project's one-line description, target device class, reference software stack (TFLite Micro), a version/release-date/repo table (v0.5 through v1.1), the canonical BibTeX citation for the v0.5 paper, and a mailing-list link. No result numbers.",
+      "size_bytes": 3076,
+      "modified": "2026-09-24T04:52:35",
+      "opened": true,
+      "extracted_text": true
+    }
+  ],
+  "skipped": [],
+  "datasets_described_not_opened": [],
+  "classification_summary": {
+    "draft": 1,
+    "note": 1,
+    "result": 0,
+    "log": 0,
+    "config": 0,
+    "code": 0,
+    "figure": 0,
+    "figure-source": 0,
+    "literature": 0,
+    "review": 0,
+    "reference": 0,
+    "dataset": 0,
+    "other": 0
+  },
+  "observations_for_evidence_policy": [
+    "This project provides no separate results/, notes/, config/, or figures/ directories -- the entire evidentiary basis is the two files above. All quantitative values therefore trace back to prose in paper.txt (there is no independent machine-written log/CSV layer).",
+    "6 figures are referenced in paper.txt (Fig.1 stack diagram, Fig.2 modular design, Fig.3 framework hardware configs, Fig.4 runner GUI, Fig.5 reference-implementation energy/latency results, Fig.6 energy viewer) but only their captions survive extraction; no pixel data is available, so no numeric values can be read from them (extracted_from_image is not applicable -- the images themselves are absent, not merely unread).",
+    "One reference-list-style citation key ('citekim20191', end of Section 2 'Hardware Heterogeneity') does not resolve to any of the 22 numbered references in paper.txt's reference list. Treated as extraction damage; not used as a citable source (see corpus_log.md, 'Suspicious/anomalous content')."
+  ],
+  "done_when_check": "Both files classified with a reason; no result-bearing file was skipped. NO_EVIDENCE does not apply: paper.txt is result-bearing (Sections 4-8, Tables 1-2)."
+}

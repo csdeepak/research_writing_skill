@@ -1,0 +1,14 @@
+{"dimensions":[
+ {"dimension":"Evaluation scope of earlier retrieval benchmarks","rows":[
+  {"source":"SRC-012","problem_framing":"retrieval QA across eight datasets","method_family":"benchmark","key_assumption":"answer retrieval at sentence level","data_eval":"5 of 8 datasets Wikipedia; 6 of 8 under 100k candidates","strength":"multi-dataset","weakness":"one task; small corpora favour dense retrieval (SRC-020)","relation":"BEIR broadens tasks, domains and corpus size"},
+  {"source":"SRC-013","problem_framing":"knowledge-intensive tasks","method_family":"benchmark","key_assumption":"Wikipedia knowledge source","data_eval":"5 tasks, 11 datasets; retrieval secondary","strength":"varied tasks","weakness":"Wikipedia only; retrieval not primary","relation":"BEIR makes retrieval the primary evaluated task on many domains"}]},
+ {"dimension":"Retrieval architecture families (background)","rows":[
+  {"source":"SRC-002","method_family":"lexical","weakness":"lexical gap (SRC-026)"},
+  {"source":"SRC-007/008/009","method_family":"sparse / expansion","key_assumption":"still rely on lexical matching (BM25) for parts"},
+  {"source":"SRC-003/004/005","method_family":"dense bi-encoders"},
+  {"source":"SRC-006","method_family":"late interaction"},
+  {"source":"SRC-010","method_family":"cross-encoder re-ranking","weakness":"high computational overhead as described in the paper"}]},
+ {"dimension":"Label bias","rows":[
+  {"source":"SRC-019","key_assumption":"unjudged documents assumed irrelevant"},
+  {"source":"SRC-011","data_eval":"pooling over participant systems (TREC-COVID)"}]}
+]}

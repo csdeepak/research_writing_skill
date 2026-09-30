@@ -1,0 +1,92 @@
+{
+  "tool": "audit_reader",
+  "reader_model": true,
+  "errors": 0,
+  "warnings": 0,
+  "findings": [
+    {
+      "rule": "M11-DENSE-PARAGRAPH",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "Teams of large language model (LLM) agents that share a memory must decide which",
+      "message": "20 numbers in one paragraph: consider a table"
+    },
+    {
+      "rule": "M11-DENSE-PARAGRAPH",
+      "level": "INFO",
+      "line": 15,
+      "excerpt": "1. A measured token saving: routing to the learned owner used 22.1% fewer LLM to",
+      "message": "12 numbers in one paragraph: consider a table"
+    },
+    {
+      "rule": "M11-DENSE-PARAGRAPH",
+      "level": "INFO",
+      "line": 37,
+      "excerpt": "The evaluation set has 50 queries in five query classes on a corpus with two age",
+      "message": "21 numbers in one paragraph: consider a table"
+    },
+    {
+      "rule": "M11-DENSE-PARAGRAPH",
+      "level": "INFO",
+      "line": 43,
+      "excerpt": "The uncertainty is a bootstrap 95% confidence interval over the 50 queries with ",
+      "message": "8 numbers in one paragraph: consider a table"
+    },
+    {
+      "rule": "M11-DENSE-PARAGRAPH",
+      "level": "INFO",
+      "line": 47,
+      "excerpt": "In the new-topic regime a new topic appears whose true owner is a single agent, ",
+      "message": "13 numbers in one paragraph: consider a table"
+    },
+    {
+      "rule": "M11-DENSE-PARAGRAPH",
+      "level": "INFO",
+      "line": 68,
+      "excerpt": "Figure 1 shows how certain the size is. The bootstrap 95% CI over queries is 17.",
+      "message": "25 numbers in one paragraph: consider a table"
+    },
+    {
+      "rule": "M11-DENSE-PARAGRAPH",
+      "level": "INFO",
+      "line": 74,
+      "excerpt": "This answers RQ1: on this constructed corpus and answering model, learned-owners",
+      "message": "19 numbers in one paragraph: consider a table"
+    },
+    {
+      "rule": "M11-DENSE-PARAGRAPH",
+      "level": "INFO",
+      "line": 92,
+      "excerpt": "With the all-mpnet-base-v2 embedder, ASMOS reached a cumulative regret of 3.24 (",
+      "message": "26 numbers in one paragraph: consider a table"
+    },
+    {
+      "rule": "M11-DENSE-PARAGRAPH",
+      "level": "INFO",
+      "line": 98,
+      "excerpt": "Three qualifications apply. Regret depends strongly on the embedder, 3.24 agains",
+      "message": "15 numbers in one paragraph: consider a table"
+    },
+    {
+      "rule": "M11-DENSE-PARAGRAPH",
+      "level": "INFO",
+      "line": 139,
+      "excerpt": "Additional caveats are ours, not the authors' concessions. Seeds 11 to 55 are po",
+      "message": "8 numbers in one paragraph: consider a table"
+    },
+    {
+      "rule": "READER-QUESTION-UNANSWERED",
+      "level": "INFO",
+      "line": 0,
+      "excerpt": "What problem does this solve?",
+      "message": "no paragraph addresses this reader question"
+    },
+    {
+      "rule": "READER-QUESTION-UNANSWERED",
+      "level": "INFO",
+      "line": 0,
+      "excerpt": "How was it evaluated, and on what data?",
+      "message": "no paragraph addresses this reader question"
+    }
+  ]
+}

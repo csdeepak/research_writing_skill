@@ -1,0 +1,16 @@
+{
+ "id": "REAL-01b",
+ "origin": "control (real: OpenHands v0.2.0 draft)",
+ "title": "an explained subset ('11 benchmarks whose scores...') is not a conflict",
+ "files": {
+  "paper.md": "It matched baselines on 9 of the 11 benchmarks whose scores could be recovered. Results cover all 15 benchmarks.\n"
+ },
+ "checks": [
+  {
+   "tool": "lint",
+   "forbid": [
+    "WARN:INCONSISTENT-COUNT"
+   ]
+  }
+ ]
+}

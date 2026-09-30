@@ -1,0 +1,631 @@
+{
+ "pattern": "method_first",
+ "nodes": [
+  {
+   "id": "N01",
+   "type": "PROBLEM",
+   "text": "Agents that act through software are hard to build and evaluate.",
+   "claims": [
+    "C001",
+    "C002"
+   ]
+  },
+  {
+   "id": "N02",
+   "type": "SIGNIFICANCE",
+   "text": "The authors regard software as the ideal interface for agents to act on the world, and want general agents that also browse and handle auxiliary tasks.",
+   "claims": [
+    "C001",
+    "C003"
+   ]
+  },
+  {
+   "id": "N03",
+   "type": "KNOWN",
+   "text": "Existing open frameworks provide interfaces, environments and interaction mechanisms; general frameworks and software-engineering systems are characterized by the authors.",
+   "claims": [
+    "C004",
+    "C005",
+    "C006",
+    "C007"
+   ],
+   "sources": [
+    "SRC-001",
+    "SRC-002",
+    "SRC-003",
+    "SRC-004",
+    "SRC-005",
+    "SRC-035"
+   ],
+   "audience_note": "reader may not know these frameworks"
+  },
+  {
+   "id": "N04",
+   "type": "GAP",
+   "text": "As the authors describe them, general frameworks offer limited or stateless code execution and software-engineering systems are domain-specific; no single platform is described that combines shell, Python, browser, shared tools, delegation and a benchmark harness.",
+   "claims": [
+    "C005"
+   ],
+   "sources": [
+    "SRC-002",
+    "SRC-035",
+    "SRC-005",
+    "SRC-004"
+   ]
+  },
+  {
+   "id": "N05",
+   "type": "RQ",
+   "text": "Design question: what infrastructure lets one open platform host community-built agents that act through code, shell and browser, run in isolation and be evaluated on many benchmarks?",
+   "claims": [
+    "C003"
+   ]
+  },
+  {
+   "id": "N06",
+   "type": "RQ",
+   "text": "Evaluation question: how does a default generalist agent (and a browsing agent and a GPTSwarm agent) fare across software, web and assistance benchmarks without benchmark-specific prompt engineering?",
+   "claims": [
+    "C003",
+    "C026"
+   ]
+  },
+  {
+   "id": "N07",
+   "type": "OBJECTIVE",
+   "text": "The authors' goal is general digital agents that interact with the world through software interfaces.",
+   "claims": [
+    "C003"
+   ]
+  },
+  {
+   "id": "N08",
+   "type": "APPROACH",
+   "text": "OpenHands: event stream, sandboxed runtime, AgentSkills, delegation, AgentHub and an evaluation harness for 15 benchmarks.",
+   "claims": [
+    "C010",
+    "C011",
+    "C015",
+    "C017",
+    "C019",
+    "C024"
+   ]
+  },
+  {
+   "id": "N09",
+   "type": "DESIGN",
+   "text": "Architecture and its stated rationale: three action types, per-session Docker sandbox, arbitrary images, skills library with inclusion criteria, delegation, micro agents, integration tests.",
+   "claims": [
+    "C010",
+    "C011",
+    "C012",
+    "C013",
+    "C014",
+    "C015",
+    "C016",
+    "C017",
+    "C018",
+    "C019",
+    "C020",
+    "C021",
+    "C022",
+    "C023"
+   ]
+  },
+  {
+   "id": "N10",
+   "type": "RESULT",
+   "text": "Delivered platform: agent abstraction and runtime, skills, hub with over 10 agents, 15 integrated benchmarks, reported community activity.",
+   "claims": [
+    "C019",
+    "C024",
+    "C029"
+   ],
+   "evidence": [
+    "E027",
+    "E030",
+    "E031"
+   ]
+  },
+  {
+   "id": "N11",
+   "type": "DESIGN",
+   "text": "Evaluation protocol: open-source reproducible baselines without benchmark-specific prompt engineering, no hint text, Lite subset for cost, benchmark-specific adaptations.",
+   "claims": [
+    "C025",
+    "C026",
+    "C028"
+   ]
+  },
+  {
+   "id": "N12",
+   "type": "RESULT",
+   "text": "Software benchmarks: SWE-bench Lite 26.0/22.0/7.0, HumanEvalFix 79.3/20.1, and other software benchmarks (soft).",
+   "claims": [
+    "C030",
+    "C032",
+    "C033"
+   ],
+   "evidence": [
+    "E038",
+    "E043",
+    "E045"
+   ]
+  },
+  {
+   "id": "N13",
+   "type": "RESULT",
+   "text": "Web benchmarks: WebArena up to 15.5, MiniWoB++ up to 40.8.",
+   "claims": [
+    "C034",
+    "C035"
+   ],
+   "evidence": [
+    "E051",
+    "E053"
+   ]
+  },
+  {
+   "id": "N14",
+   "type": "RESULT",
+   "text": "Miscellaneous benchmarks: GAIA 32.1, GPQA diamond 52.0, AgentBench OS 57.6, MINT, ProofWriter, Entity Deduction Arena.",
+   "claims": [
+    "C037",
+    "C038",
+    "C039"
+   ],
+   "evidence": [
+    "E056",
+    "E057",
+    "E061",
+    "E062",
+    "E063",
+    "E064"
+   ]
+  },
+  {
+   "id": "N15",
+   "type": "OBSERVATION",
+   "text": "Negative pattern: strong dependence on the underlying model, and several rows below the best listed reference.",
+   "claims": [
+    "C040",
+    "C041"
+   ],
+   "evidence": [
+    "E047",
+    "E048",
+    "E049",
+    "E055",
+    "E065"
+   ]
+  },
+  {
+   "id": "N16",
+   "type": "INTERPRETATION",
+   "text": "The authors describe the architecture as providing the shared infrastructure the design question asks for; the paper reports no ablation isolating any component.",
+   "claims": [
+    "C010",
+    "C011",
+    "C012",
+    "C019",
+    "C024"
+   ]
+  },
+  {
+   "id": "N17",
+   "type": "INTERPRETATION",
+   "text": "The authors describe the unmodified generalist agent as competitive across three categories but not top in every one; the numbers fit competitive and not consistently leading.",
+   "claims": [
+    "C031",
+    "C036",
+    "C042"
+   ]
+  },
+  {
+   "id": "N18",
+   "type": "CONTRIBUTION",
+   "text": "An open platform combining a sandboxed multi-tool runtime, shared skills, delegation and an agent hub, released under an MIT license.",
+   "claims": [
+    "C010",
+    "C011",
+    "C019",
+    "C029"
+   ]
+  },
+  {
+   "id": "N19",
+   "type": "CONTRIBUTION",
+   "text": "An evaluation of default agents on 15 benchmarks, with numbers placed beside reference systems, including rows where OpenHands is lower.",
+   "claims": [
+    "C024",
+    "C030",
+    "C032",
+    "C041",
+    "C042"
+   ]
+  },
+  {
+   "id": "N20",
+   "type": "LIMITATION",
+   "text": "Author-stated limits: complex tasks, long-file editing, handcrafted workflows, multi-modality, research-artifact reliability, not top everywhere, HumanEvalFix comparison, repository compatibility and sandbox caveats.",
+   "claims": [
+    "C042",
+    "C030",
+    "C031",
+    "C015",
+    "C017",
+    "C019",
+    "C027",
+    "C032",
+    "C041",
+    "C045",
+    "C046",
+    "C011"
+   ]
+  },
+  {
+   "id": "N21",
+   "type": "LIMITATION",
+   "text": "Writer-derived caveats: no variance, unmatched references, no ablation, extraction damage, self-reported community numbers, mixed agent versions.",
+   "claims": [
+    "C030",
+    "C032",
+    "C034",
+    "C035",
+    "C037",
+    "C038",
+    "C039",
+    "C041",
+    "C042",
+    "C010",
+    "C011",
+    "C005",
+    "C033",
+    "C029",
+    "C045",
+    "C046",
+    "C036"
+   ]
+  },
+  {
+   "id": "N22",
+   "type": "IMPLICATION",
+   "text": "The platform can serve as a common base on which agents and benchmarks are compared, and repository READMEs show later extensions (benchmarks repository, Agent Canvas), reported as documentation only.",
+   "claims": [
+    "C045",
+    "C046"
+   ]
+  },
+  {
+   "id": "N23",
+   "type": "FUTURE",
+   "text": "Principled multi-modality, stronger agents, better long-file editing, Auto Eval & Refine, graph-based workflow generation, 100% on HumanEvalFix.",
+   "claims": [
+    "C050"
+   ]
+  },
+  {
+   "id": "N24",
+   "type": "BACKGROUND_CONCEPT",
+   "text": "Event stream, action, observation, sandbox.",
+   "claims": [
+    "C010",
+    "C011"
+   ],
+   "audience_note": "defined before the architecture is described"
+  },
+  {
+   "id": "N25",
+   "type": "BACKGROUND_CONCEPT",
+   "text": "Benchmark success rate; resolve rate, pass rate and success rate differ by benchmark.",
+   "claims": [
+    "C025"
+   ],
+   "audience_note": "reader may not know SWE-bench, WebArena, GPQA, 0-shot/1-shot"
+  }
+ ],
+ "edges": [
+  {
+   "from": "N01",
+   "to": "N05",
+   "type": "motivates"
+  },
+  {
+   "from": "N02",
+   "to": "N06",
+   "type": "motivates"
+  },
+  {
+   "from": "N02",
+   "to": "N05",
+   "type": "motivates"
+  },
+  {
+   "from": "N03",
+   "to": "N04",
+   "type": "establishes"
+  },
+  {
+   "from": "N05",
+   "to": "N04",
+   "type": "addresses"
+  },
+  {
+   "from": "N06",
+   "to": "N04",
+   "type": "addresses"
+  },
+  {
+   "from": "N07",
+   "to": "N05",
+   "type": "operationalizes"
+  },
+  {
+   "from": "N07",
+   "to": "N06",
+   "type": "operationalizes"
+  },
+  {
+   "from": "N08",
+   "to": "N07",
+   "type": "implements"
+  },
+  {
+   "from": "N09",
+   "to": "N05",
+   "type": "tests"
+  },
+  {
+   "from": "N09",
+   "to": "N10",
+   "type": "produces"
+  },
+  {
+   "from": "N11",
+   "to": "N06",
+   "type": "tests"
+  },
+  {
+   "from": "N11",
+   "to": "N12",
+   "type": "produces"
+  },
+  {
+   "from": "N11",
+   "to": "N13",
+   "type": "produces"
+  },
+  {
+   "from": "N11",
+   "to": "N14",
+   "type": "produces"
+  },
+  {
+   "from": "N11",
+   "to": "N15",
+   "type": "produces"
+  },
+  {
+   "from": "N10",
+   "to": "N16",
+   "type": "supports"
+  },
+  {
+   "from": "N12",
+   "to": "N17",
+   "type": "supports"
+  },
+  {
+   "from": "N13",
+   "to": "N17",
+   "type": "supports"
+  },
+  {
+   "from": "N14",
+   "to": "N17",
+   "type": "supports"
+  },
+  {
+   "from": "N15",
+   "to": "N17",
+   "type": "supports"
+  },
+  {
+   "from": "N16",
+   "to": "N05",
+   "type": "answers"
+  },
+  {
+   "from": "N17",
+   "to": "N06",
+   "type": "answers"
+  },
+  {
+   "from": "N10",
+   "to": "N18",
+   "type": "grounds"
+  },
+  {
+   "from": "N04",
+   "to": "N18",
+   "type": "grounds"
+  },
+  {
+   "from": "N12",
+   "to": "N19",
+   "type": "grounds"
+  },
+  {
+   "from": "N04",
+   "to": "N19",
+   "type": "grounds"
+  },
+  {
+   "from": "N20",
+   "to": "N17",
+   "type": "limits"
+  },
+  {
+   "from": "N20",
+   "to": "N16",
+   "type": "limits"
+  },
+  {
+   "from": "N21",
+   "to": "N17",
+   "type": "limits"
+  },
+  {
+   "from": "N21",
+   "to": "N19",
+   "type": "limits"
+  },
+  {
+   "from": "N16",
+   "to": "N22",
+   "type": "implies"
+  },
+  {
+   "from": "N17",
+   "to": "N22",
+   "type": "implies"
+  },
+  {
+   "from": "N20",
+   "to": "N23",
+   "type": "opens"
+  },
+  {
+   "from": "N22",
+   "to": "N23",
+   "type": "opens"
+  },
+  {
+   "from": "N09",
+   "to": "N24",
+   "type": "requires"
+  },
+  {
+   "from": "N12",
+   "to": "N25",
+   "type": "requires"
+  },
+  {
+   "from": "N13",
+   "to": "N25",
+   "type": "requires"
+  }
+ ],
+ "experiment_chains": [
+  {
+   "experiment": "SWE-bench Lite",
+   "rq": "N06",
+   "hypothesis": "Not stated by the authors as a hypothesis; the authors describe the result as competitive with other open-source specialists.",
+   "falsifier": "Not stated by the authors.",
+   "design_rationale": "Lite subset chosen for cost saving; hint text not used (authors).",
+   "observations": [
+    "E038",
+    "E041"
+   ],
+   "claims": [
+    "C030",
+    "C031"
+   ],
+   "limitations": [
+    "L001",
+    "L002",
+    "L010",
+    "L011"
+   ],
+   "next": "Check whether a simpler bug-fixing task shows the same picture (HumanEvalFix)."
+  },
+  {
+   "experiment": "HumanEvalFix",
+   "rq": "N06",
+   "hypothesis": "Not stated by the authors.",
+   "falsifier": "Not stated by the authors.",
+   "design_rationale": "Python split, multi-turn self-debug with test feedback, 0-shot (authors).",
+   "observations": [
+    "E043",
+    "E044",
+    "E048"
+   ],
+   "claims": [
+    "C032"
+   ],
+   "limitations": [
+    "L007",
+    "L010"
+   ],
+   "next": "Turn from code repair to other software tasks (BIRD, ML-Bench, BioCoder, Gorilla APIBench, ToolQA)."
+  },
+  {
+   "experiment": "Other software benchmarks",
+   "rq": "N06",
+   "hypothesis": "Not stated by the authors.",
+   "falsifier": "Not stated by the authors.",
+   "design_rationale": "BioCoder context prompts removed to test context retrieval (authors).",
+   "observations": [
+    "E045",
+    "E046"
+   ],
+   "claims": [
+    "C033"
+   ],
+   "limitations": [
+    "L013"
+   ],
+   "next": "Move from code to web browsing, the second task category."
+  },
+  {
+   "experiment": "Web browsing",
+   "rq": "N06",
+   "hypothesis": "Not stated by the authors.",
+   "falsifier": "Not stated by the authors.",
+   "design_rationale": "A software agent should also browse (authors); WebArena answers made concise for exact-match checking (authors).",
+   "observations": [
+    "E051",
+    "E053",
+    "E055"
+   ],
+   "claims": [
+    "C034",
+    "C035",
+    "C036"
+   ],
+   "limitations": [
+    "L006",
+    "L010",
+    "L011"
+   ],
+   "next": "Move to miscellaneous assistance benchmarks."
+  },
+  {
+   "experiment": "Miscellaneous assistance",
+   "rq": "N06",
+   "hypothesis": "Not stated by the authors.",
+   "falsifier": "Not stated by the authors.",
+   "design_rationale": "Broad task coverage (authors).",
+   "observations": [
+    "E056",
+    "E057",
+    "E061",
+    "E062",
+    "E063",
+    "E064",
+    "E065"
+   ],
+   "claims": [
+    "C037",
+    "C038",
+    "C039",
+    "C040"
+   ],
+   "limitations": [
+    "L010",
+    "L011"
+   ],
+   "next": "Combine the three categories into the answer to the evaluation question."
+  }
+ ]
+}

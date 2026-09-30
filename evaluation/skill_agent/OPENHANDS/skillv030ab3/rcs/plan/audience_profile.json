@@ -1,0 +1,31 @@
+{
+ "mode": "B",
+ "primary": "Machine-learning researchers from other subfields (for example vision, optimization, theory or NLP outside agents) who want to understand what the OpenHands platform is, what was evaluated and what the numbers show",
+ "secondary": "Reviewers and replicators checking whether reported numbers match the source tables and whether claims stay within the evidence",
+ "tertiary": "Future readers and practitioners looking for a self-contained account of the platform, its evaluation and its stated limits",
+ "assumed_known": [
+  "LLM",
+  "prompting (zero-shot, few-shot, chain-of-thought)",
+  "benchmarks and accuracy-style metrics",
+  "train and test splits",
+  "API",
+  "Docker as a concept",
+  "statistics basics (variance, seeds, confidence intervals)"
+ ],
+ "not_assumed": [
+  "LLM-agent terminology (action, observation, event stream, delegation)",
+  "SWE-bench, HumanEvalFix, WebArena, MiniWoB++, GAIA, GPQA, AgentBench, MINT",
+  "CodeAct, BrowserGym, Playwright, IPython, accessibility tree",
+  "prior agent frameworks and their features"
+ ],
+ "binding_personas": [
+  "A",
+  "B",
+  "E"
+ ],
+ "term_budget": {
+  "per_paragraph": 2,
+  "abstract_acronyms": 1
+ },
+ "source": "task statement (audience given: adjacent ML researchers), 2026-09-29"
+}

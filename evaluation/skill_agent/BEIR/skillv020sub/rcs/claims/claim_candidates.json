@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-09-27",
+  "candidates": [
+    {"cand_id":"CC01","statement":"BEIR assembles 18 datasets across 9 retrieval tasks, chosen for diversity of task, domain, difficulty, and annotation method.","suggested_claim_type":"measured","evidence":["E001","E002","E003"],"origin":"author_stated"},
+    {"cand_id":"CC02","statement":"Prior multi-dataset retrieval resources (MultiReQA, KILT) test narrower settings than needed to assess broad zero-shot generalization.","suggested_claim_type":"literature","evidence":[],"origin":"author_stated"},
+    {"cand_id":"CC03","statement":"No single retrieval architecture consistently outperforms the others across all 18 BEIR datasets.","suggested_claim_type":"observed","evidence":["E005"],"origin":"author_stated"},
+    {"cand_id":"CC04","statement":"BM25 underperforms neural approaches by 7-18 points in-domain on MS MARCO yet outperforms most tested neural approaches on average out-of-domain across the 18 BEIR datasets.","suggested_claim_type":"derived","evidence":["E006","E005","E007"],"origin":"author_stated"},
+    {"cand_id":"CC05","statement":"This divergence suggests in-domain accuracy on a single benchmark is not a reliable predictor of zero-shot retrieval performance.","suggested_claim_type":"interpretation","evidence":["CC04"],"origin":"inferred"},
+    {"cand_id":"CC06","statement":"Ranking of average zero-shot performance vs. BM25 across the ten tested systems.","suggested_claim_type":"measured","evidence":["E005"],"origin":"author_stated"},
+    {"cand_id":"CC07","statement":"The best-generalizing architectures (re-ranking, late-interaction) are the most computationally expensive at inference.","suggested_claim_type":"measured","evidence":["E014"],"origin":"author_stated"},
+    {"cand_id":"CC08","statement":"There is a trade-off between zero-shot generalization and computational cost among the tested architecture families.","suggested_claim_type":"interpretation","evidence":["CC06","CC07"],"origin":"inferred"},
+    {"cand_id":"CC09","statement":"Term-weighting sparse methods fail to generalize; document-expansion sparse methods generalize well.","suggested_claim_type":"observed","evidence":["E008","E037"],"origin":"author_stated"},
+    {"cand_id":"CC10","statement":"Dense bi-encoders underperform substantially under domain/task shift; DPR generalizes worst overall.","suggested_claim_type":"observed","evidence":["E009","E038"],"origin":"author_stated"},
+    {"cand_id":"CC11","statement":"Re-ranking and late-interaction generalize best but still fail on some datasets.","suggested_claim_type":"measured","evidence":["E010","E039","E040"],"origin":"author_stated"},
+    {"cand_id":"CC12","statement":"TAS-B is the best-generalizing dense model tested.","suggested_claim_type":"measured","evidence":["E011"],"origin":"author_stated"},
+    {"cand_id":"CC13","statement":"The authors speculate TAS-B's generalization stems from its training setup.","suggested_claim_type":"speculation","evidence":["E011"],"origin":"author_stated"},
+    {"cand_id":"CC14","statement":"TAS-B underperforms ANCE specifically where document-length preference is costly.","suggested_claim_type":"observed","evidence":["E012","E041"],"origin":"author_stated"},
+    {"cand_id":"CC15","statement":"A controlled ablation isolating the similarity function reproduces the document-length-preference difference.","suggested_claim_type":"derived","evidence":["E027","E028"],"origin":"author_stated"},
+    {"cand_id":"CC16","statement":"The similarity function is one identifiable source of length preference, but length preference alone does not indicate retrieval error.","suggested_claim_type":"interpretation","evidence":["CC15","E029"],"origin":"inferred"},
+    {"cand_id":"CC17","statement":"Domain-adaptive fine-tuning (GenQ) helps on specialized domains and hurts on broad domains relative to its base model.","suggested_claim_type":"observed","evidence":["E013","E042"],"origin":"author_stated"},
+    {"cand_id":"CC18","statement":"Manually completing missing relevance judgments on TREC-COVID changes systems' scores very unevenly by architecture family.","suggested_claim_type":"measured","evidence":["E015"],"origin":"author_stated"},
+    {"cand_id":"CC19","statement":"This indicates the TREC-COVID annotation pool was biased toward lexical systems' top hits.","suggested_claim_type":"interpretation","evidence":["CC18","E016"],"origin":"author_stated"},
+    {"cand_id":"CC20","statement":"Motivation: prior to BEIR it was unclear how retrieval models generalize outside their training domain/task.","suggested_claim_type":"interpretation","evidence":["E017"],"origin":"author_stated","rationale":"motivation"},
+    {"cand_id":"CC21","statement":"Design rationale: datasets were selected to jointly maximize diversity of task, domain, difficulty and annotation method.","suggested_claim_type":"interpretation","evidence":["E018"],"origin":"author_stated","rationale":"design_choice"},
+    {"cand_id":"CC22","statement":"Design rationale: nDCG@10 was chosen because it is the only tested metric that handles both binary and graded relevance judgments comparably.","suggested_claim_type":"interpretation","evidence":["E019"],"origin":"author_stated","rationale":"design_choice"}
+  ],
+  "note": "All candidates originate from author-written text in project/paper.txt (or, for CC-level synthesis, from directly adjacent authorial statements); none were promoted from personal recollection or external knowledge. Promoted 1:1 (with light renumbering) into claims/claim_evidence_map.json at step 4."
+}

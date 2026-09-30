@@ -1,0 +1,457 @@
+{
+ "packet_id": "pkt-b96117a8",
+ "binding_personas": [
+  "A",
+  "B",
+  "E"
+ ],
+ "findings": [
+  {
+   "dimension": "problem",
+   "score": 4,
+   "persona": [
+    "A",
+    "B",
+    "E"
+   ],
+   "location": {
+    "section": "Abstract",
+    "paragraph": 1,
+    "quote": "a system must decide whose memory to consult for each query; consulting all (global search) costs tokens on every query"
+   },
+   "observed": "The decision problem (whom to consult) and its cost are stated in the first sentence and restated concretely in the introduction.",
+   "reader_struggle": "Works well; minor friction because what a candidate is (32 candidates for two agents) is left undocumented, so the unit being narrowed is unclear.",
+   "likely_consequence": "Readers grasp the problem quickly but may not know what exactly routing removes from the context.",
+   "revision_principle": "Define the unit being searched or narrowed at the same point the problem is posed."
+  },
+  {
+   "dimension": "motivation",
+   "score": 3,
+   "persona": [
+    "B",
+    "D",
+    "E"
+   ],
+   "location": {
+    "section": "5. Discussion",
+    "paragraph": 3,
+    "quote": "In absolute terms it is 39.8 of 180.2 recorded tokens per query."
+   },
+   "observed": "The motivation rests on token cost, but the paper never argues why per-query token cost at this scale matters, and scaling with team or memory size is unmeasured.",
+   "reader_struggle": "An adjacent reader cannot judge whether saving about 40 tokens per query is meaningful or would grow with more agents.",
+   "likely_consequence": "The reader may regard the result as rigorous but practically minor, or over-extrapolate it to large teams.",
+   "revision_principle": "Tie the cost motivation to a concrete setting where the saving compounds, and state which parts of that link are unmeasured."
+  },
+  {
+   "dimension": "research_question",
+   "score": 5,
+   "persona": [
+    "A",
+    "B",
+    "E"
+   ],
+   "location": {
+    "section": "1. Introduction",
+    "paragraph": 2,
+    "quote": "RQ1: how many fewer LLM tokens per query does routing to a learned owner use than global search"
+   },
+   "observed": "Four explicit RQs plus a boundary check, each later answered in a labelled subsection.",
+   "reader_struggle": "Little struggle; the questions are measurable and scoped.",
+   "likely_consequence": "Readers can map every result to a question.",
+   "revision_principle": "Keep numbered questions and answer each in a correspondingly labelled result."
+  },
+  {
+   "dimension": "contribution",
+   "score": 3,
+   "persona": [
+    "A",
+    "B"
+   ],
+   "location": {
+    "section": "1. Introduction",
+    "paragraph": 3,
+    "quote": "The paper is a bounded measurement, not a new method positioned against prior work"
+   },
+   "observed": "Contributions are listed honestly but are measurements of an unpublished, partly undocumented system with no literature positioning; contribution 4 bundles descriptive adaptation results with two unrelated negative results.",
+   "reader_struggle": "A specialist cannot tell what is new relative to existing routing or expert-finding work, and the fourth contribution reads as a grab-bag.",
+   "likely_consequence": "The reader may see the contribution as an internal evaluation report rather than a transferable finding.",
+   "revision_principle": "State one transferable takeaway per contribution and group negative results by what they bound."
+  },
+  {
+   "dimension": "method",
+   "score": 2,
+   "persona": [
+    "A",
+    "B",
+    "E"
+   ],
+   "location": {
+    "section": "3.1 The system and the four routing arms",
+    "paragraph": 2,
+    "quote": "The package does not specify, and we do not reconstruct, what a claim is and how verification outcomes are produced"
+   },
+   "observed": "The core mechanism (claims, verification, topic assignment, update rule, prior, when ownership is learned, what a candidate is) is undocumented; only the scoring product and threshold are described.",
+   "reader_struggle": "Readers cannot understand or reproduce how ownership is learned, which is the object named in the title.",
+   "likely_consequence": "The reader must take 'learned ownership' on trust and cannot tell whether A1's ownership was learned during evaluation or preloaded.",
+   "revision_principle": "A measurement paper should specify at least the minimal mechanism whose behaviour is measured, or narrow the claims to the scoring rule it can describe."
+  },
+  {
+   "dimension": "experiment",
+   "score": 3,
+   "persona": [
+    "A",
+    "E"
+   ],
+   "location": {
+    "section": "3.2 The cost experiment",
+    "paragraph": 2,
+    "quote": "Seeds 11 to 55 come from an earlier result file that is not in the package"
+   },
+   "observed": "The design (arms, queries, seeds, threshold, bootstrap, test) is described, but half the seeds lack secondary measures, the embedder is unrecorded, query classes and grading are undocumented, and seeds at temperature 0 randomize something unstated.",
+   "reader_struggle": "A verifier cannot tell what the 10 seeds vary or whether the pooled token numbers come from the same configuration.",
+   "likely_consequence": "The reader trusts the per-query CI but discounts the seed replication entirely.",
+   "revision_principle": "Report every configuration variable that can change the counted quantity, and state what a seed randomizes."
+  },
+  {
+   "dimension": "result",
+   "score": 4,
+   "persona": [
+    "A",
+    "B",
+    "E"
+   ],
+   "location": {
+    "section": "4.1 RQ1",
+    "paragraph": 1,
+    "quote": "A1 used 22.1% fewer tokens, a mean of 39.8 tokens per query"
+   },
+   "observed": "Headline result is reported with absolute and relative numbers, CI, test statistic, effect size and n_eff; arithmetic is internally consistent (T+ + T- = 1176 for 48 pairs).",
+   "reader_struggle": "Minor: how per-query values are pooled across seeds before the 50-pair test and bootstrap is not stated.",
+   "likely_consequence": "Readers accept the size and certainty of the saving.",
+   "revision_principle": "State the unit of analysis (per query averaged over seeds, or per query-seed) for each test."
+  },
+  {
+   "dimension": "interpretation",
+   "score": 4,
+   "persona": [
+    "A",
+    "E"
+   ],
+   "location": {
+    "section": "4.3 RQ3",
+    "paragraph": 1,
+    "quote": "it cannot separate the learning process from, for example, a correctly set static ownership"
+   },
+   "observed": "Interpretations are carefully hedged; the ablation's reach and the untested nature of the accuracy and regret comparisons are stated where the results appear.",
+   "reader_struggle": "Works; the hedges are local and explicit.",
+   "likely_consequence": "Readers correctly understand what each result does and does not show.",
+   "revision_principle": "Keep each interpretive limit adjacent to the result it bounds."
+  },
+  {
+   "dimension": "limitation",
+   "score": 4,
+   "persona": [
+    "E",
+    "A"
+   ],
+   "location": {
+    "section": "6.1 Limitations stated by the authors",
+    "paragraph": 2,
+    "quote": "a multi-agent validation caveat applies, whose result is withheld here"
+   },
+   "observed": "Limitations are extensive and separated into authors' and additional caveats, but some items are cryptic (a withheld caveat, an unreported convergence hypothesis, an unconfirmed earlier embedder) and cannot be evaluated.",
+   "reader_struggle": "Readers cannot tell what the withheld caveat concerns or whether it bounds any reported claim.",
+   "likely_consequence": "The reader may suspect undisclosed negative evidence.",
+   "revision_principle": "Every stated limitation should name the claim it bounds; omit or explain items whose content is withheld."
+  },
+  {
+   "dimension": "narrative_coherence",
+   "score": 3,
+   "persona": [
+    "A",
+    "B"
+   ],
+   "location": {
+    "section": "4.3 RQ3",
+    "paragraph": 1,
+    "quote": "Because A2 collapses to global search, the ablation contrasts routing with no routing"
+   },
+   "observed": "The title and conclusion foreground learning, but the only evidence on learning (A2) cannot isolate it, and the adaptation comparison is unmatched; the narrative is carried more by caveats than by a through-line.",
+   "reader_struggle": "The reader is told the paper is about learned ownership yet repeatedly told the learning cannot be isolated.",
+   "likely_consequence": "The reader may leave unsure whether learning matters at all or only routing does.",
+   "revision_principle": "Align the framing (title, contributions) with the strongest supported claim, which is about routing cost."
+  },
+  {
+   "dimension": "terminology",
+   "score": 3,
+   "persona": [
+    "B"
+   ],
+   "location": {
+    "section": "Abstract",
+    "paragraph": 1,
+    "quote": "Answerability (a per-query measure whose definition is undocumented)"
+   },
+   "observed": "route@1, regret, global search and rank-biserial are defined; answerability, candidate, verification-gated reputation, containment score and the ownership prior are not defined, though the audience cannot be assumed to know them.",
+   "reader_struggle": "Answerability is central to RQ2 and to the A1 vs A3 contrast, yet an adjacent reader cannot interpret 0.98 vs 0.58.",
+   "likely_consequence": "The reader treats answerability as a black box and cannot weigh it against accuracy.",
+   "revision_principle": "Define every metric the conclusions rely on at first use, or demote undefined metrics from the argument."
+  },
+  {
+   "dimension": "terminology",
+   "score": 3,
+   "persona": [
+    "B",
+    "C"
+   ],
+   "location": {
+    "section": "1. Introduction",
+    "paragraph": 1,
+    "quote": "passes 123.2 context tokens per query to the answering model, so candidates are not agents"
+   },
+   "observed": "The inference that candidates are not agents is stated as a conclusion from numbers without saying what candidates are.",
+   "reader_struggle": "Readers must reverse-engineer the meaning of candidate.",
+   "likely_consequence": "Confusion about what routing prunes (agents or memory items).",
+   "revision_principle": "Introduce a term by its meaning before drawing inferences about it."
+  },
+  {
+   "dimension": "logical_flow",
+   "score": 4,
+   "persona": [
+    "A",
+    "B",
+    "E"
+   ],
+   "location": {
+    "section": "1. Introduction",
+    "paragraph": 4,
+    "quote": "Section 2 gives context, Section 3 the setup, Section 4 the results by question"
+   },
+   "observed": "Clear sequence from RQs to setup to per-RQ results to discussion; each result subsection closes with an explicit answer to its RQ.",
+   "reader_struggle": "Minor friction where method gaps are listed before the arms are described (3.1 para 2 before para 3).",
+   "likely_consequence": "Readers navigate easily.",
+   "revision_principle": "Describe what exists before listing what is missing."
+  },
+  {
+   "dimension": "evidence_traceability",
+   "score": 3,
+   "persona": [
+    "E",
+    "A"
+   ],
+   "location": {
+    "section": "1. Introduction",
+    "paragraph": 2,
+    "quote": "we cannot place the work against published routing or memory methods ."
+   },
+   "observed": "Stray spaces before periods suggest removed citation markers, the reference list is empty, and several numbers come from result files that are absent (seeds 11-55, other models' reductions); figure sources are named but not available.",
+   "reader_struggle": "A verifier cannot trace many statements to any source and sees apparent dangling citations.",
+   "likely_consequence": "Reduced trust in provenance, despite honest disclosure.",
+   "revision_principle": "Every number should trace to an available artifact; remove or resolve placeholder citation markers."
+  },
+  {
+   "dimension": "figure_table",
+   "score": 4,
+   "persona": [
+    "A",
+    "B",
+    "E"
+   ],
+   "location": {
+    "section": "4.4 RQ4",
+    "paragraph": 2,
+    "quote": "No error bars are drawn; the source records the standard deviation across seeds."
+   },
+   "observed": "Figures have claim-bearing captions and non-zero-axis warnings; Table 1 mixes 10-seed and 5-seed columns (disclosed); Figure 3 omits available seed variability.",
+   "reader_struggle": "In Figure 3 readers cannot judge whether the brief crossover at steps 5-6 is within seed noise.",
+   "likely_consequence": "Over-reading of the trajectory differences.",
+   "revision_principle": "Show available variability on any plot used for comparison."
+  },
+  {
+   "dimension": "claim_evidence_alignment",
+   "score": 4,
+   "persona": [
+    "E",
+    "A"
+   ],
+   "location": {
+    "section": "4.2 RQ2",
+    "paragraph": 3,
+    "quote": "so the token saving is not a saving at equal accuracy"
+   },
+   "observed": "Most claims are matched to evidence strength; exceptions include the abstract's positioning of ASMOS as a routing tool and the static QA boundary drawn from one run with defective metrics.",
+   "reader_struggle": "Little in the main results; some friction at the boundary claims.",
+   "likely_consequence": "Readers correctly calibrate the headline; may overweight the QA negative.",
+   "revision_principle": "Scale each claim's wording to the weakest link in its evidence chain."
+  },
+  {
+   "dimension": "unsupported_inference",
+   "score": 4,
+   "persona": [
+    "E",
+    "A"
+   ],
+   "location": {
+    "section": "Abstract",
+    "paragraph": 1,
+    "quote": "ASMOS-memory scored below a no-memory baseline and retrieval-augmented generation, so ASMOS is a routing and cost tool"
+   },
+   "observed": "A negative QA result is used to assert a positive identity (routing and cost tool); also a claimed pre-registration is not documented.",
+   "reader_struggle": "The 'so' implies a logical link that does not exist; failing at QA does not establish routing value.",
+   "likely_consequence": "The reader may accept a positioning claim as if it were a finding.",
+   "revision_principle": "Separate positioning statements from inferences drawn from results."
+  },
+  {
+   "dimension": "redundancy",
+   "score": 3,
+   "persona": [
+    "B",
+    "D"
+   ],
+   "location": {
+    "section": "6.1 Limitations stated by the authors",
+    "paragraph": 1,
+    "quote": "They state that ASMOS does not beat RAG on span-retrieval question answering and is not a question-answering-accuracy method."
+   },
+   "observed": "The same caveats (undocumented grading, untested accuracy, not a QA method, constructed corpus, seeds 11-55) recur in abstract, method, results, discussion and both limitations subsections.",
+   "reader_struggle": "Repetition dilutes which caveats matter most.",
+   "likely_consequence": "Caveat fatigue; the reader may skim past important bounds.",
+   "revision_principle": "State each caveat once in full at its point of use and reference it thereafter; rank limitations by the claims they bound."
+  },
+  {
+   "dimension": "cognitive_load",
+   "score": 3,
+   "persona": [
+    "B",
+    "C",
+    "D"
+   ],
+   "location": {
+    "section": "Abstract",
+    "paragraph": 1,
+    "quote": "reached a cumulative regret (summed shortfall in route@1, the share of queries sent first to the right owner) of 3.24"
+   },
+   "observed": "The abstract packs nested definitions, many numbers, embedders and caveats into single sentences; the body has frequent 'not documented' interruptions.",
+   "reader_struggle": "Readers must hold nested parentheticals and several numeric ranges at once.",
+   "likely_consequence": "Mixed-audience readers lose the headline among qualifiers.",
+   "revision_principle": "One idea per sentence in the abstract; keep defined terms for the body."
+  },
+  {
+   "dimension": "orientation",
+   "score": 4,
+   "persona": [
+    "A",
+    "B",
+    "E"
+   ],
+   "location": {
+    "section": "4.1 RQ1",
+    "paragraph": 4,
+    "quote": "This answers RQ1: on this constructed corpus and answering model"
+   },
+   "observed": "Each result section names its RQ in the heading and closes with an explicit answer and scope.",
+   "reader_struggle": "Works well.",
+   "likely_consequence": "Readers always know where they are in the argument.",
+   "revision_principle": "Keep question-labelled headings and explicit answers."
+  },
+  {
+   "dimension": "so_what",
+   "score": 3,
+   "persona": [
+    "B",
+    "D",
+    "E"
+   ],
+   "location": {
+    "section": "5. Discussion",
+    "paragraph": 3,
+    "quote": "Within these limits, where a workload has topic-specific owners and an accuracy cost of unknown size is acceptable"
+   },
+   "observed": "The practical takeaway is heavily conditioned: unknown accuracy cost, unmeasured overheads, constructed corpus, two agents.",
+   "reader_struggle": "Readers struggle to see when they would act on the result.",
+   "likely_consequence": "The reader sees the finding as preliminary with unclear practical value.",
+   "revision_principle": "State the decision the result informs and the single measurement that would most change it."
+  }
+ ],
+ "inference_issues": [
+  {
+   "kind": "unsupported_conclusion",
+   "location": {
+    "section": "Abstract",
+    "paragraph": 1
+   },
+   "claim_text": "ASMOS-memory scored below a no-memory baseline and retrieval-augmented generation, so ASMOS is a routing and cost tool",
+   "missing_link": "Poor QA performance does not establish routing or cost value; the 'so' presents a positioning statement as an inference."
+  },
+  {
+   "kind": "limitation_not_respected",
+   "location": {
+    "section": "7. Conclusion",
+    "paragraph": 1
+   },
+   "claim_text": "routing on ownership learned from verified outcomes used 22.1% fewer LLM tokens per query than global search",
+   "missing_link": "How verification outcomes are produced, the update rule, and whether ownership was learned during evaluation are undocumented (3.1), and the ablation cannot isolate learning; 'learned from verified outcomes' is asserted, not shown."
+  },
+  {
+   "kind": "overstrong_language",
+   "location": {
+    "section": "Abstract",
+    "paragraph": 1
+   },
+   "claim_text": "against 4.8 to 10.0 for scheduled classifier routers over 5 seeds, untested",
+   "missing_link": "The 10.0 belongs to the frozen classifier, which is not scheduled; the range overstates ASMOS's margin over retrained classifiers."
+  },
+  {
+   "kind": "overstrong_language",
+   "location": {
+    "section": "3.3 Statistical design",
+    "paragraph": 1
+   },
+   "claim_text": "switching to the Pratt method would change an already pre-registered p-value",
+   "missing_link": "No pre-registration record, date or registry is given; and 'single comparison' justifying no multiplicity correction ignores the many other reported comparisons (A2, A3, other models, QA)."
+  },
+  {
+   "kind": "overgeneralization",
+   "location": {
+    "section": "4.5 Boundary",
+    "paragraph": 1
+   },
+   "claim_text": "Boundary: ASMOS-memory does not help on static question answering",
+   "missing_link": "One run of 24 items with no seeds, undocumented metric definitions, and exact match exceeding token-F1 (a computation defect); the conclusion extends to static QA generally."
+  },
+  {
+   "kind": "limitation_not_respected",
+   "location": {
+    "section": "4.4 RQ4",
+    "paragraph": 1
+   },
+   "claim_text": "so ASMOS had the lowest mean regret of the routers in this run",
+   "missing_link": "No test, 5 seeds, embedder-dependent regret, threshold tuned on the cost corpus, classifiers at 0.5 with undocumented features, and no online-updated classifier given the same labels."
+  },
+  {
+   "kind": "selective_presentation",
+   "location": {
+    "section": "3.2 The cost experiment",
+    "paragraph": 2
+   },
+   "claim_text": "accuracy, answerability, route@1, context tokens and candidate-set size exist for seeds 66 to 110 only",
+   "missing_link": "Half of the seeds lack secondary measures; other answering models lack percentage reductions; a convergence hypothesis result and a multi-agent validation result are withheld."
+  },
+  {
+   "kind": "selective_presentation",
+   "location": {
+    "section": "4.3 RQ3",
+    "paragraph": 1
+   },
+   "claim_text": "With ownership frozen the router did not route and the saving disappeared",
+   "missing_link": "No test, per-seed gap or interval for A1 vs A2, and A2's small differences from A0 are unexplained; no static-but-informative ownership arm."
+  }
+ ],
+ "objective_discrepancies": [
+  "The objective presents ASMOS's ownership layer as learning from verified outcomes; the paper conveys that verification, the update rule and the timing of learning are undocumented, so the learning claim is framed more strongly in title and conclusion than the evidence carries.",
+  "The objective says ASMOS reached the new owner without retraining; the paper additionally claims lowest mean regret, and the abstract's classifier range (4.8 to 10.0 for scheduled routers) includes the frozen classifier, conveying a larger margin than the objective states.",
+  "The objective positions ASMOS as a routing and cost tool as a scoping statement; the abstract presents it as a conclusion drawn from the QA negative result.",
+  "Abstract says the saving nearly disappeared under frozen ownership while section 4.3 heading and conclusion say it disappeared; minor inconsistency relative to the objective's careful framing."
+ ],
+ "injection_suspected": []
+}

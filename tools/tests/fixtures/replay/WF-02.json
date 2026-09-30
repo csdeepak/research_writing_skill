@@ -1,0 +1,19 @@
+{
+ "id": "WF-02",
+ "origin": "spec M15 (tamper evidence)",
+ "title": "an artifact changed after its role recorded it",
+ "files": {
+  "r.csv": "m,acc\nM,0.84\n",
+  ".rcs/evidence/research_evidence.json": "{\n \"project_root\": \".\",\n \"generated_at\": \"2026-09-29\",\n \"items\": [\n  {\n   \"id\": \"E001\",\n   \"kind\": \"result\",\n   \"summary\": \"Accuracy of M\",\n   \"locator\": {\n    \"path\": \"r.csv\"\n   },\n   \"strength\": \"hard\",\n   \"status\": \"ok\",\n   \"value\": {\n    \"metric\": \"acc\",\n    \"value\": 0.84\n   }\n  }\n ]\n}",
+  ".rcs/claims/claim_evidence_map.json": "{\n \"claims\": [\n  {\n   \"id\": \"C001\",\n   \"statement\": \"M reached 0.84 accuracy.\",\n   \"claim_type\": \"measured\",\n   \"evidence\": [\n    \"E001\"\n   ],\n   \"confidence\": \"moderate\",\n   \"author_confirmation\": \"confirmed\",\n   \"status\": \"VERIFIED\"\n  }\n ],\n \"limitations\": []\n}",
+  ".rcs/provenance.jsonl": "{\"role\": \"CORPUS\", \"path\": \"evidence/research_evidence.json\", \"sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\"}\n{\"role\": \"AUTHOR\", \"path\": \"claims/claim_evidence_map.json\", \"sha256\": \"e6244e05b3d0039f0138a1c29e5e53b3b93b955c60aab5c5e973c85856c9bd93\"}\n"
+ },
+ "checks": [
+  {
+   "tool": "validate",
+   "expect": [
+    "WARN:UNATTRIBUTED_CHANGE"
+   ]
+  }
+ ]
+}

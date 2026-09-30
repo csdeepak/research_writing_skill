@@ -1,0 +1,550 @@
+{
+ "project_root": ".",
+ "generated_at": "2026-09-29",
+ "generated_by": "AUTHOR performing CORPUS_AGENT role",
+ "items": [
+  {
+   "id": "E001",
+   "kind": "method_detail",
+   "summary": "MLPerf Tiny is an open-source suite of four benchmarks selected by more than 50 organizations in academia and industry; measures latency, energy and accuracy.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=10,18"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "n_benchmarks": 4,
+    "organizations": "more than 50",
+    "measured": [
+     "accuracy",
+     "latency",
+     "energy"
+    ]
+   }
+  },
+  {
+   "id": "E002",
+   "kind": "dataset",
+   "summary": "Keyword spotting data: Speech Commands v2, 105,829 utterances from 2,618 speakers, 30 words; 10 words kept, remaining 20 words plus background noise merged into 'unknown', plus 'silence', giving 12 classes; speakers do not cross train/validation/test subsets.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=67"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "utterances": 105829,
+    "speakers": 2618,
+    "words": 30,
+    "classes": 12
+   }
+  },
+  {
+   "id": "E003",
+   "kind": "method_detail",
+   "summary": "Keyword spotting model: small depthwise-separable CNN (DS-CNN) from Zhang et al. 2017; 38.6K parameters; TFLite size 52.5 KB; input 49x10; 92.2% accuracy in the authors' experiments.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=44,68"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "params": "38.6K",
+    "tflite_size_KB": 52.5,
+    "input": "49x10",
+    "accuracy": "92.2%"
+   }
+  },
+  {
+   "id": "E004",
+   "kind": "result",
+   "summary": "Keyword spotting quality target: quantized reference model 91.6% accuracy on full test set and 91.7% on a random 1000-utterance subset; benchmark requirement set at 90%.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=69"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "full_test": "91.6%",
+    "subset_1000": "91.7%",
+    "target": "90%",
+    "metric": "Top-1"
+   },
+   "conditions": "quantized reference model"
+  },
+  {
+   "id": "E005",
+   "kind": "dataset",
+   "summary": "Visual wake words data: MSCOCO 2014 (Lin et al. 2014) preprocessed so that an image is positive if a person occupies more than 2.5% of the image; images resized to 96x96.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=54"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "person_area_threshold": "2.5%",
+    "input": "96x96"
+   }
+  },
+  {
+   "id": "E006",
+   "kind": "method_detail",
+   "summary": "Visual wake words model: MobileNetV1 (Howard et al. 2017), 96x96 input, alpha 0.25, two output classes; TFLite size 325 KB.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=44,55"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "size_KB": 325,
+    "alpha": 0.25
+   }
+  },
+  {
+   "id": "E007",
+   "kind": "result",
+   "summary": "Visual wake words quality target: reference model reaches about 86% accuracy on the preprocessed MSCOCO 2014 test set; closed-division target is at least 80%.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=56"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "reference": "about 86%",
+    "target": "80%",
+    "metric": "Top-1"
+   }
+  },
+  {
+   "id": "E008",
+   "kind": "dataset",
+   "summary": "Image classification data: CIFAR-10, 60000 32x32x3 RGB images, 10 classes, 6000 per class; five training batches and one test batch of 10000 images each.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=59"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "images": 60000,
+    "classes": 10
+   }
+  },
+  {
+   "id": "E009",
+   "kind": "method_detail",
+   "summary": "Image classification model: customized ResNetv1 with three residual stacks instead of four, no pooling after first convolution, fewer filters and lower strides than the official ResNet; input 32x32x3, output vector of size 10; TFLite size 96 KB.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=44,60"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "size_KB": 96,
+    "stacks": 3
+   }
+  },
+  {
+   "id": "E010",
+   "kind": "result",
+   "summary": "Image classification quality target: 200 CIFAR-10 test images used; reference model reaches 86.5% accuracy on them; target set at 85% top-1.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=61-64"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "images": 200,
+    "reference": "86.5%",
+    "target": "85%",
+    "metric": "Top-1"
+   }
+  },
+  {
+   "id": "E011",
+   "kind": "dataset",
+   "summary": "Anomaly detection data: DCASE2020 challenge data (ToyADMOS + MIMII), six machine types; only Toy-car used; seven toy-cars, each with 1000 normal training samples mixing machine sound with environmental noise.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=72"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "machine_types": 6,
+    "used": "Toy-car",
+    "cars": 7,
+    "samples_per_car": 1000
+   }
+  },
+  {
+   "id": "E012",
+   "kind": "method_detail",
+   "summary": "Anomaly detection model: fully connected autoencoder; input and output size 640; encoder and decoder each four 128-unit FC layers with BatchNorm during training and ReLU; bottleneck size 8; log-mel spectrogram 128 bands, 32 ms frames, sliding window of five frames; MSE of reconstruction averaged over central 6.4 s of the spectrogram gives the anomaly score; TFLite size 270 KB.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=45,77"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "size_KB": 270,
+    "input": 640,
+    "bottleneck": 8
+   }
+  },
+  {
+   "id": "E013",
+   "kind": "result",
+   "summary": "Anomaly detection quality target: on an evaluation set of 248 samples from four machines, fp32 reference model AUC 0.88, quantized 0.86; benchmark threshold set at AUC 0.85.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=77"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "n": 248,
+    "fp32_AUC": 0.88,
+    "quantized_AUC": 0.86,
+    "target": 0.85,
+    "metric": "AUC-ROC"
+   }
+  },
+  {
+   "id": "E014",
+   "kind": "method_detail",
+   "summary": "Table 1 (v0.5 benchmarks) as extracted: quality targets 90% (Top-1) KWS, 80% (Top-1) VWW, 85% (Top-1) IC, .85 (AUC) AD; input sizes Speech Commands 49x10, VWW 96x96, CIFAR10 32x32, ToyADMOS 5*128.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=39-50"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "targets": [
+     "90%",
+     "80%",
+     "85%",
+     ".85"
+    ]
+   },
+   "notes": "Table damaged by extraction but rows recoverable and consistent with section 4 text."
+  },
+  {
+   "id": "E015",
+   "kind": "method_detail",
+   "summary": "Measurement scope: MLPerf Tiny targets model inference and does not include pre- or post-processing in the measurement window.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=35"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E016",
+   "kind": "method_detail",
+   "summary": "Reference implementations: training scripts, pre-trained models and C code; run as TFLite models with TFLite for Microcontrollers (TFLM) on the NUCLEO-L4R5ZI board, bare-metal MBED project, GCC-ARM toolchain, known-good TFLM snapshot.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=36"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E017",
+   "kind": "method_detail",
+   "summary": "Closed division: same models, datasets and quality targets as the reference; post-training quantization with provided calibration datasets allowed; retraining or weight replacement prohibited.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=87"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E018",
+   "kind": "method_detail",
+   "summary": "Open division: submitter may change model, training scripts and dataset; accuracy still measured on the same test dataset but need not meet the threshold; deviations from reference must be documented. Modifying only green components (Figure 2) permits open division; modifying orange components requires it.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=86,88"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E019",
+   "kind": "method_detail",
+   "summary": "Measurement procedure. Latency: five times, download stimulus, load input tensor, run inference for at least 10 seconds and 10 iterations, measure inferences per second (IPS); score is median IPS of the five runs. Accuracy: one inference over the entire validation input set; compute Top-1 percent or AUC; minimum accuracy needed for a valid score. Energy: as latency plus total energy in the timing window, reported as micro-Joules per inference, median of five.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=94-96,262-264"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "latency_runs": 5,
+    "min_seconds": 10,
+    "min_iterations": 10,
+    "score": "median IPS"
+   }
+  },
+  {
+   "id": "E020",
+   "kind": "method_detail",
+   "summary": "Framework: host PC, runner GUI, device under test (DUT) with a firmware shim; energy configuration adds an IO Manager (Arduino UNO with custom firmware) providing electrical isolation via level shifters and an energy monitor (EMON); runner supports STMicroelectronics LPM01A, Jetperch Joulescope JS110 and Keysight N6705; level-shifter power excluded from score; only power delivered to the core measured; one power supply only (no batteries, supercapacitors or harvesters).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=237-240"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E021",
+   "kind": "method_detail",
+   "summary": "Firmware API: DUT provides UART and a timestamp function (local timer of at least 1 ms resolution in performance mode; falling-edge GPIO in energy mode); submitter-implemented functions load the input tensor, run a single inference and print predictions.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=243-251"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "min_timer_resolution": "1 ms (1 kHz)"
+   }
+  },
+  {
+   "id": "E022",
+   "kind": "assumption",
+   "summary": "Authors state that the configurable EMON sampling frequency is much lower than the ADC rate and, being within the time constant of the DUT decoupling capacitance, has no impact on the score.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=241"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Statement by authors without supporting measurement in the text."
+  },
+  {
+   "id": "E023",
+   "kind": "method_detail",
+   "summary": "Voltage is user-selectable in the energy setup; authors note that the performance versus energy tradeoff can be dictated by voltage (higher voltage often needed for higher frequency, SMPS efficiency varies) and call this a key insight of the benchmark.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=240"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E024",
+   "kind": "observation",
+   "summary": "First round of submissions (June 2021) is summarized in Table 2: five rows; closed-division ARM MCU (TFLM, INT-8 PTQ) baseline; closed RISC-V MCU (TFLM, INT-8 PTQ); closed RasPi 4 with LEIP framework (FP-32 and INT-8 PTQ); closed Syntiant neural network accelerator (Syntiant TDK, INT-8 PTQ); open FPGA using QKeras and hls4ml (Int-6/8 QAT).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=104-186"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "rows": 5
+   },
+   "notes": "Table 2 damaged by extraction; row content recovered from the column sequence and the section 6.2 text."
+  },
+  {
+   "id": "E025",
+   "kind": "observation",
+   "summary": "Insights from v0.5 submissions: 8-bit integer is the most common numerical format; frameworks range from open-source interpreters (TFLite Micro) to hardware-specific inference compilers; platforms include MCUs, accelerators and FPGAs; power consumption ranged from microWatts to Watts; reconfigurable hardware (FPGA) can use variable-precision models.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=189"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E026",
+   "kind": "negative_result",
+   "summary": "None of the first-round submissions modified the training dataset.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=191"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Authors expect this to shift in future versions."
+  },
+  {
+   "id": "E027",
+   "kind": "observation",
+   "summary": "Figure 5 reports latency and energy of the four reference implementations on the NUCLEO-L4R5ZI board; text says the four benchmarks cover a wide scope in latency and energy and each reference meets the minimum accuracy.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=91,97"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Figure 5 values are not in the extracted text; no numbers available."
+  },
+  {
+   "id": "E028",
+   "kind": "limitation_noted",
+   "summary": "Streaming: time-domain benchmarks (keyword spotting, anomaly detection) are not run as streams because limited runner-to-DUT bandwidth would add transfer delays; excluding feature extraction while letting submitters choose it permits a degenerate case where all but the last layer of the model is called feature extraction; including it would, for one second of audio, mean one inference cycle and 40 feature extraction cycles, over-emphasizing its cost.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=198"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E029",
+   "kind": "limitation_noted",
+   "summary": "Closed-division models are mainly FC and CNN layers; other architectures such as RNNs may be added in future.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=199"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E030",
+   "kind": "limitation_noted",
+   "summary": "Stability versus evolution: new benchmarks will be added while a subset is envisioned to be kept long-term stable for historical comparison.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=197"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E031",
+   "kind": "external_fact",
+   "summary": "Authors' account of existing benchmarks: CoreMark does not profile full programs nor represent ML inference; MLMark uses actual ML inference workloads but its models need GBs of memory and have significant runtimes, and it has no power measurement; MLPerf inference precludes MCUs due to lack of small benchmarks and compatible implementations.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=31-33"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E032",
+   "kind": "observation",
+   "summary": "Authors' TinyML benchmarking challenges: low power (measuring energy fairly), limited memory (two orders of magnitude smaller than smartphone-class GBs), hardware heterogeneity, software heterogeneity, plus the cross-product of stack options (Figure 1).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=20-28"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "notes": "Text says 'four primary obstacles' but names five headed items; recorded as written."
+  },
+  {
+   "id": "E033",
+   "kind": "observation",
+   "summary": "Submission process: results accepted twice a year; submitters implement benchmarks on their own stack; results are peer-reviewed transparently by submitters and a review committee; each submission is public on GitHub with reproduction instructions.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=101,186"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E034",
+   "kind": "method_detail",
+   "summary": "Runner exists partly because target platforms have less than a megabyte of flash and cannot store the large number of accuracy input files.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=256-257"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E035",
+   "kind": "method_detail",
+   "summary": "Keyword spotting feature extraction is excluded from measurement; three pre-computed feature choices are provided for the open division.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=68"
+   },
+   "strength": "hard",
+   "status": "ok"
+  },
+  {
+   "id": "E036",
+   "kind": "observation",
+   "summary": "Impact and risks stated by authors: benchmarks already used as a standard set of tasks for TinyML research (Banbury et al. 2021) and made public projects on a TinyML platform; TinyML could be misused to track individuals and, being inexpensive, could increase electronic waste.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "line=195"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "notes": "Impact statements are the authors' assertions."
+  },
+  {
+   "id": "E037",
+   "kind": "method_detail",
+   "summary": "README: release history v0.5 (Jun 16, 2021), v0.7 (April 6, 2022), v1.0 (Nov 9, 2022), v1.1 (Jun 27, 2023); v1.2 submission deadline expected March 15, 2024 (dates not finalized); README describes target devices as running between 10MHz and 250MHz and performing inference using less then 50mW.",
+   "locator": {
+    "path": "project/README_1.md",
+    "anchor": "lines=1-27"
+   },
+   "strength": "soft",
+   "status": "ok"
+  },
+  {
+   "id": "E038",
+   "kind": "result",
+   "summary": "Derived: reference-versus-target margins. VWW about 86% vs 80%; IC 86.5% vs 85%; KWS quantized 91.6% (full test) vs 90%; AD quantized AUC 0.86 vs 0.85 (fp32 0.88).",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=56,61-64,69,77"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "VWW_points": "about 6",
+    "IC_points": 1.5,
+    "KWS_points": 1.6,
+    "AD_AUC": 0.01
+   },
+   "notes": "Difference of the reported numbers; the reference-model conditions differ per benchmark (different test sets/subsets). Whether the VWW ~86% is fp32 or quantized is not stated.",
+   "derived_from": [
+    "E004",
+    "E007",
+    "E010",
+    "E013"
+   ]
+  },
+  {
+   "id": "E039",
+   "kind": "limitation_noted",
+   "summary": "Accuracy quality targets are validated on subsets for three benchmarks (200 of CIFAR-10 test images, 1000 of the Speech Commands test utterances, 248 anomaly samples) and no spread or number of repeated evaluations is reported for accuracy values.",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "lines=61,69,77"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "notes": "Subset sizes stated by authors; absence of variance is an observation about the text, not a statement of the authors."
+  }
+ ]
+}

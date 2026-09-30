@@ -1,0 +1,3213 @@
+{
+ "project_root": "project",
+ "generated_at": "2026-09-28T21:44:18+00:00",
+ "generated_by": "CORPUS_AGENT (rce/skill/agents/corpus_agent.md; .rcs/corpus/build_corpus.py)",
+ "items": [
+  {
+   "id": "E001",
+   "kind": "experiment",
+   "summary": "N=10 cost experiment: 50 queries, four routing arms (A0 global, A1 transactive, A2 static, A3 similarity), gpt-4o-mini, 10 seeds, frozen tau",
+   "value": {
+    "n_queries": 50,
+    "seeds_prior": [
+     11,
+     22,
+     33,
+     44,
+     55
+    ],
+    "seeds_new": [
+     66,
+     77,
+     88,
+     99,
+     110
+    ],
+    "seeds_all": [
+     11,
+     22,
+     33,
+     44,
+     55,
+     66,
+     77,
+     88,
+     99,
+     110
+    ],
+    "frozen_tau": 0.351493,
+    "model": "openai/gpt-4o-mini",
+    "arms": [
+     "A0_global",
+     "A1_transactive",
+     "A2_static",
+     "A3_similarity"
+    ],
+    "design": "ablation"
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "keys=description,n_queries,seeds_*,frozen_tau,model"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "description (verbatim): \"N=10 seed extension of transactive_cost_expanded_20260724_a274137\". The five prior seeds are pooled from that N=5 artifact, which is NOT in the package; per-seed token arrays and per-seed aggregates in this file are for the five new seeds only (66-110). A2 (static) is the frozen-ownership ablation arm (README: \"single-variable ablation\"); arm semantics for A0-A2 are in README, A3 only in the archived report. REPRODUCIBILITY.md corroborates the design with \"Cost -22.09% (n=50/N=10)\"."
+  },
+  {
+   "id": "E002",
+   "kind": "dataset",
+   "summary": "The transactive evaluation set has 50 queries in five query classes Q1-Q5; global search consults a candidate set of 32.0 on average",
+   "value": {
+    "n_queries": 50,
+    "query_classes": [
+     "Q1",
+     "Q2",
+     "Q3",
+     "Q4",
+     "Q5"
+    ],
+    "mean_candidate_set_size_A0": 32.0
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "keys=n_queries; per_seed_aggregate_new.66.A0_global.routing_by_class,mean_candidate_set_size"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "The corpus and query files themselves (src/asmos/evaluation/transactive_corpus.py, data/populations/) are not in the package. README says the corpus is 'deliberately constructed' (asymmetry is imposed, not organic)."
+  },
+  {
+   "id": "E003",
+   "kind": "result",
+   "summary": "Domain separability go/no-go: mean within-domain cosine 0.2666, mean cross-domain 0.1024, max cross-domain 0.2072, go = true",
+   "value": {
+    "mean_within_domain_cosine": 0.2666,
+    "mean_cross_domain_cosine": 0.1024,
+    "max_cross_domain_cosine": 0.2072,
+    "go": true
+   },
+   "conditions": "same corpus as the cost experiment",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "key=separability"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "README says the 2026-07-07 MiniLM rerun reproduces separability 0.2666/0.1024 to 4 dp. Archived report gives 0.267/0.102 (rounded)."
+  },
+  {
+   "id": "E004",
+   "kind": "result",
+   "summary": "N=10 headline: LLM total tokens per query were 22.0911 percent lower under A1 transactive than A0 global search (10 seeds, 50 queries)",
+   "value": {
+    "metric": "llm_token_reduction_pct_A0_vs_A1",
+    "value": 22.0911,
+    "unit": "percent",
+    "n_seeds": 10,
+    "n_queries": 50
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "key=n10_headline_pct"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "cost_reduction_pct_A0_vs_A1|n_queries=50|N=10|gpt-4o-mini",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "REPRODUCIBILITY.md section 0 quotes 'reduction 22.09%' and the section 3 map row says 'Cost -22.09% (n=50/N=10)'; consistent. Independently reproduced by CORPUS_AGENT from per_query_mean_llm_tokens_n10: 100*(180.154-140.356)/180.154 = 22.0911. Pointed out by CORRECTIONS.md: this percentage did NOT move in the effect-size correction."
+  },
+  {
+   "id": "E005",
+   "kind": "result",
+   "summary": "The N=5 headline recorded inside the N=10 artifact was 22.109 percent; the shift from N=5 to N=10 was -0.0179 percentage points",
+   "value": {
+    "metric": "llm_token_reduction_pct_A0_vs_A1",
+    "value": 22.109,
+    "unit": "percent",
+    "n_seeds": 5,
+    "headline_shift_n5_to_n10_pp": -0.0179
+   },
+   "conditions": "same corpus, seeds 11-55 only",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "keys=n5_headline_pct,headline_shift_n5_to_n10_pp"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "cost_reduction_pct_A0_vs_A1|n_queries=50|N=5|gpt-4o-mini",
+   "run_id": "transactive_cost_expanded_20260724_a274137 (via n10_cost_expanded_20260726_93f9058)",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "Different seed count than E-headline, so a different quantity, not a conflict (22.109 at N=5 vs 22.0911 at N=10)."
+  },
+  {
+   "id": "E006",
+   "kind": "result",
+   "summary": "Per-seed token-reduction percentages for the ten seeds range from 21.932 to 22.154 (std 0.069 percentage points)",
+   "value": {
+    "per_seed_headline_pct": {
+     "11": 22.087,
+     "22": 22.031,
+     "33": 22.142,
+     "44": 22.142,
+     "55": 22.099,
+     "66": 21.932,
+     "77": 22.087,
+     "88": 22.043,
+     "99": 22.154,
+     "110": 22.142
+    },
+    "spread": {
+     "min_pct": 21.932,
+     "max_pct": 22.154,
+     "range_pp": 0.222,
+     "std_pp": 0.069
+    }
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "keys=per_seed_headline_pct,spread"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50"
+  },
+  {
+   "id": "E007",
+   "kind": "result",
+   "summary": "Bootstrap 95% CI for the mean per-query token reduction: 32.304 to 47.322 tokens (17.9313 to 26.2675 percent), mean delta 39.798 tokens",
+   "value": {
+    "n_resamples": 2000,
+    "rng_seed": 42,
+    "mean_delta_tokens": 39.798,
+    "ci_lo_tokens": 32.304,
+    "ci_hi_tokens": 47.322,
+    "ci_lo_pct": 17.9313,
+    "ci_hi_pct": 26.2675,
+    "ci_width_tokens": 15.018,
+    "ci_width_pct": 8.3362,
+    "test": "bootstrap over queries",
+    "ci": [
+     17.9313,
+     26.2675
+    ]
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493; 2000 resamples; rng_seed 42",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "key=bootstrap_ci"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "bootstrap_ci_pct_A0_vs_A1|N=10|n=50",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "CORRECTIONS.md: the confidence interval is correct and unchanged by the effect-size correction."
+  },
+  {
+   "id": "E008",
+   "kind": "result",
+   "summary": "One-sided Wilcoxon signed-rank test on per-query A0-A1 token deltas: W = 1141.5, p = 6.788e-09 (n_pairs 50, median delta 50.4 tokens)",
+   "value": {
+    "test": "Wilcoxon signed-rank, one-sided, H1 median delta > 0, zero_method=wilcox (zero deltas dropped), normal approximation",
+    "W_statistic": 1141.5,
+    "p_value": 6.788464770084425e-09,
+    "p": 6.788464770084425e-09,
+    "n_pairs": 50,
+    "median_delta_tokens": 50.4,
+    "iqr_tokens": 59.8,
+    "q25": 0.3,
+    "q75": 60.1,
+    "single_comparison_no_multiplicity_correction": true
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "key=wilcoxon_n10 (W_statistic,p_value,median_delta_tokens,iqr_tokens)"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "W and p are unchanged by the 2026-08-07 correction (CORRECTIONS.md 'What did NOT move'). CORPUS spot-check with an independent midrank implementation on the stored deltas: T+ = 1141.5, T- = 34.5. bh_correction (verbatim): 'Not applicable: single comparison (A0 vs A1). No comparison family.' The p-value is one-sided."
+  },
+  {
+   "id": "E009",
+   "kind": "result",
+   "summary": "SUPERSEDED stored z-statistic for the N=10 headline test (4.8653); computed with null moments parameterised by 50 pairs instead of 48",
+   "value": {
+    "metric": "wilcoxon_z",
+    "value": 4.8653
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "key=wilcoxon_n10.z_statistic"
+   },
+   "strength": "hard",
+   "status": "superseded",
+   "quantity": "wilcoxon_z|N=10 n=50 A0-A1 gpt-4o-mini",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "Superseded per project/data/results/CORRECTIONS.md (Correction 1): 'any document quoting ... z = 4.8653 is stale.' Kept beside the correction, never edited in place.",
+   "conflicts_with": [
+    "E011"
+   ]
+  },
+  {
+   "id": "E010",
+   "kind": "result",
+   "summary": "SUPERSEDED stored effect size for the N=10 headline test (r = 0.6881, labelled rank-biserial); it was neither rank-biserial nor Rosenthal r",
+   "value": {
+    "metric": "effect_size_r",
+    "value": 0.6881
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "key=wilcoxon_n10.effect_size_r"
+   },
+   "strength": "hard",
+   "status": "superseded",
+   "quantity": "effect_size_r|N=10 n=50 A0-A1 gpt-4o-mini",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "CORRECTIONS.md: 'The stored 0.6881 is therefore not Kerby's r (0.9413) ... It is an unnamed quantity.' Do not use; do not describe it as a rank-biserial correlation.",
+   "conflicts_with": [
+    "E012"
+   ]
+  },
+  {
+   "id": "E011",
+   "kind": "result",
+   "summary": "Corrected z-statistic for the N=10 headline test: 5.6786 (5.677 without tie correction), computed over n_eff = 48 non-zero pairs",
+   "value": {
+    "metric": "wilcoxon_z",
+    "value": 5.6786,
+    "z_no_tie_correction": 5.677
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[3].corrected.z_statistic"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "wilcoxon_z|N=10 n=50 A0-A1 gpt-4o-mini",
+   "run_id": "effect_size_correction_20260807_78127c8",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Recorded resolution follows the authors' own correction record; the agent did not choose between values on its own judgment.",
+   "conflicts_with": [
+    "E009"
+   ],
+   "resolution": {
+    "chosen": "E011",
+    "reason": "CORRECTIONS.md declares this file the authority: the stored z used null mean/variance built on 50 pairs while the statistic ranks 48; corrected value recomputed offline from rebuilt per-seed deltas.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E012",
+   "kind": "result",
+   "summary": "Corrected effect size for the N=10 headline test: Kerby matched-pairs rank-biserial r = 0.9413 (T+ = 1141.5, T- = 34.5, n_eff = 48 of n = 50; 43 positive, 5 negative, 2 zero deltas)",
+   "value": {
+    "metric": "rank_biserial_r_kerby",
+    "value": 0.9413,
+    "full_precision": 0.9413265306122449,
+    "n_eff": 48,
+    "n_pairs": 50,
+    "T_plus": 1141.5,
+    "T_minus": 34.5,
+    "n_positive": 43,
+    "n_negative": 5,
+    "n_zero_deltas": 2,
+    "closure_identity_holds": true
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[3].corrected"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "effect_size_r|N=10 n=50 A0-A1 gpt-4o-mini",
+   "run_id": "effect_size_correction_20260807_78127c8",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Always report n_eff (48 of 50) beside r (CORRECTIONS.md). Rosenthal z/sqrt(N) is retired and must not be reported. CORPUS spot-check on stored deltas: 43 positive, 5 negative, 2 zero; T+ 1141.5, T- 34.5, r 0.9413.",
+   "conflicts_with": [
+    "E010"
+   ],
+   "resolution": {
+    "chosen": "E012",
+    "reason": "CORRECTIONS.md: the stored 0.6881 is z/sqrt(n) on a malformed z and is not rank-biserial; Kerby r from rank sums is the reported estimator. REPRODUCIBILITY.md also quotes 0.941 with n_eff = 48 of 50.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E013",
+   "kind": "result",
+   "summary": "Mean LLM total tokens per query by arm and seed (seeds 66-110): A0 180.1-180.2, A1 140.2-140.6, A2 179.1-179.5, A3 123.1-123.8",
+   "value": {
+    "A0_global": {
+     "66": 180.1,
+     "77": 180.2,
+     "88": 180.1,
+     "99": 180.1,
+     "110": 180.2
+    },
+    "A1_transactive": {
+     "66": 140.6,
+     "77": 140.4,
+     "88": 140.4,
+     "99": 140.2,
+     "110": 140.3
+    },
+    "A2_static": {
+     "66": 179.2,
+     "77": 179.2,
+     "88": 179.3,
+     "99": 179.5,
+     "110": 179.1
+    },
+    "A3_similarity": {
+     "66": 123.1,
+     "77": 123.5,
+     "88": 123.5,
+     "99": 123.8,
+     "110": 123.2
+    }
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493; the five new seeds only",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "per_seed_aggregate_new.<seed>.<arm>.mean_total_tokens"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50"
+  },
+  {
+   "id": "E014",
+   "kind": "result",
+   "summary": "Mean context tokens per query by arm are constant across the five new seeds: A0 123.2, A1 83.6, A2 122.3, A3 65.9",
+   "value": {
+    "A0_global": [
+     123.2
+    ],
+    "A1_transactive": [
+     83.6
+    ],
+    "A2_static": [
+     122.3
+    ],
+    "A3_similarity": [
+     65.9
+    ]
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493; the five new seeds only",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "per_seed_aggregate_new.<seed>.<arm>.mean_context_tokens"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50"
+  },
+  {
+   "id": "E015",
+   "kind": "negative_result",
+   "summary": "Answer accuracy in the five new seeds: A0 0.72 in every seed, A1 0.68/0.68/0.68/0.70/0.70, A2 0.72, A3 0.56/0.56/0.56/0.56/0.54; A1 is below A0 in every seed",
+   "value": {
+    "A0_global": {
+     "66": 0.72,
+     "77": 0.72,
+     "88": 0.72,
+     "99": 0.72,
+     "110": 0.72
+    },
+    "A1_transactive": {
+     "66": 0.68,
+     "77": 0.68,
+     "88": 0.68,
+     "99": 0.7,
+     "110": 0.7
+    },
+    "A2_static": {
+     "66": 0.72,
+     "77": 0.72,
+     "88": 0.72,
+     "99": 0.72,
+     "110": 0.72
+    },
+    "A3_similarity": {
+     "66": 0.56,
+     "77": 0.56,
+     "88": 0.56,
+     "99": 0.56,
+     "110": 0.54
+    }
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493; the five new seeds only; 50 queries per seed",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "per_seed_aggregate_new.<seed>.<arm>.answer_accuracy"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "This does not match the README/archived-report statement 'equal accuracy 0.545' (a different, 11-query corpus whose artifact is absent). No paired test of A1 vs A0 accuracy is in the package; the grading method for answer_accuracy in this artifact is not stated (README: QA-ladder grading is LLM-judged, centerpiece ownership verification is deterministic). Accuracy for seeds 11-55 is not in this file. Checkpoint Q-002."
+  },
+  {
+   "id": "E016",
+   "kind": "result",
+   "summary": "Answerability in the five new seeds is 0.98 for A0, A1 and A2 and 0.58 for A3 in every seed",
+   "value": {
+    "A0_global": [
+     0.98
+    ],
+    "A1_transactive": [
+     0.98
+    ],
+    "A2_static": [
+     0.98
+    ],
+    "A3_similarity": [
+     0.58
+    ]
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493; the five new seeds only",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "per_seed_aggregate_new.<seed>.<arm>.answerability"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50"
+  },
+  {
+   "id": "E017",
+   "kind": "result",
+   "summary": "Routing in the five new seeds: route@1 is 0.909 for A1, 0.0 for A0 and A2, 0.614 for A3; routing hit rate is 1.0 (A0, A1), 0.98 (A2), 0.54 (A3)",
+   "value": {
+    "routing_precision_at_1": {
+     "A0_global": [
+      0.0
+     ],
+     "A1_transactive": [
+      0.909
+     ],
+     "A2_static": [
+      0.0
+     ],
+     "A3_similarity": [
+      0.614
+     ]
+    },
+    "routing_hit_rate": {
+     "A0_global": [
+      1.0
+     ],
+     "A1_transactive": [
+      1.0
+     ],
+     "A2_static": [
+      0.98
+     ],
+     "A3_similarity": [
+      0.54
+     ]
+    },
+    "mean_candidate_set_size": {
+     "A0_global": [
+      32.0
+     ],
+     "A1_transactive": [
+      20.8
+     ],
+     "A2_static": [
+      31.7
+     ],
+     "A3_similarity": [
+      17.9
+     ]
+    }
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493; the five new seeds only",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "per_seed_aggregate_new.<seed>.<arm>.routing_precision_at_1,routing_hit_rate"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "A0 route@1 = 0.0 by construction (global search routes to no single agent); do not present it as a routing failure."
+  },
+  {
+   "id": "E018",
+   "kind": "result",
+   "summary": "Per-query mean LLM tokens over 10 seeds are stored for all four arms (50 values each), together with the 50 A0-A1 deltas",
+   "value": {
+    "n_queries": 50,
+    "arms": [
+     "A0_global",
+     "A1_transactive",
+     "A2_static",
+     "A3_similarity"
+    ]
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "keys=per_query_mean_llm_tokens_n10,per_query_a0_a1_deltas_n10"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "CORRECTIONS.md warns: rank statistics must be rebuilt from raw per-seed arrays, not from the rounded stored delta field, for the N=5 artifacts. For this N=10 file, an independent midrank calculation on the stored deltas reproduced W = T+ = 1141.5."
+  },
+  {
+   "id": "E019",
+   "kind": "result",
+   "summary": "Mean over the 50 queries of the 10-seed per-query mean tokens: A0 180.154, A1 140.356, A2 179.278, A3 123.444",
+   "value": {
+    "A0_global": 180.154,
+    "A1_transactive": 140.356,
+    "A2_static": 179.278,
+    "A3_similarity": 123.444
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "per_query_mean_llm_tokens_n10 (mean of 50 values per arm)"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "Computed by CORPUS_AGENT: arithmetic mean of the stored per-query arrays. Formula check: A0 mean - A1 mean = 39.798 = bootstrap_ci.mean_delta_tokens. Rounding 3 dp.",
+   "derived_from": [
+    "E018"
+   ]
+  },
+  {
+   "id": "E020",
+   "kind": "result",
+   "summary": "Mean A2-minus-A1 gap over 50 queries and 10 seeds is 38.922 tokens per query; A2 (frozen ownership) is within 0.876 tokens of A0 (179.278 vs 180.154)",
+   "value": {
+    "metric": "a2_minus_a1_tokens_per_query",
+    "value": 38.922,
+    "unit": "tokens/query"
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "per_query_mean_llm_tokens_n10 (A2_static mean - A1_transactive mean)"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "a1_a2_gap_tokens_per_query|n_queries=50|N=10|gpt-4o-mini",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "Computed by CORPUS_AGENT. No test, spread or per-seed gap for A1-A2 is stored in this artifact (see missing_evidence). The README's '+39.14 +/- 0.43' is a different quantity (11-query corpus, N=5, artifact absent).",
+   "derived_from": [
+    "E019"
+   ]
+  },
+  {
+   "id": "E021",
+   "kind": "observation",
+   "summary": "The authors' diagnosis: the CI width (8.3362 pp) is set by inter-query variance; per-seed spread (0.222 pp range) is 37.6 times narrower, so more seeds cannot narrow it",
+   "value": {
+    "ci_variance_diagnosis": {
+     "delta_std_tokens": 27.213,
+     "sem_query_tokens": 3.8485,
+     "seed_spread_range_pp": 0.222,
+     "ci_width_pp": 8.3362,
+     "ratio_ci_to_seed_spread": 37.6,
+     "conclusion": "CI is query-variance-dominated. Per-seed spread is 0.22pp; bootstrap CI width is 8.3pp. More seeds cannot narrow a CI driven by inter-query heterogeneity."
+    },
+    "ci_width_pct": {
+     "n5": 8.3206,
+     "n10": 8.3362
+    }
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "keys=ci_variance_diagnosis,n5_vs_n10"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "conclusion (verbatim): \"CI is query-variance-dominated. Per-seed spread is 0.22pp; bootstrap CI width is 8.3pp. More seeds cannot narrow a CI driven by inter-query heterogeneity.\" verdict (verbatim): \"N=10 does NOT materially narrow the CI: the width is set by inter-query heterogeneity, not seed noise (per-seed std 0.07 pp << CI width 8.3 pp).\""
+  },
+  {
+   "id": "E022",
+   "kind": "limitation_noted",
+   "summary": "Authors' own statement that the N=10 CI is driven by inter-query heterogeneity, not seed noise; extra seeds do not tighten it",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "key=ci_variance_diagnosis.conclusion"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "Verbatim: \"More seeds cannot narrow a CI driven by inter-query heterogeneity.\""
+  },
+  {
+   "id": "E023",
+   "kind": "rationale_stated",
+   "summary": "No multiplicity correction applied because the analysis is a single comparison (A0 vs A1)",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "key=bh_correction"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "Verbatim: \"Not applicable: single comparison (A0 vs A1). No comparison family.\""
+  },
+  {
+   "id": "E024",
+   "kind": "method_detail",
+   "summary": "Reported effect-size estimator is Kerby (2014) matched-pairs rank-biserial r = (T+ - T-)/(T+ + T-) over the n_eff non-zero pairs; zero_method=wilcox retained; Rosenthal z/sqrt(N) retired",
+   "value": {
+    "estimator": "Kerby 2014 matched-pairs rank-biserial",
+    "zero_method": "wilcox",
+    "rosenthal_alternatives_on_headline": {
+     "N=n=50": 0.803,
+     "N=n_eff=48": 0.819,
+     "N=2n=100": 0.568
+    },
+    "report_n_eff_beside_r": true
+   },
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "keys=estimator,estimator_ruling,zero_handling"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "effect_size_correction_20260807_78127c8",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "CORRECTIONS.md: 'n_eff is reported alongside every r. \"r = 1.000 (n_eff = 36 of 50)\" is a true and complete statement; a bare \"r = 1.0\" invites the reading \"every query improved\", which is false for 28% of that set.'"
+  },
+  {
+   "id": "E025",
+   "kind": "rationale_stated",
+   "summary": "Reason given for Kerby over Rosenthal: Kerby is the direct companion of the signed-rank test and has one definition; Rosenthal's N is read three ways (0.803, 0.819, 0.568)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "key=estimator_ruling"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "effect_size_correction_20260807_78127c8",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Verbatim: \"Kerby is the direct companion to the signed-rank test actually run ... and it has ONE definition.\" and \"The ruling is not the magnitude-maximising choice: under Rosenthal with N = 2n the corrected headline would be 0.568, BELOW the published 0.688\"."
+  },
+  {
+   "id": "E026",
+   "kind": "rationale_stated",
+   "summary": "Reason given for keeping zero_method=wilcox rather than Pratt: switching would alter an already pre-registered p-value",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "key=zero_handling"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "effect_size_correction_20260807_78127c8",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Verbatim: \"NOT switched to Pratt: that would change an already pre-registered p-value after the fact.\""
+  },
+  {
+   "id": "E027",
+   "kind": "observation",
+   "summary": "The authors state W, the one-sided p, the headline percentage reduction, the bootstrap CI and per-seed spread are correct in every affected artifact and did not move",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "key=what_did_not_move"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "effect_size_correction_20260807_78127c8",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Verbatim: \"W, the one-sided p-value, the headline percentage reduction, the bootstrap confidence interval and the per-seed spread are CORRECT in every affected artifact and are unchanged by this correction.\" No experiment re-run, no API call (provenance.no_experiment_run true)."
+  },
+  {
+   "id": "E028",
+   "kind": "result",
+   "summary": "Corrected signed-rank statistics for N=5 gpt-4o-mini n=50 (transactive_cost_expanded_20260724_a274137): n_eff 48 of 50, T+ 1142.5, T- 33.5, Kerby r 0.943, z 5.6882, W 1142.5, one-sided p 6.418e-09",
+   "value": {
+    "test": "Wilcoxon signed-rank, one-sided, zero_method=wilcox",
+    "W_statistic": 1142.5,
+    "p_value": 6.41826618620842e-09,
+    "p": 6.41826618620842e-09,
+    "n_pairs": 50,
+    "n_eff": 48,
+    "n_zero_deltas": 2,
+    "n_positive": 44,
+    "n_negative": 4,
+    "T_plus": 1142.5,
+    "T_minus": 33.5,
+    "rank_biserial_r_kerby": 0.943,
+    "z_statistic": 5.6882
+   },
+   "conditions": "N=5 gpt-4o-mini n=50 (transactive_cost_expanded_20260724_a274137)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[0].corrected/unchanged"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "transactive_cost_expanded_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Source artifact transactive_cost_expanded_20260724_a274137.json is not in the package; the values are as recorded in the corrected-statistics file, recomputed offline from raw per-seed token arrays. Only the effect size and z are superseded; W and p were always correct."
+  },
+  {
+   "id": "E029",
+   "kind": "result",
+   "summary": "SUPERSEDED stored value of wilcoxon_paired_test.z_statistic in transactive_cost_expanded_20260724_a274137: 4.8749",
+   "value": {
+    "metric": "wilcoxon_paired_test.z_statistic",
+    "value": 4.8749
+   },
+   "conditions": "N=5 gpt-4o-mini n=50 (transactive_cost_expanded_20260724_a274137)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[0].superseded_fields[field_path=wilcoxon_paired_test.z_statistic].stored_value"
+   },
+   "strength": "hard",
+   "status": "superseded",
+   "quantity": "wilcoxon_paired_test.z_statistic|transactive_cost_expanded_20260724_a274137",
+   "run_id": "transactive_cost_expanded_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Superseded per CORRECTIONS.md Correction 1 (stored artifact transactive_cost_expanded_20260724_a274137.json is byte-intact and not in this package). Reason recorded in the file: The stored z was computed with the normal-approximation null mean and variance parameterised by all n_pairs query pairs, while the signed-rank statistic it was applied to is computed over only the n_eff pairs with a non-zero difference. mu_buggy > mu_correct and sigma_buggy > sigma_correct, so the stored value understates a positive effect -- structurally, on every dataset, and more the more zero-",
+   "conflicts_with": [
+    "E030"
+   ]
+  },
+  {
+   "id": "E030",
+   "kind": "result",
+   "summary": "Corrected value of wilcoxon_paired_test.z_statistic in transactive_cost_expanded_20260724_a274137: 5.6882",
+   "value": {
+    "metric": "wilcoxon_paired_test.z_statistic",
+    "value": 5.6882
+   },
+   "conditions": "N=5 gpt-4o-mini n=50 (transactive_cost_expanded_20260724_a274137)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[0].superseded_fields[field_path=wilcoxon_paired_test.z_statistic].corrected_value"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "wilcoxon_paired_test.z_statistic|transactive_cost_expanded_20260724_a274137",
+   "run_id": "transactive_cost_expanded_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "conflicts_with": [
+    "E029"
+   ],
+   "resolution": {
+    "chosen": "E030",
+    "reason": "The corrected-statistics artifact and CORRECTIONS.md declare the stored field superseded and give the offline recomputation from raw per-seed arrays.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E031",
+   "kind": "result",
+   "summary": "SUPERSEDED stored value of wilcoxon_paired_test.effect_size_r in transactive_cost_expanded_20260724_a274137: 0.6894",
+   "value": {
+    "metric": "wilcoxon_paired_test.effect_size_r",
+    "value": 0.6894
+   },
+   "conditions": "N=5 gpt-4o-mini n=50 (transactive_cost_expanded_20260724_a274137)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[0].superseded_fields[field_path=wilcoxon_paired_test.effect_size_r].stored_value"
+   },
+   "strength": "hard",
+   "status": "superseded",
+   "quantity": "wilcoxon_paired_test.effect_size_r|transactive_cost_expanded_20260724_a274137",
+   "run_id": "transactive_cost_expanded_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Superseded per CORRECTIONS.md Correction 1 (stored artifact transactive_cost_expanded_20260724_a274137.json is byte-intact and not in this package). Reason recorded in the file: The stored effect_size_r is z_buggy/sqrt(n_pairs). It is not the Kerby rank-biserial correlation its label claims, and it is not a correctly computed Rosenthal r under any of the three denominator conventions either, because the z fed into it was itself computed against the wrong null. It is an unnamed quantity. The reported estimator is now Kerby's; z/sqrt(n) is retired.",
+   "conflicts_with": [
+    "E032"
+   ]
+  },
+  {
+   "id": "E032",
+   "kind": "result",
+   "summary": "Corrected value of wilcoxon_paired_test.effect_size_r in transactive_cost_expanded_20260724_a274137: 0.943",
+   "value": {
+    "metric": "wilcoxon_paired_test.effect_size_r",
+    "value": 0.943
+   },
+   "conditions": "N=5 gpt-4o-mini n=50 (transactive_cost_expanded_20260724_a274137)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[0].superseded_fields[field_path=wilcoxon_paired_test.effect_size_r].corrected_value"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "wilcoxon_paired_test.effect_size_r|transactive_cost_expanded_20260724_a274137",
+   "run_id": "transactive_cost_expanded_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "conflicts_with": [
+    "E031"
+   ],
+   "resolution": {
+    "chosen": "E032",
+    "reason": "The corrected-statistics artifact and CORRECTIONS.md declare the stored field superseded and give the offline recomputation from raw per-seed arrays.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E033",
+   "kind": "result",
+   "summary": "Corrected signed-rank statistics for N=5 qwen3-30b-a3b n=50 (transactive_cost_expanded_20260725_93f9058): n_eff 46 of 50, T+ 1052.0, T- 29.0, Kerby r 0.9463, z 5.5885, W 1052.0, one-sided p 1.145e-08",
+   "value": {
+    "test": "Wilcoxon signed-rank, one-sided, zero_method=wilcox",
+    "W_statistic": 1052.0,
+    "p_value": 1.1449521497571301e-08,
+    "p": 1.1449521497571301e-08,
+    "n_pairs": 50,
+    "n_eff": 46,
+    "n_zero_deltas": 4,
+    "n_positive": 41,
+    "n_negative": 5,
+    "T_plus": 1052.0,
+    "T_minus": 29.0,
+    "rank_biserial_r_kerby": 0.9463,
+    "z_statistic": 5.5885
+   },
+   "conditions": "N=5 qwen3-30b-a3b n=50 (transactive_cost_expanded_20260725_93f9058)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[1].corrected/unchanged"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "transactive_cost_expanded_20260725_93f9058",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Source artifact transactive_cost_expanded_20260725_93f9058.json is not in the package; the values are as recorded in the corrected-statistics file, recomputed offline from raw per-seed token arrays. Only the effect size and z are superseded; W and p were always correct."
+  },
+  {
+   "id": "E034",
+   "kind": "result",
+   "summary": "SUPERSEDED stored value of wilcoxon_paired_test.z_statistic in transactive_cost_expanded_20260725_93f9058: 4.0013",
+   "value": {
+    "metric": "wilcoxon_paired_test.z_statistic",
+    "value": 4.0013
+   },
+   "conditions": "N=5 qwen3-30b-a3b n=50 (transactive_cost_expanded_20260725_93f9058)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[1].superseded_fields[field_path=wilcoxon_paired_test.z_statistic].stored_value"
+   },
+   "strength": "hard",
+   "status": "superseded",
+   "quantity": "wilcoxon_paired_test.z_statistic|transactive_cost_expanded_20260725_93f9058",
+   "run_id": "transactive_cost_expanded_20260725_93f9058",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Superseded per CORRECTIONS.md Correction 1 (stored artifact transactive_cost_expanded_20260725_93f9058.json is byte-intact and not in this package). Reason recorded in the file: The stored z was computed with the normal-approximation null mean and variance parameterised by all n_pairs query pairs, while the signed-rank statistic it was applied to is computed over only the n_eff pairs with a non-zero difference. mu_buggy > mu_correct and sigma_buggy > sigma_correct, so the stored value understates a positive effect -- structurally, on every dataset, and more the more zero-",
+   "conflicts_with": [
+    "E035"
+   ]
+  },
+  {
+   "id": "E035",
+   "kind": "result",
+   "summary": "Corrected value of wilcoxon_paired_test.z_statistic in transactive_cost_expanded_20260725_93f9058: 5.5885",
+   "value": {
+    "metric": "wilcoxon_paired_test.z_statistic",
+    "value": 5.5885
+   },
+   "conditions": "N=5 qwen3-30b-a3b n=50 (transactive_cost_expanded_20260725_93f9058)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[1].superseded_fields[field_path=wilcoxon_paired_test.z_statistic].corrected_value"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "wilcoxon_paired_test.z_statistic|transactive_cost_expanded_20260725_93f9058",
+   "run_id": "transactive_cost_expanded_20260725_93f9058",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "conflicts_with": [
+    "E034"
+   ],
+   "resolution": {
+    "chosen": "E035",
+    "reason": "The corrected-statistics artifact and CORRECTIONS.md declare the stored field superseded and give the offline recomputation from raw per-seed arrays.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E036",
+   "kind": "result",
+   "summary": "SUPERSEDED stored value of wilcoxon_paired_test.effect_size_r in transactive_cost_expanded_20260725_93f9058: 0.5659",
+   "value": {
+    "metric": "wilcoxon_paired_test.effect_size_r",
+    "value": 0.5659
+   },
+   "conditions": "N=5 qwen3-30b-a3b n=50 (transactive_cost_expanded_20260725_93f9058)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[1].superseded_fields[field_path=wilcoxon_paired_test.effect_size_r].stored_value"
+   },
+   "strength": "hard",
+   "status": "superseded",
+   "quantity": "wilcoxon_paired_test.effect_size_r|transactive_cost_expanded_20260725_93f9058",
+   "run_id": "transactive_cost_expanded_20260725_93f9058",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Superseded per CORRECTIONS.md Correction 1 (stored artifact transactive_cost_expanded_20260725_93f9058.json is byte-intact and not in this package). Reason recorded in the file: The stored effect_size_r is z_buggy/sqrt(n_pairs). It is not the Kerby rank-biserial correlation its label claims, and it is not a correctly computed Rosenthal r under any of the three denominator conventions either, because the z fed into it was itself computed against the wrong null. It is an unnamed quantity. The reported estimator is now Kerby's; z/sqrt(n) is retired.",
+   "conflicts_with": [
+    "E037"
+   ]
+  },
+  {
+   "id": "E037",
+   "kind": "result",
+   "summary": "Corrected value of wilcoxon_paired_test.effect_size_r in transactive_cost_expanded_20260725_93f9058: 0.9463",
+   "value": {
+    "metric": "wilcoxon_paired_test.effect_size_r",
+    "value": 0.9463
+   },
+   "conditions": "N=5 qwen3-30b-a3b n=50 (transactive_cost_expanded_20260725_93f9058)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[1].superseded_fields[field_path=wilcoxon_paired_test.effect_size_r].corrected_value"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "wilcoxon_paired_test.effect_size_r|transactive_cost_expanded_20260725_93f9058",
+   "run_id": "transactive_cost_expanded_20260725_93f9058",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "conflicts_with": [
+    "E036"
+   ],
+   "resolution": {
+    "chosen": "E037",
+    "reason": "The corrected-statistics artifact and CORRECTIONS.md declare the stored field superseded and give the offline recomputation from raw per-seed arrays.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E038",
+   "kind": "result",
+   "summary": "Corrected signed-rank statistics for N=1 qwen-2.5-72b n=50 (transactive_cost_expanded_20260805_437bb6b): n_eff 36 of 50, T+ 666.0, T- 0, Kerby r 1.0, z 5.2348, W 666.0, one-sided p 8.259e-08",
+   "value": {
+    "test": "Wilcoxon signed-rank, one-sided, zero_method=wilcox",
+    "W_statistic": 666.0,
+    "p_value": 8.259441646659398e-08,
+    "p": 8.259441646659398e-08,
+    "n_pairs": 50,
+    "n_eff": 36,
+    "n_zero_deltas": 14,
+    "n_positive": 36,
+    "n_negative": 0,
+    "T_plus": 666.0,
+    "T_minus": 0,
+    "rank_biserial_r_kerby": 1.0,
+    "z_statistic": 5.2348
+   },
+   "conditions": "N=1 qwen-2.5-72b n=50 (transactive_cost_expanded_20260805_437bb6b)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[2].corrected/unchanged"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "transactive_cost_expanded_20260805_437bb6b",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Source artifact transactive_cost_expanded_20260805_437bb6b.json is not in the package; the values are as recorded in the corrected-statistics file, recomputed offline from raw per-seed token arrays. Only the effect size and z are superseded; W and p were always correct. r = 1.000 must be reported with n_eff = 36 of 50 (14 zero deltas)."
+  },
+  {
+   "id": "E039",
+   "kind": "result",
+   "summary": "SUPERSEDED stored value of wilcoxon_paired_test.z_statistic in transactive_cost_expanded_20260805_437bb6b: 0.2751",
+   "value": {
+    "metric": "wilcoxon_paired_test.z_statistic",
+    "value": 0.2751
+   },
+   "conditions": "N=1 qwen-2.5-72b n=50 (transactive_cost_expanded_20260805_437bb6b)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[2].superseded_fields[field_path=wilcoxon_paired_test.z_statistic].stored_value"
+   },
+   "strength": "hard",
+   "status": "superseded",
+   "quantity": "wilcoxon_paired_test.z_statistic|transactive_cost_expanded_20260805_437bb6b",
+   "run_id": "transactive_cost_expanded_20260805_437bb6b",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Superseded per CORRECTIONS.md Correction 1 (stored artifact transactive_cost_expanded_20260805_437bb6b.json is byte-intact and not in this package). Reason recorded in the file: The stored z was computed with the normal-approximation null mean and variance parameterised by all n_pairs query pairs, while the signed-rank statistic it was applied to is computed over only the n_eff pairs with a non-zero difference. mu_buggy > mu_correct and sigma_buggy > sigma_correct, so the stored value understates a positive effect -- structurally, on every dataset, and more the more zero-",
+   "conflicts_with": [
+    "E040"
+   ]
+  },
+  {
+   "id": "E040",
+   "kind": "result",
+   "summary": "Corrected value of wilcoxon_paired_test.z_statistic in transactive_cost_expanded_20260805_437bb6b: 5.2348",
+   "value": {
+    "metric": "wilcoxon_paired_test.z_statistic",
+    "value": 5.2348
+   },
+   "conditions": "N=1 qwen-2.5-72b n=50 (transactive_cost_expanded_20260805_437bb6b)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[2].superseded_fields[field_path=wilcoxon_paired_test.z_statistic].corrected_value"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "wilcoxon_paired_test.z_statistic|transactive_cost_expanded_20260805_437bb6b",
+   "run_id": "transactive_cost_expanded_20260805_437bb6b",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "conflicts_with": [
+    "E039"
+   ],
+   "resolution": {
+    "chosen": "E040",
+    "reason": "The corrected-statistics artifact and CORRECTIONS.md declare the stored field superseded and give the offline recomputation from raw per-seed arrays.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E041",
+   "kind": "result",
+   "summary": "SUPERSEDED stored value of wilcoxon_paired_test.effect_size_r in transactive_cost_expanded_20260805_437bb6b: 0.0389",
+   "value": {
+    "metric": "wilcoxon_paired_test.effect_size_r",
+    "value": 0.0389
+   },
+   "conditions": "N=1 qwen-2.5-72b n=50 (transactive_cost_expanded_20260805_437bb6b)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[2].superseded_fields[field_path=wilcoxon_paired_test.effect_size_r].stored_value"
+   },
+   "strength": "hard",
+   "status": "superseded",
+   "quantity": "wilcoxon_paired_test.effect_size_r|transactive_cost_expanded_20260805_437bb6b",
+   "run_id": "transactive_cost_expanded_20260805_437bb6b",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Superseded per CORRECTIONS.md Correction 1 (stored artifact transactive_cost_expanded_20260805_437bb6b.json is byte-intact and not in this package). Reason recorded in the file: The stored effect_size_r is z_buggy/sqrt(n_pairs). It is not the Kerby rank-biserial correlation its label claims, and it is not a correctly computed Rosenthal r under any of the three denominator conventions either, because the z fed into it was itself computed against the wrong null. It is an unnamed quantity. The reported estimator is now Kerby's; z/sqrt(n) is retired.",
+   "conflicts_with": [
+    "E042"
+   ]
+  },
+  {
+   "id": "E042",
+   "kind": "result",
+   "summary": "Corrected value of wilcoxon_paired_test.effect_size_r in transactive_cost_expanded_20260805_437bb6b: 1.0",
+   "value": {
+    "metric": "wilcoxon_paired_test.effect_size_r",
+    "value": 1.0
+   },
+   "conditions": "N=1 qwen-2.5-72b n=50 (transactive_cost_expanded_20260805_437bb6b)",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[2].superseded_fields[field_path=wilcoxon_paired_test.effect_size_r].corrected_value"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "wilcoxon_paired_test.effect_size_r|transactive_cost_expanded_20260805_437bb6b",
+   "run_id": "transactive_cost_expanded_20260805_437bb6b",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "conflicts_with": [
+    "E041"
+   ],
+   "resolution": {
+    "chosen": "E042",
+    "reason": "The corrected-statistics artifact and CORRECTIONS.md declare the stored field superseded and give the offline recomputation from raw per-seed arrays.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E043",
+   "kind": "result",
+   "summary": "Corrected signed-rank statistics for N=5 n50_supplementary_20260724_a274137: n_eff 48 of 50, T+ 1142.5, T- 33.5, Kerby r 0.943, z 5.6882, W 1142.5, one-sided p 6.418e-09",
+   "value": {
+    "test": "Wilcoxon signed-rank, one-sided, zero_method=wilcox",
+    "W_statistic": 1142.5,
+    "p_value": 6.41826618620842e-09,
+    "p": 6.41826618620842e-09,
+    "n_pairs": 50,
+    "n_eff": 48,
+    "n_zero_deltas": 2,
+    "n_positive": 44,
+    "n_negative": 4,
+    "T_plus": 1142.5,
+    "T_minus": 33.5,
+    "rank_biserial_r_kerby": 0.943,
+    "z_statistic": 5.6882
+   },
+   "conditions": "N=5 n50_supplementary_20260724_a274137",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[4].corrected/unchanged"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "n50_supplementary_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Source artifact n50_supplementary_20260724_a274137.json is not in the package; the values are as recorded in the corrected-statistics file, recomputed offline from raw per-seed token arrays. Only the effect size and z are superseded; W and p were always correct."
+  },
+  {
+   "id": "E044",
+   "kind": "result",
+   "summary": "SUPERSEDED stored value of wilcoxon_from_preregistered.z_statistic in n50_supplementary_20260724_a274137: 4.8749",
+   "value": {
+    "metric": "wilcoxon_from_preregistered.z_statistic",
+    "value": 4.8749
+   },
+   "conditions": "N=5 n50_supplementary_20260724_a274137",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[4].superseded_fields[field_path=wilcoxon_from_preregistered.z_statistic].stored_value"
+   },
+   "strength": "hard",
+   "status": "superseded",
+   "quantity": "wilcoxon_from_preregistered.z_statistic|n50_supplementary_20260724_a274137",
+   "run_id": "n50_supplementary_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Superseded per CORRECTIONS.md Correction 1 (stored artifact n50_supplementary_20260724_a274137.json is byte-intact and not in this package). Reason recorded in the file: The stored z was computed with the normal-approximation null mean and variance parameterised by all n_pairs query pairs, while the signed-rank statistic it was applied to is computed over only the n_eff pairs with a non-zero difference. mu_buggy > mu_correct and sigma_buggy > sigma_correct, so the stored value understates a positive effect -- structurally, on every dataset, and more the more zero-",
+   "conflicts_with": [
+    "E045"
+   ]
+  },
+  {
+   "id": "E045",
+   "kind": "result",
+   "summary": "Corrected value of wilcoxon_from_preregistered.z_statistic in n50_supplementary_20260724_a274137: 5.6882",
+   "value": {
+    "metric": "wilcoxon_from_preregistered.z_statistic",
+    "value": 5.6882
+   },
+   "conditions": "N=5 n50_supplementary_20260724_a274137",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[4].superseded_fields[field_path=wilcoxon_from_preregistered.z_statistic].corrected_value"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "wilcoxon_from_preregistered.z_statistic|n50_supplementary_20260724_a274137",
+   "run_id": "n50_supplementary_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "conflicts_with": [
+    "E044"
+   ],
+   "resolution": {
+    "chosen": "E045",
+    "reason": "The corrected-statistics artifact and CORRECTIONS.md declare the stored field superseded and give the offline recomputation from raw per-seed arrays.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E046",
+   "kind": "result",
+   "summary": "SUPERSEDED stored value of wilcoxon_from_preregistered.effect_size_r in n50_supplementary_20260724_a274137: 0.6894",
+   "value": {
+    "metric": "wilcoxon_from_preregistered.effect_size_r",
+    "value": 0.6894
+   },
+   "conditions": "N=5 n50_supplementary_20260724_a274137",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[4].superseded_fields[field_path=wilcoxon_from_preregistered.effect_size_r].stored_value"
+   },
+   "strength": "hard",
+   "status": "superseded",
+   "quantity": "wilcoxon_from_preregistered.effect_size_r|n50_supplementary_20260724_a274137",
+   "run_id": "n50_supplementary_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Superseded per CORRECTIONS.md Correction 1 (stored artifact n50_supplementary_20260724_a274137.json is byte-intact and not in this package). Reason recorded in the file: The stored effect_size_r is z_buggy/sqrt(n_pairs). It is not the Kerby rank-biserial correlation its label claims, and it is not a correctly computed Rosenthal r under any of the three denominator conventions either, because the z fed into it was itself computed against the wrong null. It is an unnamed quantity. The reported estimator is now Kerby's; z/sqrt(n) is retired.",
+   "conflicts_with": [
+    "E047"
+   ]
+  },
+  {
+   "id": "E047",
+   "kind": "result",
+   "summary": "Corrected value of wilcoxon_from_preregistered.effect_size_r in n50_supplementary_20260724_a274137: 0.943",
+   "value": {
+    "metric": "wilcoxon_from_preregistered.effect_size_r",
+    "value": 0.943
+   },
+   "conditions": "N=5 n50_supplementary_20260724_a274137",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[4].superseded_fields[field_path=wilcoxon_from_preregistered.effect_size_r].corrected_value"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "wilcoxon_from_preregistered.effect_size_r|n50_supplementary_20260724_a274137",
+   "run_id": "n50_supplementary_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "conflicts_with": [
+    "E046"
+   ],
+   "resolution": {
+    "chosen": "E047",
+    "reason": "The corrected-statistics artifact and CORRECTIONS.md declare the stored field superseded and give the offline recomputation from raw per-seed arrays.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E048",
+   "kind": "result",
+   "summary": "SUPERSEDED stored value of rank_biserial_correlation.T_minus in n50_supplementary_20260724_a274137: 132.5",
+   "value": {
+    "metric": "rank_biserial_correlation.T_minus",
+    "value": 132.5
+   },
+   "conditions": "N=5 n50_supplementary_20260724_a274137",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[4].superseded_fields[field_path=rank_biserial_correlation.T_minus].stored_value"
+   },
+   "strength": "hard",
+   "status": "superseded",
+   "quantity": "rank_biserial_correlation.T_minus|n50_supplementary_20260724_a274137",
+   "run_id": "n50_supplementary_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Superseded per CORRECTIONS.md Correction 1 (stored artifact n50_supplementary_20260724_a274137.json is byte-intact and not in this package). Reason recorded in the file: Computed as n_pairs(n_pairs+1)/2 - T+ = 1275 - 1142.5, i.e. by subtraction from the TOTAL-pair rank mass rather than by summing the negative ranks. The true sum of the negative midranks is 33.5. Closure check, self-contained: T+ + T- must equal n_eff(n_eff+1)/2 = 48*49/2 = 1176; 1142.5 + 33.5 = 1176. The stored value has no referent in the data. CORRECTIONS.md: T_minus = 132.5 'was fabricated by arithmetic, not measured' (n_pairs(n_pairs+1)/2 - T+ instead of summing negative ranks); closure T+ + T- = 1176 holds only for 33.5.",
+   "conflicts_with": [
+    "E049"
+   ]
+  },
+  {
+   "id": "E049",
+   "kind": "result",
+   "summary": "Corrected value of rank_biserial_correlation.T_minus in n50_supplementary_20260724_a274137: 33.5",
+   "value": {
+    "metric": "rank_biserial_correlation.T_minus",
+    "value": 33.5
+   },
+   "conditions": "N=5 n50_supplementary_20260724_a274137",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[4].superseded_fields[field_path=rank_biserial_correlation.T_minus].corrected_value"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "rank_biserial_correlation.T_minus|n50_supplementary_20260724_a274137",
+   "run_id": "n50_supplementary_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "conflicts_with": [
+    "E048"
+   ],
+   "resolution": {
+    "chosen": "E049",
+    "reason": "The corrected-statistics artifact and CORRECTIONS.md declare the stored field superseded and give the offline recomputation from raw per-seed arrays.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E050",
+   "kind": "result",
+   "summary": "SUPERSEDED stored value of rank_biserial_correlation.value in n50_supplementary_20260724_a274137: 0.7922",
+   "value": {
+    "metric": "rank_biserial_correlation.value",
+    "value": 0.7922
+   },
+   "conditions": "N=5 n50_supplementary_20260724_a274137",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[4].superseded_fields[field_path=rank_biserial_correlation.value].stored_value"
+   },
+   "strength": "hard",
+   "status": "superseded",
+   "quantity": "rank_biserial_correlation.value|n50_supplementary_20260724_a274137",
+   "run_id": "n50_supplementary_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Superseded per CORRECTIONS.md Correction 1 (stored artifact n50_supplementary_20260724_a274137.json is byte-intact and not in this package). Reason recorded in the file: Kerby's formula applied over the wrong total rank mass (1275 instead of 1176), using the fabricated T_minus above. The derivation is printed in full with the wrong arithmetic visible at docs/n50_cost_expansion_report.md:105: (1142.5 - 132.5)/1275. Correct: (1142.5 - 33.5)/1176.",
+   "conflicts_with": [
+    "E051"
+   ]
+  },
+  {
+   "id": "E051",
+   "kind": "result",
+   "summary": "Corrected value of rank_biserial_correlation.value in n50_supplementary_20260724_a274137: 0.943",
+   "value": {
+    "metric": "rank_biserial_correlation.value",
+    "value": 0.943
+   },
+   "conditions": "N=5 n50_supplementary_20260724_a274137",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[4].superseded_fields[field_path=rank_biserial_correlation.value].corrected_value"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "rank_biserial_correlation.value|n50_supplementary_20260724_a274137",
+   "run_id": "n50_supplementary_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "conflicts_with": [
+    "E050"
+   ],
+   "resolution": {
+    "chosen": "E051",
+    "reason": "The corrected-statistics artifact and CORRECTIONS.md declare the stored field superseded and give the offline recomputation from raw per-seed arrays.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E052",
+   "kind": "result",
+   "summary": "SUPERSEDED stored value of rank_biserial_correlation.n_pairs in n50_supplementary_20260724_a274137: 50",
+   "value": {
+    "metric": "rank_biserial_correlation.n_pairs",
+    "value": 50
+   },
+   "conditions": "N=5 n50_supplementary_20260724_a274137",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[4].superseded_fields[field_path=rank_biserial_correlation.n_pairs].stored_value"
+   },
+   "strength": "hard",
+   "status": "superseded",
+   "quantity": "rank_biserial_correlation.n_pairs|n50_supplementary_20260724_a274137",
+   "run_id": "n50_supplementary_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Superseded per CORRECTIONS.md Correction 1 (stored artifact n50_supplementary_20260724_a274137.json is byte-intact and not in this package). Reason recorded in the file: The ranking was over n_eff non-zero pairs, not n_pairs.",
+   "conflicts_with": [
+    "E053"
+   ]
+  },
+  {
+   "id": "E053",
+   "kind": "result",
+   "summary": "Corrected value of rank_biserial_correlation.n_pairs in n50_supplementary_20260724_a274137: 48",
+   "value": {
+    "metric": "rank_biserial_correlation.n_pairs",
+    "value": 48
+   },
+   "conditions": "N=5 n50_supplementary_20260724_a274137",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[4].superseded_fields[field_path=rank_biserial_correlation.n_pairs].corrected_value"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "rank_biserial_correlation.n_pairs|n50_supplementary_20260724_a274137",
+   "run_id": "n50_supplementary_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "conflicts_with": [
+    "E052"
+   ],
+   "resolution": {
+    "chosen": "E053",
+    "reason": "The corrected-statistics artifact and CORRECTIONS.md declare the stored field superseded and give the offline recomputation from raw per-seed arrays.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E054",
+   "kind": "result",
+   "summary": "SUPERSEDED stored value of bootstrap_95_ci_headline.point_estimate in n50_supplementary_20260724_a274137: 22.0419",
+   "value": {
+    "metric": "bootstrap_95_ci_headline.point_estimate",
+    "value": 22.0419
+   },
+   "conditions": "N=5 n50_supplementary_20260724_a274137",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[4].superseded_fields[field_path=bootstrap_95_ci_headline.point_estimate].stored_value"
+   },
+   "strength": "hard",
+   "status": "superseded",
+   "quantity": "bootstrap_95_ci_headline.point_estimate|n50_supplementary_20260724_a274137",
+   "run_id": "n50_supplementary_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "Superseded per CORRECTIONS.md Correction 1 (stored artifact n50_supplementary_20260724_a274137.json is byte-intact and not in this package). Reason recorded in the file: The field holds the MEAN OF THE BOOTSTRAP DISTRIBUTION, not the observed statistic. A field named point_estimate beside a CI field will be read as the estimate the CI brackets. The observed headline is 22.109. The CI itself is CORRECT and does not move. (Finding F6.) CORRECTIONS.md: the stored 22.0419 is the mean of the 2000 bootstrap resamples, not the observed statistic (22.109); the CI itself does not move.",
+   "conflicts_with": [
+    "E055"
+   ]
+  },
+  {
+   "id": "E055",
+   "kind": "result",
+   "summary": "Corrected value of bootstrap_95_ci_headline.point_estimate in n50_supplementary_20260724_a274137: 22.109",
+   "value": {
+    "metric": "bootstrap_95_ci_headline.point_estimate",
+    "value": 22.109
+   },
+   "conditions": "N=5 n50_supplementary_20260724_a274137",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[4].superseded_fields[field_path=bootstrap_95_ci_headline.point_estimate].corrected_value"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "bootstrap_95_ci_headline.point_estimate|n50_supplementary_20260724_a274137",
+   "run_id": "n50_supplementary_20260724_a274137",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "conflicts_with": [
+    "E054"
+   ],
+   "resolution": {
+    "chosen": "E055",
+    "reason": "The corrected-statistics artifact and CORRECTIONS.md declare the stored field superseded and give the offline recomputation from raw per-seed arrays.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E056",
+   "kind": "observation",
+   "summary": "CORRECTIONS.md states the corrected values have not yet been propagated to the manuscript, the claim ledger, or docs/n50_cost_expansion_report.md; until then this file is the authority",
+   "locator": {
+    "path": "project/data/results/CORRECTIONS.md",
+    "anchor": "section 'Still outstanding after this correction'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:74fc8f4d802a3969d47e46ec3a8b833f15bfdc6c2529d96e066527f480128f5e",
+   "notes": "Verbatim: \"Until that propagation lands, this file is the authority and any document quoting r = 0.688, r = 0.79, r = 0.0389 or z = 4.8653 is stale.\""
+  },
+  {
+   "id": "E057",
+   "kind": "observation",
+   "summary": "Second-answerer cost runs exist for qwen3-30b-a3b (N=5) and qwen-2.5-72b (N=1 pilot) with n=50 queries, but only their corrected Wilcoxon statistics are in the package",
+   "locator": {
+    "path": "project/data/results/effect_size_correction_20260807_78127c8.json",
+    "anchor": "artifacts[1],artifacts[2]"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "effect_size_correction_20260807_78127c8",
+   "source_hash": "sha256:01bad07b145ac06511487374f31823a41af117fa20300d7e56f737d09b9cf519",
+   "notes": "README says 'Single LLM ... Every LLM number uses gpt-4o-mini'; this is superseded by the existence of these two runs. Their percentage reductions are not recorded anywhere in the package."
+  },
+  {
+   "id": "E058",
+   "kind": "result",
+   "summary": "E2 new-topic (all-mpnet-base-v2): ASMOS cumulative regret 3.24 +/- 1.2986 over 5 seeds, adaptation lag 3.8 +/- 1.1662, 0 retrains, 10 labels consumed, routed the new topic in 5 of 5 seeds",
+   "value": {
+    "metric": "cumulative_regret",
+    "value": 3.24,
+    "spread": {
+     "type": "std",
+     "value": 1.2986
+    },
+    "n": 5,
+    "adaptation_lag": {
+     "mean": 3.8,
+     "std": 1.1662,
+     "n": 5
+    },
+    "emergence_detection_lag": {
+     "mean": 3.8,
+     "std": 1.1662,
+     "n": 5
+    },
+    "retrain_events": {
+     "mean": 0,
+     "std": 0.0,
+     "n": 5
+    },
+    "labels_consumed": {
+     "mean": 10,
+     "std": 0.0,
+     "n": 5
+    },
+    "n_seeds_routed_X": 5
+   },
+   "conditions": "E2 non-stationary new-topic regime; embedder all-mpnet-base-v2 (MPNet-base-v2); new topic x_security_auth owned by agent.research; 10 steps; seeds [0, 1, 2, 3, 4]; 5 eval queries per step; asmos_tau 0.351493; classifier_tau 0.5; leakage_check passed",
+   "locator": {
+    "path": "project/data/results/e2_new_topic_20260703_182558.json",
+    "anchor": "scalar_metrics.A1_ASMOS_ADAPTIVE"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "e2_new_topic_asmos_cumulative_regret|embedder=all-mpnet-base-v2",
+   "run_id": "e2_new_topic_20260703_182558",
+   "source_hash": "sha256:f9d80c84d346869e55c2f451e721a22963b34ce8ad653f9849b0c702577ba9ca",
+   "notes": "Different embedders give different regret (MPNet 3.24, BGE-M3 0.92, README MiniLM 4.32): different conditions, not conflicts. labels_consumed = 10 for ASMOS in this artifact, yet README says 'zero added labels' (Checkpoint Q-004). Regret sums (1 - route@1) over steps 1-10 (CORPUS check: 3.24 and 0.92 reproduce from per_step_route@1)."
+  },
+  {
+   "id": "E059",
+   "kind": "baseline",
+   "summary": "E2 new-topic (all-mpnet-base-v2): classifier baselines - frozen regret 10.0 (never routes the new topic, 0/5 seeds); retrain-every-5 regret 4.8 +/- 0.4 (2 retrains, lag 5); retrain-every-10 regret 9.0 (1 retrain, lag 10)",
+   "value": {
+    "metric": "cumulative_regret",
+    "value": 10.0,
+    "arms": {
+     "A4_CLASSIFIER_FROZEN": {
+      "cumulative_regret": {
+       "mean": 10.0,
+       "std": 0.0,
+       "n": 5
+      },
+      "adaptation_lag": {
+       "mean": null,
+       "std": null,
+       "n": 0
+      },
+      "retrain_events": {
+       "mean": 0,
+       "std": 0.0,
+       "n": 5
+      },
+      "labels_consumed": {
+       "mean": 0,
+       "std": 0.0,
+       "n": 5
+      },
+      "n_seeds_routed_X": 0
+     },
+     "A4_CLASSIFIER_RETRAIN_EVERY_5": {
+      "cumulative_regret": {
+       "mean": 4.8,
+       "std": 0.4,
+       "n": 5
+      },
+      "adaptation_lag": {
+       "mean": 5,
+       "std": 0.0,
+       "n": 5
+      },
+      "retrain_events": {
+       "mean": 2,
+       "std": 0.0,
+       "n": 5
+      },
+      "labels_consumed": {
+       "mean": 10,
+       "std": 0.0,
+       "n": 5
+      },
+      "n_seeds_routed_X": 5
+     },
+     "A4_CLASSIFIER_RETRAIN_EVERY_10": {
+      "cumulative_regret": {
+       "mean": 9.0,
+       "std": 0.0,
+       "n": 5
+      },
+      "adaptation_lag": {
+       "mean": 10,
+       "std": 0.0,
+       "n": 5
+      },
+      "retrain_events": {
+       "mean": 1,
+       "std": 0.0,
+       "n": 5
+      },
+      "labels_consumed": {
+       "mean": 10,
+       "std": 0.0,
+       "n": 5
+      },
+      "n_seeds_routed_X": 5
+     }
+    }
+   },
+   "conditions": "E2 non-stationary new-topic regime; embedder all-mpnet-base-v2 (MPNet-base-v2); new topic x_security_auth owned by agent.research; 10 steps; seeds [0, 1, 2, 3, 4]; 5 eval queries per step; asmos_tau 0.351493; classifier_tau 0.5; leakage_check passed",
+   "locator": {
+    "path": "project/data/results/e2_new_topic_20260703_182558.json",
+    "anchor": "scalar_metrics.A4_*"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "e2_new_topic_classifier_frozen_cumulative_regret|embedder=all-mpnet-base-v2",
+   "run_id": "e2_new_topic_20260703_182558",
+   "source_hash": "sha256:f9d80c84d346869e55c2f451e721a22963b34ce8ad653f9849b0c702577ba9ca",
+   "notes": "Classifier numbers are identical in the two runs (embedder-independent in this artifact); classifier_tau is 0.5, ASMOS tau is 0.351493. Whether classifier hyperparameters were tuned is not recorded."
+  },
+  {
+   "id": "E060",
+   "kind": "result",
+   "summary": "E2 new-topic (all-mpnet-base-v2): ASMOS route@1 by step (steps 0-10) rises 0.0 0.12 0.24 0.44 0.64 0.76 0.8 0.88 0.92 0.96 1.0",
+   "value": {
+    "route_at_1_by_step": [
+     0.0,
+     0.12,
+     0.24,
+     0.44,
+     0.64,
+     0.76,
+     0.8,
+     0.88,
+     0.92,
+     0.96,
+     1.0
+    ],
+    "n": 5
+   },
+   "conditions": "E2 non-stationary new-topic regime; embedder all-mpnet-base-v2 (MPNet-base-v2); new topic x_security_auth owned by agent.research; 10 steps; seeds [0, 1, 2, 3, 4]; 5 eval queries per step; asmos_tau 0.351493; classifier_tau 0.5; leakage_check passed",
+   "locator": {
+    "path": "project/data/results/e2_new_topic_20260703_182558.json",
+    "anchor": "per_step_route@1.A1_ASMOS_ADAPTIVE[*].mean"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "e2_new_topic_20260703_182558",
+   "source_hash": "sha256:f9d80c84d346869e55c2f451e721a22963b34ce8ad653f9849b0c702577ba9ca"
+  },
+  {
+   "id": "E061",
+   "kind": "observation",
+   "summary": "E2 new-topic (all-mpnet-base-v2): per-step answerability is identical across all four arms (0.0 0.04 0.08 0.2 0.28 0.32 0.44 0.56 0.72 0.84 1.0), so it does not discriminate between arms in this regime",
+   "value": {
+    "answerability_by_step": [
+     0.0,
+     0.04,
+     0.08,
+     0.2,
+     0.28,
+     0.32,
+     0.44,
+     0.56,
+     0.72,
+     0.84,
+     1.0
+    ],
+    "identical_across_arms": true
+   },
+   "conditions": "E2 non-stationary new-topic regime; embedder all-mpnet-base-v2 (MPNet-base-v2); new topic x_security_auth owned by agent.research; 10 steps; seeds [0, 1, 2, 3, 4]; 5 eval queries per step; asmos_tau 0.351493; classifier_tau 0.5; leakage_check passed",
+   "locator": {
+    "path": "project/data/results/e2_new_topic_20260703_182558.json",
+    "anchor": "per_step_full.<arm>.answerability"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "e2_new_topic_20260703_182558",
+   "source_hash": "sha256:f9d80c84d346869e55c2f451e721a22963b34ce8ad653f9849b0c702577ba9ca",
+   "notes": "Answerability rises from 0.0 to 1.0 with step for every arm, including the frozen classifier; it appears to track when new-topic content becomes available rather than routing. Interpretation left to the author."
+  },
+  {
+   "id": "E062",
+   "kind": "result",
+   "summary": "E2 new-topic (BAAI/bge-m3): ASMOS cumulative regret 0.92 +/- 0.4118 over 5 seeds, adaptation lag 1.6 +/- 0.4899, 0 retrains, 10 labels consumed, routed the new topic in 5 of 5 seeds",
+   "value": {
+    "metric": "cumulative_regret",
+    "value": 0.92,
+    "spread": {
+     "type": "std",
+     "value": 0.4118
+    },
+    "n": 5,
+    "adaptation_lag": {
+     "mean": 1.6,
+     "std": 0.4899,
+     "n": 5
+    },
+    "emergence_detection_lag": {
+     "mean": 1.6,
+     "std": 0.4899,
+     "n": 5
+    },
+    "retrain_events": {
+     "mean": 0,
+     "std": 0.0,
+     "n": 5
+    },
+    "labels_consumed": {
+     "mean": 10,
+     "std": 0.0,
+     "n": 5
+    },
+    "n_seeds_routed_X": 5
+   },
+   "conditions": "E2 non-stationary new-topic regime; embedder BAAI/bge-m3 (BGE-M3); new topic x_security_auth owned by agent.research; 10 steps; seeds [0, 1, 2, 3, 4]; 5 eval queries per step; asmos_tau 0.351493; classifier_tau 0.5; leakage_check passed",
+   "locator": {
+    "path": "project/data/results/e2_new_topic_20260726_104315.json",
+    "anchor": "scalar_metrics.A1_ASMOS_ADAPTIVE"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "e2_new_topic_asmos_cumulative_regret|embedder=BAAI/bge-m3",
+   "run_id": "e2_new_topic_20260726_104315",
+   "source_hash": "sha256:11a95dde83adeed9dc9629edece9855bb3465169dd2ab9c0e1afe2b04208a7a8",
+   "notes": "Different embedders give different regret (MPNet 3.24, BGE-M3 0.92, README MiniLM 4.32): different conditions, not conflicts. labels_consumed = 10 for ASMOS in this artifact, yet README says 'zero added labels' (Checkpoint Q-004). Regret sums (1 - route@1) over steps 1-10 (CORPUS check: 3.24 and 0.92 reproduce from per_step_route@1)."
+  },
+  {
+   "id": "E063",
+   "kind": "baseline",
+   "summary": "E2 new-topic (BAAI/bge-m3): classifier baselines - frozen regret 10.0 (never routes the new topic, 0/5 seeds); retrain-every-5 regret 4.8 +/- 0.4 (2 retrains, lag 5); retrain-every-10 regret 9.0 (1 retrain, lag 10)",
+   "value": {
+    "metric": "cumulative_regret",
+    "value": 10.0,
+    "arms": {
+     "A4_CLASSIFIER_FROZEN": {
+      "cumulative_regret": {
+       "mean": 10.0,
+       "std": 0.0,
+       "n": 5
+      },
+      "adaptation_lag": {
+       "mean": null,
+       "std": null,
+       "n": 0
+      },
+      "retrain_events": {
+       "mean": 0,
+       "std": 0.0,
+       "n": 5
+      },
+      "labels_consumed": {
+       "mean": 0,
+       "std": 0.0,
+       "n": 5
+      },
+      "n_seeds_routed_X": 0
+     },
+     "A4_CLASSIFIER_RETRAIN_EVERY_5": {
+      "cumulative_regret": {
+       "mean": 4.8,
+       "std": 0.4,
+       "n": 5
+      },
+      "adaptation_lag": {
+       "mean": 5,
+       "std": 0.0,
+       "n": 5
+      },
+      "retrain_events": {
+       "mean": 2,
+       "std": 0.0,
+       "n": 5
+      },
+      "labels_consumed": {
+       "mean": 10,
+       "std": 0.0,
+       "n": 5
+      },
+      "n_seeds_routed_X": 5
+     },
+     "A4_CLASSIFIER_RETRAIN_EVERY_10": {
+      "cumulative_regret": {
+       "mean": 9.0,
+       "std": 0.0,
+       "n": 5
+      },
+      "adaptation_lag": {
+       "mean": 10,
+       "std": 0.0,
+       "n": 5
+      },
+      "retrain_events": {
+       "mean": 1,
+       "std": 0.0,
+       "n": 5
+      },
+      "labels_consumed": {
+       "mean": 10,
+       "std": 0.0,
+       "n": 5
+      },
+      "n_seeds_routed_X": 5
+     }
+    }
+   },
+   "conditions": "E2 non-stationary new-topic regime; embedder BAAI/bge-m3 (BGE-M3); new topic x_security_auth owned by agent.research; 10 steps; seeds [0, 1, 2, 3, 4]; 5 eval queries per step; asmos_tau 0.351493; classifier_tau 0.5; leakage_check passed",
+   "locator": {
+    "path": "project/data/results/e2_new_topic_20260726_104315.json",
+    "anchor": "scalar_metrics.A4_*"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "e2_new_topic_classifier_frozen_cumulative_regret|embedder=BAAI/bge-m3",
+   "run_id": "e2_new_topic_20260726_104315",
+   "source_hash": "sha256:11a95dde83adeed9dc9629edece9855bb3465169dd2ab9c0e1afe2b04208a7a8",
+   "notes": "Classifier numbers are identical in the two runs (embedder-independent in this artifact); classifier_tau is 0.5, ASMOS tau is 0.351493. Whether classifier hyperparameters were tuned is not recorded."
+  },
+  {
+   "id": "E064",
+   "kind": "result",
+   "summary": "E2 new-topic (BAAI/bge-m3): ASMOS route@1 by step (steps 0-10) rises 0.2 0.52 0.8 0.84 0.96 0.96 1.0 1.0 1.0 1.0 1.0",
+   "value": {
+    "route_at_1_by_step": [
+     0.2,
+     0.52,
+     0.8,
+     0.84,
+     0.96,
+     0.96,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "n": 5
+   },
+   "conditions": "E2 non-stationary new-topic regime; embedder BAAI/bge-m3 (BGE-M3); new topic x_security_auth owned by agent.research; 10 steps; seeds [0, 1, 2, 3, 4]; 5 eval queries per step; asmos_tau 0.351493; classifier_tau 0.5; leakage_check passed",
+   "locator": {
+    "path": "project/data/results/e2_new_topic_20260726_104315.json",
+    "anchor": "per_step_route@1.A1_ASMOS_ADAPTIVE[*].mean"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "e2_new_topic_20260726_104315",
+   "source_hash": "sha256:11a95dde83adeed9dc9629edece9855bb3465169dd2ab9c0e1afe2b04208a7a8"
+  },
+  {
+   "id": "E065",
+   "kind": "observation",
+   "summary": "E2 new-topic (BAAI/bge-m3): per-step answerability is identical across all four arms (0.0 0.04 0.08 0.2 0.28 0.32 0.44 0.56 0.72 0.84 1.0), so it does not discriminate between arms in this regime",
+   "value": {
+    "answerability_by_step": [
+     0.0,
+     0.04,
+     0.08,
+     0.2,
+     0.28,
+     0.32,
+     0.44,
+     0.56,
+     0.72,
+     0.84,
+     1.0
+    ],
+    "identical_across_arms": true
+   },
+   "conditions": "E2 non-stationary new-topic regime; embedder BAAI/bge-m3 (BGE-M3); new topic x_security_auth owned by agent.research; 10 steps; seeds [0, 1, 2, 3, 4]; 5 eval queries per step; asmos_tau 0.351493; classifier_tau 0.5; leakage_check passed",
+   "locator": {
+    "path": "project/data/results/e2_new_topic_20260726_104315.json",
+    "anchor": "per_step_full.<arm>.answerability"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "e2_new_topic_20260726_104315",
+   "source_hash": "sha256:11a95dde83adeed9dc9629edece9855bb3465169dd2ab9c0e1afe2b04208a7a8",
+   "notes": "Answerability rises from 0.0 to 1.0 with step for every arm, including the frozen classifier; it appears to track when new-topic content becomes available rather than routing. Interpretation left to the author."
+  },
+  {
+   "id": "E066",
+   "kind": "result",
+   "summary": "E2 cross-model, lexical-hash (fallback), A1_ASMOS_SHARED_TAU: route@1 0.667, hit rate 0.909, answerability 0.818, mean context tokens 71.7",
+   "value": {
+    "metric": "routing_precision_at_1",
+    "value": 0.667,
+    "routing_hit_rate": 0.909,
+    "answerability": 0.818,
+    "mean_context_tokens": 71.7
+   },
+   "conditions": "E2 cross-model summary (stationary regime); single run, no seeds or spread recorded; number of queries not stated (answerability values are multiples of 1/11); embedder lexical-hash (fallback)",
+   "locator": {
+    "path": "project/data/results/e2_cross_model_summary_20260630_045130.json",
+    "anchor": "by_embedder.lexical-hash (fallback).A1_ASMOS_SHARED_TAU"
+   },
+   "strength": "hard",
+   "status": "conflicting",
+   "quantity": "e2_cross_model|routing_precision_at_1|embedder=lexical-hash (fallback)|arm=A1_ASMOS_SHARED_TAU",
+   "run_id": "e2_cross_model_summary_20260630_045130",
+   "source_hash": "sha256:000234330a9fdc4e1d660875e71850da0c2bbb3d28d248852b29e781f2d8a418",
+   "notes": "No variance or seed count recorded, so status incomplete (see missing_evidence). Also incomplete: no variance/seed count recorded.",
+   "conflicts_with": [
+    "E113"
+   ],
+   "resolution": {
+    "chosen": "E066",
+    "reason": "The stamped JSON enumerates every arm and embedder explicitly (checkable primary record); the REPRODUCIBILITY sentence is prose that names no arm and whose 0.778 equals a different arm's value.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E067",
+   "kind": "result",
+   "summary": "E2 cross-model, lexical-hash (fallback), A4_CLASSIFIER_SHARED_TAU: route@1 1.0, hit rate 0.818, answerability 0.636, mean context tokens 56.6",
+   "value": {
+    "metric": "routing_precision_at_1",
+    "value": 1.0,
+    "routing_hit_rate": 0.818,
+    "answerability": 0.636,
+    "mean_context_tokens": 56.6
+   },
+   "conditions": "E2 cross-model summary (stationary regime); single run, no seeds or spread recorded; number of queries not stated (answerability values are multiples of 1/11); embedder lexical-hash (fallback)",
+   "locator": {
+    "path": "project/data/results/e2_cross_model_summary_20260630_045130.json",
+    "anchor": "by_embedder.lexical-hash (fallback).A4_CLASSIFIER_SHARED_TAU"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "quantity": "e2_cross_model|routing_precision_at_1|embedder=lexical-hash (fallback)|arm=A4_CLASSIFIER_SHARED_TAU",
+   "run_id": "e2_cross_model_summary_20260630_045130",
+   "source_hash": "sha256:000234330a9fdc4e1d660875e71850da0c2bbb3d28d248852b29e781f2d8a418",
+   "notes": "No variance or seed count recorded, so status incomplete (see missing_evidence)."
+  },
+  {
+   "id": "E068",
+   "kind": "result",
+   "summary": "E2 cross-model, lexical-hash (fallback), A4_CLASSIFIER_CALIBRATED_TAU: route@1 0.778, hit rate 0.909, answerability 0.727, mean context tokens 66.0",
+   "value": {
+    "metric": "routing_precision_at_1",
+    "value": 0.778,
+    "routing_hit_rate": 0.909,
+    "answerability": 0.727,
+    "mean_context_tokens": 66.0
+   },
+   "conditions": "E2 cross-model summary (stationary regime); single run, no seeds or spread recorded; number of queries not stated (answerability values are multiples of 1/11); embedder lexical-hash (fallback)",
+   "locator": {
+    "path": "project/data/results/e2_cross_model_summary_20260630_045130.json",
+    "anchor": "by_embedder.lexical-hash (fallback).A4_CLASSIFIER_CALIBRATED_TAU"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "quantity": "e2_cross_model|routing_precision_at_1|embedder=lexical-hash (fallback)|arm=A4_CLASSIFIER_CALIBRATED_TAU",
+   "run_id": "e2_cross_model_summary_20260630_045130",
+   "source_hash": "sha256:000234330a9fdc4e1d660875e71850da0c2bbb3d28d248852b29e781f2d8a418",
+   "notes": "No variance or seed count recorded, so status incomplete (see missing_evidence)."
+  },
+  {
+   "id": "E069",
+   "kind": "result",
+   "summary": "E2 cross-model, MiniLM-L6-v2, A1_ASMOS_SHARED_TAU: route@1 1.0, hit rate 1.0, answerability 0.909, mean context tokens 67.9",
+   "value": {
+    "metric": "routing_precision_at_1",
+    "value": 1.0,
+    "routing_hit_rate": 1.0,
+    "answerability": 0.909,
+    "mean_context_tokens": 67.9
+   },
+   "conditions": "E2 cross-model summary (stationary regime); single run, no seeds or spread recorded; number of queries not stated (answerability values are multiples of 1/11); embedder MiniLM-L6-v2",
+   "locator": {
+    "path": "project/data/results/e2_cross_model_summary_20260630_045130.json",
+    "anchor": "by_embedder.MiniLM-L6-v2.A1_ASMOS_SHARED_TAU"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "quantity": "e2_cross_model|routing_precision_at_1|embedder=MiniLM-L6-v2|arm=A1_ASMOS_SHARED_TAU",
+   "run_id": "e2_cross_model_summary_20260630_045130",
+   "source_hash": "sha256:000234330a9fdc4e1d660875e71850da0c2bbb3d28d248852b29e781f2d8a418",
+   "notes": "No variance or seed count recorded, so status incomplete (see missing_evidence)."
+  },
+  {
+   "id": "E070",
+   "kind": "result",
+   "summary": "E2 cross-model, MiniLM-L6-v2, A4_CLASSIFIER_SHARED_TAU: route@1 1.0, hit rate 0.818, answerability 0.727, mean context tokens 58.7",
+   "value": {
+    "metric": "routing_precision_at_1",
+    "value": 1.0,
+    "routing_hit_rate": 0.818,
+    "answerability": 0.727,
+    "mean_context_tokens": 58.7
+   },
+   "conditions": "E2 cross-model summary (stationary regime); single run, no seeds or spread recorded; number of queries not stated (answerability values are multiples of 1/11); embedder MiniLM-L6-v2",
+   "locator": {
+    "path": "project/data/results/e2_cross_model_summary_20260630_045130.json",
+    "anchor": "by_embedder.MiniLM-L6-v2.A4_CLASSIFIER_SHARED_TAU"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "quantity": "e2_cross_model|routing_precision_at_1|embedder=MiniLM-L6-v2|arm=A4_CLASSIFIER_SHARED_TAU",
+   "run_id": "e2_cross_model_summary_20260630_045130",
+   "source_hash": "sha256:000234330a9fdc4e1d660875e71850da0c2bbb3d28d248852b29e781f2d8a418",
+   "notes": "No variance or seed count recorded, so status incomplete (see missing_evidence)."
+  },
+  {
+   "id": "E071",
+   "kind": "result",
+   "summary": "E2 cross-model, MiniLM-L6-v2, A4_CLASSIFIER_CALIBRATED_TAU: route@1 0.778, hit rate 0.909, answerability 0.818, mean context tokens 68.3",
+   "value": {
+    "metric": "routing_precision_at_1",
+    "value": 0.778,
+    "routing_hit_rate": 0.909,
+    "answerability": 0.818,
+    "mean_context_tokens": 68.3
+   },
+   "conditions": "E2 cross-model summary (stationary regime); single run, no seeds or spread recorded; number of queries not stated (answerability values are multiples of 1/11); embedder MiniLM-L6-v2",
+   "locator": {
+    "path": "project/data/results/e2_cross_model_summary_20260630_045130.json",
+    "anchor": "by_embedder.MiniLM-L6-v2.A4_CLASSIFIER_CALIBRATED_TAU"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "quantity": "e2_cross_model|routing_precision_at_1|embedder=MiniLM-L6-v2|arm=A4_CLASSIFIER_CALIBRATED_TAU",
+   "run_id": "e2_cross_model_summary_20260630_045130",
+   "source_hash": "sha256:000234330a9fdc4e1d660875e71850da0c2bbb3d28d248852b29e781f2d8a418",
+   "notes": "No variance or seed count recorded, so status incomplete (see missing_evidence)."
+  },
+  {
+   "id": "E072",
+   "kind": "negative_result",
+   "summary": "E2 cross-model, lexical-hash (fallback): ASMOS route@1 0.667 vs classifier 1.0 (routing competitive: false); ASMOS answerability 0.818 vs classifier 0.636 (lead 0.182)",
+   "value": {
+    "embedder": "lexical-hash (fallback)",
+    "asmos_route@1": 0.667,
+    "classifier_route@1": 1.0,
+    "asmos_answerability": 0.818,
+    "classifier_answerability": 0.636,
+    "asmos_routing_competitive": false,
+    "asmos_answerability_lead": 0.18199999999999994
+   },
+   "conditions": "E2 cross-model summary (stationary regime); single run, no seeds or spread recorded; number of queries not stated (answerability values are multiples of 1/11); embedder lexical-hash (fallback); shared-tau arms",
+   "locator": {
+    "path": "project/data/results/e2_cross_model_summary_20260630_045130.json",
+    "anchor": "observations[embedder=lexical-hash (fallback)]"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "run_id": "e2_cross_model_summary_20260630_045130",
+   "source_hash": "sha256:000234330a9fdc4e1d660875e71850da0c2bbb3d28d248852b29e781f2d8a418",
+   "notes": "With the lexical-hash fallback embedder ASMOS is NOT routing-competitive with the classifier (0.667 vs 1.0); the README calls the fallback a degraded offline mode, not the evaluation baseline."
+  },
+  {
+   "id": "E073",
+   "kind": "observation",
+   "summary": "E2 cross-model, MiniLM-L6-v2: ASMOS route@1 1.0 vs classifier 1.0 (routing competitive: true); ASMOS answerability 0.909 vs classifier 0.727 (lead 0.182)",
+   "value": {
+    "embedder": "MiniLM-L6-v2",
+    "asmos_route@1": 1.0,
+    "classifier_route@1": 1.0,
+    "asmos_answerability": 0.909,
+    "classifier_answerability": 0.727,
+    "asmos_routing_competitive": true,
+    "asmos_answerability_lead": 0.18200000000000005
+   },
+   "conditions": "E2 cross-model summary (stationary regime); single run, no seeds or spread recorded; number of queries not stated (answerability values are multiples of 1/11); embedder MiniLM-L6-v2; shared-tau arms",
+   "locator": {
+    "path": "project/data/results/e2_cross_model_summary_20260630_045130.json",
+    "anchor": "observations[embedder=MiniLM-L6-v2]"
+   },
+   "strength": "hard",
+   "status": "incomplete",
+   "run_id": "e2_cross_model_summary_20260630_045130",
+   "source_hash": "sha256:000234330a9fdc4e1d660875e71850da0c2bbb3d28d248852b29e781f2d8a418",
+   "notes": "MiniLM row matches the README E2 stationary row (route@1 1.000 vs 1.000; answerability 0.909 vs 0.727)."
+  },
+  {
+   "id": "E074",
+   "kind": "result",
+   "summary": "Four-system, A No-Memory: EM 0.3333, token-F1 0.5642, containment 0.3333, answerability 1.0 (n=24)",
+   "value": {
+    "metric": "containment",
+    "value": 0.3333,
+    "exact_match": 0.3333,
+    "token_f1": 0.5642,
+    "answerability": 1.0,
+    "n": 24
+   },
+   "conditions": "four-system comparison, keyed run, openai/gpt-4o-mini, n=24 RULER QA questions, uniform keyed answer call",
+   "locator": {
+    "path": "project/results/summary.csv",
+    "anchor": "row=A No-Memory;cols=exact_match,token_f1,containment,answerability"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "containment|RULER QA n=24|gpt-4o-mini|system=no_memory",
+   "run_id": "four_system_keyed_run (results/summary.csv)",
+   "source_hash": "sha256:c117fe07f292a4ce83957896f422688c09afa3ae121911ed5fd40db494def730"
+  },
+  {
+   "id": "E075",
+   "kind": "result",
+   "summary": "Four-system, A No-Memory: retrieval count 0, prompt tokens 142.375, completion tokens 9.6667, total tokens 152.0417, latency 1.4975 s, estimated cost 0.0 USD",
+   "value": {
+    "retrieval_count": 0.0,
+    "prompt_tokens": 142.375,
+    "completion_tokens": 9.6667,
+    "total_tokens": 152.0417,
+    "latency_s": 1.4975,
+    "estimated_cost_usd": 0.0
+   },
+   "conditions": "four-system comparison, keyed run, openai/gpt-4o-mini, n=24 RULER QA questions, uniform keyed answer call",
+   "locator": {
+    "path": "project/results/summary.csv",
+    "anchor": "row=A No-Memory;cols=retrieval_count..estimated_cost_usd"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "four_system_keyed_run (results/summary.csv)",
+   "source_hash": "sha256:c117fe07f292a4ce83957896f422688c09afa3ae121911ed5fd40db494def730",
+   "notes": "Cost in USD is rounded to 4 dp and is not informative (0.0 for no-memory). Latency/token values are means over 24 questions; no spread recorded."
+  },
+  {
+   "id": "E076",
+   "kind": "result",
+   "summary": "Four-system, B RAG: EM 0.7083, token-F1 0.7513, containment 0.7083, answerability 1.0 (n=24)",
+   "value": {
+    "metric": "containment",
+    "value": 0.7083,
+    "exact_match": 0.7083,
+    "token_f1": 0.7513,
+    "answerability": 1.0,
+    "n": 24
+   },
+   "conditions": "four-system comparison, keyed run, openai/gpt-4o-mini, n=24 RULER QA questions, uniform keyed answer call",
+   "locator": {
+    "path": "project/results/summary.csv",
+    "anchor": "row=B RAG;cols=exact_match,token_f1,containment,answerability"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "containment|RULER QA n=24|gpt-4o-mini|system=rag",
+   "run_id": "four_system_keyed_run (results/summary.csv)",
+   "source_hash": "sha256:c117fe07f292a4ce83957896f422688c09afa3ae121911ed5fd40db494def730",
+   "conflicts_with": [
+    "E124"
+   ]
+  },
+  {
+   "id": "E077",
+   "kind": "result",
+   "summary": "Four-system, B RAG: retrieval count 3, prompt tokens 701.1667, completion tokens 10.25, total tokens 711.4167, latency 1.6535 s, estimated cost 0.0001 USD",
+   "value": {
+    "retrieval_count": 3.0,
+    "prompt_tokens": 701.1667,
+    "completion_tokens": 10.25,
+    "total_tokens": 711.4167,
+    "latency_s": 1.6535,
+    "estimated_cost_usd": 0.0001
+   },
+   "conditions": "four-system comparison, keyed run, openai/gpt-4o-mini, n=24 RULER QA questions, uniform keyed answer call",
+   "locator": {
+    "path": "project/results/summary.csv",
+    "anchor": "row=B RAG;cols=retrieval_count..estimated_cost_usd"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "four_system_keyed_run (results/summary.csv)",
+   "source_hash": "sha256:c117fe07f292a4ce83957896f422688c09afa3ae121911ed5fd40db494def730",
+   "notes": "Cost in USD is rounded to 4 dp and is not informative (0.0 for no-memory). Latency/token values are means over 24 questions; no spread recorded."
+  },
+  {
+   "id": "E078",
+   "kind": "negative_result",
+   "summary": "Four-system, C ASMOS: EM 0.1667, token-F1 0.4155, containment 0.1667, answerability 1.0 (n=24)",
+   "value": {
+    "metric": "containment",
+    "value": 0.1667,
+    "exact_match": 0.1667,
+    "token_f1": 0.4155,
+    "answerability": 1.0,
+    "n": 24
+   },
+   "conditions": "four-system comparison, keyed run, openai/gpt-4o-mini, n=24 RULER QA questions, uniform keyed answer call",
+   "locator": {
+    "path": "project/results/summary.csv",
+    "anchor": "row=C ASMOS;cols=exact_match,token_f1,containment,answerability"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "containment|RULER QA n=24|gpt-4o-mini|system=asmos",
+   "run_id": "four_system_keyed_run (results/summary.csv)",
+   "source_hash": "sha256:c117fe07f292a4ce83957896f422688c09afa3ae121911ed5fd40db494def730",
+   "notes": "ASMOS-memory alone scores below No-Memory (EM 0.1667 vs 0.3333); summary.md attributes this to missing coverage of the QA facts in the single-agent checkpoint store. "
+  },
+  {
+   "id": "E079",
+   "kind": "result",
+   "summary": "Four-system, C ASMOS: retrieval count 3, prompt tokens 342.25, completion tokens 11.4167, total tokens 353.6667, latency 1.95 s, estimated cost 0.0001 USD",
+   "value": {
+    "retrieval_count": 3.0,
+    "prompt_tokens": 342.25,
+    "completion_tokens": 11.4167,
+    "total_tokens": 353.6667,
+    "latency_s": 1.95,
+    "estimated_cost_usd": 0.0001
+   },
+   "conditions": "four-system comparison, keyed run, openai/gpt-4o-mini, n=24 RULER QA questions, uniform keyed answer call",
+   "locator": {
+    "path": "project/results/summary.csv",
+    "anchor": "row=C ASMOS;cols=retrieval_count..estimated_cost_usd"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "four_system_keyed_run (results/summary.csv)",
+   "source_hash": "sha256:c117fe07f292a4ce83957896f422688c09afa3ae121911ed5fd40db494def730",
+   "notes": "Cost in USD is rounded to 4 dp and is not informative (0.0 for no-memory). Latency/token values are means over 24 questions; no spread recorded."
+  },
+  {
+   "id": "E080",
+   "kind": "result",
+   "summary": "Four-system, D ASMOS+RAG: EM 0.625, token-F1 0.4329, containment 0.625, answerability 1.0 (n=24)",
+   "value": {
+    "metric": "containment",
+    "value": 0.625,
+    "exact_match": 0.625,
+    "token_f1": 0.4329,
+    "answerability": 1.0,
+    "n": 24
+   },
+   "conditions": "four-system comparison, keyed run, openai/gpt-4o-mini, n=24 RULER QA questions, uniform keyed answer call",
+   "locator": {
+    "path": "project/results/summary.csv",
+    "anchor": "row=D ASMOS+RAG;cols=exact_match,token_f1,containment,answerability"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "quantity": "containment|RULER QA n=24|gpt-4o-mini|system=system_d",
+   "run_id": "four_system_keyed_run (results/summary.csv)",
+   "source_hash": "sha256:c117fe07f292a4ce83957896f422688c09afa3ae121911ed5fd40db494def730",
+   "notes": "Exact-match equals containment in every row of summary.csv (0.3333/0.7083/0.1667/0.625), so 'EM' may be a containment metric; and system D has token-F1 0.4329 below its EM 0.625. Metric definitions are not in the package."
+  },
+  {
+   "id": "E081",
+   "kind": "result",
+   "summary": "Four-system, D ASMOS+RAG: retrieval count 5.2083, prompt tokens 1138.875, completion tokens 43.0417, total tokens 1181.9167, latency 1.99 s, estimated cost 0.0002 USD",
+   "value": {
+    "retrieval_count": 5.2083,
+    "prompt_tokens": 1138.875,
+    "completion_tokens": 43.0417,
+    "total_tokens": 1181.9167,
+    "latency_s": 1.99,
+    "estimated_cost_usd": 0.0002
+   },
+   "conditions": "four-system comparison, keyed run, openai/gpt-4o-mini, n=24 RULER QA questions, uniform keyed answer call",
+   "locator": {
+    "path": "project/results/summary.csv",
+    "anchor": "row=D ASMOS+RAG;cols=retrieval_count..estimated_cost_usd"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "run_id": "four_system_keyed_run (results/summary.csv)",
+   "source_hash": "sha256:c117fe07f292a4ce83957896f422688c09afa3ae121911ed5fd40db494def730",
+   "notes": "Cost in USD is rounded to 4 dp and is not informative (0.0 for no-memory). Latency/token values are means over 24 questions; no spread recorded."
+  },
+  {
+   "id": "E082",
+   "kind": "result",
+   "summary": "Four-system token-F1 mean +/- std and 95% CI (from summary.md): No-Memory 0.5642+/-0.3545 [0.4224, 0.706]; RAG 0.7513+/-0.3479 [0.6121, 0.8905]; ASMOS-memory 0.4155+/-0.3301 [0.2834, 0.5476]; ASMOS+RAG 0.4329+/-0.4076 [0.2698, 0.596]",
+   "value": {
+    "No-Memory": {
+     "mean": 0.5642,
+     "std": 0.3545,
+     "ci": [
+      0.4224,
+      0.706
+     ]
+    },
+    "RAG": {
+     "mean": 0.7513,
+     "std": 0.3479,
+     "ci": [
+      0.6121,
+      0.8905
+     ]
+    },
+    "ASMOS-memory": {
+     "mean": 0.4155,
+     "std": 0.3301,
+     "ci": [
+      0.2834,
+      0.5476
+     ]
+    },
+    "ASMOS+RAG": {
+     "mean": 0.4329,
+     "std": 0.4076,
+     "ci": [
+      0.2698,
+      0.596
+     ]
+    }
+   },
+   "conditions": "four-system comparison, keyed run, openai/gpt-4o-mini, n=24 RULER QA questions, uniform keyed answer call",
+   "locator": {
+    "path": "project/results/summary.md",
+    "anchor": "table 'Four-System Comparison' columns token-F1 (mean+/-std), 95% CI"
+   },
+   "strength": "soft",
+   "status": "unverifiable",
+   "run_id": "four_system_keyed_run (results/summary.csv)",
+   "source_hash": "sha256:70e72641c214f292dd61ecf8b685449485d01a0d671b611f6fd5787d8f21a5b9",
+   "notes": "summary.md says its numbers come from results/{no_memory,rag,asmos,system_d}.json, which are not in the package; means agree with summary.csv and comparison_table.md. Soft because the values are read from a prose/markdown table."
+  },
+  {
+   "id": "E083",
+   "kind": "result",
+   "summary": "Paired token-F1 differences (n=24): RAG minus ASMOS +0.3358 (95% bootstrap CI [+0.1494, +0.5228], Wilcoxon W=100); system D minus RAG -0.3184 (CI [-0.4990, -0.1406], W=-94); system D minus ASMOS +0.0174 (CI [-0.1546, +0.1862], W=30)",
+   "value": {
+    "test": "paired bootstrap (10k resamples) and Wilcoxon signed-rank on token-F1",
+    "rag_minus_asmos": {
+     "delta": 0.3358,
+     "ci": [
+      0.1494,
+      0.5228
+     ],
+     "W": 100
+    },
+    "system_d_minus_rag": {
+     "delta": -0.3184,
+     "ci": [
+      -0.499,
+      -0.1406
+     ],
+     "W": -94
+    },
+    "system_d_minus_asmos": {
+     "delta": 0.0174,
+     "ci": [
+      -0.1546,
+      0.1862
+     ],
+     "W": 30
+    }
+   },
+   "conditions": "four-system comparison, keyed run, openai/gpt-4o-mini, n=24 RULER QA questions, uniform keyed answer call",
+   "locator": {
+    "path": "project/results/statistics.md",
+    "anchor": "lines 'rag - asmos', 'system_d - rag', 'system_d - asmos'"
+   },
+   "strength": "soft",
+   "status": "incomplete",
+   "run_id": "four_system_keyed_run (results/summary.csv)",
+   "source_hash": "sha256:44e2ee60c8fffdecc3359774eeb40f2df15806438179e0abec618885ed02386b",
+   "notes": "No p-values are reported, and W = -94 is negative (sign convention undefined; scipy's W is non-negative), so 'significant' cannot be written from this file. The three deltas are consistent with the token-F1 means in summary.csv (0.7513-0.4155 = 0.3358; 0.4329-0.7513 = -0.3184; 0.4329-0.4155 = 0.0174)."
+  },
+  {
+   "id": "E084",
+   "kind": "observation",
+   "summary": "The authors' reading of the four-system run: RAG beats No-Memory; ASMOS+RAG recovers EM over ASMOS-memory but not token-F1 (CI spans 0); RAG still leads on token-F1; ASMOS-memory alone underperforms No-Memory on this static single-agent QA task",
+   "locator": {
+    "path": "project/results/summary.md",
+    "anchor": "section 'Findings (measured, latest keyed run)'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:70e72641c214f292dd61ecf8b685449485d01a0d671b611f6fd5787d8f21a5b9",
+   "notes": "Verbatim: \"ASMOS's demonstrated value (per E2) is routing/maintenance under change -- a different axis this dataset does not measure.\" and \"no ownership/change dynamics\"."
+  },
+  {
+   "id": "E085",
+   "kind": "limitation_noted",
+   "summary": "Authors note that retrieval precision/recall and route@1/ownership accuracy are not computable on the single-agent RULER QA data (no relevant-doc labels, no owner labels); System D exercises routing with a single expert",
+   "locator": {
+    "path": "project/results/summary.md",
+    "anchor": "section 'Gap report - metrics still not computable'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:70e72641c214f292dd61ecf8b685449485d01a0d671b611f6fd5787d8f21a5b9",
+   "notes": "Verbatim: \"retrieval_precision / retrieval_recall -- no ground-truth relevant-doc labels in RULER QA.\" and \"route@1 / ownership_accuracy -- single-agent RULER QA has no owner labels\"."
+  },
+  {
+   "id": "E086",
+   "kind": "result",
+   "summary": "README: routing cost reduction A1 vs A0 of -23.84% +/- 0.15 LLM tokens per query at equal accuracy 0.545 (N=5, corpus of 11 queries)",
+   "value": {
+    "metric": "llm_token_reduction_pct_A1_vs_A0",
+    "value": -23.84,
+    "spread": {
+     "type": "std",
+     "value": 0.15
+    },
+    "n": 5,
+    "answer_accuracy": 0.545
+   },
+   "conditions": "README key-results table; gpt-4o-mini temperature 0; mean +/- std over N=5 seeds unless noted; artifact not in the package; artifact transactive_seeds_20260621_b4b1094.json; query count 11 inferred from REPRODUCIBILITY.md row 'n=11'; embedder unconfirmed",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Key results table row 1"
+   },
+   "strength": "soft",
+   "status": "unverifiable",
+   "quantity": "cost_reduction_pct_A0_vs_A1|n_queries=11|N=5|gpt-4o-mini",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Different experiment from the n=50/N=10 headline (22.0911%): different query set and seed count, so a different quantity and not a conflict. REPRODUCIBILITY.md names n=50/N=10 -22.09% as the paper claim; which one is the headline is Checkpoint Q-001. Source artifact is not in the package, so this README value cannot be checked. The README predates the N=10 run and the 2026-08-07 correction."
+  },
+  {
+   "id": "E087",
+   "kind": "result",
+   "summary": "README: cost cause is ownership evolution: A1 vs A2 (frozen prior) gap +39.14 +/- 0.43 tokens per query, never inverts (min +38.6), verdict SUPPORTED",
+   "value": {
+    "metric": "a1_a2_gap_tokens_per_query",
+    "value": 39.14,
+    "spread": {
+     "type": "std",
+     "value": 0.43
+    },
+    "n": 5,
+    "min": 38.6,
+    "design": "ablation"
+   },
+   "conditions": "README key-results table; gpt-4o-mini temperature 0; mean +/- std over N=5 seeds unless noted; artifact not in the package; artifact transactive_seeds_20260621_b4b1094.json; 11-query corpus",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Key results table row 2"
+   },
+   "strength": "soft",
+   "status": "unverifiable",
+   "quantity": "a1_a2_gap_tokens_per_query|n_queries=11|N=5|gpt-4o-mini",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "The n=50 analogue (E-a1_a2_gap, 38.922) is consistent in size but is a different quantity. Source artifact is not in the package, so this README value cannot be checked. The README predates the N=10 run and the 2026-08-07 correction."
+  },
+  {
+   "id": "E088",
+   "kind": "result",
+   "summary": "README: o200k_base context-token recount keeps the headline at 23.84% and moves context tokens from 34.33% to 34.06%",
+   "value": {
+    "headline_pct": 23.84,
+    "context_pct_before": 34.33,
+    "context_pct_after": 34.06
+   },
+   "conditions": "README key-results table; gpt-4o-mini temperature 0; mean +/- std over N=5 seeds unless noted; artifact not in the package; tiktoken o200k_base; artifact token_audit_20260623_fd5d07a.md",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Key results table row 3"
+   },
+   "strength": "soft",
+   "status": "unverifiable",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": " Source artifact is not in the package, so this README value cannot be checked. The README predates the N=10 run and the 2026-08-07 correction."
+  },
+  {
+   "id": "E089",
+   "kind": "result",
+   "summary": "README: E2 stationary - route@1 1.000 vs 1.000, answerability 0.909 vs 0.727 (MiniLM)",
+   "value": {
+    "asmos_route_at_1": 1.0,
+    "classifier_route_at_1": 1.0,
+    "asmos_answerability": 0.909,
+    "classifier_answerability": 0.727
+   },
+   "conditions": "README key-results table; gpt-4o-mini temperature 0; mean +/- std over N=5 seeds unless noted; artifact not in the package; MiniLM; artifact e2_stationary_20260624_124855.json",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Key results table row 4"
+   },
+   "strength": "soft",
+   "status": "unverifiable",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Agrees with the MiniLM shared-tau row of e2_cross_model_summary (a checkable file). Source artifact is not in the package, so this README value cannot be checked. The README predates the N=10 run and the 2026-08-07 correction."
+  },
+  {
+   "id": "E090",
+   "kind": "result",
+   "summary": "README: E2 drift - ASMOS regret 7.90 with 0 retrains versus classifier 1-3 retrains",
+   "value": {
+    "asmos_cumulative_regret": 7.9,
+    "asmos_retrains": 0,
+    "classifier_retrains": "1-3"
+   },
+   "conditions": "README key-results table; gpt-4o-mini temperature 0; mean +/- std over N=5 seeds unless noted; artifact not in the package; MiniLM; artifact e2_reviewer_fix_20260624_124952.json",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Key results table row 5"
+   },
+   "strength": "soft",
+   "status": "unverifiable",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": " Source artifact is not in the package, so this README value cannot be checked. The README predates the N=10 run and the 2026-08-07 correction."
+  },
+  {
+   "id": "E091",
+   "kind": "result",
+   "summary": "README: E2 refutation (weakest regime) - ASMOS regret 25.23, recovers 3 of 5, 0 retrains; only zero-retrain arm that recovers",
+   "value": {
+    "asmos_cumulative_regret": 25.23,
+    "recovers": "3/5",
+    "asmos_retrains": 0
+   },
+   "conditions": "README key-results table; gpt-4o-mini temperature 0; mean +/- std over N=5 seeds unless noted; artifact not in the package; MiniLM; artifact e2_refutation_20260624_125104.json",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Key results table row 6"
+   },
+   "strength": "soft",
+   "status": "unverifiable",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": " Source artifact is not in the package, so this README value cannot be checked. The README predates the N=10 run and the 2026-08-07 correction."
+  },
+  {
+   "id": "E092",
+   "kind": "result",
+   "summary": "README: E2 new-topic (MiniLM) - ASMOS regret 4.32, routes 5/5, 0 retrains ('clean win')",
+   "value": {
+    "metric": "cumulative_regret",
+    "value": 4.32,
+    "routes": "5/5",
+    "retrains": 0
+   },
+   "conditions": "README key-results table; gpt-4o-mini temperature 0; mean +/- std over N=5 seeds unless noted; artifact not in the package; MiniLM; artifact e2_new_topic_20260624_125140.json",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Key results table row 7"
+   },
+   "strength": "soft",
+   "status": "unverifiable",
+   "quantity": "e2_new_topic_asmos_cumulative_regret|embedder=MiniLM-L6-v2",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Compare the checkable new-topic runs with MPNet (3.24) and BGE-M3 (0.92): different embedders, not conflicts. README also says the BGE (bge-small) new-topic cell was excluded as degenerate; the BGE-M3 run in the package is a later, different-model run. Source artifact is not in the package, so this README value cannot be checked. The README predates the N=10 run and the 2026-08-07 correction."
+  },
+  {
+   "id": "E093",
+   "kind": "result",
+   "summary": "README: E7 cross-model - ASMOS 0 retrains in every completed cell (MiniLM 4/4, MPNet 4/4, BGE 3/4)",
+   "value": {
+    "asmos_retrains": 0,
+    "cells_completed": {
+     "MiniLM": "4/4",
+     "MPNet": "4/4",
+     "BGE": "3/4"
+    }
+   },
+   "conditions": "README key-results table; gpt-4o-mini temperature 0; mean +/- std over N=5 seeds unless noted; artifact not in the package; artifact e7_cross_model_20260704_001210_5351faf.{json,md}",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Key results table row 8"
+   },
+   "strength": "soft",
+   "status": "unverifiable",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "REPRODUCIBILITY.md later lists E7 as '4 families; reversal step 26' (adds bge-m3); the README cell counts are an earlier snapshot. Source artifact is not in the package, so this README value cannot be checked. The README predates the N=10 run and the 2026-08-07 correction."
+  },
+  {
+   "id": "E094",
+   "kind": "negative_result",
+   "summary": "README: E5 convergence sample-efficiency is FLAT - 0 of 12 win cells versus the trust-only ablation (honest null)",
+   "value": {
+    "win_cells": 0,
+    "cells": 12
+   },
+   "conditions": "README key-results table; gpt-4o-mini temperature 0; mean +/- std over N=5 seeds unless noted; artifact not in the package; keyed, no LLM, canonical population; artifact e5_keyed_20260703_110618_29fefd3.json; docs/e5_decision_memo.md",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Key results table row 9"
+   },
+   "strength": "soft",
+   "status": "unverifiable",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "REPRODUCIBILITY.md agrees: 'E5 keyed sweep (0/12 win cells - honest null)'. Negative result: needs a reporting decision. Source artifact is not in the package, so this README value cannot be checked. The README predates the N=10 run and the 2026-08-07 correction."
+  },
+  {
+   "id": "E095",
+   "kind": "result",
+   "summary": "README: multi-agent mechanism coherence (single run, no seeds) - route@1 0.917 (22/24); ownership evolves off the 0.42 prior on all 4 topics",
+   "value": {
+    "metric": "route_at_1",
+    "value": 0.917,
+    "n_correct": 22,
+    "n": 24,
+    "prior": 0.42,
+    "topics": 4
+   },
+   "conditions": "README key-results table; gpt-4o-mini temperature 0; mean +/- std over N=5 seeds unless noted; artifact not in the package; MiniLM; imposed partition; artifact eval_ladder_20260621_2c9a4c9.json",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Key results table row 10"
+   },
+   "strength": "soft",
+   "status": "unverifiable",
+   "quantity": "multi_agent_route_at_1|eval_ladder_20260621",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "The archived technical report gives the same figure (superseded there). Source artifact is not in the package, so this README value cannot be checked. The README predates the N=10 run and the 2026-08-07 correction."
+  },
+  {
+   "id": "E096",
+   "kind": "result",
+   "summary": "README: 2026-07-07 MiniLM rerun reproduces the routing geometry (separability 0.2666/0.1024, tau = 0.351492) to 4 decimal places",
+   "value": {
+    "metric": "routing_tau",
+    "value": 0.351492,
+    "separability_within": 0.2666,
+    "separability_cross": 0.1024
+   },
+   "conditions": "MiniLM rerun; transactive_experiment_20260707_aed941c.{json,md} (absent)",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Notes on honesty, bullet 1"
+   },
+   "strength": "soft",
+   "status": "conflicting",
+   "quantity": "routing_tau_default",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "README prints tau = 0.351492; the N=10 artifact and both E2 new-topic configs record 0.351493 (a 1e-6 difference, immaterial to the results but a recorded discrepancy in a headline parameter). README describes the value from a different (rerun) artifact.",
+   "conflicts_with": [
+    "E097"
+   ]
+  },
+  {
+   "id": "E097",
+   "kind": "method_detail",
+   "summary": "Routing threshold tau frozen for the N=10 run is 0.351493 (same asmos_tau in both E2 new-topic configs)",
+   "value": {
+    "metric": "routing_tau",
+    "value": 0.351493
+   },
+   "conditions": "constructed asymmetric two-agent transactive corpus; 50 queries; openai/gpt-4o-mini temperature 0; seeds 11,22,33,44,55,66,77,88,99,110; frozen tau 0.351493",
+   "locator": {
+    "path": "project/data/results/n10_cost_expanded_20260726_93f9058.json",
+    "anchor": "key=frozen_tau"
+   },
+   "strength": "hard",
+   "status": "conflicting",
+   "quantity": "routing_tau_default",
+   "run_id": "n10_cost_expanded_20260726_93f9058",
+   "source_hash": "sha256:6ec2be2640a1f6b127b412c8079ff3faae0e4c4d66bf4011e5b2a7437f9f5a50",
+   "notes": "README limitation: tau is tuned in-corpus rather than on a held-out split; REPRODUCIBILITY.md lists a held-out tau experiment (tau_heldout 0.333) whose artifact is absent.",
+   "conflicts_with": [
+    "E096"
+   ],
+   "resolution": {
+    "chosen": "E097",
+    "reason": "The stamped N=10 result file and the two E2 configs (checkable primary records used by the reported experiments) agree on 0.351493; the README figure is a prose value from a different, absent rerun artifact.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E098",
+   "kind": "observation",
+   "summary": "README: roughly 80-85% of the frozen v1.0 spec is implemented and unit-tested (2026-06-30 audit in docs/mem9.md)",
+   "value": {
+    "implementation_coverage_pct": "80-85"
+   },
+   "conditions": "docs/mem9.md not in package",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Status & limitations, bullet 1"
+   },
+   "strength": "soft",
+   "status": "unverifiable",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61"
+  },
+  {
+   "id": "E099",
+   "kind": "result",
+   "summary": "README: local pytest run on the branch reports 342 passed, 0 failed, 2 skipped",
+   "value": 342,
+   "conditions": "pytest, full suite; skipped 2, failed 0; README snapshot (earlier revision)",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Status & limitations, 'Tests' bullet"
+   },
+   "strength": "soft",
+   "status": "conflicting",
+   "quantity": "pytest_passed_count_full_suite",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Same quantity as REPRODUCIBILITY.md (412 passed, 7 skipped). Both are prose claims about local runs; no CI artifact or test log is in the package (README: 'A recorded CI pass/coverage artifact is an outstanding item'). Left unreconciled; no claim may cite either.",
+   "conflicts_with": [
+    "E100"
+   ]
+  },
+  {
+   "id": "E100",
+   "kind": "result",
+   "summary": "REPRODUCIBILITY.md: full pytest suite 412 passed, 7 skipped, 0 failed (native, Windows, python 3.12.5)",
+   "value": 412,
+   "conditions": "pytest, full suite; skipped 7, failed 0; native Windows python 3.12.5",
+   "locator": {
+    "path": "project/REPRODUCIBILITY.md",
+    "anchor": "section 5 'Verified here'"
+   },
+   "strength": "soft",
+   "status": "conflicting",
+   "quantity": "pytest_passed_count_full_suite",
+   "source_hash": "sha256:4c643af4e526fd12d708c8fcd013e441dc1a82ba79f4892badaf38248d61f46c",
+   "notes": "See E-rd_tests. Unreconciled on purpose.",
+   "conflicts_with": [
+    "E099"
+   ]
+  },
+  {
+   "id": "E101",
+   "kind": "limitation_noted",
+   "summary": "Authors state ASMOS does not beat RAG on span-retrieval QA (it is not a QA-accuracy method)",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "What it shows / what it does not"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Verbatim: \"ASMOS does **not** beat RAG on span-retrieval QA (it is not a QA-accuracy method)\""
+  },
+  {
+   "id": "E102",
+   "kind": "limitation_noted",
+   "summary": "Authors state ownership asymmetry does not emerge organically because the corpus is deliberately constructed",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "What it shows / what it does not"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Verbatim: \"ownership asymmetry does **not** emerge organically (the corpus is deliberately constructed)\""
+  },
+  {
+   "id": "E103",
+   "kind": "limitation_noted",
+   "summary": "Authors state the convergence / sample-efficiency hypothesis was tested and returned a FLAT null",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "What it shows / what it does not"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Verbatim: \"the convergence / sample-efficiency hypothesis was tested and returned an honest **FLAT null**\" Also: 'Convergence is a null, not a gap ... The scope condition (discriminative refutation) is stated as future pre-registered work.'"
+  },
+  {
+   "id": "E104",
+   "kind": "limitation_noted",
+   "summary": "Authors list descoped items: agent-specific memory projection (no module), contradiction detection (refutation only when supplied), continuous forgetting (OFF by default)",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Status & limitations, 'Explicitly descoped'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Verbatim: \"Explicitly descoped ... agent-specific memory projection (no module; the store is global); contradiction detection ... the `contradictory` flag is never computed or acted on -- refutation is claimed only when *supplied* as a verification outcome; continuous forgetting (lifecycle logic and tests exist but are OFF by default\""
+  },
+  {
+   "id": "E105",
+   "kind": "limitation_noted",
+   "summary": "Authors state every LLM number uses gpt-4o-mini and N=5 is below a publication N >= 10, with the N >= 10 rerun pending an API key",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Status & limitations, 'Single LLM; N=5'"
+   },
+   "strength": "soft",
+   "status": "superseded",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Verbatim: \"Single LLM; N=5. Every LLM number uses `gpt-4o-mini`. N=5 is tight ... but below a publication N >= 10. The N >= 10 keyed centerpiece rerun is pending a valid `OPENROUTER_API_KEY`\" SUPERSEDED: the N=10 artifact (seeds 11-110) exists and CORRECTIONS.md records qwen3-30b-a3b and qwen-2.5-72b cost runs, so 'single LLM' and 'N=10 pending' are stale."
+  },
+  {
+   "id": "E106",
+   "kind": "limitation_noted",
+   "summary": "Authors state tau is tuned in-corpus rather than on a held-out split; QA-ladder grading is LLM-judged; multi-agent validation is one seedless run with an imposed partition; REUSE_THRESHOLD is an untuned placeholder (0.80) that feeds none of the reported numbers",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Status & limitations, 'Other flagged caveats'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Verbatim: \"tau is tuned in-corpus rather than on a held-out split; QA-ladder grading is LLM-judged ... multi-agent validation is one seedless run with an imposed partition; `REUSE_THRESHOLD` ... is an untuned placeholder (0.80)\""
+  },
+  {
+   "id": "E107",
+   "kind": "limitation_noted",
+   "summary": "Authors state the centerpiece 20260621 run's embedder (lexical-hash fallback vs MiniLM) is unconfirmed; the LLM-token headline is API-exact and embedder-independent; the token recount under confirmed MiniLM is pending a valid API key",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Notes on honesty, bullet 1"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Verbatim: \"The centerpiece `20260621` run's embedder (lexical-hash fallback vs MiniLM) is **unconfirmed**.\""
+  },
+  {
+   "id": "E108",
+   "kind": "limitation_noted",
+   "summary": "Authors state the BGE (bge-small) new-topic E7 cell is excluded because the run fell back to the hash embedder (embedder=None, degenerate regret 0.0)",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Notes on honesty, bullet 2"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Verbatim: \"The BGE new-topic E7 cell is **excluded**: its run fell back to the hash embedder (embedder=None, degenerate regret 0.0) and is reported as incomplete rather than fabricated.\""
+  },
+  {
+   "id": "E109",
+   "kind": "limitation_noted",
+   "summary": "Authors state a recorded CI pass/coverage artifact is an outstanding item",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Status & limitations, 'Tests'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Verbatim: \"A recorded CI pass/coverage artifact is an outstanding item.\""
+  },
+  {
+   "id": "E110",
+   "kind": "method_detail",
+   "summary": "ASMOS ownership layer: ownership is learned online from verification-gated reputation; a verified claim raises an agent's topic ownership, a refuted claim lowers it; queries route to the learned owner with a confidence-gated fallback to global search; router scores Sim x Ownership with a tau-gated fallback",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "opening paragraph; Repository layout (routing/router.py)"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Verbatim: \"a verified claim raises an agent's ownership of a topic, a refuted claim lowers it, and queries route to the learned owner with a confidence-gated fallback to global search.\""
+  },
+  {
+   "id": "E111",
+   "kind": "rationale_stated",
+   "summary": "Reason given for cost and answerability as the headline metrics: answer accuracy saturates under parametric model knowledge, making cost and answerability the discriminative metrics",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "What it shows / what it does not, (3)"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Verbatim: \"an evaluation finding that answer accuracy saturates under parametric model knowledge, making cost and answerability the discriminative metrics.\""
+  },
+  {
+   "id": "E112",
+   "kind": "rationale_stated",
+   "summary": "Reason given for requiring the MiniLM embedder: the lexical-hash fallback is a degraded offline mode, not the evaluation baseline; without embeddings the store falls back silently to hash",
+   "locator": {
+    "path": "project/README.md",
+    "anchor": "Installation & requirements"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:406a714a12320bfbc8a9111317db839b04a3837dd6de7b24ddd2bf932455dd61",
+   "notes": "Verbatim: \"Without it, the store degrades to an offline 64-dim **lexical-hash** provider -- a degraded offline mode, **not** the evaluation baseline.\""
+  },
+  {
+   "id": "E113",
+   "kind": "result",
+   "summary": "REPRODUCIBILITY.md: without the embeddings extra the store falls back to a 64-dim lexical hash embedder and precision@1 drops 1.000 to 0.778",
+   "value": {
+    "metric": "routing_precision_at_1",
+    "value": 0.778,
+    "with_minilm": 1.0
+   },
+   "conditions": "lexical-hash fallback vs MiniLM; system and regime not named in the sentence; 1.000 matches ASMOS with MiniLM in e2_cross_model_summary",
+   "locator": {
+    "path": "project/REPRODUCIBILITY.md",
+    "anchor": "section 2 Native path, embeddings extra"
+   },
+   "strength": "soft",
+   "status": "conflicting",
+   "quantity": "e2_cross_model|routing_precision_at_1|embedder=lexical-hash (fallback)|arm=A1_ASMOS_SHARED_TAU",
+   "source_hash": "sha256:4c643af4e526fd12d708c8fcd013e441dc1a82ba79f4892badaf38248d61f46c",
+   "notes": "e2_cross_model_summary gives ASMOS (shared tau) p@1 0.667 under lexical-hash; 0.778 is instead the A4 classifier calibrated-tau value in that file. The sentence does not name the arm, so the mapping to ASMOS is the agent's reading of '1.000'.",
+   "conflicts_with": [
+    "E066"
+   ]
+  },
+  {
+   "id": "E114",
+   "kind": "result",
+   "summary": "REPRODUCIBILITY.md lists results with absent artifacts: held-out tau 0.333 (criteria pass); E6 natural asymmetry OCI 0.9943 with route@1 100/0; four-system 22/24 abstention; E7 four embedder families with reversal at step 26",
+   "value": {
+    "tau_heldout": 0.333,
+    "E6_OCI": 0.9943,
+    "E6_route_at_1": "100/0",
+    "four_system_abstention": "22/24",
+    "E7_families": 4,
+    "E7_reversal_step": 26
+   },
+   "conditions": "artifacts heldout_tau_*.json, e6_eval_*.json, four_system_v1_*/, e7_*.json absent from the package",
+   "locator": {
+    "path": "project/REPRODUCIBILITY.md",
+    "anchor": "section 3 headline map rows"
+   },
+   "strength": "soft",
+   "status": "unverifiable",
+   "source_hash": "sha256:4c643af4e526fd12d708c8fcd013e441dc1a82ba79f4892badaf38248d61f46c",
+   "notes": "'22/24 abstention' is not comparable to answerability = 1.0 for all four systems in results/summary.csv (different metric or different run). Not used for any candidate claim."
+  },
+  {
+   "id": "E115",
+   "kind": "rationale_stated",
+   "summary": "Reason for reporting n_eff beside every effect size: a bare r = 1.0 invites the false reading that every query improved",
+   "locator": {
+    "path": "project/data/results/CORRECTIONS.md",
+    "anchor": "section 'Reported estimator'"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:74fc8f4d802a3969d47e46ec3a8b833f15bfdc6c2529d96e066527f480128f5e",
+   "notes": "Verbatim: \"a bare \\\"r = 1.0\\\" invites the reading \\\"every query improved\\\", which is false for 28% of that set. A zero delta there is the mechanism working as specified -- the router correctly falls back to global search and issues a byte-identical request.\""
+  },
+  {
+   "id": "E116",
+   "kind": "observation",
+   "summary": "The authors argue the original defect could only understate a positive effect (mu_buggy > mu_correct and sigma_buggy > sigma_correct when n > n_eff), so the correction runs upward",
+   "locator": {
+    "path": "project/data/results/CORRECTIONS.md",
+    "anchor": "section 'What was wrong' - Direction"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:74fc8f4d802a3969d47e46ec3a8b833f15bfdc6c2529d96e066527f480128f5e",
+   "notes": "Verbatim: \"That is a theorem about the two formulas, fixed before any of this data was touched\". Stored 0.688 -> 0.941; 0.5659 -> 0.9463; 0.0389 -> 1.0 all move upward; the Rosenthal N=2n reading (0.568) would have moved the headline down, which the authors say is why Kerby was chosen on principle, not size."
+  },
+  {
+   "id": "E117",
+   "kind": "implementation_detail",
+   "summary": "Memory contract v1.2 (frozen): Checkpoint with SYS/LLM/CMP field origins; lifecycle NEW -> VALIDATED -> PROMOTED -> MERGED -> ARCHIVED -> FORGOTTEN; from_agent_output rejects computed (CMP) fields (Invariant 8); immutable layer never forgotten (Invariant 4); predicted_reuse never overwritten (Invariant 6)",
+   "value": {
+    "contract_version": "1.2",
+    "lifecycle": [
+     "NEW",
+     "VALIDATED",
+     "PROMOTED",
+     "MERGED",
+     "ARCHIVED",
+     "FORGOTTEN"
+    ],
+    "invariants_cited": [
+     4,
+     6,
+     8
+    ]
+   },
+   "locator": {
+    "path": "project/CONTRACT.md",
+    "anchor": "Checkpoint fields; Contract guarantees"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "source_hash": "sha256:547d9363d01e9d58634a8fe66390d644490ccc1503242823adad791ebe5890ed",
+   "notes": "Specification document, not a result. Backend/ranking numbers are not in it."
+  },
+  {
+   "id": "E118",
+   "kind": "implementation_detail",
+   "summary": "CONTRACT.md 'Not in scope today' says there is no storage backend, no embeddings, no ChromaDB (Week 2)",
+   "locator": {
+    "path": "project/CONTRACT.md",
+    "anchor": "section 'Not in scope today'"
+   },
+   "strength": "soft",
+   "status": "superseded",
+   "source_hash": "sha256:547d9363d01e9d58634a8fe66390d644490ccc1503242823adad791ebe5890ed",
+   "notes": "Superseded: the same file's package-path note and README describe src/asmos/memory/store.py with Chroma and a MiniLM embedder as implemented. Do not describe the memory store as absent."
+  },
+  {
+   "id": "E119",
+   "kind": "result",
+   "summary": "SUPERSEDED (archived report): transactive routing cut LLM tokens by 23.8% +/- 0.2 (per-seed range 23.68%-24.03%) at equal accuracy 0.545 and answerability 0.909",
+   "value": {
+    "metric": "llm_token_reduction_pct_A0_vs_A1",
+    "value": 23.8,
+    "spread": {
+     "type": "std",
+     "value": 0.2
+    },
+    "n": 5,
+    "range_pct": [
+     23.68,
+     24.03
+    ]
+   },
+   "conditions": "archived technical report snapshot 2026-06-23; gpt-4o-mini temperature 0; N=5 seeds 11,22,33,44,55; 11-query corpus",
+   "locator": {
+    "path": "project/ASMOS_technical_report.md",
+    "anchor": "section 2 'The headline (A1 vs A0)'"
+   },
+   "strength": "soft",
+   "status": "superseded",
+   "quantity": "cost_reduction_pct_A0_vs_A1|n_queries=11|N=5|gpt-4o-mini|archived_report",
+   "source_hash": "sha256:ef674777c0f6ed98b108378621ef0538980ee5134dc766619bf440eca22aec32",
+   "notes": "Rounded restatement of the README 23.84 figure. ARCHIVED report (self-declared: 'superseded by docs/paper/paper.md ... do not cite numbers from here'); source artifact absent from the package. Do not use."
+  },
+  {
+   "id": "E120",
+   "kind": "result",
+   "summary": "SUPERSEDED (archived report): per-arm table A0 179.8+/-0.3, A1 136.9+/-0.1, A2 176.0+/-0.5, A3 120.5+/-0.1 tokens per query; accuracy 0.545/0.545/0.545/0.455; answerability 0.909/0.909/0.909/0.455",
+   "value": {
+    "tokens_per_query": {
+     "A0": 179.8,
+     "A1": 136.9,
+     "A2": 176.0,
+     "A3": 120.5
+    },
+    "accuracy": {
+     "A0": 0.545,
+     "A1": 0.545,
+     "A2": 0.545,
+     "A3": 0.455
+    },
+    "answerability": {
+     "A0": 0.909,
+     "A1": 0.909,
+     "A2": 0.909,
+     "A3": 0.455
+    }
+   },
+   "conditions": "archived technical report snapshot 2026-06-23; gpt-4o-mini temperature 0; N=5 seeds 11,22,33,44,55; 11-query corpus",
+   "locator": {
+    "path": "project/ASMOS_technical_report.md",
+    "anchor": "section 2 table"
+   },
+   "strength": "soft",
+   "status": "superseded",
+   "source_hash": "sha256:ef674777c0f6ed98b108378621ef0538980ee5134dc766619bf440eca22aec32",
+   "notes": "Different corpus from the n=50 run (which has A0 180.154, A1 140.356 tokens per query). ARCHIVED report (self-declared: 'superseded by docs/paper/paper.md ... do not cite numbers from here'); source artifact absent from the package. Do not use."
+  },
+  {
+   "id": "E121",
+   "kind": "result",
+   "summary": "SUPERSEDED (archived report): A1-A2 gap 39.1 +/- 0.4 tokens per query, per-seed [39.7, 39.1, 38.9, 38.6, 39.4], min +38.6",
+   "value": {
+    "gap": 39.1,
+    "std": 0.4,
+    "per_seed": [
+     39.7,
+     39.1,
+     38.9,
+     38.6,
+     39.4
+    ]
+   },
+   "conditions": "archived technical report snapshot 2026-06-23; gpt-4o-mini temperature 0; N=5 seeds 11,22,33,44,55; 11-query corpus",
+   "locator": {
+    "path": "project/ASMOS_technical_report.md",
+    "anchor": "section 2 'The load-bearing result'"
+   },
+   "strength": "soft",
+   "status": "superseded",
+   "source_hash": "sha256:ef674777c0f6ed98b108378621ef0538980ee5134dc766619bf440eca22aec32",
+   "notes": "README states 39.14 +/- 0.43. ARCHIVED report (self-declared: 'superseded by docs/paper/paper.md ... do not cite numbers from here'); source artifact absent from the package. Do not use."
+  },
+  {
+   "id": "E122",
+   "kind": "result",
+   "summary": "SUPERSEDED (archived report): multi-agent route@1 = 0.917 (22/24), ownership ~0.987 on all four owned topics, 68 of 600 verified checkpoints Class C",
+   "value": {
+    "route_at_1": 0.917,
+    "ownership_after": 0.987,
+    "class_c_no_update": "68/600"
+   },
+   "conditions": "eval_ladder_20260621_2c9a4c9.json (absent)",
+   "locator": {
+    "path": "project/ASMOS_technical_report.md",
+    "anchor": "section 5 'Multi-agent mechanism validation'"
+   },
+   "strength": "soft",
+   "status": "superseded",
+   "source_hash": "sha256:ef674777c0f6ed98b108378621ef0538980ee5134dc766619bf440eca22aec32",
+   "notes": "ARCHIVED report (self-declared: 'superseded by docs/paper/paper.md ... do not cite numbers from here'); source artifact absent from the package. Do not use."
+  },
+  {
+   "id": "E123",
+   "kind": "result",
+   "summary": "SUPERSEDED (archived report): organic verification density measured at 31.6% (mem6)",
+   "value": {
+    "organic_verification_density_pct": 31.6
+   },
+   "conditions": "mem6 (absent)",
+   "locator": {
+    "path": "project/ASMOS_technical_report.md",
+    "anchor": "section 3 A-2"
+   },
+   "strength": "soft",
+   "status": "superseded",
+   "source_hash": "sha256:ef674777c0f6ed98b108378621ef0538980ee5134dc766619bf440eca22aec32",
+   "notes": "ARCHIVED report (self-declared: 'superseded by docs/paper/paper.md ... do not cite numbers from here'); source artifact absent from the package. Do not use."
+  },
+  {
+   "id": "E124",
+   "kind": "result",
+   "summary": "SUPERSEDED (archived report): eval-ladder RAG containment 75.0%, token-F1 76.5% on 24 questions (eval_ladder_20260618)",
+   "value": {
+    "metric": "containment",
+    "value": 0.75,
+    "token_f1": 0.765,
+    "n": 24
+   },
+   "conditions": "24 RULER/EventQA questions; gpt-4o-mini; older ladder run",
+   "locator": {
+    "path": "project/ASMOS_technical_report.md",
+    "anchor": "section 5 ladder table, RAG row"
+   },
+   "strength": "soft",
+   "status": "superseded",
+   "quantity": "containment|RULER QA n=24|gpt-4o-mini|system=rag",
+   "source_hash": "sha256:ef674777c0f6ed98b108378621ef0538980ee5134dc766619bf440eca22aec32",
+   "notes": "Current keyed four-system run gives RAG containment 0.7083 and token-F1 0.7513 on 24 questions. Same quantity, different value; the archived report is superseded. ARCHIVED report (self-declared: 'superseded by docs/paper/paper.md ... do not cite numbers from here'); source artifact absent from the package. Do not use.",
+   "conflicts_with": [
+    "E076"
+   ],
+   "resolution": {
+    "chosen": "E076",
+    "reason": "The archived report is self-declared superseded and its ladder run is not in the package; results/summary.csv is the current machine-written record for the same 24-question RAG containment.",
+    "by": "agent"
+   }
+  },
+  {
+   "id": "E125",
+   "kind": "result",
+   "summary": "SUPERSEDED (archived report): No-Memory containment 29.2% (documented floor) / 33.3% (same session), MemGPT 62.5% containment and 69.2% token-F1, Single-ASMOS 16.7% flagged [VERIFY] with no committed artifact",
+   "value": {
+    "no_memory_documented": 0.292,
+    "no_memory_same_session": 0.333,
+    "memgpt_containment": 0.625,
+    "memgpt_f1": 0.692,
+    "single_asmos_containment": 0.167
+   },
+   "conditions": "older ladder run",
+   "locator": {
+    "path": "project/ASMOS_technical_report.md",
+    "anchor": "section 5 ladder table"
+   },
+   "strength": "soft",
+   "status": "superseded",
+   "source_hash": "sha256:ef674777c0f6ed98b108378621ef0538980ee5134dc766619bf440eca22aec32",
+   "notes": "The report itself says the Single-ASMOS 16.7% has no committed artifact. Current four-system ASMOS-memory containment is 0.1667. ARCHIVED report (self-declared: 'superseded by docs/paper/paper.md ... do not cite numbers from here'); source artifact absent from the package. Do not use."
+  },
+  {
+   "id": "E126",
+   "kind": "result",
+   "summary": "SUPERSEDED (archived report): within-domain topic-centroid cosine 0.267, cross-domain 0.102",
+   "value": {
+    "within": 0.267,
+    "cross": 0.102
+   },
+   "conditions": "archived technical report snapshot 2026-06-23; gpt-4o-mini temperature 0; N=5 seeds 11,22,33,44,55; 11-query corpus",
+   "locator": {
+    "path": "project/ASMOS_technical_report.md",
+    "anchor": "section 2 Setup"
+   },
+   "strength": "soft",
+   "status": "superseded",
+   "source_hash": "sha256:ef674777c0f6ed98b108378621ef0538980ee5134dc766619bf440eca22aec32",
+   "notes": "Matches the checkable N=10 artifact at 3 dp (0.2666, 0.1024). ARCHIVED report (self-declared: 'superseded by docs/paper/paper.md ... do not cite numbers from here'); source artifact absent from the package. Do not use."
+  },
+  {
+   "id": "E127",
+   "kind": "result",
+   "summary": "SUPERSEDED (archived report): time-to-correct-owner in verified claims: r_architectures 2, r_benchmarks 6, r_theory 10, c_api_usage 14, c_error_handling 20, c_perf_optimization 24",
+   "value": {
+    "r_architectures": 2,
+    "r_benchmarks": 6,
+    "r_theory": 10,
+    "c_api_usage": 14,
+    "c_error_handling": 20,
+    "c_perf_optimization": 24
+   },
+   "conditions": "archived technical report snapshot 2026-06-23; gpt-4o-mini temperature 0; N=5 seeds 11,22,33,44,55; 11-query corpus",
+   "locator": {
+    "path": "project/ASMOS_technical_report.md",
+    "anchor": "section 5 Figure 2 note"
+   },
+   "strength": "soft",
+   "status": "superseded",
+   "source_hash": "sha256:ef674777c0f6ed98b108378621ef0538980ee5134dc766619bf440eca22aec32",
+   "notes": "ARCHIVED report (self-declared: 'superseded by docs/paper/paper.md ... do not cite numbers from here'); source artifact absent from the package. Do not use."
+  },
+  {
+   "id": "E128",
+   "kind": "limitation_noted",
+   "summary": "SUPERSEDED (archived report): N = 5 seeds is small though tight; context-token proxy was a whitespace word count; Multi-ASMOS QA cell unmeasured; Single-ASMOS 16.7% unbacked",
+   "locator": {
+    "path": "project/ASMOS_technical_report.md",
+    "anchor": "section 6"
+   },
+   "strength": "soft",
+   "status": "superseded",
+   "source_hash": "sha256:ef674777c0f6ed98b108378621ef0538980ee5134dc766619bf440eca22aec32",
+   "notes": "Stale: N=10 exists; the live limitations are in the README. ARCHIVED report (self-declared: 'superseded by docs/paper/paper.md ... do not cite numbers from here'); source artifact absent from the package. Do not use."
+  }
+ ]
+}

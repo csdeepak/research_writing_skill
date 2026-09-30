@@ -1,0 +1,23 @@
+# Generic fallback profile (VENUE_UNKNOWN). No venue was given; every rule is assumed.
+venue: {name: "generic research article", type: journal, guideline_urls: []}
+structure:
+  section_template: [Title, Abstract, Introduction, Related Work, Benchmark design and measurement method, Results, Discussion, Limitations, Conclusion, References]
+  results_discussion: separate
+  related_work_position: after_intro
+  limitations_section_required: true
+  assumed: true
+limits: {pages_main: null, words_main: 4500, abstract_words: 250, supplement_allowed: true, assumed: true}
+style:
+  citation_style: "(FirstAuthor et al., Year)"
+  voice_preference: "active voice; 'we' for the presenter of the authors' work is avoided: the authors are 'the authors'"
+  spelling: US
+  abstract_format: unstructured
+  abstract_citations_allowed: false
+  assumed: true
+required_statements:
+  data_availability: true
+  code_availability: true
+  ai_use_disclosure: "assumed; see disclosure.md"
+  assumed: true
+checklists: []
+reporting_guideline: null

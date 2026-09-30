@@ -1,0 +1,24 @@
+{
+  "entries": [
+    {"id": "Q-R1", "question": "What is TinyML and why does on-device, milliwatt-scale inference matter?", "raised_at": "Ab.1", "answered_at": "I.1", "reader_personas": ["B", "C"]},
+    {"id": "Q-R2", "question": "What resource envelope counts as 'microcontroller-class'?", "raised_at": "I.1", "answered_at": "I.2", "reader_personas": ["B"]},
+    {"id": "Q-R3", "question": "Why can't an existing ML or embedded benchmark just be used?", "raised_at": "I.1", "answered_at": "I.3", "reader_personas": ["A", "B"]},
+    {"id": "Q-R4", "question": "What exactly does this paper ask?", "raised_at": "I.3", "answered_at": "I.4", "reader_personas": ["A", "B", "E"]},
+    {"id": "Q-R5", "question": "What did the authors build, concretely?", "raised_at": "I.4", "answered_at": "I.5", "reader_personas": ["A", "B", "E"]},
+    {"id": "Q-R6", "question": "How is a fair comparison enforced across very different hardware/software while still allowing innovation?", "raised_at": "M.1", "answered_at": "M.2", "reader_personas": ["A", "B"]},
+    {"id": "Q-R7", "question": "How exactly is latency/accuracy/energy measured, and what stops someone from gaming the energy number?", "raised_at": "M.2", "answered_at": "M.3", "reader_personas": ["A", "B"]},
+    {"id": "Q-R8", "question": "For each of the four tasks: why this task, this data, this model, and this pass/fail bar?", "raised_at": "M.4", "answered_at": "M.5-M.8", "reader_personas": ["A", "B"]},
+    {"id": "Q-R9", "question": "Did the suite, once specified, actually run and meet its own targets?", "raised_at": "R.1", "answered_at": "R.2", "reader_personas": ["A", "B"]},
+    {"id": "Q-R10", "question": "Did anyone outside the authors actually use it, and on what?", "raised_at": "R.1", "answered_at": "R.3", "reader_personas": ["A", "B", "E"]},
+    {"id": "Q-R11", "question": "What patterns showed up across the round (numerics, frameworks, power)?", "raised_at": "R.3", "answered_at": "R.4", "reader_personas": ["A", "B"]},
+    {"id": "Q-R12", "question": "Is there anything notable that nobody did?", "raised_at": "R.4", "answered_at": "R.5", "reader_personas": ["A", "B"]},
+    {"id": "Q-R13", "question": "So, taken together, does the suite answer the research question?", "raised_at": "R.5", "answered_at": "D.1", "reader_personas": ["A", "B", "E"]},
+    {"id": "Q-R14", "question": "Why would a modular, three-metric design let heterogeneous stacks be compared at all (mechanism)?", "raised_at": "D.1", "answered_at": "D.2", "reader_personas": ["A", "B"]},
+    {"id": "Q-R15", "question": "What does the round's diversity NOT show?", "raised_at": "D.2", "answered_at": "D.3", "reader_personas": ["A", "B"]},
+    {"id": "Q-R16", "question": "What are the boundaries the authors themselves place on all of this?", "raised_at": "D.4", "answered_at": "L.1-L.3", "reader_personas": ["A", "B", "E"]},
+    {"id": "Q-R17", "question": "What should a reader remember a day later?", "raised_at": "L.3", "answered_at": "C.1", "reader_personas": ["A", "B", "C", "E"]}
+  ],
+  "debt_at_end_of_each_section": 0,
+  "forward_deferrals_in_introduction": ["Q-R8 (per-task design detail deferred to Method, foreshadowed at I.5's paper map)", "Q-R9/Q-R10 (results deferred to Results, foreshadowed at I.5's paper map)"],
+  "notes": "2 forward deferrals in the Introduction, both explicitly foreshadowed by the paper-map paragraph (I.5); within the <=3 limit in research_story.md SS4."
+}

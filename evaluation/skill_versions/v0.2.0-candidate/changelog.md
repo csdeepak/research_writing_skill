@@ -11,9 +11,9 @@ PATCH = clarification with no behavior change.
 
 ---
 
-## [0.2.0] — 2026-09-24 (candidate, not yet gated)
+## [0.2.0] — 2026-09-24 (candidate, **REJECTED** 2026-09-28 — see below)
 
-**Proposal:** `versions/proposals/20260924-attribution-and-adherence.json` (gate: pending).
+**Proposal:** `versions/proposals/20260924-attribution-and-adherence.json` (gate: **rejected**).
 **Driven by:** the Phase 5 baseline failure analysis, clusters S1+S2 (author-stated limitations
 and rationale replaced by the writer's own), S3 (skill as executed ≠ skill as designed), and S4
 (length overruns). `SKILL.md` keeps `version: 0.1.0` until the release gate passes (release
@@ -50,6 +50,19 @@ procedure step 4).
 **Known risks:** a longer Limitations section, a larger `SKILL.md` (~1,880 words), a possibly
 unusual "Additional caveats" label, noisy `S1-caveat-attribution` warnings on older text, and
 extra tool cost. See the proposal.
+
+**Release gate result (Phase 9, 2026-09-28): REJECTED.** Pre-registered rule: accept only if Q11
+recall improves AND MMF/DR do not regress on ≥2 of 3 projects (OPENHANDS, MLPERF_TINY, BEIR; F1
+Claude Opus reader vs frozen Gold Set v1.0). MMF regressed on 2/3 projects (MLPERF_TINY −0.037,
+OPENHANDS −0.162; only BEIR improved, +0.025); Q11 recall improved on OPENHANDS (+0.4) but
+regressed on MLPERF_TINY (−0.1) and was already at ceiling on BEIR. The OpenHands regression turned out to be an
+evaluator artifact (D-24: the grader counts source-true detail missing from the curated gold as an
+unsupported belief). Under the source-verified sensitivity metric OpenHands improves (+0.025), but BEIR (−0.062) and
+MLPerf Tiny (−0.049) still regress slightly, so the verdict holds: not shown better, not shown worse. **v0.1.0 remains
+canonical.** Full numbers: `versions/proposals/20260924-attribution-and-adherence.json` → `gate`,
+and `evaluation/results/comparison/scores/paired.json` / `per_review.json` in the main repo. This
+candidate is kept (not deleted) as a documented, tested, evidence-grounded rejection — a
+starting point for a future revision, not a dead end.
 
 ---
 

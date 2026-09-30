@@ -1,0 +1,30 @@
+{
+  "patterns": [
+    {
+      "id": "ANT-001",
+      "source": "skill/anti_patterns.md, A9 'Paper-by-paper literature' (general craft knowledge; not extracted from a specific bad exemplar, since no external corpus is available under the no-web constraint, AR-003)",
+      "section": "Background and Related Work",
+      "rhetorical_purpose": "A writer under time pressure lists what each prior benchmark does, one after another, instead of organizing by the dimension that explains the Gap.",
+      "move_sequence": ["'CoreMark does X.'", "'MLMark does Y.'", "'MLPerf Inference does Z.'", "no synthesis sentence connecting them to a single missing capability"],
+      "reader_question_answered": "none: this is the failure mode to avoid, watched for while drafting the new paper's Background/Related-Work section",
+      "transition_behavior": "Consecutive sentences share no logical connective beyond addition ('Also,' 'Additionally').",
+      "signature": "3+ consecutive 'X did A. Y did B. Z did C.' sentences with no dimension-level synthesis",
+      "reader_effect": "No gap emerges; the reader cannot tell which missing capability motivates the new suite.",
+      "repair_principle": "Organize by dimension (problem framing, memory footprint, power measurement) as in corpus/literature_map.json, and close with one synthesis sentence naming what none of the three provides.",
+      "paraphrase_only": true
+    },
+    {
+      "id": "ANT-002",
+      "source": "skill/anti_patterns.md, A6 'Result dumping' (general craft knowledge; watched for while drafting the Results section, which otherwise risks listing Table 1's four accuracy numbers and Table 2's five hardware platforms with no interpretation between them)",
+      "section": "Results",
+      "rhetorical_purpose": "A writer transcribes every number from Tables 1-2 and Section 6.2 in sequence, trusting the numbers to speak for themselves.",
+      "move_sequence": ["state benchmark A's number", "state benchmark B's number", "state benchmark C's number", "state benchmark D's number", "move on with no comparison, no reference point, no claim tag"],
+      "reader_question_answered": "none: this is the failure mode to avoid",
+      "result_interpretation_pattern": "Absent: numbers given with no 'how large,' 'is it robust,' or 'what does it mean' step.",
+      "signature": "3+ consecutive numeric sentences with no interpretive clause",
+      "reader_effect": "The reader cannot tell which numbers matter or what they establish (fails Q7/Q8 of the reconstruction test).",
+      "repair_principle": "Apply the Result Interpretation Chain per benchmark result and per submission-round finding; put the full per-benchmark numbers in the Markdown comparison table and keep the prose for the one or two numbers that answer the research question.",
+      "paraphrase_only": true
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "patterns": [
+    {
+      "id": "ANT-001",
+      "source": "project/paper.txt",
+      "section": "results (Section 5)",
+      "rhetorical_purpose": "n/a -- documenting a structural feature to avoid copying directly, not a quality flaw in the source",
+      "move_sequence": ["numbered finding list (1-7) with no explicit transition between findings"],
+      "reader_question_answered": "n/a",
+      "signature": "seven independently-numbered findings, each self-contained, with no stated logical relation between finding N and finding N+1",
+      "reader_effect": "efficient for a specialist skimming for a specific comparison, but for an adjacent-field reader building a first mental model, the lack of connective tissue can read as a list of facts rather than one argument",
+      "repair_principle": "for this paper's mode-B audience, group the findings under the paragraph model (point first, evidence, explicit link back/forward) and order them by the reader's next question rather than by an arbitrary numbering, per information_design.md §1 and §4",
+      "paraphrase_only": true
+    },
+    {
+      "id": "ANT-002",
+      "source": "project/paper.txt",
+      "section": "throughout",
+      "rhetorical_purpose": "n/a",
+      "move_sequence": ["IR-specific abbreviations and terms of art (qrels, pooling, Hole@k, bi-encoder, cross-encoder) introduced with minimal or no plain-language definition, appropriate for its own mode-A/specialist venue"],
+      "reader_question_answered": "n/a",
+      "signature": "technical vocabulary assumed rather than defined at first use",
+      "reader_effect": "would stall a mode-B (adjacent-field) reader exactly where the paper is most informative -- the term ledger (plan/audience_assumptions.json) exists to catch this",
+      "repair_principle": "define every such term at first use in this paper, or replace it with a plain-language description, per audience_model.md §5 and the term budget for mode B",
+      "paraphrase_only": true
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "project_root": "./project",
+  "generated_at": "2026-09-27",
+  "generated_by": "AUTHOR acting as CORPUS_AGENT (no subagent runtime available)",
+  "files": [
+    {
+      "path": "project/paper.txt",
+      "type_class": "result",
+      "description": "Text extracted from the project's official research paper: 'OpenHands: An Open Platform for AI Software Developers as Generalist Agents' (arXiv:2407.16741v3 [cs.SE], published as a conference paper at ICLR 2025). Contains abstract, introduction, architecture description (Sections 2-3), a 15-benchmark evaluation (Section 4, Tables 2-7), conclusion, references, author contributions, and appendices A-K (limitations/future work, ethics statement, related work, GUI, integration-test QC, runtime build details, supported AgentSkills, BrowserGym actions, browsing-agent prompt).",
+      "size_bytes": 105244,
+      "opened": true,
+      "extraction_quality": "Mostly clean running prose and clean single-column table blocks (e.g. Tables 2, 4, 5, 6 body rows, the Software-Engineering-Agents block of Table 3). Several multi-column tables lost their row/column alignment or cell values to extraction: Table 1 (framework capability comparison) has headers/labels but no cell values; Table 7 (extended GPQA results) has a numeric block whose row/column mapping could not be reliably reconstructed; Table 3's Web/Misc. column blocks required careful cross-count reconstruction and contain one value that conflicts with Table 4 (see E004). Figure images (Figs. 1, 2, 4, 5) are not present as images, only captions and, for Fig. 3, an OCR'd code listing."
+    },
+    {
+      "path": "project/README_1.md",
+      "type_class": "note",
+      "description": "Current (later, post-paper) repository README for an 'OpenHands Benchmarks' repository: evaluation infrastructure being migrated from what it calls 'OpenHands V0' to a new 'OpenHands Software Agent SDK' ('V1'). Lists currently active benchmarks (SWE-Bench, SWE-Bench Pro, GAIA, Commit0, OpenAgentSafety, ProgramBench), setup instructions, workspace types, and an SDK/benchmarks version-compatibility example dated November 17, 2025. Contains no numeric evaluation results.",
+      "size_bytes": 10411,
+      "opened": true,
+      "extraction_quality": "clean Markdown, no damage"
+    },
+    {
+      "path": "project/README_2.md",
+      "type_class": "note",
+      "description": "Current (later, post-paper) repository README for 'OpenHands Agent Canvas', described as 'the self-hosted developer control center for coding agents and automations', able to run OpenHands, Claude Code, Codex, Gemini, or any ACP-compatible agent. Describes a multi-repository architecture (OpenHands/OpenHands = Agent Canvas frontend; software-agent-sdk; typescript-client; automation) and a commercial 'OpenHands Cloud'/'OpenHands Enterprise' offering. Contains no numeric evaluation results.",
+      "size_bytes": 10126,
+      "opened": true,
+      "extraction_quality": "clean Markdown, no damage"
+    }
+  ],
+  "skipped": [],
+  "summary": {
+    "total_files": 3,
+    "opened": 3,
+    "skipped": 0,
+    "result_bearing_files": 1,
+    "note": "project/paper.txt is the sole result-bearing file; the two READMEs are Level-0 soft/contextual evidence about the project's identity and later trajectory, not about the evaluation reported in the paper."
+  }
+}

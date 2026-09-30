@@ -1,0 +1,22 @@
+{
+  "personas": [
+    {
+      "id": "B",
+      "description": "Adjacent-field ML researcher: knows general ML, deep learning, standard evaluation and statistics; not this subfield's terms, datasets or prior work.",
+      "binding": true,
+      "known_terms": ["ML", "LLM", "GPU", "API", "F1", "CI", "accuracy", "precision", "recall", "transformer", "fine-tuning", "benchmark"],
+      "prerequisite_concepts": [
+        {"concept": "<concept the paper relies on>", "needs": ["<concept it must be introduced after>"]}
+      ],
+      "likely_misconceptions": [
+        {"misconception": "<what this reader will wrongly assume>",
+         "trigger_terms": ["<words that invite the assumption>"],
+         "corrective_point": "<the sentence that prevents it>",
+         "corrective_terms": ["<words that sentence must contain>"]}
+      ],
+      "reader_questions": ["What problem does this solve?", "How was it evaluated, and on what data?", "What does it not show?"],
+      "venue_expectations": ["<e.g. a reproducibility statement>"],
+      "new_term_budget": 2
+    }
+  ]
+}

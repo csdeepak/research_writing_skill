@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="222" viewBox="0 0 640 222" font-family="Helvetica, Arial, sans-serif" font-size="12" role="img" aria-labelledby="t d" data-visual-id="V003" data-representation="bar_h" data-domain-lo="0" data-domain-hi="2" data-plot-left="159" data-plot-right="616" data-min-font="12">
+<title id="t">Mean latency per question</title>
+<desc id="d">Horizontal bar chart of mean latency in seconds for four systems, from 1.50 s for No-Memory to 1.99 s for ASMOS+RAG.</desc>
+<metadata>{&quot;domain&quot;: [0.0, 2.0], &quot;representation&quot;: &quot;bar_h&quot;, &quot;source_file&quot;: &quot;data/summary.csv&quot;, &quot;visual_id&quot;: &quot;V003&quot;}</metadata>
+<rect width="640" height="222" fill="#ffffff"/>
+<text x="159" y="22" font-size="13" font-weight="bold">Mean latency per question</text>
+<line x1="159.00" y1="40" x2="159.00" y2="152" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="159.00" x="159.00" y="168" text-anchor="middle">0.0</text>
+<line x1="273.25" y1="40" x2="273.25" y2="152" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="273.25" x="273.25" y="168" text-anchor="middle">0.5</text>
+<line x1="387.50" y1="40" x2="387.50" y2="152" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="387.50" x="387.50" y="168" text-anchor="middle">1.0</text>
+<line x1="501.75" y1="40" x2="501.75" y2="152" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="501.75" x="501.75" y="168" text-anchor="middle">1.5</text>
+<line x1="616.00" y1="40" x2="616.00" y2="152" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="616.00" x="616.00" y="168" text-anchor="middle">2.0</text>
+<line x1="159" y1="152" x2="616" y2="152" stroke="#333333"/>
+<text x="387.50" y="188" text-anchor="middle">latency (s)</text>
+<text class="category" x="149" y="58.00" text-anchor="end">No memory</text>
+<g class="mark" data-x="A No-Memory" data-y="1.4975" data-series="" data-cx="501.18" data-cy="54.00"><rect x="159.00" y="45.00" width="342.18" height="18" fill="#0072B2" data-px-start="159.00" data-px-end="501.18"/></g>
+<text class="category" x="149" y="86.00" text-anchor="end">RAG</text>
+<g class="mark" data-x="B RAG" data-y="1.6535" data-series="" data-cx="536.82" data-cy="82.00"><rect x="159.00" y="73.00" width="377.82" height="18" fill="#0072B2" data-px-start="159.00" data-px-end="536.82"/></g>
+<text class="category" x="149" y="114.00" text-anchor="end">ASMOS (memory only)</text>
+<g class="mark" data-x="C ASMOS" data-y="1.95" data-series="" data-cx="604.58" data-cy="110.00"><rect x="159.00" y="101.00" width="445.58" height="18" fill="#0072B2" data-px-start="159.00" data-px-end="604.58"/></g>
+<text class="category" x="149" y="142.00" text-anchor="end">ASMOS + RAG</text>
+<g class="mark" data-x="D ASMOS+RAG" data-y="1.99" data-series="" data-cx="613.71" data-cy="138.00"><rect x="159.00" y="129.00" width="454.71" height="18" fill="#0072B2" data-px-start="159.00" data-px-end="613.71"/></g>
+</svg>

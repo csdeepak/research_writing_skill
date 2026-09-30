@@ -1,0 +1,592 @@
+{
+ "sources": [
+  {
+   "id": "SRC-001",
+   "title": "Exploring CoreMark a benchmark maximizing simplicity and efficacy",
+   "authors": [
+    "Gal-On",
+    "Levy"
+   ],
+   "year": 2012,
+   "venue": "The Embedded Microprocessor Benchmark Consortium",
+   "doi": null,
+   "url": null,
+   "publication_status": "TECHNICAL_REPORT",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "EEMBC's CoreMark benchmark [9] has become the standard benchmark for MCU-class devices due to its ease of implementation and use of real algorithms.",
+     "location": "project/paper.txt line 31"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-002",
+   "title": "Mlperf inference benchmark",
+   "authors": [
+    "Reddi",
+    "Cheng",
+    "Kanter",
+    "Mattson"
+   ],
+   "year": 2019,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "MLPerf ... has recently introduced a benchmarking suite for ML inference [18] ... the current MLPerf inference benchmark precludes MCUs and other resource-constrained platforms",
+     "location": "project/paper.txt line 33"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-003",
+   "title": "Speech commands: A dataset for limited-vocabulary speech recognition",
+   "authors": [
+    "Warden"
+   ],
+   "year": 2018,
+   "venue": "arXiv:1804.03209",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "We used the Speech Commands v2 dataset[21], a collection of 105,829 utterances collected from 2,618 speakers with a variety of accents.",
+     "location": "project/paper.txt line 67"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-004",
+   "title": "Hello edge: Keyword spotting on microcontrollers",
+   "authors": [
+    "Zhang",
+    "Suda",
+    "Lai",
+    "Chandra"
+   ],
+   "year": 2017,
+   "venue": "arXiv:1711.07128",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "For the closed division model, we used the small depthwise-separable CNN described in [22].",
+     "location": "project/paper.txt line 68"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-005",
+   "title": "Microsoft COCO: Common objects in context",
+   "authors": [
+    "Lin",
+    "Maire",
+    "Belongie",
+    "Hays"
+   ],
+   "year": 2014,
+   "venue": "European Conference on Computer Vision",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "The Visual Wakewords Challenge uses the MSCOCO 2014 dataset [15] as the training, validation and test datasets for all person detection models.",
+     "location": "project/paper.txt line 54"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-006",
+   "title": "MobileNets: Efficient convolutional neural networks for mobile vision applications",
+   "authors": [
+    "Howard",
+    "Zhu",
+    "Chen",
+    "Kalenichenko"
+   ],
+   "year": 2017,
+   "venue": "arXiv:1704.04861",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "The Visual Wakewords model is a MobilenetV1 [11] which takes 96x96 input images with an alpha of 0.25 and two output classes",
+     "location": "project/paper.txt line 55"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-007",
+   "title": "Visual wake words dataset",
+   "authors": [
+    "Chowdhery",
+    "Warden",
+    "Shlens",
+    "Howard",
+    "Rhodes"
+   ],
+   "year": 2019,
+   "venue": "CoRR abs/1906.05721",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "The Visual Wakewords challenge [6] tasked submitters with detecting whether at least one person is in an image.",
+     "location": "project/paper.txt line 53"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-008",
+   "title": "CIFAR-10 (Canadian Institute for Advanced Research)",
+   "authors": [
+    "Krizhevsky",
+    "Nair",
+    "Hinton"
+   ],
+   "year": 2009,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "TECHNICAL_REPORT",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "CIFAR-10 [14] is a labeled subset of the 80 Million Tiny Images dataset [20].",
+     "location": "project/paper.txt line 59"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-009",
+   "title": "Deep residual learning for image recognition",
+   "authors": [
+    "He",
+    "Zhang",
+    "Ren",
+    "Sun"
+   ],
+   "year": 2016,
+   "venue": "IEEE Conference on Computer Vision and Pattern Recognition",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "The Image Classification model is a customized ResNetv1 [10] which takes 32x32x3 input images",
+     "location": "project/paper.txt line 60"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-010",
+   "title": "80 million tiny images: A large data set for nonparametric object and scene recognition",
+   "authors": [
+    "Torralba",
+    "Fergus",
+    "Freeman"
+   ],
+   "year": 2008,
+   "venue": "IEEE TPAMI",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "CIFAR-10 [14] is a labeled subset of the 80 Million Tiny Images dataset [20].",
+     "location": "project/paper.txt line 59"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-011",
+   "title": "Description and discussion on DCASE2020 challenge task2: Unsupervised anomalous sound detection for machine condition monitoring",
+   "authors": [
+    "Koizumi",
+    "Kawaguchi",
+    "Imoto",
+    "Nakamura"
+   ],
+   "year": 2020,
+   "venue": "arXiv:2006.05822",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "we have selected to use the dataset from the DCASE2020 [13] competition, which is itself a combination of two publicly available sources: the ToyADMOS [12], and the MIMII [17] datasets.",
+     "location": "project/paper.txt line 72"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-012",
+   "title": "ToyADMOS: A dataset of miniature-machine operating sounds for anomalous sound detection",
+   "authors": [
+    "Koizumi",
+    "Saito",
+    "Uematsu",
+    "Harada",
+    "Imoto"
+   ],
+   "year": 2019,
+   "venue": "IEEE WASPAA",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "the DCASE2020 [13] competition, which is itself a combination of two publicly available sources: the ToyADMOS [12], and the MIMII [17] datasets.",
+     "location": "project/paper.txt line 72"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-013",
+   "title": "MIMII dataset: Sound dataset for malfunctioning industrial machine investigation and inspection",
+   "authors": [
+    "Purohit",
+    "Tanabe",
+    "Ichige",
+    "Endo"
+   ],
+   "year": 2019,
+   "venue": "arXiv:1909.09347",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "the DCASE2020 [13] competition, which is itself a combination of two publicly available sources: the ToyADMOS [12], and the MIMII [17] datasets.",
+     "location": "project/paper.txt line 72"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-014",
+   "title": "TensorFlow Lite Micro: Embedded machine learning on TinyML systems",
+   "authors": [
+    "David",
+    "Duke",
+    "Jain",
+    "Reddi"
+   ],
+   "year": 2020,
+   "venue": "arXiv:2010.08678",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "The reference implementations run the reference models in the TFLite format using TFLite for Microcontrollers (TFLM) [7] on the NUCLEO-L4R5ZI board.",
+     "location": "project/paper.txt line 36"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-015",
+   "title": "MicroNets: Neural network architectures for deploying TinyML applications on commodity microcontrollers",
+   "authors": [
+    "Banbury",
+    "Zhou",
+    "Fedorov",
+    "Matas"
+   ],
+   "year": 2021,
+   "venue": "Proceedings of Machine Learning and Systems, 3",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "The benchmarks have already acted as a standard set of tasks for TinyML research [4]",
+     "location": "project/paper.txt line 195"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-016",
+   "title": "SpArSe: Sparse architecture search for CNNs on resource-constrained microcontrollers",
+   "authors": [
+    "Fedorov",
+    "Adams",
+    "Mattina",
+    "Whatmough"
+   ],
+   "year": 2019,
+   "venue": "Advances in Neural Information Processing Systems 32",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "A significant amount of prior work in TinyML has used CIFAR-10 as a target dataset [8]",
+     "location": "project/paper.txt line 59"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-017",
+   "title": "Instruction sets should be free: The case for RISC-V",
+   "authors": [
+    "Asanovic",
+    "Patterson"
+   ],
+   "year": 2014,
+   "venue": "EECS Department, UC Berkeley, Tech. Rep. UCB/EECS-2014-146",
+   "doi": null,
+   "url": null,
+   "publication_status": "TECHNICAL_REPORT",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "RISC-V is a free, open standard instruction set architecture (ISA) [3].",
+     "location": "project/paper.txt line 190"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-018",
+   "title": "Energy consumption model for sensor nodes based on LoRa and LoRaWAN",
+   "authors": [
+    "Bouguera",
+    "Diouris",
+    "Chaillout",
+    "Jaouadi",
+    "Andrieux"
+   ],
+   "year": 2018,
+   "venue": "Sensors, 18(7):2104",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Role in the project as described by the project paper",
+     "support_quote": "avoiding the energy cost associated with wireless communication, which at this scale is far higher than that of compute [5]",
+     "location": "project/paper.txt line 12"
+    }
+   ],
+   "permitted_use": [
+    "content_citation"
+   ]
+  }
+ ]
+}

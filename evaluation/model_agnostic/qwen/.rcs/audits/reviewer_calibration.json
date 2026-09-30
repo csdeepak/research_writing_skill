@@ -1,0 +1,302 @@
+{
+ "provider": "openai",
+ "model": "qwen/qwen3.8-27b:free",
+ "mean_dimension_sensitivity": 0.911,
+ "false_alarm_rate_on_A": 0.0,
+ "false_alarm_dims_on_A": [],
+ "thresholds": {
+  "sensitivity_min": 0.9,
+  "false_alarm_max": 0.1
+ },
+ "detection": [
+  {
+   "variant": "B_poor_ordering.md",
+   "expected": [
+    "research_question",
+    "contribution",
+    "logical_flow",
+    "orientation",
+    "narrative_coherence"
+   ],
+   "detected": [
+    "research_question",
+    "logical_flow",
+    "orientation",
+    "narrative_coherence"
+   ],
+   "missed": [
+    "contribution"
+   ],
+   "sensitivity": 0.8
+  },
+  {
+   "variant": "C_jargon.md",
+   "expected": [
+    "terminology",
+    "cognitive_load",
+    "method"
+   ],
+   "detected": [
+    "terminology",
+    "cognitive_load"
+   ],
+   "missed": [
+    "method"
+   ],
+   "sensitivity": 0.667
+  },
+  {
+   "variant": "D_result_dumping.md",
+   "expected": [
+    "result",
+    "interpretation",
+    "figure_table",
+    "so_what",
+    "limitation"
+   ],
+   "detected": [
+    "result",
+    "interpretation",
+    "figure_table",
+    "so_what",
+    "limitation"
+   ],
+   "missed": [],
+   "sensitivity": 1.0
+  },
+  {
+   "variant": "E_unsupported_interpretation.md",
+   "expected": [
+    "claim_evidence_alignment",
+    "unsupported_inference",
+    "limitation",
+    "evidence_traceability"
+   ],
+   "detected": [
+    "claim_evidence_alignment",
+    "unsupported_inference",
+    "limitation",
+    "evidence_traceability"
+   ],
+   "missed": [],
+   "sensitivity": 1.0
+  },
+  {
+   "variant": "F_buried_contribution.md",
+   "expected": [
+    "contribution",
+    "research_question",
+    "problem",
+    "motivation",
+    "orientation"
+   ],
+   "detected": [
+    "contribution",
+    "research_question",
+    "problem",
+    "motivation",
+    "orientation"
+   ],
+   "missed": [],
+   "sensitivity": 1.0
+  },
+  {
+   "variant": "G_citation_misuse.md",
+   "expected": [
+    "evidence_traceability"
+   ],
+   "detected": [
+    "evidence_traceability"
+   ],
+   "missed": [],
+   "sensitivity": 1.0
+  }
+ ],
+ "calibrated": true,
+ "per_variant_dims": {
+  "A_clean.md": {
+   "problem": 5,
+   "motivation": 3,
+   "research_question": 5,
+   "contribution": 4,
+   "method": 3,
+   "experiment": 3,
+   "result": 4,
+   "interpretation": 4,
+   "limitation": 5,
+   "narrative_coherence": 5,
+   "terminology": 4,
+   "logical_flow": 5,
+   "evidence_traceability": 3,
+   "figure_table": 3,
+   "claim_evidence_alignment": 4,
+   "unsupported_inference": 3,
+   "redundancy": 5,
+   "cognitive_load": 5,
+   "orientation": 5,
+   "so_what": 4
+  },
+  "B_poor_ordering.md": {
+   "problem": 3,
+   "motivation": 2,
+   "research_question": 4,
+   "contribution": 4,
+   "method": 3,
+   "experiment": 3,
+   "result": 4,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 2,
+   "terminology": 4,
+   "logical_flow": 2,
+   "evidence_traceability": 3,
+   "figure_table": 2,
+   "claim_evidence_alignment": 3,
+   "unsupported_inference": 2,
+   "redundancy": 4,
+   "cognitive_load": 3,
+   "orientation": 3,
+   "so_what": 3
+  },
+  "C_jargon.md": {
+   "problem": 3,
+   "motivation": 3,
+   "research_question": 4,
+   "contribution": 4,
+   "method": 3,
+   "experiment": 3,
+   "result": 4,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 4,
+   "terminology": 2,
+   "logical_flow": 4,
+   "evidence_traceability": 3,
+   "figure_table": 3,
+   "claim_evidence_alignment": 3,
+   "unsupported_inference": 2,
+   "redundancy": 4,
+   "cognitive_load": 3,
+   "orientation": 3,
+   "so_what": 4
+  },
+  "D_result_dumping.md": {
+   "problem": 4,
+   "motivation": 2,
+   "research_question": 4,
+   "contribution": 3,
+   "method": 2,
+   "experiment": 2,
+   "result": 3,
+   "interpretation": 2,
+   "limitation": 3,
+   "narrative_coherence": 4,
+   "terminology": 3,
+   "logical_flow": 4,
+   "evidence_traceability": 2,
+   "figure_table": 2,
+   "claim_evidence_alignment": 2,
+   "unsupported_inference": 2,
+   "redundancy": 4,
+   "cognitive_load": 3,
+   "orientation": 3,
+   "so_what": 2
+  },
+  "E_unsupported_interpretation.md": {
+   "problem": 3,
+   "motivation": 2,
+   "research_question": 2,
+   "contribution": 3,
+   "method": 3,
+   "experiment": 3,
+   "result": 4,
+   "interpretation": 2,
+   "limitation": 1,
+   "narrative_coherence": 3,
+   "terminology": 4,
+   "logical_flow": 2,
+   "evidence_traceability": 2,
+   "figure_table": 2,
+   "claim_evidence_alignment": 1,
+   "unsupported_inference": 1,
+   "redundancy": 4,
+   "cognitive_load": 3,
+   "orientation": 2,
+   "so_what": 2
+  },
+  "F_buried_contribution.md": {
+   "problem": 3,
+   "motivation": 2,
+   "research_question": 2,
+   "contribution": 3,
+   "method": 3,
+   "experiment": 3,
+   "result": 3,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 3,
+   "terminology": 4,
+   "logical_flow": 3,
+   "evidence_traceability": 2,
+   "figure_table": 3,
+   "claim_evidence_alignment": 3,
+   "unsupported_inference": 2,
+   "redundancy": 4,
+   "cognitive_load": 3,
+   "orientation": 3,
+   "so_what": 3
+  },
+  "G_citation_misuse.md": {
+   "problem": 4,
+   "motivation": 4,
+   "research_question": 5,
+   "contribution": 3,
+   "method": 2,
+   "experiment": 2,
+   "result": 2,
+   "interpretation": 3,
+   "limitation": 4,
+   "narrative_coherence": 4,
+   "terminology": 4,
+   "logical_flow": 4,
+   "evidence_traceability": 1,
+   "figure_table": 2,
+   "claim_evidence_alignment": 2,
+   "unsupported_inference": 2,
+   "redundancy": 5,
+   "cognitive_load": 4,
+   "orientation": 4,
+   "so_what": 3
+  }
+ },
+ "runs": {
+  "A_clean.md": {
+   "packet_id": "pkt-feba2ed2",
+   "attempts": 1
+  },
+  "B_poor_ordering.md": {
+   "packet_id": "pkt-56d8076b",
+   "attempts": 2
+  },
+  "C_jargon.md": {
+   "packet_id": "pkt-ab54cd2f",
+   "attempts": 1
+  },
+  "D_result_dumping.md": {
+   "packet_id": "pkt-f0b19c93",
+   "attempts": 1
+  },
+  "E_unsupported_interpretation.md": {
+   "packet_id": "pkt-04e2589f",
+   "attempts": 1
+  },
+  "F_buried_contribution.md": {
+   "packet_id": "pkt-07e3e68c",
+   "attempts": 1
+  },
+  "G_citation_misuse.md": {
+   "packet_id": "pkt-a9029b17",
+   "attempts": 1
+  }
+ }
+}

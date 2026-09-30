@@ -1,0 +1,20 @@
+{
+  "id": "FIG-5",
+  "type": "chart",
+  "status": "blocked",
+  "purpose": "Would show latency and energy of the four reference implementations.",
+  "rq": "RQ2",
+  "takeaway": "not available",
+  "claims": [
+    "C014"
+  ],
+  "evidence": [
+    "E025"
+  ],
+  "source_data": [
+    "project/figure5_data_not_available.csv"
+  ],
+  "non_conclusions": "Blocked: the plotted values are not in any project file; nothing is drawn (NO_VALID_VISUAL).",
+  "placement": "not placed",
+  "caption": "none"
+}

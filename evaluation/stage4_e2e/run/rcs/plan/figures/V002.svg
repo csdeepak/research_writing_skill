@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="742" viewBox="0 0 640 742" font-family="Helvetica, Arial, sans-serif" font-size="12" role="img" aria-labelledby="t d" data-visual-id="V002" data-representation="dot_ci" data-domain-lo="0.5" data-domain-hi="0.75" data-plot-left="82" data-plot-right="616" data-min-font="12">
+<title id="t">Answer accuracy by routing arm and seed (seeds 66 to 110)</title>
+<desc id="d">Dot plot of answer accuracy for four routing arms in five seeds: A0 and A2 at 0.72 in every seed, A1 between 0.68 and 0.70, and A3 between 0.54 and 0.56.</desc>
+<metadata>{&quot;domain&quot;: [0.5, 0.75], &quot;representation&quot;: &quot;dot_ci&quot;, &quot;source_file&quot;: &quot;.rcs/plan/data/v002_accuracy_by_seed.csv&quot;, &quot;visual_id&quot;: &quot;V002&quot;}</metadata>
+<rect width="640" height="742" fill="#ffffff"/>
+<text x="82" y="22" font-size="13" font-weight="bold">Answer accuracy by routing arm and seed (seeds 66 to 110)</text>
+<line x1="82.00" y1="40" x2="82.00" y2="600" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="82.00" x="82.00" y="616" text-anchor="middle">0.50</text>
+<line x1="188.80" y1="40" x2="188.80" y2="600" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="188.80" x="188.80" y="616" text-anchor="middle">0.55</text>
+<line x1="295.60" y1="40" x2="295.60" y2="600" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="295.60" x="295.60" y="616" text-anchor="middle">0.60</text>
+<line x1="402.40" y1="40" x2="402.40" y2="600" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="402.40" x="402.40" y="616" text-anchor="middle">0.65</text>
+<line x1="509.20" y1="40" x2="509.20" y2="600" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="509.20" x="509.20" y="616" text-anchor="middle">0.70</text>
+<line x1="616.00" y1="40" x2="616.00" y2="600" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="616.00" x="616.00" y="616" text-anchor="middle">0.75</text>
+<line x1="82" y1="600" x2="616" y2="600" stroke="#333333"/>
+<text x="349.00" y="636" text-anchor="middle">Answer accuracy (proportion correct)</text>
+<text class="category" x="72" y="58.00" text-anchor="end">seed 66</text>
+<g class="mark" data-x="66" data-y="0.72" data-series="A0_global" data-cx="551.92" data-cy="54.00"><circle cx="551.92" cy="54.00" r="5.00" fill="#0072B2"/><text x="559.92" y="47.00" font-size="11">0.72</text></g>
+<g class="mark" data-x="66" data-y="0.68" data-series="A1_transactive" data-cx="466.48" data-cy="82.00"><rect x="461.48" y="77.00" width="10.00" height="10.00" fill="#E69F00"/><text x="474.48" y="75.00" font-size="11">0.68</text></g>
+<g class="mark" data-x="66" data-y="0.72" data-series="A2_static" data-cx="551.92" data-cy="110.00"><polygon points="551.92,105.00 546.92,115.00 556.92,115.00" fill="#009E73"/><text x="559.92" y="103.00" font-size="11">0.72</text></g>
+<g class="mark" data-x="66" data-y="0.56" data-series="A3_similarity" data-cx="210.16" data-cy="138.00"><polygon points="210.16,133.00 215.16,138.00 210.16,143.00 205.16,138.00" fill="#CC79A7"/><text x="218.16" y="131.00" font-size="11">0.56</text></g>
+<text class="category" x="72" y="170.00" text-anchor="end">seed 77</text>
+<g class="mark" data-x="77" data-y="0.72" data-series="A0_global" data-cx="551.92" data-cy="166.00"><circle cx="551.92" cy="166.00" r="5.00" fill="#0072B2"/><text x="559.92" y="159.00" font-size="11">0.72</text></g>
+<g class="mark" data-x="77" data-y="0.68" data-series="A1_transactive" data-cx="466.48" data-cy="194.00"><rect x="461.48" y="189.00" width="10.00" height="10.00" fill="#E69F00"/><text x="474.48" y="187.00" font-size="11">0.68</text></g>
+<g class="mark" data-x="77" data-y="0.72" data-series="A2_static" data-cx="551.92" data-cy="222.00"><polygon points="551.92,217.00 546.92,227.00 556.92,227.00" fill="#009E73"/><text x="559.92" y="215.00" font-size="11">0.72</text></g>
+<g class="mark" data-x="77" data-y="0.56" data-series="A3_similarity" data-cx="210.16" data-cy="250.00"><polygon points="210.16,245.00 215.16,250.00 210.16,255.00 205.16,250.00" fill="#CC79A7"/><text x="218.16" y="243.00" font-size="11">0.56</text></g>
+<text class="category" x="72" y="282.00" text-anchor="end">seed 88</text>
+<g class="mark" data-x="88" data-y="0.72" data-series="A0_global" data-cx="551.92" data-cy="278.00"><circle cx="551.92" cy="278.00" r="5.00" fill="#0072B2"/><text x="559.92" y="271.00" font-size="11">0.72</text></g>
+<g class="mark" data-x="88" data-y="0.68" data-series="A1_transactive" data-cx="466.48" data-cy="306.00"><rect x="461.48" y="301.00" width="10.00" height="10.00" fill="#E69F00"/><text x="474.48" y="299.00" font-size="11">0.68</text></g>
+<g class="mark" data-x="88" data-y="0.72" data-series="A2_static" data-cx="551.92" data-cy="334.00"><polygon points="551.92,329.00 546.92,339.00 556.92,339.00" fill="#009E73"/><text x="559.92" y="327.00" font-size="11">0.72</text></g>
+<g class="mark" data-x="88" data-y="0.56" data-series="A3_similarity" data-cx="210.16" data-cy="362.00"><polygon points="210.16,357.00 215.16,362.00 210.16,367.00 205.16,362.00" fill="#CC79A7"/><text x="218.16" y="355.00" font-size="11">0.56</text></g>
+<text class="category" x="72" y="394.00" text-anchor="end">seed 99</text>
+<g class="mark" data-x="99" data-y="0.72" data-series="A0_global" data-cx="551.92" data-cy="390.00"><circle cx="551.92" cy="390.00" r="5.00" fill="#0072B2"/><text x="559.92" y="383.00" font-size="11">0.72</text></g>
+<g class="mark" data-x="99" data-y="0.7" data-series="A1_transactive" data-cx="509.20" data-cy="418.00"><rect x="504.20" y="413.00" width="10.00" height="10.00" fill="#E69F00"/><text x="517.20" y="411.00" font-size="11">0.7</text></g>
+<g class="mark" data-x="99" data-y="0.72" data-series="A2_static" data-cx="551.92" data-cy="446.00"><polygon points="551.92,441.00 546.92,451.00 556.92,451.00" fill="#009E73"/><text x="559.92" y="439.00" font-size="11">0.72</text></g>
+<g class="mark" data-x="99" data-y="0.56" data-series="A3_similarity" data-cx="210.16" data-cy="474.00"><polygon points="210.16,469.00 215.16,474.00 210.16,479.00 205.16,474.00" fill="#CC79A7"/><text x="218.16" y="467.00" font-size="11">0.56</text></g>
+<text class="category" x="72" y="506.00" text-anchor="end">seed 110</text>
+<g class="mark" data-x="110" data-y="0.72" data-series="A0_global" data-cx="551.92" data-cy="502.00"><circle cx="551.92" cy="502.00" r="5.00" fill="#0072B2"/><text x="559.92" y="495.00" font-size="11">0.72</text></g>
+<g class="mark" data-x="110" data-y="0.7" data-series="A1_transactive" data-cx="509.20" data-cy="530.00"><rect x="504.20" y="525.00" width="10.00" height="10.00" fill="#E69F00"/><text x="517.20" y="523.00" font-size="11">0.7</text></g>
+<g class="mark" data-x="110" data-y="0.72" data-series="A2_static" data-cx="551.92" data-cy="558.00"><polygon points="551.92,553.00 546.92,563.00 556.92,563.00" fill="#009E73"/><text x="559.92" y="551.00" font-size="11">0.72</text></g>
+<g class="mark" data-x="110" data-y="0.54" data-series="A3_similarity" data-cx="167.44" data-cy="586.00"><polygon points="167.44,581.00 172.44,586.00 167.44,591.00 162.44,586.00" fill="#CC79A7"/><text x="175.44" y="579.00" font-size="11">0.54</text></g>
+<circle cx="88.00" cy="648.00" r="5.00" fill="#0072B2"/>
+<text class="legend" x="98" y="652">A0 global search</text>
+<rect x="83.00" y="661.00" width="10.00" height="10.00" fill="#E69F00"/>
+<text class="legend" x="98" y="670">A1 learned-ownership routing</text>
+<polygon points="88.00,679.00 83.00,689.00 93.00,689.00" fill="#009E73"/>
+<text class="legend" x="98" y="688">A2 ownership frozen at prior</text>
+<polygon points="88.00,697.00 93.00,702.00 88.00,707.00 83.00,702.00" fill="#CC79A7"/>
+<text class="legend" x="98" y="706">A3 similarity routing</text>
+</svg>

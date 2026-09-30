@@ -1,0 +1,636 @@
+{
+  "errors": 0,
+  "warnings": 41,
+  "findings": [
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 7,
+      "excerpt": "Neural retrieval systems are usually trained and evaluated on a single dataset, so it is unclear how well they generalize to other tasks and domains without fur",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 7,
+      "excerpt": "We address this gap with BEIR, a benchmark unifying 18 datasets across 9 heterogeneous retrieval tasks into one data format and metric (nDCG@10), and use it to ",
+      "message": "41-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 7,
+      "excerpt": "Re-ranking and late-interaction systems generalize best (11% and 2.5% average improvement over BM25) but are the slowest and, for one system, the most memory-in",
+      "message": "41-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 7,
+      "excerpt": "Together, these results suggest that in-domain accuracy is a poor predictor of zero-shot generalization, that robust generalization tracks query\u2013document intera",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 11,
+      "excerpt": "Most recent progress on this problem comes from fine-tuning a pretrained Transformer encoder, such as BERT (Devlin et al., 2018), on one large labeled dataset \u2014",
+      "message": "48-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B-absolute",
+      "level": "INFO",
+      "line": 11,
+      "excerpt": "Deployed systems, however, are routinely pointed at problems the model never saw in training: a new product's documentation, a specialized literature, a differe",
+      "message": "absolute term: justified only by complete enumeration or proof"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 13,
+      "excerpt": "Under in-domain evaluation, neural rankers show large, well-documented gains over classical lexical scoring functions such as BM25 (Robertson and Zaragoza, 2009",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 13,
+      "excerpt": "MultiReQA compares systems on eight question-answering datasets at sentence level; five of the eight are Wikipedia-based, and six of the eight are small enough ",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 15,
+      "excerpt": "A second question follows from how test collections are built: because judging every possible query\u2013document pair is infeasible, only the candidates some existi",
+      "message": "47-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 19,
+      "excerpt": "This paper makes three contributions: BEIR itself, 18 datasets across 9 tasks unified into one open-source evaluation framework {C021}; a comparative study show",
+      "message": "76-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 25,
+      "excerpt": "To our knowledge, BEIR is the first benchmark to compare retrieval architectures zero-shot across this many task types and domains at once, against the two prio",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 27,
+      "excerpt": "BM25 (Robertson and Zaragoza, 2009), score a document by weighted term overlap with the query and need no training; their weakness is the lexical gap, missing r",
+      "message": "183-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B-absolute",
+      "level": "INFO",
+      "line": 27,
+      "excerpt": "BM25 (Robertson and Zaragoza, 2009), score a document by weighted term overlap with the query and need no training; their weakness is the lexical gap, missing r",
+      "message": "absolute term: justified only by complete enumeration or proof"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 31,
+      "excerpt": "BEIR's selection follows four criteria: *diverse tasks* (query/document length varying widely, from keyword queries to full news articles, from single sentences",
+      "message": "99-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 58,
+      "excerpt": "The datasets vary by design: corpus size ranges from 3,633 documents (NFCorpus) to nearly 15 million (BioASQ); query length from 3.30 words (NFCorpus) to 192.98",
+      "message": "42-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "C4-style-marker",
+      "level": "INFO",
+      "line": 58,
+      "excerpt": "Only 8 of these 18 datasets, plus MS MARCO, provide any training data, underscoring that most of this evaluation is necessarily zero-shot.",
+      "message": "LLM-associated style marker (not wrong per se; replace if it adds nothing)"
+    },
+    {
+      "rule": "C1-orphan-claim",
+      "level": "WARN",
+      "line": 62,
+      "excerpt": "Normalised Discounted Cumulative Gain at rank 10 (nDCG@10) scores both, crediting a relevant document more when it ranks higher among the top 10 results (Wang e",
+      "message": "claim-like sentence without {C###} tag"
+    },
+    {
+      "rule": "B5-causal",
+      "level": "INFO",
+      "line": 66,
+      "excerpt": "Ten systems were evaluated, one to four per architecture family, summarized alongside the main results in Table 2.",
+      "message": "causal wording: requires causal design or ablation; otherwise 'is associated with'"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 66,
+      "excerpt": "With one exception \u2014 DPR, trained on four question-answering datasets including NQ \u2014 every system is trained on MS MARCO, so a zero-shot performance difference ",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 68,
+      "excerpt": "Two sparse systems try to close part of the lexical gap while keeping BM25's inverted-index backend: DeepCT learns, with a fine-tuned BERT model, a per-term wei",
+      "message": "90-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 70,
+      "excerpt": "TAS-B combines in-batch negatives with a distillation loss against a cross-encoder and a late-interaction teacher (Hofst\u00e4tter et al., 2021); the authors attribu",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 70,
+      "excerpt": "GenQ pushes domain adaptation further: for each target dataset, a sequence-to-sequence model generates synthetic queries for that dataset's documents, and TAS-B",
+      "message": "43-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 72,
+      "excerpt": "ColBERT represents query and document as bags of token-level vectors, scores a pair with a sum of per-query-token maximum similarities, and retrieves via an app",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 74,
+      "excerpt": "Every system truncates each document to the same 512 word pieces, the limit set by the underlying Transformer encoders; retrieval latency and index size are mea",
+      "message": "38-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 78,
+      "excerpt": "The first question is simple to state and, given the decades of research behind BM25, not obvious to answer: does any more sophisticated architecture reliably b",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 78,
+      "excerpt": "Table 2 summarizes each system's in-domain nDCG@10 on MS MARCO and its average zero-shot change relative to BM25 across the 18 datasets; no seed or replicate va",
+      "message": "44-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 97,
+      "excerpt": "BM25+CE, the cross-encoder re-ranker, improves on BM25 by 11% on average and beats it on 16 of the 18 datasets, failing only on ArguAna and Touch\u00e9-2020 \u2014 the tw",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 97,
+      "excerpt": "That generalization is not free: on a shared one-million-document sample, BM25+CE's re-ranking and ColBERT's late-interaction scoring are both slowest at infere",
+      "message": "46-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A6-result-dumping",
+      "level": "WARN",
+      "line": 97,
+      "excerpt": "That generalization is not free: on a shared one-million-document sample, BM25+CE's re-ranking and ColBERT's late-interaction scoring are both slowest at infere",
+      "message": "3+ consecutive numeric sentences with no interpretation (apply the RIC)"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 101,
+      "excerpt": "Two systems buck their family's trend. docT5query is the only sparse system to generalize well, beating BM25 on 11 of the 18 datasets (+1.6% on average) \u2014 plaus",
+      "message": "46-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 101,
+      "excerpt": "It still loses to the weaker-on-average ANCE on two datasets: it trails ANCE by 17.3 points on TREC-COVID and 7.8 on Touch\u00e9-2020 {C011}, where its top-ranked do",
+      "message": "49-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 101,
+      "excerpt": "A controlled follow-up traces part of this to the training similarity function: two otherwise identical models differing only in cosine-similarity versus dot-pr",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 103,
+      "excerpt": "Adapting a model to its target domain with synthetic queries does not uniformly help either: GenQ, TAS-B further fine-tuned on synthetic in-domain queries, impr",
+      "message": "43-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 105,
+      "excerpt": "Of the ten systems, the two that keep some form of cross-attention \u2014 comparing query and document representations directly rather than compressing each into an ",
+      "message": "42-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 105,
+      "excerpt": "This is a pattern observed across the systems compared, not a claim isolated by ablation across architectures, so it is an interpretation, not a proof {C019}{L0",
+      "message": "43-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 109,
+      "excerpt": "Judging every possible query\u2013document pair in a multi-million-document corpus is infeasible, so test collections are instead built by pooling: only the top cand",
+      "message": "47-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B-absolute",
+      "level": "INFO",
+      "line": 109,
+      "excerpt": "If the pooling system is itself lexical, a non-lexical system's genuinely relevant but lexically dissimilar results may never have been judged, making it look w",
+      "message": "absolute term: justified only by complete enumeration or proof"
+    },
+    {
+      "rule": "C1-orphan-claim",
+      "level": "WARN",
+      "line": 109,
+      "excerpt": "If the pooling system is itself lexical, a non-lexical system's genuinely relevant but lexically dissimilar results may never have been judged, making it look w",
+      "message": "claim-like sentence without {C###} tag"
+    },
+    {
+      "rule": "B-absolute",
+      "level": "INFO",
+      "line": 111,
+      "excerpt": "For nine systems, Hole@10 \u2014 the share of a system's top-10 results never seen by any annotator \u2014 was computed (Table 3) {C017}.",
+      "message": "absolute term: justified only by complete enumeration or proof"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 111,
+      "excerpt": "All 980 previously unjudged query\u2013document pairs across every system were then manually annotated, following the original guidelines and blind to which system h",
+      "message": "42-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 127,
+      "excerpt": "After the missing judgements were added, the lexical systems' scores barely moved \u2014 docT5query from 0.713 to 0.714 \u2014 while the non-lexical systems' rose substan",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B9-intensifier",
+      "level": "WARN",
+      "line": 127,
+      "excerpt": "After the missing judgements were added, the lexical systems' scores barely moved \u2014 docT5query from 0.713 to 0.714 \u2014 while the non-lexical systems' rose substan",
+      "message": "intensifier: give the number and a reference point instead"
+    },
+    {
+      "rule": "A6-result-dumping",
+      "level": "WARN",
+      "line": 127,
+      "excerpt": "After the missing judgements were added, the lexical systems' scores barely moved \u2014 docT5query from 0.713 to 0.714 \u2014 while the non-lexical systems' rose substan",
+      "message": "3+ consecutive numeric sentences with no interpretation (apply the RIC)"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 129,
+      "excerpt": "What it establishes is that some part of the apparent gap between lexical and non-lexical systems, in datasets built this way, is a property of the test collect",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 133,
+      "excerpt": "The property most associated with generalizing well here is not embedding architecture in the abstract but whether a system compares query and document represen",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B9-intensifier",
+      "level": "WARN",
+      "line": 133,
+      "excerpt": "This is not a general argument that dense retrieval cannot generalize: TAS-B and docT5query show that training procedure and document-expansion strategy can mov",
+      "message": "intensifier: give the number and a reference point instead"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 135,
+      "excerpt": "But it is a correction to specific comparisons on specifically pooled datasets, established here for one dataset, not a reason to discard the overall pattern fr",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 141,
+      "excerpt": "Transformer encoders here truncate at 512 word pieces, so every document is effectively limited to at most a few hundred words, and the architecture ranking in ",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 143,
+      "excerpt": "No error bars are available for the zero-shot numbers in Section 5, since most evaluated systems are third-party checkpoints without accessible retraining code,",
+      "message": "46-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 145,
+      "excerpt": "Similar lexical pooling is documented for at least two other BEIR datasets, but the size of its effect there was not separately measured, so the exact scale of ",
+      "message": "41-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 149,
+      "excerpt": "Unifying 18 datasets under one data format and one metric makes that question answerable for any new system with comparatively little additional engineering, an",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 151,
+      "excerpt": "The comparison itself changes what should be trusted about a system's in-domain score: it is not a reliable forecast of zero-shot performance, and the mechanism",
+      "message": "44-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 151,
+      "excerpt": "The TREC-COVID case study adds a further caution about the comparison's own foundation: part of the apparent weakness of non-lexical systems in some datasets is",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 153,
+      "excerpt": "The most direct next steps are the ones this evaluation could not itself take: extending coverage to more languages, to longer documents, and to multi-field ret",
+      "message": "50-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 3,
+      "excerpt": "TU",
+      "message": "acronym 'TU' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 7,
+      "excerpt": "KILT",
+      "message": "acronym 'KILT' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 7,
+      "excerpt": "BEIR",
+      "message": "acronym 'BEIR' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 7,
+      "excerpt": "BM25",
+      "message": "acronym 'BM25' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 7,
+      "excerpt": "TREC",
+      "message": "acronym 'TREC' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 7,
+      "excerpt": "COVID",
+      "message": "acronym 'COVID' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 11,
+      "excerpt": "BERT",
+      "message": "acronym 'BERT' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 11,
+      "excerpt": "MS",
+      "message": "acronym 'MS' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 11,
+      "excerpt": "MARCO",
+      "message": "acronym 'MARCO' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 17,
+      "excerpt": "IR",
+      "message": "acronym 'IR' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 58,
+      "excerpt": "NEWS",
+      "message": "acronym 'NEWS' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 66,
+      "excerpt": "DPR",
+      "message": "acronym 'DPR' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 66,
+      "excerpt": "NQ",
+      "message": "acronym 'NQ' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 68,
+      "excerpt": "SPARTA",
+      "message": "acronym 'SPARTA' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 70,
+      "excerpt": "ANCE",
+      "message": "acronym 'ANCE' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 70,
+      "excerpt": "TAS",
+      "message": "acronym 'TAS' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 72,
+      "excerpt": "CE",
+      "message": "acronym 'CE' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 74,
+      "excerpt": "CPU",
+      "message": "acronym 'CPU' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 74,
+      "excerpt": "GPU",
+      "message": "acronym 'GPU' never defined"
+    },
+    {
+      "rule": "A4-rare-acronym",
+      "level": "INFO",
+      "line": 109,
+      "excerpt": "RT",
+      "message": "'RT' used 1x: spell out instead"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 157,
+      "excerpt": "ACM",
+      "message": "acronym 'ACM' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 157,
+      "excerpt": "SIGIR",
+      "message": "acronym 'SIGIR' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 159,
+      "excerpt": "CLEF",
+      "message": "acronym 'CLEF' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 161,
+      "excerpt": "ECIR",
+      "message": "acronym 'ECIR' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 163,
+      "excerpt": "SPECTER",
+      "message": "acronym 'SPECTER' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 163,
+      "excerpt": "ACL",
+      "message": "acronym 'ACL' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 169,
+      "excerpt": "CLIMATE",
+      "message": "acronym 'CLIMATE' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 169,
+      "excerpt": "FEVER",
+      "message": "acronym 'FEVER' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 179,
+      "excerpt": "EMNLP",
+      "message": "acronym 'EMNLP' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 187,
+      "excerpt": "WWW",
+      "message": "acronym 'WWW' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 201,
+      "excerpt": "NAACL",
+      "message": "acronym 'NAACL' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 203,
+      "excerpt": "BIOASQ",
+      "message": "acronym 'BIOASQ' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 203,
+      "excerpt": "BMC",
+      "message": "acronym 'BMC' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 215,
+      "excerpt": "NDCG",
+      "message": "acronym 'NDCG' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 215,
+      "excerpt": "COLT",
+      "message": "acronym 'COLT' never defined"
+    },
+    {
+      "rule": "A1-late-question",
+      "level": "WARN",
+      "line": 0,
+      "excerpt": "Introduction",
+      "message": "no explicit research question/objective in the Introduction"
+    }
+  ]
+}

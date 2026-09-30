@@ -1,0 +1,455 @@
+{
+  "project_root": "./project",
+  "generated_at": "2026-09-27",
+  "generated_by": "AUTHOR acting as CORPUS_AGENT",
+  "items": [
+    {
+      "id": "E001",
+      "kind": "result",
+      "summary": "SWE-Bench Lite (300 instances, without hint text) resolve rate of OpenHands CodeActAgent v1.8, zero-shot prompting, for three backbone LLMs.",
+      "value": {"metric": "resolve rate", "unit": "%", "gpt-4o-mini-2024-07-18": 7.0, "gpt-4o-2024-05-13": 22.0, "claude-3-5-sonnet@20240620": 26.0},
+      "conditions": {"benchmark": "SWE-Bench Lite", "n_instances": 300, "hint_text": false, "prompting": "0-shot"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 4 (lines 472-548), 'OH CodeActAgent v1.8' rows; corroborated by §4.2 prose (line 464) 'resolve rate of 26%'"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E002",
+      "kind": "baseline",
+      "summary": "SWE-Bench Lite resolve rates for open-source, reproducible baseline SWE agents evaluated without benchmark-specific prompt engineering.",
+      "value": {"metric": "resolve rate", "unit": "%", "SWE-Agent(gpt-4-1106-preview)": 18.0, "AutoCodeRover(gpt-4-0125-preview)": 19.0, "Aider(gpt-4o & claude-3-opus)": 26.3, "Moatless Tools(claude-3.5-sonnet)": 26.7, "Agentless(gpt-4o)": 27.3},
+      "conditions": {"benchmark": "SWE-Bench Lite", "n_instances": 300},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 4 rows (lines 474-479) for SWE-Agent/AutoCodeRover/Aider; Table 3 'Software Engineering Agents' block (lines 282-317, legible, un-garbled) for Moatless Tools and Agentless"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E003",
+      "kind": "result",
+      "summary": "Average per-instance dollar cost for SWE-Bench Lite runs, plus two author-stated cost estimates for larger runs.",
+      "value": {"unit": "USD/instance", "SWE-Agent": 1.67, "OH_gpt-4o-mini": 0.01, "OH_gpt-4o": 1.72, "OH_claude-3.5-sonnet": 1.10, "full_2294_instance_swebench_estimate_usd": 6900, "swebench_lite_gpt4o_eval_estimate_usd": 600},
+      "conditions": {"benchmark": "SWE-Bench / SWE-Bench Lite"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 4 '$ Avg. Cost' column (lines 538-541); footnote 2 (line 467) '$6.9k, using a conservative estimate of $3 per instance'; footnote 4 (line 912) 'costs around 600 USD'"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E004",
+      "kind": "result",
+      "summary": "Table 3's 'Misc. Assistance Agents / OpenHands Agents' block reports CodeActAgent v1.8 with gpt-4o-mini-2024-07-18 at 6.3 in the software (SWE-Bench Lite) column -- the same cell E001 reports as 7.0 from Table 4.",
+      "value": {"metric": "resolve rate", "unit": "%", "CodeActAgent-v1.8(gpt-4o-mini-2024-07-18)": 6.3},
+      "conditions": {"benchmark": "SWE-Bench Lite"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 3 (lines 360-366), reconstructed by column-block counting because the source table's multi-column layout did not survive text extraction intact"},
+      "strength": "hard",
+      "status": "conflicting",
+      "conflicts_with": ["E001"],
+      "notes": "Treated as superseded by E001 (see state.json accepted_risk AR003): Table 3 is explicitly a redundant 'curated' summary ('See Tab. 4 ... for full results') and its extraction is independently damaged elsewhere (Table 1, Table 7)."
+    },
+    {
+      "id": "E005",
+      "kind": "result",
+      "summary": "HumanEvalFix (Python split, 164 instances) success rates: non-agentic code-LM baselines, a 1-shot SWE-Agent baseline, and 0-shot OpenHands CodeActAgent v1.5.",
+      "value": {"metric": "% bugs fixed", "BLOOMZ-176B": 16.6, "OctoCoder-15B": 30.4, "DeepSeekCoder-33B-Instruct": 47.5, "StarCoder2-15B": 48.6, "SWE-agent_1shot(gpt-4-turbo)": 87.7, "OH_v1.5(gpt-3.5-turbo-16k-0613)": 20.1, "OH_v1.5(gpt-4o-2024-05-13)": 79.3},
+      "conditions": {"benchmark": "HumanEvalFix", "n_instances": 164, "split": "Python", "prompting": "0-shot for OH and non-agentic baselines; 1-shot (full demonstration trajectory) for SWE-agent"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 4 (lines 483-491); corroborated by §4.2.1 prose (lines 466-467, 530) '79.3% of bugs ... SWE-Agent achieves 87.7% ... provides ... a full demonstration'"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E006",
+      "kind": "result",
+      "summary": "BIRD text-to-SQL (300 dev-set samples, execution accuracy, multi-turn correction allowed): two open-weight baselines and OpenHands CodeActAgent v1.5 with BM25 retrieval, 0-shot.",
+      "value": {"metric": "execution accuracy %", "CodeLlama-7B-Instruct": 18.3, "CodeQwen-7B-Chat": 31.3, "OH_v1.5+BM25(gpt-4-1106-preview)": 42.7, "OH_v1.5+BM25(gpt-4o-2024-05-13)": 47.3},
+      "conditions": {"benchmark": "BIRD", "n_instances": 300, "prompting": "0-shot + BM25 retrieval"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 4 (lines 492-496); §4.2.1 prose (line 617)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E007",
+      "kind": "result",
+      "summary": "ML-Bench (68-instance quarter subset): three non-agentic prompting baselines, two agentic baselines (SWE-Agent, Aider), and OpenHands CodeActAgent v1.5, 0-shot.",
+      "value": {"metric": "success %", "prompting(gpt-3.5-turbo)": 11.0, "prompting(gpt-4-1106-preview)": 22.1, "prompting(gpt-4o-2024-05-13)": 26.2, "SWE-Agent(gpt-4-1106-preview)": 42.6, "Aider(gpt-4o)": 64.4, "OH_v1.5(gpt-4o-2024-05-13)": 76.5, "OH_v1.5(gpt-4-1106-preview)": 58.8, "OH_v1.5(gpt-3.5-turbo-16k-0613)": 13.2},
+      "conditions": {"benchmark": "ML-Bench", "n_instances": 68, "note": "quarter subset of the full 9,641-task benchmark, following the original paper's setup"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 4 (lines 497-505); §4.2.1 prose (line 550)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E008",
+      "kind": "result",
+      "summary": "BioCoder Python subset (157 instances): two prompting baselines and OpenHands CodeActAgent v1.5, 0-shot.",
+      "value": {"metric": "success %", "prompting(gpt-3.5-turbo)": 11.0, "prompting(gpt-4-1106-preview)": 12.7, "OH_v1.5(gpt-4o-2024-05-13)": 27.5},
+      "conditions": {"benchmark": "BioCoder", "n_instances": 157, "split": "Python"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 4 (lines 506-510); §4.2.1 prose (lines 556-558, 616)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E009",
+      "kind": "result",
+      "summary": "Gorilla APIBench (1775 instances): three prompted foundation-model baselines, a model fine-tuned specifically for API calls, and OpenHands CodeActAgent v1.5, 0-shot.",
+      "value": {"metric": "success %", "claude-v1": 8.7, "gpt-4-0314": 21.2, "gpt-3.5-turbo-0301": 29.7, "Gorilla_finetuned(llama-7b)": 75.0, "OH_v1.5(gpt-3.5-turbo-0125)": 21.6, "OH_v1.5(gpt-4o-2024-05-13)": 36.4},
+      "conditions": {"benchmark": "Gorilla APIBench", "n_instances": 1775},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 4 (lines 511-517); §4.2.1 prose (line 552)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E010",
+      "kind": "result",
+      "summary": "ToolQA, easy subset (800 instances): three non-agentic baselines, a ReAct 0-shot baseline at two model sizes, and OpenHands CodeActAgent v1.5, 0-shot.",
+      "value": {"metric": "success %", "ChatGPT+CoT": 5.1, "ChatGPT": 5.6, "Chameleon": 10.6, "ReAct_0shot(gpt-3.5-turbo)": 36.8, "ReAct_0shot(gpt-3)": 43.1, "OH_v1.5(gpt-3.5-turbo-0125)": 2.3, "OH_v1.5(gpt-4o-2024-05-13)": 47.2},
+      "conditions": {"benchmark": "ToolQA", "n_instances": 800, "subset": "easy"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 4 (lines 518-527); §4.2.1 prose (line 554)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E011",
+      "kind": "negative_result",
+      "summary": "OpenHands CodeActAgent v1.5 with gpt-3.5-turbo-0125 scored 2.3% on ToolQA (easy subset), far below the ReAct 0-shot baseline using a comparable-tier backbone (gpt-3.5-turbo, 36.8%), and below every other listed baseline on this benchmark.",
+      "value": {"metric": "success %", "OH_v1.5(gpt-3.5-turbo-0125)": 2.3, "reference_ReAct_0shot(gpt-3.5-turbo)": 36.8},
+      "derived_from": ["E010"],
+      "conditions": {"benchmark": "ToolQA", "subset": "easy"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 4 (line 522/536 pairing); see E010"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E012",
+      "kind": "result",
+      "summary": "WebArena (812 instances): four specialized/trained web-agent baselines, a zero-shot WebArena Agent baseline at two model sizes, and two OpenHands agents (BrowsingAgent v1.0; CodeActAgent v1.8 delegating to BrowsingAgent v1.0) each at three backbone LLMs.",
+      "value": {"metric": "success %", "Lemur": 5.3, "Patel_et_al_2024": 9.4, "AutoWebGLM": 18.2, "Auto_Eval_and_Refine": 20.2, "WebArenaAgent(gpt-3.5-turbo)": 6.2, "WebArenaAgent(gpt-4-turbo)": 14.4, "OH_BrowsingAgent-v1.0(gpt-4o-mini)": 8.5, "OH_BrowsingAgent-v1.0(gpt-4o)": 14.8, "OH_BrowsingAgent-v1.0(claude-3.5-sonnet)": 15.5, "OH_CodeActAgent-v1.8_delegating(gpt-4o-mini)": 8.3, "OH_CodeActAgent-v1.8_delegating(gpt-4o)": 14.5, "OH_CodeActAgent-v1.8_delegating(claude-3.5-sonnet)": 15.3},
+      "conditions": {"benchmark": "WebArena", "n_instances": 812},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 5 (lines 562-615); §4.3 prose (line 621)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E013",
+      "kind": "result",
+      "summary": "MiniWoB++ (125 environments): two specialist trained-model baselines and two OpenHands agents.",
+      "value": {"metric": "success %", "Workflow_Guided_Exploration": 34.6, "CC-NET": 91.1, "OH_BrowsingAgent-v1.0(gpt-3.5-turbo-0125)": 27.2, "OH_BrowsingAgent-v1.0(gpt-4o)": 40.8, "OH_CodeActAgent-v1.8_delegating(gpt-4o)": 39.8},
+      "conditions": {"benchmark": "MiniWoB++", "n_environments": 125},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 5 (lines 582-596); §4.3 prose (line 622)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E014",
+      "kind": "negative_result",
+      "summary": "On MiniWoB++, the best OpenHands configuration (BrowsingAgent v1.0 with gpt-4o, 40.8%) trails the specialist reinforcement-learning baseline CC-NET (91.1%) by a wide margin.",
+      "value": {"metric": "success %", "best_OH": 40.8, "CC-NET": 91.1},
+      "derived_from": ["E013"],
+      "conditions": {"benchmark": "MiniWoB++"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 5; see E013"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E015",
+      "kind": "result",
+      "summary": "GAIA, L1 validation set (53 instances): AutoGPT baseline and OpenHands GPTSwarm v1.0 at two model versions.",
+      "value": {"metric": "success %", "AutoGPT(gpt-4-turbo)": 13.2, "OH_GPTSwarm-v1.0(gpt-4-0125-preview)": 30.2, "OH_GPTSwarm-v1.0(gpt-4o-2024-05-13)": 32.1},
+      "conditions": {"benchmark": "GAIA", "n_instances": 53, "split": "L1 validation"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 6 (lines 633-651); §4.4 prose (lines 626, 638-650)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E016",
+      "kind": "result",
+      "summary": "GPQA diamond set (198 instances): expert and non-expert human baselines, two few-shot chain-of-thought LLM baselines, and OpenHands CodeActAgent v1.8.",
+      "value": {"metric": "accuracy %", "Human_expert": 81.3, "Human_nonexpert": 21.9, "FewshotCoT(gpt-3.5-turbo-16k)": 29.6, "FewshotCoT(gpt-4)": 38.8, "OH_CodeActAgent-v1.8(claude-3-5-sonnet-20240620)": 52.0},
+      "conditions": {"benchmark": "GPQA", "n_instances": 198, "subset": "diamond"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 6 (lines 652-670); §4.4 prose (line 627)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E017",
+      "kind": "result",
+      "summary": "AgentBench, OS (bash) subset (144 instances): AgentBench baseline agent at two model sizes and OpenHands CodeActAgent v1.5 at two model sizes.",
+      "value": {"metric": "success %", "AgentBenchBaseline(gpt-4)": 42.4, "AgentBenchBaseline(gpt-3.5-turbo)": 32.6, "OH_v1.5(gpt-4o-2024-05-13)": 57.6, "OH_v1.5(gpt-3.5-turbo-0125)": 11.8},
+      "conditions": {"benchmark": "AgentBench", "n_instances": 144, "subset": "OS/bash"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 6 (lines 672-688); §4.4 prose (line 771)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E018",
+      "kind": "result",
+      "summary": "MINT, math subset (225 instances): MINT baseline agent and OpenHands CodeActAgent v1.5 at two model sizes.",
+      "value": {"metric": "success %", "MINTBaseline(gpt-4-0613)": 65.8, "OH_v1.5(gpt-4o-2024-05-13)": 77.3, "OH_v1.5(gpt-3.5-turbo-16k-0613)": 33.8},
+      "conditions": {"benchmark": "MINT", "n_instances": 225, "subset": "math"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 6 (lines 690-706); §4.4 prose (line 772)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E019",
+      "kind": "result",
+      "summary": "MINT, code subset (136 instances): MINT baseline agent and OpenHands CodeActAgent v1.5 at two model sizes.",
+      "value": {"metric": "success %", "MINTBaseline(gpt-4-0613)": 59.6, "OH_v1.5(gpt-4o-2024-05-13)": 50.0, "OH_v1.5(gpt-3.5-turbo-16k-0613)": 5.2},
+      "conditions": {"benchmark": "MINT", "n_instances": 136, "subset": "code"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 6 (lines 708-724); §4.4 prose (line 772)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E020",
+      "kind": "negative_result",
+      "summary": "On the MINT code subset, OpenHands' best configuration (gpt-4o, 50.0%) scored below the MINT Baseline Agent (gpt-4-0613, 59.6%).",
+      "value": {"metric": "success %", "best_OH": 50.0, "MINTBaseline": 59.6},
+      "derived_from": ["E019"],
+      "conditions": {"benchmark": "MINT code subset"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 6; see E019"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E021",
+      "kind": "result",
+      "summary": "ProofWriter, 5-hop subset (600 instances): a few-shot chain-of-thought baseline, a symbolic-solver-augmented baseline (Logic-LM), and OpenHands CodeActAgent v1.5.",
+      "value": {"metric": "accuracy %", "FewshotCoT(gpt4)": 68.1, "LogicLM(gpt4+symbolic_solver)": 79.6, "OH_v1.5(gpt-4o-2024-05-13)": 78.8},
+      "conditions": {"benchmark": "ProofWriter", "n_instances": 600, "hops": 5},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 6 (lines 726-742); §4.4 prose (line 773)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E022",
+      "kind": "result",
+      "summary": "Entity Deduction Arena (200 instances, average of two 100-instance sub-datasets): a zero-shot-prompting baseline at two model sizes and OpenHands CodeActAgent v1.5 at two model sizes.",
+      "value": {"metric": "success %", "ZeroShot(gpt-4-0314)": 40.0, "ZeroShot(gpt-3.5-turbo-0613)": 27.0, "OH_v1.5(gpt-4o-2024-05-13)": 38.0, "OH_v1.5(gpt-3.5-turbo-16k-0613)": 24.0},
+      "conditions": {"benchmark": "Entity Deduction Arena", "n_instances": 200},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 6 (lines 744-760); §4.4 prose (line 774)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E023",
+      "kind": "negative_result",
+      "summary": "On Entity Deduction Arena, OpenHands' best configuration (gpt-4o, 38.0%) scored below the zero-shot-prompting gpt-4-0314 baseline (40.0%).",
+      "value": {"metric": "success %", "best_OH": 38.0, "ZeroShot(gpt-4-0314)": 40.0},
+      "derived_from": ["E022"],
+      "conditions": {"benchmark": "Entity Deduction Arena"},
+      "locator": {"path": "project/paper.txt", "anchor": "Table 6; see E022"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E024",
+      "kind": "observation",
+      "summary": "Across Tables 4-6, every non-OpenHands comparison agent (SWE-Agent, AutoCodeRover, Aider, Moatless Tools, Agentless, Lemur, Patel et al., AutoWebGLM, Auto Eval & Refine, WebArena Agent, Workflow Guided Exploration, CC-NET, AutoGPT, AgentBench Baseline Agent, MINT Baseline Agent, Logic-LM, Gorilla-finetuned, ReAct, few-shot CoT/zero-shot prompting baselines) is reported in exactly one benchmark category (software, web, or miscellaneous), whereas the same OpenHands CodeActAgent (and, for web, BrowsingAgent) system prompt is evaluated across all three categories.",
+      "value": null,
+      "derived_from": ["E001", "E002", "E005", "E006", "E007", "E008", "E009", "E010", "E012", "E013", "E015", "E016", "E017", "E018", "E019", "E021", "E022"],
+      "locator": {"path": "project/paper.txt", "anchor": "cross-tabulation of Tables 4, 5, and 6 (lines 472-774)"},
+      "strength": "hard",
+      "status": "ok",
+      "notes": "This structural fact is directly countable from the tables; it is also asserted qualitatively by the authors themselves (see E025)."
+    },
+    {
+      "id": "E025",
+      "kind": "observation",
+      "summary": "Author-stated framing of the headline result: OpenHands agents may not top every category, but the same CodeAct agent, with no change to its system prompt, is competitive across software development, web interaction, and miscellaneous tasks -- which the authors call 'particularly significant' next to baseline agents that are each designed and optimized for one task category.",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "§4.1 'Result Overview' (lines 461)"},
+      "strength": "soft",
+      "status": "ok",
+      "notes": "Recorded as 'soft' because it is the authors' own prose interpretation, not a machine-produced number; it is nonetheless author_stated and central to the paper's contribution."
+    },
+    {
+      "id": "E026",
+      "kind": "method_detail",
+      "summary": "OpenHands' agent state is a data structure whose central component is the event stream, a chronological record of past actions and observations (including user messages); the state also carries auxiliary bookkeeping (accumulated LLM cost, multi-agent delegation metadata, other execution parameters).",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "§2.1 (line 130)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E027",
+      "kind": "method_detail",
+      "summary": "The core action types are IPythonRunCellAction and CmdRunAction (execute Python/bash inside the sandbox) and BrowserInteractiveAction (browser actions via a domain-specific language introduced by BrowserGym). The action space is described as inspired by CodeAct (Wang et al., 2024a) and as compatible with predefined-tool-calling agents, since tools can be defined as ordinary functions in the same programming languages.",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "§2.1 (lines 131, 136-138)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E028",
+      "kind": "method_detail",
+      "summary": "For each task session OpenHands starts an isolated Docker container; inside it, an OpenHands-maintained 'action execution API' server exposes a bash shell, a Jupyter IPython server, and a Playwright-based Chromium browser (using BrowserGym action primitives: navigation, clicking, typing, scrolling); browser observations include HTML, DOM, accessibility tree, screenshot, and open tabs. A configurable workspace directory is mounted into the sandbox.",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "§2.2 (lines 185-193)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E029",
+      "kind": "method_detail",
+      "summary": "OpenHands supports arbitrary user-provided base Docker images: a build mechanism installs the action execution API into that image so agents can run inside any software environment the user specifies.",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "§2.2 (line 194); Appendix F (lines 917-972) gives the hash-based/generic dual-tagging build system"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E030",
+      "kind": "method_detail",
+      "summary": "AgentSkills is a Python package of utility functions auto-imported into the IPython environment, forming the agent-computer interface (ACI). A new skill is added only if (1) it is not readily achievable by having the LLM write code directly, or (2) it requires calling an external model. Listed skills include file-editing utilities adapted from SWE-Agent and Aider (edit_file, scroll_up/scroll_down, open_file, goto_line, create_file, search_dir/search_file/find_file) and multi-modal document parsers (parse_image, parse_pdf, parse_docx, parse_latex, parse_audio, parse_video, parse_pptx).",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "§2.3 (lines 195-199); Appendix I (lines 1049-1114) full list"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E031",
+      "kind": "method_detail",
+      "summary": "Agents can delegate a subtask to another agent via AgentDelegateAction; e.g. the generalist CodeActAgent, which has limited native browsing support, delegates web-browsing subtasks to the specialized BrowsingAgent.",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "§2.4 (lines 200-201)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E032",
+      "kind": "method_detail",
+      "summary": "AgentHub is described as containing more than 10 community-contributed agent implementations, including: CodeAct Agent (default generalist, based on the CodeAct framework, able to converse or act via bash/Python/browser code); Browsing Agent (a zero-shot generalist web baseline similar to the WebArena agent but with improved observations/actions); GPTSwarm Agent (uses optimizable graphs, Zhuge et al., 2024); and Micro Agents (task-specialized agents that reuse a generalist implementation and lower the barrier to sharing specialized prompts).",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "§3 (lines 202-204, 251-253)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E033",
+      "kind": "method_detail",
+      "summary": "The evaluation framework integrates 15 benchmarks across three categories (software engineering: SWE-Bench, HumanEvalFix, BIRD, BioCoder, ML-Bench, Gorilla APIBench, ToolQA; web: WebArena, MiniWoB++; miscellaneous assistance: GAIA, GPQA, AgentBench, MINT, Entity Deduction Arena, ProofWriter), each mapped to a required agent capability.",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "Table 2 (lines 259-271); §4 (lines 255-257)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E034",
+      "kind": "external_fact",
+      "summary": "OpenHands is released under the MIT license (permitting commercial use); as of writing it had 32K GitHub stars and more than 2.1K contributions ('PRs') from over 188 contributors.",
+      "value": {"github_stars": "32K", "contributions": "2.1K+", "contributors": "188+", "license": "MIT"},
+      "locator": {"path": "project/paper.txt", "anchor": "Abstract (line 7); §1 (line 124)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E035",
+      "kind": "method_detail",
+      "summary": "OpenHands includes an end-to-end integration-test framework for agent quality control: developers define a task and an expected 'gold file'; the framework mocks LLM calls with stored prompt-response pairs (keyed by exact prompt match) for deterministic, low-cost regression testing, regenerating pairs only when prompts change substantially; tests run on every pull request and commit across multiple platforms and sandbox types.",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "Appendix E (lines 910-912)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E036",
+      "kind": "limitation_noted",
+      "summary": "Author-identified future-work directions: enhanced multi-modality (viewing images/video and processing spreadsheet files through the browser/IPython path); stronger agents via training and inference-time techniques (current agents 'still struggle with complex tasks'); better long-file editing (agents 'suffer a lot' editing long files); web-browsing improvements (planned integration of Auto Eval & Refine's Reflexion-based retry strategy); automatic workflow generation (graph-based frameworks such as GPTSwarm or LangGraph as candidate directions, since the current workflow 'still requires a substantial handcrafted workload').",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "Appendix A (lines 884-894)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E037",
+      "kind": "limitation_noted",
+      "summary": "The authors attribute part of the HumanEvalFix gap to protocol, not only capability: SWE-Agent's 87.7% used a 1-shot prompt containing a full demonstration trajectory of a successful fix on one of the test bugs, whereas OpenHands was evaluated 0-shot; the authors also state that, because HumanEvalFix bugs are human-created and validated, 100% is 'entirely feasible' and is a goal for future iterations.",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "§4.2.1 (lines 466, 530, 548)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E038",
+      "kind": "assumption",
+      "summary": "Evaluation-protocol choices stated by the authors that limit direct comparability across rows of the same table: SWE-Bench is reported without the benchmark's optional 'hint text' throughout; SWE-Bench Lite (not the full 2294-instance set) is used 'for cost-saving consideration'; ML-Bench uses 'the quarter subset' (following the original paper's own setup); ToolQA uses 'the easy subset'; GPQA's headline number uses the 'diamond' set (full/extended-set results were attempted in Appendix G but that table's alignment did not survive extraction, E044). Baseline numbers throughout Tables 4-6 are drawn from the cited original papers rather than re-run by the authors under identical conditions.",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "§4.2 (line 464), footnote 2 (line 467), §4.2.1 (lines 550, 554, 622); §4.4 (line 652)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E039",
+      "kind": "limitation_noted",
+      "summary": "The ethics statement is descriptive, not empirical: it asserts that most AI agents today 'lack the ability to perform complex, long-horizon tasks in the real world reliably', that improving agents pose 'security risks to society', and that OpenHands helps mitigate this via (1) enabling systematic evaluation, (2) facilitating human-agent interaction rather than fully autonomous operation, and (3) broadening researcher access to agent suites for safety research -- none of which is measured by a safety benchmark among the 15 evaluated.",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "Appendix B (lines 895-899)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E040",
+      "kind": "external_fact",
+      "summary": "A later, separate repository ('OpenHands Benchmarks') describes migrating evaluation infrastructure from what it calls 'OpenHands V0' to a new 'OpenHands Software Agent SDK' ('V1'), and lists currently active benchmarks -- SWE-Bench, SWE-Bench Pro, GAIA, Commit0, OpenAgentSafety, and ProgramBench -- none of the last three of which appear among the 15 benchmarks paper.txt reports. OpenAgentSafety is described as 'AI agent safety evaluation in workplace scenarios with NPC interactions'.",
+      "value": null,
+      "locator": {"path": "project/README_1.md", "anchor": "lines 1-19 (benchmark table), line 5 (migration notice)"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E041",
+      "kind": "external_fact",
+      "summary": "A later, separate repository README describes 'Agent Canvas', 'the self-hosted developer control center for coding agents and automations', which runs OpenHands or third-party agents (Claude Code, Codex, Gemini, or any Agent-Client-Protocol-compatible agent) across local, remote, or cloud backends, with an optional commercial 'OpenHands Cloud'/'OpenHands Enterprise' offering, and a multi-repository architecture (OpenHands/OpenHands frontend; software-agent-sdk; typescript-client; automation).",
+      "value": null,
+      "locator": {"path": "project/README_2.md", "anchor": "lines 1-37, 124-150"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E042",
+      "kind": "external_fact",
+      "summary": "A concrete, dated example of continued architectural change: SDK commit 79868ae5 (dated November 17, 2025) introduced a new 'openhands.sdk.critic' module that later benchmark code depends on, illustrating that the codebase evaluated in paper.txt (versions v1.5-v1.8, evaluated circa mid-to-late 2024) is a much earlier snapshot than the system described in the current READMEs.",
+      "value": {"sdk_commit": "79868ae5", "date": "2025-11-17"},
+      "locator": {"path": "project/README_1.md", "anchor": "lines 231-243"},
+      "strength": "soft",
+      "status": "ok"
+    },
+    {
+      "id": "E043",
+      "kind": "result",
+      "summary": "Table 1 (comparison of AI agent frameworks -- AutoGPT, LangChain, MetaGPT, AutoGen, AutoAgents, Agents, XAgent, OpenAgents, GPTSwarm, AutoCodeRover, SWE-Agent, OpenHands -- across capability columns: GUI, standardized tool library, built-in sandbox & code execution, built-in web browser, multi-agent collaboration, human-AI collaboration, AgentHub, evaluation framework, agent QC) has its column headers and row labels intact, but every cell's check-mark/value did not survive text extraction.",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "Table 1 (lines 209-250)"},
+      "strength": "hard",
+      "status": "unverifiable",
+      "notes": "Not used to support any comparative claim in paper.md."
+    },
+    {
+      "id": "E044",
+      "kind": "result",
+      "summary": "Table 7 (Appendix G: extended GPQA results across Diamond/Main/Extended subsets for expert/non-expert humans, several few-shot baselines, and three OpenHands configurations) contains a long numeric block whose row-to-column mapping could not be reliably reconstructed from the extracted text.",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "Table 7 (lines 977-1046)"},
+      "strength": "hard",
+      "status": "unverifiable",
+      "notes": "Not used; the diamond-set headline number is separately available, and corroborated, via E016."
+    },
+    {
+      "id": "E045",
+      "kind": "method_detail",
+      "summary": "OpenHands (f.k.a. OpenDevin) was initially inspired by the AI software engineer Devin (Cognition.ai) but is stated to have since evolved to support a much wider range of applications through community contributions.",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "footnote 1 (line 21); title-page name note (line 7, 17)"},
+      "strength": "hard",
+      "status": "ok"
+    },
+    {
+      "id": "E046",
+      "kind": "method_detail",
+      "summary": "Related-work characterizations, in the authors' own words, of specific prior systems that motivate OpenHands' design: SWE-Agent 'highlights the importance of a carefully crafted Agent-Computer Interface ... in successfully solving complex tasks'; AutoGen 'advances beyond basic frameworks by implementing Python and bash execution capabilities, though with stateless command execution'; CrewAI offers 'sandboxed but limited code interpreter features'; LangChain/LangGraph 'provide foundational building blocks with basic runtime support'.",
+      "value": null,
+      "locator": {"path": "project/paper.txt", "anchor": "§2.3 (line 196); Appendix C (lines 900-903)"},
+      "strength": "hard",
+      "status": "ok"
+    }
+  ]
+}

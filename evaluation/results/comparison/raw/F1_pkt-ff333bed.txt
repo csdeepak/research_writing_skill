@@ -1,0 +1,489 @@
+{
+  "reconstruction": {
+    "packet_id": "pkt-ff333bed",
+    "answers": {
+      "Q1": {
+        "answer": "Ultra-low-power, microcontroller-class on-device machine learning ('TinyML') has no widely accepted, reproducible benchmark for comparing whole deployed systems (model, numerics, runtime, silicon) on accuracy, latency and energy. The paper presents MLPerf Tiny as its answer. It asks whether one suite can fit microcontroller memory and power limits, measure all three metrics together, and still allow a fair comparison across very heterogeneous hardware and software stacks.",
+        "locations": ["Abstract", "Sec 1 / para 1", "Sec 1 / para 4"],
+        "confidence": 5,
+        "missing": "The device scope is blurred. TinyML is defined as under 1 mW (title; Sec 1 para 1) but described as under 50 mW (Sec 1 para 2), and the reported evidence reaches watts."
+      },
+      "Q2": {
+        "answer": "Running inference on or near the sensor avoids wireless transmission, which the paper says costs far more energy than local computation at this scale. It also gives faster responses and better privacy, and together these make battery-powered, always-on applications possible. Getting there requires co-optimizing model, precision, runtime and hardware, and that is only useful if the results can be measured and compared. The paper states that the lack of such a benchmark has limited progress.",
+        "locations": ["Sec 1 / para 1", "Sec 2 / para 2"],
+        "confidence": 4,
+        "missing": "No magnitude is given for the gap between transmission energy and computation energy, and there is no evidence that the missing benchmark actually slowed progress. Both are asserted; one citation supports the energy premise."
+      },
+      "Q3": {
+        "answer": "CoreMark is portable and widely used but does not represent ML inference. MLMark uses real ML workloads, but its models need far more memory and runtime than a microcontroller has, and it has no power measurement of its own. MLPerf Inference explicitly excludes microcontrollers. No existing benchmark is at once representative of ML, small enough for the hardware, and power-aware. A new benchmark must also handle power measurement whose scope is hard to define, very tight memory, heterogeneous hardware (some devices lack a system clock or debug interface) and software tied to its own toolchain.",
+        "locations": ["Sec 1 / para 3", "Sec 2 / para 3", "Sec 2 / para 4"],
+        "confidence": 5,
+        "missing": "MLMark is uncited. The memory gap is stated as 'roughly two orders of magnitude' below gigabyte budgets, which does not match the paper's own suggestion that a 325 KB model fits most 32-bit microcontrollers."
+      },
+      "Q4": {
+        "answer": "They present MLPerf Tiny v0.5, built by more than fifty organizations. It has four benchmarks, each with a dataset, a reference model and a quality target: keyword spotting (Speech Commands v2, 12 classes, DS-CNN, 90% top-1); visual wake words (is a person present, COCO 2014 images at 96x96, MobileNetV1 0.25, 80%); image classification (CIFAR-10, a reduced ResNet with three stacks, 85%); and anomaly detection (DCASE2020 toy-car sounds, a fully-connected autoencoder on log-mel frames, 0.85 AUC). A closed division fixes model, data and target and permits only post-training quantization with the supplied calibration data. An open division allows changing the model, training or data, with deviations documented. A shared protocol reports latency as the median inferences per second over five runs, accuracy as one pass over the evaluation set, and energy as the median microjoules per inference over five runs. It requires a single power supply and excludes pre- and post-processing from timing. Complete reference implementations (from training script to on-device C code, on TFLite Micro) run on a NUCLEO-L4R5ZI board. The paper reports that the reference implementations met their targets and describes the first submission round (June 2021, five submissions).",
+        "locations": ["Sec 3 / paras 1-8", "Table 1", "Sec 4 / paras 2-5", "Table 2"],
+        "confidence": 4,
+        "missing": "It is unclear who did what. The text refers to 'the authors' and 'the suite's own authors' in the third person, so the reader cannot tell whether the writers built the suite or what was newly done for this article. The physical energy-measurement setup (instrument, runner, level shifter) is not described."
+      },
+      "Q5": {
+        "answer": "Complete, modifiable end-to-end reference implementations let a submitter change one layer (compiler, quantization scheme, accelerator) and still compare against a common baseline. The closed/open split trades strict comparability against room for innovation. Leaving the software stack open avoids penalizing valid toolchains. Excluding pre- and post-processing keeps the timed window meaning the same thing across applications. The median of five runs and the single-supply rule protect the latency and energy scores from noise and from gaming. Tasks were chosen for application relevance and for fit on microcontrollers: VWW for doorbells and occupancy sensing; CIFAR-10 for continuity with earlier TinyML work; KWS to test both multi-word recognition and rejection of unknown sounds; AD as an unsupervised, fully-connected task scored with AUC, which needs no decision threshold. Accuracy targets sit below the reference accuracy so that quantization differences do not fail a good submission.",
+        "locations": ["Sec 2 / para 3", "Sec 3 / paras 1-3", "Sec 3 / paras 5-8"],
+        "confidence": 4,
+        "missing": "There is no stated rule for setting the targets: margins range from about 6 points for VWW to 1.5 points for IC and 0.01 AUC for AD. The claim that feature extraction is a small share of compute is not backed by a measurement."
+      },
+      "Q6": {
+        "answer": "(1) Accuracy of each reference model, reported in Sec 3: VWW about 86%; IC 86.5% on a 200-image subset using the suite's runner; KWS 92.2% (apparently unquantized), 91.6% quantized on the full test set and 91.7% on a 1,000-utterance on-device subset; AD 0.88 AUC in fp32 and 0.86 quantized on 248 samples. (2) Running all four reference implementations on the NUCLEO-L4R5ZI board and checking the accuracy targets. Latency and energy were measured, but no values are given. (3) The first external submission round (June 2021): five submissions, four in the closed division (ARM microcontroller, RISC-V microcontroller, Raspberry Pi 4, neural-network accelerator) and one in the open division (FPGA with quantization-aware INT-6/8), described only qualitatively in Table 2.",
+        "locations": ["Sec 3 / paras 5-8", "Sec 4 / paras 2-5", "Table 2"],
+        "confidence": 4,
+        "missing": "Which tasks each submission ran, whether each reported energy, how many runs were made, who the submitters were, and every latency and energy value."
+      },
+      "Q7": {
+        "answer": "All four reference implementations cleared their targets: KWS 91.6% (full test set, quantized) and 91.7% (1,000-utterance subset) against 90%; IC 86.5% (200-image subset) against 85%; VWW about 86% against 80%; AD 0.86 AUC quantized (0.88 in fp32) against 0.85. The first round drew five submissions (4 closed, 1 open) on five hardware types. Measured power is said to span about six orders of magnitude (microwatts to watts). INT8 was the most common numeric format, and no submission changed the training data.",
+        "locations": ["Sec 3 / paras 5-8", "Sec 4 / para 2", "Sec 4 / paras 3-5", "Table 2", "Abstract"],
+        "confidence": 3,
+        "missing": "There is no latency or energy number for any reference implementation or submission. The paper does not say whether the VWW and AD figures were measured on the board, and gives no uncertainty for the small evaluation subsets."
+      },
+      "Q8": {
+        "answer": "They establish that each reference model reaches its task target on the reported evaluation sets, with thin margins for IC and AD. They also establish that five submitters with very different hardware and software stacks could apply the rules and measurement protocol in practice, in one cooperative round, across a wide power range. In short, the evidence shows the suite is feasible and was taken up. It does not show how good or how fair the resulting comparisons are.",
+        "locations": ["Sec 4 / paras 2-5", "Sec 5 / para 1", "Sec 5 / para 4"],
+        "confidence": 3,
+        "missing": "Because no scores are shown, the paper cannot demonstrate that the resulting numbers are comparable or fair. That part of the research question is argued from the design rather than shown."
+      },
+      "Q9": {
+        "answer": "Not established: (a) that comparisons across submissions are fair or reproducible (no reproduction, no run-to-run or seed variance, no per-submission scores); (b) that the swappable reference design is the reason diverse submitters could take part (the mechanism is not isolated); (c) that the design holds up in more competitive rounds where gaming is more tempting; (d) that TinyML practice neglects data (the evidence is one round of five results, and closed-division rules forbid dataset changes for four of the five, which the paper does not point out); (e) support for architectures beyond fully-connected and convolutional ones, for streaming or pre-processing measurement, for stability across versions, or for platforms beyond one reference board.",
+        "locations": ["Sec 3 / para 2", "Sec 5 / paras 2-4", "Sec 6 / paras 1 and 3"],
+        "confidence": 4,
+        "missing": "The paper does not itself note the division-rule confound, and does not show that the submitters and adopters were independent of the suite's builders."
+      },
+      "Q10": {
+        "answer": "The MLPerf Tiny benchmark suite: four fixed TinyML tasks with complete, swappable reference implementations, a closed/open division structure, and a shared protocol that scores accuracy, latency and energy together. Added to this is first-round evidence that very different hardware and software stacks could be benchmarked with it.",
+        "locations": ["Abstract", "Sec 1 / para 5", "Sec 7"],
+        "confidence": 4,
+        "missing": "Because the suite's creators are referred to in the third person, it is unclear whether this article's contribution is the suite itself or an account and analysis of a suite built by others."
+      },
+      "Q11": {
+        "answer": "(a) Measuring streaming and pre-processing is unresolved. Excluding feature extraction from timing invites submitters to relabel model layers as untimed 'features'. Including it would over-weight its cost compared with a real streaming deployment. Streaming tasks are also hard to reproduce over the limited bandwidth between the runner and the device. (b) The closed division covers mainly well-established fully-connected and convolutional models; recurrent models and stability across versions are future goals. (c) The technology could be misused for tracking people without consent, and it adds to e-waste. (d) The evidence is one round of five results on one reference board, with no per-submission scores in the paper and no run-to-run or seed variance.",
+        "locations": ["Abstract", "Sec 6 / paras 1-3"],
+        "confidence": 5,
+        "missing": "Nothing for the stated limitations; unstated ones are listed under Q9."
+      },
+      "Q12": {
+        "answer": "MLPerf Tiny is a four-task benchmark (keyword spotting, visual wake words, image classification, anomaly detection) for microcontroller-class ML. It scores accuracy, latency and energy together, has closed and open divisions, and provides complete reference implementations whose layers can be swapped. Its first round (June 2021) drew five very different systems spanning microwatts to watts, which shows the suite can be used across heterogeneous hardware. But the paper reports no performance numbers, and the evidence is one small round.",
+        "locations": ["Abstract", "Sec 4", "Sec 7"],
+        "confidence": 4,
+        "missing": "There is no single quantitative headline result a reader could carry away."
+      }
+    }
+  },
+  "diagnostics": {
+    "packet_id": "pkt-ff333bed",
+    "binding_personas": ["A", "B", "E"],
+    "findings": [
+      {
+        "dimension": "problem",
+        "score": 4,
+        "persona": ["A", "B", "C", "E"],
+        "location": {"section": "Abstract", "paragraph": 1, "quote": "has been limited by the lack of a widely accepted, reproducible benchmark"},
+        "observed": "The problem is stated in the first sentence and again in Sec 1 paras 1 and 4: there is no accepted, reproducible way to compare microcontroller-class ML systems on accuracy, latency and energy. The claim that this lack has held progress back is asserted, not shown.",
+        "reader_struggle": "This works: every persona can name the problem after one sentence. A verifying reader (E) has nothing to check the causal claim against, and the device scope shifts between definitions (see terminology).",
+        "likely_consequence": "Readers identify the problem correctly but take its severity on trust.",
+        "revision_principle": "Support the causal premise of a problem statement with evidence, or present it explicitly as motivation. Keep the scope of the target device class the same everywhere it is stated."
+      },
+      {
+        "dimension": "motivation",
+        "score": 4,
+        "persona": ["B", "C", "D"],
+        "location": {"section": "1 Introduction", "paragraph": 1, "quote": "performing inference on the sensor itself avoids the energy cost of sending data over a wireless link"},
+        "observed": "The motivation is concrete and has several layers: transmission energy, response time, privacy, and the need to measure optimizations made across the whole stack. The central premise, that transmission costs far more than computation, is cited once (Sec 2 para 2) but never quantified.",
+        "reader_struggle": "Adjacent readers see why the setting matters, but cannot judge how large the advantage is, so they cannot weigh the argument.",
+        "likely_consequence": "The motivation is accepted in qualitative terms only.",
+        "revision_principle": "Anchor the motivating premise with at least one concrete, attributed magnitude so readers can weigh it."
+      },
+      {
+        "dimension": "research_question",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1 Introduction", "paragraph": 4, "quote": "can one benchmark suite fit the extreme memory and power constraints of microcontroller-class devices"},
+        "observed": "The research question is explicit, well placed, and follows from the stated gap. But its three parts ('fit', 'measure together', 'fair comparison') have no success criteria. The memory budget of the target devices or of the reference board is never given. The one memory figure (Sec 2 para 3: 'roughly two orders of magnitude' below gigabyte budgets) does not match the paper's own suggestion that a 325 KB model fits most 32-bit microcontrollers. No criterion for 'fair' is given.",
+        "reader_struggle": "E cannot tell what observation would count as answering each part, so cannot check the claim in Sec 5 para 1 that the question was answered. A notices that the memory figure conflicts with the paper's own model sizes.",
+        "likely_consequence": "Readers accept that the question was answered without any yardstick for 'fit' or 'fair'.",
+        "revision_principle": "Give each part of a compound research question a criterion that can be observed, such as a stated resource budget or a stated condition for comparability. Return to each criterion explicitly when drawing conclusions."
+      },
+      {
+        "dimension": "contribution",
+        "score": 3,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "1 Introduction", "paragraph": 5, "quote": "This paper's contributions are three points about that suite, each tied to a specific piece of evidence"},
+        "observed": "The contributions are listed and each is mapped to sections, which helps. But they are framed as 'points about that suite'. The suite is credited to 'more than fifty organizations' and its creators are referred to in the third person, while the abstract says 'This paper presents MLPerf Tiny'. The paper never says whether the suite or the round was described elsewhere, or what this article adds.",
+        "reader_struggle": "A asks what is actually new here, and cannot separate the artifact (the suite) from this article's own contribution.",
+        "likely_consequence": "A may judge the paper a secondary summary with nothing new, or give credit to the wrong party.",
+        "revision_principle": "State plainly who built what, and what this article contributes beyond the suite's existence, in the voice of the authors who made the contribution."
+      },
+      {
+        "dimension": "method",
+        "score": 3,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "Abstract", "paragraph": 1, "quote": "A closed division holds the model, dataset, and threshold fixed and allows only quantization"},
+        "observed": "The abstract says the closed division allows 'only quantization'. Yet Sec 3 para 1 says a submitter can improve a compiler or an accelerator, and Table 2's closed entries use different frameworks (TFLite Micro, LEIP, Syntiant TDK) on different hardware. The paper never says in one place what the closed division fixes (model, data, and weights apart from post-training quantization) and what it leaves free (hardware, runtime, compiler).",
+        "reader_struggle": "B takes 'only quantization' literally and is then surprised to find closed-division entries with different toolchains and hardware. E cannot tell exactly what a closed-division comparison holds constant.",
+        "likely_consequence": "Readers misunderstand what closed-division results can be compared on.",
+        "revision_principle": "Define each division as an explicit list of what is fixed and what is free, covering model, weights, data, numerics, software stack and hardware."
+      },
+      {
+        "dimension": "method",
+        "score": 3,
+        "persona": ["A", "E"],
+        "location": {"section": "3 The MLPerf Tiny Benchmark Suite: Design and Reference Implementations", "paragraph": 3, "quote": "Accuracy is measured once, as a single pass over the entire validation set"},
+        "observed": "The paper is inconsistent about the evaluation data and leaves parts of the protocol undefined. The protocol says accuracy uses the entire validation set, but Sec 3 para 2 says the open division uses 'the suite's own test set'. The reference figures use a 200-image IC subset, a 1,000-utterance KWS on-device subset and a 248-sample AD set. The energy equipment is mentioned (single supply, 'level-shifting hardware', runner) but not described. The margin between each target and the reference accuracy varies (about 6 points for VWW, 1.5 for IC, 0.01 AUC for AD) with no stated rule, and the AD target is 'set directly from' two values without saying how. Sec 3 para 7 offers open-division submitters three pre-computed feature options, whereas Sec 6 para 1 says submitters choose their own feature pipeline.",
+        "reader_struggle": "E cannot determine which data a submission's accuracy is computed on, how energy is physically captured, or how targets were derived. A cannot assess whether the measurements are valid.",
+        "likely_consequence": "The protocol cannot be reproduced or critically assessed from the paper alone.",
+        "revision_principle": "For each task, name the evaluation set used for scoring (split, size, and whether it runs on the host or the device). Describe the measurement equipment in enough detail to reproduce it, and state one rule for how accuracy targets are set."
+      },
+      {
+        "dimension": "experiment",
+        "score": 2,
+        "persona": ["A", "E"],
+        "location": {"section": "4 Results", "paragraph": 3, "quote": "the suite's first external submission round, held in June 2021, produced five results"},
+        "observed": "The round is described only by division, hardware, numerics and framework. The paper does not say which of the four tasks each submission ran, whether each reported energy, how many runs were made, or who the submitters were. One row reads 'Baseline performance on the reference platform', which may be the reference implementation itself.",
+        "reader_struggle": "E cannot reconstruct which submissions ran which tasks and reported which metrics, so cannot tell what was actually compared. A cannot tell whether 'external' means outside the more than fifty organizations that built the suite.",
+        "likely_consequence": "Readers overestimate how broad the evidence behind the round is.",
+        "revision_principle": "Report the full experimental matrix (who submitted, which tasks, which metrics, how many runs) so the extent of the evidence is visible."
+      },
+      {
+        "dimension": "experiment",
+        "score": 2,
+        "persona": ["A", "E"],
+        "location": {"section": "3 The MLPerf Tiny Benchmark Suite: Design and Reference Implementations", "paragraph": 6, "quote": "Evaluated with the suite's own runner on a 200-image test subset, this model reaches 86.5% accuracy"},
+        "observed": "The pass/fail checks rely on small evaluation subsets (200 images for IC, 248 samples for AD), a single trained model and no uncertainty. With 200 images, the standard error of 86.5% is about 2.4 points, which is larger than the 1.5-point margin above the 85% target. The AD margin is 0.01 AUC on 248 samples.",
+        "reader_struggle": "A and E will ask whether 'met its target' can be told apart from sampling noise, and whether the targets are well calibrated.",
+        "likely_consequence": "Readers treat the reference pass/fail evidence as firmer than it is.",
+        "revision_principle": "For every accuracy used in a pass/fail judgement, report the size of the evaluation set and an uncertainty estimate, and justify the subset size against the margin to the target."
+      },
+      {
+        "dimension": "result",
+        "score": 2,
+        "persona": ["A", "B", "D", "E"],
+        "location": {"section": "4 Results", "paragraph": 2, "quote": "their latency and energy scores covered a wide range across the four tasks"},
+        "observed": "The Results section states its first outcome without a single number. No reference latency (inferences per second) or energy (microjoules per inference) value appears anywhere in the paper. The accuracy figures behind 'met their targets' sit in Sec 3 under mixed conditions: VWW 'about 86%' with no evaluation set or precision stated, AD on 248 samples, KWS on an on-device subset.",
+        "reader_struggle": "B and D cannot say what the reference board actually achieved. A cannot judge whether the baseline is sensible. E has to piece the figures together from four paragraphs.",
+        "likely_consequence": "Readers finish a benchmark paper that centres on energy without seeing any latency or energy result.",
+        "revision_principle": "Put every value that a results claim relies on in the results section itself, with the evaluation condition attached to each value."
+      },
+      {
+        "dimension": "interpretation",
+        "score": 3,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "5 Discussion", "paragraph": 3, "quote": "Every submission changed something about the hardware, the numerics, or the software toolchain; none changed the training data itself"},
+        "observed": "The observation that no one changed the data is hedged as a first observation. But the interpretation ignores that closed-division rules (Sec 3 para 2) forbid dataset changes. Four of the five submissions could not have changed the data; only the single open-division entry could. Likewise, 'every submission changed something about the hardware' is presented as a choice, but choosing a hardware platform is simply what a hardware submission does.",
+        "reader_struggle": "A and E who remember Sec 3 para 2 see a pattern created by the rules being read as how the field behaves. B readers who do not connect the two sections accept it as a finding.",
+        "likely_consequence": "B concludes that TinyML practitioners neglect data; A and E discount the discussion.",
+        "revision_principle": "Before interpreting a pattern among submissions, check whether the benchmark's own rules produce it, and state how many submissions could have shown otherwise."
+      },
+      {
+        "dimension": "interpretation",
+        "score": 3,
+        "persona": ["A", "E"],
+        "location": {"section": "5 Discussion", "paragraph": 2, "quote": "A plausible mechanism behind that result, though not one this round was designed to isolate on its own"},
+        "observed": "Strength: the mechanism is explicitly labelled as not isolated, and para 4 notes that a cooperative round cannot show the design resists gaming. These well-judged hedges are not carried into the abstract or conclusion, which state comparability without qualification.",
+        "reader_struggle": "This works within Sec 5, but readers who read only the abstract and conclusion miss the hedges.",
+        "likely_consequence": "Careful readers treat the mechanism as a hypothesis; readers who skim take the stronger framing.",
+        "revision_principle": "Keep the level of evidence claimed for each interpretation the same wherever the interpretation is restated."
+      },
+      {
+        "dimension": "limitation",
+        "score": 4,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "6 Limitations", "paragraph": 1, "quote": "creates the possibility of a degenerate submission in which most of a model is simply relabeled"},
+        "observed": "The limitations are specific and explain how each problem arises: the relabeling loophole, the limited runner-to-device bandwidth for streaming tasks, and the narrow range of architectures. They are split into the authors' own limitations and additional caveats (single round, one board, no per-submission scores, no run-to-run or seed variance), and an ethics note is included. Two things are missing: the division-rule confound behind the data-centric claim, and whether submitters and adopters are independent of the suite's builders.",
+        "reader_struggle": "This works well, but E still has to find the unlisted confounds unaided.",
+        "likely_consequence": "Readers get an accurate picture of most of the limits, though not of every interpretive claim.",
+        "revision_principle": "Make the limitations section cover every interpretive claim in the discussion, including confounds created by the benchmark's own rules."
+      },
+      {
+        "dimension": "narrative_coherence",
+        "score": 3,
+        "persona": ["A", "B", "C", "D", "E"],
+        "location": {"section": "5 Discussion", "paragraph": 4, "quote": "the suite's own authors report that it had already been adopted as a standard set of tasks"},
+        "observed": "Throughout, the text describes the suite's creators from the outside: 'in the authors' own words' (Abstract), 'the authors state this gap directly' (Sec 1 para 3), 'the paper reports' (Sec 4 para 2), 'the suite's own authors report' (Sec 5 para 4), 'Beyond what the authors state directly, the evidence available for this paper' (Sec 6 para 3), and 'outside the material available here' (Sec 6 para 3). It reads as a secondary account of someone else's work.",
+        "reader_struggle": "All personas are unsure who is speaking, whether the writers endorse the claims they attribute to 'the authors', and whether this is a primary research article.",
+        "likely_consequence": "Readers treat the paper as a summary of another paper, which lowers its perceived novelty and makes it unclear who owns each claim.",
+        "revision_principle": "Use one consistent authorial voice that owns the work presented, and keep third-person attribution for other people's work."
+      },
+      {
+        "dimension": "narrative_coherence",
+        "score": 3,
+        "persona": ["B", "D", "E"],
+        "location": {"section": "Title", "paragraph": 1, "quote": "Benchmarking Machine Learning Under a Milliwatt"},
+        "observed": "The title and Sec 1 para 1 frame the story around ML that runs under a milliwatt. Yet Sec 1 para 2 describes TinyML devices as drawing under 50 mW, and the evidence (Sec 4 para 5) spans microwatts to watts and includes a Raspberry Pi 4, which the paper itself calls a general-purpose single-board computer.",
+        "reader_struggle": "Readers cannot reconcile the scope promised by the headline with what was measured.",
+        "likely_consequence": "Readers either believe the suite targets systems under a milliwatt specifically, or distrust the framing.",
+        "revision_principle": "Align the title and framing with the power range the suite actually covers and the evidence actually reports."
+      },
+      {
+        "dimension": "terminology",
+        "score": 3,
+        "persona": ["B", "C", "E"],
+        "location": {"section": "1 Introduction", "paragraph": 1, "quote": "a power draw under one milliwatt -- a regime generally called TinyML"},
+        "observed": "Key terms are used inconsistently. TinyML is defined here as under 1 mW but described as under 50 mW in para 2. The results use 'power' and 'energy' interchangeably, although the scored metric is microjoules per inference. The scoring set is called the 'validation set' in Sec 3 para 3 and the 'test set' in Sec 3 para 2.",
+        "reader_struggle": "C and B, who depend on the definitions, get two scopes for the key term and two names for the scoring set.",
+        "likely_consequence": "Readers are confused about which hardware is in scope, which quantity spans six orders of magnitude, and which data accuracy is scored on.",
+        "revision_principle": "Define each key term once, with numbers where possible, and then reuse exactly that term and value throughout."
+      },
+      {
+        "dimension": "terminology",
+        "score": 3,
+        "persona": ["B", "C"],
+        "location": {"section": "3 The MLPerf Tiny Benchmark Suite: Design and Reference Implementations", "paragraph": 3, "quote": "The power drawn by the framework's own level-shifting hardware is excluded from the score"},
+        "observed": "Several hardware and tool terms that adjacent ML readers usually do not know are used without explanation: level-shifting hardware, wait-states, event-based neural processors, LEIP, Syntiant TDK, QKeras, EEMBC, and the '49x10' KWS input. The NUCLEO-L4R5ZI reference board is never described (core, clock or memory).",
+        "reader_struggle": "B and C cannot picture the measurement setup or the reference device, and the device is central to the claim that the suite fits.",
+        "likely_consequence": "Adjacent readers skim the protocol and cannot assess the energy measurement.",
+        "revision_principle": "For the stated adjacent audience, explain each hardware or tool name by its function at first use, and describe the reference platform in the quantities the argument depends on."
+      },
+      {
+        "dimension": "logical_flow",
+        "score": 3,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "4 Results", "paragraph": 2, "quote": "This limits how precisely the reference-implementation results themselves can be reported here"},
+        "observed": "'This' has nothing to refer to. The previous sentence says the targets were met and the scores covered a wide range; nothing says what limits the reporting. A step seems to be missing at exactly the point where the reference latency and energy values would be expected.",
+        "reader_struggle": "Readers stall at the core results paragraph, trying to guess the unstated constraint.",
+        "likely_consequence": "Readers suspect that content was left out and lose confidence in the results section.",
+        "revision_principle": "Any sentence that qualifies a result must name the constraint it refers to, especially where results are withheld."
+      },
+      {
+        "dimension": "logical_flow",
+        "score": 3,
+        "persona": ["A", "E"],
+        "location": {"section": "5 Discussion", "paragraph": 1, "quote": "Taken together, the first round answers the paper's opening question for the case it was actually able to test."},
+        "observed": "The argument from question to answer skips a step. The question asks whether a fair comparison is possible. The evidence is that the reference targets were met and five submissions took part. The conclusion is that the question is answered. Nothing in between shows that the resulting numbers are comparable or fair.",
+        "reader_struggle": "E looks for the step that turns participation into comparability and does not find it.",
+        "likely_consequence": "Readers either accept a step that was never shown or reject the conclusion.",
+        "revision_principle": "Make each step from evidence to conclusion explicit, and draw conclusions only on the parts of the question the evidence actually addresses."
+      },
+      {
+        "dimension": "evidence_traceability",
+        "score": 2,
+        "persona": ["A", "E"],
+        "location": {"section": "4 Results", "paragraph": 5, "quote": "measured power draw across the five platforms spanned from microwatts to watts, a range of roughly six orders of magnitude"},
+        "observed": "This headline claim, repeated in the abstract, comes with no values, no per-platform figure and no source. The protocol scores energy per inference, not power, so it is unclear which quantity spans six orders of magnitude, or whether the microwatt end is active or idle power.",
+        "reader_struggle": "E cannot verify the range or even identify the quantity.",
+        "likely_consequence": "Readers repeat a headline number they cannot verify.",
+        "revision_principle": "Tie every quantitative claim to a presented value or a precise citation, expressed in the quantity the protocol actually measures."
+      },
+      {
+        "dimension": "evidence_traceability",
+        "score": 2,
+        "persona": ["A", "E"],
+        "location": {"section": "5 Discussion", "paragraph": 4, "quote": "packaged into a public project on a TinyML development platform"},
+        "observed": "Several supporting claims have no retrievable source. The evidence of adoption is uncited and the platform is unnamed. The one citation for adoption (Banbury et al., 2021) is from the same year as the June 2021 round, so 'subsequent' cannot be checked. MLMark has no citation (Sec 1 para 3, Sec 2 para 4), and the MLPerf Inference reference gives no venue. Sec 6 para 3 points to an unnamed 'external results repository' for the per-submission scores.",
+        "reader_struggle": "E cannot trace several supporting claims to any source they could retrieve.",
+        "likely_consequence": "Readers accept or reject the claims about adoption and prior work on trust.",
+        "revision_principle": "Give every external fact, and every dataset the paper defers to, a citation the reader can retrieve."
+      },
+      {
+        "dimension": "figure_table",
+        "score": 3,
+        "persona": ["B", "C", "E"],
+        "location": {"section": "3 The MLPerf Tiny Benchmark Suite: Design and Reference Implementations (Table 1)", "paragraph": 4, "quote": "Reference model (size)"},
+        "observed": "Table 1 is a useful summary, but 'size' is undefined (bytes of weights? quantized or not? file size?). The input sizes use inconsistent, unexplained notation ('49x10', '96x96' with no channel count, '5*128'). The AD dataset is listed as ToyADMOS, while the text introduces it as DCASE2020 and MIMII.",
+        "reader_struggle": "B and C cannot interpret the input dimensions or relate model sizes to device memory.",
+        "likely_consequence": "Readers cannot use the table to check the premise that the models fit in microcontroller memory.",
+        "revision_principle": "Define the units and notation of every table column in the caption, using one notation throughout."
+      },
+      {
+        "dimension": "figure_table",
+        "score": 3,
+        "persona": ["B", "D", "E"],
+        "location": {"section": "4 Results (Table 2 caption)", "paragraph": 3, "quote": "Per-submission accuracy/latency/energy scores are not given in the paper text and so are not reported here"},
+        "observed": "The paper's only results table contains no measured values and does not say which tasks each submission ran. Its 'What it demonstrated' column restates each submitter's own framing (e.g. 'Ultra-low-power hardware efficiency') rather than measured outcomes. The caption's reference to 'the paper text' is confusing when it appears in the paper itself.",
+        "reader_struggle": "B and D may read the right-hand column as benchmark findings; E finds no data.",
+        "likely_consequence": "Readers mistake the submitters' descriptions of themselves for results.",
+        "revision_principle": "A results table should show measured outcomes or say exactly where they are. Label any column that contains claims rather than measurements."
+      },
+      {
+        "dimension": "claim_evidence_alignment",
+        "score": 2,
+        "persona": ["A", "D", "E"],
+        "location": {"section": "7 Conclusion", "paragraph": 1, "quote": "its first external round turned that design into five genuinely comparable results across five different kinds of hardware"},
+        "observed": "The paper presents no scores to support 'genuinely comparable'. One of the five entries is in the open division (different training, quantization-aware INT-6/8, no required target), so by the paper's own rules it is not like-for-like with the four closed entries. Which tasks each submission covered is unknown.",
+        "reader_struggle": "E looks for evidence of comparability and finds only that five submissions exist.",
+        "likely_consequence": "Readers overestimate what the round showed.",
+        "revision_principle": "Match the strength of each conclusion to the evidence actually shown, and respect the limits on comparability that the paper's own division rules create."
+      },
+      {
+        "dimension": "claim_evidence_alignment",
+        "score": 2,
+        "persona": ["A", "E"],
+        "location": {"section": "4 Results", "paragraph": 3, "quote": "produced five results, publicly listed and each reproducible from published instructions"},
+        "observed": "Reproducibility is inferred from the fact that instructions exist. No reproduction attempt, check across labs, or variance is reported.",
+        "reader_struggle": "E cannot tell whether 'reproducible' means the results were reproduced or only that they were designed to be.",
+        "likely_consequence": "Readers believe the results have been independently reproduced.",
+        "revision_principle": "Separate what a protocol is designed to make possible from what has actually been demonstrated, and claim only the latter as shown."
+      },
+      {
+        "dimension": "unsupported_inference",
+        "score": 2,
+        "persona": ["A", "B", "E"],
+        "location": {"section": "Abstract", "paragraph": 1, "quote": "in the authors' own words, TinyML practice in this round remained centered on models, frameworks, and hardware rather than data"},
+        "observed": "A claim about how the field works is drawn from the fact that no submission changed the dataset. But closed-division rules forbid dataset changes for four of the five submissions, so only one entry could have changed the data. The 'trend toward data-centric methods' (Sec 4 para 5) is uncited. The claim recurs in the abstract, Sec 4 para 5, Sec 5 para 3 and Sec 7.",
+        "reader_struggle": "A and E see a pattern produced by the rules presented as behaviour; B and D have no way to notice.",
+        "likely_consequence": "Non-experts conclude that TinyML ignores data; experts start discounting the paper's interpretive claims in general.",
+        "revision_principle": "Draw conclusions about behaviour only from cases where the behaviour was possible, and state how many such cases there were."
+      },
+      {
+        "dimension": "unsupported_inference",
+        "score": 2,
+        "persona": ["A", "E"],
+        "location": {"section": "4 Results", "paragraph": 4, "quote": "essentially one submission per major class of TinyML-relevant hardware available at the time"},
+        "observed": "This coverage claim comes without any survey of hardware classes. DSPs and event-based neural processors, which Sec 1 para 2 and Sec 2 para 3 name as TinyML hardware, are absent. The watt-level top of the reported range, and the general-purpose single-board computer, fall outside the paper's own description of TinyML devices (10-250 MHz, under 50 mW).",
+        "reader_struggle": "A and E notice that the claim contradicts the paper's own classification of hardware.",
+        "likely_consequence": "Readers overestimate how representative five submissions are.",
+        "revision_principle": "Check claims of representativeness against the paper's own classification, and report coverage as counts rather than as completeness."
+      },
+      {
+        "dimension": "redundancy",
+        "score": 3,
+        "persona": ["B", "C", "E"],
+        "location": {"section": "2 Background and Related Work", "paragraph": 4, "quote": "Measured against exactly these four constraints, the closest prior benchmarks each fail in a different, specific way."},
+        "observed": "The gap in CoreMark, MLMark and MLPerf Inference is argued in Sec 1 para 3 and again, with the same content, in Sec 2 para 4. The wireless-energy motivation appears in Sec 1 para 1 and again in Sec 2 para 2. The observation that no one changed the data appears four times (Abstract, Sec 4 para 5, Sec 5 para 3, Sec 7).",
+        "reader_struggle": "The repetition costs attention, and repeating the weakly supported data claim gives it more weight than its evidence warrants.",
+        "likely_consequence": "Readers skim Sec 2 and remember the data-centric point more strongly than it deserves.",
+        "revision_principle": "Make each argument once, where it is needed, and refer back to it afterwards. A claim should never be repeated more than its evidence can bear."
+      },
+      {
+        "dimension": "cognitive_load",
+        "score": 3,
+        "persona": ["B", "C", "D", "E"],
+        "location": {"section": "Abstract", "paragraph": 1, "quote": "so that the suite can balance strict comparability against room for innovation; a shared measurement protocol scores latency and energy"},
+        "observed": "The abstract is one long paragraph whose central sentence chains the division rules, the protocol and the anti-gaming rule together with semicolons. Each task paragraph in Sec 3 packs six to ten numbers, measured under different evaluation conditions. To check the single claim in Sec 4 that all targets were met, a reader has to combine four paragraphs.",
+        "reader_struggle": "B, C and D must hold many details at once; E must cross-reference across sections to verify one claim.",
+        "likely_consequence": "Readers retain the gist of the design but not the evidence.",
+        "revision_principle": "Limit the abstract to the problem, the approach, the key evidence and a bounded conclusion. Gather the numbers that support one claim into one place."
+      },
+      {
+        "dimension": "orientation",
+        "score": 4,
+        "persona": ["B", "C", "E"],
+        "location": {"section": "1 Introduction", "paragraph": 5, "quote": "First, Sections 2 and 3 describe how the suite is designed"},
+        "observed": "A clear roadmap maps each contribution to sections. The opening lines of Sec 2 and Sec 4 say what each section will establish, and Table 1 is introduced before the details. Two points of friction: the task order in Table 1 (KWS, VWW, IC, AD) differs from the order in the text (VWW, IC, KWS, AD), and the reference board, which is central to both 'fit' and 'baseline', is never described.",
+        "reader_struggle": "This works for most readers, with minor re-orientation when matching table rows to paragraphs.",
+        "likely_consequence": "Readers know where they are and why each section exists.",
+        "revision_principle": "Keep the signposting. Order detailed subsections to match their summary table, and describe a reference platform where it first appears."
+      },
+      {
+        "dimension": "so_what",
+        "score": 4,
+        "persona": ["B", "D"],
+        "location": {"section": "5 Discussion", "paragraph": 4, "quote": "For a reader outside TinyML, the more general point is this"},
+        "observed": "Adjacent readers get an explicit takeaway: a benchmark that measures several axes and lets any layer of the stack be swapped can standardize comparison across a fragmented landscape. It comes with an honest caveat about more competitive settings. But it relies on comparability that is not shown with numbers, and it does not say how an adjacent researcher could use the suite (for example, as a target for their own models).",
+        "reader_struggle": "This works for B and D; E notices that the takeaway rests on comparability that was never shown.",
+        "likely_consequence": "Readers remember the design lesson and may overestimate how well the evidence supports it.",
+        "revision_principle": "Tie the general takeaway to the specific evidence behind it, and to a concrete way an adjacent researcher could use the work."
+      }
+    ],
+    "inference_issues": [
+      {
+        "kind": "unsupported_conclusion",
+        "location": {"section": "7 Conclusion", "paragraph": 1, "quote": "five genuinely comparable results across five different kinds of hardware"},
+        "claim_text": "its first external round turned that design into five genuinely comparable results across five different kinds of hardware, which is itself evidence that the suite functions as intended for at least one round",
+        "missing_link": "No accuracy, latency or energy value is presented for any submission, and the paper does not say which tasks each submission covered. One of the five is an open-division entry that, by the paper's own rules, need not use the reference model or meet the target, so it is not like-for-like with the closed entries."
+      },
+      {
+        "kind": "limitation_not_respected",
+        "location": {"section": "Abstract", "paragraph": 1, "quote": "This suggests a modular, three-metric design is flexible enough to make very different hardware and software stacks comparable"},
+        "claim_text": "This suggests a modular, three-metric design is flexible enough to make very different hardware and software stacks comparable",
+        "missing_link": "Sec 6 para 3 admits that the paper reports no per-submission scores and no run-to-run or seed variance. Yet the abstract, Sec 5 para 1 ('report results that a reader can meaningfully set side by side') and Sec 7 still assert comparability and say the opening question is answered. The disclosed gap does not limit these claims."
+      },
+      {
+        "kind": "overstrong_language",
+        "location": {"section": "4 Results", "paragraph": 3, "quote": "publicly listed and each reproducible from published instructions"},
+        "claim_text": "produced five results, publicly listed and each reproducible from published instructions",
+        "missing_link": "No reproduction attempt, replication in another lab, or variance is reported. Published instructions show that reproduction is intended, not that it was achieved."
+      },
+      {
+        "kind": "unsupported_conclusion",
+        "location": {"section": "4 Results", "paragraph": 1, "quote": "whether organizations outside the authors could use the suite at all"},
+        "claim_text": "the suite's first external submission round, held in June 2021, produced five results (offered as the answer to whether organizations outside the authors could use the suite at all)",
+        "missing_link": "The submitters are not identified, and nothing shows they are outside the more than fifty organizations that built the suite. One entry is described as 'Baseline performance on the reference platform', and Sec 5 para 4 itself calls the round 'cooperative'."
+      },
+      {
+        "kind": "overstrong_language",
+        "location": {"section": "5 Discussion", "paragraph": 4, "quote": "which is a second, independent kind of evidence that the design was usable outside the group that built it"},
+        "claim_text": "the suite's own authors report that it had already been adopted as a standard set of tasks in subsequent TinyML research (Banbury et al., 2021) and packaged into a public project on a TinyML development platform, which is a second, independent kind of evidence that the design was usable outside the group that built it",
+        "missing_link": "The adoption is reported by the suite's own authors and supported by one citation dated the same year as the June 2021 round, plus one uncited platform project. Neither the independence from the builders nor the claim that the research came afterwards ('subsequent') is shown."
+      },
+      {
+        "kind": "unsupported_conclusion",
+        "location": {"section": "4 Results", "paragraph": 5, "quote": "none of them modified the training dataset"},
+        "claim_text": "none of them modified the training dataset, even though the broader machine-learning field was, at the time, trending toward data-centric methods (restated in the Abstract, Sec 5 para 3 and Sec 7 as TinyML practice remaining centered on models, frameworks, and hardware rather than data)",
+        "missing_link": "Closed-division rules (Sec 3 para 2) forbid dataset changes, so four of the five submissions could not have changed the data. The evidence comes down to one open-division entry. The claimed field-wide 'trend toward data-centric methods' is uncited."
+      },
+      {
+        "kind": "causal_overreach",
+        "location": {"section": "4 Results", "paragraph": 5, "quote": "8-bit integer numerics were the most common choice, which the authors attribute to it offering a performance gain"},
+        "claim_text": "8-bit integer numerics were the most common choice, which the authors attribute to it offering a performance gain with little cost to accuracy",
+        "missing_link": "No latency or energy comparison of INT8 with FP32 is presented. The closed division permits only post-training quantization of the TFLite Micro reference models, so INT8 may be common because of the rules and the toolchain rather than because submitters weighed the performance trade-off."
+      },
+      {
+        "kind": "overgeneralization",
+        "location": {"section": "4 Results", "paragraph": 4, "quote": "essentially one submission per major class of TinyML-relevant hardware available at the time"},
+        "claim_text": "essentially one submission per major class of TinyML-relevant hardware available at the time",
+        "missing_link": "There is no survey of hardware classes. DSPs and event-based neural processors, which Sec 1-2 name as TinyML hardware, are absent, and the watt-level top of the round lies outside the paper's own description of TinyML devices as drawing under 50 mW."
+      },
+      {
+        "kind": "unsupported_conclusion",
+        "location": {"section": "Abstract", "paragraph": 1, "quote": "with measured power spanning roughly six orders of magnitude, from microwatts to watts"},
+        "claim_text": "with measured power spanning roughly six orders of magnitude, from microwatts to watts",
+        "missing_link": "No measured power or energy value is shown for any platform. The protocol scores energy per inference, so the quantity and conditions behind the range are unknown."
+      },
+      {
+        "kind": "unsupported_conclusion",
+        "location": {"section": "Abstract", "paragraph": 1, "quote": "All four reference implementations met their own accuracy targets on a shared reference board"},
+        "claim_text": "All four reference implementations met their own accuracy targets on a shared reference board",
+        "missing_link": "Only the KWS and IC figures are tied to evaluation on the device or through the suite's runner. VWW ('about 86%') and AD (0.86 AUC) are not stated to be measured on the board. The margins for IC (1.5 points on 200 images, standard error about 2.4 points) and AD (0.01 AUC on 248 samples) are within plausible sampling error, and no seed or run variance is given."
+      },
+      {
+        "kind": "selective_presentation",
+        "location": {"section": "4 Results", "paragraph": 2, "quote": "their latency and energy scores covered a wide range across the four tasks"},
+        "claim_text": "their latency and energy scores covered a wide range across the four tasks",
+        "missing_link": "No reference latency or energy value is presented anywhere. The next sentence ('This limits how precisely...') hints at a reason that is never stated. The baseline that submissions would be read against is withheld."
+      },
+      {
+        "kind": "overstrong_language",
+        "location": {"section": "1 Introduction", "paragraph": 5, "quote": "so that the comparison it produces is actually fair"},
+        "claim_text": "Sections 2 and 3 describe how the suite is designed ... so that the comparison it produces is actually fair",
+        "missing_link": "Fairness is argued from the design's intent only. No test is reported (agreement across labs, how sensitive rankings are to protocol choices, variance), and the paper itself identifies an unclosed loophole (Sec 6 para 1)."
+      },
+      {
+        "kind": "unsupported_conclusion",
+        "location": {"section": "5 Discussion", "paragraph": 1, "quote": "it required only that every submitter share the same reference implementation, the same four tasks"},
+        "claim_text": "That did not require forcing every submitter onto the same toolchain; it required only that every submitter share the same reference implementation, the same four tasks, and the same three scoring rules.",
+        "missing_link": "This claims the conditions were sufficient, based on one round with no controls. The open-division FPGA entry used quantization-aware training and did not have to share the reference model, and the paper does not show that every submitter ran all four tasks."
+      },
+      {
+        "kind": "overstrong_language",
+        "location": {"section": "Title", "paragraph": 1, "quote": "Benchmarking Machine Learning Under a Milliwatt"},
+        "claim_text": "Benchmarking Machine Learning Under a Milliwatt",
+        "missing_link": "No measurement under a milliwatt is shown. The paper describes its target devices as drawing under 50 mW (Sec 1 para 2), and the round reportedly reaches watts."
+      },
+      {
+        "kind": "overstrong_language",
+        "location": {"section": "1 Introduction", "paragraph": 2, "quote": "several orders of magnitude below the clock speed and power budget"},
+        "claim_text": "perform inference using less than 50 mW of power, several orders of magnitude below the clock speed and power budget that phone- or GPU-class ML deployment can assume",
+        "missing_link": "No phone or GPU figures are given. Compared with GHz-class processors, a 10-250 MHz clock is only about one to two orders of magnitude lower, so 'several' is plausible for power but not for clock speed."
+      },
+      {
+        "kind": "unsupported_conclusion",
+        "location": {"section": "3 The MLPerf Tiny Benchmark Suite: Design and Reference Implementations", "paragraph": 7, "quote": "because the authors judge it to be a small fraction of the benchmark's overall compute cost"},
+        "claim_text": "Feature extraction itself is excluded from the timed measurement ... because the authors judge it to be a small fraction of the benchmark's overall compute cost",
+        "missing_link": "No measurement of the cost of feature extraction is given. Sec 6 para 1 shows that the exclusion lets submitters relabel model computation as untimed features, so the design choice rests on an unquantified judgement."
+      }
+    ],
+    "objective_discrepancies": [
+      "The objective says the authors are presenting their own research project, but the paper reads as a secondary account. It refers to the suite's creators in the third person ('in the authors' own words', 'the suite's own authors report', 'Beyond what the authors state directly, the evidence available for this paper', 'outside the material available here'). Readers therefore take it as someone else's summary of MLPerf Tiny and cannot tell what this article newly contributes.",
+      "The objective targets adjacent ML researchers. The explanations of design choices and the 'For a reader outside TinyML' paragraph serve that audience. But the paper gives no latency or energy numbers, for either the reference implementations or the submissions, and leaves several hardware and measurement terms unexplained. An adjacent researcher learns how the benchmark is structured, but not what it measures in practice or how energy is measured.",
+      "The contribution is framed differently in different places. The abstract says the paper 'presents MLPerf Tiny', while Sec 1 para 5 frames the contribution as 'three points about that suite'. What the paper actually conveys is a description of the design plus a count of participants, not a research contribution backed by results."
+    ],
+    "injection_suspected": []
+  }
+}

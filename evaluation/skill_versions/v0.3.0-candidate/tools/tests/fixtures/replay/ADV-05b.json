@@ -1,0 +1,39 @@
+{
+ "id": "ADV-05b",
+ "origin": "control for case 5",
+ "title": "garbled title kept verbatim and marked unverifiable: passes",
+ "files": {
+  ".rcs/corpus/source_registry.json": {
+   "sources": [
+    {
+     "id": "SRC-001",
+     "title": "Atention Is Al You Ned",
+     "authors": [
+      "Vaswani"
+     ],
+     "year": 2017,
+     "publication_status": "PEER-REVIEWED",
+     "level": 1,
+     "verification": {
+      "method": "user_supplied_file",
+      "date": "2026-09-29"
+     },
+     "read_depth": "abstract",
+     "permitted_use": [
+      "background"
+     ],
+     "as_cited": "Atention Is Al You Ned",
+     "title_status": "unverifiable"
+    }
+   ]
+  }
+ },
+ "checks": [
+  {
+   "tool": "validate",
+   "forbid": [
+    "ERROR:TITLE_REPAIRED_FROM_MEMORY"
+   ]
+  }
+ ]
+}

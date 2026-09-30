@@ -1,0 +1,25 @@
+{
+  "mode": "B",
+  "primary": "Machine-learning researchers from other subfields (adjacent researchers): they know general ML, deep learning, standard evaluation practice and statistics, but not this subfield's (information retrieval's) specific terminology, datasets, or prior work.",
+  "secondary": "Not specially targeted in this run (no venue/reviewer population specified); the same mode-B explanation level is used throughout since no separate reviewer packet was requested.",
+  "tertiary": "Future readers skimming for the headline finding and its boundary (Abstract, Limitations).",
+  "assumed_known": [
+    "supervised fine-tuning of pre-trained Transformer encoders (BERT-style, T5-style)",
+    "train/dev/test splits; in-domain vs. out-of-distribution evaluation as a general ML concept",
+    "embeddings / dense vector representations",
+    "contrastive / ranking-style losses at the level of 'pulls matching pairs together, pushes non-matching pairs apart'",
+    "knowledge distillation",
+    "standard statistics vocabulary (variance, significance, point estimate)"
+  ],
+  "not_assumed": [
+    "information retrieval task setup (corpus, query, relevance judgment / qrels)",
+    "nDCG@10 and why rank-aware, graded metrics differ from Precision/Recall/MRR/MAP",
+    "BM25 / lexical retrieval and the 'lexical gap'",
+    "the specific architecture taxonomy: sparse-neural vs. dense (bi-encoder) vs. late-interaction vs. cross-encoder re-ranking",
+    "the specific benchmark suite (BEIR's 18 datasets, 9 tasks) or the prior resources it responds to (MultiReQA, KILT)",
+    "annotation 'pooling' and Hole@k bias in IR test collections"
+  ],
+  "binding_personas": ["A", "B", "E"],
+  "term_budget": {"per_paragraph": 2, "abstract_acronyms": 1},
+  "source": "task-specified (AUDIENCE section of the run instructions), 2026-09-27; no UNCLEAR_AUDIENCE failure raised since the audience was given explicitly."
+}

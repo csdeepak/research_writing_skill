@@ -1,0 +1,54 @@
+{
+ "id": "REAL-02b",
+ "origin": "control for REAL-02",
+ "title": "the traceable wording 'at most 325 KB' passes",
+ "files": {
+  "results/sizes.csv": "model,kb\nmobilenet,325\n",
+  ".rcs/evidence/research_evidence.json": {
+   "project_root": ".",
+   "generated_at": "2026-09-29",
+   "items": [
+    {
+     "id": "E001",
+     "kind": "result",
+     "summary": "TFLite size of the largest reference model",
+     "locator": {
+      "path": "results/sizes.csv"
+     },
+     "strength": "hard",
+     "status": "ok",
+     "value": {
+      "metric": "model_size_kb",
+      "value": 325
+     }
+    }
+   ]
+  },
+  ".rcs/claims/claim_evidence_map.json": {
+   "claims": [
+    {
+     "id": "C001",
+     "statement": "The largest model is 325 KB.",
+     "claim_type": "measured",
+     "evidence": [
+      "E001"
+     ],
+     "confidence": "moderate",
+     "author_confirmation": "confirmed"
+    }
+   ],
+   "limitations": [],
+   "negative_result_decisions": []
+  },
+  "paper.md": "Every reference model is at most 325 KB {C001}.\n"
+ },
+ "checks": [
+  {
+   "tool": "verify_numbers",
+   "forbid": [
+    "WARN:*",
+    "ERROR:*"
+   ]
+  }
+ ]
+}

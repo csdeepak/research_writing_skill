@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-09-27",
+  "source": "Terms used in project/paper.txt and project/README_*.md without a definition aimed at a general ML reader -- i.e. the 'curse of knowledge' the project's own materials carry. These become the term-ledger's must-define list for audience mode B (adjacent researcher).",
+  "assumed_known_by_project_materials_but_not_by_mode_B_reader": [
+    "resolve rate (SWE-Bench's pass/fail metric for whether a patch makes the hidden tests pass)",
+    "pass@k",
+    "ACI / Agent-Computer Interface",
+    "event stream (as an agent-state representation)",
+    "action / observation (agent-environment loop terminology)",
+    "sandbox / sandboxed execution",
+    "0-shot vs 1-shot (in the sense of a demonstration trajectory given to an agent, not just an ICL example)",
+    "accessibility tree / DOM (web-browsing observation formats)",
+    "CodeAct (treating code execution itself as the action space)",
+    "ReAct-style prompting",
+    "multi-agent delegation",
+    "AgentHub / micro agent",
+    "hint text (SWE-Bench-specific: optional natural-language suggestions bundled with a task)",
+    "GitHub issue / GitHub pull request as a unit of software-engineering work",
+    "specific benchmark identities and what each one actually measures (SWE-Bench, HumanEvalFix, WebArena, MiniWoB++, GAIA, GPQA, AgentBench, MINT, ProofWriter, Entity Deduction Arena)"
+  ],
+  "assumed_known_by_mode_B_reader_already": [
+    "supervised/instruction-tuned large language models (GPT-4, Claude, etc.)",
+    "prompting, zero-shot/few-shot inference in the general ICL sense",
+    "train/test split, held-out evaluation sets",
+    "standard statistics: percentages, comparison against baselines",
+    "general notion of a benchmark suite and a leaderboard-style comparison table",
+    "the general concept of an 'AI agent' that takes actions in an environment (from RL or general agents literature), without subfield-specific tooling"
+  ],
+  "implication_for_draft": "Every term in the first list must be defined in one clause at first use (term ledger), and every benchmark named in the Results section needs a one-clause description of the task it measures before its number is reported."
+}

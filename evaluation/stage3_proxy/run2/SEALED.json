@@ -1,0 +1,12 @@
+{
+ "cpk-55a9ad": {
+  "condition": "visual_only",
+  "time_limit_min": 3,
+  "sha256": "ed6ec28305851a3981193c8f0a9875358d5c7316672fafddbc91bb993d30ff80"
+ },
+ "cpk-7eae00": {
+  "condition": "full",
+  "time_limit_min": 20,
+  "sha256": "0077a96a2784c5517a1a83465363ba7a86ad56960f5f4358a66d24739d25c587"
+ }
+}

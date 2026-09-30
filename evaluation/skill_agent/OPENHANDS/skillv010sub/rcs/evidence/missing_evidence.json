@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-09-27",
+  "items": [
+    {
+      "id": "M001",
+      "description": "No seed count, number of repeated runs, standard deviation, or confidence interval is reported for any success-rate/resolve-rate number across Tables 3-7, for either OpenHands agents or baselines. Only a per-instance dollar-cost figure is given for some rows.",
+      "affects": ["E001", "E005", "E006", "E007", "E008", "E009", "E010", "E012", "E013", "E015", "E016", "E017", "E018", "E019", "E021", "E022"],
+      "impact": "Bounds the confidence of every measured claim built on these tables; grounds limitation L001."
+    },
+    {
+      "id": "M002",
+      "description": "Table 1's cell values (which framework has which capability) are missing from the extracted text; only row/column labels remain.",
+      "affects": ["E043"],
+      "impact": "Cannot support a specific comparative claim about how OpenHands differs from prior frameworks on any listed capability; Related Work is instead grounded in the authors' own prose characterizations (E046)."
+    },
+    {
+      "id": "M003",
+      "description": "Table 7's numeric block (extended GPQA subsets) could not be reliably mapped back to its rows/columns.",
+      "affects": ["E044"],
+      "impact": "The paper reports only the diamond-set GPQA number (E016), which is independently legible and corroborated."
+    },
+    {
+      "id": "M004",
+      "description": "Appendix H points to an external file/URL (the SWE-Agent demonstration trajectory and OpenHands' own prompt.py) for the CodeActSWEAgent's in-context demonstration; the demonstration's content itself is not included in project/.",
+      "affects": [],
+      "impact": "No claim in this paper depends on the demonstration's content; noted for completeness only."
+    },
+    {
+      "id": "M005",
+      "description": "paper.txt cites 'Devin (Cognition.ai)' and 'Moatless Tools (Örwall)' without a publication year anywhere in its own text or reference list.",
+      "affects": ["E045", "E002"],
+      "impact": "These two are named in paper.md as plain system names rather than as formal (Author, Year) citations; see state.json accepted_risk AR006."
+    },
+    {
+      "id": "M006",
+      "description": "No ablation in paper.txt varies one architectural component (event stream design, sandboxed action space, AgentSkills/ACI library, multi-agent delegation) while holding the others and the backbone LLM fixed.",
+      "affects": ["E026", "E027", "E028", "E030", "E031"],
+      "impact": "Grounds limitation L006: the causal contribution of any single design choice to the cross-category competitiveness result is untested."
+    }
+  ]
+}

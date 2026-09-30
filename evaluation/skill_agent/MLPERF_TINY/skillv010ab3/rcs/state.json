@@ -1,0 +1,41 @@
+{
+ "step": 17,
+ "gates": {
+  "G1": "passed",
+  "G2": "passed",
+  "G3": "passed",
+  "G4": "deferred to external step 18"
+ },
+ "open_failures": [
+  {
+   "state": "MISSING_RESULT",
+   "id": "M001",
+   "location": "Sec 5.2",
+   "detail": "Figure 5 values unavailable",
+   "raised_by": "AUTHOR",
+   "raised_at_step": 2,
+   "class": "MARK",
+   "resolution": "described qualitatively; accepted"
+  },
+  {
+   "state": "AUTHOR_CONFIRMATION_PENDING",
+   "id": "C014",
+   "location": "Sec 5.3",
+   "detail": "interpretation claim pending",
+   "raised_by": "AUTHOR",
+   "raised_at_step": 4,
+   "class": "ASK",
+   "resolution": "accepted risk (no human)"
+  }
+ ],
+ "accepted_risks": [
+  "No human available: audience fixed to mode B (adjacent ML researchers) per TASK.md.",
+  "No human available: author_confirmation for all claims set to 'confirmed' only where the claim is stated in the paper text itself (author-written); interpretation claims inferred by the agent are 'pending' and are worded at hedged strength.",
+  "No human available: venue unknown; generic venue profile used, all rules assumed.",
+  "Literature limited to works cited in project/paper.txt; registered as user_supplied_file, read_depth=abstract (not readable). Cited works are used only for what the project paper says about them.",
+  "Reference [19] (Torelli and Bangale) and [16] (Moreau) have no year in the project; not registered and not cited in text.",
+  "Figure 5 (reference-implementation latency/energy) is not extractable from paper.txt; per-benchmark latency and energy values are MISSING RESULT and are described only qualitatively as the paper does.",
+  "C014 (interpretation) has author_confirmation=pending; worded as the authors' attribution with hedged verbs.",
+  "Tables 1, 2 and 4 in the source are damaged by extraction; rows reconstructed and consistent with text."
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "questions": {
+  "Q1": {"Q1a": "present", "Q1b": "absent"},
+  "Q2": {"Q2a": "weakened", "Q2b": "present", "Q2c": "absent", "Q2d": "present"},
+  "Q3": {"Q3a": "weakened", "Q3b": "present", "Q3c": "weakened"},
+  "Q4": {"Q4a": "present", "Q4b": "present", "Q4c": "present", "Q4d": "present"},
+  "Q5": {"Q5a": "present", "Q5b": "present", "Q5c": "weakened", "Q5d": "absent", "Q5e": "weakened"},
+  "Q6": {"Q6a": "weakened", "Q6b": "weakened", "Q6c": "present"},
+  "Q7": {"Q7a": "present", "Q7b": "present", "Q7c": "present", "Q7d": "present"},
+  "Q8": {"Q8a": "present", "Q8b": "weakened", "Q8c": "present"},
+  "Q9": {"Q9b": "present", "Q9c": "weakened"},
+  "Q10": {"Q10a": "weakened", "Q10b": "weakened"},
+  "Q11": {"Q11a": "absent", "Q11b": "present", "Q11c": "present", "Q11d": "present", "Q11e": "weakened"},
+  "Q12": {"Q12a": "present", "Q12b": "present", "Q12c": "present"}
+ },
+ "intrusions": [
+  {"question": "Q1", "text": "It asks whether one suite can fit microcontroller memory and power limits, measure all three metrics together, and still allow a fair comparison across very heterogeneous hardware and software stacks.", "tag": "benign_elaboration"},
+  {"question": "Q3", "text": "heterogeneous hardware (some devices lack a system clock or debug interface)", "tag": "benign_elaboration"},
+  {"question": "Q4", "text": "Specific dataset/model parameters beyond the gold nuggets: Speech Commands v2 with 12 classes; COCO 2014 images at 96x96; MobileNetV1 width multiplier 0.25; ResNet with three stacks; DCASE2020 toy-car sounds; log-mel input frames; TFLite Micro runtime.", "tag": "benign_elaboration"},
+  {"question": "Q5", "text": "Tasks were chosen for application relevance: VWW for doorbells and occupancy sensing; CIFAR-10 for continuity with earlier TinyML work; KWS to test multi-word recognition and rejection of unknown sounds; AD as an unsupervised task scored with AUC because it needs no decision threshold.", "tag": "benign_elaboration"},
+  {"question": "Q6", "text": "one in the open division (FPGA with quantization-aware INT-6/8)", "tag": "benign_elaboration"},
+  {"question": "Q7", "text": "Measured power is said to span about six orders of magnitude (microwatts to watts).", "tag": "unsupported_belief"},
+  {"question": "Q9", "text": "(a) that comparisons across submissions are fair or reproducible (no reproduction, no run-to-run or seed variance, no per-submission scores)", "tag": "benign_elaboration"},
+  {"question": "Q9", "text": "(c) that the design holds up in more competitive rounds where gaming is more tempting", "tag": "benign_elaboration"},
+  {"question": "Q11", "text": "(c) The technology could be misused for tracking people without consent, and it adds to e-waste.", "tag": "unsupported_belief"},
+  {"question": "Q11", "text": "stability across versions are future goals", "tag": "benign_elaboration"}
+ ],
+ "notes": "Applied evaluator v0.2: each gold nugget was searched for across all twelve reconstruction answers, not just the same-numbered one, and labeled under its own gold question id (this rescued Q2d via Q2's 'co-optimizing model, precision, runtime and hardware' language, Q4d via Q4's '90% top-1'/'0.85 AUC' mentions, and Q5b/Q12b via Q4's division definitions). Only the 'answer' field of each Q was treated as the graded reconstruction; 'missing' fields were read as the reader's self-flagged gaps/caveats rather than assertions of belief, so they were not used to credit nuggets (this affected Q2c and Q5d, whose only near-matches sat in the Q1/Q5 'missing' notes, not the answers). All numeric values given (accuracies, sample counts, dates, board name, division counts) matched the gold story precisely wherever stated; no contradicted numbers were found, and no interpretation nugget was answered with 'proves/shows/establishes' language. Borderline calls were resolved toward the less favorable label: Q1b, Q2c, Q5d and Q11a were marked absent rather than weakened because their defining clause (impact-of-optimizations-hard-to-measure, milliwatt/power-barrier framing, the KWS-specific small-compute-fraction justification, and the wearables/medical/environmental future-domains list, respectively) never appears in any answer; Q6b was marked weakened rather than contradicted because 'no values are given' plausibly describes an unextracted figure rather than a flat denial that Figure 5 reports the data. RR/DR/IR/MMF/Core RR were not computed: their definitions live in docs/04_EVALUATION_FRAMEWORK.md Β§2, which was outside the two inputs (gold_story.json, reconstruction.json) this grading run was given, and the mandatory output format specified for this task requests only questions/intrusions/notes."
+}

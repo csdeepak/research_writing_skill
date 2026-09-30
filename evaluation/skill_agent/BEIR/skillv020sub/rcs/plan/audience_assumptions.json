@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-09-27",
+  "purpose": "Concepts the project's own text assumes the reader already knows (undefined terms in paper.txt/README), used as a curse-of-knowledge check when adapting for an adjacent-ML audience.",
+  "assumed_by_source_without_definition": [
+    "nDCG@10 (used from the abstract onward; only defined/motivated in Section 3.3, page 5)",
+    "BM25 (used from the introduction; only briefly glossed as 'a commonly-used bag-of-words retrieval function based on token-matching... with TF-IDF token weights' in Section 4)",
+    "bi-encoder vs. cross-encoder architecture distinction (assumed throughout Sections 2.1 and 4)",
+    "'zero-shot' as applied to retrieval specifically, i.e. evaluating a model on a dataset/domain/task it was not trained on (assumed from the title onward)",
+    "qrels / relevance judgments / annotation 'pooling' (assumed in Section 6 without a first-principles definition)",
+    "late interaction (ColBERT) as distinct from a standard bi-encoder or cross-encoder (assumed in Sections 2.1 and 4)",
+    "'hard negatives' and 'in-batch negatives' as training-time concepts for retrieval models (assumed in Section 4 model descriptions)",
+    "Familiarity with MS MARCO and Natural Questions as the field's dominant training sets (assumed in the Introduction)"
+  ],
+  "implication_for_mode_B_draft": "Because the intended audience (adjacent ML researchers) knows general deep learning, transformers, fine-tuning, and standard train/test evaluation, but not IR-specific vocabulary, the draft must define: nDCG@10, BM25/lexical retrieval, dense vs. sparse vs. late-interaction vs. re-ranking architectures, and zero-shot generalization as it applies to retrieval specifically -- before using them. See story/term_ledger.json.",
+  "assumed_known_for_mode_B_and_not_redefined": [
+    "supervised fine-tuning of pre-trained Transformer encoders (BERT, RoBERTa, T5, DistilBERT)",
+    "train/dev/test splits and the concept of in-domain vs. out-of-distribution evaluation in ML generally",
+    "embeddings / dense vector representations",
+    "knowledge distillation",
+    "standard classification/ranking-loss training (contrastive/InfoNCE-style losses), at the level of 'a loss that pulls relevant pairs together and pushes irrelevant ones apart'"
+  ]
+}

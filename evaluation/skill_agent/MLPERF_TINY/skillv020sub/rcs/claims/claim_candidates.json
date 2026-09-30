@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-09-27",
+  "note": "Precursor to claims/claim_evidence_map.json (step 4 promotes these into full claim records with confidence, scope, and permitted verbs). All candidates below are origin=author_stated: every statement traces to explicit text in project/paper.txt or project/README_1.md, none is an unsupported inference beyond the evidence.",
+  "candidates": [
+    {"statement": "TinyML performs inference under 1 mW; on-device/near-sensor inference avoids wireless transmission's higher energy cost.", "suggested_claim_type": "observed", "evidence": ["E001", "E002"], "origin": "author_stated"},
+    {"statement": "Benchmarking TinyML is hard because of four coupled challenges: power-measurement scope, limited memory/quantization diversity, hardware heterogeneity, and software/toolchain heterogeneity.", "suggested_claim_type": "observed", "evidence": ["E005", "E006", "E007", "E008", "E009"], "origin": "author_stated"},
+    {"statement": "CoreMark does not profile full programs or represent ML inference workloads.", "suggested_claim_type": "observed", "evidence": ["E010"], "origin": "author_stated"},
+    {"statement": "MLMark uses real ML workloads but needs far more memory/runtime than MCUs provide and lacks power measurement.", "suggested_claim_type": "observed", "evidence": ["E011"], "origin": "author_stated"},
+    {"statement": "MLPerf's inference suite excludes MCU-class platforms for lack of small benchmarks/implementations.", "suggested_claim_type": "observed", "evidence": ["E012"], "origin": "author_stated"},
+    {"statement": "No existing benchmark characterizes accuracy-latency-energy tradeoffs for ultra-low-power inference; the authors state this gap directly.", "suggested_claim_type": "interpretation", "evidence": ["E010", "E011", "E012", "E063"], "origin": "author_stated"},
+    {"statement": "The suite defines four reference benchmarks, each pairing a fixed dataset/model/threshold with a common latency-accuracy-energy harness.", "suggested_claim_type": "observed", "evidence": ["E004", "E013", "E014", "E047"], "origin": "author_stated"},
+    {"statement": "The suite is modular so a submitter can show one stack layer's benefit against a shared baseline.", "suggested_claim_type": "observed", "evidence": ["E043"], "origin": "author_stated"},
+    {"statement": "Closed/open divisions balance comparability and flexibility.", "suggested_claim_type": "observed", "evidence": ["E044", "E045", "E046"], "origin": "author_stated"},
+    {"statement": "Latency, accuracy, and energy are each scored by a defined 5-run protocol, with anti-gaming rules for energy.", "suggested_claim_type": "observed", "evidence": ["E047", "E048"], "origin": "author_stated"},
+    {"statement": "VWW: task rationale, ~86% reference accuracy, 80% closed-division threshold.", "suggested_claim_type": "measured", "evidence": ["E015", "E018", "E019"], "origin": "author_stated"},
+    {"statement": "IC: task rationale, custom ResNetv1 design choices, 86.5% on 200 images, 85% threshold.", "suggested_claim_type": "measured", "evidence": ["E020", "E022", "E023", "E024", "E025", "E026"], "origin": "author_stated"},
+    {"statement": "KWS: task rationale, 12-class design rationale, 92.2%/91.6%/91.7% accuracy figures, model-choice rationale, feature-extraction exclusion rationale, 90% threshold.", "suggested_claim_type": "measured", "evidence": ["E027", "E029", "E030", "E031", "E032", "E033", "E034"], "origin": "author_stated"},
+    {"statement": "AD: task/dataset/model rationale, AUC-ROC metric rationale, 0.88/0.86 AUC figures, 0.85 threshold.", "suggested_claim_type": "measured", "evidence": ["E035", "E037", "E038", "E040", "E041", "E042"], "origin": "author_stated"},
+    {"statement": "All four reference implementations ran on the reference board and met accuracy targets, with wide latency/energy spread (qualitative; underlying figure numbers unavailable).", "suggested_claim_type": "observed", "evidence": ["E050"], "origin": "author_stated"},
+    {"statement": "The v0.5 round drew five results (4 closed, 1 open) across ARM MCU, RISC-V MCU, RasPi4, an accelerator, and an FPGA, each demonstrating a different stack layer.", "suggested_claim_type": "observed", "evidence": ["E051", "E052", "E055"], "origin": "author_stated"},
+    {"statement": "Across submissions: INT8 dominant, frameworks ranged open-interpreter to hardware compiler, power spanned microwatts to watts.", "suggested_claim_type": "observed", "evidence": ["E053"], "origin": "author_stated"},
+    {"statement": "No submission modified the training dataset, despite a general data-centric trend in AI.", "suggested_claim_type": "observed", "evidence": ["E054"], "origin": "author_stated"},
+    {"statement": "The authors interpret the round as showing TinyML practice still concentrated on models/frameworks/hardware, not data.", "suggested_claim_type": "interpretation", "evidence": ["E054", "E064"], "origin": "author_stated"},
+    {"statement": "The suite is already used as a standard TinyML task set and packaged into a public development-platform project.", "suggested_claim_type": "observed", "evidence": ["E056"], "origin": "author_stated"},
+    {"statement": "Future/open items the authors themselves flag: streaming/pre-processing measurement, architectural coverage beyond FC/CNN, long-term stability, dual-use/e-waste risk.", "suggested_claim_type": "future", "evidence": ["E057", "E058", "E059", "E060"], "origin": "author_stated"}
+  ]
+}

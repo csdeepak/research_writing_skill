@@ -1,0 +1,78 @@
+{
+ "id": "ADV-01c",
+ "origin": "spec 10 case 1",
+ "title": "documented resolution, but the claim cites the rejected record",
+ "files": {
+  "README.md": "The benchmark comprises 18 datasets.\n",
+  "data/manifest.csv": "name\nds0\nds1\nds2\nds3\nds4\nds5\nds6\nds7\nds8\nds9\nds10\nds11\nds12\nds13\nds14\nds15\nds16\n",
+  ".rcs/evidence/research_evidence.json": {
+   "project_root": ".",
+   "generated_at": "2026-09-29",
+   "items": [
+    {
+     "id": "E001",
+     "kind": "dataset",
+     "summary": "README states the dataset count",
+     "locator": {
+      "path": "README.md"
+     },
+     "strength": "soft",
+     "status": "conflicting",
+     "value": {
+      "count": 18
+     },
+     "quantity": "num_datasets",
+     "conflicts_with": [
+      "E002"
+     ]
+    },
+    {
+     "id": "E002",
+     "kind": "dataset",
+     "summary": "Manifest lists each dataset",
+     "locator": {
+      "path": "data/manifest.csv"
+     },
+     "strength": "hard",
+     "status": "conflicting",
+     "value": {
+      "count": 17
+     },
+     "quantity": "num_datasets",
+     "conflicts_with": [
+      "E001"
+     ],
+     "resolution": {
+      "chosen": "E002",
+      "reason": "the manifest enumerates every dataset; the README count is a summary",
+      "by": "agent"
+     }
+    }
+   ]
+  },
+  ".rcs/claims/claim_evidence_map.json": {
+   "claims": [
+    {
+     "id": "C001",
+     "statement": "The benchmark has 18 datasets.",
+     "claim_type": "measured",
+     "evidence": [
+      "E001"
+     ],
+     "confidence": "moderate",
+     "author_confirmation": "confirmed"
+    }
+   ],
+   "limitations": [],
+   "negative_result_decisions": []
+  }
+ },
+ "checks": [
+  {
+   "tool": "validate",
+   "expect": [
+    "ERROR:CITES_REJECTED_EVIDENCE"
+   ]
+  }
+ ]
+}

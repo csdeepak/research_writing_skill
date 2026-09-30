@@ -1,0 +1,4 @@
+{
+  "patterns": [],
+  "note": "Same limitation as writing_patterns.json: no full-text exemplars were readable this run (no web, closed corpus, read_depth='abstract'), so no corpus-derived anti-patterns are reported here. The draft was instead checked against the skill's own anti_patterns.md (sections A-C) directly during steps 12-17; see .rcs/audits/v001/ for the results of that check."
+}

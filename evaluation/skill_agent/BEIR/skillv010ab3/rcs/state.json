@@ -1,0 +1,18 @@
+{
+ "step": 17,
+ "gates": {
+  "G1": "passed_with_accepted_risk",
+  "G2": "passed",
+  "G3": "passed",
+  "audits_v001": "steps 11-17 done",
+  "G4": "pending external step 18"
+ },
+ "open_failures": [],
+ "accepted_risks": [
+  "No human available: pending claims C013 (interpretation, low) and C020 (observed, low) were kept and labelled hedged; author_confirmation left as pending.",
+  "Literature mode limited to works cited in the project; all read at abstract level using the BEIR paper's own descriptions (user_supplied_file). Gap is worded as the authors' characterization.",
+  "Table 2 decoded from a damaged extraction (M001); cross-checked against prose values.",
+  "Contribution stated in the paper itself, so CONTRIBUTION_UNCLEAR was not raised.",
+  "Venue unknown: generic profile; length and citation style taken from TASK.md."
+ ]
+}

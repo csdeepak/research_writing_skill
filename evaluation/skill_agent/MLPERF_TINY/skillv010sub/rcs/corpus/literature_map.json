@@ -1,0 +1,37 @@
+{
+  "note": "Dimension matrix built only for the sources that ground the paper's Gap (the competing/prior benchmarks). Dataset- and model-provenance citations (CIFAR-10, MobileNet, ResNet, Speech Commands, MSCOCO, ToyADMOS, DCASE2020, MIMII, 80M Tiny Images, TFLM, RISC-V, MicroNets, SpArSe, the LoRa energy-cost source) are method/attribution citations, not competing approaches, so they are not rows in this gap-grounding matrix; they are used directly in Methods with their role stated in source_registry.json.",
+  "dimensions_selected": ["problem_framing", "workload_realism", "device_class_fit", "power_measurement", "relation_to_MLPerf_Tiny"],
+  "matrix": [
+    {
+      "source": "SRC-009 (Gal-On and Levy, 2012) -- CoreMark",
+      "problem_framing": "Benchmark raw MCU compute performance with a simple, portable, easy-to-implement test.",
+      "method_family": "Fixed-algorithm micro-benchmark (e.g. list processing, matrix manipulation, CRC) run to completion, scored as iterations/second.",
+      "key_assumption": "A handful of representative general-purpose algorithms is a sufficient proxy for MCU performance.",
+      "data_eval": "No dataset; synthetic workloads baked into the benchmark code.",
+      "strength": "Extremely easy to port and run; became the de facto standard for comparing MCU-class chips.",
+      "weakness_limit": "Does not profile a full program, and its workloads are not representative of ML inference (per MLPerf Tiny's own characterization, E020).",
+      "relation_to_us": "Shows MCU-class performance comparison is a solved, adopted problem in general -- but not for ML workloads specifically; motivates why a new suite, not just CoreMark, is needed."
+    },
+    {
+      "source": "SRC-019 (Torelli and Bangale, n.d.) -- MLMark",
+      "problem_framing": "Benchmark actual ML inference workloads across edge-class devices and frameworks.",
+      "method_family": "Runs full trained ML models (image classification/detection) end-to-end on candidate hardware.",
+      "key_assumption": "Edge devices have enough memory/runtime budget to host the chosen reference models.",
+      "data_eval": "Standard edge-scale vision models (not MCU-sized).",
+      "strength": "First move from synthetic micro-benchmarking (CoreMark) to real ML workloads on real hardware.",
+      "weakness_limit": "Reference models need gigabytes of memory and have significant runtimes -- too large for MCU-class devices; no power measurement support (E021).",
+      "relation_to_us": "Shows real-workload ML benchmarking is possible, but not yet at MCU scale or with power as a first-class metric -- the two properties MLPerf Tiny adds."
+    },
+    {
+      "source": "SRC-018 (Reddi et al., 2019) -- MLPerf Inference",
+      "problem_framing": "Community-driven, industry-standard benchmarking of ML inference across a broad range of systems.",
+      "method_family": "A suite of reference ML models and rules for submitting inference results, with (planned) power measurement.",
+      "key_assumption": "Compatible implementations and 'small' benchmarks are not the primary need -- the suite targets larger-scale inference systems first.",
+      "data_eval": "Standard-scale ML models and datasets (server/mobile class).",
+      "strength": "Broad industry adoption and governance model (a template MLPerf Tiny explicitly follows for submissions/review, E009); plans to add power.",
+      "weakness_limit": "Currently precludes MCUs and other resource-constrained platforms for lack of small benchmarks and compatible implementations (E022).",
+      "relation_to_us": "Establishes the submission/review governance pattern MLPerf Tiny reuses (E009), while MLPerf Tiny fills the MCU-scale gap this suite explicitly does not yet cover."
+    }
+  ],
+  "lit_gap_chain_pointer": "See story/lit_gap_chain.md for the assembled Literature -> Gap -> Question chain built from this matrix."
+}

@@ -1,0 +1,4 @@
+{
+  "patterns": [],
+  "note": "corpus_agent.md's 'patterns' mode requires reading full exemplar texts to describe writing moves. This run has no web access and could not read any of the 19 registered sources beyond the metadata and single characterizing sentence already quoted by project/paper.txt (read_depth='abstract' for all of them, per the run's literature-mode constraint). Extracting move-sequences or transition behavior from a single quoted sentence would not be a genuine pattern extraction, so none is reported here. Section- and claim-level writing guidance for this draft instead came directly from the skill's own section_rules.md, information_design.md, and anti_patterns.md, which is the intended fallback when the corpus cannot supply exemplars."
+}

@@ -1,0 +1,12 @@
+{"entries":[
+{"term":"zero-shot","kind":"technical","definition":"evaluated on a task or domain with no training data from it","defined_at":"I.1","first_used_at":"Abstract"},
+{"term":"in-domain","kind":"technical","definition":"evaluated on the dataset family the model was trained on","defined_at":"I.1"},
+{"term":"query / document / corpus","kind":"technical","definition":"user input / any retrievable text / the collection","defined_at":"I.1"},
+{"term":"relevance judgments (qrels)","kind":"technical","definition":"human labels of which documents are relevant to which query","defined_at":"D.2"},
+{"term":"BM25","kind":"technical","definition":"word-matching scoring function; the lexical baseline","defined_at":"B.1"},
+{"term":"lexical / sparse / dense / late-interaction / re-ranking","kind":"technical","definition":"the five architecture families","defined_at":"B.1","synonyms_forbidden":["type","class of model"]},
+{"term":"nDCG@10","kind":"acronym","definition":"rank-aware score over the top 10 results supporting graded relevance","defined_at":"D.4"},
+{"term":"pooling","kind":"technical","definition":"judging only documents returned by a set of systems","defined_at":"R.6"},
+{"term":"Hole@10","kind":"project_specific","definition":"share of a system's top-10 hits without any relevance judgment","defined_at":"R.6"},
+{"term":"zero-shot average relative to BM25","kind":"project_specific","definition":"the paper's summary row 'Avg. Performance vs. BM25'","defined_at":"R.1"}
+]}

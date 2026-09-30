@@ -1,0 +1,45 @@
+{
+  "project_root": ".",
+  "generated_at": "2026-09-27",
+  "generated_by": "AUTHOR (acting as CORPUS_AGENT, mode=evidence; no subagents available in this run)",
+  "files": [
+    {
+      "path": "project/paper.txt",
+      "type_class": "reference",
+      "description": "Text extracted from the project's official research paper: 'OpenHands: An Open Platform for AI Software Developers as Generalist Agents' (arXiv:2407.16741v3 [cs.SE], 18 Apr 2025; published as a conference paper at ICLR 2025). Contains abstract, introduction, architecture description (agent definition, runtime, agent skills, delegation), agent hub, a 15-benchmark evaluation (software engineering, web browsing, misc. assistance), conclusion, references, author contributions, limitations/future work, ethics statement, related work, and appendices (UI, integration tests, runtime build mechanics, GPQA detail, in-context demo, AgentSkills API, BrowserGym action API, browsing-agent prompt).",
+      "size_bytes": 105244,
+      "modified": "2026-09-24T04:52:48+05:30",
+      "line_count": 1334,
+      "opened": true,
+      "extraction_quality": "Tables 1, 3, and 4 show clear column-flattening damage from text extraction (numeric cells separated from their row labels and concatenated into blocks); Table 1's comparison grid (checkmarks per framework) did not extract at all -- only column headers and framework names survived. Tables 5 and 6 extracted cleanly (values inline with their row). See evidence/missing_evidence.json for the specific gaps this caused."
+    },
+    {
+      "path": "project/README_1.md",
+      "type_class": "note",
+      "description": "Official repository README for the 'OpenHands Benchmarks' repo (current, post-paper): benchmark evaluation infrastructure for OpenHands agents built on the 'OpenHands Software Agent SDK' (V1). Lists currently active benchmarks (SWE-Bench, SWE-Bench Pro, GAIA, Commit0, OpenAgentSafety, ProgramBench), setup/build instructions, workspace types (Docker vs. remote runtime), and SDK/benchmarks version-compatibility notes. Soft evidence: describes current project state, not the paper's own experiments.",
+      "size_bytes": 10411,
+      "modified": "2026-09-24T04:52:53+05:30",
+      "line_count": 249,
+      "opened": true,
+      "extraction_quality": "clean markdown, no damage"
+    },
+    {
+      "path": "project/README_2.md",
+      "type_class": "note",
+      "description": "Official repository README for 'Agent Canvas', described as 'the self-hosted developer control center for coding agents and automations', part of a multi-repository OpenHands system (OpenHands/OpenHands, software-agent-sdk, typescript-client, automation). Describes current architecture, supported third-party agents (Claude Code, Codex, Gemini, ACP-compatible agents), and repository boundaries. Soft evidence: describes current project state, not the paper's own experiments.",
+      "size_bytes": 10126,
+      "modified": "2026-09-24T04:52:51+05:30",
+      "line_count": 158,
+      "opened": true,
+      "extraction_quality": "clean markdown, no damage"
+    }
+  ],
+  "not_opened": [],
+  "datasets_over_budget": [],
+  "summary": {
+    "total_files": 3,
+    "classified": 3,
+    "skipped": 0
+  },
+  "notes": "No results/, code/, configs/, figures/, or data/ directories exist in this project folder: the only evidence available is the paper text and two repository READMEs (per TASK.md, the project folder contains exactly these). All quantitative evidence therefore comes from project/paper.txt; project/README_1.md and project/README_2.md provide only descriptive/contextual (soft) evidence about the project's current form and cannot support measured claims."
+}

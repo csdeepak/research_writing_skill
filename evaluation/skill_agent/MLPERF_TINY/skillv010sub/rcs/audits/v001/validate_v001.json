@@ -1,0 +1,15 @@
+{
+  "errors": 1,
+  "items": [
+    {
+      "level": "ERROR",
+      "where": "corpus/source_registry.json",
+      "message": "$.sources[15].year: expected type ['integer'], got NoneType"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C002",
+      "message": "author_confirmation pending"
+    }
+  ]
+}

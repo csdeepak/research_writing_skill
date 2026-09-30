@@ -1,0 +1,497 @@
+{
+  "tool": "lint_draft",
+  "draft": ".rcs/drafts/v001/paper.md",
+  "draft_sha256": "9fdbd098064d41e2faf99dab4df10cda611f4567300144aa8fd9f9213e19e703",
+  "final": false,
+  "rcs_used": true,
+  "claim_map_sha256": "55183893fd8a4b237a76e0049820d241bfdf741104f3ff40699cdf329e970399",
+  "max_words": 4500,
+  "words_main": 3670,
+  "errors": 0,
+  "warnings": 22,
+  "findings": [
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "Retrieval models are typically trained on one dataset and evaluated on a held-out split of that same dataset, so how they behave once the domain or the task cha",
+      "message": "45-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "We introduce BEIR (Benchmarking-IR), a benchmark of 18 datasets across 9 retrieval tasks selected to jointly maximize diversity of task, domain, difficulty, and",
+      "message": "46-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "In-domain accuracy on the field's dominant training set does not predict zero-shot performance: the untrained lexical baseline BM25 trails the tested neural sys",
+      "message": "44-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "A manual check on one dataset finds that dense systems' scores rise far more than lexical systems' scores once missing relevance judgments are added {C018}, sug",
+      "message": "52-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 11,
+      "excerpt": "Before this work, it was unclear how well trained neural retrieval models perform outside the setting they were trained and tested on, and in particular how dif",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 17,
+      "excerpt": "We built BEIR by selecting 18 datasets across 9 retrieval tasks to jointly maximize diversity of task type, subject domain, task difficulty, and annotation meth",
+      "message": "52-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 17,
+      "excerpt": "We converted every dataset to one shared format and scored every system with one metric, then evaluated ten publicly available systems spanning five retrieval a",
+      "message": "38-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 19,
+      "excerpt": "First, BEIR itself: a standardized, openly released benchmark spanning 18 datasets and 9 tasks, with a common data format and evaluation protocol, so that new d",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 19,
+      "excerpt": "Second, an empirical answer to our research question: in-domain accuracy does not predict zero-shot performance, and the architectures that generalize best on a",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 19,
+      "excerpt": "Section 2 places this work against the two closest prior resources; Section 3 describes BEIR's construction; Section 4 describes the systems we evaluate; Sectio",
+      "message": "49-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 23,
+      "excerpt": "Sparse-neural methods keep an inverted index but let a network decide what goes into it, either by reweighting existing terms, as in DeepCT, or by predicting an",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 23,
+      "excerpt": "Dense bi-encoders (Karpukhin et al., 2020; Xiong et al., 2020; Hofstatter et al., 2021) embed the query and the document independently and compare the two vecto",
+      "message": "44-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 23,
+      "excerpt": "Re-ranking (Nogueira and Cho, 2020), the most computationally expensive family, lets the query and a candidate document attend to each other jointly, but only f",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 25,
+      "excerpt": "KILT (Petroni et al., 2020) spans five knowledge-intensive task types over eleven datasets, but retrieves exclusively from a single Wikipedia snapshot, and trea",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 31,
+      "excerpt": "We selected datasets to jointly satisfy four criteria: they had to come from diverse retrieval tasks, from diverse subject domains, be difficult enough that no ",
+      "message": "67-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 33,
+      "excerpt": "The result is 18 datasets across 9 tasks -- fact-checking, citation prediction, duplicate-question retrieval, argument retrieval, news retrieval, question answe",
+      "message": "55-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 35,
+      "excerpt": "We rejected the alternatives for concrete reasons: Precision and Recall ignore rank order entirely, and Mean Reciprocal Rank and Mean Average Precision assume b",
+      "message": "62-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 41,
+      "excerpt": "Sparse-neural retrieval keeps an inverted index but lets a neural network change what goes into it: DeepCT and SPARTA reweight existing terms, and docT5query ap",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 41,
+      "excerpt": "Dense retrieval (a \"bi-encoder\") embeds the query and the document independently as single vectors and compares them by similarity: DPR (Dense Passage Retrieval",
+      "message": "41-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 41,
+      "excerpt": "Re-ranking (a \"cross-encoder\", instantiated here as BM25+CE) encodes the query and a candidate document jointly, so attention can cross between them, but only f",
+      "message": "63-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 45,
+      "excerpt": "Most of the ten systems are public, pre-trained checkpoints released without accessible training code, so retraining them repeatedly to estimate run-to-run vari",
+      "message": "42-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 53,
+      "excerpt": "In-domain accuracy does not predict zero-shot generalization, and the best zero-shot generalizers cost the most compute. nDCG@10 on MS MARCO (in-domain, single ",
+      "message": "48-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 70,
+      "excerpt": "Re-ranking and late-interaction, the two best zero-shot generalizers on average, both score candidate documents with a cross-attention-like computation, and pay",
+      "message": "56-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 74,
+      "excerpt": "DeepCT and SPARTA both learn to reweight terms with a neural network and both do well in-domain, but both underperform BM25 on nearly all 18 datasets zero-shot ",
+      "message": "53-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 78,
+      "excerpt": "Cross-attention, or a cross-attention-like interaction between query and document, appears to matter for this kind of generalization among the systems we tested",
+      "message": "44-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 84,
+      "excerpt": "On TREC-COVID it trails ANCE by 17.3 points nDCG@10, and on Touche-2020 by 7.8 points {C014}; these are the two datasets where the two models retrieve documents",
+      "message": "47-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 84,
+      "excerpt": "A separate, controlled comparison isolates one source of this length preference: two otherwise identical models trained on MS MARCO, differing only in whether t",
+      "message": "66-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 84,
+      "excerpt": "This is consistent with a simple explanation the authors offer: dot-product similarity grows with a vector's length, so a longer document can score higher by th",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 84,
+      "excerpt": "The similarity function used during training is therefore one identifiable source of a dense retriever's document-length preference, though a length preference ",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 86,
+      "excerpt": "GenQ, which further fine-tunes TAS-B on synthetic queries generated for each target dataset, outperforms TAS-B on specialized domains such as scientific publica",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 90,
+      "excerpt": "TREC-COVID's original judgments (Voorhees et al., 2021) were built by pooling the top results from many participating systems, most of them lexical; a document ",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 90,
+      "excerpt": "We manually judged the 980 (query, document) pairs that our ten systems retrieved in their top 10 results but that the original pool had never scored -- each sy",
+      "message": "46-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B-absolute",
+      "level": "INFO",
+      "line": 90,
+      "excerpt": "We manually judged the 980 (query, document) pairs that our ten systems retrieved in their top 10 results but that the original pool had never scored -- each sy",
+      "message": "absolute term: justified only by complete enumeration or proof"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 105,
+      "excerpt": "After scoring the missing pairs, the lexical and document-expansion systems' scores barely moved (docT5query: 0.713 to 0.714), while the dense systems' scores r",
+      "message": "53-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 107,
+      "excerpt": "This case study does not overturn our main comparison -- lexical retrieval's zero-shot robustness is also visible across the other 17 datasets, which were not r",
+      "message": "70-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 111,
+      "excerpt": "A system's rank on MS MARCO, the field's dominant single-dataset benchmark, does not carry over to its rank once evaluation moves to new tasks and domains, and ",
+      "message": "51-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 113,
+      "excerpt": "Right now, the two families with the best average zero-shot accuracy -- re-ranking and late-interaction -- also require the most computation per query, while th",
+      "message": "56-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 115,
+      "excerpt": "Because that collection's judgments were pooled mostly from lexical systems, at least part of the measured gap between lexical and non-lexical retrieval on it i",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 115,
+      "excerpt": "We did not re-run this check on the other 17 datasets, so we cannot say how much of BM25's overall zero-shot robustness reflects the same effect elsewhere; we c",
+      "message": "43-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 117,
+      "excerpt": "A later resource paper built on this benchmark makes a related point about how we summarized our own results: collapsing scores from 18 heterogeneous datasets i",
+      "message": "52-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 119,
+      "excerpt": "Taken together, these three answers point to the same practical recommendation: compare retrieval architectures on broad, heterogeneous suites rather than one d",
+      "message": "43-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 123,
+      "excerpt": "And because we compare generalist systems, a specialized model built for one task -- which we did not evaluate here -- can still outperform every system in this",
+      "message": "44-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 125,
+      "excerpt": "A margin as large as the 47.7% gap between DPR and BM25 is unlikely to be an artifact of a single run, but smaller margins, such as the 1.6-2.8-point gaps that ",
+      "message": "47-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 127,
+      "excerpt": "**Additional caveats.** The annotation-bias case study in Section 5.4 covers one of the eighteen datasets, and the missing judgments were added by us, not by in",
+      "message": "52-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 127,
+      "excerpt": "Separately, our architecture comparison is a snapshot of the 10 publicly available systems we could evaluate at the time; the software we released alongside thi",
+      "message": "44-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 131,
+      "excerpt": "The answer is that in-domain accuracy is a poor guide to that question: a simple, untrained lexical baseline remains competitive with, and on average ahead of, ",
+      "message": "53-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 133,
+      "excerpt": "The main boundary on this finding is that it rests on 18 English datasets evaluated once each, and on a bias check performed on only one of them, so we do not y",
+      "message": "51-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 5,
+      "excerpt": "BEIR",
+      "message": "acronym 'BEIR' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 5,
+      "excerpt": "IR",
+      "message": "acronym 'IR' never defined"
+    },
+    {
+      "rule": "A3-use-before-definition",
+      "level": "WARN",
+      "line": 5,
+      "excerpt": "BM25",
+      "message": "'BM25' used (line 5) before its definition (line 41)"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 23,
+      "excerpt": "BERT",
+      "message": "acronym 'BERT' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 25,
+      "excerpt": "MS",
+      "message": "acronym 'MS' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 25,
+      "excerpt": "MARCO",
+      "message": "acronym 'MARCO' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 25,
+      "excerpt": "KILT",
+      "message": "acronym 'KILT' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 41,
+      "excerpt": "SPARTA",
+      "message": "acronym 'SPARTA' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 41,
+      "excerpt": "DPR",
+      "message": "acronym 'DPR' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 41,
+      "excerpt": "ANCE",
+      "message": "acronym 'ANCE' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 41,
+      "excerpt": "TAS",
+      "message": "acronym 'TAS' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 41,
+      "excerpt": "CE",
+      "message": "acronym 'CE' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 53,
+      "excerpt": "GPU",
+      "message": "acronym 'GPU' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 70,
+      "excerpt": "CPU",
+      "message": "acronym 'CPU' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 82,
+      "excerpt": "MSE",
+      "message": "acronym 'MSE' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 84,
+      "excerpt": "TREC",
+      "message": "acronym 'TREC' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 84,
+      "excerpt": "COVID",
+      "message": "acronym 'COVID' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 137,
+      "excerpt": "ACM",
+      "message": "acronym 'ACM' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 137,
+      "excerpt": "SIGIR",
+      "message": "acronym 'SIGIR' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 139,
+      "excerpt": "NAACL",
+      "message": "acronym 'NAACL' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 139,
+      "excerpt": "HLT",
+      "message": "acronym 'HLT' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 147,
+      "excerpt": "EMNLP",
+      "message": "acronym 'EMNLP' never defined"
+    }
+  ]
+}

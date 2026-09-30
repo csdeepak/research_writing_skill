@@ -1,0 +1,21 @@
+{
+ "assumed_by_project_text": [
+  "TinyML",
+  "MCU",
+  "DUT",
+  "TFLM",
+  "PTQ/QAT",
+  "SUT",
+  "IPS",
+  "EMON",
+  "IO Manager",
+  "closed/open division",
+  "SMPS",
+  "ISA (RISC-V)",
+  "hls4ml",
+  "QKeras",
+  "ToyADMOS/MIMII/DCASE",
+  "EEMBC/CoreMark/MLMark"
+ ],
+ "note": "All must be defined for mode B readers."
+}

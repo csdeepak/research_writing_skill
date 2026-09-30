@@ -1,0 +1,98 @@
+{
+  "id": "20260929-visual-intelligence",
+  "date": "2026-09-29",
+  "from_version": "0.1.0",
+  "to_version": "0.3.0",
+  "failure_observed": "The skill had rules for figures (figure_table_rules.md sections 1-7, figure cards) but no mechanism: nothing generated a figure from data, nothing checked a drawn figure against its data, and the four visual adversarial cases of the vNext spec (learning curve without logs, imagined architecture block, unconsented image, attractive figure without data) had only Stage 1 card checks. All six Phase 5/9 external papers were text-only, so no figure-level failure could even be observed by the study. Building on real data exposed defects that document-level rules cannot catch: a float-rounded label (0.415) contradicting the text (0.416), unreadable axis ticks (-0.0697, 0.14, 0.349...), an axis extending below zero for a bounded score, raw column names in the legend.",
+  "evidence": {
+    "cluster_id": "vNext Stage 2 (M04-M10, V1-V6); D-26",
+    "instances": 14,
+    "metrics": {
+      "acceptance_projects": "2 real: ASMOS (user's own raw results, aggregates only) and MLPerf Tiny (paper Table 1, values traced to paper text)",
+      "acceptance_result": "PASS on both: V1-V4, V6 PASSED; V5 NOT_RUN (no human review yet); 0 visual errors; paper excerpts 0 lint errors, 0 untraced numbers",
+      "published_figures": "4 (3 ASMOS, 1 MLPerf); 1 correctly refused (MLPerf latency values exist only in a source figure)",
+      "planner_agreement_with_hand_built_registry": "4/4",
+      "failure_fixtures_caught": "14/14 VIS failure fixtures; 2 negative controls pass",
+      "defects_found_by_looking_at_real_output": "4 renderer/checker defects (tick values, domain, raw labels, half-up rounding) plus 4 checker false positives on real captions (interval level '95%', plural 'intervals', multi-metric caption, paragraph-level figure reference); all fixed with regression coverage"
+    }
+  },
+  "root_cause": "missing_check",
+  "mechanism_type": "automatic_check",
+  "components": [
+    {
+      "part": 1,
+      "summary": "M04/M06/M10 planner (tools/plan_visuals.py): evidence shape -> prose/table/line/dot_ci/bar_h/diagram; spine and adverse results first; main-text budget.",
+      "tests": [
+        "T-032",
+        "VIS-12"
+      ]
+    },
+    {
+      "part": 2,
+      "summary": "M05 visual registry schema + M07 stdlib deterministic SVG renderer (tools/visuals.py) from declarative transforms of real files; domains, labels, half-up value labels, Okabe-Ito + marker shapes.",
+      "tests": [
+        "T-029",
+        "T-030",
+        "T-031"
+      ]
+    },
+    {
+      "part": 3,
+      "summary": "V1-V6 validator (tools/validate_visuals.py) incl. M09 caption contract and M10 adverse-result rule; V5 passes only with a recorded human review; V gates wired into validate_artifacts effective status.",
+      "tests": [
+        "T-034",
+        "T-035",
+        "VIS-00..VIS-13"
+      ]
+    },
+    {
+      "part": 3,
+      "summary": "M08 declared-rule qualitative sample selection (tools/select_samples.py); never selects unconsented or identifying samples.",
+      "tests": [
+        "T-033"
+      ]
+    }
+  ],
+  "change": {
+    "files": [
+      "tools/visuals.py",
+      "tools/validate_visuals.py",
+      "tools/plan_visuals.py",
+      "tools/select_samples.py",
+      "schemas/visual_registry.schema.json",
+      "tools/validate_artifacts.py (V gates, registry schema)",
+      "tools/replay_fixtures.py (visuals tool)",
+      "tools/tests/test_v030_visuals.py",
+      "tools/tests/fixtures/replay/VIS-*.json",
+      "SKILL.md (one bullet)",
+      "figure_table_rules.md section 9",
+      "workflow.md step 15",
+      "failure_states.md (5 rows)",
+      "evaluation/stage2_acceptance/ (build.py, run_acceptance.py, ACCEPTANCE.json)"
+    ],
+    "summary": "Separable from the Stage 1 proposal: all Stage 2 code lives in new files, except additive hooks in validate_artifacts.py and replay_fixtures.py. Stdlib only (matplotlib is not required and was not available). Rendering is deterministic, so regeneration is checked byte for byte."
+  },
+  "expected_improvement": "Tool-level (spec Stage 2 acceptance): every published figure is regenerable from permitted inputs, carries evidence IDs and a checked caption, with no unresolved material integrity failure. Met on 2 real projects. Reader-level: not claimed. No reader test of figures has been run; that belongs to Stage 3 (M13 visual-only reconstruction).",
+  "possible_regressions": [
+    "Three chart types only (bar_h, dot_ci, line); anything else must be a table, a diagram with Stage 1 card checks, or an external figure with a human provenance check.",
+    "Stdlib SVG is plainer than matplotlib; some venues want PDF/EPS (convert the SVG; the check applies to the SVG).",
+    "Caption checks are English regex heuristics (takeaway detection, requirement matching).",
+    "V5's machine part cannot judge comprehension; without a human review V5 stays NOT_RUN, which some users may find noisy.",
+    "Declarative transforms cannot express every analysis; complex derivations must first be written to a data file by a reviewed script (and that file becomes the traced source)."
+  ],
+  "tests_added": [
+    "T-029..T-035 in tools/tests/test_v030_visuals.py (7 tests)",
+    "16 replay fixtures VIS-00..VIS-13 (14 failure, 2 controls)"
+  ],
+  "gate": {
+    "status": "passed",
+    "results": {
+      "unit_tests_candidate": "95/95 pass",
+      "replay_fixtures": "49/49 pass",
+      "acceptance": "PASS on ASMOS and MLPerf Tiny (evaluation/stage2_acceptance/ACCEPTANCE.json; reproduce with run_acceptance.py)",
+      "stage": "offline gate passed; reader effect not measured; promotion pending an explicit human decision",
+      "tier3_ab_vs_v010": "reader benefit NOT SHOWN under the pre-registered rule (D-29/D-30): better beyond noise on 1/3 projects (OpenHands +0.150 MMF_src), worse on none, mean +0.066; Q11 3/3 up; single run per arm, v0.1.0 run-to-run noise 0.05-0.19. evaluation/results/AB3_REPORT.md",
+      "release": "promoted into skill/ 2026-09-30 by the user's decision as a process upgrade (D-32); reader benefit not shown (tier-3 A/B, D-30)"
+    }
+  }
+}

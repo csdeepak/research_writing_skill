@@ -1,0 +1,20 @@
+{
+ "id": "ADV-09b",
+ "origin": "control for case 9",
+ "title": "faithful rewording keeps numbers, scope and hedges: passes",
+ "files": {
+  "before.md": "M reached 0.84 accuracy on one split {C001}. This suggests that normalization matters {C002}.\n",
+  "after.md": "On one split, M achieved an accuracy of 0.84 {C001}. This suggests normalization matters {C002}.\n"
+ },
+ "checks": [
+  {
+   "tool": "invariance",
+   "before": "before.md",
+   "after": "after.md",
+   "forbid": [
+    "ERROR:*",
+    "WARN:*"
+   ]
+  }
+ ]
+}

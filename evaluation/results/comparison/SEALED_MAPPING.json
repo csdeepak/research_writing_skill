@@ -308,5 +308,221 @@
    "words_main": 4188,
    "words_total": 4368
   }
+ },
+ "pkt-51821427": {
+  "project": "BEIR",
+  "condition": "skillv010sub",
+  "source": "evaluation/skill_agent/BEIR/skillv010sub/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 78
+    }
+   ],
+   "words_main": 4384,
+   "words_total": 5279
+  }
+ },
+ "pkt-ff81c66c": {
+  "project": "BEIR",
+  "condition": "skillv020sub",
+  "source": "evaluation/skill_agent/BEIR/skillv020sub/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 64
+    }
+   ],
+   "words_main": 3942,
+   "words_total": 4366
+  }
+ },
+ "pkt-e477c21c": {
+  "project": "OPENHANDS",
+  "condition": "skillv010sub",
+  "source": "evaluation/skill_agent/OPENHANDS/skillv010sub/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 54
+    },
+    {
+     "warning": "internal_ids_present",
+     "ids": [
+      "L001"
+     ],
+     "note": "internal artifact IDs leak provenance; remove from prose"
+    }
+   ],
+   "words_main": 4439,
+   "words_total": 5218
+  }
+ },
+ "pkt-27d90c08": {
+  "project": "OPENHANDS",
+  "condition": "skillv020sub",
+  "source": "evaluation/skill_agent/OPENHANDS/skillv020sub/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 66
+    }
+   ],
+   "words_main": 4229,
+   "words_total": 5038
+  }
+ },
+ "pkt-9edda269": {
+  "project": "MLPERF_TINY",
+  "condition": "skillv010sub",
+  "source": "evaluation/skill_agent/MLPERF_TINY/skillv010sub/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 56
+    }
+   ],
+   "words_main": 3771,
+   "words_total": 4288
+  }
+ },
+ "pkt-ff333bed": {
+  "project": "MLPERF_TINY",
+  "condition": "skillv020sub",
+  "source": "evaluation/skill_agent/MLPERF_TINY/skillv020sub/paper.md",
+  "clean_log": {
+   "markers_removed": 1,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 68
+    }
+   ],
+   "words_main": 4332,
+   "words_total": 4727
+  }
+ },
+ "pkt-a0ca791c": {
+  "project": "MLPERF_TINY",
+  "condition": "skillv010ab3",
+  "source": "evaluation/skill_agent/MLPERF_TINY/skillv010ab3/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 115
+    },
+    {
+     "warning": "internal_ids_present",
+     "ids": [
+      "N6705"
+     ],
+     "note": "internal artifact IDs leak provenance; remove from prose"
+    }
+   ],
+   "words_main": 4306,
+   "words_total": 4799
+  }
+ },
+ "pkt-ae1077d5": {
+  "project": "OPENHANDS",
+  "condition": "skillv010ab3",
+  "source": "evaluation/skill_agent/OPENHANDS/skillv010ab3/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 130
+    }
+   ],
+   "words_main": 4282,
+   "words_total": 4827
+  }
+ },
+ "pkt-ca8db917": {
+  "project": "BEIR",
+  "condition": "skillv010ab3",
+  "source": "evaluation/skill_agent/BEIR/skillv010ab3/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 154
+    }
+   ],
+   "words_main": 4284,
+   "words_total": 4677
+  }
+ },
+ "pkt-b1dc7d17": {
+  "project": "MLPERF_TINY",
+  "condition": "skillv030ab3",
+  "source": "evaluation/skill_agent/MLPERF_TINY/skillv030ab3/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "warning": "internal_ids_present",
+     "ids": [
+      "N6705"
+     ],
+     "note": "internal artifact IDs leak provenance; remove from prose"
+    }
+   ],
+   "words_main": 4480,
+   "words_total": 4995
+  }
+ },
+ "pkt-c69b0f41": {
+  "project": "BEIR",
+  "condition": "skillv030ab3",
+  "source": "evaluation/skill_agent/BEIR/skillv030ab3/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [
+    {
+     "removed": "claim_tags",
+     "count": 129
+    }
+   ],
+   "words_main": 4808,
+   "words_total": 5689
+  }
+ },
+ "pkt-ff362a89": {
+  "project": "OPENHANDS",
+  "condition": "skillv030ab3",
+  "source": "evaluation/skill_agent/OPENHANDS/skillv030ab3/paper.md",
+  "clean_log": {
+   "markers_removed": 0,
+   "provenance_lines_removed": [],
+   "sanitization": [],
+   "words_main": 4234,
+   "words_total": 4740
+  }
  }
 }

@@ -1,0 +1,1012 @@
+{
+ "sources": [
+  {
+   "id": "SRC-001",
+   "title": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset",
+   "authors": [
+    "Nguyen et al."
+   ],
+   "year": 2016,
+   "venue": "choice, 2640:660 (as listed)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "MS MARCO is a passage-retrieval training dataset used to train most evaluated systems.",
+     "support_quote": "MS MARCO [45] (533k training examples), which focus on passage retrieval given a question or short keyword-based query.",
+     "location": "BEIR paper Sec 1 para 2 (abstract-level use only)",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-002",
+   "title": "The Probabilistic Relevance Framework: BM25 and Beyond",
+   "authors": [
+    "Robertson et al."
+   ],
+   "year": 2009,
+   "venue": "Foundations and Trends in Information Retrieval, 3(4):333-389",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "BM25 is the commonly used bag-of-words lexical retrieval function.",
+     "support_quote": "BM25 [55] is a commonly-used bag-of-words retrieval function based on token-matching between two high-dimensional sparse vectors",
+     "location": "BEIR paper Sec 4 (i)",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-003",
+   "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+   "authors": [
+    "Karpukhin et al."
+   ],
+   "year": 2020,
+   "venue": "EMNLP 2020",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "DPR is a two-tower bi-encoder dense retriever trained with a BM25 hard negative and in-batch negatives.",
+     "support_quote": "DPR [31] is a two-tower bi-encoder trained with a single BM25 hard negative and in-batch negatives.",
+     "location": "BEIR paper Sec 4 (iii)(a)",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-004",
+   "title": "Approximate Nearest Neighbor Negative Contrastive Learning for Dense Text Retrieval",
+   "authors": [
+    "Xiong et al."
+   ],
+   "year": 2020,
+   "venue": "(no venue in reference list)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "ANCE builds hard negatives from an approximate-nearest-neighbour index of the corpus that is updated during fine-tuning.",
+     "support_quote": "ANCE [73] is a bi-encoder constructing hard negatives from an Approximate Nearest Neighbor (ANN) index of the corpus",
+     "location": "BEIR paper Sec 4 (iii)(b)",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-005",
+   "title": "Efficiently Teaching an Effective Dense Retriever with Balanced Topic Aware Sampling",
+   "authors": [
+    "Hofstätter et al."
+   ],
+   "year": 2021,
+   "venue": "Proc. of SIGIR",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "TAS-B is a bi-encoder trained with balanced topic-aware sampling and dual supervision from a cross-encoder and a ColBERT model.",
+     "support_quote": "TAS-B [23] is a bi-encoder trained with Balanced Topic Aware Sampling using dual supervision from a cross-encoder and a ColBERT model.",
+     "location": "BEIR paper Sec 4 (iii)(c)",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-006",
+   "title": "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT",
+   "authors": [
+    "Khattab et al."
+   ],
+   "year": 2020,
+   "venue": "SIGIR 2020",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "ColBERT computes multiple contextualized token embeddings for queries and documents and scores with a maximum-similarity late interaction.",
+     "support_quote": "ColBERT [32] encodes and represents the query and passage into a bag of multiple contextualized token embeddings.",
+     "location": "BEIR paper Sec 4 (iv)",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-007",
+   "title": "Context-Aware Term Weighting For First Stage Passage Retrieval",
+   "authors": [
+    "Dai et al."
+   ],
+   "year": 2020,
+   "venue": "SIGIR 2020",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "DeepCT uses a BERT model to learn term weights and generates a pseudo-document.",
+     "support_quote": "DeepCT [11] on the other hand used a BERT model to learn relevant term weights in a document and generated a pseudo-document representation.",
+     "location": "BEIR paper Sec 2.1",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-008",
+   "title": "SPARTA: Efficient Open-Domain Question Answering via Sparse Transformer Matching Retrieval",
+   "authors": [
+    "Zhao et al."
+   ],
+   "year": 2021,
+   "venue": "NAACL 2021",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "SPARTA learns token-level contextualized representations and converts documents into an efficient inverted index.",
+     "support_quote": "SPARTA [79] learned token-level contextualized representations with BERT and converted the document into an efficient inverse index.",
+     "location": "BEIR paper Sec 2.1",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-009",
+   "title": "From doc2query to docTTTTTquery",
+   "authors": [
+    "Nogueira et al."
+   ],
+   "year": 2019,
+   "venue": "Online preprint",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "docT5query is a document-expansion technique that generates synthetic queries with a T5 model and appends them to the document for lexical search.",
+     "support_quote": "DocT5query [47] is a popular document expansion technique using a T5 (base) model trained on MS MARCO to generate synthetic queries and append them to the original document",
+     "location": "BEIR paper Sec 4 (ii)(c)",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-010",
+   "title": "MiniLM: Deep Self-Attention Distillation for Task-Agnostic Compression of Pre-Trained Transformers",
+   "authors": [
+    "Wang et al."
+   ],
+   "year": 2020,
+   "venue": "NeurIPS 2020",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "MiniLM is the compact transformer family from which the cross-encoder re-ranker was taken.",
+     "support_quote": "a 6-layer, 384-h MiniLM [70] cross-encoder model offers the best performance on MS MARCO",
+     "location": "BEIR paper Sec 4 (v)",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-011",
+   "title": "TREC-COVID: Constructing a Pandemic Information Retrieval Test Collection",
+   "authors": [
+    "Voorhees et al."
+   ],
+   "year": 2021,
+   "venue": "SIGIR Forum, 54(1)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "TREC-COVID annotations were built by pooling the search results of systems participating in the challenge.",
+     "support_quote": "TREC-COVID used a pooling method to reduce the impact of the aforementioned bias: The annotation set was constructed by using the search results from the various systems participating in the challenge.",
+     "location": "BEIR paper Sec 6 para 3",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-012",
+   "title": "MultiReQA: A Cross-Domain Evaluation for Retrieval Question Answering Models",
+   "authors": [
+    "Guo et al."
+   ],
+   "year": 2020,
+   "venue": "(no venue in reference list)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "MultiReQA is a retrieval benchmark of eight question-answering datasets evaluating sentence-level answer retrieval.",
+     "support_quote": "MultiReQA [19] consists of eight Question-Answering (QA) datasets and evaluates sentence-level answer retrieval given a question.",
+     "location": "BEIR paper Sec 2 para 1",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-013",
+   "title": "KILT: a Benchmark for Knowledge Intensive Language Tasks",
+   "authors": [
+    "Petroni et al."
+   ],
+   "year": 2020,
+   "venue": "(no venue in reference list)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "KILT is a benchmark of five knowledge-intensive tasks with eleven datasets where retrieval is not the primary task and documents come only from Wikipedia.",
+     "support_quote": "KILT [50] consists of five knowledge-intensive tasks including a total of eleven datasets. The tasks involve retrieval, but it is not the primary task.",
+     "location": "BEIR paper Sec 2 para 1",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-014",
+   "title": "Anserini: Enabling the Use of Lucene for Information Retrieval Research",
+   "authors": [
+    "Yang et al."
+   ],
+   "year": 2017,
+   "venue": "SIGIR 2017",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Anserini is the Lucene-based toolkit used for BM25 and other lexical retrieval.",
+     "support_quote": "We use Anserini with the default Lucene parameters (k=0.9 and b=0.4).",
+     "location": "BEIR paper Sec 3.2 and Sec 4 (i)",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-015",
+   "title": "Pytrec_eval: An Extremely Fast Python Interface to trec_eval",
+   "authors": [
+    "Van Gysel et al."
+   ],
+   "year": 2018,
+   "venue": "SIGIR 2018",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "pytrec_eval is the Python interface of the official TREC evaluation tool used to compute nDCG@10.",
+     "support_quote": "we utilize the Python interface of the official TREC evaluation tool [63] and compute nDCG@10 for all datasets.",
+     "location": "BEIR paper Sec 3.3",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-016",
+   "title": "Improved consistent sampling, weighted minhash and l1 sketching",
+   "authors": [
+    "Ioffe et al."
+   ],
+   "year": 2010,
+   "venue": "IEEE ICDM 2010",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Weighted Jaccard similarity is the word-overlap measure used to compare datasets.",
+     "support_quote": "we compute the domain overlap between the pairwise datasets using a pairwise weighted Jaccard similarity [26] score on unigram word overlap",
+     "location": "BEIR paper Sec 3.1",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-017",
+   "title": "An overview of the BIOASQ large-scale biomedical semantic indexing and question answering competition",
+   "authors": [
+    "Tsatsaronis et al."
+   ],
+   "year": 2015,
+   "venue": "BMC bioinformatics, 16(1):138",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "BioASQ candidates were retrieved for annotation via term-matching with boosting tags.",
+     "support_quote": "in BioASQ, candidates have been retrieved for annotation via term-matching with boosting tags [61].",
+     "location": "BEIR paper Sec 6 para 2",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-018",
+   "title": "A Data Collection for Evaluating the Retrieval of Related Tweets to News Articles",
+   "authors": [
+    "Suarez et al."
+   ],
+   "year": 2018,
+   "venue": "ECIR 2018",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Signal-1M tweet retrieval candidates were gathered with techniques mostly relying on lexical term matching.",
+     "support_quote": "Creation of Signal-1M (RT) involved retrieving tweets for a query with 7 out of these 8 techniques relying upon lexical term-matching signals [59].",
+     "location": "BEIR paper Sec 6 para 2",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-019",
+   "title": "On Biases in Information retrieval models and evaluation",
+   "authors": [
+    "Lipani et al."
+   ],
+   "year": 2019,
+   "venue": "Ph.D. thesis, TU Wien",
+   "doi": null,
+   "url": null,
+   "publication_status": "TECHNICAL_REPORT",
+   "peer_review_known": false,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Pool-based annotation is a source of selection bias because unseen documents are assumed irrelevant.",
+     "support_quote": "This is a source for selection bias [39]: A new retrieval system might retrieve vastly different results than the system used for the annotation.",
+     "location": "BEIR paper Sec 6 para 1",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-020",
+   "title": "The Curse of Dense Low-Dimensional Information Retrieval for Large Index Sizes",
+   "authors": [
+    "Reimers et al."
+   ],
+   "year": 2020,
+   "venue": "arXiv preprint arXiv:2012.14210",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Small candidate corpora were previously shown to benefit dense retrieval over lexical retrieval.",
+     "support_quote": "six out of eight tasks have less than 100k candidate sentences, which benefits dense retrieval over lexical as previously shown [54].",
+     "location": "BEIR paper Sec 2 para 1",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-021",
+   "title": "Resources for Brewing BEIR: Reproducible Reference Models and Statistical Analyses",
+   "authors": [
+    "Kamalloo et al."
+   ],
+   "year": 2024,
+   "venue": "SIGIR 2024 (as listed in README)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "A later resource paper provides reproducible reference implementations for learned dense and sparse models and meta-analyses of effect sizes across BEIR datasets.",
+     "support_quote": "comparisons on BEIR are performed by reducing scores from heterogeneous datasets into a single average that is difficult to interpret. To remedy this, we present meta-analyses focusing on effect sizes across datasets",
+     "location": "README_1.md, kamalloo:2024 abstract",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-022",
+   "title": "A theoretical analysis of NDCG ranking measures",
+   "authors": [
+    "Wang et al."
+   ],
+   "year": 2013,
+   "venue": "COLT 2013",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Theoretical analysis of the nDCG ranking measure.",
+     "support_quote": "We refer the reader to Wang et al. [71] for understanding the theoretical advantages of the metric.",
+     "location": "BEIR paper Sec 3.3",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-023",
+   "title": "Embedding-based Zero-shot Retrieval through Query Generation",
+   "authors": [
+    "Liang et al."
+   ],
+   "year": 2020,
+   "venue": "(no venue in reference list)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Unsupervised domain adaptation of dense retrievers by generating synthetic queries on a target domain.",
+     "support_quote": "an unsupervised domain-adaption approach [35, 43] for training dense retrievers by generating synthetic queries on a target domain.",
+     "location": "BEIR paper Sec 2.1",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-024",
+   "title": "Zero-shot Neural Passage Retrieval via Domain-targeted Synthetic Question Generation",
+   "authors": [
+    "Ma et al."
+   ],
+   "year": 2021,
+   "venue": "(no venue in reference list)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Unsupervised domain adaptation of dense retrievers by generating synthetic queries on a target domain.",
+     "support_quote": "an unsupervised domain-adaption approach [35, 43] for training dense retrievers by generating synthetic queries on a target domain.",
+     "location": "BEIR paper Sec 2.1",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-025",
+   "title": "Pretrained Transformers for Text Ranking: BERT and Beyond",
+   "authors": [
+    "Lin et al."
+   ],
+   "year": 2020,
+   "venue": "(no venue in reference list)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Survey of neural text retrieval that the authors point to for background.",
+     "support_quote": "we refer the reader to Lin et al. [37] for a recent survey in neural retrieval.",
+     "location": "BEIR paper Sec 2.1",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-026",
+   "title": "Bridging the lexical chasm: statistical approaches to answer-finding",
+   "authors": [
+    "Berger et al."
+   ],
+   "year": 2000,
+   "venue": "SIGIR 2000",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Origin of the 'lexical gap' concept: lexical approaches retrieve only documents containing the query keywords.",
+     "support_quote": "these approaches suffer from lexical gap [5] and are able to only retrieve documents containing keywords present within the query.",
+     "location": "BEIR paper Sec 1 para 1",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-027",
+   "title": "Natural Questions: a Benchmark for Question Answering Research",
+   "authors": [
+    "Kwiatkowski et al."
+   ],
+   "year": 2019,
+   "venue": "TACL",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": true,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "Natural Questions is a passage-retrieval training set of 133k training examples.",
+     "support_quote": "Natural Questions (NQ) [34] (133k training examples)",
+     "location": "BEIR paper Sec 1 para 2",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-028",
+   "title": "Billion-scale similarity search with GPUs",
+   "authors": [
+    "Johnson et al."
+   ],
+   "year": 2017,
+   "venue": "arXiv preprint arXiv:1702.08734",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "domain": "information retrieval / NLP",
+   "paper_type": "as listed in the BEIR reference list",
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "faiss is the approximate-nearest-neighbour library used by ColBERT retrieval in the study.",
+     "support_quote": "first top-k candidates are retrieved using ANN with faiss [29] (faiss depth = 100)",
+     "location": "BEIR paper Sec 4 (iv)",
+     "strength": "description of the work as given in the project materials"
+    }
+   ],
+   "why_useful": "Cited in the project materials; the work itself could not be read (no web); only the project's own description of it is used.",
+   "limitations": "Metadata is limited to what the project reference list gives (first author, year, title, venue). Peer-review status inferred from the venue string in the reference list; entries without a venue are treated as preprint conservatively. Support quote is from the BEIR paper's description of the source, not from the source.",
+   "permitted_use": [
+    "content_citation"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,581 @@
+{
+  "tool": "lint_draft",
+  "draft": ".rcs/drafts/v001/paper.md",
+  "draft_sha256": "fb23833986135c4b09addc8729e10138c5e1c029ca69a18ad80dc74981b40c88",
+  "final": false,
+  "rcs_used": true,
+  "claim_map_sha256": "2f551ffd920fc67cdea0923116e1d12b9834235e1a5e2e5f905c76847a176013",
+  "max_words": 4500,
+  "words_main": 4192,
+  "errors": 0,
+  "warnings": 21,
+  "findings": [
+    {
+      "rule": "marker",
+      "level": "INFO",
+      "line": 60,
+      "excerpt": "[MISSING RESULT: the paper's own Figure 5 reports the specific per-benchmark latency (inferences per second) and energy (microjoules per inference) values graph",
+      "message": "unresolved marker (list in open_issues.md)"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "The suite fixes four reference tasks -- keyword spotting, visual wake words, image classification, and anomaly detection -- each with its own dataset, model, an",
+      "message": "43-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "A closed division holds the model, dataset, and threshold fixed and allows only quantization, while an open division allows changing the model, training procedu",
+      "message": "68-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "All four reference implementations met their own accuracy targets on a shared reference board {C026}, and the suite's first external submission round, in June 2",
+      "message": "61-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "This suggests a modular, three-metric design is flexible enough to make very different hardware and software stacks comparable, though the round also showed tha",
+      "message": "52-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 9,
+      "excerpt": "On-device machine-learning inference that runs at a power draw under one milliwatt -- a regime generally called TinyML -- is valuable for a specific reason beyo",
+      "message": "61-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B-absolute",
+      "level": "INFO",
+      "line": 9,
+      "excerpt": "That, together with the responsiveness and privacy of keeping data on-device, is what makes battery-powered, always-on smart applications possible in the first ",
+      "message": "absolute term: justified only by complete enumeration or proof"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 9,
+      "excerpt": "Realizing this potential, however, requires co-optimizing every layer of the deployment stack -- the model, the numerical precision, the runtime, the silicon --",
+      "message": "38-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 11,
+      "excerpt": "TinyML devices -- microcontrollers, digital signal processors, and small neural-network accelerators -- typically run at somewhere between 10 and 250 MHz and pe",
+      "message": "50-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 13,
+      "excerpt": "None of the three, in other words, is simultaneously representative of real ML inference, small enough to run on this hardware, and built to treat power as a fi",
+      "message": "48-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 15,
+      "excerpt": "This paper asks an explicit question that follows from that gap: can one benchmark suite fit the extreme memory and power constraints of microcontroller-class d",
+      "message": "51-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 17,
+      "excerpt": "First, Sections 2 and 3 describe how the suite is designed -- its four reference tasks, its closed/open division structure, and its shared measurement protocol ",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 23,
+      "excerpt": "Performing inference on-device and near the sensor that produced the data avoids the energy cost of transmitting that data wirelessly, a cost the authors descri",
+      "message": "44-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B-absolute",
+      "level": "INFO",
+      "line": 23,
+      "excerpt": "The same property brings faster responses (no round trip to a server) and better privacy (the raw data need never leave the device) {C001}.",
+      "message": "absolute term: justified only by complete enumeration or proof"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 25,
+      "excerpt": "Power measurement itself is hard to scope: TinyML devices vary enormously in how much power they draw, and it is not obvious what should count as part of the me",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 25,
+      "excerpt": "Memory is roughly two orders of magnitude tighter than the gigabyte-scale budgets conventional ML benchmarks assume, which means the benchmark's own overhead ca",
+      "message": "43-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 25,
+      "excerpt": "Hardware is heterogeneous by nature -- general-purpose microcontrollers sit alongside unconventional architectures such as event-based neural processors, and a ",
+      "message": "38-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 25,
+      "excerpt": "Software is just as heterogeneous, because TinyML systems are typically tied tightly to their own toolchains, especially once accelerators or DSPs are involved,",
+      "message": "44-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B-absolute",
+      "level": "INFO",
+      "line": 27,
+      "excerpt": "CoreMark's short, generic-code kernels are easy to port and widely adopted for microcontroller performance comparison, but they were never meant to represent ma",
+      "message": "absolute term: justified only by complete enumeration or proof"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 27,
+      "excerpt": "MLMark corrects that by using real inference workloads, but the models it supports assume gigabyte-scale memory and can take a long time to run -- neither of wh",
+      "message": "54-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 27,
+      "excerpt": "Put together, no benchmark available to the authors was simultaneously ML-representative, small enough for this hardware, and power-aware, and the authors state",
+      "message": "46-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-hedge-filler",
+      "level": "INFO",
+      "line": 27,
+      "excerpt": "Put together, no benchmark available to the authors was simultaneously ML-representative, small enough for this hardware, and power-aware, and the authors state",
+      "message": "assertive filler: delete or show why it is clear"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 31,
+      "excerpt": "MLPerf Tiny answers that need with four fixed reference benchmarks -- keyword spotting, visual wake words, image classification, and anomaly detection -- each p",
+      "message": "53-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 31,
+      "excerpt": "Every reference implementation runs as a TFLite model on TensorFlow Lite for Microcontrollers (TFLM) (David et al., 2020), on a single shared reference board (a",
+      "message": "46-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 31,
+      "excerpt": "Crucially, the suite keeps a complete, modifiable reference implementation for every benchmark, from training script to the on-device C code, specifically so th",
+      "message": "62-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B-absolute",
+      "level": "INFO",
+      "line": 33,
+      "excerpt": "That fairness guarantee is enforced through two submission divisions.",
+      "message": "absolute term: justified only by complete enumeration or proof"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 33,
+      "excerpt": "In the closed division, a submission must use the same model, dataset, and quality target as the reference implementation, and it may apply only post-training q",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 33,
+      "excerpt": "The open division relaxes this: a submitter may change the model, the training procedure, or the dataset itself, and accuracy is still measured on the suite's o",
+      "message": "47-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 33,
+      "excerpt": "This two-division split exists, in the authors' words, specifically to balance comparability against flexibility -- the closed division for a controlled, apples",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 35,
+      "excerpt": "Accuracy is measured once, as a single pass over the entire validation set, from which Top-1 percent or AUC is computed, and each benchmark has its own minimum ",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 35,
+      "excerpt": "One rule is worth calling out because it protects the energy number specifically: only a single power supply is allowed to power the device's core during the me",
+      "message": "51-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 48,
+      "excerpt": "Visual wake words asks whether at least one person appears in an image, a task the authors chose because it maps directly onto smart-doorbell and occupancy appl",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 48,
+      "excerpt": "The dataset is drawn from MSCOCO 2014 (Lin et al., 2014), filtered so that a person occupies at least 2.5% of the frame and resized to 96x96, following the Visu",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 50,
+      "excerpt": "Image classification keeps CIFAR-10 (Krizhevsky et al., 2009) -- 60,000 32x32 color images across ten classes, split into five training batches and one 10,000-i",
+      "message": "51-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 50,
+      "excerpt": "The reference model is a reduced ResNetv1 (He et al., 2016): three residual stacks rather than the official four, and fewer, lower-stride filters overall; its f",
+      "message": "45-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 52,
+      "excerpt": "Keyword spotting recognizes a small vocabulary of spoken words from Speech Commands v2 (Warden, 2018), a corpus of 105,829 utterances from 2,618 speakers split ",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 52,
+      "excerpt": "The reference model is the small depthwise-separable convolutional network described in (Zhang et al., 2017), chosen because, at 38.6K parameters, it fits comfo",
+      "message": "73-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 54,
+      "excerpt": "The dataset is drawn from DCASE2020, the 2020 Detection and Classification of Acoustic Scenes and Events challenge (Koizumi et al., 2020), itself built from the",
+      "message": "49-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 54,
+      "excerpt": "The reference model is a fully-connected autoencoder -- four 128-unit encoder layers and four 128-unit decoder layers around an 8-unit bottleneck -- chosen both",
+      "message": "59-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 60,
+      "excerpt": "On the first question, the paper reports that all four reference implementations, run on a shared NUCLEO-L4R5ZI reference board, met their minimum accuracy targ",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 60,
+      "excerpt": "[MISSING RESULT: the paper's own Figure 5 reports the specific per-benchmark latency (inferences per second) and energy (microjoules per inference) values graph",
+      "message": "82-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 74,
+      "excerpt": "Together the five span a general-purpose microcontroller, a microcontroller built around a free, open instruction-set architecture called RISC-V (Asanovic and P",
+      "message": "49-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 74,
+      "excerpt": "The accelerator's submitter, for instance, attributed its efficiency to a microarchitecture and datapath design that avoids wait-states, and the FPGA submission",
+      "message": "59-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 76,
+      "excerpt": "First, 8-bit integer numerics were the most common choice, which the authors attribute to it offering a performance gain with little cost to accuracy, and measu",
+      "message": "46-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 76,
+      "excerpt": "Second, and more pointedly, one thing did not vary across any of the five submissions: none of them modified the training dataset, even though the broader machi",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 80,
+      "excerpt": "A modular suite that scores accuracy, latency, and energy at once was sufficient to let five genuinely different hardware and software stacks -- a general micro",
+      "message": "52-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 82,
+      "excerpt": "A plausible mechanism behind that result, though not one this round was designed to isolate on its own, is fairly direct: because the reference implementation i",
+      "message": "72-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 84,
+      "excerpt": "That reading is consistent with the round's composition, but it rests on a single round with five results, so it is better read as a first observation about whe",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 86,
+      "excerpt": "For a reader outside TinyML, the more general point is this: a benchmark that measures three axes at once and lets any one layer of a deployment stack be swappe",
+      "message": "58-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 86,
+      "excerpt": "Whether that same design choice would work as well in a more mature, more contested benchmarking setting -- where the incentive to game one axis at the expense ",
+      "message": "45-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 86,
+      "excerpt": "Beyond that first round, the suite's own authors report that it had already been adopted as a standard set of tasks in subsequent TinyML research (Banbury et al",
+      "message": "60-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 90,
+      "excerpt": "Compounding this, the current choice -- excluding feature extraction from the timed window while letting submitters choose their own feature pipeline -- creates",
+      "message": "44-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 90,
+      "excerpt": "Second, they state that the closed division's models are, for now, mainly fully-connected and convolutional architectures in well-established shapes, and that b",
+      "message": "54-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 92,
+      "excerpt": "The authors also name a broader caveat that is not specific to any one measurement choice: the same properties that let TinyML democratize access to machine int",
+      "message": "59-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 94,
+      "excerpt": "The paper's own text does not report per-submission accuracy, latency, or energy scores (those are held in an external results repository outside the material a",
+      "message": "53-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 94,
+      "excerpt": "This limits how strongly the round's diversity can be read as evidence that the design will keep working as more submitters, and eventually more competitive inc",
+      "message": "43-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 98,
+      "excerpt": "MLPerf Tiny gives the TinyML field something it did not have: a benchmark suite that fits microcontroller-class memory and power constraints, scores accuracy, l",
+      "message": "55-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 98,
+      "excerpt": "Its reference implementations met their own accuracy targets on a shared board, and its first external round turned that design into five genuinely comparable r",
+      "message": "47-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 98,
+      "excerpt": "What that round leaves open is, by the authors' own account, exactly where the interesting next questions sit: whether future rounds bring architectures beyond ",
+      "message": "61-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 5,
+      "excerpt": "ARM",
+      "message": "acronym 'ARM' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 5,
+      "excerpt": "RISC",
+      "message": "acronym 'RISC' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 11,
+      "excerpt": "MHz",
+      "message": "acronym 'MHz' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 11,
+      "excerpt": "GPU",
+      "message": "acronym 'GPU' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 11,
+      "excerpt": "ML",
+      "message": "acronym 'ML' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 25,
+      "excerpt": "DSPs",
+      "message": "acronym 'DSPs' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 27,
+      "excerpt": "EEMBC",
+      "message": "acronym 'EEMBC' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 31,
+      "excerpt": "NUCLEO",
+      "message": "acronym 'NUCLEO' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 31,
+      "excerpt": "L4R5ZI",
+      "message": "acronym 'L4R5ZI' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 46,
+      "excerpt": "KB",
+      "message": "acronym 'KB' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 46,
+      "excerpt": "ROC",
+      "message": "acronym 'ROC' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 48,
+      "excerpt": "MSCOCO",
+      "message": "acronym 'MSCOCO' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 50,
+      "excerpt": "CIFAR",
+      "message": "acronym 'CIFAR' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 54,
+      "excerpt": "DCASE2020",
+      "message": "acronym 'DCASE2020' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 54,
+      "excerpt": "MIMII",
+      "message": "acronym 'MIMII' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 74,
+      "excerpt": "HLS4ML",
+      "message": "acronym 'HLS4ML' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 102,
+      "excerpt": "EECS",
+      "message": "acronym 'EECS' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 102,
+      "excerpt": "UCB",
+      "message": "acronym 'UCB' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 112,
+      "excerpt": "CNNs",
+      "message": "acronym 'CNNs' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 116,
+      "excerpt": "IEEE",
+      "message": "acronym 'IEEE' never defined"
+    },
+    {
+      "rule": "A4-rare-acronym",
+      "level": "INFO",
+      "line": 120,
+      "excerpt": "WASPAA",
+      "message": "'WASPAA' used 1x: spell out instead"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 126,
+      "excerpt": "COCO",
+      "message": "acronym 'COCO' never defined"
+    }
+  ]
+}

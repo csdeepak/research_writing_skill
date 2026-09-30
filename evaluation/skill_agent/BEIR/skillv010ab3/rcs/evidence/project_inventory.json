@@ -1,0 +1,12 @@
+{
+  "files": [
+    {"path": "project/paper.txt", "type_class": "reference", "size": 96986, "opened": true,
+     "note": "Text extracted from the official research paper (arXiv 2104.08663v4). Tables 1-4 and 9-10 and figures are damaged by extraction; Table 2, 3 columns were reconstructed by cross-checking against prose values. Read fully."},
+    {"path": "project/README_1.md", "type_class": "reference", "size": 27120, "opened": true,
+     "note": "Official repository README (documentation; soft evidence). Read fully."}
+  ],
+  "skipped": [
+    {"path": "TASK.md", "reason": "task instructions, not project evidence"},
+    {"path": "rce/", "reason": "skill and tools, not project evidence"}
+  ]
+}

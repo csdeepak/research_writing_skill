@@ -1,0 +1,53 @@
+{
+ "items": [
+  {
+   "id": "M001",
+   "what": "Seeds, number of runs, confidence intervals or any spread for every reported success rate",
+   "where": "Tables 3-7",
+   "class": "MISSING_RESULT",
+   "handling": "stated as scope limit L001; no variance is invented"
+  },
+  {
+   "id": "M002",
+   "what": "Per-framework entries (check marks) of Table 1 are lost in text extraction",
+   "where": "project/paper.txt lines 209-249",
+   "class": "MISSING_RESULT",
+   "handling": "paper makes no claim that depends on the cells; only the comparison axes and related-work prose are used"
+  },
+  {
+   "id": "M003",
+   "what": "Mapping of several Table 4 rows (BIRD, ML-Bench, BioCoder, Gorilla APIBench, ToolQA) and of the Table 6 cost column to configurations is not reliably recoverable from the extracted text",
+   "where": "project/paper.txt lines 483-547, 762-769",
+   "class": "MISSING_RESULT",
+   "handling": "those benchmarks are described by setup only; their numbers are not reported"
+  },
+  {
+   "id": "M004",
+   "what": "No empirical safety evaluation of the sandbox or of agent side effects is present, although the paper's introduction poses the safety question and the conclusion refers to safety challenges",
+   "where": "project/paper.txt lines 17, 777, 896-899",
+   "class": "MISSING_RESULT",
+   "handling": "limitation L005"
+  },
+  {
+   "id": "M005",
+   "what": "Comparator baselines' tuning budgets and evaluation protocols (numbers appear to be taken from prior reports) are not described",
+   "where": "Tables 3-6",
+   "class": "MISSING_RESULT",
+   "handling": "limitation L002"
+  },
+  {
+   "id": "M006",
+   "what": "No date or source for the adoption statistics (stars, contributions, contributors)",
+   "where": "line 124",
+   "class": "MISSING_RESULT",
+   "handling": "reported as 'stated by the authors'"
+  },
+  {
+   "id": "M007",
+   "what": "No ablation or component-level experiment is reported, so no score can be attributed to a specific design component",
+   "where": "whole paper (absence)",
+   "class": "MISSING_RESULT",
+   "handling": "stated in Section 6 (what the results do not establish)"
+  }
+ ]
+}

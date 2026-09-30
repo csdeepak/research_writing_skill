@@ -1,0 +1,741 @@
+{
+  "sources": [
+    {
+      "id": "SRC-001",
+      "title": "Exploring coremark a benchmark maximizing simplicity and efficacy",
+      "as_cited": "Exploring coremark a benchmark maximizing simplicity and efficacy",
+      "title_status": "as_cited",
+      "authors": [
+        "Gal-On",
+        "and M. Levy"
+      ],
+      "year": 2012,
+      "venue": "The Embedded Microprocessor Benchmark Consortium",
+      "doi": null,
+      "url": null,
+      "publication_status": "TECHNICAL_REPORT",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors describe CoreMark as the standard MCU-class benchmark that does not profile full programs or represent ML inference.",
+          "support_quote": "EEMBC's CoreMark benchmark [9] has become the standard benchmark for MCU-class devices due to its ease of implementation and use of real algorithms.",
+          "location": "paper.txt line 31 (section 3)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Names the general-purpose MCU benchmark against which the gap is set.",
+      "informs_sections": [
+        "Related work"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-002",
+      "title": "Mlperf inference benchmark",
+      "as_cited": "Mlperf inference benchmark",
+      "title_status": "as_cited",
+      "authors": [
+        "Reddi",
+        "et al."
+      ],
+      "year": 2019,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "publication_status": "PREPRINT",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors describe the MLPerf inference benchmark as precluding MCUs for lack of small benchmarks and compatible implementations.",
+          "support_quote": "MLPerf, a community-driven benchmarking effort, has recently introduced a benchmarking suite for ML inference [18] and has plans to add power measurements.",
+          "location": "paper.txt line 33 (section 3)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Names the closest existing ML inference benchmark. Venue not given in the project reference list.",
+      "informs_sections": [
+        "Related work"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-003",
+      "title": "Micronets: Neural network architectures for deploying tinyml applications on commodity microcontrollers",
+      "as_cited": "Micronets: Neural network architectures for deploying tinyml applications on commodity microcontrollers",
+      "title_status": "as_cited",
+      "authors": [
+        "Banbury",
+        "et al."
+      ],
+      "year": 2021,
+      "venue": "Proceedings of Machine Learning and Systems, 3",
+      "doi": null,
+      "url": null,
+      "publication_status": "PEER-REVIEWED",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors cite this work for the use of the benchmarks as a standard set of tasks for TinyML research.",
+          "support_quote": "The benchmarks have already acted as a standard set of tasks for TinyML research [4]",
+          "location": "paper.txt line 195 (section 7); also cited line 12 for energy efficiency",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Cited by the authors for adoption of the benchmark tasks.",
+      "informs_sections": [
+        "Introduction; Discussion"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-004",
+      "title": "Energy consumption model for sensor nodes based on lora and lorawan",
+      "as_cited": "Energy consumption model for sensor nodes based on lora and lorawan",
+      "title_status": "as_cited",
+      "authors": [
+        "Bouguera",
+        "et al."
+      ],
+      "year": 2018,
+      "venue": "Sensors, 18(7):2104",
+      "doi": null,
+      "url": null,
+      "publication_status": "PEER-REVIEWED",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors cite this work for wireless communication energy cost being far higher than compute at this scale.",
+          "support_quote": "avoiding the energy cost associated with wireless communication, which at this scale is far higher than that of compute [5]",
+          "location": "paper.txt line 12 (section 1)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Supports the authors' motivation for on-device inference.",
+      "informs_sections": [
+        "Introduction"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-005",
+      "title": "Visual wake words dataset",
+      "as_cited": "Visual wake words dataset",
+      "title_status": "as_cited",
+      "authors": [
+        "Chowdhery",
+        "et al."
+      ],
+      "year": 2019,
+      "venue": "CoRR, abs/1906.05721",
+      "doi": null,
+      "url": null,
+      "publication_status": "PREPRINT",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors describe the Visual Wake Words challenge as detecting whether at least one person is in an image.",
+          "support_quote": "The Visual Wakewords challenge [6] tasked submitters with detecting whether at least one person is in an image.",
+          "location": "paper.txt line 53 (section 4.1)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Origin of the visual wake words task.",
+      "informs_sections": [
+        "Method"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-006",
+      "title": "Tensorflow lite micro: Embedded machine learning on tinyml systems",
+      "as_cited": "Tensorflow lite micro: Embedded machine learning on tinyml systems",
+      "title_status": "as_cited",
+      "authors": [
+        "David",
+        "et al."
+      ],
+      "year": 2020,
+      "venue": "arXiv preprint arXiv:2010.08678",
+      "doi": null,
+      "url": null,
+      "publication_status": "PREPRINT",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors run the reference models with TFLite for Microcontrollers, cited to this work.",
+          "support_quote": "using TFLite for Microcontrollers (TFLM) [7] on the NUCLEO-L4R5ZI board",
+          "location": "paper.txt line 36 (section 4)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Names the inference runtime of the reference implementations.",
+      "informs_sections": [
+        "Method"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-007",
+      "title": "Deep residual learning for image recognition",
+      "as_cited": "Deep residual learning for image recognition",
+      "title_status": "as_cited",
+      "authors": [
+        "He",
+        "et al."
+      ],
+      "year": 2016,
+      "venue": "IEEE conference on computer vision and pattern recognition, pages 770-778",
+      "doi": null,
+      "url": null,
+      "publication_status": "PEER-REVIEWED",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors base the image classification model on ResNetv1.",
+          "support_quote": "The Image Classification model is a customized ResNetv1 [10]",
+          "location": "paper.txt line 60 (section 4.2)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Origin of the ResNet family used for image classification.",
+      "informs_sections": [
+        "Method"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-008",
+      "title": "Mobilenets: Efficient convolutional neural networks for mobile vision applications",
+      "as_cited": "Mobilenets: Efficient convolutional neural networks for mobile vision applications",
+      "title_status": "as_cited",
+      "authors": [
+        "Howard",
+        "et al."
+      ],
+      "year": 2017,
+      "venue": "arXiv preprint arXiv:1704.04861",
+      "doi": null,
+      "url": null,
+      "publication_status": "PREPRINT",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors use MobileNetV1 for visual wake words.",
+          "support_quote": "The Visual Wakewords model is a MobilenetV1 [11]",
+          "location": "paper.txt line 55 (section 4.1)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Origin of the visual wake words model.",
+      "informs_sections": [
+        "Method"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-009",
+      "title": "Microsoft coco: Common objects in context",
+      "as_cited": "Microsoft coco: Common objects in context",
+      "title_status": "as_cited",
+      "authors": [
+        "Lin",
+        "et al."
+      ],
+      "year": 2014,
+      "venue": "European conference on computer vision, pages 740-755",
+      "doi": null,
+      "url": null,
+      "publication_status": "PEER-REVIEWED",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors use MSCOCO 2014 as the source of the visual wake words data.",
+          "support_quote": "The Visual Wakewords Challenge uses the MSCOCO 2014 dataset [15]",
+          "location": "paper.txt line 54 (section 4.1)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Source dataset of visual wake words.",
+      "informs_sections": [
+        "Method"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-010",
+      "title": "Cifar-10 (canadian institute for advanced research)",
+      "as_cited": "Cifar-10 (canadian institute for advanced research)",
+      "title_status": "as_cited",
+      "authors": [
+        "Krizhevsky",
+        "et al."
+      ],
+      "year": 2009,
+      "venue": null,
+      "doi": null,
+      "url": null,
+      "publication_status": "TECHNICAL_REPORT",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors use CIFAR-10 for image classification.",
+          "support_quote": "CIFAR-10 [14] is a labeled subset of the 80 Million Tiny Images dataset [20].",
+          "location": "paper.txt line 59 (section 4.2)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Source dataset of image classification.",
+      "informs_sections": [
+        "Method"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-011",
+      "title": "80 million tiny images: A large data set for nonparametric object and scene recognition",
+      "as_cited": "80 million tiny images: A large data set for nonparametric object and scene recognition",
+      "title_status": "as_cited",
+      "authors": [
+        "Torralba",
+        "et al."
+      ],
+      "year": 2008,
+      "venue": "IEEE transactions on pattern analysis and machine intelligence, 30(11):1958-1970",
+      "doi": null,
+      "url": null,
+      "publication_status": "PEER-REVIEWED",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors describe CIFAR-10 as a labeled subset of the 80 Million Tiny Images dataset.",
+          "support_quote": "CIFAR-10 [14] is a labeled subset of the 80 Million Tiny Images dataset [20].",
+          "location": "paper.txt line 59 (section 4.2)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Parent dataset of CIFAR-10.",
+      "informs_sections": [
+        "Method"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-012",
+      "title": "Speech commands: A dataset for limited-vocabulary speech recognition",
+      "as_cited": "Speech commands: A dataset for limited-vocabulary speech recognition",
+      "title_status": "as_cited",
+      "authors": [
+        "Warden"
+      ],
+      "year": 2018,
+      "venue": "arXiv preprint arXiv:1804.03209",
+      "doi": null,
+      "url": null,
+      "publication_status": "PREPRINT",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors use Speech Commands v2 for keyword spotting.",
+          "support_quote": "We used the Speech Commands v2 dataset[21], a collection of 105,829 utterances collected from 2,618 speakers",
+          "location": "paper.txt line 67 (section 4.3)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Source dataset of keyword spotting.",
+      "informs_sections": [
+        "Method"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-013",
+      "title": "Hello edge: Keyword spotting on microcontrollers",
+      "as_cited": "Hello edge: Keyword spotting on microcontrollers",
+      "title_status": "as_cited",
+      "authors": [
+        "Zhang",
+        "et al."
+      ],
+      "year": 2017,
+      "venue": "arXiv preprint arXiv:1711.07128",
+      "doi": null,
+      "url": null,
+      "publication_status": "PREPRINT",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors use the small depthwise-separable CNN described in this work for keyword spotting.",
+          "support_quote": "we used the small depthwise-separable CNN described in [22]",
+          "location": "paper.txt line 68 (section 4.3)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Origin of the keyword spotting model.",
+      "informs_sections": [
+        "Method"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-014",
+      "title": "Toyadmos: A dataset of miniaturemachine operating sounds for anomalous sound detection",
+      "as_cited": "Toyadmos: A dataset of miniaturemachine operating sounds for anomalous sound detection",
+      "title_status": "as_cited",
+      "authors": [
+        "Koizumi",
+        "et al."
+      ],
+      "year": 2019,
+      "venue": "2019 IEEE Workshop on Applications of Signal Processing to Audio and Acoustics (WASPAA), pages 313-317",
+      "doi": null,
+      "url": null,
+      "publication_status": "PEER-REVIEWED",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors state that the DCASE2020 data combine ToyADMOS and MIMII.",
+          "support_quote": "the DCASE2020 [13] competition, which is itself a combination of two publicly available sources: the ToyADMOS [12], and the MIMII [17] datasets",
+          "location": "paper.txt line 72 (section 4.4)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "One of the two sources of the anomaly detection data.",
+      "informs_sections": [
+        "Method"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-015",
+      "title": "Description and discussion on DCASE2020 challenge task2: Unsupervised anomalous sound detection for machine condition monitoring",
+      "as_cited": "Description and discussion on DCASE2020 challenge task2: Unsupervised anomalous sound detection for machine condition monitoring",
+      "title_status": "as_cited",
+      "authors": [
+        "Koizumi",
+        "et al."
+      ],
+      "year": 2020,
+      "venue": "arXiv e-prints: 2006.05822",
+      "doi": null,
+      "url": null,
+      "publication_status": "PREPRINT",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors take the anomaly detection dataset from the DCASE2020 competition.",
+          "support_quote": "we have selected to use the dataset from the DCASE2020 [13] competition",
+          "location": "paper.txt line 72 (section 4.4)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Source competition of the anomaly detection benchmark.",
+      "informs_sections": [
+        "Method"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-016",
+      "title": "Mimii dataset: Sound dataset for malfunctioning industrial machine investigation and inspection",
+      "as_cited": "Mimii dataset: Sound dataset for malfunctioning industrial machine investigation and inspection",
+      "title_status": "as_cited",
+      "authors": [
+        "Purohit",
+        "et al."
+      ],
+      "year": 2019,
+      "venue": "arXiv preprint arXiv:1909.09347",
+      "doi": null,
+      "url": null,
+      "publication_status": "PREPRINT",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors state that the DCASE2020 data combine ToyADMOS and MIMII.",
+          "support_quote": "the ToyADMOS [12], and the MIMII [17] datasets",
+          "location": "paper.txt line 72 (section 4.4)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "One of the two sources of the anomaly detection data.",
+      "informs_sections": [
+        "Method"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-017",
+      "title": "Sparse: Sparse architecture search for cnns on resource-constrained microcontrollers",
+      "as_cited": "Sparse: Sparse architecture search for cnns on resource-constrained microcontrollers",
+      "title_status": "as_cited",
+      "authors": [
+        "Fedorov",
+        "et al."
+      ],
+      "year": 2019,
+      "venue": "Advances in Neural Information Processing Systems 32, pages 4978-4990",
+      "doi": null,
+      "url": null,
+      "publication_status": "PEER-REVIEWED",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors cite this work as an example of prior TinyML work on CIFAR-10.",
+          "support_quote": "A significant amount of prior work in TinyML has used CIFAR-10 as a target dataset [8]",
+          "location": "paper.txt line 59 (section 4.2)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Supports the authors' reason for choosing CIFAR-10.",
+      "informs_sections": [
+        "Method"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    },
+    {
+      "id": "SRC-018",
+      "title": "Instruction sets should be free: The case for risc-v",
+      "as_cited": "Instruction sets should be free: The case for risc-v",
+      "title_status": "as_cited",
+      "authors": [
+        "Asanovic",
+        "and D. A. Patterson"
+      ],
+      "year": 2014,
+      "venue": "EECS Department, University of California, Berkeley, Tech. Rep. UCB/EECS-2014-146",
+      "doi": null,
+      "url": null,
+      "publication_status": "TECHNICAL_REPORT",
+      "level": 2,
+      "domain": "TinyML / embedded ML",
+      "verification": {
+        "method": "user_supplied_file",
+        "date": "2026-09-29",
+        "verified_by": "agent",
+        "retraction_checked": false
+      },
+      "read_depth": "abstract",
+      "establishes": [
+        {
+          "statement": "The MLPerf Tiny authors cite this report for RISC-V as a free, open standard instruction set architecture.",
+          "support_quote": "RISC-V is a free, open standard instruction set architecture (ISA) [3].",
+          "location": "paper.txt line 190 (section 6.2)",
+          "strength": "as characterised by the MLPerf Tiny authors; source not read"
+        }
+      ],
+      "why_useful": "Defines RISC-V for the reader.",
+      "informs_sections": [
+        "Results"
+      ],
+      "evidence_quality": "low",
+      "limitations": "Registered from the project's own reference list and citing sentence only (no web, source not read). Publication status inferred from the citation string; not independently verified. May be used only to say what the MLPerf Tiny paper says the work is or provides.",
+      "permitted_use": [
+        "content_citation"
+      ]
+    }
+  ]
+}

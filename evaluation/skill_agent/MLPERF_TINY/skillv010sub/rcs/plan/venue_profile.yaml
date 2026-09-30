@@ -1,0 +1,31 @@
+# VENUE_UNKNOWN (failure F001, class MARK): TASK.md gives no venue and none is implied by the
+# evidence. Generic fallback profile adopted per templates/venue_profile.generic.yaml, with two
+# deviations required by TASK.md itself (marked below). All rules below are assumed: true.
+venue: {name: "generic research article (no venue specified)", type: journal, guideline_urls: []}
+structure:
+  section_template: [Title, Abstract, Introduction, Background, Related Work, "The MLPerf Tiny Benchmark Suite (Methods)", "Evaluation: the v0.5 Submission Round (Results)", Discussion, Limitations, Conclusion, References]
+  results_discussion: separate
+  related_work_position: after_background_before_methods
+  limitations_section_required: true
+  assumed: true
+limits:
+  pages_main: null
+  words_main: "3000-4500 (TASK.md override; excludes references)"
+  abstract_words: 250
+  supplement_allowed: false
+  assumed: true
+  task_override_note: "TASK.md's word-count and 'no images, tables as Markdown' requirements are run-specific constraints and take precedence over the generic profile's defaults wherever they conflict."
+style:
+  citation_style: "author-year, e.g. (Banbury et al., 2021) -- TASK.md override of the generic profile's default numeric style, and also of the source paper's own bracket-numbered style"
+  voice_preference: "active voice; 'we' for author actions (reporting the MLPerf Tiny authors' actions, since this paper presents their research)"
+  spelling: US
+  abstract_format: unstructured
+  abstract_citations_allowed: false
+  assumed: true
+required_statements:
+  data_availability: true
+  code_availability: true
+  ai_use_disclosure: "Methods or Acknowledgments; describe the tool and what it was used for -- see .rcs/disclosure.md (produced at step 21; this run stops after step 17 per TASK.md, so disclosure.md is a draft only, not yet inserted into paper.md)"
+  assumed: true
+checklists: []
+reporting_guideline: null

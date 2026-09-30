@@ -1,0 +1,2252 @@
+{
+ "sources": [
+  {
+   "id": "SRC-001",
+   "title": "MultiReQA: A Cross-Domain Evaluation for Retrieval Question Answering Models",
+   "as_cited": "MultiReQA: A Cross-Domain Evaluation for Retrieval Question Answering Models",
+   "title_status": "as_cited",
+   "authors": [
+    "Mandy Guo",
+    "Yinfei Yang",
+    "Daniel Cer",
+    "Qinlan Shen",
+    "Noah Constant"
+   ],
+   "year": 2020,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: prior benchmark (narrow: single task)",
+     "support_quote": "MultiReQA [19] consists of eight Question-Answering (QA) datasets and evaluates sentence-level answer retrieval given a question. It only tests a single task and five out of eight datasets are from Wikipedia.",
+     "location": "paper.txt line 127",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "prior benchmark (narrow: single task)",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 19) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-002",
+   "title": "KILT: a Benchmark for Knowledge Intensive Language Tasks",
+   "as_cited": "KILT: a Benchmark for Knowledge Intensive Language Tasks",
+   "title_status": "as_cited",
+   "authors": [
+    "Fabio Petroni",
+    "Aleksandra Piktus",
+    "Angela Fan",
+    "Patrick Lewis",
+    "Majid Yazdani",
+    "et al."
+   ],
+   "year": 2020,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: prior benchmark (retrieval not primary; Wikipedia only)",
+     "support_quote": "KILT [50] consists of five knowledge-intensive tasks including a total of eleven datasets. The tasks involve retrieval, but it is not the primary task. Further, KILT retrieves documents only from Wikipedia.",
+     "location": "paper.txt lines 127-131",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "prior benchmark (retrieval not primary; Wikipedia only)",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 50) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-003",
+   "title": "The Probabilistic Relevance Framework: BM25 and Beyond",
+   "as_cited": "The Probabilistic Relevance Framework: BM25 and Beyond",
+   "title_status": "as_cited",
+   "authors": [
+    "Stephen Robertson",
+    "Hugo Zaragoza"
+   ],
+   "year": 2009,
+   "venue": "Foundations and Trends in Information Retrieval, 3(4):333-389",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: BM25 baseline",
+     "support_quote": "Traditionally, lexical approaches like TF-IDF and BM25 [55] have dominated textual information retrieval.",
+     "location": "paper.txt line 133",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "BM25 baseline",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 55) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-004",
+   "title": "Bridging the lexical chasm: statistical approaches to answer-finding",
+   "as_cited": "Bridging the lexical chasm: statistical approaches to answer-finding",
+   "title_status": "as_cited",
+   "authors": [
+    "Adam Berger",
+    "Rich Caruana",
+    "David Cohn",
+    "Dayne Freitag",
+    "Vibhu Mittal"
+   ],
+   "year": 2000,
+   "venue": "Proceedings of the 23rd annual international ACM SIGIR conference",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: lexical gap",
+     "support_quote": "However, these approaches suffer from lexical gap [5] and are able to only retrieve documents containing keywords present within the query.",
+     "location": "paper.txt line 9",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "lexical gap",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 5) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-005",
+   "title": "BERT: Pretraining of Deep Bidirectional Transformers for Language Understanding",
+   "as_cited": "BERT: Pretraining of Deep Bidirectional Transformers for Language Understanding",
+   "title_status": "as_cited",
+   "authors": [
+    "Jacob Devlin",
+    "Ming-Wei Chang",
+    "Kenton Lee",
+    "Kristina Toutanova"
+   ],
+   "year": 2019,
+   "venue": "NAACL-HLT 2019",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: transformer backbone of neural retrievers",
+     "support_quote": "Recently, deep learning and in particular pre-trained Transformer models like BERT [12] have become popular in information retrieval [37].",
+     "location": "paper.txt line 10",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "transformer backbone of neural retrievers",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 13) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-006",
+   "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+   "as_cited": "Dense Passage Retrieval for Open-Domain Question Answering",
+   "title_status": "as_cited",
+   "authors": [
+    "Vladimir Karpukhin",
+    "Barlas Oguz",
+    "Sewon Min",
+    "Patrick Lewis",
+    "Ledell Wu",
+    "et al."
+   ],
+   "year": 2020,
+   "venue": "EMNLP 2020",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: DPR system",
+     "support_quote": "DPR [31] is a two-tower bi-encoder trained with a single BM25 hard negative and in-batch negatives.",
+     "location": "paper.txt line 361",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "DPR system",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 31) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-007",
+   "title": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset",
+   "as_cited": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset",
+   "title_status": "as_cited",
+   "authors": [
+    "Tri Nguyen",
+    "Mir Rosenberg",
+    "Xia Song",
+    "Jianfeng Gao",
+    "Saurabh Tiwary",
+    "et al."
+   ],
+   "year": 2016,
+   "venue": "choice, 2640:660",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: training/in-domain dataset",
+     "support_quote": "The dataset contains queries from Bing search logs with one text passage from various web sources annotated as relevant.",
+     "location": "paper.txt line 839",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "training/in-domain dataset",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 45) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-008",
+   "title": "Natural Questions: a Benchmark for Question Answering Research",
+   "as_cited": "Natural Questions: a Benchmark for Question Answering Research",
+   "title_status": "as_cited",
+   "authors": [
+    "Tom Kwiatkowski",
+    "Jennimaria Palomaki",
+    "Olivia Redfield",
+    "et al."
+   ],
+   "year": 2019,
+   "venue": "Transactions of the Association of Computational Linguistics",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: NQ dataset",
+     "support_quote": "Natural Questions [34] contains Google search queries and documents with paragraphs and answer spans within Wikipedia articles.",
+     "location": "paper.txt line 852",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "NQ dataset",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 34) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-009",
+   "title": "Context-Aware Term Weighting For First Stage Passage Retrieval",
+   "as_cited": "Context-Aware Term Weighting For First Stage Passage Retrieval",
+   "title_status": "as_cited",
+   "authors": [
+    "Zhuyun Dai",
+    "Jamie Callan"
+   ],
+   "year": 2020,
+   "venue": "SIGIR 2020",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: DeepCT system",
+     "support_quote": "DeepCT [11] on the other hand used a BERT [13] model to learn relevant term weights in a document and generated a pseudo-document representation.",
+     "location": "paper.txt line 134",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "DeepCT system",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 11) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-010",
+   "title": "SPARTA: Efficient Open-Domain Question Answering via Sparse Transformer Matching Retrieval",
+   "as_cited": "SPARTA: Efficient Open-Domain Question Answering via Sparse Transformer Matching Retrieval",
+   "title_status": "as_cited",
+   "authors": [
+    "Tiancheng Zhao",
+    "Xiaopeng Lu",
+    "Kyusong Lee"
+   ],
+   "year": 2021,
+   "venue": "NAACL-HLT 2021",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: SPARTA system",
+     "support_quote": "SPARTA [79] learned token-level contextualized representations with BERT and converted the document into an efficient inverse index.",
+     "location": "paper.txt line 134",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "SPARTA system",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 79) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-011",
+   "title": "From doc2query to docTTTTTquery",
+   "as_cited": "From doc2query to docTTTTTquery",
+   "title_status": "as_cited",
+   "authors": [
+    "Rodrigo Nogueira",
+    "Jimmy Lin",
+    "AI Epistemic"
+   ],
+   "year": 2019,
+   "venue": "Online preprint",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: docT5query system (2019b)",
+     "support_quote": "DocT5query [47] is a popular document expansion technique using a T5 (base) [52] model trained on MS MARCO to generate synthetic queries and append them to the original document for lexical search.",
+     "location": "paper.txt line 360",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "docT5query system (2019b)",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 47) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-012",
+   "title": "Document Expansion by Query Prediction",
+   "as_cited": "Document Expansion by Query Prediction",
+   "title_status": "as_cited",
+   "authors": [
+    "Rodrigo Nogueira",
+    "Wei Yang",
+    "Jimmy Lin",
+    "Kyunghyun Cho"
+   ],
+   "year": 2019,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: document expansion (2019a)",
+     "support_quote": "Sparse methods such as docT5query [48] identified document expansion terms using a sequence-to-sequence model that generated possible queries for which the given document would be relevant.",
+     "location": "paper.txt line 134",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "document expansion (2019a)",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 48) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-013",
+   "title": "Approximate Nearest Neighbor Negative Contrastive Learning for Dense Text Retrieval",
+   "as_cited": "Approximate Nearest Neighbor Negative Contrastive Learning for Dense Text Retrieval",
+   "title_status": "as_cited",
+   "authors": [
+    "Lee Xiong",
+    "Chenyan Xiong",
+    "Ye Li",
+    "Kwok-Fung Tang",
+    "Jialin Liu",
+    "et al."
+   ],
+   "year": 2020,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: ANCE system; Hole@10 measure",
+     "support_quote": "ANCE [73] is a bi-encoder constructing hard negatives from an Approximate Nearest Neighbor (ANN) index of the corpus, which in parallel updates to select hard negative training instances during fine-tuning of the model.",
+     "location": "paper.txt line 361",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "ANCE system; Hole@10 measure",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 73) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-014",
+   "title": "Efficiently Teaching an Effective Dense Retriever with Balanced Topic Aware Sampling",
+   "as_cited": "Efficiently Teaching an Effective Dense Retriever with Balanced Topic Aware Sampling",
+   "title_status": "as_cited",
+   "authors": [
+    "Sebastian Hofstätter",
+    "Sheng-Chieh Lin",
+    "Jheng-Hong Yang",
+    "Jimmy Lin",
+    "Allan Hanbury"
+   ],
+   "year": 2021,
+   "venue": "Proc. of SIGIR",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: TAS-B system (2021a)",
+     "support_quote": "TAS-B [23] is a bi-encoder trained with Balanced Topic Aware Sampling using dual supervision from a cross-encoder and a ColBERT model.",
+     "location": "paper.txt line 361",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "TAS-B system (2021a)",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 23) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-015",
+   "title": "Improving Efficient Neural Ranking Models with Cross-Architecture Knowledge Distillation",
+   "as_cited": "Improving Efficient Neural Ranking Models with Cross-Architecture Knowledge Distillation",
+   "title_status": "as_cited",
+   "authors": [
+    "Sebastian Hofstätter",
+    "Sophia Althammer",
+    "Michael Schröder",
+    "Mete Sertkan",
+    "Allan Hanbury"
+   ],
+   "year": 2021,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: Margin-MSE loss (2021b)",
+     "support_quote": "The model was trained with a combination of both a pairwise Margin-MSE [24] loss and an in-batch negative loss function.",
+     "location": "paper.txt line 361",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "Margin-MSE loss (2021b)",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 24) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-016",
+   "title": "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT",
+   "as_cited": "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT",
+   "title_status": "as_cited",
+   "authors": [
+    "Omar Khattab",
+    "Matei Zaharia"
+   ],
+   "year": 2020,
+   "venue": "SIGIR 2020",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: ColBERT system",
+     "support_quote": "ColBERT [32] (Contextualized late interaction over BERT) computes multiple contextualized embeddings on a token level for queries and documents and uses an maximum-similarity function for retrieving relevant documents.",
+     "location": "paper.txt line 134",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "ColBERT system",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 32) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-017",
+   "title": "MiniLM: Deep Self-Attention Distillation for Task-Agnostic Compression of Pre-Trained Transformers",
+   "as_cited": "MiniLM: Deep Self-Attention Distillation for Task-Agnostic Compression of Pre-Trained Transformers",
+   "title_status": "as_cited",
+   "authors": [
+    "Wenhui Wang",
+    "Furu Wei",
+    "Li Dong",
+    "Hangbo Bao",
+    "Nan Yang",
+    "Ming Zhou"
+   ],
+   "year": 2020,
+   "venue": "NeurIPS 2020, vol. 33",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: cross-encoder backbone (2020b)",
+     "support_quote": "We evaluated 14 different cross-attentional re-ranking models ... found that a 6-layer, 384-h MiniLM [70] cross-encoder model offers the best performance on MS MARCO.",
+     "location": "paper.txt line 363",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "cross-encoder backbone (2020b)",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 70) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-018",
+   "title": "Passage Re-ranking with BERT",
+   "as_cited": "Passage Re-ranking with BERT",
+   "title_status": "as_cited",
+   "authors": [
+    "Rodrigo Nogueira",
+    "Kyunghyun Cho"
+   ],
+   "year": 2020,
+   "venue": "arXiv preprint arXiv:1901.04085",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: BERT re-ranking",
+     "support_quote": "Significant improvement in performance was achieved with the cross-attention mechanism of BERT [46]. However, at a disadvantage of a high computational overhead [53].",
+     "location": "paper.txt line 135",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "BERT re-ranking",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 46) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-019",
+   "title": "Anserini: Enabling the Use of Lucene for Information Retrieval Research",
+   "as_cited": "Anserini: Enabling the Use of Lucene for Information Retrieval Research",
+   "title_status": "as_cited",
+   "authors": [
+    "Peilin Yang",
+    "Hui Fang",
+    "Jimmy Lin"
+   ],
+   "year": 2017,
+   "venue": "SIGIR 2017",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: BM25 toolkit",
+     "support_quote": "BM25 [55] ... We use Anserini [36] with the default Lucene parameters (k=0.9 and b=0.4).",
+     "location": "paper.txt line 357; ref [74] line 796",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "BM25 toolkit",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 74) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-020",
+   "title": "TREC-COVID: Constructing a Pandemic Information Retrieval Test Collection",
+   "as_cited": "TREC-COVID: Constructing a Pandemic Information Retrieval Test Collection",
+   "title_status": "as_cited",
+   "authors": [
+    "Ellen Voorhees",
+    "Tasmeer Alam",
+    "Steven Bedrick",
+    "Dina Demner-Fushman",
+    "William R. Hersh",
+    "et al."
+   ],
+   "year": 2021,
+   "venue": "SIGIR Forum, 54(1)",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: dataset used for annotation study",
+     "support_quote": "TREC-COVID [65] is an ad-hoc search challenge based on the CORD-19 dataset containing scientific articles related to the COVID-19 pandemic.",
+     "location": "paper.txt line 847",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "dataset used for annotation study",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 65) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-021",
+   "title": "An overview of the BIOASQ large-scale biomedical semantic indexing and question answering competition",
+   "as_cited": "An overview of the BIOASQ large-scale biomedical semantic indexing and question answering competition",
+   "title_status": "as_cited",
+   "authors": [
+    "George Tsatsaronis",
+    "Georgios Balikas",
+    "Prodromos Malakasiotis",
+    "et al."
+   ],
+   "year": 2015,
+   "venue": "BMC bioinformatics, 16(1):138",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: lexical bias in BioASQ",
+     "support_quote": "For example, in BioASQ, candidates have been retrieved for annotation via term-matching with boosting tags [61].",
+     "location": "paper.txt line 661",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "lexical bias in BioASQ",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 61) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-022",
+   "title": "A Data Collection for Evaluating the Retrieval of Related Tweets to News Articles",
+   "as_cited": "A Data Collection for Evaluating the Retrieval of Related Tweets to News Articles",
+   "title_status": "as_cited",
+   "authors": [
+    "Axel Suarez",
+    "Dyaa Albakour",
+    "David Corney",
+    "Miguel Martinez",
+    "Jose Esquivel"
+   ],
+   "year": 2018,
+   "venue": "ECIR 2018",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: lexical bias in Signal-1M",
+     "support_quote": "Creation of Signal-1M (RT) involved retrieving tweets for a query with 7 out of these 8 techniques relying upon lexical term-matching signals [59].",
+     "location": "paper.txt lines 661-662",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "lexical bias in Signal-1M",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 59) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-023",
+   "title": "On Biases in Information retrieval models and evaluation",
+   "as_cited": "On Biases in Information retrieval models and evaluation",
+   "title_status": "as_cited",
+   "authors": [
+    "Aldo Lipani"
+   ],
+   "year": 2019,
+   "venue": "Ph.D. thesis, Technische Universität Wien",
+   "doi": null,
+   "url": null,
+   "publication_status": "OPINION",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: selection bias",
+     "support_quote": "This is a source for selection bias [39]: A new retrieval system might retrieve vastly different results than the system used for the annotation.",
+     "location": "paper.txt line 660",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "selection bias",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 39) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-024",
+   "title": "The Curious Incidence of Bias Corrections in the Pool",
+   "as_cited": "The Curious Incidence of Bias Corrections in the Pool",
+   "title_status": "as_cited",
+   "authors": [
+    "Aldo Lipani",
+    "Mihai Lupu",
+    "Allan Hanbury"
+   ],
+   "year": 2016,
+   "venue": "ECIR 2016",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: pooling",
+     "support_quote": "TREC-COVID used a pooling method [38, 40] to reduce the impact of the aforementioned bias.",
+     "location": "paper.txt line 703",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "pooling",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 40) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-025",
+   "title": "Representation Learning with Contrastive Predictive Coding",
+   "as_cited": "Representation Learning with Contrastive Predictive Coding",
+   "title_status": "as_cited",
+   "authors": [
+    "Aaron van den Oord",
+    "Yazhe Li",
+    "Oriol Vinyals"
+   ],
+   "year": 2019,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: InfoNCE loss",
+     "support_quote": "This similarity function is also used during training dense models with the InfoNCE [62] loss.",
+     "location": "paper.txt line 931",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "InfoNCE loss",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 62) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-026",
+   "title": "Improved consistent sampling, weighted minhash and l1 sketching",
+   "as_cited": "Improved consistent sampling, weighted minhash and l1 sketching",
+   "title_status": "as_cited",
+   "authors": [
+    "Sergey Ioffe"
+   ],
+   "year": 2010,
+   "venue": "2010 IEEE International Conference on Data Mining",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: weighted Jaccard",
+     "support_quote": "we compute the domain overlap between the pairwise datasets using a pairwise weighted Jaccard similarity [26] score on unigram word overlap between all dataset pairs.",
+     "location": "paper.txt line 293",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "weighted Jaccard",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 26) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-027",
+   "title": "Pytrec_eval: An Extremely Fast Python Interface to trec_eval",
+   "as_cited": "Pytrec_eval: An Extremely Fast Python Interface to trec_eval",
+   "title_status": "as_cited",
+   "authors": [
+    "Christophe Van Gysel",
+    "Maarten de Rijke"
+   ],
+   "year": 2018,
+   "venue": "SIGIR 2018",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: evaluation tool",
+     "support_quote": "we utilize the Python interface of the official TREC evaluation tool [63] and compute nDCG@10 for all datasets.",
+     "location": "paper.txt line 353",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "evaluation tool",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 63) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-028",
+   "title": "A theoretical analysis of NDCG ranking measures",
+   "as_cited": "A theoretical analysis of NDCG ranking measures",
+   "title_status": "as_cited",
+   "authors": [
+    "Yining Wang",
+    "Liwei Wang",
+    "Yuanzhi Li",
+    "Di He",
+    "Wei Chen",
+    "Tie-Yan Liu"
+   ],
+   "year": 2013,
+   "venue": "COLT 2013, vol. 8",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: nDCG theory",
+     "support_quote": "We refer the reader to Wang et al. [71] for understanding the theoretical advantages of the metric.",
+     "location": "paper.txt line 353",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "nDCG theory",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 71) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-029",
+   "title": "CQADupStack: A benchmark data set for community question-answering research",
+   "as_cited": "CQADupStack: A benchmark data set for community question-answering research",
+   "title_status": "as_cited",
+   "authors": [
+    "Doris Hoogeveen",
+    "Karin M Verspoor",
+    "Timothy Baldwin"
+   ],
+   "year": 2015,
+   "venue": "Proceedings of the 20th Australasian document computing symposium",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: dataset",
+     "support_quote": "CQADupStack [25] is a popular dataset for research in community question-answering (cQA).",
+     "location": "paper.txt line 869",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "dataset",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 25) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-030",
+   "title": "Retrieval of the Best Counterargument without Prior Topic Knowledge",
+   "as_cited": "Retrieval of the Best Counterargument without Prior Topic Knowledge",
+   "title_status": "as_cited",
+   "authors": [
+    "Henning Wachsmuth",
+    "Shahbaz Syed",
+    "Benno Stein"
+   ],
+   "year": 2018,
+   "venue": "ACL 2018",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: dataset",
+     "support_quote": "ArguAna Counterargs Corpus [67] involves the task of retrieval of the best counterargument to an argument.",
+     "location": "paper.txt line 865",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "dataset",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 67) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-031",
+   "title": "Overview of Touché 2020: Argument Retrieval",
+   "as_cited": "Overview of Touché 2020: Argument Retrieval",
+   "title_status": "as_cited",
+   "authors": [
+    "Alexander Bondarenko",
+    "Maik Fröbe",
+    "Meriem Beloucif",
+    "et al."
+   ],
+   "year": 2020,
+   "venue": "Working Notes Papers of the CLEF 2020 Evaluation Labs",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: dataset",
+     "support_quote": "Touché-2020 [6] Task 1 is a conversational argument retrieval task.",
+     "location": "paper.txt line 866",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "dataset",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 6) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-032",
+   "title": "FEVER: a Large-scale Dataset for Fact Extraction and VERification",
+   "as_cited": "FEVER: a Large-scale Dataset for Fact Extraction and VERification",
+   "title_status": "as_cited",
+   "authors": [
+    "James Thorne",
+    "Andreas Vlachos",
+    "Christos Christodoulopoulos",
+    "Arpit Mittal"
+   ],
+   "year": 2018,
+   "venue": "NAACL-HLT 2018",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: dataset",
+     "support_quote": "Fact checking verifies a claim against a big collection of evidence [60].",
+     "location": "paper.txt line 878",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "dataset",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 60) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-033",
+   "title": "CLIMATE-FEVER: A Dataset for Verification of Real-World Climate Claims",
+   "as_cited": "CLIMATE-FEVER: A Dataset for Verification of Real-World Climate Claims",
+   "title_status": "as_cited",
+   "authors": [
+    "Thomas Diggelmann",
+    "Jordan Boyd-Graber",
+    "Jannis Bulian",
+    "Massimiliano Ciaramita",
+    "Markus Leippold"
+   ],
+   "year": 2020,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: dataset",
+     "support_quote": "Climate-FEVER [14] is a dataset for verification of real-world climate claims.",
+     "location": "paper.txt line 882",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "dataset",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 14) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-034",
+   "title": "Fact or Fiction: Verifying Scientific Claims",
+   "as_cited": "Fact or Fiction: Verifying Scientific Claims",
+   "title_status": "as_cited",
+   "authors": [
+    "David Wadden",
+    "Shanchuan Lin",
+    "Kyle Lo",
+    "et al."
+   ],
+   "year": 2020,
+   "venue": "EMNLP 2020",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: dataset",
+     "support_quote": "SciFact [68] verifies scientific claims using evidence from the research literature containing scientific paper abstracts.",
+     "location": "paper.txt line 883",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "dataset",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 68) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-035",
+   "title": "SPECTER: Document-level Representation Learning using Citation-informed Transformers",
+   "as_cited": "SPECTER: Document-level Representation Learning using Citation-informed Transformers",
+   "title_status": "as_cited",
+   "authors": [
+    "Arman Cohan",
+    "Sergey Feldman",
+    "Iz Beltagy",
+    "Doug Downey",
+    "Daniel Weld"
+   ],
+   "year": 2020,
+   "venue": "ACL 2020",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: dataset (SCIDOCS)",
+     "support_quote": "SCIDOCS [9] contains a corpus T of 30K held-out pool of scientific papers.",
+     "location": "paper.txt line 876",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "dataset (SCIDOCS)",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 9) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-036",
+   "title": "DBpedia-Entity V2: A Test Collection for Entity Search",
+   "as_cited": "DBpedia-Entity V2: A Test Collection for Entity Search",
+   "title_status": "as_cited",
+   "authors": [
+    "Faegheh Hasibi",
+    "Fedor Nikolaev",
+    "Chenyan Xiong",
+    "et al."
+   ],
+   "year": 2017,
+   "venue": "SIGIR 2017",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: dataset; latency test corpus",
+     "support_quote": "DBPedia-Entity-v2 [21] is an established entity retrieval dataset.",
+     "location": "paper.txt line 873",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "dataset; latency test corpus",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 21) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-037",
+   "title": "A full-text learning to rank dataset for medical information retrieval",
+   "as_cited": "A full-text learning to rank dataset for medical information retrieval",
+   "title_status": "as_cited",
+   "authors": [
+    "Vera Boteva",
+    "Demian Gholipour",
+    "Artem Sokolov",
+    "Stefan Riezler"
+   ],
+   "year": 2016,
+   "venue": "ECIR 2016",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: dataset",
+     "support_quote": "NFCorpus [7] contains natural language queries harvested from NutritionFacts (NF).",
+     "location": "paper.txt line 848",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "dataset",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 7) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-038",
+   "title": "WWW'18 Open Challenge: Financial Opinion Mining and Question Answering",
+   "as_cited": "WWW'18 Open Challenge: Financial Opinion Mining and Question Answering",
+   "title_status": "as_cited",
+   "authors": [
+    "Macedo Maia",
+    "Siegfried Handschuh",
+    "André Freitas",
+    "et al."
+   ],
+   "year": 2018,
+   "venue": "WWW '18 Companion",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: dataset",
+     "support_quote": "FiQA-2018 [44] Task 2 consists of opinion-based question-answering.",
+     "location": "paper.txt line 854",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "dataset",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 44) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-039",
+   "title": "HotpotQA: A Dataset for Diverse, Explainable Multi-hop Question Answering",
+   "as_cited": "HotpotQA: A Dataset for Diverse, Explainable Multi-hop Question Answering",
+   "title_status": "as_cited",
+   "authors": [
+    "Zhilin Yang",
+    "Peng Qi",
+    "Saizheng Zhang",
+    "Yoshua Bengio",
+    "et al."
+   ],
+   "year": 2018,
+   "venue": "EMNLP 2018",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: dataset",
+     "support_quote": "HotpotQA [76] contains multi-hop like questions which require reasoning over multiple paragraphs to find the correct answer.",
+     "location": "paper.txt line 853",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "dataset",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 76) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-040",
+   "title": "TREC 2019 News Track Overview",
+   "as_cited": "TREC 2019 News Track Overview",
+   "title_status": "as_cited",
+   "authors": [
+    "Ian Soboroff",
+    "Shudong Huang",
+    "Donna Harman"
+   ],
+   "year": 2019,
+   "venue": "TREC",
+   "doi": null,
+   "url": null,
+   "publication_status": "TECHNICAL_REPORT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: dataset",
+     "support_quote": "TREC-NEWS [58] 2019 track involves background linking: Given a news headline, we retrieve relevant news articles that provide important context or background information.",
+     "location": "paper.txt line 859",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "dataset",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 58) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-041",
+   "title": "Overview of the TREC 2004 Robust Retrieval Track",
+   "as_cited": "Overview of the TREC 2004 Robust Retrieval Track",
+   "title_status": "as_cited",
+   "authors": [
+    "Ellen Voorhees"
+   ],
+   "year": 2005,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "TECHNICAL_REPORT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: dataset",
+     "support_quote": "Robust04 [64] provides a robust dataset focusing on evaluating on poorly performing topics.",
+     "location": "paper.txt line 862",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "dataset",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 64) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-042",
+   "title": "Reading Wikipedia to Answer Open-Domain Questions",
+   "as_cited": "Reading Wikipedia to Answer Open-Domain Questions",
+   "title_status": "as_cited",
+   "authors": [
+    "Danqi Chen",
+    "Adam Fisch",
+    "Jason Weston",
+    "Antoine Bordes"
+   ],
+   "year": 2017,
+   "venue": "ACL 2017",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: retrieval as first step in QA",
+     "support_quote": "Challenging problems include open-domain question-answering [8], claim-verification [60], duplicate question detection [78], and many more.",
+     "location": "paper.txt line 9",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "retrieval as first step in QA",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 8) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-043",
+   "title": "Multi-factor duplicate question detection in stack overflow",
+   "as_cited": "Multi-factor duplicate question detection in stack overflow",
+   "title_status": "as_cited",
+   "authors": [
+    "Yun Zhang",
+    "David Lo",
+    "Xin Xia",
+    "Jian-Ling Sun"
+   ],
+   "year": 2015,
+   "venue": "Journal of Computer Science and Technology, 30(5):981-997",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: retrieval as first step in duplicate detection",
+     "support_quote": "Challenging problems include open-domain question-answering [8], claim-verification [60], duplicate question detection [78], and many more.",
+     "location": "paper.txt line 9",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "retrieval as first step in duplicate detection",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 78) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-044",
+   "title": "Pretrained Transformers for Text Ranking: BERT and Beyond",
+   "as_cited": "Pretrained Transformers for Text Ranking: BERT and Beyond",
+   "title_status": "as_cited",
+   "authors": [
+    "Jimmy Lin",
+    "Rodrigo Nogueira",
+    "Andrew Yates"
+   ],
+   "year": 2020,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: survey of neural retrieval",
+     "support_quote": "In this section, we highlight a few neural-based approaches and we refer the reader to Lin et al. [37] for a recent survey in neural retrieval.",
+     "location": "paper.txt line 133",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "survey of neural retrieval",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 37) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-045",
+   "title": "The Curse of Dense Low-Dimensional Information Retrieval for Large Index Sizes",
+   "as_cited": "The Curse of Dense Low-Dimensional Information Retrieval for Large Index Sizes",
+   "title_status": "as_cited",
+   "authors": [
+    "Nils Reimers",
+    "Iryna Gurevych"
+   ],
+   "year": 2020,
+   "venue": "arXiv preprint arXiv:2012.14210",
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: small corpora favour dense retrieval",
+     "support_quote": "Further, MultiReQA evaluates retrieval over rather small corpora: six out of eight tasks have less than 100k candidate sentences, which benefits dense retrieval over lexical as previously shown [54].",
+     "location": "paper.txt line 127",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "small corpora favour dense retrieval",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 54) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-046",
+   "title": "Zero-shot Neural Passage Retrieval via Domain-targeted Synthetic Question Generation",
+   "as_cited": "Zero-shot Neural Passage Retrieval via Domain-targeted Synthetic Question Generation",
+   "title_status": "as_cited",
+   "authors": [
+    "Ji Ma",
+    "Ivan Korotkov",
+    "Yinfei Yang",
+    "Keith Hall",
+    "Ryan McDonald"
+   ],
+   "year": 2021,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: synthetic-query domain adaptation",
+     "support_quote": "Another parallel line of work proposed an unsupervised domain-adaption approach [35, 43] for training dense retrievers by generating synthetic queries on a target domain.",
+     "location": "paper.txt line 134",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "synthetic-query domain adaptation",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 43) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-047",
+   "title": "Embedding-based Zero-shot Retrieval through Query Generation",
+   "as_cited": "Embedding-based Zero-shot Retrieval through Query Generation",
+   "title_status": "as_cited",
+   "authors": [
+    "Davis Liang",
+    "Peng Xu",
+    "Siamak Shakeri",
+    "Cicero Nogueira dos Santos",
+    "et al."
+   ],
+   "year": 2020,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: synthetic-query domain adaptation",
+     "support_quote": "Another parallel line of work proposed an unsupervised domain-adaption approach [35, 43] for training dense retrievers by generating synthetic queries on a target domain.",
+     "location": "paper.txt line 134",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "synthetic-query domain adaptation",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 35) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-048",
+   "title": "Complementing Lexical Retrieval with Semantic Residual Embedding",
+   "as_cited": "Complementing Lexical Retrieval with Semantic Residual Embedding",
+   "title_status": "as_cited",
+   "authors": [
+    "Luyu Gao",
+    "Zhuyun Dai",
+    "Tongfei Chen",
+    "Zhen Fan",
+    "Benjamin Van Durme",
+    "Jamie Callan"
+   ],
+   "year": 2020,
+   "venue": null,
+   "doi": null,
+   "url": null,
+   "publication_status": "PREPRINT",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: hybrid lexical-dense",
+     "support_quote": "This dense approach was recently extended by hybrid lexical-dense approaches which aims to combine the strengths of both approaches [17, 57, 42].",
+     "location": "paper.txt line 134",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "hybrid lexical-dense",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 17) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-049",
+   "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+   "as_cited": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+   "title_status": "as_cited",
+   "authors": [
+    "Colin Raffel",
+    "Noam Shazeer",
+    "Adam Roberts",
+    "et al."
+   ],
+   "year": 2020,
+   "venue": "Journal of Machine Learning Research, 21(140):1-67",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: T5 model",
+     "support_quote": "docT5query uses a T5 (base) [52] model trained on MS MARCO to generate synthetic queries.",
+     "location": "paper.txt line 360",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "T5 model",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number 52) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  },
+  {
+   "id": "SRC-050",
+   "title": "Resources for Brewing BEIR: Reproducible Reference Models and Statistical Analyses",
+   "as_cited": "Resources for Brewing BEIR: Reproducible Reference Models and Statistical Analyses",
+   "title_status": "as_cited",
+   "authors": [
+    "Ehsan Kamalloo",
+    "Nandan Thakur",
+    "Carlos Lassance",
+    "Xueguang Ma",
+    "Jheng-Hong Yang",
+    "Jimmy Lin"
+   ],
+   "year": 2024,
+   "venue": "Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval, pp. 1431-1440",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "peer_review_known": false,
+   "level": 2,
+   "verification": {
+    "method": "user_supplied_file",
+    "date": "2026-09-29",
+    "verified_by": "agent",
+    "retraction_checked": false
+   },
+   "read_depth": "abstract",
+   "establishes": [
+    {
+     "statement": "What the BEIR project materials say this work is or contributes: later companion work cited by the README",
+     "support_quote": "Second, comparisons on BEIR are performed by reducing scores from heterogeneous datasets into a single average that is difficult to interpret.",
+     "location": "README_1.md line 425",
+     "strength": "as described by the citing paper; the cited work itself was not read"
+    }
+   ],
+   "why_useful": "later companion work cited by the README",
+   "informs_sections": [
+    "Introduction",
+    "Related work",
+    "Method"
+   ],
+   "evidence_quality": "low",
+   "limitations": "Not read. Registered only from the project's own reference list (ref number None) and text; cited here only for the role the project assigns it. Publication status inferred conservatively from the reference entry; where the entry names no venue it is treated as a preprint (peer review unknown).",
+   "permitted_use": [
+    "content_citation"
+   ]
+  }
+ ]
+}

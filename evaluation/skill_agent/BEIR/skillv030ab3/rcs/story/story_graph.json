@@ -1,0 +1,612 @@
+{
+ "pattern": "question_led",
+ "nodes": [
+  {
+   "id": "N01",
+   "type": "PROBLEM",
+   "text": "Neural retrieval models are usually trained and tested on the same dataset, so their behaviour on other domains and tasks is unknown.",
+   "claims": [
+    "C002",
+    "C004"
+   ],
+   "sources": [
+    "SRC-006",
+    "SRC-007"
+   ],
+   "audience_note": "reader must know what retrieval and zero-shot mean"
+  },
+  {
+   "id": "N02",
+   "type": "SIGNIFICANCE",
+   "text": "Training data are costly, so many retrieval systems are deployed zero-shot.",
+   "claims": [
+    "C001"
+   ]
+  },
+  {
+   "id": "N03",
+   "type": "KNOWN",
+   "text": "Lexical methods (BM25) dominate retrieval history; neural sparse, dense, late-interaction and re-ranking families each try to close the lexical gap.",
+   "claims": [
+    "C006"
+   ],
+   "sources": [
+    "SRC-003",
+    "SRC-004",
+    "SRC-009",
+    "SRC-016"
+   ],
+   "audience_note": "define lexical gap, bi-encoder, cross-encoder"
+  },
+  {
+   "id": "N04",
+   "type": "KNOWN",
+   "text": "Earlier benchmarks (MultiReQA, KILT) cover one task or one domain, small corpora or Wikipedia.",
+   "claims": [
+    "C005"
+   ],
+   "sources": [
+    "SRC-001",
+    "SRC-002"
+   ]
+  },
+  {
+   "id": "N05",
+   "type": "GAP",
+   "text": "Among the benchmarks the paper cites, none evaluates retrieval zero-shot across many tasks and domains with large corpora.",
+   "claims": [
+    "C003",
+    "C005"
+   ],
+   "sources": [
+    "SRC-001",
+    "SRC-002"
+   ]
+  },
+  {
+   "id": "N06",
+   "type": "RQ",
+   "text": "RQ1: does in-domain performance predict zero-shot performance?",
+   "claims": [
+    "C056"
+   ]
+  },
+  {
+   "id": "N07",
+   "type": "RQ",
+   "text": "RQ2: which architectures hold up across heterogeneous datasets, and at what computational cost?",
+   "claims": [
+    "C056"
+   ]
+  },
+  {
+   "id": "N08",
+   "type": "RQ",
+   "text": "RQ3: does existing relevance annotation treat non-lexical systems fairly?",
+   "claims": [
+    "C056"
+   ]
+  },
+  {
+   "id": "N09",
+   "type": "OBJECTIVE",
+   "text": "Build a heterogeneous zero-shot benchmark and use it to compare ten systems from five families.",
+   "claims": [
+    "C020",
+    "C022"
+   ]
+  },
+  {
+   "id": "N10",
+   "type": "APPROACH",
+   "text": "BEIR: 18 English datasets, 9 tasks, unified format and software; nDCG@10; MS MARCO-trained checkpoints evaluated without adaptation.",
+   "claims": [
+    "C010",
+    "C011",
+    "C012",
+    "C013",
+    "C014",
+    "C015",
+    "C020",
+    "C021",
+    "C022"
+   ],
+   "sources": [
+    "SRC-007"
+   ]
+  },
+  {
+   "id": "N11",
+   "type": "DESIGN",
+   "text": "Zero-shot evaluation of ten systems on 18 datasets with nDCG@10, plus MS MARCO in-domain scores.",
+   "claims": [
+    "C011",
+    "C012",
+    "C013",
+    "C014"
+   ]
+  },
+  {
+   "id": "N12",
+   "type": "DESIGN",
+   "text": "Latency and index-size measurement on 1M DBPedia documents.",
+   "claims": [
+    "C040"
+   ]
+  },
+  {
+   "id": "N13",
+   "type": "DESIGN",
+   "text": "Manually judge the unjudged top-10 hits ('holes') of every system on TREC-COVID and re-score.",
+   "claims": [
+    "C017"
+   ]
+  },
+  {
+   "id": "N14",
+   "type": "DESIGN",
+   "text": "Train two identical models differing only in similarity function to test the document-length preference.",
+   "claims": [
+    "C016"
+   ]
+  },
+  {
+   "id": "N15",
+   "type": "RESULT",
+   "text": "Zero-shot scores: BM25 strong; BM25+CE and ColBERT best on average; docT5query above BM25 on 11 of 18; dense and sparse-learned often below BM25; GenQ helps specialised domains.",
+   "claims": [
+    "C030",
+    "C031",
+    "C032",
+    "C033",
+    "C034",
+    "C035",
+    "C036",
+    "C039",
+    "C043"
+   ],
+   "evidence": [
+    "E050",
+    "E052",
+    "E070",
+    "E072",
+    "E073",
+    "E075",
+    "E077",
+    "E078",
+    "E086"
+   ]
+  },
+  {
+   "id": "N16",
+   "type": "RESULT",
+   "text": "Best zero-shot systems are the slowest; ColBERT needs the largest index.",
+   "claims": [
+    "C040"
+   ],
+   "evidence": [
+    "E091",
+    "E092",
+    "E093"
+   ]
+  },
+  {
+   "id": "N17",
+   "type": "RESULT",
+   "text": "Hole@10 differs widely by system; adding judgements barely changes lexical systems but lifts ANCE and ColBERT.",
+   "claims": [
+    "C041",
+    "C042"
+   ],
+   "evidence": [
+    "E102",
+    "E104",
+    "E105"
+   ]
+  },
+  {
+   "id": "N18",
+   "type": "RESULT",
+   "text": "Cosine versus dot product changes TREC-COVID nDCG@10 by 15.3 points and the length of retrieved documents.",
+   "claims": [
+    "C037",
+    "C038"
+   ],
+   "evidence": [
+    "E080",
+    "E082",
+    "E083"
+   ]
+  },
+  {
+   "id": "N19",
+   "type": "INTERPRETATION",
+   "text": "In-domain scores do not order systems as zero-shot scores do; cross-attention style scoring and keyword expansion are the authors' candidate explanations.",
+   "claims": [
+    "C044",
+    "C045",
+    "C046",
+    "C047"
+   ]
+  },
+  {
+   "id": "N20",
+   "type": "INTERPRETATION",
+   "text": "Accuracy of the best systems is bought with latency and index size.",
+   "claims": [
+    "C049"
+   ]
+  },
+  {
+   "id": "N21",
+   "type": "INTERPRETATION",
+   "text": "Pools built by lexical systems disadvantage non-lexical systems, at least on TREC-COVID.",
+   "claims": [
+    "C051",
+    "C052"
+   ]
+  },
+  {
+   "id": "N22",
+   "type": "INTERPRETATION",
+   "text": "The similarity function is the authors' explanation for TAS-B's preference for short documents.",
+   "claims": [
+    "C048"
+   ]
+  },
+  {
+   "id": "N23",
+   "type": "CONTRIBUTION",
+   "text": "A heterogeneous zero-shot retrieval benchmark with software, a ten-system comparison in which no system wins everywhere and BM25 remains strong, and evidence of annotation bias against non-lexical systems.",
+   "claims": [
+    "C020",
+    "C021",
+    "C043",
+    "C052"
+   ]
+  },
+  {
+   "id": "N24",
+   "type": "LIMITATION",
+   "text": "Benchmark scope: English only, short documents, text only, one or two fields, general-purpose models, datasets used as released.",
+   "audience_note": "limitations: L001, L002, L003, L004, L005, L006, L009, L010, L013"
+  },
+  {
+   "id": "N25",
+   "type": "LIMITATION",
+   "text": "No variance across runs and no total compute reported.",
+   "audience_note": "limitations: L007, L008"
+  },
+  {
+   "id": "N26",
+   "type": "LIMITATION",
+   "text": "TREC-COVID pool still favours lexical systems; unbiased datasets are needed.",
+   "audience_note": "limitations: L011, L012"
+  },
+  {
+   "id": "N27",
+   "type": "LIMITATION",
+   "text": "Writer-derived caveats: one-dataset annotation study, single hardware, confounded systems, average row, count discrepancy, few queries, re-implementations, author-made judgements.",
+   "audience_note": "limitations: L101, L102, L103, L104, L105, L106, L107, L108"
+  },
+  {
+   "id": "N28",
+   "type": "IMPLICATION",
+   "text": "Retrieval methods should be evaluated across many datasets; datasets need diverse pooling.",
+   "claims": [
+    "C053"
+   ]
+  },
+  {
+   "id": "N29",
+   "type": "FUTURE",
+   "text": "Multilingual, long-document, multi-factor, multi-field and task-specific evaluation.",
+   "claims": [
+    "C054"
+   ]
+  },
+  {
+   "id": "N30",
+   "type": "BACKGROUND_CONCEPT",
+   "text": "nDCG@10, qrels, pooling and holes, bi-encoder versus cross-encoder versus late interaction, lexical gap.",
+   "claims": [
+    "C011"
+   ],
+   "audience_note": "each defined at first use"
+  }
+ ],
+ "edges": [
+  {
+   "from": "N01",
+   "to": "N06",
+   "type": "motivates"
+  },
+  {
+   "from": "N02",
+   "to": "N06",
+   "type": "motivates"
+  },
+  {
+   "from": "N01",
+   "to": "N07",
+   "type": "motivates"
+  },
+  {
+   "from": "N01",
+   "to": "N08",
+   "type": "motivates"
+  },
+  {
+   "from": "N03",
+   "to": "N05",
+   "type": "establishes"
+  },
+  {
+   "from": "N04",
+   "to": "N05",
+   "type": "establishes"
+  },
+  {
+   "from": "N06",
+   "to": "N05",
+   "type": "addresses"
+  },
+  {
+   "from": "N07",
+   "to": "N05",
+   "type": "addresses"
+  },
+  {
+   "from": "N08",
+   "to": "N05",
+   "type": "addresses"
+  },
+  {
+   "from": "N09",
+   "to": "N06",
+   "type": "operationalizes"
+  },
+  {
+   "from": "N09",
+   "to": "N07",
+   "type": "operationalizes"
+  },
+  {
+   "from": "N09",
+   "to": "N08",
+   "type": "operationalizes"
+  },
+  {
+   "from": "N10",
+   "to": "N09",
+   "type": "implements"
+  },
+  {
+   "from": "N11",
+   "to": "N15",
+   "type": "produces"
+  },
+  {
+   "from": "N12",
+   "to": "N16",
+   "type": "produces"
+  },
+  {
+   "from": "N13",
+   "to": "N17",
+   "type": "produces"
+  },
+  {
+   "from": "N14",
+   "to": "N18",
+   "type": "produces"
+  },
+  {
+   "from": "N15",
+   "to": "N19",
+   "type": "supports"
+  },
+  {
+   "from": "N16",
+   "to": "N20",
+   "type": "supports"
+  },
+  {
+   "from": "N17",
+   "to": "N21",
+   "type": "supports"
+  },
+  {
+   "from": "N18",
+   "to": "N22",
+   "type": "supports"
+  },
+  {
+   "from": "N19",
+   "to": "N06",
+   "type": "answers"
+  },
+  {
+   "from": "N19",
+   "to": "N07",
+   "type": "answers"
+  },
+  {
+   "from": "N20",
+   "to": "N07",
+   "type": "answers"
+  },
+  {
+   "from": "N21",
+   "to": "N08",
+   "type": "answers"
+  },
+  {
+   "from": "N22",
+   "to": "N07",
+   "type": "answers"
+  },
+  {
+   "from": "N15",
+   "to": "N23",
+   "type": "grounds"
+  },
+  {
+   "from": "N17",
+   "to": "N23",
+   "type": "grounds"
+  },
+  {
+   "from": "N05",
+   "to": "N23",
+   "type": "grounds"
+  },
+  {
+   "from": "N24",
+   "to": "N23",
+   "type": "limits"
+  },
+  {
+   "from": "N25",
+   "to": "N15",
+   "type": "limits"
+  },
+  {
+   "from": "N26",
+   "to": "N17",
+   "type": "limits"
+  },
+  {
+   "from": "N26",
+   "to": "N23",
+   "type": "limits"
+  },
+  {
+   "from": "N27",
+   "to": "N16",
+   "type": "limits"
+  },
+  {
+   "from": "N27",
+   "to": "N17",
+   "type": "limits"
+  },
+  {
+   "from": "N21",
+   "to": "N28",
+   "type": "implies"
+  },
+  {
+   "from": "N24",
+   "to": "N29",
+   "type": "opens"
+  },
+  {
+   "from": "N28",
+   "to": "N29",
+   "type": "opens"
+  },
+  {
+   "from": "N19",
+   "to": "N30",
+   "type": "requires"
+  },
+  {
+   "from": "N11",
+   "to": "N30",
+   "type": "requires"
+  }
+ ],
+ "experiment_chains": [
+  {
+   "experiment": "Zero-shot comparison of ten systems on 18 datasets",
+   "rq": "N06",
+   "hypothesis": "If in-domain scores predicted zero-shot scores, MS MARCO ordering would match BEIR ordering; a mismatch counts against it.",
+   "falsifier": "same ordering in-domain and zero-shot",
+   "design_rationale": "C010, C011, C012, C013",
+   "observations": [
+    "E050",
+    "E052",
+    "E060"
+   ],
+   "claims": [
+    "C030",
+    "C031",
+    "C032",
+    "C033",
+    "C034",
+    "C035",
+    "C036",
+    "C043",
+    "C044"
+   ],
+   "limitations": [
+    "L007",
+    "L103"
+   ],
+   "next": "Cost: the best systems are slower, so what do latency and index size look like?"
+  },
+  {
+   "experiment": "Latency and index size on 1M DBPedia documents",
+   "rq": "N07",
+   "hypothesis": "Systems that score best zero-shot pay in latency and index size.",
+   "falsifier": "best systems are also fast and small",
+   "design_rationale": "efficiency matters for real-time use (authors' framing: models compare a query against millions of documents)",
+   "observations": [
+    "E091",
+    "E092",
+    "E093"
+   ],
+   "claims": [
+    "C040",
+    "C049"
+   ],
+   "limitations": [
+    "L008",
+    "L102"
+   ],
+   "next": "Why do some dense systems fall below BM25 (TREC-COVID)? Look at labels and at document length."
+  },
+  {
+   "experiment": "TREC-COVID hole annotation",
+   "rq": "N08",
+   "hypothesis": "Missing judgements disadvantage non-lexical systems.",
+   "falsifier": "scores of dense systems unchanged after annotation",
+   "design_rationale": "C017",
+   "observations": [
+    "E102",
+    "E104"
+   ],
+   "claims": [
+    "C041",
+    "C042",
+    "C052"
+   ],
+   "limitations": [
+    "L011",
+    "L101",
+    "L108"
+   ],
+   "next": "A second cause of dense-model differences: retrieved document length."
+  },
+  {
+   "experiment": "Cosine versus dot-product model",
+   "rq": "N07",
+   "hypothesis": "The similarity function determines whether short or long documents are retrieved.",
+   "falsifier": "same length distribution under both similarity functions",
+   "design_rationale": "C016",
+   "observations": [
+    "E082",
+    "E083"
+   ],
+   "claims": [
+    "C038",
+    "C048"
+   ],
+   "limitations": [
+    "L012"
+   ],
+   "next": "Wrap up: what the benchmark shows and what it cannot."
+  }
+ ]
+}

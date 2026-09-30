@@ -1,0 +1,15 @@
+# Paper Spine
+
+1. **Problem.** TinyML systems run machine-learning inference under a milliwatt on microcontroller-class (MCU) hardware, but no standardized, reproducible benchmark exists to compare hardware and software solutions on accuracy, latency, and energy together {C009, C010, C011}.
+2. **Gap.** A general MCU benchmark does not run real ML workloads, and the existing ML-inference benchmarks either need gigabytes of memory or do not measure power, so none of the three jointly fits TinyML's accuracy-latency-energy, MCU-scale requirements {C012}.
+3. **Question.** Can one suite fairly measure accuracy, latency, and energy for representative ML workloads on MCU-class hardware, while still letting a specific hardware or software contribution be demonstrated and directly compared against a common reference? {C004}
+4. **Approach.** MLPerf Tiny pairs four representative benchmarks with MCU-sized reference implementations and a fixed measurement protocol, then splits submissions into a fixed-everything closed division and a flexible, fully-documented open division {C001, C003, C004}.
+5. **Key finding.** The first submission round (v0.5) drew five submissions spanning both divisions and five hardware/software categories, from an ARM MCU to an FPGA trained with quantization-aware learning, each demonstrating a different point in the deployment stack {C005, C006, C007, C008}.
+6. **Meaning.** This diversity in a single first round is consistent with the modular, dual-division design achieving its goal of accommodating TinyML's hardware and software heterogeneity without sacrificing direct comparability {C006, C013}.
+7. **Main limit.** The evidence is one round with five submissions and no non-modular baseline suite for comparison; the reference accuracy figures behind the quality targets carry no reported retraining variance; and the closed division's architecture coverage and its exclusion of feature extraction from the measured window remain open design tensions the authors flag themselves {L001, L002, L004, L005}.
+
+## Spine tests
+- **Tell-a-colleague:** an adjacent ML researcher reading only these 7 lines would know what MLPerf Tiny is, why it exists, what was built, what happened when it met real submitters, and where it is still thin.
+- **Chain:** Gap -> Question: answering Q3 (build+field-test such a suite) directly closes the stated gap. Finding -> Meaning: the meaning claim ("achieves its goal") is explicitly the authors' own reading of the Table 2 diversity (Section 6.2), not an extra inferential leap made only in this paper.
+- **Honesty:** line 7 names limits specific to lines 5-6 (single round / n=5, unreplicated reference accuracies, and the two design tensions the authors themselves raise in Section 8), not generic caveats.
+- **One contribution:** line 5 organizes the paper around one central finding (the v0.5 round's diversity across division and hardware/software category); the per-submission qualitative detail (C007, C008) supports it rather than competing with it.

@@ -1,0 +1,69 @@
+{
+ "id": "ADV-02b",
+ "origin": "spec 10 case 2",
+ "title": "same conflict, not even recorded: detected automatically",
+ "files": {
+  "results/tableA.csv": "run,macro_f1\nrun_07,0.91\n",
+  "results/tableB.csv": "run,macro_f1\nrun_07,0.93\n",
+  ".rcs/evidence/research_evidence.json": {
+   "project_root": ".",
+   "generated_at": "2026-09-29",
+   "items": [
+    {
+     "id": "E001",
+     "kind": "result",
+     "summary": "Table A macro-F1 for run_07",
+     "locator": {
+      "path": "results/tableA.csv"
+     },
+     "strength": "hard",
+     "status": "ok",
+     "value": {
+      "metric": "macro_f1",
+      "value": 0.91,
+      "run_id": "run_07"
+     }
+    },
+    {
+     "id": "E002",
+     "kind": "result",
+     "summary": "Table B macro-F1 for run_07",
+     "locator": {
+      "path": "results/tableB.csv"
+     },
+     "strength": "hard",
+     "status": "ok",
+     "value": {
+      "metric": "macro_f1",
+      "value": 0.93,
+      "run_id": "run_07"
+     }
+    }
+   ]
+  },
+  ".rcs/claims/claim_evidence_map.json": {
+   "claims": [
+    {
+     "id": "C001",
+     "statement": "Run 7 reached 0.91 macro-F1.",
+     "claim_type": "measured",
+     "evidence": [
+      "E001"
+     ],
+     "confidence": "moderate",
+     "author_confirmation": "confirmed"
+    }
+   ],
+   "limitations": [],
+   "negative_result_decisions": []
+  }
+ },
+ "checks": [
+  {
+   "tool": "validate",
+   "expect": [
+    "ERROR:UNRECONCILED_CONFLICT"
+   ]
+  }
+ ]
+}

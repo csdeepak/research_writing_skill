@@ -1,0 +1,15 @@
+{
+  "dimensions": [
+    {"dimension": "Workload realism for ML inference on MCU-class devices",
+     "works": ["SRC-001", "SRC-002"],
+     "achieves": "CoreMark: ease of implementation, real algorithms, standard for MCU-class devices (E040). MLPerf inference: a benchmarking suite for ML inference (E042).",
+     "shared_limitation": "None gives small ML workloads that fit MCU-class devices: CoreMark does not represent ML inference; MLMark models are far too large (E041); the MLPerf inference benchmark precludes MCUs (E042).",
+     "relation": "MLPerf Tiny supplies small benchmarks with reference implementations for MCU-class devices."},
+    {"dimension": "Power as a measured quantity",
+     "works": ["SRC-001", "SRC-002"],
+     "achieves": "CoreMark has a power extension (ULPMark-CM) (E041). MLPerf inference had plans to add power measurements (E042).",
+     "shared_limitation": "MLMark does not support power measurement (E041).",
+     "relation": "MLPerf Tiny measures energy as a first-class quantity alongside latency and accuracy."}
+  ],
+  "note": "Built only from the MLPerf Tiny authors' own characterization of prior work (no source was read)."
+}

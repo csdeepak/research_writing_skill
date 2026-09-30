@@ -1,0 +1,26 @@
+{
+  "mode": "B",
+  "primary": "Machine-learning researchers from subfields other than LLM agents / software-engineering agents: they know general ML, deep learning, standard evaluation practice, and statistics, but not this project's subfield-specific terminology, datasets, or prior work.",
+  "secondary": "Reviewers/replicators checking whether the reported numbers and comparisons are used honestly and traceably to the source paper.",
+  "tertiary": "Future readers or practitioners from other subfields who encounter this write-up as an entry point into agent-platform research.",
+  "assumed_known": [
+    "supervised/instruction-tuned large language models (GPT-4, Claude, etc.)",
+    "prompting and zero-/few-shot inference in the general in-context-learning sense",
+    "train/test or held-out evaluation splits",
+    "standard statistics: percentages, means, comparison against baselines",
+    "the general notion of an 'AI agent' that takes actions in an environment (e.g. from reinforcement learning), without subfield-specific tooling",
+    "general software engineering vocabulary (a bug, a function, a repository) at a layperson-technical level"
+  ],
+  "not_assumed": [
+    "SWE-Bench, HumanEvalFix, WebArena, MiniWoB++, GAIA, GPQA, AgentBench, MINT, ProofWriter, Entity Deduction Arena, or what any of them specifically measures",
+    "resolve rate / pass@k as SWE-Bench-family-specific metrics",
+    "the agent-computer-interface (ACI) concept",
+    "event-stream agent architectures, action/observation terminology",
+    "CodeAct-style code-execution action spaces vs. fixed JSON tool-calling",
+    "sandboxed/containerized execution as a safety mechanism",
+    "the landscape of prior agent frameworks (LangChain, AutoGen, CrewAI, MetaGPT, GPTSwarm, BrowserGym, DSPy, SWE-Agent, AutoCodeRover, etc.)"
+  ],
+  "binding_personas": ["A", "B", "E"],
+  "term_budget": {"per_paragraph": 2, "abstract_acronyms": 1},
+  "source": "TASK.md's own AUDIENCE specification (2026-09-27): 'Machine-learning researchers from OTHER subfields (adjacent researchers): they know general ML, deep learning, standard evaluation practice and statistics, but not this project's subfield-specific terminology, datasets or prior work.' This is a verbatim match to audience_model.md's Mode B definition, so Mode B is adopted directly with no ASK needed."
+}

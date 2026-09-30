@@ -1,0 +1,48 @@
+{
+ "personas": [
+  {
+   "id": "B",
+   "description": "Adjacent-field ML researcher: knows general ML, LLMs, embeddings, standard evaluation and statistics; does not know multi-agent LLM memory, its routing vocabulary, or this project's arms, metrics and datasets.",
+   "binding": true,
+   "known_terms": ["ML", "LLM", "GPU", "API", "F1", "CI", "accuracy", "precision", "recall", "transformer", "fine-tuning", "benchmark", "embedding", "embedder", "cosine", "bootstrap", "seed", "baseline", "RQ1", "RQ2", "RQ3", "RQ4"],
+   "prerequisite_concepts": [
+    {"concept": "route@1", "needs": ["routing", "owner"]},
+    {"concept": "ownership evolution", "needs": ["verified"]},
+    {"concept": "regret", "needs": ["route@1"]},
+    {"concept": "rank-biserial", "needs": ["signed-rank"]}
+   ],
+   "likely_misconceptions": [
+    {"misconception": "A route@1 of 0.0 for global search means global search fails to find answers.",
+     "trigger_terms": ["route@1"],
+     "corrective_point": "Global search routes to no single agent, so its route@1 is 0.0 by construction.",
+     "corrective_terms": ["by construction"]},
+    {"misconception": "An effect size near 1 means every query improved.",
+     "trigger_terms": ["rank-biserial"],
+     "corrective_point": "The number of non-zero pairs is reported beside r (48 of 50).",
+     "corrective_terms": ["non-zero pairs", "48 of 50"]},
+    {"misconception": "A lower token cost means the same answer quality.",
+     "trigger_terms": ["fewer LLM tokens", "fewer tokens"],
+     "corrective_point": "Accuracy under routing was below global search in every measured seed.",
+     "corrective_terms": ["below global search", "not a saving at equal accuracy"]},
+    {"misconception": "The results describe organic multi-agent workloads.",
+     "trigger_terms": ["corpus"],
+     "corrective_point": "The corpus is deliberately constructed and ownership asymmetry does not emerge organically.",
+     "corrective_terms": ["deliberately constructed", "organic"]},
+    {"misconception": "ASMOS improves question-answering accuracy.",
+     "trigger_terms": ["ASMOS-memory"],
+     "corrective_point": "ASMOS-memory scores below No-Memory and RAG on static question answering.",
+     "corrective_terms": ["scored below", "scores below"]}
+   ],
+   "reader_questions": [
+    "What problem does this solve?",
+    "How was it evaluated, and on what data?",
+    "What does it not show?",
+    "How large is the token saving and how certain is it?",
+    "Does routing change answer accuracy?",
+    "How does the system behave when a new topic appears?"
+   ],
+   "venue_expectations": ["a data and code availability statement", "an AI-use disclosure"],
+   "new_term_budget": 2
+  }
+ ]
+}

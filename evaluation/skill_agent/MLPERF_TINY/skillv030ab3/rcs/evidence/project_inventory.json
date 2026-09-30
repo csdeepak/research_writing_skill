@@ -1,0 +1,14 @@
+{
+  "project_root": ".",
+  "generated_at": "2026-09-29",
+  "generated_by": "CORPUS_AGENT (performed by the author agent; no subagents in this run)",
+  "files": [
+    {"path": "project/paper.txt", "class": "reference", "size_bytes": 50007, "opened": true,
+     "notes": "Text extracted from the official paper (arXiv 2106.07597v4). Figures 1-6 are not recoverable; Tables 1 and 2 are damaged by extraction (cell order preserved, layout lost). Treated as the primary record of the authors' statements."},
+    {"path": "project/README_1.md", "class": "note", "size_bytes": 3076, "opened": true,
+     "notes": "Official repository README (project status, version table, citation request). Soft evidence."},
+    {"path": "TASK.md", "class": "other", "opened": true, "notes": "Task instructions; not evidence."},
+    {"path": "rce/", "class": "other", "opened": false, "notes": "The skill and tools; not project evidence."}
+  ],
+  "skipped": []
+}

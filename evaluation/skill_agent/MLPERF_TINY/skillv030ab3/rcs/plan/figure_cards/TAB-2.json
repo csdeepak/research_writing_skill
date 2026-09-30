@@ -1,0 +1,28 @@
+{
+  "id": "TAB-2",
+  "type": "table",
+  "status": "planned",
+  "purpose": "Put each reference accuracy next to its quality target.",
+  "rq": "RQ1",
+  "takeaway": "Every reference result sits above its target by 0.01 AUC to about 6 accuracy points.",
+  "claims": [
+    "C010",
+    "C011",
+    "C012",
+    "C013",
+    "C035"
+  ],
+  "evidence": [
+    "E009",
+    "E011",
+    "E014",
+    "E017"
+  ],
+  "source_data": [
+    "project/paper.txt"
+  ],
+  "comparison_the_eye_must_make": "reference value vs target per task",
+  "non_conclusions": "No spread reported; the evaluation subsets are small; not a comparison of submissions.",
+  "placement": "Section 5.1",
+  "caption": "Table 2. Reference results and quality targets."
+}

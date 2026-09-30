@@ -1,0 +1,30 @@
+{
+  "tool": "validate_artifacts",
+  "errors": 0,
+  "warnings": 3,
+  "inputs": {
+    "evidence/research_evidence.json": "753a92c3c0f2aa54adf18d5d138d90e62d05f5b373fb0316cceb11bf39df8b01",
+    "claims/claim_evidence_map.json": "486000ed457237f980f7ea76d0426d50ee5bb74ac6c415978b96a3d67a4364de",
+    "story/story_graph.json": "c4e65597027880d15be8c2bba6e1c81f32bc1859d5ffc7e8ec2b791ccbb620a4",
+    "corpus/source_registry.json": "df7fa3f3373332fbe21bad2273077b8def98786023b82de82e748e049be9dc64",
+    "plan/reader_model.json": "4defe5efa61e09448f08a7ea415699f763996267d0194eaff4fb102de8475a6b",
+    "story/spine.md": "173b4e76cf063ba240ba312d0400a67bfa82d7097696835ee86a8e84b8487b91"
+  },
+  "items": [
+    {
+      "level": "WARN",
+      "where": "claims/C031",
+      "message": "measured claim not backed by any 'hard' evidence item"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C043",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C056",
+      "message": "author_confirmation pending"
+    }
+  ]
+}

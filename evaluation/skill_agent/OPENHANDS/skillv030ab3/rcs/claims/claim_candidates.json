@@ -1,0 +1,494 @@
+{
+ "candidates": [
+  {
+   "id": "C001",
+   "statement": "The authors motivate the work by the power of software: given software's reach and the tooling around its development, use and deployment, they regard it as the ideal interface for AI agents to act on the world.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "E001"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C002",
+   "statement": "The authors state that, as agents become able to tackle complex problems, developing and evaluating them has become challenging, and pose three questions for agents that act through software: how to let agents create and modify code in complex systems, how to give them tools to gather information on the fly, and how to keep development safe for the user's system.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "E002"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C003",
+   "statement": "The authors state their goal as general digital agents that interact with the world through software interfaces, and argue that a software agent should handle web browsing and auxiliary tasks as well as code editing, which is why the evaluation spans several task categories.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "E003"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C004",
+   "statement": "As the authors describe them, open agent frameworks (for example MetaGPT, AutoGen, AutoAgents) generally include interfaces for acting on the world, environments in which agents operate, and mechanisms for human-agent or agent-agent communication.",
+   "suggested_claim_type": "literature",
+   "evidence": [
+    "E014"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C005",
+   "statement": "In the authors' related-work description, AutoGen offers Python and bash execution with stateless command execution, CrewAI offers sandboxed but limited code-interpreter features, and AutoCodeRover and SWE-Agent target GitHub issue fixing; in their Table 1 the domain column lists AutoCodeRover and SWE-Agent as software engineering and the other listed frameworks, OpenHands included, as general.",
+   "suggested_claim_type": "literature",
+   "evidence": [
+    "E015",
+    "E016",
+    "E017"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C006",
+   "statement": "The authors cite SWE-Agent as highlighting the importance of a carefully crafted agent-computer interface (specialized tools for particular tasks) for solving complex tasks.",
+   "suggested_claim_type": "literature",
+   "evidence": [
+    "E018"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C007",
+   "statement": "As the authors describe them, MetaGPT emphasizes standardized operating procedures, AutoGen provides a conversation framework for interactive systems, AutoAgents offers customizable agent architecture, Auto-GPT decomposes user goals into executable steps, LangChain provides building blocks with basic runtime support, and CrewAI orchestrates multi-agent communication.",
+   "suggested_claim_type": "literature",
+   "evidence": [
+    "E083"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C010",
+   "statement": "OpenHands has three main parts: an agent abstraction in which an agent maps the event history to an action, an event stream that records all actions and observations together with auxiliary state such as accumulated LLM cost and delegation metadata, and a runtime that executes each action into an observation.",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E019",
+    "E020"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C011",
+   "statement": "Agents act through three core action types (execute Python via IPython, run bash commands, and interact with a web browser through the BrowserGym browsing language), executed inside a per-session isolated Docker container reached through a REST API server that maintains a bash shell, a Jupyter IPython server and a Playwright Chromium browser; browser observations include HTML, DOM, accessibility tree, screenshot and open tabs.",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E021",
+    "E022",
+    "E023"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C012",
+   "statement": "The authors state that the three actions were chosen to give a comprehensive yet flexible set of primitives covering most tasks of human software engineers and analysts, and that a programming-language action space is flexible while being reliable and easy to maintain.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "E004"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C013",
+   "statement": "The runtime can be built on an arbitrary user-provided Docker image: OpenHands installs its action-execution client into that image and tags each build with a hash-based tag (an MD5 of the build folder, so identical tags mean identical source code and Dockerfile) and a generic tag for the latest build of a base image.",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E024"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C014",
+   "statement": "The authors state that arbitrary Docker image support lets agents run on arbitrary operating systems with different software environments.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "E005"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C015",
+   "statement": "AgentSkills is a Python package of utility functions automatically imported into the IPython environment; it includes file-editing utilities adapted from SWE-Agent and Aider, scrolling functions, and readers for images, PDFs and other file types.",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E025"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C016",
+   "statement": "The authors state that creating, maintaining and distributing tools across agent implementations is a daunting engineering challenge, that defining a Python function as a tool lowers the barrier for contributors, and that a skill is added only when the model cannot readily write the code directly or when it calls an external model.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "E006"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C017",
+   "statement": "A special action type, AgentDelegateAction, lets an agent hand a subtask to another agent.",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E026"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C018",
+   "statement": "The authors give as an example that the generalist CodeActAgent, which has limited web-browsing support, can delegate web-browsing tasks to the specialized BrowsingAgent.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "E007"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C019",
+   "statement": "AgentHub holds over 10 community-contributed agents, among them the default generalist CodeActAgent (based on the CodeAct framework), a zero-shot-prompted BrowsingAgent, a GPTSwarm agent built on optimizable graphs, and micro agents that reuse a generalist agent's implementation with specialized prompts.",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E027"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C020",
+   "statement": "The authors state that micro agents are designed to lower the barrier to agent development by letting community members share specialized prompts.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "E008"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C021",
+   "statement": "A chat-based graphical interface visualizes the agent's actions and lets the user interrupt the agent at any moment to give feedback; it connects to the event stream.",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E028"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C022",
+   "statement": "An integration-test framework compares agent outputs against gold files, intercepts LLM calls and answers them from stored prompt-response pairs, regenerates those pairs when prompts change materially, and runs on every pull request across platforms and sandboxes.",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E029"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C023",
+   "statement": "The authors state that running full agent evaluations for every code change can be prohibitively slow and expensive, and that mocking LLM calls addresses non-determinism and cost.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "E009"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C024",
+   "statement": "The evaluation framework integrates 15 benchmarks: seven in software engineering, two in web browsing and six in miscellaneous assistance.",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E030"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C025",
+   "statement": "Evaluation set-up: results are reported without SWE-bench hint text on the 300-instance SWE-bench Lite subset, and benchmark-specific subsets and settings are used elsewhere (HumanEvalFix Python split of 164 instances, 0-shot, multi-turn; MiniWoB++ on the full 125 environments; WebArena with 812 tasks; GAIA Level-1 validation with 53 instances; GPQA diamond with 198; AgentBench OS with 144; MINT math 225 and code 136; ProofWriter 600; Entity Deduction Arena 200).",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E032",
+    "E034",
+    "E035",
+    "E036",
+    "E037"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C026",
+   "statement": "The authors state that they compare OpenHands with open-source reproducible baselines that do not use manual prompt engineering specific to the benchmark, and that SWE-bench Lite is the default subset for cost saving.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "E010"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C027",
+   "statement": "The authors state that they expect OpenHands to help mitigate agent risks by enabling systematic evaluation that can find and address risks before wide deployment, by facilitating human-agent interaction rather than unsupervised autonomy, and by giving researchers access to a suite of agents for safety research.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "E011"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C028",
+   "statement": "The authors give reasons for three adaptations: BioCoder context prompts were removed to test context retrieval, ProofWriter uses the logical forms supplied by Logic-LM to limit the effect of semantic-parsing errors, and the WebArena prompt asks for a concise answer string so that extra text does not fail exact-match checks; the browsing agent may predict several actions per turn to save turns on routine same-page workflows.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "E012",
+    "E013"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C029",
+   "statement": "At the time of writing the authors report 32K GitHub stars, more than 2.1K contributions from over 188 contributors, and an MIT license.",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E031"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C030",
+   "statement": "On SWE-bench Lite (300 instances, no hint text), OpenHands CodeActAgent v1.8 resolved 26.0% of instances with claude-3-5-sonnet@20240620 (average cost 1.10 USD), 22.0% with gpt-4o-2024-05-13 (1.72 USD) and 7.0% with gpt-4o-mini-2024-07-18 in Table 4 (Table 3 lists 6.3% for the last); the listed reference systems are SWE-Agent 18.0%, AutoCodeRover 19.0%, Aider 26.3%, and, in Table 3 alone, Moatless Tools 26.7% and Agentless 27.3%.",
+   "suggested_claim_type": "measured",
+   "evidence": [
+    "E038",
+    "E039",
+    "E041"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C031",
+   "statement": "The authors describe the 26% of CodeActAgent v1.8 with claude-3.5-sonnet as a competitive resolve rate compared with other open-source software-engineering specialists.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "C030",
+    "E042"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C032",
+   "statement": "On HumanEvalFix (Python split, 164 instances), OpenHands CodeActAgent v1.5 in a 0-shot setting fixed 79.3% of bugs with gpt-4o-2024-05-13 and 20.1% with gpt-3.5-turbo-16k-0613; non-agentic reference models scored 16.6% (BLOOMZ-176B), 30.4% (OctoCoder-15B), 47.5% (DeepSeekCoder-33B-Instruct) and 48.6% (StarCoder2-15B), and SWE-agent with a 1-shot demonstration scored 87.7% with gpt-4-turbo.",
+   "suggested_claim_type": "measured",
+   "evidence": [
+    "E043",
+    "E044"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C033",
+   "statement": "On other software benchmarks, read from a table whose layout was damaged in extraction, OpenHands CodeActAgent v1.5 with gpt-4o-2024-05-13 scored 47.3% on BIRD (300 instances, with BM25), 76.5% on ML-Bench (68), 27.5% on BioCoder Python (157), 36.4% on Gorilla APIBench (1775) and 47.2% on ToolQA easy (800); the finetuned Gorilla row is 75.0%.",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E045",
+    "E046"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C034",
+   "statement": "On WebArena (812 tasks), OpenHands BrowsingAgent v1.0 succeeded on 8.5% with gpt-4o-mini, 14.8% with gpt-4o and 15.5% with claude-3-5-sonnet, and CodeActAgent v1.8 delegating to it on 8.3%, 14.5% and 15.3%; listed references are Lemur 5.3%, a trained 72B model 9.4%, AutoWebGLM 18.2%, Auto Eval & Refine 20.2%, and the WebArena agent 6.2% (gpt-3.5-turbo) and 14.4% (gpt-4-turbo).",
+   "suggested_claim_type": "measured",
+   "evidence": [
+    "E051",
+    "E052"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C035",
+   "statement": "On MiniWoB++ (125 environments, full set), OpenHands BrowsingAgent v1.0 succeeded on 27.2% with gpt-3.5-turbo-0125 and 40.8% with gpt-4o, and CodeActAgent v1.8 delegating to it on 39.8% with gpt-4o; the listed trained specialists scored 34.6% (Workflow Guided Exploration) and 91.1% (CC-NET).",
+   "suggested_claim_type": "measured",
+   "evidence": [
+    "E053"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C036",
+   "statement": "The authors describe the BrowsingAgent as achieving competitive performance among agents that use LLMs with domain-general prompting techniques on WebArena.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "C034",
+    "E054"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C037",
+   "statement": "On the GAIA Level-1 validation set (53 instances), OpenHands GPTSwarm v1.0 scored 30.2% with gpt-4-0125-preview and 32.1% with gpt-4o-2024-05-13, against 13.2% for AutoGPT with gpt-4-turbo.",
+   "suggested_claim_type": "measured",
+   "evidence": [
+    "E056"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C038",
+   "statement": "On GPQA diamond (198 instances), OpenHands CodeActAgent v1.8 with claude-3-5-sonnet-20240620 scored 52.0% (average cost 0.065 USD); listed references are few-shot chain-of-thought 29.6% (gpt-3.5-turbo-16k) and 38.8% (gpt-4), non-expert humans 21.9% and expert humans 81.3% (Table 7 lists 81.2%); with CodeActAgent v1.5 the diamond, main and extended results are 27.9, 23.4 and 26.1 (gpt-3.5-turbo), 51.8, 47.4 and 42.4 (gpt-4-turbo), and 53.1, 49.3 and 52.8 (gpt-4o).",
+   "suggested_claim_type": "measured",
+   "evidence": [
+    "E057",
+    "E058",
+    "E060"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C039",
+   "statement": "On AgentBench OS (144 instances), OpenHands CodeActAgent v1.5 scored 57.6% with gpt-4o and 11.8% with gpt-3.5-turbo-0125, against 42.4% (gpt-4) and 32.6% (gpt-3.5-turbo) for the AgentBench baseline agent; on MINT math (225) it scored 77.3% (gpt-4o) and 33.8% (gpt-3.5-turbo-16k-0613) against 65.8% for gpt-4-0613; on MINT code (136) 50.0% and 5.2% against 59.6%; on ProofWriter (600) 78.8% with gpt-4o against 68.1% for chain-of-thought gpt4 and 79.6% for Logic-LM; on Entity Deduction Arena (200) 38.0% (gpt-4o) and 24.0% (gpt-3.5-turbo-16k-0613) against 40.0% (gpt-4-0314) and 27.0% (gpt-3.5-turbo-0613).",
+   "suggested_claim_type": "measured",
+   "evidence": [
+    "E061",
+    "E062",
+    "E063",
+    "E064"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C040",
+   "statement": "Within OpenHands, results depend strongly on the underlying model: rows with gpt-3.5-class or gpt-4o-mini models are far below the gpt-4o rows on the same benchmark (for example HumanEvalFix 20.1 against 79.3, AgentBench OS 11.8 against 57.6, MINT code 5.2 against 50.0, SWE-bench Lite 7.0 against 22.0), and OpenHands with gpt-3.5-class models is below the listed gpt-3.5-turbo baseline on AgentBench OS.",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E047",
+    "E061",
+    "E062",
+    "E038",
+    "E043",
+    "E065"
+   ],
+   "origin": "inferred",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C041",
+   "statement": "OpenHands rows are below the best listed reference on several benchmarks: HumanEvalFix (79.3 against 87.7 for SWE-agent 1-shot), SWE-bench Lite (26.0 against 26.3, 26.7 and 27.3), WebArena (15.5 against 18.2 and 20.2), MiniWoB++ (40.8 against 91.1), MINT code (50.0 against 59.6), Entity Deduction Arena (38.0 against 40.0) and ProofWriter (78.8 against 79.6).",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E048",
+    "E049",
+    "E055",
+    "E065"
+   ],
+   "origin": "inferred",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C042",
+   "statement": "The authors describe the same CodeAct agent, without modification of its system prompt, as competitive across three task categories (software development, web interaction and miscellaneous tasks), in contrast to baseline agents typically designed and optimized for one category, while stating that OpenHands agents may not achieve top performance in every category.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "C030",
+    "C032",
+    "C034",
+    "C037",
+    "C038",
+    "C039",
+    "C041",
+    "E066"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C043",
+   "statement": "The authors state that OpenHands' runtime and tools simplify the integration of GAIA significantly, a benchmark they describe as traditionally challenging to set up; no measurement of integration effort is reported.",
+   "suggested_claim_type": "interpretation",
+   "evidence": [
+    "E067"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C044",
+   "statement": "The authors estimate the complete SWE-bench set (2294 instances) at 6.9k USD using a conservative 3 USD per instance, and report that a SWE-bench Lite run with gpt-4o costs around 600 USD.",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E033"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C045",
+   "statement": "The benchmarks repository README lists six active benchmarks (SWE-Bench, SWE-Bench Pro, GAIA, Commit0, OpenAgentSafety, ProgramBench), says a migration of the benchmarks from OpenHands V0 to the OpenHands Software Agent SDK is in progress, and describes a local Docker workspace (default) and a remote runtime API that provisions one isolated container per instance, for example with 32+ concurrent workers.",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E079",
+    "E080"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C046",
+   "statement": "The Agent Canvas README describes a self-hosted control center that runs OpenHands, Claude Code, Codex, Gemini or any Agent-Client-Protocol-compatible agent on local, remote or cloud backends, powered by the OpenHands Agent Server (a REST API for running multiple agents on one machine), with automations that run on a schedule or on events.",
+   "suggested_claim_type": "observed",
+   "evidence": [
+    "E081",
+    "E082"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  },
+  {
+   "id": "C050",
+   "statement": "The authors list future directions: principled multi-modality, stronger agents through training and inference-time techniques, better editing of long files, integration of Auto Eval & Refine as an optional browsing component, graph-based automatic workflow generation, and a goal of 100% on HumanEvalFix, which they consider feasible because its bugs were carefully validated.",
+   "suggested_claim_type": "future",
+   "evidence": [
+    "E077",
+    "E078"
+   ],
+   "origin": "author_stated",
+   "quote_or_basis": "see evidence notes"
+  }
+ ]
+}

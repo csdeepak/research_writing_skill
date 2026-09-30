@@ -1,0 +1,12 @@
+{
+ "cpk-a6d15a": {
+  "condition": "visual_only",
+  "time_limit_min": 3,
+  "sha256": "745ac08a7905f8ddc045c1fa8420f40a107a5bef5fd393f6432dd1973d4341fe"
+ },
+ "cpk-37a9d0": {
+  "condition": "full",
+  "time_limit_min": 20,
+  "sha256": "e7f5ed7072e7f5af2872369a6d04f21d5e32b50204f495b240e4239b57415509"
+ }
+}

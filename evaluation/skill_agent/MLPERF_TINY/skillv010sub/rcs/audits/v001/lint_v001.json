@@ -1,0 +1,349 @@
+{
+  "errors": 0,
+  "warnings": 3,
+  "findings": [
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "Comparing hardware and software solutions for this setting fairly has been difficult: a general microcontroller benchmark does not run machine-learning workload",
+      "message": "45-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "This paper presents MLPerf Tiny, an open benchmark suite that pairs four representative tasks -- keyword spotting, visual wake words, image classification, and ",
+      "message": "42-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "A closed submission division fixes the dataset, model, and accuracy target so that hardware and software stacks can be compared directly, while an open division",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "In the suite's first submission round, five submissions spanning both divisions and five distinct hardware and software categories -- from a general-purpose mic",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "C1-orphan-claim",
+      "level": "WARN",
+      "line": 9,
+      "excerpt": "Machine-learning inference is increasingly moving onto microcontroller-class (MCU) hardware, in a setting the community calls TinyML.",
+      "message": "claim-like sentence without {C###} tag"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 9,
+      "excerpt": "Performing inference directly on such a device, near the sensor that produced the data, avoids the energy cost of sending that data elsewhere for processing, a ",
+      "message": "44-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "C1-orphan-claim",
+      "level": "WARN",
+      "line": 9,
+      "excerpt": "Performing inference directly on such a device, near the sensor that produced the data, avoids the energy cost of sending that data elsewhere for processing, a ",
+      "message": "claim-like sentence without {C###} tag"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 11,
+      "excerpt": "When every layer can move, isolating what any single change contributes -- a better model, a better compiler, a better chip -- is difficult without a common, fa",
+      "message": "53-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 13,
+      "excerpt": "Benchmarks built for machine-learning inference do not supply it either: MLMark runs real inference workloads on edge-class devices, but its supported models ne",
+      "message": "46-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 15,
+      "excerpt": "This paper asks whether that combination is achievable at all: can one benchmark suite fairly measure accuracy, latency, and energy for representative ML worklo",
+      "message": "46-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 17,
+      "excerpt": "Submissions are split into two divisions that trade comparability against flexibility: a closed division that fixes the dataset, model, and accuracy target so t",
+      "message": "54-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 25,
+      "excerpt": "TinyML devices are microcontrollers, digital signal processors, and dedicated neural-network accelerators that typically run between about 10 MHz and 250 MHz an",
+      "message": "46-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 27,
+      "excerpt": "Power is the defining constraint, but it is also hard to measure fairly: devices vary enormously in the power they draw, and what counts as part of the measurem",
+      "message": "42-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B-absolute",
+      "level": "INFO",
+      "line": 27,
+      "excerpt": "Power is the defining constraint, but it is also hard to measure fairly: devices vary enormously in the power they draw, and what counts as part of the measurem",
+      "message": "absolute term: justified only by complete enumeration or proof"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 27,
+      "excerpt": "Hardware is heterogeneous: alongside general-purpose microcontrollers sit non-standard accelerator architectures that may lack a standard system clock or debug ",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 27,
+      "excerpt": "Software is heterogeneous too, since achieving the highest efficiency on a given chip often means a custom tool chain; a benchmark that restricts the inference ",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 29,
+      "excerpt": "Quantization -- reducing a model's numeric precision, typically to 8-bit integers, to save memory and compute -- can be applied in two ways: post-training quant",
+      "message": "60-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "C1-orphan-claim",
+      "level": "WARN",
+      "line": 29,
+      "excerpt": "Quantization -- reducing a model's numeric precision, typically to 8-bit integers, to save memory and compute -- can be applied in two ways: post-training quant",
+      "message": "claim-like sentence without {C###} tag"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 29,
+      "excerpt": "Separately, one of the four benchmarks scores its output with the area under the receiver-operating-characteristic curve (AUC), a threshold-free accuracy metric",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 33,
+      "excerpt": "The Embedded Microprocessor Benchmark Consortium (EEMBC)'s CoreMark benchmark has become the standard way to compare general MCU-class compute performance, in l",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B-absolute",
+      "level": "INFO",
+      "line": 33,
+      "excerpt": "It was never built to represent machine-learning inference, however: CoreMark does not profile a full program and does not accurately represent machine-learning",
+      "message": "absolute term: justified only by complete enumeration or proof"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 35,
+      "excerpt": "Its supported models, however, need gigabytes of memory and produce runtimes far beyond what MCU-class hardware can spare, and, unlike CoreMark's companion powe",
+      "message": "38-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 35,
+      "excerpt": "MLPerf's own community-governed inference benchmark is broader still and plans to add power measurement, but its current suite precludes MCUs and other resource",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 37,
+      "excerpt": "Closing that gap, rather than extending any one of the three individually, is what the rest of this paper describes; Section 4's reference models, all under 350",
+      "message": "44-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 41,
+      "excerpt": "MLPerf Tiny's unit of comparison is the reference implementation: for each benchmark, an open-source package containing the training scripts used to produce the",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 41,
+      "excerpt": "Every reference implementation runs its model in the TFLite format through TensorFlow Lite for Microcontrollers (TFLM), the runtime built for this hardware clas",
+      "message": "42-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 43,
+      "excerpt": "Visual wake words detects whether a person is present in an image, using a dataset built from MSCOCO 2014, a large general-purpose photo collection (Lin et al.,",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 43,
+      "excerpt": "Image classification assigns one of ten object classes, using CIFAR-10 (Krizhevsky et al., 2009; Torralba et al., 2008) -- a dataset choice common enough in pri",
+      "message": "50-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 54,
+      "excerpt": "The keyword-spotting model reaches 91.6-91.7% accuracy but the target is 90%; the visual-wake-words model reaches about 86% against an 80% target; the image-cla",
+      "message": "44-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 54,
+      "excerpt": "The margin is deliberate: it is meant to absorb the small accuracy shifts that quantization and other cross-platform optimizations can introduce, so that a subm",
+      "message": "43-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B-absolute",
+      "level": "INFO",
+      "line": 56,
+      "excerpt": "Because latency and energy always use the same repeated-run protocol, and because only core power counts toward the energy score, two submissions on different c",
+      "message": "absolute term: justified only by complete enumeration or proof"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 58,
+      "excerpt": "The closed division fixes the dataset, the model, and the quality target to those in Table 1, and permits only post-training quantization, with no retraining or",
+      "message": "43-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 58,
+      "excerpt": "The open division allows a submitter to change the dataset, training procedure, or model, still scored against the same test set but without a mandatory accurac",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 58,
+      "excerpt": "The two divisions therefore answer different questions: the closed division asks how fast, and how efficiently, a fixed piece of software runs on different hard",
+      "message": "51-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 74,
+      "excerpt": "The five submissions to the v0.5 round (June 2021). \\*Row 5's individual dataset/training/model marks did not survive text extraction from the source table inta",
+      "message": "54-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 80,
+      "excerpt": "Read together, this range -- both divisions used, five different hardware categories, and a software-only entrant alongside four hardware-centric ones -- is con",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 80,
+      "excerpt": "It does not establish that the pattern will hold in later rounds, that it would have failed under a non-modular alternative design, or that the closed division'",
+      "message": "48-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 84,
+      "excerpt": "The first submission round is consistent with a single suite letting markedly different submitters -- from a general-purpose microcontroller vendor to a team re",
+      "message": "41-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 86,
+      "excerpt": "This is consistent with closing the gap described in Related Work by combining what no single prior effort combined: real ML workloads, MCU-class hardware, and ",
+      "message": "47-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 86,
+      "excerpt": "Where CoreMark measured the wrong workload, and MLMark and MLPerf Inference measured a closer workload on the wrong scale of hardware, MLPerf Tiny's reference m",
+      "message": "43-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 88,
+      "excerpt": "There is early evidence that the suite is being put to use beyond this paper: MLPerf Tiny's benchmarks have already been used as a standard set of tasks in Tiny",
+      "message": "45-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 90,
+      "excerpt": "Keeping data on the device that captures it, rather than transmitting it elsewhere, can widen access to machine learning and protect privacy; the same always-on",
+      "message": "48-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B-absolute",
+      "level": "INFO",
+      "line": 90,
+      "excerpt": "Keeping data on the device that captures it, rather than transmitting it elsewhere, can widen access to machine learning and protect privacy; the same always-on",
+      "message": "absolute term: justified only by complete enumeration or proof"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 94,
+      "excerpt": "First, the evidence covers one round with five submissions and no parallel run of a non-modular alternative suite, so whether the diversity reflects the design ",
+      "message": "45-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 94,
+      "excerpt": "Second, the reference accuracy and AUC figures behind each quality target's margin are each a single measurement; the paper does not report how much they would ",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 94,
+      "excerpt": "Relatedly, the specific latency and energy values the reference implementations achieved on their reference board are presented in the source material only as a",
+      "message": "55-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 96,
+      "excerpt": "The suite instead excludes feature extraction from the measured window in the closed division, but doing so risks a degenerate case in which a submitter could d",
+      "message": "41-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 104,
+      "excerpt": "MLPerf Tiny gives the TinyML community something none of CoreMark, MLMark, or MLPerf Inference offered on its own: an open, modular benchmark suite that measure",
+      "message": "55-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 104,
+      "excerpt": "What the round does not yet show is whether this pattern holds beyond a single round, on a wider range of architectures, or under a measurement protocol that fu",
+      "message": "39-word sentence: split or keep with reason"
+    }
+  ]
+}

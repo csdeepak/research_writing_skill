@@ -1,0 +1,51 @@
+{
+  "patterns": [
+    {
+      "id": "ANT-001",
+      "source": "project/paper.txt Table 3 vs. Table 4 (SWE-Bench Lite, CodeActAgent v1.8, gpt-4o-mini-2024-07-18 cell)",
+      "section": "Results",
+      "rhetorical_purpose": "n/a -- an extraction/production defect, not an authorial rhetorical choice",
+      "move_sequence": [
+        "a redundant summary table (Table 3) restates numbers already given in a dedicated table (Table 4)",
+        "one restated value (6.3) silently disagrees with the dedicated table's value for the identical cell (7.0)"
+      ],
+      "reader_question_answered": "n/a",
+      "assumed_knowledge": "n/a",
+      "transition_behavior": "n/a",
+      "evidence_placement": "the disagreement sits in two different tables rather than being visibly flagged anywhere",
+      "result_interpretation_pattern": null,
+      "figure_table_integration": null,
+      "limitation_framing": null,
+      "contribution_framing": null,
+      "signature": "a 'curated' redundant summary table that duplicates, and in one cell contradicts, a dedicated results table",
+      "reader_effect": "a careful reader who checks both tables loses confidence in exactly which number is authoritative",
+      "repair_principle": "treat the dedicated, internally cross-validated table as authoritative and record the redundant table's conflicting cell as superseded, rather than silently picking one value or averaging them (applied in this run: E004/E001, state.json AR003)",
+      "paraphrase_only": true,
+      "quote_permitted": false
+    },
+    {
+      "id": "ANT-002",
+      "source": "project/paper.txt Table 1 (framework comparison) and Table 7 (extended GPQA results)",
+      "section": "Results / Related Work",
+      "rhetorical_purpose": "n/a -- an extraction/production defect",
+      "move_sequence": [
+        "a multi-column comparison table's header/row labels survive text extraction",
+        "the table's actual cell values (check-marks, or a large numeric block) do not survive, or cannot be reliably realigned to their rows/columns"
+      ],
+      "reader_question_answered": "n/a",
+      "assumed_knowledge": "n/a",
+      "transition_behavior": "n/a",
+      "evidence_placement": "the table appears intact until someone tries to read a specific cell",
+      "result_interpretation_pattern": null,
+      "figure_table_integration": null,
+      "limitation_framing": null,
+      "contribution_framing": null,
+      "signature": "a wide comparison table whose cell values are structurally absent or unrecoverable from extracted text",
+      "reader_effect": "a reader (or a downstream writer relying on the extraction) could be tempted to fill in plausible-looking values for missing cells",
+      "repair_principle": "mark the table's evidence item status=unverifiable/incomplete and do not use it to support any specific comparative claim (applied in this run: E043, E044; hard rule against creative gap-filling)",
+      "paraphrase_only": true,
+      "quote_permitted": false
+    }
+  ],
+  "note": "Scoped down per state.json accepted_risk AR005 (no web access; no external exemplar corpus available). These are defects observed directly in project/paper.txt's own extraction, catalogued here because they are exactly the kind of anti-pattern CORPUS_AGENT must record rather than silently repair by invention."
+}

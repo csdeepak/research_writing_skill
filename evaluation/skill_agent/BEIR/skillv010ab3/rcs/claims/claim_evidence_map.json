@@ -1,0 +1,821 @@
+{
+ "claims": [
+  {
+   "id": "C001",
+   "statement": "BEIR comprises 18 English zero-shot evaluation datasets from 9 retrieval tasks, with corpus sizes from 3.6k to 15M documents, average query lengths of 3 to 192 words and average document lengths of 11 to 635 words.",
+   "claim_type": "measured",
+   "evidence": [
+    "E001",
+    "E003",
+    "E004"
+   ],
+   "scope": "the benchmark as released; MS MARCO reported but outside the 18 zero-shot datasets",
+   "confidence": "high",
+   "confidence_reasons": [
+    "descriptive counts from the authors' Table 1 and text"
+   ],
+   "limitations": [
+    "L001",
+    "L002"
+   ],
+   "permitted_verbs": [
+    "comprises",
+    "includes",
+    "ranges from"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C002",
+   "statement": "The authors describe two earlier retrieval benchmarks as narrow: MultiReQA covers one task (question answering; five of eight datasets from Wikipedia; six of eight with fewer than 100k candidate sentences) and KILT retrieves only from Wikipedia and treats retrieval as a secondary task.",
+   "claim_type": "literature",
+   "evidence": [
+    "E034"
+   ],
+   "sources": [
+    "SRC-012",
+    "SRC-013",
+    "SRC-020"
+   ],
+   "scope": "as characterized by the BEIR authors; the cited works themselves were not read",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "descriptions only, sources abstract-level"
+   ],
+   "limitations": [
+    "L011"
+   ],
+   "permitted_verbs": [
+    "describe",
+    "report",
+    "characterize"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C003",
+   "statement": "All datasets are scored with nDCG@10, computed with the Python interface of the official TREC evaluation tool; the authors chose it because Precision and Recall are rank-unaware and MRR and MAP cannot handle graded relevance.",
+   "claim_type": "measured",
+   "evidence": [
+    "E005"
+   ],
+   "sources": [
+    "SRC-015",
+    "SRC-022"
+   ],
+   "scope": "all reported scores",
+   "confidence": "high",
+   "confidence_reasons": [
+    "stated design choice"
+   ],
+   "limitations": [],
+   "permitted_verbs": [
+    "used",
+    "computed",
+    "chose"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C004",
+   "statement": "Ten systems from five families (lexical: BM25; sparse: DeepCT, SPARTA, docT5query; dense: DPR, ANCE, TAS-B, GenQ; late-interaction: ColBERT; re-ranking: BM25+CE) were evaluated from public pre-trained checkpoints, with neural models reading only the first 512 word pieces of each document.",
+   "claim_type": "measured",
+   "evidence": [
+    "E006",
+    "E007",
+    "E008",
+    "E009",
+    "E010",
+    "E042"
+   ],
+   "sources": [
+    "SRC-002",
+    "SRC-003",
+    "SRC-004",
+    "SRC-005",
+    "SRC-006",
+    "SRC-007",
+    "SRC-008",
+    "SRC-009",
+    "SRC-010",
+    "SRC-014"
+   ],
+   "scope": "the ten configurations described",
+   "confidence": "high",
+   "confidence_reasons": [
+    "setup description"
+   ],
+   "limitations": [
+    "L002",
+    "L005",
+    "L008"
+   ],
+   "permitted_verbs": [
+    "evaluated",
+    "used",
+    "trained on"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C005",
+   "statement": "On in-domain MS MARCO, BM25 (nDCG@10 0.228) scored 7 to 18 points below the neural approaches trained on it, yet on the zero-shot datasets the summary row places DeepCT at - 27.9%, SPARTA - 20.3%, DPR - 47.7%, ANCE - 7.4%, TAS-B - 2.8% and GenQ - 3.6% relative to BM25.",
+   "claim_type": "measured",
+   "evidence": [
+    "E011",
+    "E012",
+    "E013"
+   ],
+   "scope": "nDCG@10; 18 zero-shot datasets; single evaluations",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "hard table values",
+    "single evaluation, no variance",
+    "average-row formula not defined"
+   ],
+   "limitations": [
+    "L005",
+    "L009"
+   ],
+   "negative_results": [
+    "E015"
+   ],
+   "permitted_verbs": [
+    "scored",
+    "was",
+    "underperformed",
+    "differed by"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C006",
+   "statement": "In this comparison, in-domain performance did not predict zero-shot performance: many approaches that outperform BM25 in-domain performed poorly on the BEIR datasets, and models fine-tuned with identical training data generalized differently.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "C005",
+    "E041"
+   ],
+   "scope": "the ten systems, MS MARCO training, the 18 datasets",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "consistent across DeepCT, SPARTA, ANCE, TAS-B",
+    "single evaluation",
+    "ten systems only"
+   ],
+   "limitations": [
+    "L005",
+    "L008",
+    "L009"
+   ],
+   "permitted_verbs": [
+    "suggests",
+    "is consistent with",
+    "did not predict in this comparison"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C007",
+   "statement": "Averaged over the zero-shot datasets, BM25+CE was + 11% relative to BM25, ColBERT + 2.5% and docT5query + 1.6%; BM25+CE outperformed BM25 on 16 of 18 datasets, docT5query on 11 of 18 and ColBERT on 9 of 18.",
+   "claim_type": "measured",
+   "evidence": [
+    "E011",
+    "E012",
+    "E014",
+    "E016"
+   ],
+   "scope": "nDCG@10; 18 zero-shot datasets",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "hard table values",
+    "single evaluation, no variance"
+   ],
+   "limitations": [
+    "L005",
+    "L009"
+   ],
+   "negative_results": [
+    "E017"
+   ],
+   "permitted_verbs": [
+    "outperformed on N of 18",
+    "was + 11% relative to",
+    "scored"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C008",
+   "statement": "BM25+CE did not outperform BM25 on ArguAna (0.311 vs 0.315) or Touche-2020 (0.271 vs 0.367), which the authors describe as tasks extremely different from the MS MARCO training data; DeepCT and SPARTA underperformed BM25 on nearly all zero-shot datasets.",
+   "claim_type": "measured",
+   "evidence": [
+    "E011",
+    "E014",
+    "E015",
+    "E017"
+   ],
+   "scope": "nDCG@10",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "hard table values",
+    "single evaluation"
+   ],
+   "limitations": [
+    "L005"
+   ],
+   "permitted_verbs": [
+    "did not outperform",
+    "underperformed"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C009",
+   "statement": "Among dense models TAS-B outperformed ANCE on 14 of 18 datasets and DPR on 17 of 18; DPR, the only model not trained on MS MARCO, generalized worst; dense models underperformed BM25 on datasets with large domain shift (BioASQ) or task shift (Touche-2020).",
+   "claim_type": "measured",
+   "evidence": [
+    "E011",
+    "E018"
+   ],
+   "scope": "nDCG@10; the three public dense checkpoints",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "hard values",
+    "single evaluation",
+    "checkpoints differ in training data and backbone"
+   ],
+   "limitations": [
+    "L005",
+    "L008"
+   ],
+   "permitted_verbs": [
+    "outperformed on N of 18",
+    "underperformed"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C010",
+   "statement": "GenQ, which fine-tunes TAS-B on synthetic queries for each target corpus, outperformed TAS-B on specialized domains (scientific publications, finance, StackExchange; e.g. TREC-COVID 0.619 vs 0.481) and was weaker on Wikipedia-based datasets (e.g. NQ 0.358 vs 0.463); the pattern is not uniform (SCIDOCS 0.143 vs 0.149).",
+   "claim_type": "measured",
+   "evidence": [
+    "E011",
+    "E022",
+    "E023"
+   ],
+   "scope": "nDCG@10; GenQ corpora capped at 100K documents",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "hard values",
+    "single evaluation",
+    "corpus cap"
+   ],
+   "limitations": [
+    "L005",
+    "L008"
+   ],
+   "negative_results": [
+    "E023"
+   ],
+   "permitted_verbs": [
+    "outperformed",
+    "was weaker",
+    "scored"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C011",
+   "statement": "TAS-B scored 17.3 points below ANCE on TREC-COVID and 7.8 points below on Touche-2020; the median length of their top-10 retrieved documents was 10 words versus 160 (TREC-COVID) and 14 versus 89 (Touche-2020).",
+   "claim_type": "measured",
+   "evidence": [
+    "E011",
+    "E021"
+   ],
+   "scope": "two datasets",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "hard values",
+    "single evaluation"
+   ],
+   "limitations": [
+    "L005"
+   ],
+   "negative_results": [
+    "E021"
+   ],
+   "permitted_verbs": [
+    "scored below",
+    "retrieved documents with a median length of"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C012",
+   "statement": "In a controlled comparison of two distilbert-base-uncased models trained identically on MS MARCO except for the similarity function, nDCG@10 (cosine vs dot-product) was 0.482 vs 0.635 on TREC-COVID, 0.261 vs 0.243 on Signal-1M and 0.670 vs 0.685 on FEVER, and the cosine model retrieved shorter documents on all datasets. Differences computed from the table: +15.3, -1.8 and +1.5 points for dot-product versus cosine.",
+   "claim_type": "measured",
+   "evidence": [
+    "E031"
+   ],
+   "scope": "one model pair; three datasets tabulated",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "controlled single-factor change",
+    "single run per model",
+    "only three datasets extracted"
+   ],
+   "limitations": [
+    "L005",
+    "L012"
+   ],
+   "permitted_verbs": [
+    "scored",
+    "retrieved shorter documents"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C013",
+   "statement": "The length preference of TAS-B versus ANCE may be related to the training loss or the similarity function; the controlled experiment shows a similarity function alone can change retrieved length, but TAS-B and ANCE also differ in backbone, loss and negative mining, so the source of their difference is not isolated.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "C011",
+    "C012"
+   ],
+   "scope": "TAS-B vs ANCE on TREC-COVID and Touche-2020",
+   "confidence": "low",
+   "confidence_reasons": [
+    "no ablation on the released systems",
+    "several confounded differences"
+   ],
+   "limitations": [
+    "L010"
+   ],
+   "permitted_verbs": [
+    "may be related to",
+    "is consistent with"
+   ],
+   "author_confirmation": "pending"
+  },
+  {
+   "id": "C014",
+   "statement": "The good zero-shot performance of BM25+CE and ColBERT suggests that cross-attention and cross-attention-like operations matter for out-of-distribution generalization.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "C007",
+    "E020"
+   ],
+   "scope": "the ten systems",
+   "confidence": "low",
+   "confidence_reasons": [
+    "no ablation of the operation",
+    "architectures differ in many ways"
+   ],
+   "limitations": [
+    "L010"
+   ],
+   "permitted_verbs": [
+    "suggests",
+    "appears"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C015",
+   "statement": "The authors speculate that TAS-B's stronger generalization among dense models comes from its training setup (in-batch negatives with Margin-MSE and strong ensemble teachers in knowledge distillation); this is untested.",
+   "claim_type": "speculation",
+   "evidence": [
+    "E019",
+    "C009"
+   ],
+   "scope": "TAS-B",
+   "confidence": "low",
+   "confidence_reasons": [
+    "explicitly speculative in the source"
+   ],
+   "limitations": [
+    "L010"
+   ],
+   "permitted_verbs": [
+    "speculate",
+    "may"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C016",
+   "statement": "On 1M sampled DBPedia documents, re-ranking (BM25+CE) and late interaction (ColBERT) were the slowest (> 350 ms), dense retrievers were 20-30x faster (< 20ms), and on CPU sparse models took 20-25ms; index sizes were 0.4GB for BM25, docT5query, DeepCT and BM25+CE, 3GB for dense models, 12GB for SPARTA and 20GB for ColBERT, and for BioASQ (~15M documents) ColBERT needs ~900GB versus 18GB for BM25.",
+   "claim_type": "measured",
+   "evidence": [
+    "E024",
+    "E025"
+   ],
+   "scope": "1M-document DBPedia subsample; stated CPU and GPU; exact search for dense, ANN for ColBERT",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "hard values",
+    "single machine",
+    "Table 3 partly damaged"
+   ],
+   "limitations": [
+    "L007"
+   ],
+   "permitted_verbs": [
+    "was",
+    "took",
+    "required"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C017",
+   "statement": "On TREC-COVID the share of top-10 hits never judged by annotators (Hole@10) was 6.4% for BM25, 2.8% for docT5query, 1.6% for BM25+CE, 14.4% for ANCE, 31.8% for TAS-B and 30.6% for DPR.",
+   "claim_type": "measured",
+   "evidence": [
+    "E026"
+   ],
+   "scope": "TREC-COVID, 50 queries",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "hard values",
+    "one dataset"
+   ],
+   "limitations": [
+    "L006"
+   ],
+   "permitted_verbs": [
+    "was",
+    "were"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C018",
+   "statement": "After the authors annotated the 980 unjudged query-document pairs, lexical systems changed little (docT5query 0.713 to 0.714; BM25 0.656 to 0.668), whereas ANCE rose from 0.654 to 0.735 (6.7 points above BM25), ColBERT from 0.677 to 0.735 (5.8 points), DPR from 0.332 to 0.445 and TAS-B from 0.481 to 0.555. Differences computed from these values: TAS-B +7.4 points, DPR +11.3 points, BM25+CE +0.3 points.",
+   "claim_type": "measured",
+   "evidence": [
+    "E027",
+    "E028"
+   ],
+   "scope": "TREC-COVID nDCG@10; annotators blind to the system",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "hard values",
+    "authors' own annotation",
+    "one dataset",
+    "no inter-annotator agreement reported"
+   ],
+   "limitations": [
+    "L006"
+   ],
+   "permitted_verbs": [
+    "rose from",
+    "changed from"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C019",
+   "statement": "These results indicate that the TREC-COVID annotation pool, although built from many participating systems, favours lexical approaches; the authors argue the same lexical-bias mechanism applies to datasets such as BioASQ and Signal-1M, which was not measured there.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "C017",
+    "C018",
+    "E029",
+    "E030"
+   ],
+   "sources": [
+    "SRC-011",
+    "SRC-017",
+    "SRC-018",
+    "SRC-019"
+   ],
+   "scope": "measured only on TREC-COVID",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "direct manipulation of missing labels on one dataset",
+    "extension to other datasets rests on descriptions of how they were built"
+   ],
+   "limitations": [
+    "L006"
+   ],
+   "permitted_verbs": [
+    "suggests",
+    "is consistent with",
+    "indicates"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C020",
+   "statement": "The authors observe low weighted-Jaccard word overlap between datasets from different domains and read it as evidence that BEIR requires generalization to diverse domains.",
+   "claim_type": "observed",
+   "evidence": [
+    "E033"
+   ],
+   "sources": [
+    "SRC-016"
+   ],
+   "scope": "unigram word overlap only",
+   "confidence": "low",
+   "confidence_reasons": [
+    "soft evidence; figure values not extracted",
+    "word overlap is a proxy for domain difference"
+   ],
+   "limitations": [
+    "L011"
+   ],
+   "permitted_verbs": [
+    "observe",
+    "suggests"
+   ],
+   "author_confirmation": "pending"
+  },
+  {
+   "id": "C021",
+   "statement": "BEIR is released as a pip-installable Python package with wrappers for several retrieval toolkits, a standard data format (corpus, queries, qrels) and an actively maintained leaderboard; the repository README lists preprocessed datasets and marks four (BioASQ, Signal-1M, TREC-NEWS, Robust04) as not directly downloadable, with reproduction instructions.",
+   "claim_type": "observed",
+   "evidence": [
+    "E037",
+    "E038"
+   ],
+   "scope": "as documented in the paper and README",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "documentation-level evidence"
+   ],
+   "limitations": [],
+   "permitted_verbs": [
+    "provides",
+    "lists",
+    "is released as"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C022",
+   "statement": "A later publication listed in the repository README (Kamalloo et al., 2024) provides reproducible reference implementations for learned dense and sparse models and meta-analyses of effect sizes across BEIR datasets, motivated by the difficulty of interpreting a single average over heterogeneous datasets.",
+   "claim_type": "literature",
+   "evidence": [
+    "E039"
+   ],
+   "sources": [
+    "SRC-021"
+   ],
+   "scope": "as stated in its abstract reproduced in the README",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "abstract only"
+   ],
+   "limitations": [
+    "L011"
+   ],
+   "permitted_verbs": [
+    "reports",
+    "provides",
+    "presents"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C023",
+   "statement": "Better datasets built with diverse pooling strategies are needed for fair comparison of retrieval approaches, and BEIR's integration of many systems makes creating such diverse pools simpler; multilingual, long-document, multi-factor and multi-field tasks are left for future work.",
+   "claim_type": "future",
+   "evidence": [],
+   "scope": "future work as stated by the authors",
+   "confidence": "low",
+   "confidence_reasons": [
+    "future direction"
+   ],
+   "limitations": [
+    "L001",
+    "L002",
+    "L003",
+    "L004"
+   ],
+   "permitted_verbs": [
+    "future work could",
+    "remains open"
+   ],
+   "author_confirmation": "confirmed"
+  },
+  {
+   "id": "C024",
+   "statement": "No single system was best on every dataset; the two systems with the highest zero-shot averages (BM25+CE and ColBERT) were the slowest and, for ColBERT, the largest index, docT5query (the third system above BM25) had a BM25-sized index of 0.4GB, and the cheaper dense and sparse retrievers often averaged below BM25, which remained a strong zero-shot baseline in this comparison.",
+   "claim_type": "interpretation",
+   "evidence": [
+    "C007",
+    "C009",
+    "C016",
+    "E041"
+   ],
+   "scope": "the ten systems, the 18 datasets, nDCG@10, one efficiency setup",
+   "confidence": "moderate",
+   "confidence_reasons": [
+    "consistent direction across results",
+    "single evaluation",
+    "efficiency on one dataset sample"
+   ],
+   "limitations": [
+    "L005",
+    "L007",
+    "L008",
+    "L009"
+   ],
+   "permitted_verbs": [
+    "suggests",
+    "in this comparison",
+    "was"
+   ],
+   "author_confirmation": "confirmed"
+  }
+ ],
+ "limitations": [
+  {
+   "id": "L001",
+   "statement": "All 18 datasets are English; multilingual and cross-lingual retrieval are not covered.",
+   "affects_claims": [
+    "C001",
+    "C023"
+   ],
+   "effect_on_interpretation": "Rankings of systems may not carry over to other languages.",
+   "evidence": [
+    "E035"
+   ],
+   "resolution": "Add multilingual datasets."
+  },
+  {
+   "id": "L002",
+   "statement": "Long-document retrieval is not covered, and neural models read only the first 512 word pieces of each document.",
+   "affects_claims": [
+    "C001",
+    "C004",
+    "C023"
+   ],
+   "effect_on_interpretation": "Results for neural models on long documents (e.g. Robust04 with 466.40-word average) reflect truncated input.",
+   "evidence": [
+    "E035",
+    "E006"
+   ],
+   "resolution": "A different setup would be needed."
+  },
+  {
+   "id": "L003",
+   "statement": "Only pure text search over one or two fields is evaluated; no PageRank, recency, click-through or multi-field signals.",
+   "affects_claims": [
+    "C023"
+   ],
+   "effect_on_interpretation": "Findings concern text-only retrieval.",
+   "evidence": [
+    "E035"
+   ]
+  },
+  {
+   "id": "L004",
+   "statement": "Task-specific models are not evaluated; the benchmark targets models that generalize.",
+   "affects_claims": [
+    "C023",
+    "C024"
+   ],
+   "effect_on_interpretation": "Conclusions about which architectures are best do not apply to specialist systems.",
+   "evidence": [
+    "E035"
+   ]
+  },
+  {
+   "id": "L005",
+   "statement": "Each system was evaluated once from public checkpoints; no seeds, variance or confidence intervals are reported, and no significance tests are run.",
+   "affects_claims": [
+    "C004",
+    "C005",
+    "C006",
+    "C007",
+    "C008",
+    "C009",
+    "C010",
+    "C011",
+    "C012",
+    "C024"
+   ],
+   "effect_on_interpretation": "Small differences (for example 0.643 vs 0.644 on SciFact) cannot be judged as real; only larger and consistent patterns are interpreted.",
+   "evidence": [
+    "E036",
+    "M002"
+   ],
+   "resolution": "Repeated training or bootstrap over queries."
+  },
+  {
+   "id": "L006",
+   "statement": "The annotation-bias analysis covers only TREC-COVID and only the systems evaluated; the authors themselves annotated the missing pairs and report no agreement statistics.",
+   "affects_claims": [
+    "C017",
+    "C018",
+    "C019"
+   ],
+   "effect_on_interpretation": "The extent of lexical bias in other datasets is not measured.",
+   "evidence": [
+    "E027",
+    "E029"
+   ],
+   "resolution": "Repeat on other pooled datasets."
+  },
+  {
+   "id": "L007",
+   "statement": "Efficiency was measured on one 1M-document DBPedia sample, on one CPU and one GPU type; dense models use exact search and ColBERT approximate search.",
+   "affects_claims": [
+    "C016",
+    "C024"
+   ],
+   "effect_on_interpretation": "Latency ratios may differ at other scales or with approximate indexes for dense models.",
+   "evidence": [
+    "E024"
+   ]
+  },
+  {
+   "id": "L008",
+   "statement": "The compared systems differ in more than architecture (backbone, training data, negative mining, corpus caps for GenQ at 100K documents, a re-implemented SPARTA), and total compute is not reported.",
+   "affects_claims": [
+    "C004",
+    "C006",
+    "C009",
+    "C010",
+    "C024"
+   ],
+   "effect_on_interpretation": "Family-level conclusions are conclusions about these particular checkpoints.",
+   "evidence": [
+    "E008",
+    "E009",
+    "E036"
+   ]
+  },
+  {
+   "id": "L009",
+   "statement": "The summary 'Avg. Performance vs. BM25' aggregates heterogeneous datasets into one number whose formula is not defined in the paper text; per-dataset results are the primary evidence.",
+   "affects_claims": [
+    "C005",
+    "C006",
+    "C007",
+    "C024"
+   ],
+   "effect_on_interpretation": "Rankings by average should be read with the per-dataset counts.",
+   "evidence": [
+    "E012",
+    "E039"
+   ]
+  },
+  {
+   "id": "L010",
+   "statement": "Mechanistic explanations (cross-attention, TAS-B training loss, length preference) are not tested by ablation on the released systems.",
+   "affects_claims": [
+    "C013",
+    "C014",
+    "C015"
+   ],
+   "effect_on_interpretation": "They remain hypotheses.",
+   "evidence": [
+    "M007"
+   ]
+  },
+  {
+   "id": "L011",
+   "statement": "Cited works were not read in full; descriptions of them come from the project's own text, and the diversity analysis rests on unigram overlap.",
+   "affects_claims": [
+    "C002",
+    "C020",
+    "C022"
+   ],
+   "effect_on_interpretation": "Related-work statements are attributions, not independent checks.",
+   "evidence": []
+  },
+  {
+   "id": "L012",
+   "statement": "Only three datasets of the cosine versus dot-product comparison are available in the extracted table; the text says dot-product was worse on a majority of other datasets.",
+   "affects_claims": [
+    "C012",
+    "C013"
+   ],
+   "effect_on_interpretation": "The size of the effect on other datasets is not reported here.",
+   "evidence": [
+    "M005"
+   ]
+  }
+ ],
+ "negative_result_decisions": [
+  {
+   "evidence": "E015",
+   "decision": "reported_main",
+   "reason": "bears on C005, C008"
+  },
+  {
+   "evidence": "E017",
+   "decision": "reported_main",
+   "reason": "bears on C007, C008"
+  },
+  {
+   "evidence": "E023",
+   "decision": "reported_main",
+   "reason": "bears on C010"
+  }
+ ]
+}

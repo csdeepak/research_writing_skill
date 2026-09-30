@@ -1,0 +1,45 @@
+{
+  "project_root": ".",
+  "generated_at": "2026-09-27",
+  "generated_by": "AUTHOR acting as CORPUS_AGENT (mode=evidence; solo run, no subagents)",
+  "files": [
+    {
+      "path": "project/paper.txt",
+      "type": "result",
+      "description": "Text extracted from the project's official research paper (arXiv:2104.08663v4 [cs.IR], 'BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation of Information Retrieval Models', Thakur, Reimers, Ruckle, Srivastava, Gurevych). Contains abstract, introduction, related work, benchmark description, experimental setup, results tables (Table 1-10), an annotation-bias case study, conclusion, references, a NeurIPS reproducibility checklist, and appendices A-H.",
+      "size_bytes": 96986,
+      "lines": 1289,
+      "modified": "2025-09-24T04:52:00",
+      "opened": true,
+      "extraction_quality": "Degraded in places: several tables (Table 1, 2, 9, 10) and two figures (Figure 2, 3, 4, 5) lost their row/column alignment during text extraction, so numeric columns appear as flat sequences of numbers that had to be re-aligned against the surrounding prose and header order to be read reliably. Ligatures are rendered oddly in places (e.g. 'ﬁrst' as 'ﬁrst', 'signiﬁcant' as 'signiﬁcant') but are otherwise legible. No content appears to be missing outright."
+    },
+    {
+      "path": "project/README_1.md",
+      "type": "note",
+      "description": "The project's official GitHub repository README (beir-cellar/beir). Describes what the software package does, installation, quick-start code examples (Sentence-BERT, LoRA+vLLM, HuggingFace, Cohere API), the list of available preprocessed datasets with download links and licenses, a citation/BibTeX block for the original paper and for a 2024 SIGIR follow-up resource paper, and contributor/collaboration credits.",
+      "size_bytes": 27120,
+      "lines": 471,
+      "modified": "2025-09-24T04:52:00",
+      "opened": true,
+      "extraction_quality": "Clean Markdown; no extraction issues. Reflects the repository's state as of its last update, which post-dates the 2021 paper (e.g. it documents model classes and APIs -- LoRA/vLLM, e5-mistral, Cohere embeddings -- that are not described in paper.txt and did not exist at the paper's 2021 publication)."
+    }
+  ],
+  "not_present": [
+    "No raw result logs, CSVs, or JSON metric files (all numbers must be read from the extracted prose/tables in paper.txt; classified strength=hard because they are the paper's own reported, tabulated experimental numbers, but no machine-readable log underlies them in this project folder)",
+    "No code, configs, notebooks, or figure-source scripts",
+    "No prior drafts, reviewer feedback, or private notes",
+    "No problem.md or other author statement of intended contribution beyond what paper.txt itself states",
+    "No gold_story.json (no researcher available to approve one in this run)"
+  ],
+  "classification_summary": {
+    "result": 1,
+    "note": 1,
+    "code": 0,
+    "config": 0,
+    "figure": 0,
+    "dataset": 0,
+    "draft": 0,
+    "review": 0,
+    "other": 0
+  }
+}

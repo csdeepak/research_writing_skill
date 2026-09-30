@@ -1,0 +1,19 @@
+{
+  "patterns": [
+    {
+      "id": "ANT-001",
+      "source": "project/paper.txt (the project's own paper), Abstract",
+      "section": "Abstract",
+      "rhetorical_purpose": "Signal that the compared systems are well-regarded/current.",
+      "move_sequence": ["Describe the 10 evaluated systems as 'state-of-the-art' without naming the specific comparison set or a date scope in the same sentence."],
+      "reader_question_answered": "N/A -- this is the anti-pattern entry (signature/repair), not a move to imitate.",
+      "signature": "'we ... evaluate 10 state-of-theart retrieval systems' (Abstract) -- matches anti_patterns.md B3 (unbacked SOTA: 'state-of-the-art' without a named benchmark, full comparison set, and date).",
+      "reader_effect": "A careful reader cannot tell from the phrase alone what 'state-of-the-art' is being claimed relative to, or as of when.",
+      "repair_principle": "Either qualify fully (name the comparison set and time scope) or drop the label and let the systems' own citations and the results table carry the credibility.",
+      "paraphrase_only": true,
+      "quote_permitted": true,
+      "quote": "we ... evaluate 10 state-of-theart retrieval systems including lexical, sparse, dense, late-interaction and re-ranking architectures"
+    }
+  ],
+  "scope_note": "Per run-specific constraints (no web search), this anti-pattern was identified only from project/paper.txt itself rather than from a broader verified corpus of prior papers. It is logged here as a caution for the overclaim audit (workflow step 17): the adapted draft must not repeat an unqualified 'state-of-the-art' claim in its own Abstract/Introduction (see anti_patterns.md B3, lint rule B3-sota)."
+}

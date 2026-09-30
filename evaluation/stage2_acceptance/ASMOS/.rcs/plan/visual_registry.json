@@ -1,0 +1,183 @@
+{
+ "visuals": [
+  {
+   "id": "V001",
+   "number": 1,
+   "rq": "RQ1",
+   "tier": "main",
+   "kind": "COMPARATIVE",
+   "representation": "dot_ci",
+   "reader_question": "Which memory design answers questions most accurately, and how certain is the ranking?",
+   "claim_ids": [
+    "C001"
+   ],
+   "evidence_ids": [
+    "E001"
+   ],
+   "title": "Token-F1 by system (mean, 95% CI)",
+   "value_label": "token-F1",
+   "domain": [
+    0,
+    1
+   ],
+   "x_labels": {
+    "A No-Memory": "No memory",
+    "B RAG": "RAG",
+    "C ASMOS": "ASMOS (memory only)",
+    "D ASMOS+RAG": "ASMOS + RAG"
+   },
+   "figure_path": "figures/V001_token_f1.svg",
+   "data": {
+    "file": "data/aggregates.json",
+    "scope": {
+     "metric": "token_f1"
+    },
+    "x": "system",
+    "y": "mean",
+    "err_low": "ci_low",
+    "err_high": "ci_high"
+   },
+   "caption": "RAG has the highest token-F1 (0.751) and ASMOS-memory alone the lowest (0.416); RAG's 95% confidence interval lies above the means of the other three systems. Dots are means over n = 24 RULER QA questions, whiskers are 95% confidence intervals, all systems use gpt-4o-mini.",
+   "caption_requirements": [
+    "n",
+    "uncertainty",
+    "metric"
+   ],
+   "forbidden_implications": [
+    "significance_test",
+    "causal_design"
+   ],
+   "alt_text": "Dot plot with confidence whiskers of token-F1 for four systems; RAG is highest at 0.75 and ASMOS-memory lowest at 0.42.",
+   "source_hashes": {
+    "data/aggregates.json": "sha256:267b9fadc67d3a5f627e8ef2136281e0dd4c81363dd23945299015d6db1ee5b7"
+   },
+   "render_sha256": "sha256:1c90d100508bb7bc4dd9dd61d93c36fda62d561b60cbb95434dc39d4ca8e86d9",
+   "status": "RENDERED"
+  },
+  {
+   "id": "V002",
+   "number": 2,
+   "rq": "RQ1",
+   "tier": "main",
+   "kind": "ANALYTICAL",
+   "representation": "dot_ci",
+   "reader_question": "Do exact match and token-F1 agree on which system is best?",
+   "claim_ids": [
+    "C002"
+   ],
+   "evidence_ids": [
+    "E001",
+    "E002"
+   ],
+   "title": "Exact match vs token-F1 by system (mean, 95% CI)",
+   "value_label": "score",
+   "domain": [
+    0,
+    1
+   ],
+   "x_labels": {
+    "A No-Memory": "No memory",
+    "B RAG": "RAG",
+    "C ASMOS": "ASMOS (memory only)",
+    "D ASMOS+RAG": "ASMOS + RAG"
+   },
+   "series_labels": {
+    "exact_match": "exact match",
+    "token_f1": "token-F1"
+   },
+   "figure_path": "figures/V002_metrics.svg",
+   "data": {
+    "file": "data/aggregates.json",
+    "scope": {
+     "metric": [
+      "exact_match",
+      "token_f1"
+     ]
+    },
+    "x": "system",
+    "y": "mean",
+    "err_low": "ci_low",
+    "err_high": "ci_high",
+    "series": "metric"
+   },
+   "caption": "ASMOS+RAG answers 62.5% of questions exactly yet has the second-lowest token-F1 (0.433), so the two metrics rank the systems differently. Means over n = 24 questions with 95% confidence intervals for exact match and token-F1.",
+   "caption_requirements": [
+    "n",
+    "uncertainty",
+    "metric"
+   ],
+   "alt_text": "Paired dot plot of exact match and token-F1 for four systems; ASMOS+RAG is high on exact match but low on token-F1.",
+   "source_hashes": {
+    "data/aggregates.json": "sha256:267b9fadc67d3a5f627e8ef2136281e0dd4c81363dd23945299015d6db1ee5b7"
+   },
+   "render_sha256": "sha256:c683df3451f08e2cb15f97bdf99d5b1d17ce826092f6d62b7f78d15e0afa8c5e",
+   "status": "RENDERED"
+  },
+  {
+   "id": "V003",
+   "number": 3,
+   "rq": "RQ2",
+   "tier": "main",
+   "kind": "COMPARATIVE",
+   "representation": "bar_h",
+   "reader_question": "What does adding memory cost in latency?",
+   "claim_ids": [
+    "C003"
+   ],
+   "evidence_ids": [
+    "E004"
+   ],
+   "title": "Mean latency per question",
+   "value_label": "latency",
+   "units": "s",
+   "x_labels": {
+    "A No-Memory": "No memory",
+    "B RAG": "RAG",
+    "C ASMOS": "ASMOS (memory only)",
+    "D ASMOS+RAG": "ASMOS + RAG"
+   },
+   "figure_path": "figures/V003_latency.svg",
+   "data": {
+    "file": "data/summary.csv",
+    "scope": {},
+    "x": "system",
+    "y": "latency_s",
+    "uncertainty_note": "summary.csv records only mean latency; no interval is available"
+   },
+   "caption": "Mean latency rises from 1.50 s without memory to 1.99 s for ASMOS+RAG. Mean seconds per question over n = 24 questions; the source records no latency interval.",
+   "caption_requirements": [
+    "n",
+    "units"
+   ],
+   "alt_text": "Horizontal bar chart of mean latency in seconds for four systems, from 1.50 s for No-Memory to 1.99 s for ASMOS+RAG.",
+   "source_hashes": {
+    "data/summary.csv": "sha256:c117fe07f292a4ce83957896f422688c09afa3ae121911ed5fd40db494def730"
+   },
+   "render_sha256": "sha256:2500b4f0d1a0a6ac79a6953448743cddecc7c906d1e93e0f212f7d059f260dab",
+   "status": "RENDERED"
+  },
+  {
+   "id": "T001",
+   "number": 1,
+   "rq": "RQ1",
+   "tier": "supplementary",
+   "kind": "ANALYTICAL",
+   "representation": "table",
+   "reader_question": "What are all measured values per system?",
+   "claim_ids": [
+    "C001",
+    "C003"
+   ],
+   "evidence_ids": [
+    "E001",
+    "E004"
+   ],
+   "data": {
+    "file": "data/summary.csv",
+    "scope": {},
+    "x": "system",
+    "y": "token_f1"
+   }
+  }
+ ]
+}

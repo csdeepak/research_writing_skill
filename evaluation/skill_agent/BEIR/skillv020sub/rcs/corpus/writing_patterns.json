@@ -1,0 +1,50 @@
+{
+  "patterns": [
+    {
+      "id": "PAT-001",
+      "source": "project/paper.txt (the project's own paper, Section 5, 'Results and Analysis')",
+      "section": "Results",
+      "rhetorical_purpose": "Turn a large comparison table into a sequence of digestible, individually-titled findings instead of a wall of numbers.",
+      "move_sequence": [
+        "Give the finding a short declarative headline naming the pattern (e.g. 'In-domain performance is not a good indicator for out-of-domain generalization.')",
+        "State the direction and the key number(s) supporting it",
+        "Name the contrasting/qualifying case, if any",
+        "Close with the one-sentence consequence for how the field should evaluate retrieval"
+      ],
+      "reader_question_answered": "Of everything in this big table, what should I actually take away?",
+      "assumed_knowledge": "The reader has already seen the comparison table and the metric it reports.",
+      "transition_behavior": "Findings are numbered rather than linked with connective words; each stands as its own unit.",
+      "evidence_placement": "Numbers are woven into the sentence, not listed separately from the interpretation.",
+      "result_interpretation_pattern": "headline pattern -> supporting numbers -> qualification/exception -> one-sentence consequence",
+      "figure_table_integration": "Findings reference the shared results table rather than repeating it.",
+      "limitation_framing": null,
+      "contribution_framing": null,
+      "paraphrase_only": true,
+      "quote_permitted": false
+    },
+    {
+      "id": "PAT-002",
+      "source": "project/paper.txt (the project's own paper, Section 2, 'Related Work and Background')",
+      "section": "Related Work",
+      "rhetorical_purpose": "Make the research gap feel necessary rather than asserted.",
+      "move_sequence": [
+        "Name the closest prior resource",
+        "State exactly what it covers (task count, domain, corpus scale)",
+        "State exactly where its coverage stops",
+        "Repeat for the next closest resource",
+        "Let the gap follow as the union of what neither one tests"
+      ],
+      "reader_question_answered": "Why wasn't this already done?",
+      "assumed_knowledge": "General familiarity with the idea of a benchmark dataset for a task.",
+      "transition_behavior": "Each prior resource gets its own short paragraph; the gap is stated once, after both, not repeated per resource.",
+      "evidence_placement": "Specific counts (task/dataset numbers, corpus-size qualifiers) are used instead of vague adjectives like 'limited' or 'narrow'.",
+      "result_interpretation_pattern": null,
+      "figure_table_integration": null,
+      "limitation_framing": null,
+      "contribution_framing": "The paper's own approach is introduced only after both prior resources' coverage boundaries are stated, so the new contribution reads as filling a specific, named hole.",
+      "paraphrase_only": true,
+      "quote_permitted": false
+    }
+  ],
+  "scope_note": "Per run-specific constraints (no web search), these patterns were mined only from project/paper.txt, the single full-text source available in this run, rather than from a broader verified literature corpus. See corpus_log.md for the resulting coverage limitation."
+}

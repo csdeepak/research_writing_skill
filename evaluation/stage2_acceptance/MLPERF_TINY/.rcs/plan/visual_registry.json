@@ -1,0 +1,62 @@
+{
+ "visuals": [
+  {
+   "id": "V001",
+   "number": 1,
+   "rq": "RQ1",
+   "tier": "main",
+   "kind": "CONTEXTUAL",
+   "representation": "bar_h",
+   "reader_question": "How small are the benchmark's reference models?",
+   "claim_ids": [
+    "C001"
+   ],
+   "evidence_ids": [
+    "E001"
+   ],
+   "title": "Reference model size per benchmark",
+   "value_label": "TFLite model size",
+   "units": "KB",
+   "figure_path": "figures/V001_model_size.svg",
+   "data": {
+    "file": "data/reference_models.csv",
+    "scope": {},
+    "x": "model",
+    "y": "tflite_size_kb",
+    "source_text": "project/paper.txt"
+   },
+   "caption": "The four reference models span 52.5 KB to 325 KB, so every model fits in the few hundred kilobytes of memory a microcontroller offers. TFLite model size in KB of each benchmark's reference model; single values from Table 1 of the MLPerf Tiny paper.",
+   "caption_requirements": [
+    "units",
+    "source"
+   ],
+   "alt_text": "Horizontal bar chart of TFLite model size in kilobytes for four reference models, from 52.5 KB for DS-CNN to 325 KB for MobileNetV1.",
+   "source_hashes": {
+    "data/reference_models.csv": "sha256:058ec6a86f50f2530487d9a4fa4ea2b4aa6f60a5806e26c126a38e89ba055853",
+    "project/paper.txt": "sha256:a03ca91b46064309134d0ae6a4e5b755b107adf2aa2418bc4281a5986eca46dc"
+   },
+   "render_sha256": "sha256:b4386f287fb010eef158e47a0c9536f860a917337a43008c28f68a731c2010e2",
+   "status": "RENDERED"
+  },
+  {
+   "id": "V002",
+   "number": 2,
+   "rq": "RQ2",
+   "tier": "main",
+   "kind": "COMPARATIVE",
+   "representation": "bar_h",
+   "reader_question": "How do the first submissions compare in latency?",
+   "claim_ids": [],
+   "evidence_ids": [
+    "E002"
+   ],
+   "status": "NO_VALID_VISUAL",
+   "figure_path": "figures/V002_latency.svg",
+   "data": {
+    "file": "data/missing.csv",
+    "x": "system",
+    "y": "latency_ms"
+   }
+  }
+ ]
+}

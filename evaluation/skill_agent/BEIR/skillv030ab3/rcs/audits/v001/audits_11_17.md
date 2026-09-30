@@ -1,0 +1,16 @@
+# Audits, draft v001 (steps 11-17)
+## 11 Reconstruction self-test (from the draft alone; same context, so a weak pre-screen)
+Q1 zero-shot behaviour of neural retrievers across tasks/domains is unmeasured (Abstract, S1). Q2 training data are costly; zero-shot use common (S1). Q3 prior benchmarks are single-task/domain (S1, S2.2). Q4 BEIR: 18 datasets, 9 tasks, ten systems, nDCG@10, cost and annotation studies (S3-S4). Q5 four selection reasons, single metric, configuration reasons (S3.1, S3.3, S4.1). Q6 zero-shot comparison, efficiency, TREC-COVID holes, cosine vs dot (S4, S5). Q7 no winner; BM25 strong; BM25+CE 16/18, ColBERT 9/18; ANCE 0.654 to 0.735 (S5). Q8 orderings on 18 English datasets and one label-bias case (S6). Q9 not variance, other languages, long documents, extent of label bias (S7). Q10 benchmark + comparison + cost + bias study (S1). Q11 S7. Q12 no winner, BM25 strong, accuracy costs latency, labels favour lexical systems. All answerable; no mismatch with spine.
+tools/audit_reader.py: 25 WARN, mostly system names and acronyms flagged as unknown terms (BM25, ANCE, DPR, ...). Kept: they are names of evaluated systems, each introduced with a role at first use in S2.1; abstract now glosses nDCG@10, BM25+CE and TREC-COVID. skim_layer check on the abstract: 0 errors.
+## 12 Evidence/claim audit
+verify_numbers: 0 errors, 0 warnings (G3_numbers.json). Lint orphan-claim warnings cleared by tagging. All five negative results (E071, E075, E077, E084, E088) reported in Results (S5.2, S5.3). Claim types vs verbs: no strong verb on interpretation/speculation claims (lint 0 errors).
+## 13 Flow audit
+Each Results subsection opens with its RQ; Discussion answers RQ1-RQ3 in the introduction's order; Introduction states RQs in paragraph 4 of 7 and contributions with section pointers. One forward reference (S5.2 -> S7, S5.5 -> S7) with explicit pointer. Connectives checked; none decorative.
+## 14 Terms/load audit
+Terms defined at first use: retrieval/corpus/query (S1), zero-shot (S1), lexical gap and BM25 (S2.1), bi-encoder, cross-encoder, late interaction (S2.1), qrels (S3.1), nDCG@10 (S3.3), pooling and Hole@10 (S4.2). Long sentences (>35 words) reviewed: kept where they carry a list of numbers.
+## 15 Figure/table audit
+Tables 1-4 have cards (plan/figure_cards), are referenced before they appear, captions open with the finding, takeaway repeated in prose. No images (task rule). Table 2 cells were reconstructed from a damaged extraction and cross-checked against text statements (16/18, 9/18, 14/18, 17.3, 7.8, Table 4 originals); flagged in open_issues.md.
+## 16 Citation audit
+41 in-text citation forms all resolve to the registry (checked programmatically), each with a stated role; all sources are read_depth abstract (not read) and registered from the project's reference list only; titles as cited; Kamalloo et al. (2024) is from the README. No citation added from memory.
+## 17 Overclaim audit
+grep of high-risk vocabulary (significant, robust, generaliz*, outperform, novel, state-of-the-art, first, always/never, prove/demonstrate/establish/confirm, cause/lead to, intensifiers): none used as assertions. "far more"/"far below" replaced by numbers. Interpretations are attributed to the authors and typed (C045-C048); C047 marked speculation. No p-values or significance language (none in the evidence).

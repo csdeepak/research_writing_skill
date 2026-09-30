@@ -1,0 +1,186 @@
+{
+  "project_root": "./project",
+  "generated_at": "2026-09-27",
+  "generated_by": "CORPUS_AGENT (performed by AUTHOR session)",
+  "evidence_policy_note": "project/ contains only the extracted paper text and the repo README -- no separate results/ or notes/ directories. Per the accepted risk in .rcs/state.json, values the paper presents as the outcome of a stated, specific measurement/definition (Table 1 quality targets, Section 4.1-4.4 measured accuracies/AUCs, Section 5.3's protocol, Section 5.2's division rules, Table 2 submission facts) are classified strength='hard' with locator=project/paper.txt, since paper.txt is this run's sole authoritative data layer. The authors' own qualitative/interpretive prose (the 'Insights' paragraphs, the impact and societal-risk remarks) is classified strength='soft'.",
+  "items": [
+    {"id": "E001", "kind": "result", "summary": "Table 1 specifies, for each of the 4 v0.5 benchmarks, one dataset (with input size), one reference model (with compiled TFLite size), and one numeric quality target.",
+     "value": [
+       {"use_case": "Keyword Spotting", "dataset": "Speech Commands", "input_size": "49x10", "model": "DS-CNN", "model_size_kb": 52.5, "quality_target": "90% (Top-1)"},
+       {"use_case": "Visual Wake Words", "dataset": "VWW Dataset", "input_size": "96x96", "model": "MobileNetV1", "model_size_kb": 325, "quality_target": "80% (Top-1)"},
+       {"use_case": "Image Classification", "dataset": "CIFAR10", "input_size": "32x32", "model": "ResNet", "model_size_kb": 96, "quality_target": "85% (Top-1)"},
+       {"use_case": "Anomaly Detection", "dataset": "ToyADMOS", "input_size": "5*128", "model": "FC-AutoEncoder", "model_size_kb": 270, "quality_target": "0.85 (AUC)"}
+     ],
+     "conditions": "MLPerf Tiny v0.5 (first published version)",
+     "locator": {"path": "project/paper.txt", "anchor": "lines 39-50, Table 1"},
+     "strength": "hard", "status": "ok",
+     "notes": "Table 1 extraction is a linearized run of cells; row/column order verified against the matching per-benchmark prose in Sections 4.1-4.4, which restates every model size and quality target individually."},
+
+    {"id": "E002", "kind": "result", "summary": "Keyword-spotting reference model (depthwise-separable CNN, 38.6K parameters) reached 92.2% accuracy in the authors' training experiments; the quantized reference model reached 91.6% on the full Speech Commands test set and 91.7% on a 1000-utterance subset.",
+     "value": {"metric": "Top-1 accuracy", "float_train": "92.2%", "quantized_full_test": "91.6%", "quantized_1000_subset": "91.7%", "params": 38600},
+     "conditions": {"benchmark": "Keyword Spotting", "model": "DS-CNN", "dataset": "Speech Commands v2", "classes": 12},
+     "locator": {"path": "project/paper.txt", "anchor": "lines 68-69, Section 4.3 Model/Quality Target"},
+     "strength": "hard", "status": "incomplete",
+     "notes": "Single reported figure per condition; no repeated-training/seed variance is given, so the number's stability under retraining is unknown (see missing_evidence.json)."},
+
+    {"id": "E003", "kind": "result", "summary": "Visual Wake Words reference model (MobileNetV1, alpha=0.25) reaches about 86% accuracy across the preprocessed MSCOCO 2014 test set, based on validation and training accuracy.",
+     "value": {"metric": "Top-1 accuracy", "value_pct": "~86%"},
+     "conditions": {"benchmark": "Visual Wake Words", "model": "MobileNetV1 alpha=0.25", "input": "96x96", "classes": 2},
+     "locator": {"path": "project/paper.txt", "anchor": "line 56, Section 4.1 Quality Target"},
+     "strength": "hard", "status": "incomplete",
+     "notes": "Reported as an approximate, single figure ('about 86%'); no variance reported."},
+
+    {"id": "E004", "kind": "result", "summary": "Image Classification reference model (customized ResNetv1, 3 residual stacks) reaches 86.5% accuracy on a 200-image evaluation subset of the CIFAR-10 test set.",
+     "value": {"metric": "Top-1 accuracy", "value_pct": 86.5, "n_eval_images": 200},
+     "conditions": {"benchmark": "Image Classification", "model": "customized ResNetv1", "input": "32x32x3", "classes": 10},
+     "locator": {"path": "project/paper.txt", "anchor": "lines 60-64, Section 4.2 Model/Quality Target"},
+     "strength": "hard", "status": "incomplete",
+     "notes": "Single reported figure on a fixed 200-image subset; no repeated-run variance reported."},
+
+    {"id": "E005", "kind": "result", "summary": "Anomaly Detection reference model (FC-based autoencoder) achieves AUC 0.88 in fp32 and AUC 0.86 after int8 quantization, evaluated on a set of 248 normal/anomalous sound samples from 4 machines.",
+     "value": {"metric": "AUC", "fp32": 0.88, "int8": 0.86, "n_eval_samples": 248, "n_machines": 4},
+     "conditions": {"benchmark": "Anomaly Detection", "model": "FC-AutoEncoder", "dataset": "DCASE2020 (toy-car)"},
+     "locator": {"path": "project/paper.txt", "anchor": "lines 73-77, Section 4.4 Model/Quality Target"},
+     "strength": "hard", "status": "incomplete",
+     "notes": "Single reported evaluation; no repeated-run variance reported."},
+
+    {"id": "E006", "kind": "method_detail", "summary": "The benchmark framework's measurement procedure: latency = median inferences-per-second (IPS) over 5 runs, each run >=10s and >=10 iterations; energy = identical protocol, additionally reporting total energy per timing window as microjoules/inference (median of 5); accuracy = a single inference pass over the full validation set, from which Top-1% or AUC is computed, gated by a minimum-accuracy validity check.",
+     "value": {"latency_runs": 5, "min_seconds_per_run": 10, "min_iterations_per_run": 10, "latency_metric": "median IPS", "energy_metric": "median microjoules/inference", "accuracy_metrics": ["Top-1%", "AUC"]},
+     "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "lines 93-97, Section 5.3 Measurement Procedure (repeated at lines 261-264, Appendix A.3)"},
+     "strength": "hard", "status": "ok"},
+
+    {"id": "E007", "kind": "method_detail", "summary": "Closed-division rule: submitters must use the same models, datasets, and quality targets as the reference implementation; post-training quantization (PTQ) with the provided calibration data is permitted, but retraining or weight replacement is prohibited.",
+     "value": null, "conditions": {"division": "closed"},
+     "locator": {"path": "project/paper.txt", "anchor": "lines 85-87, Section 5.2 Closed and Open Divisions"},
+     "strength": "hard", "status": "ok"},
+
+    {"id": "E008", "kind": "method_detail", "summary": "Open-division rule: submitters may change the model, training scripts, and dataset; the same test dataset is still used to score accuracy, but meeting the accuracy threshold is not required; every deviation from the reference implementation must be documented.",
+     "value": null, "conditions": {"division": "open"},
+     "locator": {"path": "project/paper.txt", "anchor": "lines 85, 88, Section 5.2 Closed and Open Divisions"},
+     "strength": "hard", "status": "ok"},
+
+    {"id": "E009", "kind": "experiment", "summary": "The first MLPerf Tiny submission round (v0.5) took place in June 2021; results were transparently peer-reviewed by the submitter group and a review committee for rules conformance; results are summarized in Table 2 and published at mlcommons.org, with each submission's implementation reproducible from a public GitHub repository (tiny_results_v0.5).",
+     "value": {"round": "v0.5", "date": "June 2021", "review": "peer-reviewed by submitters + review committee"},
+     "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "lines 100-101, 186, Sections 6.1"},
+     "strength": "hard", "status": "ok"},
+
+    {"id": "E010", "kind": "result", "summary": "Table 2 lists 5 v0.5 submissions: 4 in the closed division (ARM MCU running TensorFlow Lite Micro with INT-8 PTQ; a RISC-V MCU also via TFLM/INT-8 PTQ; a Raspberry Pi 4 via the LEIP framework with FP-32 and INT-8 PTQ; a dedicated neural-network accelerator [Syntiant TDK] via INT-8 PTQ) and 1 in the open division (an FPGA via the hls4ml workflow, trained with QKeras using INT-6/8 quantization-aware training).",
+     "value": [
+       {"division": "Closed", "numerics": "INT-8 PTQ", "framework": "TensorFlow Lite Micro", "hardware": "ARM MCU", "demonstrates": "Baseline performance results on the reference platform.", "dataset_training_model_vs_reference": "unmodified (X,X,X) -- required by the closed-division rule (E007)"},
+       {"division": "Closed", "numerics": "INT-8 PTQ", "framework": "TensorFlow Lite Micro", "hardware": "RISC-V MCU", "demonstrates": "Performance of a RISC-V microcontroller customized for neural network inference.", "dataset_training_model_vs_reference": "unmodified (X,X,X) -- required by the closed-division rule (E007)"},
+       {"division": "Closed", "numerics": "FP-32 & INT-8 PTQ", "framework": "LEIP Framework", "hardware": "RasPi 4", "demonstrates": "Capabilities of a software-only optimization toolchain that is agnostic of the hardware.", "dataset_training_model_vs_reference": "unmodified (X,X,X) -- required by the closed-division rule (E007)"},
+       {"division": "Closed", "numerics": "INT-8 PTQ", "framework": "Syntiant TDK", "hardware": "Neural Network Accelerator", "demonstrates": "Ultra-low power hardware efficiency for running deep neural networks.", "dataset_training_model_vs_reference": "unmodified (X,X,X) -- required by the closed-division rule (E007)"},
+       {"division": "Open", "numerics": "Int-6/8 QAT", "framework": "QKeras (training) / HLS4ML (deployment)", "hardware": "FPGA", "demonstrates": "Rapid end-to-end development of machine learning accelerators on reconfigurable fabrics.", "dataset_training_model_vs_reference": "dataset unmodified (per E013); training modified (quantization-aware retraining via QKeras, which the closed division prohibits, E007); model modification not stated precisely by the surviving table text"}
+     ],
+     "conditions": "MLPerf Tiny v0.5 round, June 2021",
+     "locator": {"path": "project/paper.txt", "anchor": "lines 104-184, Table 2"},
+     "strength": "hard", "status": "incomplete",
+     "notes": "Table 2's extraction is damaged: it linearizes into one column, and the per-row Dataset/Training/Model 'X' (unmodified) marks partly disappear for rows 4-5 -- consistent with a lost check-mark glyph rather than a genuinely blank cell (the caption states 'X indicates no modification ... check mark indicates a modification'). Rows 1-3's three X's each survive intact. Row 4 (Syntiant) still shows three X's once the merged 'X INT-8 PTQ' line is unmerged. Row 5 (open/FPGA) shows only one surviving X; its Dataset/Training/Model status is reconstructed, not read directly -- see E007, E008, E013 and L003 in the claim map."},
+
+    {"id": "E011", "kind": "observation", "summary": "Across the five v0.5 submissions, INT-8 was the most common numeric format for inference; ML frameworks ranged from open-source interpreters (TFLite Micro) to hardware-specific inference compilers; hardware spanned MCUs, accelerators, and FPGAs; measured device power ranged from microwatts to watts.",
+     "value": null, "conditions": "MLPerf Tiny v0.5 round",
+     "locator": {"path": "project/paper.txt", "anchor": "lines 188-189, Section 6.2 Insights, paragraph 1"},
+     "strength": "soft", "status": "ok"},
+
+    {"id": "E012", "kind": "observation", "summary": "Per-submitter demonstrated value (prose elaboration of Table 2's 'Demonstrates' column): one organization showed its SDK/developer tools are hardware-agnostic and easy to use while preserving accuracy; a hardware vendor showed outstanding NN-accelerator performance via a 'novel microarchitecture design and optimized datapath' that avoids wait-states; an academic research institute showed AI compute capability on a RISC-V-based AI microcontroller; a multi-disciplinary team showcased the open-source 'hls4ml' workflow (originally built for sub-microsecond ML inference at the Large Hadron Collider) for co-designing accelerator dataflow architectures.",
+     "value": null, "conditions": "MLPerf Tiny v0.5 round",
+     "locator": {"path": "project/paper.txt", "anchor": "lines 190, Section 6.2 Insights, paragraph 2"},
+     "strength": "soft", "status": "ok"},
+
+    {"id": "E013", "kind": "observation", "summary": "None of the v0.5 submissions modified the training dataset, despite a general trend in AI toward data-centric design; the authors state they anticipate this will shift in future rounds.",
+     "value": null, "conditions": "MLPerf Tiny v0.5 round",
+     "locator": {"path": "project/paper.txt", "anchor": "line 191, Section 6.2 Insights, paragraph 3"},
+     "strength": "soft", "status": "ok"},
+
+    {"id": "E014", "kind": "external_fact", "summary": "The MLPerf Tiny benchmarks have already been used as a standard set of tasks in TinyML research (citing the authors' own MicroNets architecture-search paper) and turned into public projects on a third-party TinyML development platform.",
+     "value": null, "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "line 195, Section 7 Impact"},
+     "strength": "soft", "status": "ok",
+     "notes": "Cites reference [4] (Banbury et al., 2021, 'MicroNets') and [16] (an Edge Impulse project page with no author/date recoverable from the reference list -- not independently citable in this run's closed-corpus form; see source_registry.json)."},
+
+    {"id": "E015", "kind": "observation", "summary": "The authors' own stated broader-impact assessment: TinyML can help democratize AI by removing the barrier of expensive hardware and can preserve privacy by keeping data on-device, but the same technology could be misused to track or monitor unwilling individuals, and cheap, proliferating devices can increase electronic waste.",
+     "value": null, "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "line 195, Section 7 Impact"},
+     "strength": "soft", "status": "ok"},
+
+    {"id": "E016", "kind": "limitation_noted", "summary": "Author-noted limitation: the benchmark suite must keep evolving (new benchmarks for domains such as wearables, medical devices, environmental monitoring) while also needing long-term stability so it can track historical progress; the authors' mitigations are open-sourcing the suite and relying on MLCommons for continued multi-generation support, plus keeping a stable long-term subset.",
+     "value": null, "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "line 197, Section 8, 'New benchmarks & Long-term stability'"},
+     "strength": "soft", "status": "ok"},
+
+    {"id": "E017", "kind": "limitation_noted", "summary": "Author-noted limitation: limited host-PC-to-device bandwidth makes it difficult to reproduce a true streaming scenario without adding transfer delay for the time-domain benchmarks (keyword spotting, anomaly detection); excluding feature extraction from the measured window risks a 'degenerate case' where a submitter defines nearly the whole model as feature extraction to dodge measurement, while including it would, in this non-streaming benchmark, run ~40 feature-extraction cycles per 1 inference cycle for 1 second of audio, over-emphasizing feature-extraction cost.",
+     "value": {"feature_extraction_cycles_per_inference_1s_audio": 40}, "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "line 198, Section 8, 'Streaming inputs & Pre-processing'"},
+     "strength": "soft", "status": "ok"},
+
+    {"id": "E018", "kind": "limitation_noted", "summary": "Author-noted limitation: the closed division's current reference models are based mainly on FC and CNN layers in well-known architectures; broader architecture families (e.g. RNNs) are reachable today only through open-division submissions.",
+     "value": null, "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "line 199, Section 8, 'Extended coverage of layer types and model architectures'"},
+     "strength": "soft", "status": "ok"},
+
+    {"id": "E019", "kind": "assumption", "summary": "The authors frame TinyML benchmark design around four obstacles a design must accommodate: (1) Low Power -- energy is hard to profile fairly because devices, data paths, peripherals and firmware vary; (2) Limited Memory -- MCU-class resources are about two orders of magnitude below smartphone-class ML, so GB-scale reference models and any large benchmark-harness overhead won't fit, and multiple quantization/precision levels must be represented; (3) Hardware Heterogeneity -- MCUs to novel event-based or non-von-Neumann architectures often lack standard clocks/debug interfaces, so existing benchmarks need re-engineering; (4) Software Heterogeneity -- tight hardware/toolchain coupling (esp. with accelerators/DSPs) means a benchmark that restricts the inference stack unfairly penalizes some deployment stacks.",
+     "value": null, "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "lines 19-28, Section 2 Challenges"},
+     "strength": "soft", "status": "ok",
+     "notes": "One reference in this section ('memory compute citekim20191', line 23) is an unresolved citation key that does not match any of the 22 numbered references in the reference list; treated as extraction damage, not used as a citable source (see corpus_log.md)."},
+
+    {"id": "E020", "kind": "external_fact", "summary": "EEMBC's CoreMark is the standard benchmark for MCU-class devices because it is easy to implement and uses real algorithms, but it does not profile full programs and does not accurately represent machine-learning inference workloads.",
+     "value": null, "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "line 31, Section 3 Related Work"},
+     "strength": "soft", "status": "ok",
+     "notes": "Cites reference [9] (Gal-On and Levy, 2012); see source_registry.json SRC-009."},
+
+    {"id": "E021", "kind": "external_fact", "summary": "EEMBC's MLMark uses real ML inference workloads, addressing CoreMark's gap, but its supported models are far too large for MCU-class devices (gigabytes of memory, significant runtime), and unlike CoreMark's companion ULPMark-CM, MLMark has no power-measurement support.",
+     "value": null, "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "line 32, Section 3 Related Work"},
+     "strength": "soft", "status": "ok",
+     "notes": "Cites reference [19] (Torelli and Bangale, n.d. -- no publication year is given in the reference list); see source_registry.json SRC-019."},
+
+    {"id": "E022", "kind": "external_fact", "summary": "MLPerf's community-driven ML-inference benchmarking suite has plans to add power measurement, but -- like MLMark -- its current benchmark precludes MCUs and other resource-constrained platforms because it lacks small benchmarks and compatible implementations.",
+     "value": null, "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "line 33, Section 3 Related Work"},
+     "strength": "soft", "status": "ok",
+     "notes": "Cites reference [18] (Reddi et al., 2019); see source_registry.json SRC-018."},
+
+    {"id": "E023", "kind": "method_detail", "summary": "The suite's modular design: every benchmark's reference implementation bundles training scripts, pretrained models, and C code; submitters may swap individual components to show a specific hardware or software contribution rather than only offering an end-to-end solution. Some components ('green') may be modified in either division; others ('orange') may be modified only in the open division.",
+     "value": null, "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "lines 83-88, Section 5.1 Modular Design (Figure 2 caption, lines 76-77)"},
+     "strength": "hard", "status": "ok",
+     "notes": "Figure 2 itself (which visually marks which specific components are green vs. orange) did not survive text extraction; only its caption and the related prose in 5.1-5.2 did, so the exact component-by-component green/orange assignment cannot be enumerated from this evidence -- recorded as missing in missing_evidence.json."},
+
+    {"id": "E024", "kind": "implementation_detail", "summary": "Reference implementations run in the TFLite format via TensorFlow Lite for Microcontrollers (TFLM) on a NUCLEO-L4R5ZI board, using a known-good TFLM snapshot for stability, built as a bare-metal MBED project with the GCC-ARM toolchain; source is open on GitHub at github.com/mlcommons/tiny.",
+     "value": null, "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "lines 36, Section 4 intro"},
+     "strength": "hard", "status": "ok"},
+
+    {"id": "E025", "kind": "implementation_detail", "summary": "The benchmark framework connects a host PC (running a GUI 'runner') to the device under test (DUT) via a firmware shim; a second hardware configuration adds an electrical-isolation IO Manager and an energy monitor (EMON, one of: STMicroelectronics LPM01A, Jetperch Joulescope JS110, or Keysight N6705) for energy runs. Only power delivered to the DUT's core is scored; power drawn by the isolation level-shifters is excluded as a framework cost, and only one power supply may power the core (no batteries/supercapacitors/harvesters).",
+     "value": null, "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "lines 92-93, 236-241, Section 5.3 and Appendix A.1"},
+     "strength": "hard", "status": "ok"},
+
+    {"id": "E026", "kind": "observation", "summary": "Across all four benchmarks, the published quality target is set a small, consistent margin below the reference model's own measured accuracy/AUC on its designated evaluation set: KWS targets 90% vs. 91.6-91.7% measured; VWW targets 80% vs. ~86% measured; Image Classification targets 85% vs. 86.5% measured; Anomaly Detection targets AUC 0.85 vs. 0.86-0.88 measured. The paper states this margin is meant to accommodate cross-platform differences from quantization and rounding.",
+     "value": {"kws_margin_pts": [1.6, 1.7], "vww_margin_pts": 6, "ic_margin_pts": 1.5, "ad_margin_auc": [0.01, 0.03]},
+     "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "lines 56, 64, 69, 77 (stated rationale) and Table 1"},
+     "strength": "hard", "status": "ok",
+     "derived_from": ["E001", "E002", "E003", "E004", "E005"]},
+
+    {"id": "E027", "kind": "method_detail", "summary": "Per-benchmark model architectures: KWS uses a small depthwise-separable CNN (citing Zhang et al., 2017) with 38.6K parameters; VWW uses MobileNetV1 with width multiplier alpha=0.25 and 2 output classes (citing Howard et al., 2017); Image Classification uses a customized ResNetv1 with 3 residual stacks (vs. 4 in the official ResNet), no pooling after the first convolution, and fewer filters/lower stride (citing He et al., 2016); Anomaly Detection uses a fully-connected autoencoder with 4-layer, 128-unit encoder and decoder (BatchNorm + ReLU) and an 8-unit bottleneck, taking a 640-value input (5 stacked frames x 128 mel bands) built from a log-mel spectrogram (128 bands, 32ms frames), scored by the MSE reconstruction error averaged over the central 6.4s of each 10s clip.",
+     "value": null, "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "lines 55, 60, 68, 73-77, Sections 4.1-4.4 'Model'"},
+     "strength": "hard", "status": "ok"},
+
+    {"id": "E029", "kind": "external_fact", "summary": "The project README describes MLPerf Tiny's target embedded devices (microcontrollers, DSPs, tiny NN accelerators) as typically running between 10MHz and 250MHz and able to perform inference using less than 50mW of power.",
+     "value": {"clock_mhz_range": [10, 250], "power_mw_max": 50}, "conditions": null,
+     "locator": {"path": "project/README_1.md", "anchor": "lines 4-7"},
+     "strength": "hard", "status": "ok"},
+
+    {"id": "E028", "kind": "dataset", "summary": "Per-benchmark datasets: Keyword Spotting uses Speech Commands v2 (105,829 utterances, 2,618 speakers, CC-BY license, 30 words + background noise re-grouped into 10 words + an 'unknown' class + 'silence' = 12 classes; citing Warden, 2018); Visual Wake Words is built from MSCOCO 2014, labeling images with a person occupying >2.5% of the frame and resizing to 96x96 (citing Chowdhery et al., 2019 and Lin et al., 2014); Image Classification uses CIFAR-10, a 60,000-image, 10-class, 32x32x3 labeled subset of the 80 Million Tiny Images dataset, split into 5 training batches + 1 test batch of 10,000 images each (citing Krizhevsky et al., 2009 and Torralba et al., 2008); Anomaly Detection uses the DCASE2020 task-2 dataset (built from ToyADMOS and MIMII), restricted to the toy-car machine type with 7 toy-cars x ~1,000 normal training samples (citing Koizumi et al., 2019; Koizumi et al., 2020; Purohit et al., 2019).",
+     "value": null, "conditions": null,
+     "locator": {"path": "project/paper.txt", "anchor": "lines 54, 59, 67, 72, Sections 4.1-4.4 'Dataset'"},
+     "strength": "hard", "status": "ok",
+     "notes": "Section 4.2 also states that a significant amount of prior TinyML work used CIFAR-10 (citing Fedorov et al., 2019), and that MLPerf Tiny continues this trend to create a historical point of reference."}
+  ]
+}

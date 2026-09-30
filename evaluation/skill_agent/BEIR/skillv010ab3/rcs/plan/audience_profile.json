@@ -1,0 +1,11 @@
+{
+  "mode": "B",
+  "primary": "Machine-learning researchers from other subfields (vision, NLP generation, RL, theory) who read the paper to understand what BEIR is and what it found",
+  "secondary": "Reviewers and replicators checking numbers and design choices",
+  "tertiary": "Future readers and practitioners deploying retrieval models",
+  "assumed_known": ["supervised learning", "train/test split and distribution shift", "transformers and BERT-style pre-training", "fine-tuning", "contrastive learning with in-batch negatives (conceptually)", "standard benchmark practice, averages, statistical uncertainty", "cosine similarity and dot product"],
+  "not_assumed": ["information retrieval terminology (query, corpus, relevance judgments, qrels)", "BM25, TF-IDF, inverted index", "nDCG@k", "MS MARCO and the TREC evaluation campaigns", "pooling and annotation-selection bias", "sparse vs dense retrieval and late interaction", "approximate nearest-neighbour search", "Hole@10"],
+  "binding_personas": ["A", "B", "E"],
+  "term_budget": {"per_paragraph": 2, "abstract_acronyms": 1},
+  "source": "given in TASK.md: adjacent researchers (mode B)"
+}

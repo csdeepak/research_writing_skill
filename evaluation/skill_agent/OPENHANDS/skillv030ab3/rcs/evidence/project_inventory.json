@@ -1,0 +1,41 @@
+{
+ "project_root": ".",
+ "generated_at": "2026-09-29",
+ "generated_by": "CORPUS_AGENT role performed by AUTHOR (no subagents)",
+ "files": [
+  {
+   "path": "project/README_1.md",
+   "type": "note",
+   "size_bytes": 10411,
+   "modified": "2026-09-24T04:52:53",
+   "opened": true,
+   "note": "Official repository README: OpenHands Benchmarks (evaluation infrastructure). Opened in full."
+  },
+  {
+   "path": "project/README_2.md",
+   "type": "note",
+   "size_bytes": 10126,
+   "modified": "2026-09-24T04:52:51",
+   "opened": true,
+   "note": "Official repository README: OpenHands Agent Canvas. Opened in full."
+  },
+  {
+   "path": "project/paper.txt",
+   "type": "reference",
+   "size_bytes": 105244,
+   "modified": "2026-09-24T04:52:48",
+   "opened": true,
+   "note": "Text extracted from the official research paper (arXiv 2407.16741v3, ICLR 2025 version); tables/figures damaged by extraction. Opened in full."
+  }
+ ],
+ "skipped": [
+  {
+   "path": "rce/",
+   "reason": "skill and tools, not project evidence"
+  },
+  {
+   "path": "TASK.md",
+   "reason": "task instructions, not project evidence"
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-09-27",
+  "items": [
+    {
+      "id": "MISS001",
+      "description": "No run-to-run variance, confidence intervals, or significance tests accompany any of the comparative nDCG@10 numbers in Tables 2, 3, 4, 9 or 10 (or the derived 'Avg. Performance vs. BM25' percentages). The authors state this is because most evaluated systems are public pre-trained checkpoints without accessible training code, so re-training for repeated seeds was not feasible in many cases.",
+      "affects": ["E005", "E006", "E014", "E015", "E027"],
+      "related_limitation_evidence": "E035",
+      "resolution_status": "author-explained, not resolvable from this project folder",
+      "action_taken": "Reported as an author-stated limitation (L006); all comparative claims in the draft describe point estimates only and avoid language implying statistical significance."
+    },
+    {
+      "id": "MISS002",
+      "description": "Four of the 19 datasets used or referenced (BioASQ, Signal-1M(RT), TREC-NEWS, Robust04) are not directly downloadable from the project's own distribution (README marks them 'Public? = No', with a 'How to Reproduce?' pointer instead of a direct link).",
+      "affects": ["E001"],
+      "locator": {"path": "project/README_1.md", "anchor": "lines 343, 347-349"},
+      "resolution_status": "author-documented access constraint, not a defect in the reported results",
+      "action_taken": "Not surfaced as a limitation of the reported findings (it bears on reproducibility/access, not on the validity of the numbers already reported); noted here for completeness."
+    },
+    {
+      "id": "MISS003",
+      "description": "The paper reports the GPU/CPU hardware used for the latency benchmark (Table 3) but explicitly does not report total compute used across the whole study (NeurIPS checklist item 4d).",
+      "affects": ["E014"],
+      "resolution_status": "author-disclosed omission",
+      "action_taken": "Not elevated to a formal limitation in the claim map, since no claim in the draft depends on total compute; mentioned only if space allows in Methods."
+    },
+    {
+      "id": "MISS004",
+      "description": "The TREC-COVID annotation-bias case study (Table 4) was run on one dataset only; whether the same lexical annotation-pool bias, and at what magnitude, applies to the other 17 BEIR datasets is not tested anywhere in the evidence.",
+      "affects": ["E015", "E016"],
+      "resolution_status": "acknowledged scope boundary; addressed as a writer-derived limitation (L008), since the authors themselves generalize cautiously ('Better datasets... are needed for a fair evaluation') without claiming the magnitude found on TREC-COVID applies elsewhere.",
+      "action_taken": "Captured as L008 (writer_derived)."
+    }
+  ]
+}

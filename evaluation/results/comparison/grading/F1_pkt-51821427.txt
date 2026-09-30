@@ -1,0 +1,34 @@
+{
+ "questions": {
+  "Q1": {"Q1a": "present", "Q1b": "present"},
+  "Q2": {"Q2a": "present", "Q2b": "present"},
+  "Q3": {"Q3a": "present", "Q3b": "weakened", "Q3c": "weakened"},
+  "Q4": {"Q4a": "present", "Q4b": "weakened", "Q4c": "present", "Q4d": "present"},
+  "Q5": {"Q5a": "present", "Q5b": "weakened", "Q5c": "present"},
+  "Q6": {"Q6a": "present", "Q6b": "weakened", "Q6c": "present", "Q6d": "weakened"},
+  "Q7": {"Q7a": "weakened", "Q7b": "present", "Q7c": "present", "Q7d": "weakened", "Q7e": "present"},
+  "Q8": {"Q8a": "contradicted", "Q8b": "present", "Q8c": "present", "Q8d": "weakened"},
+  "Q9": {"Q9a": "present", "Q9b": "present", "Q9c": "weakened"},
+  "Q10": {"Q10a": "present", "Q10b": "contradicted", "Q10c": "present", "Q10d": "weakened"},
+  "Q11": {"Q11b": "present", "Q11e": "present", "Q11c": "present"},
+  "Q12": {"Q12a": "weakened", "Q12b": "present", "Q12c": "weakened"}
+ },
+ "intrusions": [
+  {"question": "Q2", "text": "such as new product documentation, specialized literature or another news archive", "tag": "benign_elaboration"},
+  {"question": "Q2", "text": "If the relevance judgements themselves are biased, comparisons between systems could steer model choice the wrong way.", "tag": "benign_elaboration"},
+  {"question": "Q3", "text": "mostly small corpora said to favor dense retrieval", "tag": "unsupported_belief"},
+  {"question": "Q4", "text": "They also measured pairwise vocabulary overlap between datasets.", "tag": "unsupported_belief"},
+  {"question": "Q5", "text": "Most systems share MS MARCO training data, so differences mostly reflect architecture and training.", "tag": "benign_elaboration"},
+  {"question": "Q6", "text": "Pairwise vocabulary overlap (weighted Jaccard).", "tag": "unsupported_belief"},
+  {"question": "Q6", "text": "Lengths of TAS-B vs ANCE retrieved documents.", "tag": "unsupported_belief"},
+  {"question": "Q6", "text": "GenQ vs TAS-B by domain.", "tag": "unsupported_belief"},
+  {"question": "Q7", "text": "ColBERT's index at BioASQ scale is about 900GB vs about 18GB for BM25.", "tag": "unsupported_belief"},
+  {"question": "Q7", "text": "On TREC-COVID, Hole@10 was 30.6% for DPR and 31.8% for TAS-B vs 1.6-6.4% for BM25+CE, docT5query and BM25.", "tag": "unsupported_belief"},
+  {"question": "Q9", "text": "there is no ablation, each interaction family has one system, BM25+CE depends on BM25's candidates, and ColBERT has no joint encoding", "tag": "benign_elaboration"},
+  {"question": "Q9", "text": "do not show that no task-specific model would beat these systems", "tag": "benign_elaboration"},
+  {"question": "Q9", "text": "do not fully explain the TAS-B vs ANCE differences", "tag": "benign_elaboration"},
+  {"question": "Q11", "text": "Generalist systems only.", "tag": "benign_elaboration"},
+  {"question": "Q11", "text": "Total compute not fully reported.", "tag": "benign_elaboration"}
+ ],
+ "notes": "Applied evaluator v0.2: each gold nugget was searched for across all twelve reader answers, not just the same-numbered one. Q5c (512-word-piece truncation) and the Q9a/Q9b/Q9c and Q11b/Q11c/Q11e limitation nuggets were mostly found together in the reader's Q11 answer rather than under Q5/Q9. Q8a and Q10b are marked contradicted: the reader's Q8 answer states 'in Table 2 higher in-domain scores generally go with better zero-shot results, so the table supports less than in-domain accuracy does not predict zero-shot performance,' and Q9 adds 'they do not show that in-domain scores carry no information' -- both directly dispute the gold claim that in-domain performance does not predict zero-shot generalization. This conflicts with the reader's own Q12 synthesis ('strong MS MARCO scores do not guarantee cross-domain gains'), an internal inconsistency in the reconstruction; the more explicit, reasoned pushback in Q8/Q9 was weighted over the unhedged summary line in Q12, per the instruction to pick the less favorable label when unsure. Weakened labels mostly reflect precision dropped from the gold numbers (dataset fractions in Q3b/Q3c/Q7a/Q7d, DBPedia/CPU-GPU in Q6b, DistilBERT/dataset names in Q6d) or omitted sub-claims (pip-installable package and library-wrapping in Q4b/Q10d; who annotated TREC-COVID in Q9c, which the reader's own Q4 'missing' note says the paper never states). Q8d and Q12c are weakened because the reader repeatedly scopes the lexical-bias finding to TREC-COVID alone (reinforced by Q9's 'they do not show how large pooling bias is on other datasets'), narrower than the gold nuggets' claim about BEIR broadly and about TREC-COVID's multi-system pool specifically. unsupported_belief intrusions are precise-sounding measurements with no matching gold nugget (vocabulary overlap, TAS-B vs ANCE document-length comparison, GenQ-vs-TAS-B-by-domain breakdown, BioASQ index-size figures, TREC-COVID Hole@10 percentages) that cannot be checked against the paper; benign_elaboration covers generic illustrative examples, reasonable connective reasoning, and true-sounding extra limitations (Q11) that simply fall outside the selected gold nuggets."
+}

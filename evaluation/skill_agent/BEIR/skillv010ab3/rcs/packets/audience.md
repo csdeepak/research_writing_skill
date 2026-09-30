@@ -1,0 +1,5 @@
+Intended readers: machine-learning researchers from other subfields (for example vision, language generation, reinforcement learning or theory) who want to understand a benchmark and comparison study in text retrieval.
+They can be assumed to know: general machine learning and deep learning, Transformers and fine-tuning, train/test splits and distribution shift, standard evaluation practice, averages and basic statistics, cosine similarity and dot product.
+They cannot be assumed to know: information-retrieval terminology (queries, corpora, relevance judgments), BM25 and other lexical methods, sparse versus dense retrieval, late interaction, the nDCG metric, the MS MARCO and TREC datasets and campaigns, how relevance labels are collected and how pooling can bias them.
+Binding reader types for this review: A (a specialist in the field), B (an adjacent researcher from another machine-learning subfield, the main target) and E (a mixed audience reading the paper cold).
+Venue type: journal-style research article.

@@ -1,0 +1,9 @@
+# Paper spine (one line per element; claim IDs are bindings)
+
+1. **Problem.** Building and evaluating AI agents that act through software (writing code, running commands, browsing the web) requires each project to assemble an interface to the world, a safe place to execute actions, a way to combine agents with humans and with each other, and a set of evaluations. {C001}
+2. **Gap.** As the authors describe existing frameworks, they offer general building blocks with basic runtime support, limited or stateless code execution, or are specialised to one domain such as software engineering. {C002}
+3. **Question.** Can one open platform supply a shared agent abstraction, a sandboxed runtime, reusable tools, delegation and integrated benchmarks, and is a single generalist agent built on it competitive across software, web and assistance tasks? {C027} {C021}
+4. **Approach.** OpenHands: an event stream of actions and observations, a docker runtime with bash, IPython and browser, an extensible skill library, agent delegation, and an evaluation harness covering 15 benchmarks. {C003} {C004} {C006} {C007} {C009}
+5. **Key finding.** On the integrated benchmarks the platform's agents score, for example, 26.0% on SWE-Bench Lite, 79.3% on HumanEvalFix, 15.5% on WebArena and 52.0% on GPQA diamond, and they sit below at least one listed comparator on eight benchmarks. {C011} {C013} {C014} {C017} {C020}
+6. **Meaning.** The tables are consistent with the authors' view that one general action space can be competitive across categories, but the evidence is single-run values against heterogeneous comparators; the platform's value as a shared base is an expectation, not a measured outcome. {C021} {C022}
+7. **Main limit.** Single reported values without spread, uncontrolled comparisons, no empirical safety evaluation, and agents that still struggle with complex tasks and long-file editing. {L001} {L002} {L005} {L003}

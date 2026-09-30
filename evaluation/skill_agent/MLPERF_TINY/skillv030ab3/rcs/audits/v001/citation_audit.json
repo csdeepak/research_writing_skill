@@ -1,0 +1,205 @@
+{
+  "draft": "drafts/v001/paper.md",
+  "rows": [
+    {
+      "citation": "(Bouguera, 2018)",
+      "registered": [
+        "SRC-004"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(Gal-On, 2012)",
+      "registered": [
+        "SRC-001"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(Reddi, 2019)",
+      "registered": [
+        "SRC-002"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(Chowdhery, 2019)",
+      "registered": [
+        "SRC-005"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(Lin, 2014)",
+      "registered": [
+        "SRC-009"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(Howard, 2017)",
+      "registered": [
+        "SRC-008"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(Krizhevsky, 2009)",
+      "registered": [
+        "SRC-010"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(Torralba, 2008)",
+      "registered": [
+        "SRC-011"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(Fedorov, 2019)",
+      "registered": [
+        "SRC-017"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(He, 2016)",
+      "registered": [
+        "SRC-007"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(Warden, 2018)",
+      "registered": [
+        "SRC-012"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(Koizumi, 2020)",
+      "registered": [
+        "SRC-015"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(Koizumi, 2019)",
+      "registered": [
+        "SRC-014"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(Purohit, 2019)",
+      "registered": [
+        "SRC-016"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(David, 2020)",
+      "registered": [
+        "SRC-006"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(Asanovic, 2014)",
+      "registered": [
+        "SRC-018"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(Banbury, 2021)",
+      "registered": [
+        "SRC-003"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    },
+    {
+      "citation": "(Zhang, 2017)",
+      "registered": [
+        "SRC-013"
+      ],
+      "in_reference_list": true,
+      "exists_step1": "user_supplied_file: listed in the project's reference list (not resolvable offline)",
+      "support_quote": true,
+      "strength_ok": "sentence attributes the statement to the MLPerf Tiny authors",
+      "status": "PASS"
+    }
+  ],
+  "registered_but_uncited": [],
+  "notes": "All sources read_depth=abstract (not read); every citing sentence is scoped to what the MLPerf Tiny paper says about the work. Works [1], [2], [16], [19] of the project list have no year and are not cited (see corpus_log.md)."
+}

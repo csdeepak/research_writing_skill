@@ -1,0 +1,13 @@
+{
+ "entries": [
+  {"id": "Q01", "question": "What is ASMOS and what does 'ownership' mean?", "raised_at": "Abstract", "answered_at": "Introduction para 1; 3.1", "reader_personas": ["B"]},
+  {"id": "Q02", "question": "Why does routing matter (what does global search cost)?", "raised_at": "Introduction para 1", "answered_at": "Introduction para 1 (candidate-set size and context tokens)", "reader_personas": ["B"]},
+  {"id": "Q03", "question": "Why not lead with accuracy?", "raised_at": "Introduction para 1", "answered_at": "Section 4.2 (accuracy reported as measured: A1 below A0 in every recorded seed, no significance test); the authors decided (Q-002) to make no equal-accuracy or saturation claim, so their earlier saturation reason (C024) is not used", "reader_personas": ["B"]},
+  {"id": "Q04", "question": "How were the four arms defined and what data was used?", "raised_at": "Introduction para 2", "answered_at": "Sections 3.1 and 3.2", "reader_personas": ["B", "A"]},
+  {"id": "Q05", "question": "Why these statistics (Kerby r, dropped zeros, no correction)?", "raised_at": "Section 3.3", "answered_at": "Section 3.3 (the authors' reasons)", "reader_personas": ["A"]},
+  {"id": "Q06", "question": "Is the saving at equal accuracy?", "raised_at": "Section 4.1", "answered_at": "Section 4.2", "reader_personas": ["B"]},
+  {"id": "Q07", "question": "Is the saving due to ownership evolving?", "raised_at": "Section 4.2", "answered_at": "Section 4.3", "reader_personas": ["B"]},
+  {"id": "Q08", "question": "Does ASMOS help on static question answering?", "raised_at": "Introduction para 2", "answered_at": "Section 4.5", "reader_personas": ["B"]},
+  {"id": "Q09", "question": "What is the operational definition of answerability?", "raised_at": "Section 3.2", "deferred_to": "[ASK AUTHOR] marker in 3.2; recorded in open_issues.md", "reader_personas": ["A", "B"]}
+ ]
+}

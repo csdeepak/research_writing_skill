@@ -1,0 +1,427 @@
+{
+  "tool": "lint_draft",
+  "draft": ".rcs/drafts/v001/paper.md",
+  "draft_sha256": "7a7d5df5bd388acc46f51c8736d4f302dc3e2c341b2fb63c1890aa8ba2e81290",
+  "final": false,
+  "rcs_used": true,
+  "claim_map_sha256": "7886662b72f02cf33cdfe911bad3726b78b5b9643b9400c971b6f396478a5b14",
+  "max_words": 4500,
+  "words_main": 4023,
+  "errors": 0,
+  "warnings": 21,
+  "findings": [
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "They describe existing benchmarks as unsuited to the task: a microcontroller benchmark that does not represent ML inference, an ML benchmark whose models are fa",
+      "message": "44-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 5,
+      "excerpt": "MLPerf Tiny is an open-source suite of four benchmarks (keyword spotting, visual wake words, image classification and anomaly detection) that measures accuracy,",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 9,
+      "excerpt": "Running a model on the device, next to the sensor, gives responsiveness and privacy and avoids the energy cost of wireless communication, which the authors repo",
+      "message": "42-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 9,
+      "excerpt": "The authors' motivation is that deploying ML at this scale requires co-optimizing every layer of the stack, from hardware to model to runtime, so the direct com",
+      "message": "42-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A6-result-dumping",
+      "level": "WARN",
+      "line": 19,
+      "excerpt": "A rule set and measurement framework: closed and open divisions, a modular reference implementation, and a procedure for latency, accuracy and energy (Sections ",
+      "message": "3+ consecutive numeric sentences with no interpretation (apply the RIC)"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 24,
+      "excerpt": "Section 2 lays out the challenges, Section 3 the related benchmarks, Section 4 the design (RQ1 and RQ2), Section 5 the results (RQ1 to RQ3), Section 6 the discu",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 28,
+      "excerpt": "On memory, TinyML systems work with resources about two orders of magnitude smaller than those of a smartphone, so models sized for other ML benchmarks do not f",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 30,
+      "excerpt": "On software heterogeneity, systems are often tightly coupled to a vendor's own inference stack, so any restriction on the stack could give unrepresentative resu",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 30,
+      "excerpt": "The fifth challenge is the cross-product: there is diversity at every level of the stack, and a user can improve the system at any layer, so a benchmark should ",
+      "message": "43-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 34,
+      "excerpt": "CoreMark is the standard benchmark for this class of device because it is easy to implement and uses real algorithms (Gal-On et al., 2012); it does not profile ",
+      "message": "38-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 53,
+      "excerpt": "The data are the Microsoft Common Objects in Context (MSCOCO) 2014 dataset (Lin et al., 2014), preprocessed so that positive images contain a person occupying m",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 55,
+      "excerpt": "Image classification uses CIFAR-10 (named for the Canadian Institute for Advanced Research; Krizhevsky et al., 2009), a labeled subset of the 80 Million Tiny Im",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 55,
+      "excerpt": "The authors chose it because its low resolution makes it the most suitable source for tiny models and because much prior TinyML work has used it (Fedorov et al.",
+      "message": "45-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 55,
+      "excerpt": "The model is a customized ResNetv1 (He et al., 2016) with three residual stacks instead of the official four, no pooling after the first convolution, and fewer ",
+      "message": "39-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "B5-causal",
+      "level": "WARN",
+      "line": 63,
+      "excerpt": "The authors set each target slightly below the reference accuracy, to accommodate differences due to quantization and rounding across platforms {C029}.",
+      "message": "causal wording: requires causal design or ablation; otherwise 'is associated with'"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 63,
+      "excerpt": "The closed division allows post-training quantization (PTQ), which converts a trained model to lower precision without retraining; quantization-aware training (",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A6-result-dumping",
+      "level": "WARN",
+      "line": 63,
+      "excerpt": "Section 5.1 gives the reference values and the resulting gaps, which show how much room the targets leave.",
+      "message": "3+ consecutive numeric sentences with no interpretation (apply the RIC)"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 69,
+      "excerpt": "The accuracy is still measured on the same test dataset, but the accuracy threshold need not be met, which lets submitters show tradeoffs between accuracy, late",
+      "message": "38-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 73,
+      "excerpt": "For latency, the framework repeats five times: it downloads an input, loads the input tensor, runs inference for at least 10 seconds and 10 iterations, and meas",
+      "message": "41-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 73,
+      "excerpt": "For accuracy, it performs a single inference on the entire set of validation inputs and computes Top-1 percent or AUC, and each model has a minimum accuracy tha",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 75,
+      "excerpt": "Level-shifter power is excluded from the energy score because it is a framework cost, not a DUT cost, and only one power supply may power the core, so that no o",
+      "message": "37-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 94,
+      "excerpt": "For keyword spotting, the quantized reference model shows 91.6% on the full test set and 91.7% on the random 1000-utterance subset used for on-device evaluation",
+      "message": "41-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A6-result-dumping",
+      "level": "WARN",
+      "line": 94,
+      "excerpt": "For keyword spotting, the quantized reference model shows 91.6% on the full test set and 91.7% on the random 1000-utterance subset used for on-device evaluation",
+      "message": "3+ consecutive numeric sentences with no interpretation (apply the RIC)"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 94,
+      "excerpt": "For anomaly detection, on an evaluation set of 248 samples from four different machines, the fp32 reference model reaches an AUC of 0.88 and the quantized model",
+      "message": "36-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 116,
+      "excerpt": "One organization used the benchmark to demonstrate that its software development kit (SDK) tools are hardware agnostic, another a neural-network accelerator, an",
+      "message": "62-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 122,
+      "excerpt": "For RQ2, the paper specifies a closed division that fixes models, datasets and targets, an open division that relaxes them, a modular reference implementation, ",
+      "message": "46-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 122,
+      "excerpt": "This reading is consistent with the mix of divisions and vendors in Table 3; it rests on five entries in one round, with no submission measurements and no compa",
+      "message": "38-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 124,
+      "excerpt": "**Implications and the authors' expectations.** The authors state that the benchmarks have already acted as a standard set of tasks for TinyML research (Banbury",
+      "message": "42-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 124,
+      "excerpt": "The project's repository description (its README file) lists releases from v0.5 (Jun 16, 2021) to v1.1 (Jun 27, 2023) and expects the next round, v1.2, to have ",
+      "message": "38-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "C1-orphan-claim",
+      "level": "WARN",
+      "line": 130,
+      "excerpt": "Keyword spotting and anomaly detection are time-domain tasks that typically involve continuously streaming inputs, where information from previous time steps ca",
+      "message": "claim-like sentence without {C###} tag"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 130,
+      "excerpt": "The limited bandwidth between the test runner and the DUT makes it difficult to recreate a streaming scenario without adding delays from data transfer, so laten",
+      "message": "44-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 136,
+      "excerpt": "Second, every accuracy and AUC value is a single number on a fixed set, of 200 images, 1000 utterances or 248 samples for the on-device sets, with no interval, ",
+      "message": "45-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 140,
+      "excerpt": "What remains open is whether comparisons under these rules stay fair as the suite changes: the authors say streaming, pre-processing and model-family coverage a",
+      "message": "38-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A-long-sentence",
+      "level": "INFO",
+      "line": 150,
+      "excerpt": "In 2019 IEEE Workshop on Applications of Signal Processing to Audio and Acoustics (WASPAA), pages 313-317. - Koizumi, Y., Kawaguchi, Y., Imoto, K., Nakamura, T.",
+      "message": "40-word sentence: split or keep with reason"
+    },
+    {
+      "rule": "A4-rare-acronym",
+      "level": "INFO",
+      "line": 42,
+      "excerpt": "ROC",
+      "message": "'ROC' used 1x: spell out instead"
+    },
+    {
+      "rule": "A4-rare-acronym",
+      "level": "INFO",
+      "line": 53,
+      "excerpt": "MSCOCO",
+      "message": "'MSCOCO' used 1x: spell out instead"
+    },
+    {
+      "rule": "A4-rare-acronym",
+      "level": "INFO",
+      "line": 53,
+      "excerpt": "TFLM",
+      "message": "'TFLM' used 2x: spell out instead"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 55,
+      "excerpt": "CIFAR",
+      "message": "acronym 'CIFAR' never defined"
+    },
+    {
+      "rule": "A4-rare-acronym",
+      "level": "INFO",
+      "line": 57,
+      "excerpt": "CNN",
+      "message": "'CNN' used 2x: spell out instead"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 59,
+      "excerpt": "DCASE2020",
+      "message": "acronym 'DCASE2020' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 59,
+      "excerpt": "MIMII",
+      "message": "acronym 'MIMII' never defined"
+    },
+    {
+      "rule": "A4-rare-acronym",
+      "level": "INFO",
+      "line": 63,
+      "excerpt": "PTQ",
+      "message": "'PTQ' used 2x: spell out instead"
+    },
+    {
+      "rule": "A4-rare-acronym",
+      "level": "INFO",
+      "line": 63,
+      "excerpt": "QAT",
+      "message": "'QAT' used 1x: spell out instead"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 67,
+      "excerpt": "NUCLEO",
+      "message": "acronym 'NUCLEO' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 67,
+      "excerpt": "L4R5ZI",
+      "message": "acronym 'L4R5ZI' never defined"
+    },
+    {
+      "rule": "A4-rare-acronym",
+      "level": "INFO",
+      "line": 73,
+      "excerpt": "IPS",
+      "message": "'IPS' used 2x: spell out instead"
+    },
+    {
+      "rule": "A4-rare-acronym",
+      "level": "INFO",
+      "line": 116,
+      "excerpt": "SDK",
+      "message": "'SDK' used 1x: spell out instead"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 116,
+      "excerpt": "RISC",
+      "message": "acronym 'RISC' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 124,
+      "excerpt": "README",
+      "message": "acronym 'README' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 146,
+      "excerpt": "MBED",
+      "message": "acronym 'MBED' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 146,
+      "excerpt": "GCC",
+      "message": "acronym 'GCC' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 146,
+      "excerpt": "ARM",
+      "message": "acronym 'ARM' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 146,
+      "excerpt": "UNO",
+      "message": "acronym 'UNO' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 146,
+      "excerpt": "LPM01A",
+      "message": "acronym 'LPM01A' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 146,
+      "excerpt": "JS110",
+      "message": "acronym 'JS110' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 150,
+      "excerpt": "EECS",
+      "message": "acronym 'EECS' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 150,
+      "excerpt": "UCB",
+      "message": "acronym 'UCB' never defined"
+    },
+    {
+      "rule": "A3-undefined-acronym",
+      "level": "WARN",
+      "line": 150,
+      "excerpt": "IEEE",
+      "message": "acronym 'IEEE' never defined"
+    },
+    {
+      "rule": "A4-rare-acronym",
+      "level": "INFO",
+      "line": 150,
+      "excerpt": "WASPAA",
+      "message": "'WASPAA' used 1x: spell out instead"
+    }
+  ]
+}

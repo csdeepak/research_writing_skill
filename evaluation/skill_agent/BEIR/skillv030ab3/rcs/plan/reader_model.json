@@ -1,0 +1,28 @@
+{
+  "personas": [
+    {
+      "id": "B",
+      "description": "Adjacent-field ML researcher: knows general ML, deep learning, standard evaluation and statistics; not information-retrieval terms, datasets or prior work.",
+      "binding": true,
+      "known_terms": ["ML", "GPU", "CPU", "BERT", "transformer", "fine-tuning", "benchmark", "zero-shot", "in-domain", "out-of-distribution", "OOD", "bi-encoder", "cosine", "dot product", "embedding", "accuracy", "precision", "recall", "seed", "variance", "confidence interval", "ablation", "distillation", "hard negatives", "in-batch negatives", "latency", "index"],
+      "prerequisite_concepts": [
+        {"concept": "Hole@10", "needs": ["pooling", "relevance judgement"]},
+        {"concept": "nDCG@10", "needs": ["relevance judgement"]},
+        {"concept": "late interaction", "needs": ["bi-encoder", "cross-encoder"]}
+      ],
+      "likely_misconceptions": [
+        {"misconception": "A low score for dense models means a poor model rather than possibly incomplete labels",
+         "trigger_terms": ["underperform", "dense"],
+         "corrective_point": "Unjudged retrieved documents are treated as irrelevant, which can disadvantage systems unlike those that built the pool.",
+         "corrective_terms": ["unjudged", "irrelevant"]},
+        {"misconception": "BEIR scores from one run carry error bars",
+         "trigger_terms": ["nDCG@10"],
+         "corrective_point": "Each score is a single evaluation of a fixed checkpoint; no variance is reported.",
+         "corrective_terms": ["single", "variance"]}
+      ],
+      "reader_questions": ["What is retrieval and what is zero-shot retrieval?", "What data and metric were used, and why?", "Which systems, and how were they configured?", "What is BM25 and why is it the reference?", "How large are the differences, and are they reliable?", "What does the annotation-bias study show?", "What does the benchmark not cover?"],
+      "venue_expectations": [],
+      "new_term_budget": 2
+    }
+  ]
+}

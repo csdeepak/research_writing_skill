@@ -1,0 +1,19 @@
+{
+ "id": "WF-04",
+ "origin": "spec 4.3 (unattended mode)",
+ "title": "an accepted risk used to license a factual claim",
+ "files": {
+  "r.csv": "m,acc\nM,0.84\n",
+  ".rcs/evidence/research_evidence.json": "{\n \"project_root\": \".\",\n \"generated_at\": \"2026-09-29\",\n \"items\": [\n  {\n   \"id\": \"E001\",\n   \"kind\": \"result\",\n   \"summary\": \"Accuracy of M\",\n   \"locator\": {\n    \"path\": \"r.csv\"\n   },\n   \"strength\": \"hard\",\n   \"status\": \"ok\",\n   \"value\": {\n    \"metric\": \"acc\",\n    \"value\": 0.84\n   }\n  }\n ]\n}",
+  ".rcs/claims/claim_evidence_map.json": "{\n \"claims\": [\n  {\n   \"id\": \"C001\",\n   \"statement\": \"M reached 0.84 accuracy.\",\n   \"claim_type\": \"measured\",\n   \"evidence\": [\n    \"E001\"\n   ],\n   \"confidence\": \"moderate\",\n   \"author_confirmation\": \"confirmed\",\n   \"status\": \"VERIFIED\"\n  }\n ],\n \"limitations\": []\n}",
+  ".rcs/state.json": "{\n \"guardrail\": \"v0.3\",\n \"accepted_risks\": [\n  {\n   \"kind\": \"factual\",\n   \"note\": \"assumed the missing baseline score was 0.80\"\n  }\n ]\n}"
+ },
+ "checks": [
+  {
+   "tool": "validate",
+   "expect": [
+    "ERROR:ACCEPTED_RISK_FACTUAL"
+   ]
+  }
+ ]
+}

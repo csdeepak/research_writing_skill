@@ -1,0 +1,39 @@
+{
+ "files": [
+  {
+   "path": "project/paper.txt",
+   "class": "draft",
+   "size": 105244,
+   "opened": true,
+   "note": "text extracted from the official research paper (ICLR 2025); tables damaged by extraction; treated as the primary result-bearing evidence (tables hard, prose soft)"
+  },
+  {
+   "path": "project/README_1.md",
+   "class": "reference",
+   "size": 10411,
+   "opened": true,
+   "note": "benchmarks repository README (soft)"
+  },
+  {
+   "path": "project/README_2.md",
+   "class": "reference",
+   "size": 10126,
+   "opened": true,
+   "note": "Agent Canvas README (soft)"
+  },
+  {
+   "path": "TASK.md",
+   "class": "other",
+   "size": 2719,
+   "opened": true,
+   "note": "task instructions, not project evidence"
+  },
+  {
+   "path": "rce/",
+   "class": "other",
+   "size": null,
+   "opened": true,
+   "note": "skill and tools, not project evidence"
+  }
+ ]
+}

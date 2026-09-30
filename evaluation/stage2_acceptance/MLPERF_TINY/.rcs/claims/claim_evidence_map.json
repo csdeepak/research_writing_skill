@@ -1,0 +1,19 @@
+{
+ "claims": [
+  {
+   "id": "C001",
+   "statement": "The four MLPerf Tiny v0.5 reference models range from 52.5 KB (DS-CNN) to 325 KB (MobileNetV1).",
+   "claim_type": "measured",
+   "evidence": [
+    "E001"
+   ],
+   "confidence": "moderate",
+   "author_confirmation": "confirmed",
+   "basis": "project_file",
+   "status": "VERIFIED",
+   "licenses": []
+  }
+ ],
+ "limitations": [],
+ "negative_result_decisions": []
+}

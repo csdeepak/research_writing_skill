@@ -1,0 +1,36 @@
+{
+ "project_root": ".",
+ "generated_at": "2026-09-29",
+ "items": [
+  {
+   "id": "E001",
+   "kind": "result",
+   "summary": "TFLite size of each reference model (Table 1)",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Model (TFLite Model Size)"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "DS-CNN": 52.5,
+    "MobileNetV1": 325,
+    "ResNet": 96,
+    "FC-AutoEncoder": 270
+   },
+   "quantity": "tflite_model_size_kb"
+  },
+  {
+   "id": "E002",
+   "kind": "result",
+   "summary": "Per-submission latency and energy (Figure 5)",
+   "locator": {
+    "path": "project/paper.txt",
+    "anchor": "Figure 5"
+   },
+   "strength": "soft",
+   "status": "unverifiable",
+   "notes": "values exist only in a figure; not recoverable from the text"
+  }
+ ]
+}

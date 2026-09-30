@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-09-27",
+  "note": "Terms/concepts the source project's own text uses without defining, gathered while building the evidence map (corpus_agent.md step 2 output). Used to set the term budget and background-concept list for the adjacent-researcher audience (mode B).",
+  "undefined_in_source": [
+    "TFLite / TensorFlow Lite for Microcontrollers (TFLM) -- assumed known by the source paper's own field, not by an adjacent ML researcher",
+    "post-training quantization (PTQ) vs. quantization-aware training (QAT) -- used throughout Table 2 and Section 5.2 without definition",
+    "AUC-ROC -- used in Section 4.4 assuming statistical/ML-evaluation background (adjacent researchers will know this; still worth one clarifying clause given the unusual 'parameterless' framing)",
+    "device under test (DUT) -- an EEMBC-benchmarking term used from Section 5.3 onward without expansion",
+    "MCU-class / microcontroller -- the source assumes the reader already knows the resource envelope (clock speed, RAM/flash) of a microcontroller; README_1.md's '10-250 MHz, <50 mW' is the only quantified anchor available",
+    "system under test (SUT) -- used once in Section 2 without expansion",
+    "IPS (inferences per second) -- introduced only inside the measurement-procedure list",
+    "depthwise-separable CNN -- named in Section 4.3 without a definition; adjacent ML researchers know CNNs but not necessarily this specific layer type",
+    "log-mel-spectrogram -- used in Section 4.4 without definition; standard in audio ML, not necessarily known outside it",
+    "top-1 accuracy vs. AUC as differently-shaped metrics for a classification-style task vs. a detection-style task -- not explained, just used per benchmark"
+  ],
+  "implication_for_draft": "These terms get one plain-language gloss at first use in the new paper (audience mode B: adjacent ML researcher, term budget <=2 new terms/paragraph), rather than being assumed. TFLite Micro, DUT, PTQ/QAT, and MCU resource envelope are the ones most load-bearing for understanding the Method section and are defined there; AUC and CNN variants get a one-clause reminder since the audience already knows general ML/stats but not this subfield's specific usage."
+}

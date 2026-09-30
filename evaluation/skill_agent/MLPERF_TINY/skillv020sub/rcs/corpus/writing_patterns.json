@@ -1,0 +1,34 @@
+{
+  "patterns": [
+    {
+      "id": "PAT-001",
+      "source": "project/paper.txt (the source project's own paper, used as a same-genre structural exemplar; no external corpus available under the no-web constraint, AR-003)",
+      "section": "Section 4 (Benchmarks)",
+      "rhetorical_purpose": "Let a reader compare four otherwise-unrelated benchmark tasks on equal footing, and let each task's design choices be checked against a stated reason.",
+      "move_sequence": ["orient with one summary table across all four tasks (Table 1)", "for each task: state why the task matters (a 'Rational' move) before any data/model detail", "then the dataset", "then the model", "then how the pass/fail quality target was set, tied back to a measured reference number"],
+      "reader_question_answered": "Why does this specific task belong in the suite, and how was its pass/fail bar chosen (not just what the bar is)?",
+      "assumed_knowledge": "General ML task/dataset/model vocabulary; not the specific datasets or prior TinyML models named",
+      "transition_behavior": "Each of the four subsections repeats the same four-move template, so the reader's expectation, once set by the first subsection, carries over without needing to be re-explained.",
+      "evidence_placement": "The quality-target rationale always cites a specific measured number (e.g., a reference-model accuracy) immediately before stating the chosen threshold, so the threshold reads as derived rather than arbitrary.",
+      "result_interpretation_pattern": "State the measured number, then the threshold set from it, then (usually in one clause) the reason for the gap between them (e.g., 'to accommodate quantization differences').",
+      "figure_table_integration": "Table 1 is placed before any subsection and is referred to implicitly (each subsection fills in one column); it is not a Figure/Table this paper reprints as an image, but its column structure is reused as this new paper's own comparison table.",
+      "signature": "task rationale -> dataset -> model -> quality target, repeated per task, each target tied to a stated reference number",
+      "reader_effect": "Four dissimilar tasks (audio, vision x2, anomaly detection) read as one coherent design method rather than four separate reports.",
+      "paraphrase_only": true
+    },
+    {
+      "id": "PAT-002",
+      "source": "project/paper.txt",
+      "section": "Section 2 (Challenges) placed before Section 3 (Related Work)",
+      "rhetorical_purpose": "Give the reader the vocabulary and constraints needed to judge why prior benchmarks fall short, before naming those prior benchmarks.",
+      "move_sequence": ["name each challenge as a short label (Low Power, Limited Memory, Hardware Heterogeneity, Software Heterogeneity, Cross-product)", "give one concrete consequence per challenge", "only then move to Related Work, where each prior benchmark is shown failing on one or more of these named challenges"],
+      "reader_question_answered": "What would even count as a solution here, before being told what does not solve it?",
+      "assumed_knowledge": "General systems/ML background; not TinyML-specific hardware constraints",
+      "transition_behavior": "Related Work's critique of CoreMark/MLMark/MLPerf Inference reuses the exact challenge labels just introduced, so the reader recognizes the criteria rather than meeting new ones.",
+      "evidence_placement": "Background concepts are front-loaded as their own section rather than folded into the Introduction, keeping the Introduction's orientation paragraph short.",
+      "signature": "name the evaluation criteria before naming the things being evaluated against them",
+      "reader_effect": "The Gap paragraph that follows reads as a checklist failure rather than an assertion the reader has to take on faith.",
+      "paraphrase_only": true
+    }
+  ]
+}

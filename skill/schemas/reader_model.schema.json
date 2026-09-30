@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rce/reader_model.schema.json",
+  "title": "Reader knowledge model (vNext Stage 3, M02; used by tools/audit_reader.py)",
+  "type": "object",
+  "required": ["personas"],
+  "properties": {
+    "personas": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "description", "known_terms"],
+        "properties": {
+          "id": {"type": "string", "description": "Audience mode A-E (audience_model.md) or a named persona."},
+          "description": {"type": "string"},
+          "binding": {"type": "boolean", "description": "The paper must work for this reader."},
+          "known_terms": {"type": "array", "items": {"type": "string"},
+                          "description": "Terms this reader already knows. Do not assume an expert knows adjacent-field jargon."},
+          "prerequisite_concepts": {"type": "array", "items": {"type": "object", "required": ["concept", "needs"],
+            "properties": {"concept": {"type": "string"}, "needs": {"type": "array", "items": {"type": "string"}}}}},
+          "likely_misconceptions": {"type": "array", "items": {"type": "object",
+            "required": ["misconception", "trigger_terms", "corrective_terms"],
+            "properties": {"misconception": {"type": "string"}, "trigger_terms": {"type": "array", "items": {"type": "string"}},
+                           "corrective_point": {"type": "string"}, "corrective_terms": {"type": "array", "items": {"type": "string"}}}}},
+          "reader_questions": {"type": "array", "items": {"type": "string"}},
+          "venue_expectations": {"type": "array", "items": {"type": "string"}},
+          "new_term_budget": {"type": "integer", "minimum": 0, "maximum": 10}
+        }
+      }
+    }
+  }
+}

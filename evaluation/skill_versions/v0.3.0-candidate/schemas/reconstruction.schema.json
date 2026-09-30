@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rce/reconstruction.schema.json",
+  "title": "Reader reconstruction answers",
+  "type": "object",
+  "required": ["packet_id", "answers"],
+  "properties": {
+    "packet_id": {"type": "string"},
+    "answers": {
+      "type": "object",
+      "required": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12"],
+      "additionalProperties": {
+        "type": "object",
+        "required": ["answer", "locations", "confidence"],
+        "properties": {
+          "answer": {"type": "string"},
+          "locations": {"type": "array", "items": {"type": "string"}},
+          "confidence": {"type": "integer", "minimum": 1, "maximum": 5},
+          "missing": {"type": "string"}
+        }
+      }
+    }
+  }
+}

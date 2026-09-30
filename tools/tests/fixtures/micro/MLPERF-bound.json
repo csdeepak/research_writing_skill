@@ -1,0 +1,22 @@
+{
+ "id": "MLPERF-bound",
+ "origin": "real: MLPerf Tiny v0.1.0 Phase 9 draft (untraceable bound, D-25) vs traceable wording",
+ "rule_tested": "numbers must trace to evidence (verify_numbers): state the traced maximum, not an invented bound",
+ "passages": {
+  "A": "None of the three jointly fits the combination this paper's research question asks about: ML-realistic workloads, MCU-class hardware, and energy as a first-class metric, delivered through a reproducible methodology. Closing that gap, rather than extending any one of the three individually, is what the rest of this paper describes; Section 4's reference models, all under 350 kilobytes, illustrate just how far below MLMark's and MLPerf Inference's assumed hardware scale the actual target sits.",
+  "B": "None of the three jointly fits the combination this paper's research question asks about: ML-realistic workloads, MCU-class hardware, and energy as a first-class metric, delivered through a reproducible methodology. Closing that gap, rather than extending any one of the three individually, is what the rest of this paper describes; Section 4's reference models, the largest of which is 325 kilobytes, illustrate just how far below MLMark's and MLPerf Inference's assumed hardware scale the actual target sits."
+ },
+ "questions": [
+  {
+   "q": "How large is the largest of the reference models, in kilobytes?",
+   "required": [
+    [
+     "325"
+    ]
+   ],
+   "forbidden": [
+    "350"
+   ]
+  }
+ ]
+}

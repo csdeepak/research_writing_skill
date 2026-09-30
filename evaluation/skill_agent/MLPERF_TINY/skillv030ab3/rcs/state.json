@@ -1,0 +1,35 @@
+{
+  "step": 17,
+  "guardrail": "v0.3",
+  "length_limit_words": 4500,
+  "gates": {
+    "G1": "passed",
+    "G2": "passed (self-test recorded in audits/gates/G2_skeleton_selftest.md; no executable tool)",
+    "G3": "passed",
+    "G4": "pending (step 18 blind review is external)",
+    "G5": "pending (final edit not run by this agent)"
+  },
+  "open_failures": [],
+  "accepted_risks": [
+    {
+      "kind": "workflow",
+      "risk": "No human available: wherever the skill asks for author confirmation (G1 spine and claim confirmation), the run proceeds. Claims stated in the authors' own paper are marked confirmed; C035 (writer-computed differences) stays pending."
+    },
+    {
+      "kind": "workflow",
+      "risk": "No human available for venue choice: the generic venue profile is used, every rule assumed."
+    },
+    {
+      "kind": "workflow",
+      "risk": "V5 (human visual usability review) and any human comprehension study are not performed. No visuals other than three Markdown tables are used."
+    },
+    {
+      "kind": "workflow",
+      "risk": "Citations are registered with user_supplied_file and abstract read depth because the sources cannot be read (no web); they are used only to say what the MLPerf Tiny paper states about each work."
+    },
+    {
+      "kind": "workflow",
+      "risk": "Step 18 (blind review) is performed externally; G4 and G5 are recorded as not run by this agent."
+    }
+  ]
+}

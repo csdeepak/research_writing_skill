@@ -1,0 +1,95 @@
+{
+ "questions": [
+  {
+   "id": "Q01",
+   "question": "Why do agents that act through software need a platform?",
+   "raised_at": "I.1",
+   "answered_at": "I.1",
+   "deferred_to": null,
+   "reader_personas": [
+    "B"
+   ]
+  },
+  {
+   "id": "Q02",
+   "question": "Why do existing frameworks not suffice?",
+   "raised_at": "I.2",
+   "answered_at": "I.2",
+   "deferred_to": null,
+   "reader_personas": [
+    "B"
+   ]
+  },
+  {
+   "id": "Q03",
+   "question": "What exactly is asked?",
+   "raised_at": "I.3",
+   "answered_at": "I.3",
+   "deferred_to": null,
+   "reader_personas": [
+    "B"
+   ]
+  },
+  {
+   "id": "Q04",
+   "question": "What was built and why these choices?",
+   "raised_at": "I.4",
+   "answered_at": "M.1-M.6",
+   "deferred_to": null,
+   "reader_personas": [
+    "B"
+   ]
+  },
+  {
+   "id": "Q05",
+   "question": "How was it evaluated?",
+   "raised_at": "I.5",
+   "answered_at": "S.1-S.3",
+   "deferred_to": null,
+   "reader_personas": [
+    "B"
+   ]
+  },
+  {
+   "id": "Q06",
+   "question": "How good are the results and against what?",
+   "raised_at": "I.5",
+   "answered_at": "Rs.1-Rs.4",
+   "deferred_to": null,
+   "reader_personas": [
+    "B"
+   ]
+  },
+  {
+   "id": "Q07",
+   "question": "What do results not establish?",
+   "raised_at": "Rs.4",
+   "answered_at": "D.3 and Lim.1-Lim.2",
+   "deferred_to": null,
+   "reader_personas": [
+    "B"
+   ]
+  },
+  {
+   "id": "Q08",
+   "question": "Is the platform safe?",
+   "raised_at": "M.7",
+   "answered_at": "M.7 and Lim.1",
+   "deferred_to": null,
+   "reader_personas": [
+    "B"
+   ]
+  },
+  {
+   "id": "Q09",
+   "question": "Do differences exceed noise?",
+   "raised_at": "Rs.1",
+   "answered_at": "Lim.2",
+   "deferred_to": null,
+   "reader_personas": [
+    "B"
+   ]
+  }
+ ],
+ "debt": 0
+}

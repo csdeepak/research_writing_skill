@@ -1,0 +1,31 @@
+{
+  "tool": "validate_artifacts",
+  "errors": 0,
+  "warnings": 3,
+  "inputs": {
+    "evidence/research_evidence.json": "624f474e2fd512683451cc2a912af59084d8fbdd1230c77a8f8b9518a5e181c5",
+    "claims/claim_evidence_map.json": "03c3b6c9d59541b194e3279b3341ed73471298bb970a862c759fd7110ca9d77f",
+    "story/story_graph.json": "760fbd29c5e48226d5a3cb758225973b7154a7512f760fba26c3877896581fa6",
+    "corpus/source_registry.json": "79b6ecb16a08ca8c7ee02f82dca6d399445db693ab76e178f62cb221aaac93a2",
+    "corpus/writing_patterns.json": "d3dab0ea3ae836030622c7f3b1d0f9e92a71960f51819504eeea0dedbcf78c1a",
+    "corpus/anti_patterns.json": "192243d5b4e71d5ea4756e5a451f06767fdb9be8fe21012221b37e4e546ae8a3",
+    "story/spine.md": "e68b584511407b964b4b06df17be2673052e54ac70818e97bb48ddfa0b88f9e2"
+  },
+  "items": [
+    {
+      "level": "WARN",
+      "where": "claims/C014",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C021",
+      "message": "author_confirmation pending"
+    },
+    {
+      "level": "WARN",
+      "where": "claims/C041",
+      "message": "author_confirmation pending"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-09-27",
+  "items": [
+    {
+      "id": "MISS-1",
+      "description": "Figure 5's underlying numeric latency (IPS) and energy (microjoules/inference) values for each of the four reference implementations are not present in the extracted text -- only the caption and one qualitative summary sentence (E050) survive extraction.",
+      "related_evidence": ["E050"],
+      "affects": "Any claim about the specific magnitude of the reference implementations' latency or energy scores. Marked in the draft with [MISSING RESULT: Figure 5 latency/energy values]."
+    },
+    {
+      "id": "MISS-2",
+      "description": "No run-to-run variance (spread, min/max, or IQR) is reported anywhere in the text for the five repeated latency or energy runs; the protocol reports only the median of five runs as the score.",
+      "related_evidence": ["E047"],
+      "affects": "Confidence in the precision of any reference-implementation latency/energy score; recorded as a writer-derived limitation (L004/L005) rather than invented as a number."
+    },
+    {
+      "id": "MISS-3",
+      "description": "Table 2's per-cell modification indicators are only partly recoverable: the caption states 'X = no modification, check mark = modification', but no check-mark glyphs survived text extraction, so the fine-grained Dataset/Training/Model modification pattern for each v0.5 submission cannot be asserted beyond the Closed/Open division itself.",
+      "related_evidence": ["E052"],
+      "affects": "Any claim about exactly which of Dataset/Training/Model each named submission modified. The new paper reports only division, platform/framework/numerics, and the stated 'demonstrates' contribution."
+    },
+    {
+      "id": "MISS-4",
+      "description": "No per-submission quantitative accuracy/latency/energy scores for the five v0.5 submissions appear in the paper text; the paper points to an external results page (mlcommons.org) and results repository (github.com/mlcommons/tiny_results_v0.5) for those numbers, which lie outside ./project/ and so outside the evidence available to this paper.",
+      "related_evidence": ["E051", "E052"],
+      "affects": "Any claim comparing the five submissions' actual performance to one another; the new paper describes only what each submission was built to demonstrate, not comparative scores."
+    },
+    {
+      "id": "MISS-5",
+      "description": "Each benchmark's reported reference-model accuracy/AUC (VWW ~86%, IC 86.5% on 200 images, KWS 92.2%/91.6%/91.7%, AD AUC 0.88/0.86) reads as a single evaluation on a fixed validation/test set; no seed-to-seed, split-to-split, or repeated-training variance is reported for any of these numbers.",
+      "related_evidence": ["E018", "E025", "E030", "E033", "E041"],
+      "affects": "Confidence in how precisely each quality target reflects the 'true' reference-model accuracy; recorded as a writer-derived limitation (L005)."
+    }
+  ]
+}

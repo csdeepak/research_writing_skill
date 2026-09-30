@@ -1,0 +1,103 @@
+{
+ "items": [
+  {
+   "id": "M001",
+   "what": "Feature marks of Table 1 (GUI, standardized tool library, built-in sandbox, built-in browser, multi-agent collaboration, human-AI collaboration, AgentHub, evaluation framework, agent QC) for the 12 frameworks",
+   "why_missing": "check marks lost in text extraction; only the Domain column and the footnote survive",
+   "affects": [
+    "C005"
+   ],
+   "class": "MISSING_RESULT"
+  },
+  {
+   "id": "M002",
+   "what": "Reliable row-to-value alignment and average costs for Table 4 benchmarks other than SWE-bench Lite and HumanEvalFix (BIRD, ML-Bench, BioCoder, Gorilla APIBench, ToolQA)",
+   "why_missing": "table layout damaged; values and rows are listed in separate blocks",
+   "affects": [
+    "C033"
+   ],
+   "class": "MISSING_RESULT"
+  },
+  {
+   "id": "M003",
+   "what": "Variance, seeds, number of runs, or confidence intervals for any reported result",
+   "why_missing": "not present in the project materials",
+   "affects": [
+    "C030",
+    "C032",
+    "C034",
+    "C035",
+    "C037",
+    "C038",
+    "C039"
+   ],
+   "class": "MISSING_RESULT"
+  },
+  {
+   "id": "M004",
+   "what": "Ablations of platform components (event stream, runtime, AgentSkills, delegation)",
+   "why_missing": "not present in the project materials",
+   "affects": [
+    "C010",
+    "C011",
+    "C015",
+    "C017"
+   ],
+   "class": "MISSING_RESULT"
+  },
+  {
+   "id": "M005",
+   "what": "Any measurement of integration effort, developer productivity or human-agent collaboration outcomes",
+   "why_missing": "the paper states qualitative benefits (for example simpler GAIA integration) without measurement",
+   "affects": [
+    "C043",
+    "C021"
+   ],
+   "class": "MISSING_RESULT"
+  },
+  {
+   "id": "M006",
+   "what": "Figures 1, 2, 4 and 5 as images (UI screenshot, architecture diagram, runtime workflow, image build flowchart)",
+   "why_missing": "images not in the extracted text; Figure 2 content is only partly recoverable as text",
+   "affects": [
+    "C010",
+    "C011",
+    "C013"
+   ],
+   "class": "NO_VALID_VISUAL"
+  },
+  {
+   "id": "M007",
+   "what": "Tuning budgets, prompts and settings of the reference systems whose numbers are quoted",
+   "why_missing": "numbers taken from other papers; not in the project materials",
+   "affects": [
+    "C030",
+    "C032",
+    "C034",
+    "C035",
+    "C037",
+    "C038",
+    "C039"
+   ],
+   "class": "MISSING_RESULT"
+  },
+  {
+   "id": "M008",
+   "what": "Date and method of the community statistics (32K stars, 2.1K contributions, 188 contributors)",
+   "why_missing": "stated as of writing without a date",
+   "affects": [
+    "C029"
+   ],
+   "class": "MISSING_RESULT"
+  },
+  {
+   "id": "M009",
+   "what": "Explicit research questions or hypotheses with falsifiers",
+   "why_missing": "the paper states goals, not hypotheses; the paper draft frames them as design and evaluation questions taken from the stated goals",
+   "affects": [
+    "C042"
+   ],
+   "class": "AMBIGUOUS_CLAIM"
+  }
+ ]
+}

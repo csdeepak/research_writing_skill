@@ -1,0 +1,30 @@
+{
+  "entries": [
+    {"id":"Q-01","question":"What is the problem?","raised_at":"I.1","answered_at":"I.1","reader_personas":["A","B","E"]},
+    {"id":"Q-02","question":"Why does zero-shot generalization matter in practice?","raised_at":"I.2","answered_at":"I.2","reader_personas":["A","B","E"]},
+    {"id":"Q-03","question":"Don't we already know neural rankers beat BM25?","raised_at":"I.3","answered_at":"I.3,R1.2","reader_personas":["A","B","E"]},
+    {"id":"Q-04","question":"Isn't this already covered by an existing benchmark?","raised_at":"I.4","answered_at":"I.4,RW.1,RW.2","reader_personas":["A","B","E"]},
+    {"id":"Q-05","question":"What exactly is being asked (RQ1)?","raised_at":"I.5","answered_at":"I.5","deferred_to":"R1.1-R1.9,D.1","reader_personas":["A","B","E"]},
+    {"id":"Q-06","question":"What did the authors actually build/do?","raised_at":"I.6","answered_at":"I.6,BM.1-BM.5,SY.1-SY.5","reader_personas":["A","B","E"]},
+    {"id":"Q-07","question":"What is claimed as new here?","raised_at":"I.7","answered_at":"I.7","reader_personas":["A","B","E"]},
+    {"id":"Q-08","question":"How were the 18 datasets chosen, and are they really diverse?","raised_at":"BM.1","answered_at":"BM.1-BM.4","reader_personas":["A","B","E"]},
+    {"id":"Q-09","question":"Why nDCG@10 specifically, not accuracy/F1/precision?","raised_at":"BM.5","answered_at":"BM.5","reader_personas":["B","C(if present)","E"]},
+    {"id":"Q-10","question":"What do the five architecture families actually do differently?","raised_at":"RW.3","answered_at":"SY.1-SY.4","reader_personas":["A","B","E"]},
+    {"id":"Q-11","question":"Is the comparison fair (same training data, same truncation, same hardware)?","raised_at":"SY.5","answered_at":"SY.5","reader_personas":["A","B"]},
+    {"id":"Q-12","question":"Does the system that wins in-domain also win out-of-domain?","raised_at":"R1.1","answered_at":"R1.2","reader_personas":["A","B","E"]},
+    {"id":"Q-13","question":"Which architecture generalizes best, and by how much?","raised_at":"R1.1","answered_at":"R1.3","reader_personas":["A","B","E"]},
+    {"id":"Q-14","question":"Is that better generalization free?","raised_at":"R1.3","answered_at":"R1.4","reader_personas":["A","B","E"]},
+    {"id":"Q-15","question":"Why do some systems that do well in-domain fail zero-shot?","raised_at":"R1.5","answered_at":"R1.5,R1.9","reader_personas":["A","B","E"]},
+    {"id":"Q-16","question":"Is every dense/sparse system equally bad, or are there exceptions?","raised_at":"R1.5","answered_at":"R1.6","reader_personas":["A","B"]},
+    {"id":"Q-17","question":"Why would one dense system lose to a weaker-on-average one on specific datasets?","raised_at":"R1.7","answered_at":"R1.7","reader_personas":["A","B"]},
+    {"id":"Q-18","question":"Does adapting a model to the target domain solve the generalization problem?","raised_at":"R1.8","answered_at":"R1.8","reader_personas":["A","B"]},
+    {"id":"Q-19","question":"So what actually explains the ranking (RQ1 answer)?","raised_at":"R1.9","answered_at":"R1.9,D.1","reader_personas":["A","B","E"]},
+    {"id":"Q-20","question":"Could the ranking itself be an artifact of how the test data was built?","raised_at":"R2.1","answered_at":"R2.1","deferred_to":"R2.2-R2.5","reader_personas":["A","B","E"]},
+    {"id":"Q-21","question":"How would you even detect that kind of bias?","raised_at":"R2.2","answered_at":"R2.2","reader_personas":["A","B"]},
+    {"id":"Q-22","question":"Did it turn out to matter?","raised_at":"R2.3","answered_at":"R2.3,R2.4","reader_personas":["A","B","E"]},
+    {"id":"Q-23","question":"Does this overturn the RQ1 ranking?","raised_at":"R2.5","answered_at":"R2.5,D.2","reader_personas":["A","B","E"]},
+    {"id":"Q-24","question":"What should researchers/practitioners take away?","raised_at":"D.3","answered_at":"D.3,C.1,C.2","reader_personas":["A","B","E"]},
+    {"id":"Q-25","question":"What are the boundaries on all of this?","raised_at":"Lim.1","answered_at":"Lim.1-Lim.3","reader_personas":["A","B","E"]}
+  ],
+  "debt_check": "0 unresolved questions at the end of the paper. All 'deferred_to' pointers resolve within the paper (no cross-paper or supplement deferrals, consistent with venue_profile.yaml supplement_allowed:false)."
+}

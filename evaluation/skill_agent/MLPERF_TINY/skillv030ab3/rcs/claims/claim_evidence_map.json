@@ -1,0 +1,1025 @@
+{
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "The authors state that continued TinyML progress is limited by the lack of a widely accepted, easily reproducible benchmark, and that because deployment requires co-optimization at every layer of the stack, direct comparison of solutions is challenging and the impact of individual optimizations is difficult to measure, so a fair and reliable method of comparison is needed.",
+      "claim_type": "interpretation",
+      "evidence": [
+        "E043",
+        "E044"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "stated by the authors as motivation",
+        "no external evidence for the claim is offered in the paper"
+      ],
+      "permitted_verbs": [
+        "the authors state",
+        "the authors argue"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated",
+      "rationale": "motivation",
+      "limitations": [
+        "L001"
+      ]
+    },
+    {
+      "id": "C002",
+      "statement": "The authors name five challenges for a TinyML benchmark: low power (very different power levels and unclear measurement scope), limited memory (about two orders of magnitude below smartphones), hardware heterogeneity (missing system clock or debug interface; porting effort), software heterogeneity (tightly coupled inference stacks; optimality versus portability) and a cross-product of options at every level of the stack.",
+      "claim_type": "interpretation",
+      "evidence": [
+        "E035",
+        "E036",
+        "E037",
+        "E038",
+        "E039"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "authors' own statements",
+        "not tested by experiment"
+      ],
+      "permitted_verbs": [
+        "the authors identify",
+        "the authors describe"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated"
+    },
+    {
+      "id": "C003",
+      "statement": "The authors characterize three existing benchmarks as not meeting TinyML needs: CoreMark does not profile full programs nor represent ML inference workloads; MLMark uses real ML workloads but its models are far too large for MCU-class devices and it lacks power measurement; the MLPerf inference benchmark precludes MCUs for lack of small benchmarks and compatible implementations.",
+      "claim_type": "literature",
+      "evidence": [
+        "E040",
+        "E041",
+        "E042",
+        "E065"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "authors' characterization of others' work",
+        "sources registered from abstract-level information only"
+      ],
+      "permitted_verbs": [
+        "the authors characterize",
+        "the authors state"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "literature",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated",
+      "sources": [
+        "SRC-001",
+        "SRC-002"
+      ]
+    },
+    {
+      "id": "C004",
+      "statement": "MLPerf Tiny specifies four benchmarks, each with a dataset, a model and a quality target: keyword spotting (Speech Commands, DS-CNN, 90% Top-1), visual wake words (VWW dataset, MobileNetV1, 80% Top-1), image classification (CIFAR-10, ResNet, 85% Top-1) and anomaly detection (ToyADMOS, FC-autoencoder, AUC 0.85).",
+      "claim_type": "observed",
+      "evidence": [
+        "E001",
+        "E004",
+        "E005",
+        "E006",
+        "E007",
+        "E008",
+        "E010",
+        "E012",
+        "E013",
+        "E015",
+        "E016"
+      ],
+      "confidence": "high",
+      "confidence_reasons": [
+        "specified directly in the paper text and Table 1",
+        "Table 1 layout damaged but confirmed by section 4 text (except two model sizes)"
+      ],
+      "permitted_verbs": [
+        "the suite specifies",
+        "the paper describes"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "sources": [
+        "SRC-005",
+        "SRC-007",
+        "SRC-008",
+        "SRC-009",
+        "SRC-010",
+        "SRC-011",
+        "SRC-012",
+        "SRC-013",
+        "SRC-014",
+        "SRC-015",
+        "SRC-016"
+      ],
+      "limitations": [
+        "L004"
+      ]
+    },
+    {
+      "id": "C005",
+      "statement": "The reference implementations run the reference models in TFLite format with TensorFlow Lite for Microcontrollers on the NUCLEO-L4R5ZI board, using a known-good TFLM snapshot and a bare-metal MBED project built with the GCC-ARM toolchain, and are open source.",
+      "claim_type": "observed",
+      "evidence": [
+        "E018",
+        "E003"
+      ],
+      "confidence": "high",
+      "confidence_reasons": [
+        "stated directly"
+      ],
+      "permitted_verbs": [
+        "the paper describes",
+        "the reference implementation runs"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "sources": [
+        "SRC-006"
+      ]
+    },
+    {
+      "id": "C006",
+      "statement": "MLPerf Tiny has a closed division (same models, datasets and quality targets; post-training quantization allowed, retraining and weight replacement prohibited) and an open division (model, training scripts and dataset may change; same test dataset; accuracy threshold not required; deviations documented).",
+      "claim_type": "observed",
+      "evidence": [
+        "E019"
+      ],
+      "confidence": "high",
+      "confidence_reasons": [
+        "stated directly"
+      ],
+      "permitted_verbs": [
+        "the paper defines",
+        "the rules specify"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": []
+    },
+    {
+      "id": "C007",
+      "statement": "Each benchmark's reference implementation covers everything from training scripts to a reference hardware platform, and a submitter can modify one component to show the performance of a single hardware or software component.",
+      "claim_type": "observed",
+      "evidence": [
+        "E020"
+      ],
+      "confidence": "high",
+      "confidence_reasons": [
+        "stated directly"
+      ],
+      "permitted_verbs": [
+        "the paper describes"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": []
+    },
+    {
+      "id": "C008",
+      "statement": "Measurement procedure: latency is the median inferences per second over five runs, each running inference for at least 10 seconds and 10 iterations; accuracy is Top-1 percent or AUC from a single inference over the whole validation set, with a minimum accuracy required for a valid score; energy repeats the latency procedure and adds total energy in the timing window to give micro-Joules per inference, again as the median of five measurements.",
+      "claim_type": "observed",
+      "evidence": [
+        "E021",
+        "E022",
+        "E023"
+      ],
+      "confidence": "high",
+      "confidence_reasons": [
+        "stated directly, twice (section 5.3 and appendix A.3)"
+      ],
+      "permitted_verbs": [
+        "the framework measures",
+        "the procedure specifies"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "limitations": [
+        "L002",
+        "L003"
+      ]
+    },
+    {
+      "id": "C009",
+      "statement": "The benchmark framework consists of a host PC running a runner GUI, the device under test with a thin firmware shim, and two hardware configurations (latency/accuracy over a serial port; energy adding an IO Manager on an Arduino UNO and an energy monitor), with the device implementing five API functions and a timestamp of at least one millisecond resolution in performance mode.",
+      "claim_type": "observed",
+      "evidence": [
+        "E024"
+      ],
+      "confidence": "high",
+      "confidence_reasons": [
+        "stated directly in appendix A"
+      ],
+      "permitted_verbs": [
+        "the framework provides",
+        "the paper describes"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": []
+    },
+    {
+      "id": "C010",
+      "statement": "On the visual wake words benchmark the reference model reaches about 86% accuracy on the preprocessed MSCOCO 2014 test dataset, and closed-division submissions must reach at least 80%.",
+      "claim_type": "measured",
+      "evidence": [
+        "E009"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "single value reported",
+        "no spread reported",
+        "value 'about 86%' is approximate"
+      ],
+      "permitted_verbs": [
+        "the reference model reaches",
+        "the target is"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "limitations": [
+        "L006"
+      ]
+    },
+    {
+      "id": "C011",
+      "statement": "On the image classification benchmark the reference model reaches 86.5% accuracy on 200 images selected from the CIFAR-10 test set, and the quality target is 85% top-1.",
+      "claim_type": "measured",
+      "evidence": [
+        "E011"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "single value on a 200-image subset",
+        "no spread reported"
+      ],
+      "permitted_verbs": [
+        "the reference model reaches",
+        "the target is"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "limitations": [
+        "L006"
+      ]
+    },
+    {
+      "id": "C012",
+      "statement": "On the keyword spotting benchmark the quantized reference model reaches 91.6% accuracy on the full test set and 91.7% on a 1000-utterance subset, against an accuracy requirement of 90%; the model achieved 92.2% in the authors' experiments.",
+      "claim_type": "measured",
+      "evidence": [
+        "E013",
+        "E014"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "single values",
+        "no spread reported",
+        "conditions of the 92.2% figure not stated beyond 'in our experiments'"
+      ],
+      "permitted_verbs": [
+        "the reference model reaches",
+        "the requirement is"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "limitations": [
+        "L006"
+      ]
+    },
+    {
+      "id": "C013",
+      "statement": "On the anomaly detection benchmark, on an evaluation set from four different machines totalling 248 samples, the fp32 reference model reaches an AUC of 0.88 and the quantized model 0.86; the benchmark threshold is AUC 0.85.",
+      "claim_type": "measured",
+      "evidence": [
+        "E017"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "single values on 248 samples",
+        "no spread reported"
+      ],
+      "permitted_verbs": [
+        "the reference model reaches",
+        "the threshold is"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "limitations": [
+        "L006"
+      ]
+    },
+    {
+      "id": "C014",
+      "statement": "The authors state that the four reference implementations cover a wide scope in terms of latency and energy on the NUCLEO-L4R5ZI board and that each reference meets the minimum accuracy; the latency and energy values are shown only in a figure that is not available in the project materials.",
+      "claim_type": "observed",
+      "evidence": [
+        "E025"
+      ],
+      "confidence": "low",
+      "confidence_reasons": [
+        "prose statement only; underlying figure values unavailable",
+        "soft evidence"
+      ],
+      "permitted_verbs": [
+        "the authors state"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "limitations": [
+        "L005"
+      ]
+    },
+    {
+      "id": "C015",
+      "statement": "The v0.5 submission round (June 2021) produced five rows in the authors' Table 2: four closed-division entries (ARM MCU with TFLM; RISC-V MCU; software-only LEIP toolchain on a Raspberry Pi 4; Syntiant neural network accelerator) and one open-division FPGA entry (QKeras, Int-6/8 QAT, HLS4ML); results are peer-reviewed by submitters and a review committee and are public.",
+      "claim_type": "observed",
+      "evidence": [
+        "E026",
+        "E027",
+        "E030"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "descriptive table rows; check-mark columns illegible in extraction"
+      ],
+      "permitted_verbs": [
+        "the round included",
+        "Table 2 lists"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "sources": [
+        "SRC-018"
+      ],
+      "limitations": [
+        "L007",
+        "L008"
+      ]
+    },
+    {
+      "id": "C016",
+      "statement": "The authors read these trends from the v0.5 submissions: 8-bit integer was the most common numerical format because it offers a performance boost with little impact to model accuracy; software stacks ranged from open-source interpreters to hardware-specific compilers, indicating a trade-off between optimization and portability; hardware spanned MCUs, accelerators and FPGAs; and power consumption ranged from µWatts to Watts.",
+      "claim_type": "observed",
+      "evidence": [
+        "E029",
+        "E026"
+      ],
+      "confidence": "low",
+      "confidence_reasons": [
+        "drawn from a single round with five table rows",
+        "no submission measurements shown"
+      ],
+      "permitted_verbs": [
+        "the authors read",
+        "the submissions indicate"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "limitations": [
+        "L007",
+        "L008"
+      ]
+    },
+    {
+      "id": "C017",
+      "statement": "None of the first-round submissions modified the training dataset, so the data-centric side of the benchmark was not exercised in that round.",
+      "claim_type": "observed",
+      "evidence": [
+        "E031",
+        "E026"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "stated directly; the second clause follows from the open-division rules that allow dataset changes (E019)"
+      ],
+      "permitted_verbs": [
+        "none of the submissions modified"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "limitations": [
+        "L007"
+      ]
+    },
+    {
+      "id": "C018",
+      "statement": "The authors conclude that the diverse v0.5 submissions show the benchmark meeting a variety of needs, and they attribute its ability to accommodate submitters' different goals to its modular design.",
+      "claim_type": "interpretation",
+      "evidence": [
+        "C015",
+        "E028",
+        "E030"
+      ],
+      "confidence": "low",
+      "confidence_reasons": [
+        "authors' interpretation resting on descriptive evidence",
+        "no comparison against a non-modular alternative",
+        "alternative explanations not discussed"
+      ],
+      "permitted_verbs": [
+        "the authors attribute",
+        "the authors conclude",
+        "is consistent with"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated",
+      "limitations": [
+        "L007",
+        "L008"
+      ]
+    },
+    {
+      "id": "C019",
+      "statement": "The repository README lists released versions v0.5 (Jun 16, 2021), v0.7 (April 6, 2022), v1.0 (Nov 9, 2022) and v1.1 (Jun 27, 2023), expects the deadline of the next round v1.2 on March 15, 2024 (dates not yet finalized), and describes target devices as running at between 10MHz and 250MHz with inference in less than 50mW.",
+      "claim_type": "observed",
+      "evidence": [
+        "E032",
+        "E033"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "README is soft evidence",
+        "postdates the paper"
+      ],
+      "permitted_verbs": [
+        "the README lists",
+        "the README states"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "limitations": [
+        "L009"
+      ]
+    },
+    {
+      "id": "C020",
+      "statement": "The authors state that the benchmarks have already acted as a standard set of tasks for TinyML research and have been made into public projects on a TinyML development platform.",
+      "claim_type": "observed",
+      "evidence": [
+        "E034"
+      ],
+      "confidence": "low",
+      "confidence_reasons": [
+        "authors' statement; the paper gives one citation and no adoption data"
+      ],
+      "permitted_verbs": [
+        "the authors state"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "sources": [
+        "SRC-003"
+      ],
+      "limitations": [
+        "L009"
+      ]
+    },
+    {
+      "id": "C021",
+      "statement": "The authors expect the benchmark to standardize the field and enable progress through competition and comparability, and expect a collaborative community to help create standards for responsible deployment; they also name misuse (tracking unwilling individuals) and electronic waste as possible harms of TinyML.",
+      "claim_type": "speculation",
+      "evidence": [
+        "E062"
+      ],
+      "confidence": "low",
+      "confidence_reasons": [
+        "forward-looking statements",
+        "untested"
+      ],
+      "permitted_verbs": [
+        "the authors expect",
+        "the authors warn"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated",
+      "limitations": [
+        "L009"
+      ]
+    },
+    {
+      "id": "C022",
+      "statement": "The authors plan to add benchmarks for new application domains (wearables, medical devices, environmental monitoring), to keep a subset of benchmarks long-term stable, to widen the scope to include pre-processing, and to consider additional architectures such as RNNs.",
+      "claim_type": "future",
+      "evidence": [
+        "E056",
+        "E060",
+        "E061"
+      ],
+      "confidence": "low",
+      "confidence_reasons": [
+        "stated intentions"
+      ],
+      "permitted_verbs": [
+        "the authors aim",
+        "future versions may"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated"
+    },
+    {
+      "id": "C023",
+      "statement": "MLPerf Tiny is an open-source benchmark suite, developed as a collaboration of more than 50 organizations from industry and academia, that measures accuracy, latency and energy of ML inference on four benchmarks and provides complete reference implementations.",
+      "claim_type": "observed",
+      "evidence": [
+        "E001",
+        "E002",
+        "E003",
+        "E064"
+      ],
+      "confidence": "high",
+      "confidence_reasons": [
+        "stated directly",
+        "organization count is the authors' figure"
+      ],
+      "permitted_verbs": [
+        "the authors present",
+        "the suite provides"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "limitations": [
+        "L001",
+        "L002",
+        "L003",
+        "L004",
+        "L008"
+      ]
+    },
+    {
+      "id": "C024",
+      "statement": "The authors describe TinyML as ML inference under a milliWatt, and state that on-device near-sensor inference avoids wireless communication energy, which at this scale is far higher than that of compute.",
+      "claim_type": "literature",
+      "evidence": [
+        "E063"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "authors' background statement citing a sensor-node energy study"
+      ],
+      "permitted_verbs": [
+        "the authors state"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "literature",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated",
+      "sources": [
+        "SRC-004"
+      ]
+    },
+    {
+      "id": "C025",
+      "statement": "The suite measures latency, energy and accuracy together because the authors want to capture the tradeoffs inherent to TinyML, and they treat power as a first-class concern.",
+      "claim_type": "interpretation",
+      "evidence": [
+        "E045"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "stated design reason"
+      ],
+      "permitted_verbs": [
+        "the authors state"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated",
+      "rationale": "design_choice"
+    },
+    {
+      "id": "C026",
+      "statement": "The measurement window covers model inference only, without pre- or post-processing, because the authors judge that application-level benchmarks obscure the target behind other pipeline stages while low-level kernel benchmarks gloss over memory bandwidth and model-level optimization.",
+      "claim_type": "interpretation",
+      "evidence": [
+        "E046"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "stated design reason"
+      ],
+      "permitted_verbs": [
+        "the authors state"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated",
+      "rationale": "design_choice",
+      "limitations": [
+        "L003"
+      ]
+    },
+    {
+      "id": "C027",
+      "statement": "The design is modular so that hardware and software users can demonstrate the competitive advantage of their specific contribution, targeting one component such as quantization or offering an end-to-end solution.",
+      "claim_type": "interpretation",
+      "evidence": [
+        "E047"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "stated design reason"
+      ],
+      "permitted_verbs": [
+        "the authors state"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated",
+      "rationale": "design_choice"
+    },
+    {
+      "id": "C028",
+      "statement": "There are two divisions, closed and open, because the authors want to balance comparability and flexibility.",
+      "claim_type": "interpretation",
+      "evidence": [
+        "E048"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "stated design reason"
+      ],
+      "permitted_verbs": [
+        "the authors state"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated",
+      "rationale": "design_choice"
+    },
+    {
+      "id": "C029",
+      "statement": "Quality targets are set slightly below the reference accuracy to accommodate differences from quantization and rounding across platforms (VWW 80% versus about 86%, IC 85% versus 86.5%, KWS 90% versus 91.6%), and the AD threshold of AUC 0.85 is based on the fp32 (0.88) and quantized (0.86) reference values.",
+      "claim_type": "interpretation",
+      "evidence": [
+        "E049",
+        "E009",
+        "E011",
+        "E014",
+        "E017"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "stated design reason with the reference numbers"
+      ],
+      "permitted_verbs": [
+        "the authors state"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated",
+      "rationale": "design_choice",
+      "limitations": [
+        "L006"
+      ]
+    },
+    {
+      "id": "C030",
+      "statement": "For keyword spotting the authors chose a small depthwise-separable CNN because its 38.6K parameters fit the memory of most microcontrollers and it uses standard layers, and they excluded feature extraction from the measurement because it is typically a small fraction of the overall compute cost.",
+      "claim_type": "interpretation",
+      "evidence": [
+        "E050",
+        "E051"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "stated design reasons"
+      ],
+      "permitted_verbs": [
+        "the authors state"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated",
+      "rationale": "design_choice",
+      "limitations": [
+        "L002",
+        "L003"
+      ]
+    },
+    {
+      "id": "C031",
+      "statement": "For anomaly detection the authors use only the Toy-car machine type because separate models per machine type would add complexity the benchmark would not benefit from, chose the DCASE2020 reference autoencoder because it is a literature reference and adds a model type based entirely on FC layers, use the parameterless AUC-ROC because it avoids selecting a threshold, and evaluate on four different machines so that models have generalization characteristics.",
+      "claim_type": "interpretation",
+      "evidence": [
+        "E052"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "stated design reasons"
+      ],
+      "permitted_verbs": [
+        "the authors state"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated",
+      "rationale": "design_choice",
+      "limitations": [
+        "L002"
+      ]
+    },
+    {
+      "id": "C032",
+      "statement": "For image classification the authors chose CIFAR-10 because its low resolution suits tiny models and because prior TinyML work used it, giving a point of reference that relates future results to historical ones.",
+      "claim_type": "interpretation",
+      "evidence": [
+        "E053"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "stated design reasons"
+      ],
+      "permitted_verbs": [
+        "the authors state"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated",
+      "rationale": "design_choice",
+      "sources": [
+        "SRC-017"
+      ]
+    },
+    {
+      "id": "C033",
+      "statement": "For visual wake words the authors chose the task because it is directly relevant to smart doorbell and occupancy applications and because the challenge's reference network fits on most 32-bit microcontrollers.",
+      "claim_type": "interpretation",
+      "evidence": [
+        "E054"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "stated design reasons"
+      ],
+      "permitted_verbs": [
+        "the authors state"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated",
+      "rationale": "design_choice"
+    },
+    {
+      "id": "C034",
+      "statement": "The framework design follows stated reasons: a known-good TFLM snapshot for stability; two configurations because energy measurement is more complex and energy scores may not be desired; level-shifter power excluded as a framework cost; a single supply for the core so that no other energy source defeats the measurement; and a host runner to give a consistent interface, standardize execution and download the many input files a platform with under a megabyte of flash cannot hold.",
+      "claim_type": "interpretation",
+      "evidence": [
+        "E055"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "stated design reasons"
+      ],
+      "permitted_verbs": [
+        "the authors state"
+      ],
+      "author_confirmation": "confirmed",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "origin": "author_stated",
+      "rationale": "design_choice"
+    },
+    {
+      "id": "C035",
+      "statement": "The gap between reference accuracy and quality target is about 6 points for VWW (about 86% versus 80%), 1.5 points for IC (86.5% versus 85%), 1.6 points for KWS on the full test set (91.6% versus 90%), and, for AD, 0.03 AUC for the fp32 model (0.88 versus 0.85) and 0.01 AUC for the quantized model (0.86 versus 0.85).",
+      "claim_type": "derived",
+      "evidence": [
+        "E009",
+        "E011",
+        "E014",
+        "E017"
+      ],
+      "confidence": "moderate",
+      "confidence_reasons": [
+        "simple differences of single reported values",
+        "VWW reference is approximate ('about 86%')"
+      ],
+      "permitted_verbs": [
+        "a gap of",
+        "corresponds to"
+      ],
+      "author_confirmation": "pending",
+      "basis": "project_file",
+      "status": "VERIFIED",
+      "licenses": [],
+      "limitations": [
+        "L006"
+      ]
+    }
+  ],
+  "limitations": [
+    {
+      "id": "L001",
+      "statement": "The authors state that MLPerf Tiny will keep evolving with new benchmarks for new application domains while also needing long-term stability to track historical progress; they envision a subset of benchmarks kept long-term stable.",
+      "origin": "author_stated",
+      "affects_claims": [
+        "C023",
+        "C022",
+        "C001"
+      ],
+      "evidence": [
+        "E056"
+      ],
+      "effect_on_interpretation": "The suite described is a snapshot of an evolving benchmark; its four tasks are not presented as final coverage."
+    },
+    {
+      "id": "L002",
+      "statement": "The authors state that streaming inputs are hard to recreate: limited bandwidth between the test runner and the device makes it difficult to recreate a streaming scenario without adding delays incurred by data transfer; this affects the time-domain tasks (keyword spotting, anomaly detection), which in the benchmark operate on single discrete inputs in a non-streaming setting.",
+      "origin": "author_stated",
+      "affects_claims": [
+        "C023",
+        "C008",
+        "C030",
+        "C031"
+      ],
+      "evidence": [
+        "E057"
+      ],
+      "effect_on_interpretation": "Latency and energy for the time-domain tasks do not reflect the performance-efficiency gains that information from previous time steps could give."
+    },
+    {
+      "id": "L003",
+      "statement": "The authors state that the pre-processing choice can distort results: excluding feature extraction while letting submitters vary it permits a degenerate case in which everything up to the penultimate layer is called feature extraction; a rigid definition precludes joint optimization of features and model; including feature extraction over-emphasizes its cost (one inference cycle and 40 feature extraction cycles per second of audio); the pre-selected KWS features somewhat limit innovation.",
+      "origin": "author_stated",
+      "affects_claims": [
+        "C023",
+        "C026",
+        "C030",
+        "C008"
+      ],
+      "evidence": [
+        "E058",
+        "E059",
+        "E060"
+      ],
+      "effect_on_interpretation": "Measured latency and energy cover model inference only, so they can misstate whole-application cost, and the treatment of feature extraction can distort or constrain results in the ways the authors describe."
+    },
+    {
+      "id": "L004",
+      "statement": "The authors state that the closed division models are based mainly on FC and CNN layers, and that only open-division submissions may deviate; other architectures such as RNNs may be added in future reference implementations.",
+      "origin": "author_stated",
+      "affects_claims": [
+        "C023",
+        "C004"
+      ],
+      "evidence": [
+        "E061"
+      ],
+      "effect_on_interpretation": "Closed-division comparisons cover FC and CNN model families only."
+    },
+    {
+      "id": "L005",
+      "statement": "The latency and energy values of the reference implementations (Figure 5 of the paper) are not present in the project materials, so their magnitudes cannot be reported.",
+      "origin": "writer_derived",
+      "affects_claims": [
+        "C014"
+      ],
+      "evidence": [
+        "E025"
+      ],
+      "effect_on_interpretation": "The statement that the references span a wide range of latency and energy is reported at the authors' strength, without magnitudes."
+    },
+    {
+      "id": "L006",
+      "statement": "Every accuracy or AUC value is a single number on a fixed evaluation set (200 images, 1000 utterances or 248 samples for the on-device sets) with no spread or confidence interval, and the paper does not say how sensitive the quality targets are to the choice of subset.",
+      "origin": "writer_derived",
+      "affects_claims": [
+        "C010",
+        "C011",
+        "C012",
+        "C013",
+        "C029",
+        "C035"
+      ],
+      "evidence": [
+        "E009",
+        "E011",
+        "E014",
+        "E017"
+      ],
+      "effect_on_interpretation": "Differences of 1 to 2 points between reference accuracy and target should not be read as precise margins."
+    },
+    {
+      "id": "L007",
+      "statement": "The first-round trends rest on the five rows of Table 2 from a single round.",
+      "origin": "writer_derived",
+      "affects_claims": [
+        "C015",
+        "C016",
+        "C017",
+        "C018"
+      ],
+      "evidence": [
+        "E026",
+        "E029",
+        "E031"
+      ],
+      "effect_on_interpretation": "The trends describe that round, not the field, and cannot show how the benchmark behaves across rounds."
+    },
+    {
+      "id": "L008",
+      "statement": "The project materials contain no measured accuracy, latency or energy values from the submissions, so the fairness and comparability the design aims at are described but not demonstrated numerically.",
+      "origin": "writer_derived",
+      "affects_claims": [
+        "C018",
+        "C023",
+        "C015",
+        "C016"
+      ],
+      "evidence": [
+        "E026",
+        "E030"
+      ],
+      "effect_on_interpretation": "The reading that the benchmark enables fair comparison rests on the design and rules and on the authors' qualitative assessment."
+    },
+    {
+      "id": "L009",
+      "statement": "The paper describes the v0.5 benchmark; the README lists later versions (v0.7 to v1.1) and an expected v1.2 round, but the project materials do not describe changes in those versions or any adoption evidence beyond the authors' statements.",
+      "origin": "writer_derived",
+      "affects_claims": [
+        "C019",
+        "C020",
+        "C021"
+      ],
+      "evidence": [
+        "E032",
+        "E034",
+        "E062"
+      ],
+      "effect_on_interpretation": "Statements about current use, adoption and impact are the authors' own and are not independently evidenced here."
+    }
+  ],
+  "negative_result_decisions": []
+}

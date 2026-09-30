@@ -1,0 +1,68 @@
+{
+ "missing": [
+  {
+   "id": "M001",
+   "what": "Variance across seeds or runs for any nDCG@10 result; no confidence intervals or significance tests",
+   "why": "Checklist 3(c) answers No; models are fixed checkpoints",
+   "affects": "all measured claims",
+   "action": "[MISSING RESULT] flagged as author-stated limitation; no 'significant' wording used"
+  },
+  {
+   "id": "M002",
+   "what": "A statistic (e.g. rank correlation) relating in-domain MS MARCO scores to zero-shot averages",
+   "why": "The paper says in-domain performance 'does not correlate well' but reports no correlation value",
+   "affects": "in-domain vs zero-shot claim",
+   "action": "claim worded as an observation of ordering, not a correlation"
+  },
+  {
+   "id": "M003",
+   "what": "Definition of the 'Avg. Performance vs. BM25' row in Table 2 (mean of relative differences vs relative difference of means)",
+   "why": "not defined in text",
+   "affects": "average-performance claim",
+   "action": "reported as printed, with the ambiguity flagged"
+  },
+  {
+   "id": "M004",
+   "what": "Bold/underline (best, second best) marks of Table 2",
+   "why": "lost in text extraction",
+   "affects": "none",
+   "action": "not used"
+  },
+  {
+   "id": "M005",
+   "what": "Figure 3 bar values and Figure 4 distributions",
+   "why": "figures not recoverable from text extraction",
+   "affects": "none",
+   "action": "only prose statements used"
+  },
+  {
+   "id": "M006",
+   "what": "Total compute used for the experiments",
+   "why": "Checklist 3(d) answers No",
+   "affects": "efficiency claim",
+   "action": "author-stated limitation"
+  },
+  {
+   "id": "M007",
+   "what": "Hole@10 and annotation analysis for datasets other than TREC-COVID; Hole@10 for GenQ",
+   "why": "not reported",
+   "affects": "annotation-bias claims",
+   "action": "writer-derived caveat"
+  },
+  {
+   "id": "M008",
+   "what": "Recall@100 results (Table 9) and capped recall",
+   "why": "table damaged by extraction, not used",
+   "affects": "none",
+   "action": "not used"
+  },
+  {
+   "id": "M009",
+   "what": "Table 2 count for docT5query vs BM25 (text 11/18 vs 12 by reconstructed table)",
+   "why": "see evidence E073/E074",
+   "affects": "docT5query claim",
+   "action": "text count used; discrepancy disclosed"
+  }
+ ],
+ "tickets_for_figures": []
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="222" viewBox="0 0 640 222" font-family="Helvetica, Arial, sans-serif" font-size="12" role="img" aria-labelledby="t d" data-visual-id="V001" data-representation="bar_h" data-domain-lo="0" data-domain-hi="400" data-plot-left="124" data-plot-right="616" data-min-font="12">
+<title id="t">Reference model size per benchmark</title>
+<desc id="d">Horizontal bar chart of TFLite model size in kilobytes for four reference models, from 52.5 KB for DS-CNN to 325 KB for MobileNetV1.</desc>
+<metadata>{&quot;domain&quot;: [0.0, 400], &quot;representation&quot;: &quot;bar_h&quot;, &quot;source_file&quot;: &quot;data/reference_models.csv&quot;, &quot;visual_id&quot;: &quot;V001&quot;}</metadata>
+<rect width="640" height="222" fill="#ffffff"/>
+<text x="124" y="22" font-size="13" font-weight="bold">Reference model size per benchmark</text>
+<line x1="124.00" y1="40" x2="124.00" y2="152" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="124.00" x="124.00" y="168" text-anchor="middle">0</text>
+<line x1="247.00" y1="40" x2="247.00" y2="152" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="247.00" x="247.00" y="168" text-anchor="middle">100</text>
+<line x1="370.00" y1="40" x2="370.00" y2="152" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="370.00" x="370.00" y="168" text-anchor="middle">200</text>
+<line x1="493.00" y1="40" x2="493.00" y2="152" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="493.00" x="493.00" y="168" text-anchor="middle">300</text>
+<line x1="616.00" y1="40" x2="616.00" y2="152" stroke="#dddddd"/>
+<text class="tick" data-axis="x" data-pos="616.00" x="616.00" y="168" text-anchor="middle">400</text>
+<line x1="124" y1="152" x2="616" y2="152" stroke="#333333"/>
+<text x="370.00" y="188" text-anchor="middle">TFLite model size (KB)</text>
+<text class="category" x="114" y="58.00" text-anchor="end">DS-CNN</text>
+<g class="mark" data-x="DS-CNN" data-y="52.5" data-series="" data-cx="188.57" data-cy="54.00"><rect x="124.00" y="45.00" width="64.57" height="18" fill="#0072B2" data-px-start="124.00" data-px-end="188.57"/></g>
+<text class="category" x="114" y="86.00" text-anchor="end">MobileNetV1</text>
+<g class="mark" data-x="MobileNetV1" data-y="325" data-series="" data-cx="523.75" data-cy="82.00"><rect x="124.00" y="73.00" width="399.75" height="18" fill="#0072B2" data-px-start="124.00" data-px-end="523.75"/></g>
+<text class="category" x="114" y="114.00" text-anchor="end">ResNet</text>
+<g class="mark" data-x="ResNet" data-y="96" data-series="" data-cx="242.08" data-cy="110.00"><rect x="124.00" y="101.00" width="118.08" height="18" fill="#0072B2" data-px-start="124.00" data-px-end="242.08"/></g>
+<text class="category" x="114" y="142.00" text-anchor="end">FC-AutoEncoder</text>
+<g class="mark" data-x="FC-AutoEncoder" data-y="270" data-series="" data-cx="456.10" data-cy="138.00"><rect x="124.00" y="129.00" width="332.10" height="18" fill="#0072B2" data-px-start="124.00" data-px-end="456.10"/></g>
+</svg>

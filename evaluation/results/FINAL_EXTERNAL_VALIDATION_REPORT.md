@@ -1,6 +1,6 @@
 # Final External Validation Report — Research Communication Skill v0.1.0
 
-**Status:** Phases 0–6 and 8 complete; Phase 9 (v0.2.0 candidate A/B) — see §6; Phase 10 (personal projects) not yet run.
+**Status:** Phases 0–6, 8 and 9 complete (v0.2.0 candidate **rejected** — see §6); Phase 10 (personal projects) not yet run.
 **Primary success criterion (from the brief):** readers reconstruct the actual research more accurately, with fewer unsupported beliefs and fewer important misunderstandings.
 **Primary metric:** Mental-Model Fidelity **MMF = RR − DR − 0.5·IR** against a frozen, independently verified Gold Account (RR = nugget recall, DR = distortion rate — overstated/contradicted, IR = unsupported-belief intrusions).
 All numbers are from `results/comparison/scores/per_review.json`, `reviewer_validation/scores/`, `evidence_agent/*` (evaluator v0.2, Gold Set v1.0). Decisions D-01…D-17 in `logs/DECISIONS.md`.
@@ -92,7 +92,29 @@ Ungrounded "cheap" numbers were unit re-formatting (1.96% → 0.0196; 438K → 4
 ## 6. Phase 9 — engineering loop
 
 **Candidate v0.2.0** (SKILL_AGENT, from aggregated evidence only): `origin: author_stated | writer_derived` on limitations/claims; new `rationale_stated` evidence kind; validator checks `AUTHOR_STATEMENT_DROPPED` / `ATTRIBUTION_ERROR`; lint errors for missing author limitations/rationale; Limitations contract = authors' limitations first, writer caveats in a labelled paragraph; executable gates (tool reports + hashes, `SELF_CERTIFIED_GATE`); length gate; load-bearing rules inlined in SKILL.md. 44/44 tests (23 new; 21 of them fail on v0.1.0).
-**A/B test (v0.1.0 vs v0.2.0, same subagent path, step-17 drafts, OpenHands / MLPerf Tiny / BEIR):** **[pending — to be filled when runs complete]**.
+
+**[M] A/B test result (v0.1.0 vs v0.2.0, same subagent path, step-17 drafts, F1 Claude Opus reader vs frozen Gold Set v1.0, OpenHands / MLPerf Tiny / BEIR):**
+
+| Project | Q11 recall v0.1.0→v0.2.0 | MMF v0.1.0→v0.2.0 | DR v0.1.0→v0.2.0 | IR v0.1.0→v0.2.0 |
+|---|---|---|---|---|
+| BEIR | 1.0 → 1.0 (flat, already at ceiling) | 0.650 → 0.675 (**+0.025**) | 0.050 → 0.000 (improved) | 0.175 → 0.100 (improved) |
+| MLPerf Tiny | 0.8 → 0.7 (**−0.1, worse**) | 0.762 → 0.725 (**−0.037**) | 0.025 → 0.000 (improved) | 0.050 → 0.050 (flat) |
+| OpenHands | 0.2 → 0.6 (**+0.4, much better**) | 0.500 → 0.338 (**−0.162**) | 0.000 → 0.000 (flat) | 0.175 → 0.500 (**nearly 3×, much worse**) |
+
+**[I] Decision (pre-registered rule, D-17): accept only if Q11 recall improves AND MMF/DR do not regress on ≥2 of 3 projects.** MMF fails to regress on only 1/3 projects (BEIR) — below the bar under either reading of the rule (MMF's own regression count, or the per-project MMF-AND-DR joint count; both give 1/3). Q11 recall also does not clearly improve in aggregate: a large gain on OpenHands, a regression on MLPerf Tiny, and no room to move on BEIR (already perfect). **v0.2.0 is rejected (D-22); v0.1.0 remains canonical.**
+
+**[O] Mechanism — first hypothesis refuted (D-23), evaluator defect found (D-24).** The OpenHands MMF drop is arithmetically an IR change (RR/DR flat). A first hypothesis blamed the new "Additional caveats" paragraph; checking the data refuted it (0 of the 20 flagged intrusions come from that paragraph). The actual cause is in the evaluator: the grader tags any reader statement absent from the curated gold as an `unsupported_belief`, even when the source states it. A blinded source check of all 124 such intrusions across every phase found **70 SUPPORTED by the source, 41 NOT_FOUND, 13 CONTRADICTED**. For OpenHands v0.2.0, 16 of its 20 were source-supported.
+
+**[M] Sensitivity analysis (MMF_src: IR counts only intrusions not supported by the source; the frozen v0.2 metric above stays primary):**
+
+| Project | MMF_src v0.1.0 → v0.2.0 | Δ |
+|---|---|---|
+| BEIR | 0.737 → 0.675 | −0.062 (3 genuinely contradicted beliefs; the v0.2.0 paper also says "18 datasets" in four places and "19" in one) |
+| MLPerf Tiny | 0.787 → 0.738 | −0.049 |
+| OpenHands | 0.513 → 0.538 | **+0.025** (the −0.162 was an evaluator artifact) |
+
+**[I] Verdict is robust, the stated reason was wrong.** Under both metrics v0.2.0 regresses on 2/3 projects, so it stays rejected. But every Phase 9 difference under MMF_src is small (|Δ| ≤ 0.062) on one seed: v0.2.0 is **not shown better and not shown worse**. Its attribution idea is unrefuted (OpenHands Q11 0.2→0.6 stands) and was simply not demonstrated to help overall. Phase 5's conclusion is also robust: v0.1.0 vs plain gives mean ΔMMF_src −0.095, skill better on 2/6.
+**[L]** n = 3 projects, one seed each, single reader family (F1 only); the source check uses one LLM verifier per project (no inter-verifier agreement yet); no ablation of v0.2.0's three bundled changes.
 
 ---
 
@@ -119,8 +141,9 @@ Ungrounded "cheap" numbers were unit re-formatting (1.96% → 0.0196; 438K → 4
 ## 9. Unresolved questions [U]
 1. Does the skill help when the input is raw project evidence rather than a finished paper? (Phase 10 / a raw-evidence benchmark.)
 2. Do the dimension-level gains (reviewer ratings) correspond to real reading-ease gains for **human** readers, even though LLM reconstruction does not show them?
-3. Does v0.2.0 recover the author-attribution losses without new regressions? (Phase 9, pending.)
+3. ~~Does v0.2.0 recover the author-attribution losses without new regressions?~~ **Answered (§6): it recovers attribution on the worst case (OpenHands Q11 0.2→0.6) but shows no detectable overall gain; it regresses slightly on 2/3 projects under both the frozen and the source-verified metric. Rejected.**
+5. How much of every phase's IR is evaluator artifact? (D-24: 56% of flagged intrusions are source-supported.) Future evaluator v0.3 should verify intrusions against the source, not only the gold.
 4. How stable are project-level effects across seeds (only one seed per paper here)?
 
 ## 10. Bottom line
-Skill v0.1.0 **does not yet meet its own success criterion**: across six real projects, readers did not reconstruct the research more faithfully than from a plain agent's paper (pooled effect ≈ 0 to slightly negative, project-dependent, CI spanning zero), although it did not increase distortions and it did produce papers that reviewers *rate* higher. The failure analysis points to specific, fixable mechanisms (author attribution of limitations/rationale; rules that never reach the writer; self-certified gates), which v0.2.0 targets and which are being tested.
+Skill v0.1.0 **does not yet meet its own success criterion**: across six real projects, readers did not reconstruct the research more faithfully than from a plain agent's paper (pooled effect ≈ 0 to slightly negative, project-dependent, CI spanning zero), although it did not increase distortions and it did produce papers that reviewers *rate* higher. The failure analysis pointed to specific, fixable mechanisms (author attribution of limitations/rationale; rules that never reach the writer; self-certified gates); candidate v0.2.0 targeted exactly those mechanisms and **was tested and rejected** (§6). It fixed attribution where it was worst (OpenHands Q11 0.2→0.6) but showed no detectable overall reader gain, and it regressed slightly on 2/3 projects. Its apparent large OpenHands regression turned out to be an evaluator artifact: the grader counts true, source-stated detail missing from the curated gold as an "unsupported belief" (D-24; 56% of all flagged intrusions are source-supported). **v0.1.0 remains canonical.** The next evaluator should verify intrusions against the source, and the next candidate needs ≥2 seeds so that differences of this size can be told apart from noise. `RECOMMENDED_NEXT_VERSION.md` carries this forward.

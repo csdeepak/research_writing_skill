@@ -1,0 +1,23 @@
+{
+  "mode": "B",
+  "primary": "Machine-learning researchers from other subfields (adjacent researchers): they know general ML, deep learning, standard evaluation practice and statistics, but not information retrieval's subfield-specific terminology, datasets, or prior work.",
+  "secondary": "No specific venue/reviewer pool was given for this run; treated as careful adjacent-field readers who would check that numbers and comparisons are stated precisely and traceable (see plan/venue_profile.yaml, generic profile).",
+  "tertiary": "Future readers who want a self-contained account of what BEIR is, what it found, and its main limits, without needing to read the original IR-venue paper.",
+  "assumed_known": [
+    "supervised fine-tuning of pretrained Transformer encoders (e.g. BERT)",
+    "train/dev/test evaluation protocol and the general idea of a benchmark suite",
+    "zero-shot evaluation as a general ML concept",
+    "standard ML evaluation practice and statistics (e.g. what an average over a heterogeneous set of tasks summarizes, why single-run comparisons are less conclusive than replicated ones)",
+    "basic ranking/contrastive-loss intuition from representation learning"
+  ],
+  "not_assumed": [
+    "information-retrieval-specific terminology (qrels, pooling, bi-encoder vs. cross-encoder, late interaction, lexical gap, Hole@k)",
+    "IR evaluation metrics (nDCG@k, MRR, MAP) and why they differ from classification metrics",
+    "the specific datasets and architectures compared (BM25, DPR, ANCE, TAS-B, ColBERT, etc.)",
+    "prior IR benchmarks (MultiReQA, KILT) and how BEIR differs from them"
+  ],
+  "binding_personas": ["A", "B", "E"],
+  "term_budget": {"per_paragraph": 2, "abstract_acronyms": 1},
+  "source": "given directly in the task instructions (AUDIENCE field); mapped to reader mode B per rce/skill/audience_model.md §2",
+  "notes": "Because this is Mode B (not C/D), technical precision and full rigor are kept; only subfield-specific vocabulary, datasets and prior work need explicit definition/introduction. Statistics and general ML method concepts are not re-explained."
+}

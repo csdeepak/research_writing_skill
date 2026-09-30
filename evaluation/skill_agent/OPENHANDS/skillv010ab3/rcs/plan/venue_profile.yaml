@@ -1,0 +1,13 @@
+venue: {name: "generic research article (standalone Markdown)", type: conference-style, guideline_urls: []}
+structure:
+  section_template: [Title, Abstract, Introduction, Background, Platform, Evaluation setup, Results, Discussion, Limitations, Conclusion, References]
+  results_discussion: separate
+  related_work_position: after_intro
+  limitations_section_required: true
+  assumed: true
+limits: {pages_main: null, words_main: "3000-4500 (task rule)", abstract_words: 250, supplement_allowed: false, assumed: false}
+style: {citation_style: "(FirstAuthor et al., Year)", voice_preference: "active voice; 'we' avoided because the text presents the authors' work: use 'the authors' / 'OpenHands'", spelling: US, abstract_format: unstructured, abstract_citations_allowed: false, assumed: false}
+required_statements: {data_availability: false, code_availability: false, ai_use_disclosure: "not required by task", assumed: true}
+checklists: []
+reporting_guideline: null
+notes: "VENUE_UNKNOWN: task gives no venue; generic profile with task-imposed rules (length, citation form, Markdown tables, no images)."

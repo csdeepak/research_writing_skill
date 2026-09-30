@@ -1,0 +1,11 @@
+{
+  "questions": [
+    {"id": "Q-01", "question": "Why not use an existing benchmark?", "raised_at": "I.1", "answered_at": "I.2, R.1"},
+    {"id": "Q-02", "question": "What exactly is measured and how?", "raised_at": "I.3", "answered_at": "M.5"},
+    {"id": "Q-03", "question": "How were quality targets chosen?", "raised_at": "M.1", "answered_at": "M.3, R.2"},
+    {"id": "Q-04", "question": "What can submitters change?", "raised_at": "I.3", "answered_at": "M.4"},
+    {"id": "Q-05", "question": "What do reference latency and energy look like?", "raised_at": "R.3", "deferred_to": "L.2 (values unavailable in the project materials)"},
+    {"id": "Q-06", "question": "Did the first round show fair comparison?", "raised_at": "R.4", "answered_at": "D.1, L.2"},
+    {"id": "Q-07", "question": "What does the benchmark not capture?", "raised_at": "I.5", "answered_at": "L.1"}
+  ]
+}

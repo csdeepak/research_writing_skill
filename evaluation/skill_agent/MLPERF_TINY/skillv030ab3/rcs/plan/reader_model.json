@@ -1,0 +1,78 @@
+{
+  "personas": [
+    {
+      "id": "B",
+      "description": "Adjacent-field ML researcher: knows general ML, deep learning, standard evaluation and statistics; not TinyML terms, datasets or prior work.",
+      "binding": true,
+      "known_terms": [
+        "ML",
+        "CNN",
+        "ResNet",
+        "MobileNet",
+        "autoencoder",
+        "top-1",
+        "AUC",
+        "ROC",
+        "accuracy",
+        "benchmark",
+        "quantization",
+        "fp32",
+        "dataset",
+        "test set",
+        "median",
+        "batch normalization",
+        "ReLU",
+        "FC",
+        "MSE",
+        "GPU",
+        "API",
+        "seed",
+        "leaderboard"
+      ],
+      "prerequisite_concepts": [
+        {
+          "concept": "closed division",
+          "needs": [
+            "reference implementation"
+          ]
+        },
+        {
+          "concept": "micro-Joules per inference",
+          "needs": [
+            "device under test"
+          ]
+        },
+        {
+          "concept": "post-training quantization",
+          "needs": [
+            "quantization"
+          ]
+        }
+      ],
+      "likely_misconceptions": [
+        {
+          "misconception": "MLPerf Tiny is a leaderboard of new models by accuracy",
+          "trigger_terms": [
+            "leaderboard"
+          ],
+          "corrective_point": "The closed division fixes models, datasets and quality targets so that stacks, not models, are compared.",
+          "corrective_terms": [
+            "closed division",
+            "same models"
+          ]
+        }
+      ],
+      "reader_questions": [
+        "What problem does this solve, and why can existing benchmarks not solve it?",
+        "What exactly is measured, and how?",
+        "How were the quality targets chosen and how big are the margins?",
+        "What did the first submission round show and what did it not show?",
+        "What does the benchmark not capture?"
+      ],
+      "venue_expectations": [
+        "Generic research article: abstract, introduction, related work, method, results, discussion, limitations, conclusion"
+      ],
+      "new_term_budget": 2
+    }
+  ]
+}

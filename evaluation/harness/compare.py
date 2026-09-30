@@ -31,7 +31,8 @@ EV = RL.ROOT / "evaluation"
 CMP = EV / "results" / "comparison"
 LOC = {"plain": "plain_agent/{P}/plain", "skill": "skill_agent/{P}/skill",
        "skillpkg-cheap": "evidence_agent/{P}/skillpkg-cheap", "skillpkg-strong": "evidence_agent/{P}/skillpkg-strong",
-       "skillv010sub": "skill_agent/{P}/skillv010sub", "skillv020sub": "skill_agent/{P}/skillv020sub"}
+       "skillv010sub": "skill_agent/{P}/skillv010sub", "skillv020sub": "skill_agent/{P}/skillv020sub",
+       "skillv010ab3": "skill_agent/{P}/skillv010ab3", "skillv030ab3": "skill_agent/{P}/skillv030ab3"}   # D-29
 AUDIENCE = ("Intended readers: machine-learning researchers from other subfields (adjacent researchers). They know "
             "general ML, deep learning, standard evaluation practice and statistics, but not this project's "
             "subfield-specific terminology, datasets or prior work.\nBinding reader types for this review: A (domain "
@@ -150,6 +151,11 @@ def cmd_grade(grader: str, workers: int, only_family: str | None) -> None:
             print(m, flush=True)
 
 
+# (a, b) pairs reported as b - a. D-29 adds the tier-3 A/B and its noise contrast (v0.1.0 run-to-run).
+CONTRASTS = (("plain", "skill"), ("skillpkg-cheap", "skillpkg-strong"), ("skillv010sub", "skillv020sub"),
+             ("skillv010ab3", "skillv030ab3"), ("skillv010sub", "skillv010ab3"))
+
+
 def cmd_analyze() -> None:
     mapping = json.loads((CMP / "SEALED_MAPPING.json").read_text(encoding="utf-8"))
     rows = []
@@ -181,7 +187,7 @@ def cmd_analyze() -> None:
     for fam in sorted({r["family"] for r in rows}):
         for proj in sorted({r["project"] for r in rows}):
             by = {r["condition"]: r for r in rows if r["family"] == fam and r["project"] == proj and "recon_sonnet" in r}
-            for a, b in (("plain", "skill"), ("skillpkg-cheap", "skillpkg-strong")):
+            for a, b in CONTRASTS:
                 if a in by and b in by:
                     ra, rb = by[a]["recon_sonnet"], by[b]["recon_sonnet"]
                     pairs.append({"family": fam, "project": proj, "contrast": f"{b} - {a}",

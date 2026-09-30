@@ -1,0 +1,21 @@
+{
+  "id": "TAB-3",
+  "type": "table",
+  "status": "planned",
+  "purpose": "List the five v0.5 submission rows and what each set out to demonstrate.",
+  "rq": "RQ3",
+  "takeaway": "The round mixed four closed-division entries and one open-division entry across MCU, RISC-V, single-board computer, accelerator and FPGA hardware.",
+  "claims": [
+    "C015"
+  ],
+  "evidence": [
+    "E026"
+  ],
+  "source_data": [
+    "project/paper.txt"
+  ],
+  "comparison_the_eye_must_make": "division, numerics, framework, hardware, demonstrated aim",
+  "non_conclusions": "Shows no measured accuracy, latency or energy; modification marks of the original table are illegible and omitted.",
+  "placement": "Section 5.3",
+  "caption": "Table 3. The v0.5 submission round."
+}

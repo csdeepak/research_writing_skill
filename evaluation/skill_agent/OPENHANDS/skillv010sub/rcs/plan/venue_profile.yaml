@@ -1,0 +1,27 @@
+# VENUE_UNKNOWN (see state.json accepted_risk AR002). Adapted from
+# rce/skill/templates/venue_profile.generic.yaml. Every structural rule below is assumed
+# (assumed: true) except citation_style, which is fixed by TASK.md's run-specific instruction
+# and therefore overrides the generic default.
+venue: {name: "generic research article (no venue specified)", type: journal_or_conference, guideline_urls: []}
+structure:
+  section_template: [Title, Abstract, Introduction, "The OpenHands Platform (Methods)", "Evaluation Setup", Results, Discussion, "Limitations and Future Work", "Related Work", Conclusion, References]
+  results_discussion: separate
+  related_work_position: "before Conclusion (justified: the introduction's gap paragraph already carries the minimum literature needed to motivate the RQ; a fuller dimension-organized Related Work follows the evidence so its claims can point back to results already established, per section_rules.md's venue-dependent placement option)"
+  limitations_section_required: true
+  assumed: true
+limits: {pages_main: null, words_main: [3000, 4500], abstract_words: 250, supplement_allowed: false, assumed: true}
+style:
+  citation_style: "author-year: (FirstAuthor et al., Year), exactly as cited in project/paper.txt -- FIXED BY TASK.md, not assumed, overrides the generic profile's numeric default"
+  voice_preference: "active voice; 'the authors'/'OpenHands' for the original project's actions (this paper reports someone else's system, so first person plural is not used); assumed: true"
+  spelling: US
+  abstract_format: unstructured
+  abstract_citations_allowed: false
+  assumed: true
+required_statements:
+  data_availability: false
+  code_availability: false
+  ai_use_disclosure: false
+  note: "Not applicable: this paper narrates a third-party project's published research; it does not release new code or data of its own, and disclosure.md is out of scope for this run (step 21 is not performed; see TASK.md run-specific instruction to stop after step 17)."
+  assumed: true
+checklists: []
+reporting_guideline: null

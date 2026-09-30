@@ -1,0 +1,12 @@
+{
+ "step": 15,
+ "guardrail": "v0.3",
+ "gates": {
+  "V1": "passed",
+  "V2": "passed",
+  "V3": "passed",
+  "V4": "passed",
+  "V5": "not_run",
+  "V6": "passed"
+ }
+}

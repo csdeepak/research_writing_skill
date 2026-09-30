@@ -1,0 +1,19 @@
+{
+  "entries": [
+    {"id":"Q01","question":"What does the retrieval task setup (corpus/query/relevance) mean?","raised_at":"ABS.1","answered_at":"I.1","reader_personas":["B","C"]},
+    {"id":"Q02","question":"What does 'zero-shot' mean for a retrieval system specifically?","raised_at":"ABS.1","answered_at":"ABS.1","reader_personas":["B","C"]},
+    {"id":"Q03","question":"Why does cross-domain/cross-task generalization matter in practice, not just academically?","raised_at":"I.1","answered_at":"I.2","reader_personas":["A","B","E"]},
+    {"id":"Q04","question":"What exactly is missing from the resources that already exist?","raised_at":"I.2","answered_at":"I.3","reader_personas":["A","B","E"]},
+    {"id":"Q05","question":"What precisely is the research question?","raised_at":"I.3","answered_at":"I.4","reader_personas":["A","B","E"]},
+    {"id":"Q06","question":"Why nDCG@10 and not Precision/Recall/MAP/MRR?","raised_at":"M.2","answered_at":"M.3","reader_personas":["A","B"]},
+    {"id":"Q07","question":"Were the compared systems tuned with a comparable budget?","raised_at":"ES.1","answered_at":"ES.2","reader_personas":["A","B"],"note":"Answered partially in the affirmative for most systems (public checkpoints trained on MS MARCO by their original authors) and explicitly bounded by L006/ES.3 (no retraining performed here, so tuning parity across the original training runs cannot be independently re-checked)."},
+    {"id":"Q08","question":"Is a 7-18 point in-domain gap for BM25 surprising, and what does it mean?","raised_at":"R.1","answered_at":"R.1","reader_personas":["A","B","E"]},
+    {"id":"Q09","question":"Given the trade-off, which architecture should a practitioner actually pick?","raised_at":"R.2","answered_at":"D.2","reader_personas":["A","B","E"],"note":"Deliberate forward deferral with an explicit pointer ('Section 6 returns to what this trade-off means for practice')."},
+    {"id":"Q10","question":"If TAS-B is the best dense model overall, why does it lose to ANCE on two datasets?","raised_at":"R.7","answered_at":"R.7","reader_personas":["A","B"]},
+    {"id":"Q11","question":"Can these comparisons be trusted without error bars or a significance test?","raised_at":"ES.3","answered_at":"L.2","reader_personas":["A","B","E"],"note":"Deliberate forward deferral with an explicit pointer to the Limitations section."},
+    {"id":"Q12","question":"Does the annotation-bias finding undermine the benchmark's other conclusions?","raised_at":"R.9","answered_at":"D.3","reader_personas":["A","B","E"],"note":"Answered with an explicit scope bound, further detailed in L.3 ('Additional caveats')."},
+    {"id":"Q13","question":"What should a reader remember about this paper a day later?","raised_at":"(implicit, from the paper's overall claim)","answered_at":"C.1","reader_personas":["A","B","C","D","E"]}
+  ],
+  "debt_at_end_of_each_section": {"Abstract":0,"Introduction":0,"Related Work":0,"Method":0,"Experimental Setup":0,"Results":0,"Discussion":0,"Limitations":0,"Conclusion":0},
+  "note": "Two questions (Q09, Q11) and one (Q12) are deliberately deferred forward with explicit textual pointers, all past the Introduction (which defers 0 questions beyond its own paper map, well within the <=3 limit)."
+}

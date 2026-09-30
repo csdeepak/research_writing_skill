@@ -1,0 +1,39 @@
+{
+ "step": 17,
+ "guardrail": "v0.3",
+ "length_limit_words": 4500,
+ "gates": {
+  "G1": "passed",
+  "G2": "passed",
+  "G3": "passed",
+  "G4": "pending",
+  "G5": "pending"
+ },
+ "open_failures": [],
+ "accepted_risks": [
+  {
+   "kind": "workflow",
+   "note": "No human available: author_confirmation for claims not stated by the authors is left 'pending' rather than asked; no factual claim depends on this."
+  },
+  {
+   "kind": "workflow",
+   "note": "No subagents: CORPUS_AGENT role performed by the AUTHOR context in the same session (isolation: none)."
+  },
+  {
+   "kind": "workflow",
+   "note": "No web: literature limited to works cited in project/paper.txt and README_1.md; registered with verification.method=user_supplied_file, read_depth=abstract; titles kept as cited (title_status as_cited/unverifiable)."
+  },
+  {
+   "kind": "workflow",
+   "note": "Venue unknown: generic venue profile with assumed rules; main-text limit 3000-4500 words taken from the task (length_limit_words=4500)."
+  },
+  {
+   "kind": "workflow",
+   "note": "Step 18 (blind review) is performed externally; G4 is not attempted in this run."
+  },
+  {
+   "kind": "workflow",
+   "note": "G1 confirmation of pending claims C043 (writer synthesis of the central finding) and C056 (research questions reconstructed from the authors' framing) not obtainable; both are worded to the authors' own statements and remain author_confirmation=pending."
+  }
+ ]
+}

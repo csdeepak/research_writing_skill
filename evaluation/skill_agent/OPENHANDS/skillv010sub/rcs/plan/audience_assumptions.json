@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-09-27",
+  "source": "project/paper.txt, read as a Level-0 artifact written for mode-A (subfield specialist) readers",
+  "concepts_assumed_without_definition_by_the_source": [
+    "LLM agent / agentic system as a category (perceive-act loop over an environment)",
+    "action space / observation, as a generic agent-environment interface vocabulary",
+    "sandboxing and containerization (Docker) as a safety mechanism for code execution",
+    "Agent-Computer Interface (ACI) as a named design concern (introduced via SWE-Agent citation, not independently defined)",
+    "0-shot / 1-shot prompting terminology applied to agents rather than classifiers",
+    "the specific identities and task formats of SWE-Bench, WebArena, GAIA, GPQA, HumanEvalFix, MINT, AgentBench, ProofWriter, BIRD, ML-Bench, BioCoder, Gorilla APIBench, ToolQA, MiniWoB++, Entity Deduction Arena -- each named and cited but not explained from first principles",
+    "why software (rather than e.g. a fixed JSON tool schema) is being proposed as a general interface for agents",
+    "what 'resolve rate' / 'success rate' means operationally per benchmark (assumed to be looked up in the cited benchmark paper)",
+    "the CodeAct method itself (the paper treats it as a citation, 'inspired by CodeAct', rather than re-deriving it)"
+  ],
+  "implication_for_this_paper's_audience_(mode_B)": "Mode B readers (ML researchers from other subfields) know general ML/DL, standard evaluation practice, and statistics, but not this list. paper.md must define: LLM agent as perceive-act loop; action/observation/event stream; the sandbox and why it matters; ACI and why it is nontrivial (citing SWE-Agent's own point about it); CodeAct's core idea (code as the action representation) in one or two sentences; and, for each benchmark actually discussed in the main text, one clause describing what it measures. Long-tail benchmarks not discussed individually are introduced collectively via a table with a one-line 'required capability' column (already present in the source as Table 2) rather than defined one by one in prose."
+}

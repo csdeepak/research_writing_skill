@@ -1,0 +1,7 @@
+{
+ "assumptions": [
+  "The paper assumes readers know LLM agents, SWE-bench, WebArena, CodeAct, BrowserGym, Docker, REST APIs, IPython, Playwright, accessibility trees, pass@k, zero-shot and 1-shot prompting; adjacent ML readers may not know these subfield terms.",
+  "The paper uses many system names (CodeActAgent, BrowsingAgent, GPTSwarm, AgentSkills, AgentHub, micro agents) with brief definitions.",
+  "Benchmarks are named without explaining metrics; \"success rate\" and \"resolve rate\" are used interchangeably across tables."
+ ]
+}

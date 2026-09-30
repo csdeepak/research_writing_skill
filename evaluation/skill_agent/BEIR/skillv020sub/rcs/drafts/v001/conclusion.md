@@ -1,0 +1,5 @@
+## 8 Conclusion
+
+We built BEIR to find out which retrieval architectures actually generalize once evaluation leaves the single dataset most of the field trains and tests on, and at what cost. The answer is that in-domain accuracy is a poor guide to that question: a simple, untrained lexical baseline remains competitive with, and on average ahead of, most of the trained neural systems we tested, and the two architecture families that do generalize best currently require up to 20-30x more computation per query {C005,C008}.
+
+The main boundary on this finding is that it rests on 18 English datasets evaluated once each, and on a bias check performed on only one of them, so we do not yet know how far either the architecture ranking or the annotation-bias effect extends beyond what we tested here {C019,L007}. Building retrieval test collections with fairer, multi-strategy annotation pooling, and extending this kind of benchmark to more languages and to longer documents, are the most direct next steps.

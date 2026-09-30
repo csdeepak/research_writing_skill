@@ -1,0 +1,106 @@
+{
+ "id": "VIS-00b",
+ "origin": "control (Stage 2)",
+ "title": "with a recorded human review, V5 passes too",
+ "files": {
+  "project/paper.txt": "Table 2: accuracy of the four systems. A 0.62, B 0.71, C 0.55, D 0.80 (n = 50 each).\n",
+  "data/acc.csv": "system,accuracy,n\nA,0.62,50\nB,0.71,50\nC,0.55,50\nD,0.80,50\n",
+  ".rcs/evidence/research_evidence.json": {
+   "project_root": ".",
+   "generated_at": "2026-09-29",
+   "items": [
+    {
+     "id": "E001",
+     "kind": "result",
+     "summary": "Accuracy per system (Table 2)",
+     "locator": {
+      "path": "data/acc.csv"
+     },
+     "strength": "hard",
+     "status": "ok",
+     "value": {
+      "A": 0.62,
+      "B": 0.71,
+      "C": 0.55,
+      "D": 0.8
+     },
+     "quantity": "accuracy_by_system"
+    }
+   ]
+  },
+  ".rcs/claims/claim_evidence_map.json": {
+   "claims": [
+    {
+     "id": "C001",
+     "statement": "D reached the highest accuracy (0.80) and C the lowest (0.55).",
+     "claim_type": "measured",
+     "evidence": [
+      "E001"
+     ],
+     "confidence": "moderate",
+     "author_confirmation": "confirmed",
+     "licenses": []
+    }
+   ],
+   "limitations": [],
+   "negative_result_decisions": []
+  },
+  ".rcs/plan/visual_registry.json": {
+   "visuals": [
+    {
+     "id": "V001",
+     "number": 1,
+     "rq": "RQ1",
+     "tier": "main",
+     "kind": "COMPARATIVE",
+     "representation": "bar_h",
+     "reader_question": "Which system is most accurate?",
+     "claim_ids": [
+      "C001"
+     ],
+     "evidence_ids": [
+      "E001"
+     ],
+     "title": "Accuracy by system",
+     "value_label": "accuracy",
+     "figure_path": "figures/V001.svg",
+     "data": {
+      "file": "data/acc.csv",
+      "scope": {},
+      "x": "system",
+      "y": "accuracy",
+      "source_text": "project/paper.txt",
+      "uncertainty_note": "the source table reports single accuracies without intervals"
+     },
+     "caption": "System D is the most accurate (0.80) and C the least (0.55). Accuracy on the test set, n = 50 items per system; source: Table 2.",
+     "caption_requirements": [
+      "n",
+      "metric",
+      "source"
+     ],
+     "alt_text": "Horizontal bar chart of accuracy for four systems; D is highest at 0.80 and C lowest at 0.55.",
+     "human_review": {
+      "reviewer": "author",
+      "date": "2026-09-29",
+      "one_second_topic": true,
+      "ten_second_takeaway": true,
+      "one_minute_detail": true
+     }
+    }
+   ]
+  },
+  "paper.md": "Figure 1 shows accuracy by system: D is highest at 0.80 {C001}.\n"
+ },
+ "checks": [
+  {
+   "tool": "visuals",
+   "draft": "paper.md",
+   "forbid": [
+    "ERROR:*"
+   ],
+   "expect": [
+    "GATE:V5=PASSED"
+   ]
+  }
+ ]
+}

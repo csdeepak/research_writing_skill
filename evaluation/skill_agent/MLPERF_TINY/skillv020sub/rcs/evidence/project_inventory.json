@@ -1,0 +1,25 @@
+{
+  "project_root": ".",
+  "generated_at": "2026-09-27",
+  "generated_by": "AUTHOR acting as CORPUS_AGENT (no subagents available, per TASK.md)",
+  "files": [
+    {
+      "path": "project/paper.txt",
+      "type_class": "reference",
+      "description": "Text extracted from the project's official research paper (arXiv:2106.07597v4, 'MLPerf Tiny Benchmark'). Functions as the Level-0 communication artifact and primary evidence source: contains the abstract, full body text (challenges, benchmark descriptions, run rules, assessment of the first submission round, impact, limitations, conclusion), the reference list, and an appendix. Tables 1 and 2 and Figures 1-6 are present only as captions/surrounding prose; the underlying figure data (Fig. 5 in particular) is not recoverable as text.",
+      "opened": true,
+      "size_class": "medium (~270 lines as provided)",
+      "modified": "unknown (extraction artifact; not a filesystem-dated source)"
+    },
+    {
+      "path": "project/README_1.md",
+      "type_class": "reference",
+      "description": "Official repository README for mlcommons/tiny. Gives the project's purpose in the maintainers' own words, target hardware envelope (10-250 MHz, <50 mW), a version history table (v0.5 through v1.1) with release dates and code/results repository links, the official BibTeX citation, and a working-group contact link.",
+      "opened": true,
+      "size_class": "small (43 lines)",
+      "modified": "unknown"
+    }
+  ],
+  "skipped": [],
+  "notes": "The project folder contains no separate results/, code/, notes/, or figures/ directories: this is the 'restructure a Level-0 communication artifact' case (workflow.md Shortcuts table). All evidence in evidence/research_evidence.json is extracted from the prose/tables of these two files; there are no raw logs or machine-generated result files to cross-check against, which is itself recorded as a confidence-lowering factor for the claims built on it (see claim_evidence_map.json confidence_reasons)."
+}
