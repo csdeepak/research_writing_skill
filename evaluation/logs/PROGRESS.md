@@ -67,3 +67,5 @@ Machine-readable per-call log: `experiments.jsonl`. Decisions: `DECISIONS.md`.
   - 104 tests, 49 fixtures and 18 failure cases pass; the repository audit is clean; the skill ZIP is valid.
   - Private and third-party data are untracked (not yet pushed).
   - The author still has to review, commit, push, tag and publish the release.
+- 2026-09-30 · **v0.4.0 published** (tag `skill-v0.4.0`, GitHub release with the skill ZIP); `main` is the default
+  branch; CI green. Human-only work remains: the reading study, V5 figure reviews, ASMOS Q-003/Q-005.

@@ -332,3 +332,11 @@ Each decision: context → choice → rationale → consequence/risk. Appended c
   audit 0 errors, skill ZIP valid (102 files, about 270 KB). `skill/versions/0.4.0/MANIFEST.json` written.
 - **Not done:** no commit or tag, and no GitHub release (the author's action). The ChatGPT install path is unverified
   (OpenAI's help page refused automated access).
+- **Release (2026-09-30, the author's go-ahead: "reviewed, do the rest"):**
+  - release commit `402f7ef` pushed;
+  - `main` created and made the default branch;
+  - PR #1 merged after CI (Ubuntu + Windows × Python 3.9/3.12) passed;
+  - tag `skill-v0.4.0` created, with a GitHub release carrying the skill ZIP (SHA-256 `9b0e560d…`);
+  - private vulnerability reporting and Discussions enabled.
+- **Not done:** the git history still contains the untracked private and third-party files (the author declined a
+  history rewrite).
