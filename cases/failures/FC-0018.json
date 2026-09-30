@@ -1,0 +1,30 @@
+{
+  "schema_version": "1",
+  "id": "FC-0018",
+  "title": "Harness reviewer context contained the operator's personal memory",
+  "category": "privacy",
+  "severity": "medium",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-30",
+    "by": "release audit",
+    "context": "Public-release audit of archived reviewer outputs"
+  },
+  "observed_failure": "CLI reviewer runs loaded the operator's personal assistant memory; reviewers flagged and ignored it, but it was quoted in 24 archived outputs.",
+  "expected_behavior": "Reviewer runs see only their packet; archived outputs contain no operator data.",
+  "evidence": [
+    "docs/OPEN_SOURCE_MIGRATION_ASSESSMENT.md section 4"
+  ],
+  "regression": {
+    "tests": [],
+    "replay_fixtures": [],
+    "note": "not regression-testable in CI; mitigated by running reviewers through packet-only prompts (tools/rce_roles.py) and by the repository audit (tools/check_repo.py)"
+  },
+  "resolution": {
+    "status": "mitigated",
+    "version": "0.4.0",
+    "summary": "outputs redacted; packet-only reviewer runner"
+  },
+  "lessons": [],
+  "public": true
+}

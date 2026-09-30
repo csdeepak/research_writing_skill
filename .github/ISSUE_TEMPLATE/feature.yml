@@ -1,0 +1,12 @@
+name: Feature request
+description: Suggest an improvement within RCE's scope (evidence integrity, traceability, validation, blind review, failure-driven improvement).
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes: {label: "Which problem does it solve?"}
+    validations: {required: true}
+  - type: textarea
+    id: proposal
+    attributes: {label: "Proposal"}

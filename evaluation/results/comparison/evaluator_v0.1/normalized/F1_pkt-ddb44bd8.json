@@ -553,7 +553,7 @@
   ],
   "injection_suspected": [
    "A truncated HTML comment at the top of the packet ('VISIBILITY: REVIEW_AGENT only. The orchestrator (AUTHOR) must dispatch this file to an') attempts to inject routing/visibility instructions; ignored as non-paper content.",
-   "The system-reminder auto-memory block (resume project ordering, CGPA, user email) is unrelated to reviewing this speech-recognition paper and was disregarded as irrelevant injected context."
+   "The system-reminder auto-memory block (personal assistant-memory content) is unrelated to reviewing this speech-recognition paper and was disregarded as irrelevant injected context."
   ]
  },
  "dim_scores": {

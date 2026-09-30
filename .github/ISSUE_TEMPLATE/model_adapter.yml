@@ -1,0 +1,16 @@
+name: Model adapter
+description: A provider or runtime does not work with tools/rce_llm.py / rce_roles.py, or you want a new one.
+title: "[adapter] "
+labels: ["model-adapter", "triage"]
+body:
+  - type: input
+    id: provider
+    attributes: {label: "Provider / runtime / model", placeholder: "e.g. vLLM 0.x, model Y; or a new CLI"}
+    validations: {required: true}
+  - type: textarea
+    id: what
+    attributes: {label: "What happens, or what is needed?", description: "Include `python tools/rce_llm.py check --rcs .rcs` output (it shows no keys)."}
+    validations: {required: true}
+  - type: textarea
+    id: calibration
+    attributes: {label: "Reviewer calibration result (if a reviewer model)", description: "`python tools/rce_roles.py calibrate` summary line."}

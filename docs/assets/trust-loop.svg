@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="488" viewBox="0 0 880 488" role="img" aria-labelledby="t d" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+<title id="t">The trust loop</title>
+<desc id="d">A cycle: observe, claim, trace, validate, review, then fix, decline or ask the author, record a test case, and improve, which leads back to observe.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
+<rect x="0.5" y="0.5" width="879" height="487" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+<text x="440" y="36" text-anchor="middle" font-size="18" fill="#1f2328" font-weight="700">The trust loop</text>
+<line x1="525.1914988148476" y1="92.51863797045482" x2="537.6123505631807" y2="125.30750060240118" stroke="#57606a" stroke-width="1.8" marker-end="url(#a)"/>
+<line x1="675.2903055516815" y1="158.33409769325314" x2="653.1761521670928" y2="223.32616897169763" stroke="#57606a" stroke-width="1.8" marker-end="url(#a)"/>
+<line x1="655.3858846815671" y1="275.0067165890335" x2="677.5000380661558" y2="339.998787867478" stroke="#57606a" stroke-width="1.8" marker-end="url(#a)"/>
+<line x1="541.484691418401" y1="374.1912568662352" x2="529.0638396700679" y2="406.9801194981815" stroke="#57606a" stroke-width="1.8" marker-end="url(#a)"/>
+<line x1="354.80850118515247" y1="407.48136202954515" x2="342.38764943681934" y2="374.69249939759885" stroke="#57606a" stroke-width="1.8" marker-end="url(#a)"/>
+<line x1="204.70969444831852" y1="341.6659023067469" x2="226.82384783290718" y2="276.6738310283024" stroke="#57606a" stroke-width="1.8" marker-end="url(#a)"/>
+<line x1="224.61411531843294" y1="224.99328341096654" x2="202.49996193384425" y2="160.00121213252206" stroke="#57606a" stroke-width="1.8" marker-end="url(#a)"/>
+<line x1="338.51530858159896" y1="125.80874313376486" x2="350.93616032993214" y2="93.01988050181848" stroke="#57606a" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="360.0" y="63.0" width="160" height="44" rx="9" fill="#f6f8fa" stroke="#6e7781" stroke-width="1.6"/>
+<text x="440.0" y="90.0" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="600">Observe</text>
+<rect x="546.6761902332486" y="111.32738110421965" width="160" height="44" rx="9" fill="#fff1e5" stroke="#bc4c00" stroke-width="1.6"/>
+<text x="626.6761902332486" y="138.32738110421965" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="600">Claim</text>
+<rect x="624.0" y="228.0" width="160" height="44" rx="9" fill="#e7f1ff" stroke="#0969da" stroke-width="1.6"/>
+<text x="704.0" y="255.0" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="600">Trace</text>
+<rect x="546.6761902332486" y="344.6726188957804" width="160" height="44" rx="9" fill="#e7f1ff" stroke="#0969da" stroke-width="1.6"/>
+<text x="626.6761902332486" y="371.6726188957804" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="600">Validate</text>
+<rect x="360.0" y="393.0" width="160" height="44" rx="9" fill="#fff1e5" stroke="#bc4c00" stroke-width="1.6"/>
+<text x="440.0" y="420.0" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="600">Review</text>
+<rect x="173.32380976675145" y="344.6726188957804" width="160" height="44" rx="9" fill="#e6f6ea" stroke="#1a7f37" stroke-width="1.6"/>
+<text x="253.32380976675145" y="371.6726188957804" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="600">Fix / Decline / Ask</text>
+<rect x="96.0" y="228.00000000000003" width="160" height="44" rx="9" fill="#e7f1ff" stroke="#0969da" stroke-width="1.6"/>
+<text x="176.0" y="255.00000000000003" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="600">Test case</text>
+<rect x="173.3238097667514" y="111.32738110421968" width="160" height="44" rx="9" fill="#e6f6ea" stroke="#1a7f37" stroke-width="1.6"/>
+<text x="253.3238097667514" y="138.32738110421968" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="600">Improve</text>
+<text x="440" y="246" text-anchor="middle" font-size="13" fill="#57606a" font-weight="400">unsupported claims are</text>
+<text x="440" y="264" text-anchor="middle" font-size="13" fill="#57606a" font-weight="400">blocked or flagged, never silently kept</text>
+<rect x="70" y="452" width="16" height="16" rx="4" fill="#e7f1ff" stroke="#0969da" stroke-width="1.5"/>
+<text x="94" y="465" font-size="13" fill="#1f2328">deterministic</text>
+<rect x="260" y="452" width="16" height="16" rx="4" fill="#fff1e5" stroke="#bc4c00" stroke-width="1.5"/>
+<text x="284" y="465" font-size="13" fill="#1f2328">model (any)</text>
+<rect x="450" y="452" width="16" height="16" rx="4" fill="#e6f6ea" stroke="#1a7f37" stroke-width="1.5"/>
+<text x="474" y="465" font-size="13" fill="#1f2328">human decision</text>
+<rect x="640" y="452" width="16" height="16" rx="4" fill="#f6f8fa" stroke="#6e7781" stroke-width="1.5"/>
+<text x="664" y="465" font-size="13" fill="#1f2328">observation</text>
+</svg>

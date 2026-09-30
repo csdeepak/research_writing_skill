@@ -1,0 +1,58 @@
+name: Evidence integrity / unsupported claim
+description: RCE let an unsupported claim, wrong number, invented citation or misleading figure through, or blocked a correct one.
+title: "[integrity] "
+labels: ["evidence-integrity", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        These reports improve RCE most. Every confirmed report becomes a permanent failure case and regression test.
+        **Do not upload confidential research.** A minimal synthetic reproduction is ideal.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of problem
+      options:
+        - Hallucination / invented content (result, number, citation, detail)
+        - Unsupported or overstated claim
+        - Numerical mismatch (value, rounding, unit, denominator, derived metric)
+        - Figure mismatch (axis, values, labels, caption)
+        - Conflicting evidence resolved silently
+        - Author statement lost or misattributed
+        - Correct claim wrongly blocked (false positive)
+        - Other
+    validations: {required: true}
+  - type: input
+    id: version
+    attributes: {label: "RCE version", placeholder: "0.4.0 (from skill/SKILL.md)"}
+    validations: {required: true}
+  - type: input
+    id: model
+    attributes: {label: "Model / provider / runtime", placeholder: "e.g. Qwen3 27B via Ollama; Claude Code; manual"}
+    validations: {required: true}
+  - type: textarea
+    id: input
+    attributes: {label: "Exact input (minimal)", description: "The evidence files / claim map entries / draft sentence involved. Synthetic if private."}
+    validations: {required: true}
+  - type: textarea
+    id: expected
+    attributes: {label: "Expected behaviour", description: "What should RCE have done? Which check should have fired (or not)?"}
+    validations: {required: true}
+  - type: textarea
+    id: actual
+    attributes: {label: "Actual behaviour", description: "Output of `python tools/rce.py check PROJECT --draft DRAFT` or the relevant tool."}
+    validations: {required: true}
+  - type: textarea
+    id: why
+    attributes: {label: "Why is this an integrity problem?"}
+  - type: textarea
+    id: repro
+    attributes: {label: "Reproduction steps"}
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: I removed private research data, names, keys and local paths from everything above.
+          required: true
+        - label: This case can be made public as a regression fixture.

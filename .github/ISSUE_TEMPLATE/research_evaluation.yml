@@ -1,0 +1,12 @@
+name: Research evaluation
+description: Results, critiques or proposals about how RCE is evaluated (docs/research/EVALUATION.md).
+title: "[eval] "
+labels: ["evaluation"]
+body:
+  - type: textarea
+    id: what
+    attributes: {label: "What did you measure or what do you propose?", description: "Include n, runs per arm, models and versions, and the decision rule if pre-registered."}
+    validations: {required: true}
+  - type: textarea
+    id: data
+    attributes: {label: "Artifacts", description: "Links to reproducible outputs (no private data)."}

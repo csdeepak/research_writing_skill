@@ -1,0 +1,31 @@
+{
+  "schema_version": "1",
+  "id": "FC-0007",
+  "title": "Review packet omitted the paper's figures",
+  "category": "review-isolation",
+  "severity": "medium",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-29",
+    "by": "orchestrator",
+    "context": "Stage 4 end-to-end run"
+  },
+  "observed_failure": "The packet builder copied only text; the author copied figures in afterwards, so they were not hashed in the manifest.",
+  "expected_behavior": "Linked figures are copied, sanitized and hashed by the packet builder; missing or parent-path links are logged.",
+  "evidence": [
+    "DECISIONS.md D-28"
+  ],
+  "regression": {
+    "tests": [
+      "T-048"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": "build_review_packet copies linked figures"
+  },
+  "lessons": [],
+  "public": true
+}

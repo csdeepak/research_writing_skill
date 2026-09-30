@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "id": "FC-0014",
+  "title": "Transient provider errors crashed a run",
+  "category": "model-adapter",
+  "severity": "medium",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-30",
+    "by": "live model run",
+    "context": "Reviewer calibration on a free hosted endpoint"
+  },
+  "observed_failure": "An HTTP 429 rate limit aborted the whole calibration.",
+  "expected_behavior": "Rate limits, overloads and timeouts are retried with backoff, separately from JSON repair; calibration resumes per paper.",
+  "evidence": [
+    "DECISIONS.md D-31",
+    "evaluation/model_agnostic/RESULTS.md"
+  ],
+  "regression": {
+    "tests": [
+      "T-058"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": ""
+  },
+  "lessons": [],
+  "public": true
+}

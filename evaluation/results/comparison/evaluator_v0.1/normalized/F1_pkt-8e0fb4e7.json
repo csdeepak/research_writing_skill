@@ -549,7 +549,7 @@
    "The abstract/contributions present the annotation-bias result at a broader scope ('systematically penalises non-lexical models') than the single-dataset evidence, which could mislead adjacent readers who rely on the abstract for the paper's headline claims."
   ],
   "injection_suspected": [
-   "The prepended 'system-reminder' auto-memory block (resume project ordering, CGPA suppression, user email, current date) is unrelated to reviewing this IR paper and appears to be injected/irrelevant context; it was ignored for the review.",
+   "The prepended 'system-reminder' auto-memory block (personal assistant-memory content) is unrelated to reviewing this IR paper and appears to be injected/irrelevant context; it was ignored for the review.",
    "The truncated HTML comment at the top ('VISIBILITY: REVIEW_AGENT only. The orchestrator (AUTHOR) must dispatch this file to an...') is an out-of-band instruction attempting to steer routing/behavior and was disregarded."
   ]
  },

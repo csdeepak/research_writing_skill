@@ -1,0 +1,8 @@
+Research Communication Engine (RCE)
+Copyright 2026 C S Deepak
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Third-party material is NOT redistributed in this repository: the paper texts and READMEs used as frozen
+evaluation inputs are recreated from their original public sources by
+evaluation/harness/snapshot_sources.py restore and remain under their own licenses.

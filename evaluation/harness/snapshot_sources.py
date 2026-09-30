@@ -5,6 +5,15 @@ For each project: the arXiv PDF at a pinned version -> text via pdftotext (layou
 and the README of each official repository at the current default-branch commit (SHA pinned).
 Writes evaluation/external_projects/<P>/snapshot/ and evaluation/manifests/source_snapshots.json.
 Public, official sources only (arxiv.org, raw.githubusercontent.com, api.github.com).
+
+The snapshot files are NOT redistributed in the repository (third-party papers and READMEs have their own licenses).
+Recreate them from the pinned sources and verify every file against the recorded SHA-256:
+
+  python evaluation/harness/snapshot_sources.py restore [PROJECT ...]      (needs curl and pdftotext/poppler)
+  python evaluation/harness/snapshot_sources.py verify  [PROJECT ...]      (offline: check local files against the hashes)
+
+paper.pdf must match exactly. paper.txt is derived by pdftotext, so a different poppler version can change it; the
+restore reports that case separately (PDF verified, text differs) instead of silently accepting it.
 """
 from __future__ import annotations
 
@@ -82,5 +91,52 @@ def main() -> int:
     return 0
 
 
+def restore(only: set[str]) -> int:
+    manifest = json.loads((ROOT / "evaluation" / "manifests" / "source_snapshots.json").read_text(encoding="utf-8"))
+    bad = 0
+    for name, entry in manifest["projects"].items():
+        if only and name not in only:
+            continue
+        snap = EP / name / "snapshot"
+        snap.mkdir(parents=True, exist_ok=True)
+        pdf = get(entry["files"]["paper.pdf"]["url"])
+        pdf_ok = sha(pdf) == entry["files"]["paper.pdf"]["sha256"]
+        (snap / "paper.pdf").write_bytes(pdf)
+        subprocess.run(["pdftotext", "-enc", "UTF-8", str(snap / "paper.pdf"), str(snap / "paper.txt")], check=True)
+        (snap / "paper.pdf").unlink()
+        txt_ok = sha((snap / "paper.txt").read_bytes()) == entry["files"]["paper.txt"]["sha256"]
+        print(f"{name}: paper.pdf {'OK' if pdf_ok else 'MISMATCH'}; paper.txt "
+              f"{'OK' if txt_ok else 'DIFFERS (pdftotext version?)' if pdf_ok else 'MISMATCH'}")
+        bad += (not pdf_ok) + (not txt_ok)
+        for repo, info in entry["repos"].items():
+            fname = f"README__{repo.replace('/', '__')}.md"
+            raw = get(f"https://raw.githubusercontent.com/{repo}/{info['commit']}/{info['readme_path']}")
+            (snap / fname).write_bytes(raw)
+            ok = sha(raw) == entry["files"][fname]["sha256"]
+            bad += not ok
+            print(f"   {fname} {'OK' if ok else 'MISMATCH'}")
+    return 1 if bad else 0
+
+
+def verify(only: set[str]) -> int:
+    manifest = json.loads((ROOT / "evaluation" / "manifests" / "source_snapshots.json").read_text(encoding="utf-8"))
+    bad = 0
+    for name, entry in manifest["projects"].items():
+        if only and name not in only:
+            continue
+        for fname, meta in entry["files"].items():
+            if fname == "paper.pdf":
+                continue                     # the PDF is not kept locally; restore re-downloads and checks it
+            f = EP / name / "snapshot" / fname
+            status = "missing (run restore)" if not f.exists() else ("OK" if sha(f.read_bytes()) == meta["sha256"] else "MISMATCH")
+            bad += status != "OK"
+            print(f"{name}/{fname}: {status}")
+    return 1 if bad else 0
+
+
 if __name__ == "__main__":
+    if sys.argv[1:2] == ["verify"]:
+        sys.exit(verify(set(sys.argv[2:])))
+    if sys.argv[1:2] == ["restore"]:
+        sys.exit(restore(set(sys.argv[2:])))
     sys.exit(main())

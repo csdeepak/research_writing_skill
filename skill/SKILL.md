@@ -1,7 +1,7 @@
 ---
 name: research-communication-engine
-description: Turn a folder of raw research evidence (results, logs, notes, figures, drafts, reviews) into a scientifically rigorous, evidence-traceable, audience-aware research paper. Use when asked to write, restructure, or review a research paper, thesis chapter, or technical report from project materials, or when a draft "has correct pieces but doesn't read as one story". Builds an evidence map, claim-evidence graph, and research-story graph before any prose, then runs blind reader-reconstruction review.
-version: 0.3.0
+description: Write, restructure or review a research paper from raw project evidence: evidence map first, every claim traced, deterministic checks, blind reader review. Asks instead of guessing.
+version: 0.4.0
 ---
 
 # Research Communication Engine
@@ -237,6 +237,10 @@ G5  python tools/verify_numbers.py paper/paper.md --rcs .rcs --out .rcs/audits/g
   `causal_design`, `matched_evaluation`, `complete_enumeration`) backed by qualifying evidence.
   Otherwise rewrite the sentence at the strength the evidence supports. Never write a p-value
   the evidence doesn't contain.
+- **Citations** in the draft must resolve to `corpus/source_registry.json` (first author + year), or the lint
+  reports `C5-citation-unregistered`. Never cite from memory.
+- **Language policy:** a research community's conventions can extend or disable strong-language rules per project
+  (`.rcs/language_policy.json`; the applied policy appears in the lint report).
 - **Sources** keep `as_cited` (the project's own text). Changing a title needs a DOI, index or
   publisher lookup; otherwise mark it `title_status: unverifiable`.
 - **Figure cards** (`.rcs/plan/figure_cards/`): charts and tables need live evidence and existing
@@ -267,8 +271,9 @@ G5  python tools/verify_numbers.py paper/paper.md --rcs .rcs --out .rcs/audits/g
   checkpoint (`workflow_guard.py ask`), and every claim it blocks stays `BLOCKED` until a named
   person answers. `accepted_risks` carry `kind: workflow` only, and an unattended run omits or
   blocks rather than inventing. G4 is executable: after the blind review, write
-  `.rcs/revisions/<round>/dispositions.json` (fixed + where, declined + reason, or deferred + an
-  `open_issues.md` entry for every blocking finding), then run `tools/g4_check.py`. At every gate
+  `.rcs/revisions/<round>/dispositions.json` (fixed + where, declined + reason, deferred + an
+  `open_issues.md` entry, author_question + a checkpoint id, or false_positive / not_reproducible + a reason, for
+  every blocking finding), then run `tools/g4_check.py`. At every gate
   point, run `python tools/run_workflow.py gates .rcs --draft ...`: it executes all executable
   gates, records only validator-confirmed statuses, and logs each command with the tool's hash.
 - **Self-improvement:** after a run, `python tools/rce_diagnostics.py record .rcs --opt-in`

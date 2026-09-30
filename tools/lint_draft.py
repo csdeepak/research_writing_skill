@@ -44,6 +44,10 @@ Truth guardrail (v0.3.0; docs/06_VNEXT_SPEC.md section 4.2), needs --rcs:
   BLOCKED-claim-used  a tagged claim has status BLOCKED                                ERROR
   INCONSISTENT-COUNT  the draft states different totals for the same thing
                       ("18 datasets" vs "of the 19 datasets")                          WARN
+  C5-citation-unregistered  an author-year citation "(Smith et al., 2021)" matches no source in
+                      .rcs/corpus/source_registry.json (first author's surname + year): a
+                      citation is never written from memory (v0.4.0)                   ERROR
+                      (WARN "unverifiable" when the project has no source registry)
 
 Exit code 1 if any ERROR.
 """
@@ -132,6 +136,35 @@ LICENSE_TERMS = {
     "matched_evaluation": re.compile(r"\b(outperform\w*|superior to|beats?)\b", re.I),
     "complete_enumeration": re.compile(r"\b(always|never|in all cases|without exception|universally)\b", re.I),
 }
+ACTIVE_TERMS = dict(LICENSE_TERMS)       # effective vocabulary after the project's language policy (see below)
+POLICY_APPLIED: dict = {}
+
+
+def apply_language_policy(rcs: "Path | None") -> dict:
+    """Per-project vocabulary (v0.4.0). Research communities differ, so .rcs/language_policy.json may
+         {"extend": {"significance_test": ["\\bmeaningful(ly)? (better|worse)\\b"]},   # more words need that license
+          "disable": ["complete_enumeration"],                                        # switch a rule off
+          "reason": "..."}
+    Only existing license types can be extended or disabled (a license must stay backed by evidence rules in
+    truth_guardrail.py). The applied policy is written into the lint report so a reviewer can see it."""
+    global ACTIVE_TERMS, POLICY_APPLIED
+    ACTIVE_TERMS, POLICY_APPLIED = dict(LICENSE_TERMS), {}
+    p = rcs / "language_policy.json" if rcs else None
+    if not p or not p.exists():
+        return POLICY_APPLIED
+    pol = load_json(p)
+    unknown = [t for t in list(pol.get("extend", {})) + list(pol.get("disable", [])) if t not in LICENSE_TERMS]
+    if unknown:
+        raise SystemExit(f"language_policy.json: unknown license type(s) {unknown}; known: {sorted(LICENSE_TERMS)}")
+    for t, pats in pol.get("extend", {}).items():
+        ACTIVE_TERMS[t] = re.compile("|".join([f"(?:{LICENSE_TERMS[t].pattern})"] + [f"(?:{x})" for x in pats]),
+                                     LICENSE_TERMS[t].flags)
+    for t in pol.get("disable", []):
+        ACTIVE_TERMS.pop(t, None)
+    POLICY_APPLIED = {"extend": pol.get("extend", {}), "disable": pol.get("disable", []), "reason": pol.get("reason", "")}
+    return POLICY_APPLIED
+
+
 NEW_UNTAGGED_TERMS = {"stress_test", "latency_measured", "clinical_study", "ood_eval", "matched_evaluation"}
 NON_ASSERTING = {"hypothesis", "speculation", "future", "limitation"}
 NEGATION_RE = re.compile(r"\b(not|no|never|without|cannot|can't|untested|whether|unclear|nor|fails? to|does not|did not)\b", re.I)
@@ -151,7 +184,7 @@ def check_licenses(s: str, tag_ids: list[str], claims: dict[str, dict], L: "Lint
                    strict: bool = True) -> None:
     """strict (ERROR) once the claim map uses `licenses` anywhere; advisory WARN for legacy claim maps."""
     known = [claims[t] for t in tag_ids if t in claims]
-    for ltype, rx in LICENSE_TERMS.items():
+    for ltype, rx in ACTIVE_TERMS.items():
         m = rx.search(s)
         if not m or _negated(s, m.start()):
             continue
@@ -244,9 +277,41 @@ def check_attribution(md: str, claims: dict[str, dict], L: Lint) -> None:
                   "first meets the problem/design")
 
 
+CITE_GROUP_RE = re.compile(r"\(([^()]*?\b(?:1[6-9]|20)\d{2}[a-z]?)\)")
+CITE_ONE_RE = re.compile(r"^\s*(?:see |e\.g\.,? |cf\. )?([A-Z][A-Za-z'\-]+(?: [A-Z][A-Za-z'\-]+)?)"
+                         r"(?: et al\.?| (?:and|&) [A-Z][A-Za-z'\-]+)?,\s*((?:1[6-9]|20)\d{2})[a-z]?\s*$")
+
+
+def _surname(author: str) -> str:
+    a = author.strip()
+    return (a.split(",")[0] if "," in a else a.split()[-1] if a.split() else a).lower()
+
+
+def check_citations(md: str, sources: list[dict] | None, L: "Lint") -> None:
+    """C5: every author-year citation must resolve to a registered source (first author's surname + year)."""
+    known = {(_surname(s["authors"][0]), int(s["year"])) for s in (sources or []) if s.get("authors") and s.get("year")}
+    for no, line in enumerate(md.splitlines(), 1):
+        for grp in CITE_GROUP_RE.finditer(line):
+            for part in grp.group(1).split(";"):
+                m = CITE_ONE_RE.match(part)
+                if not m:
+                    continue
+                key = (m.group(1).split()[-1].lower(), int(m.group(2)))
+                if sources is None:
+                    L.add("C5-citation-unregistered", "WARN", no, part.strip(),
+                          "citation cannot be verified: the project has no source registry (.rcs/corpus/source_registry.json)")
+                elif key not in known:
+                    L.add("C5-citation-unregistered", "ERROR", no, part.strip(),
+                          "no registered source has this first author and year: register and verify the source, or "
+                          "remove the citation (never cite from memory)")
+
+
 def lint_text(md: str, claims: dict[str, dict], final: bool, require_tags: bool,
-              known_acronyms: set[str], max_words: int | None = None, count_mode: str = "prose") -> Lint:
+              known_acronyms: set[str], max_words: int | None = None, count_mode: str = "prose",
+              sources: list[dict] | None | bool = False) -> Lint:
     L = Lint()
+    if sources is not False:                      # only when the caller knows the project (--rcs)
+        check_citations(md, sources, L)
     has_tags = bool(CLAIM_TAG_RE.search(md))
     orphan_mode = require_tags or has_tags
 
@@ -449,7 +514,10 @@ def main(argv: list[str] | None = None) -> int:
     max_words = args.max_words or length_limit(rcs)
     claims = load_claims(rcs)
     count_mode = length_mode(rcs)
-    L = lint_text(md, claims, args.final, args.require_tags, known, max_words, count_mode)
+    apply_language_policy(rcs)
+    sr = rcs / "corpus" / "source_registry.json" if rcs else None
+    sources = (load_json(sr).get("sources", []) if sr and sr.exists() else None) if rcs else False
+    L = lint_text(md, claims, args.final, args.require_tags, known, max_words, count_mode, sources)
     if args.out:
         cm = rcs / "claims" / "claim_evidence_map.json" if rcs else None
         rel = draft.resolve()
@@ -467,6 +535,7 @@ def main(argv: list[str] | None = None) -> int:
             "claim_map_sha256": hashlib.sha256(cm.read_bytes()).hexdigest() if cm and cm.exists() else None,
             "max_words": max_words, "words_main": main_text_words(md, count_mode), "length_count": count_mode,
             "words_prose": main_text_words(md), "words_all": main_text_words(md, "all"),
+            "language_policy": POLICY_APPLIED or None,
             "errors": L.count("ERROR"), "warnings": L.count("WARN"), "findings": L.findings}, indent=2),
             encoding="utf-8")
     if args.json:

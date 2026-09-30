@@ -1,0 +1,19 @@
+{
+ "questions": [
+  {
+   "id": "Q-001",
+   "question": "Is sensor drift the authors' explanation of the gap, and was it tested?",
+   "blocks_claims": [
+    "C004"
+   ],
+   "options": [
+    "tested (supply evidence)",
+    "untested hypothesis",
+    "drop it"
+   ],
+   "consequence": "C004 stays BLOCKED and out of the paper",
+   "asked_at": "2026-09-30T00:00:00+00:00",
+   "blocking": true
+  }
+ ]
+}

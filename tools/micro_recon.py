@@ -9,7 +9,7 @@ DETERMINISTICALLY against what the paragraph must convey (required facts) and mu
 Fixture (tools/tests/fixtures/micro/*.json):
   {"id": "...", "origin": "...",
    "passages": {"A": "<paragraph as currently written>", "B": "<paragraph under a proposed rule>"},   # B optional
-   "questions": [{"q": "...", "required": [["0.751", "0.75"], ["RAG"]], "forbidden": ["significant", "outperforms all"]}]}
+   "questions": [{"q": "...", "required": [["0.742", "0.74"], ["System R"]], "forbidden": ["significant", "outperforms all"]}]}
   A required item is a list of alternatives; it is conveyed if ANY alternative occurs in the answer (case-insensitive,
   numbers normalised). A forbidden string in the answer means the reader came away believing something stronger.
 

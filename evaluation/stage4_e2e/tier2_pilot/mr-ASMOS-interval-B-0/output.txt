@@ -1,1 +1,0 @@
-{"answers": ["RAG had the highest token-F1 score of 0.751.", "not stated"]}

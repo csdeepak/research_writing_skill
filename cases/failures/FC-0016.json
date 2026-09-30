@@ -1,0 +1,31 @@
+{
+  "schema_version": "1",
+  "id": "FC-0016",
+  "title": "Isolation check misread the reviewer's own log",
+  "category": "review-isolation",
+  "severity": "low",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-30",
+    "by": "author agent",
+    "context": "End-to-end round 2"
+  },
+  "observed_failure": "G4 resolved packet-relative paths in reviewer_log.json against the working directory, reporting every packet file as read outside the packet.",
+  "expected_behavior": "Relative paths in the reviewer log are resolved inside the packet.",
+  "evidence": [
+    "DECISIONS.md D-31"
+  ],
+  "regression": {
+    "tests": [
+      "T-055"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": ""
+  },
+  "lessons": [],
+  "public": true
+}

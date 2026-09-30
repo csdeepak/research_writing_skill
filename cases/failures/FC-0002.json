@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "id": "FC-0002",
+  "title": "Writer invented a rounded bound absent from the evidence",
+  "category": "numerical-integrity",
+  "severity": "high",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-29",
+    "by": "tool calibration",
+    "context": "Phase 9 drafts of a public benchmark paper"
+  },
+  "observed_failure": "Drafts said models were 'under 350 KB' / 'under 330 KB' while the evidence gives a maximum of 325 KB; readers could not recover the real maximum.",
+  "expected_behavior": "Every number in a draft traces to a source value (allowing only its own rounding); invented bounds are flagged.",
+  "evidence": [
+    "DECISIONS.md D-25"
+  ],
+  "regression": {
+    "tests": [],
+    "replay_fixtures": [
+      "REAL-02",
+      "REAL-02b"
+    ]
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": "verify_numbers flags untraced numbers"
+  },
+  "lessons": [],
+  "public": true
+}

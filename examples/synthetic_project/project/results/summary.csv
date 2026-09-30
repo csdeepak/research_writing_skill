@@ -1,0 +1,3 @@
+method,mae_mean
+AdaptNorm,0.80
+StaticNorm,1.00

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1",
+  "id": "FC-0006",
+  "title": "Line charts drew the value axis horizontally",
+  "category": "figure-integrity",
+  "severity": "high",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-29",
+    "by": "blind reviewer",
+    "context": "Stage 4 end-to-end run (private project; reproduced synthetically)"
+  },
+  "observed_failure": "The renderer placed value ticks and the value label on the horizontal axis, which encodes the step, so a figure read as 'value vs value'. No visual gate noticed.",
+  "expected_behavior": "The value axis of a line chart is vertical, and any figure whose marks disagree with its labelled value axis fails V3 (renderer-independent).",
+  "evidence": [
+    "DECISIONS.md D-28"
+  ],
+  "regression": {
+    "tests": [
+      "T-050"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": "renderer fixed; V3_AXIS_ENCODING added"
+  },
+  "lessons": [
+    "Checkers written by the renderer's author share its blind spots; a blind human-like reader caught it."
+  ],
+  "public": true
+}

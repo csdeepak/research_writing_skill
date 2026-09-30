@@ -1,0 +1,13 @@
+name: Documentation
+description: Something is unclear, wrong or missing in the docs.
+title: "[docs] "
+labels: ["documentation"]
+body:
+  - type: input
+    id: where
+    attributes: {label: "Which page?"}
+    validations: {required: true}
+  - type: textarea
+    id: what
+    attributes: {label: "What is wrong or missing?"}
+    validations: {required: true}

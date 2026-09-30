@@ -1,0 +1,31 @@
+{
+  "schema_version": "1",
+  "id": "FC-0011",
+  "title": "Length gate counted prose only",
+  "category": "length",
+  "severity": "medium",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-29",
+    "by": "live model run",
+    "context": "Tier-3 A/B"
+  },
+  "observed_failure": "The lint counted 3,751 words for a paper of 4,403 (tables and headings excluded), so writers could not see real length; a later final was 94 words over the limit unnoticed.",
+  "expected_behavior": "v0.3 projects count prose, headings and table text; the counting mode is explicit (length_count).",
+  "evidence": [
+    "DECISIONS.md D-30"
+  ],
+  "regression": {
+    "tests": [
+      "T-051"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": ""
+  },
+  "lessons": [],
+  "public": true
+}

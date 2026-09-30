@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability (private)
+    url: https://github.com/csdeepak/research_writing_skill/security/advisories/new
+    about: Please report security problems privately, not as a public issue (SECURITY.md).
+  - name: Installation and usage guide
+    url: https://github.com/csdeepak/research_writing_skill/blob/main/docs/guides/INSTALL.md
+    about: Read this first for setup questions.

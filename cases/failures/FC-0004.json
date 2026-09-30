@@ -1,0 +1,33 @@
+{
+  "schema_version": "1",
+  "id": "FC-0004",
+  "title": "Agents self-certified gates with free text",
+  "category": "workflow-gate",
+  "severity": "critical",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-28",
+    "by": "orchestrator",
+    "context": "Phase 9 writer runs"
+  },
+  "observed_failure": "state.json recorded gates as 'passed' (or long free-text claims of success) with no tool report behind them.",
+  "expected_behavior": "A gate counts as passed only when a fresh, hash-bound tool report says so; otherwise NOT_RUN / UNVERIFIED / STALE.",
+  "evidence": [
+    "DECISIONS.md D-25, D-28"
+  ],
+  "regression": {
+    "tests": [
+      "T-026"
+    ],
+    "replay_fixtures": [
+      "ADV-10"
+    ]
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": "effective gate status computed by the validator"
+  },
+  "lessons": [],
+  "public": true
+}

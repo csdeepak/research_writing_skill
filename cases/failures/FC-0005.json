@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "id": "FC-0005",
+  "title": "Evaluator counted true source details as reader intrusions",
+  "category": "evaluator",
+  "severity": "high",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-28",
+    "by": "evaluator audit",
+    "context": "Phase 9 A/B scoring"
+  },
+  "observed_failure": "The metric penalised readers for statements the curated gold omitted even when the source stated them; 70 of 124 flagged 'unsupported beliefs' were source-supported, and one reported regression was an artifact.",
+  "expected_behavior": "An intrusion counts as unsupported only if the source does not state it (verified blind against the frozen source).",
+  "evidence": [
+    "DECISIONS.md D-23, D-24"
+  ],
+  "regression": {
+    "tests": [],
+    "replay_fixtures": [],
+    "note": "evaluation harness, not skill code: evaluation/harness/intrusion_verify.py"
+  },
+  "resolution": {
+    "status": "mitigated",
+    "version": "0.3.0",
+    "summary": "MMF_src reported beside MMF; verdicts re-checked"
+  },
+  "lessons": [
+    "Audit the metric before trusting a regression."
+  ],
+  "public": true
+}

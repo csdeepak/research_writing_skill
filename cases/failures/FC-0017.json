@@ -1,0 +1,31 @@
+{
+  "schema_version": "1",
+  "id": "FC-0017",
+  "title": "Reviewers answered their own questions instead of the protocol's",
+  "category": "review-protocol",
+  "severity": "high",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-26",
+    "by": "evaluator audit",
+    "context": "Phase 4 reviewer validation"
+  },
+  "observed_failure": "Reviewers substituted their own reconstruction questions, making grading inconsistent (the same paper scored 0.947 and 0.526).",
+  "expected_behavior": "The 12 reconstruction questions are restated verbatim; outputs must answer exactly Q1-Q12.",
+  "evidence": [
+    "DECISIONS.md D-13"
+  ],
+  "regression": {
+    "tests": [
+      "T-055"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": "review_agent.md restates Q1-Q12; rce_roles rejects other keys"
+  },
+  "lessons": [],
+  "public": true
+}

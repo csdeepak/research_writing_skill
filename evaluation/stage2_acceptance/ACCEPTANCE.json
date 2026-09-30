@@ -1,71 +1,4 @@
 {
- "ASMOS": {
-  "published_figures": [
-   "V001",
-   "V002",
-   "V003"
-  ],
-  "blocked_figures": [],
-  "visual_gates": {
-   "V1": "PASSED",
-   "V2": "PASSED",
-   "V3": "PASSED",
-   "V4": "PASSED",
-   "V5": "NOT_RUN",
-   "V6": "PASSED"
-  },
-  "visual_errors": 0,
-  "effective_gates_after_recording": {
-   "V1": "PASSED",
-   "V2": "PASSED",
-   "V3": "PASSED",
-   "V4": "PASSED",
-   "V5": "NOT_RUN",
-   "V6": "PASSED"
-  },
-  "artifact_errors": [],
-  "every_published_figure": {
-   "V001": {
-    "evidence_ids": [
-     "E001"
-    ],
-    "source_hashes": {
-     "data/aggregates.json": "sha256:267b9fadc67d3a5f627e8ef2136281e0dd4c81363dd23945299015d6db1ee5b7"
-    },
-    "render_sha256": "sha256:1c90d100508bb7bc4dd9dd61d93c36fda62d561b60cbb95434dc39d4ca8e86d9"
-   },
-   "V002": {
-    "evidence_ids": [
-     "E001",
-     "E002"
-    ],
-    "source_hashes": {
-     "data/aggregates.json": "sha256:267b9fadc67d3a5f627e8ef2136281e0dd4c81363dd23945299015d6db1ee5b7"
-    },
-    "render_sha256": "sha256:c683df3451f08e2cb15f97bdf99d5b1d17ce826092f6d62b7f78d15e0afa8c5e"
-   },
-   "V003": {
-    "evidence_ids": [
-     "E004"
-    ],
-    "source_hashes": {
-     "data/summary.csv": "sha256:c117fe07f292a4ce83957896f422688c09afa3ae121911ed5fd40db494def730"
-    },
-    "render_sha256": "sha256:2500b4f0d1a0a6ac79a6953448743cddecc7c906d1e93e0f212f7d059f260dab"
-   }
-  },
-  "paper_excerpt": {
-   "lint_errors": 0,
-   "untraced_numbers": 0,
-   "number_errors": 0
-  },
-  "planner_agrees_with_registry": {
-   "V001": true,
-   "V002": true,
-   "V003": true
-  },
-  "acceptance": "PASS"
- },
  "MLPERF_TINY": {
   "published_figures": [
    "V001"
@@ -112,5 +45,6 @@
    "V001": true
   },
   "acceptance": "PASS"
- }
+ },
+ "_note": "Public release: only MLPERF_TINY is reproducible from public data. The second acceptance project (the author's unpublished project) also passed (V1-V4, V6 PASSED; V5 NOT_RUN) but its data are not published."
 }

@@ -6,7 +6,7 @@ A figure is never drawn by hand and never from remembered numbers. Each visual i
 
   "data": {"file": "data/aggregates.json",          # csv, or json list of records
            "scope": {"metric": "token_f1"},          # the universe of rows this figure is about
-           "exclude": [{"x": "D ASMOS+RAG", "reason": "different model, not comparable"}],
+           "exclude": [{"x": "D System+RAG", "reason": "different model, not comparable"}],
            "x": "system", "y": "mean",               # category/position and value columns
            "err_low": "ci_low", "err_high": "ci_high", "series": null,
            "source_text": "project/paper.txt"}       # optional upstream document every value must occur in

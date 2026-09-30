@@ -1,0 +1,31 @@
+{
+  "schema_version": "1",
+  "id": "FC-0012",
+  "title": "Blind-review gate ignored claims added after the review",
+  "category": "review-protocol",
+  "severity": "high",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-30",
+    "by": "orchestrator",
+    "context": "Applying human checkpoint answers (end-to-end run)"
+  },
+  "observed_failure": "A human answer added a claim to the paper after the review round; G4 still reported PASSED.",
+  "expected_behavior": "G4 goes STALE when the newest draft states claims no blind review covered, prompting another review round.",
+  "evidence": [
+    "DECISIONS.md D-31"
+  ],
+  "regression": {
+    "tests": [
+      "T-059"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": ""
+  },
+  "lessons": [],
+  "public": true
+}

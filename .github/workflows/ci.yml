@@ -1,0 +1,43 @@
+name: ci
+
+on:
+  push:
+    branches: [main, "rce-*"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: tests (${{ matrix.os }}, py${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.9", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      # Tier 1: deterministic, no model calls, no API keys (docs/research/EVALUATION.md)
+      - name: Unit and integration tests
+        run: python -m unittest discover -s tools/tests -v
+      - name: Replay every known failure against the checkers
+        run: python tools/replay_fixtures.py
+      - name: Failure-case archive
+        run: python tools/validate_cases.py
+      - name: Skill files, schemas and proposals
+        run: python tools/validate_artifacts.py --check-skill
+      - name: Repository audit (secrets, local paths, links, SVGs)
+        run: python tools/check_repo.py
+      - name: Build and validate the skill ZIP
+        run: python tools/package_skill.py --out dist
+      - name: Upload the skill ZIP
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.12'
+        uses: actions/upload-artifact@v4
+        with:
+          name: rce-skill-zip
+          path: dist/*.zip

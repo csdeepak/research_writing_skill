@@ -9,7 +9,7 @@
     "instances": 6,
     "metrics": {
       "synonym_drift_on_real_phase9_drafts": "OPENHANDS v0.1.0: 4, v0.2.0: 14; BEIR v0.2.0: 17 (all against the writers' own term ledgers)",
-      "excess_precision_detector": "flags 0.7513 (95% CI 0.6121-0.8905); accepts 0.75 (0.61-0.89)",
+      "excess_precision_detector": "flags 0.7423 (95% CI 0.6011-0.8833); accepts 0.74 (0.60-0.88)",
       "skim_check_on_drifted_abstract": "4/4 drift types caught; generated skim sheet passes its own check",
       "m13_proxy_run": "pipeline executed end-to-end with LLM proxy readers/graders on the ASMOS acceptance project; results in evaluation/stage3_proxy/ (proxy, not human evidence)",
       "defects_found_by_the_first_real_run": "2 pipeline defects (grader reference lacked figure captions, repeating D-24; text-only readers could not see plotted values) -> fixed, run repeated, first run archived"

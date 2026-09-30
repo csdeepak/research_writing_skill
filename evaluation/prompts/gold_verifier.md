@@ -2,7 +2,7 @@
 
 You are an independent verifier. Another agent drafted a Gold Account: the factual scoring authority for an experiment that measures how accurately readers reconstruct research. Check it against the frozen evidence. Don't trust it.
 
-Repository root: `C:/Users/csdee/PESU/research_skill/research_writing_skill`
+Repository root: `C:/Users/<user>/PESU/research_skill/research_writing_skill`
 - Evidence (sole authority): `evaluation/external_projects/{P}/snapshot/paper.txt` and `README__*.md`
 - Draft to verify: `evaluation/ground_truth/{P}/GOLD_ACCOUNT_DRAFT.md`, `evaluation/ground_truth/{P}/gold_story.json`
 - Assessment (context only): `evaluation/external_projects/{P}/PROJECT_ASSESSMENT.md`

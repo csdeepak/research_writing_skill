@@ -1,0 +1,31 @@
+{
+  "schema_version": "1",
+  "id": "FC-0013",
+  "title": "A bare [CITATION NEEDED] marker passed the final gate",
+  "category": "citation",
+  "severity": "high",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-30",
+    "by": "author agent",
+    "context": "End-to-end round 2"
+  },
+  "observed_failure": "The marker pattern required a colon and note, so '[CITATION NEEDED]' neither counted as unresolved in the final lint (G5) nor was stripped from packets.",
+  "expected_behavior": "Every gap marker, with or without a note, is an unresolved gap that fails the final gate.",
+  "evidence": [
+    "DECISIONS.md D-31"
+  ],
+  "regression": {
+    "tests": [
+      "T-061"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": ""
+  },
+  "lessons": [],
+  "public": true
+}

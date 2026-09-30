@@ -1,0 +1,6 @@
+# Store text with LF everywhere (manifests hash raw bytes; CI runs on Linux and Windows)
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.pdf binary
+*.zip binary

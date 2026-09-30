@@ -11,6 +11,36 @@ PATCH = clarification with no behavior change.
 
 ---
 
+## [0.4.0] — 2026-09-30 (open-source release)
+
+**Why minor:** new checks and mechanisms (the policy above: MINOR = new mechanism, check or rule). No artifact becomes
+invalid; one new ERROR applies only to projects that keep a source registry.
+
+**Changed (behaviour):**
+- `lint_draft.py` **C5-citation-unregistered**: every author-year citation must resolve to the source registry (ERROR;
+  WARN when there is no registry). T-065.
+- `lint_draft.py` **language policy**: `.rcs/language_policy.json` extends or disables existing license types; the
+  applied policy is written into the report. T-070.
+- `g4_check.py` **finding lifecycle**: `author_question` (needs an existing checkpoint), `false_positive` and
+  `not_reproducible` (need a reason) join `fixed` / `declined` / `deferred`. T-063.
+- `SKILL.md`: the description is shortened to 181 characters (the claude.ai upload limit is 200); new bullets on
+  citations and the language policy.
+
+**Added:**
+- `tools/rce.py` (single CLI entry point; `check` runs every deterministic check on a project and draft). T-069.
+- `tools/package_skill.py` (skill ZIP + validation). T-067.
+- `tools/check_repo.py` (repository audit). T-068.
+- `tools/validate_cases.py` + `schemas/failure_case.schema.json` + `cases/failures/` (18 real failure cases). T-066.
+- `examples/synthetic_project/` (planted integrity problems + clean control). T-064.
+- T-071 tests every strong-language license rule and `UNSUPPORTED_FACT`.
+
+**Fixed:**
+- `snapshot_sources.py` `restore` / `verify`: third-party texts are no longer redistributed.
+- Test fixtures derived from a private project were replaced with synthetic equivalents.
+- Line endings normalised to LF (`.gitattributes`).
+
+**Not claimed:** any change in reader comprehension (see `docs/research/EVALUATION.md`).
+
 ## [0.3.0] — released 2026-09-30 (promoted by the user's decision as a PROCESS upgrade)
 
 **Release decision (D-32):** the user promoted v0.3.0 into `skill/` on 2026-09-30.

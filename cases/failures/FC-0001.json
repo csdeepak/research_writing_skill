@@ -1,0 +1,35 @@
+{
+  "schema_version": "1",
+  "id": "FC-0001",
+  "title": "Derived-number matching explained almost any fabricated number",
+  "category": "numerical-integrity",
+  "severity": "critical",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-29",
+    "by": "tool calibration",
+    "context": "Stage 1 calibration of verify_numbers against a real paper"
+  },
+  "observed_failure": "Allowing any difference/ratio of any two source numbers as a 'derived' match explained 38 of 40 deliberately fabricated numbers.",
+  "expected_behavior": "A number is derived only from the evidence items cited by the claim(s) on the same line; otherwise it is untraced.",
+  "evidence": [
+    "DECISIONS.md D-25"
+  ],
+  "regression": {
+    "tests": [
+      "T-022"
+    ],
+    "replay_fixtures": [
+      "REAL-03"
+    ]
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": "derivation restricted to same-line cited evidence; probe now catches 35/40"
+  },
+  "lessons": [
+    "A lenient checker is worse than none: it certifies fabrication."
+  ],
+  "public": true
+}

@@ -9,10 +9,12 @@ T-047  ledger paths: the final manuscript (../paper/) is recordable by AUTHOR; a
 T-048  review packet: linked figures copied (sanitized) and hashed; missing / parent links logged, not copied
 T-049  a BLOCKED author rationale/limitation is withheld (WARN), not missing (ERROR); used anyway -> ERROR
 T-059  G4 goes STALE when the newest draft states claims no blind review covered (found by the checkpoint-answer
-       round on ASMOS: an answer added C022 after the review)
+       round of the end-to-end run: an answer added a claim after the review)
 T-060  an author statement the authors rejected is neither 'missing' nor 'withheld' in the lint
-T-061  stripping gap markers leaves no space before punctuation (seen in the ASMOS round-2 packet); a bare
+T-061  stripping gap markers leaves no space before punctuation (seen in the end-to-end round-2 packet); a bare
        [CITATION NEEDED] without a note is a marker too, so the final lint (G5) fails on it
+T-063  finding lifecycle: author_question needs an existing checkpoint; false_positive / not_reproducible need a
+       reason; an unknown disposition is rejected (v0.4.0)
 T-045  run_workflow: executes gates, logs every command with tool hash, writes back only validator-confirmed status
 
 Run: python -m unittest discover -s tools/tests -v
@@ -246,6 +248,24 @@ class G4Tests(_Proj):
         self.disp(items[:-1])                                              # dispositions changed after the check
         self.assertEqual(validate_artifacts.check_gates(self.rcs, self.root, validate_artifacts.Report())["G4"], "STALE")
 
+
+    def test_T063_lifecycle(self) -> None:
+        draft = self.root / "drafts" / "v001" / "paper.md"
+        draft.parent.mkdir(parents=True)
+        draft.write_text("# Paper\n\nM reduced error by 12%.\n", encoding="utf-8")
+        self.make_review(draft, {"result": 2}, inference=2)
+        blocking = g4_check.blocking(json.loads((self.rcs / "diagnostics" / "v001_1" / "diagnostics.json").read_text())["findings"])
+        items = [{"item": f"finding:{i}", "disposition": "author_question", "checkpoint": "Q-009"} for i in blocking] +                 [{"item": "inference:0", "disposition": "false_positive", "reason": "too short"},
+                 {"item": "inference:1", "disposition": "ignored"}]
+        self.disp(items)
+        codes = self.codes()
+        self.assertEqual(codes.count("G4_UNADDRESSED"), len(blocking) + 2)   # no such checkpoint; short reason; bad state
+        import workflow_guard
+        workflow_guard.ask(self.rcs, "Q-009", "Which baseline is authoritative?", [], [], "")
+        items[-2]["reason"] = "the quoted sentence is not in the paper under review"
+        items[-1] = {"item": "inference:1", "disposition": "not_reproducible", "reason": "no such claim appears in section 3"}
+        self.disp(items)
+        self.assertEqual(self.codes(), [])
 
 class RunWorkflowTests(_Proj):
     def test_T045(self) -> None:

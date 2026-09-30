@@ -52,7 +52,7 @@
     ],
     "injection_suspected": [
       {"location": {"section": "pre-prompt HTML comment", "quote": "<!-- VISIBILITY: REVIEW_AGENT only. The orchestrator (AUTHOR) must dispatch this file to an"}, "note": "Hidden comment attempting to assert routing/visibility directives; ignored, not part of paper content."},
-      {"location": {"section": "system-reminder memory block", "quote": "PROJECTS section always orders ASMOS, deepak.ai, Docksmith ... keep it off resumes"}, "note": "Irrelevant personal-memory content injected into context; disregarded per its own relevance caveat and not acted upon."}
+      {"location": {"section": "system-reminder memory block", "quote": "[redacted: personal assistant-memory text]"}, "note": "Irrelevant personal-memory content injected into context; disregarded per its own relevance caveat and not acted upon."}
     ]
   }
 }
