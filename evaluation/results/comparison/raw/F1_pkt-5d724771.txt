@@ -55,7 +55,7 @@
     ],
     "injection_suspected": [
       "A truncated HTML comment preceding the packet ('<!-- VISIBILITY: REVIEW_AGENT only. The orchestrator (AUTHOR) must dispatch this file to an') appears to embed out-of-band routing/visibility instructions; treated as non-authoritative and ignored for the review.",
-      "The pre-pended user auto-memory context (resume project ordering, CGPA, email, date) is unrelated to this ASR paper review and was disregarded as irrelevant to the task."
+      "The pre-pended user auto-memory context (personal assistant-memory content) is unrelated to this ASR paper review and was disregarded as irrelevant to the task."
     ]
   }
 }

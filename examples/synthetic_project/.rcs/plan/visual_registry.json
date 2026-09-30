@@ -1,0 +1,63 @@
+{
+ "visuals": [
+  {
+   "id": "V001",
+   "number": 1,
+   "rq": "RQ1",
+   "tier": "main",
+   "kind": "COMPARATIVE",
+   "representation": "bar_h",
+   "reader_question": "How much lower is AdaptNorm's error?",
+   "claim_ids": [
+    "C001"
+   ],
+   "evidence_ids": [
+    "E001",
+    "E002"
+   ],
+   "title": "Mean MAE by method",
+   "value_label": "Mean MAE",
+   "units": "",
+   "domain": [
+    0,
+    2
+   ],
+   "figure_path": "figures/V001_mae.svg",
+   "data": {
+    "file": "project/results/summary.csv",
+    "scope": {},
+    "x": "method",
+    "y": "mae_mean"
+   },
+   "caption": "AdaptNorm has the lower mean error: 0.80 against 1.00 for StaticNorm (mean MAE over three datasets, single run each; source: results/summary.csv).",
+   "caption_requirements": [
+    "source"
+   ],
+   "alt_text": "Horizontal bar chart of mean MAE for two methods: AdaptNorm 0.80 and StaticNorm 1.00.",
+   "universe": [
+    {
+     "method": "AdaptNorm",
+     "mae_mean": "0.80"
+    },
+    {
+     "method": "StaticNorm",
+     "mae_mean": "1.00"
+    }
+   ],
+   "points": [
+    {
+     "x": "AdaptNorm",
+     "y": 0.8,
+     "series": ""
+    },
+    {
+     "x": "StaticNorm",
+     "y": 1.0,
+     "series": ""
+    }
+   ],
+   "excluded": [],
+   "status": "RENDERED"
+  }
+ ]
+}

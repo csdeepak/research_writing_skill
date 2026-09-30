@@ -1,0 +1,7 @@
+{
+ "step": 17,
+ "guardrail": "v0.3",
+ "length_limit_words": 1000,
+ "gates": {},
+ "accepted_risks": []
+}

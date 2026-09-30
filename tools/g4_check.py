@@ -12,6 +12,11 @@ G4 passes only when, for the latest review round:
        fixed     -> `where` names the revised location; the revised draft must differ from the reviewed one
        declined  -> `reason` >= 20 characters
        deferred  -> the item is listed in open_issues.md
+       author_question -> `checkpoint` names a human checkpoint (Q-###) that exists in checkpoints/pending.json
+                  (the finding needs a fact only the authors have; the claims it touches stay BLOCKED until answered)
+       false_positive | not_reproducible -> `reason` >= 20 characters (the finding is wrong, or cannot be located
+                  in the paper); it stays in the record, it does not disappear
+     (v0.4.0, finding lifecycle: every finding ends in one of these six states; none is dropped)
   4. the reviewer stayed in its packet (reviewer_log.json, if the runtime recorded one, lists only packet
      files)                                                                                          G4_ISOLATION
 
@@ -83,6 +88,11 @@ def check(rcs: Path, rnd: str, revised: Path | None) -> dict:
     disp_p = rcs / "revisions" / rnd / "dispositions.json"
     disp = {d.get("item"): d for d in (json.loads(disp_p.read_text(encoding="utf-8")).get("items", []) if disp_p.exists() else [])}
     open_issues = (rcs / "open_issues.md").read_text(encoding="utf-8") if (rcs / "open_issues.md").exists() else ""
+    asked = set()
+    for cp in ("pending.json", "answers.json"):
+        cpp = rcs / "checkpoints" / cp
+        if cpp.exists():
+            asked |= {q.get("id") for q in json.loads(cpp.read_text(encoding="utf-8")).get("questions", [])}
     any_fixed = False
     for key in need:
         d = disp.get(key)
@@ -100,8 +110,17 @@ def check(rcs: Path, rnd: str, revised: Path | None) -> dict:
         elif d.get("disposition") == "deferred":
             if key not in open_issues and label not in open_issues:
                 err("G4_UNADDRESSED", f"{key}: 'deferred' but not listed in open_issues.md")
+        elif d.get("disposition") == "author_question":
+            qid = str(d.get("checkpoint", ""))
+            if qid not in asked:
+                err("G4_UNADDRESSED", f"{key}: 'author_question' must name an existing checkpoint (got {qid or 'none'}); "
+                                      "open one with tools/workflow_guard.py ask")
+        elif d.get("disposition") in ("false_positive", "not_reproducible"):
+            if len(str(d.get("reason", "")).strip()) < 20:
+                err("G4_UNADDRESSED", f"{key}: '{d.get('disposition')}' needs a reason (>= 20 characters)")
         else:
-            err("G4_UNADDRESSED", f"{key}: disposition must be fixed|declined|deferred")
+            err("G4_UNADDRESSED", f"{key}: disposition must be fixed|declined|deferred|author_question|false_positive|"
+                                  "not_reproducible")
     if any_fixed and reviewed is not None and revised is not None and revised.exists() and \
             hashlib.sha256(revised.read_bytes()).hexdigest() == hashlib.sha256(reviewed.read_bytes()).hexdigest():
         err("G4_UNADDRESSED", "findings marked fixed, but the revised draft is identical to the reviewed one")

@@ -1,0 +1,27 @@
+{
+ "sources": [
+  {
+   "id": "SRC-001",
+   "title": "A fictional survey of normalisation for forecasting",
+   "authors": [
+    "Ana Rivera",
+    "Tom Okafor"
+   ],
+   "year": 2019,
+   "venue": "Fictional Journal of Examples",
+   "doi": null,
+   "url": null,
+   "publication_status": "PEER-REVIEWED",
+   "level": 2,
+   "verification": {
+    "method": "manual",
+    "date": "2026-09-30",
+    "verified_by": "human"
+   },
+   "read_depth": "full",
+   "permitted_use": [
+    "content_citation"
+   ]
+  }
+ ]
+}

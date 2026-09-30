@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "id": "FC-0015",
+  "title": "Non-Claude reviewers returned non-conforming JSON",
+  "category": "model-adapter",
+  "severity": "medium",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-30",
+    "by": "live model run",
+    "context": "Reviewer calibration with NVIDIA Nemotron"
+  },
+  "observed_failure": "Every reply dropped its final closing bracket, and quotes exceeded the 20-word limit even after four rounds of error feedback.",
+  "expected_behavior": "Only missing closers are completed and over-long quotes shortened (counted, never touching scores or findings); schema validation still decides.",
+  "evidence": [
+    "evaluation/model_agnostic/RESULTS.md"
+  ],
+  "regression": {
+    "tests": [
+      "T-054",
+      "T-062"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": ""
+  },
+  "lessons": [],
+  "public": true
+}

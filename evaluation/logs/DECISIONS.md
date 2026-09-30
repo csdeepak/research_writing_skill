@@ -172,11 +172,11 @@ Each decision: context → choice → rationale → consequence/risk. Appended c
   was re-run and still PASSES.
 - Real findings about the project, for the user (the four data checkpoints, Q-001 to Q-004, were already raised by
   CORPUS):
-  - Q-001: cost headline -23.84% (its artifact is absent) vs -22.09% (present).
-  - Q-002: "equal accuracy" vs measured 0.68-0.70 against 0.72.
+  - Q-001: two conflicting cost headlines, one without its artifact [project-specific values withheld: private project data, redacted 2026-09-30].
+  - Q-002: an 'equal accuracy' wording contradicted by the measured accuracies [project-specific values withheld: private project data, redacted 2026-09-30].
   - Q-003: README results whose artifacts are absent.
-  - Q-004: "zero added labels" vs labels_consumed=10.
-  - Q-005 (method details) came from the review. The reviewer also found Table 2's EM > token-F1 for ASMOS+RAG.
+  - Q-004: a 'zero added labels' wording contradicted by the recorded label count [project-specific values withheld: private project data, redacted 2026-09-30].
+  - Q-005 (method details) came from the review. The reviewer also found an internally inconsistent metric pair in one table.
 - Not claimed:
   - reader benefit (one run, no comparison arm);
   - reviewer calibration on perturbations;
@@ -247,7 +247,7 @@ Each decision: context → choice → rationale → consequence/risk. Appended c
 
 ## D-31 · Model-agnostic runtime; human answers applied; second review round (2026-09-30)
 - **User request:** "complete the rest and make it model agnostic". The user answered three ASMOS checkpoints in chat
-  (Q-001: only -22.09%; Q-002: report accuracy as measured; Q-004: "zero retraining" only), recorded with `--by`.
+  (Q-001, Q-002, Q-004; answers [project-specific values withheld: private project data, redacted 2026-09-30]), recorded with `--by`.
   - An AUTHOR agent applied the answers through the claim map: 4 claims rejected, 2 confirmed, 1 narrowed and
     confirmed; the paper changed by one sentence.
   - Q-003 and Q-005 need files or method notes only the user has, and stay open.
@@ -301,3 +301,34 @@ Each decision: context → choice → rationale → consequence/risk. Appended c
   - the human reading study (Stage 3 acceptance);
   - V5 figure reviews;
   - ASMOS Q-003 and Q-005.
+
+## D-33 · Open-source migration; release v0.4.0 (2026-09-30)
+- Followed the author's migration brief: inspect → assessment (`docs/OPEN_SOURCE_MIGRATION_ASSESSMENT.md`) → change.
+- **Author decisions (asked):** untrack private-project data going forward (history not rewritten); third-party texts
+  are replaced by fetch + SHA-256 (`snapshot_sources.py restore|verify`, 13/13 verified); Apache-2.0; citation
+  "C S Deepak", no affiliation.
+- **Found in the audit and fixed:**
+  - 212 private/third-party files untracked;
+  - operator assistant-memory text quoted in 24 archived reviewer outputs, redacted (FC-0018: the harness CLI
+    reviewers were not isolated from the operator's environment);
+  - private-project values in 5 decision-log lines and in test examples replaced or redacted;
+  - mixed CRLF/LF line endings normalised (`.gitattributes`).
+- **Version 0.4.0, not 0.3.1:** the skill's own policy makes any new check a MINOR change. This release adds three:
+  - the citation-registry check C5 (a fabricated citation previously passed every gate);
+  - a per-project language policy;
+  - a six-state finding lifecycle.
+- **Added:**
+  - CLI `tools/rce.py`, packager `tools/package_skill.py` (the claude.ai description limit, 200 characters, was
+    verified in Anthropic's docs), repository audit `tools/check_repo.py`, and the failure-case schema, archive
+    (18 cases) and validator;
+  - synthetic example project (planted problems + clean control; 2 documented gaps);
+  - CI (Ubuntu + Windows, Python 3.9/3.12), issue and PR templates, governance, security, privacy, roadmap, citation
+    files, 5 SVG diagrams, and a README written to the evidence standard.
+- **Corrected claims:**
+  - "49 real failure cases" (from the brief) is really 49 replay fixtures = 29 adversarial + 16 controls + 4 from real
+    failures, plus 18 documented real failure cases;
+  - the private end-to-end run found 10 tool defects, not 14 (an earlier draft of EVALUATION.md said 14).
+- **Results in place:** 104/104 tests, 49/49 replay fixtures, 18/18 cases valid, `--check-skill` 0/0, repository
+  audit 0 errors, skill ZIP valid (102 files, about 270 KB). `skill/versions/0.4.0/MANIFEST.json` written.
+- **Not done:** no commit or tag, and no GitHub release (the author's action). The ChatGPT install path is unverified
+  (OpenAI's help page refused automated access).

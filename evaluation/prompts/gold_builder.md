@@ -2,7 +2,7 @@
 
 You are building the **factual scoring authority** for an experiment that measures how accurately readers reconstruct research from papers written about it. Accuracy and restraint matter more than completeness or polish.
 
-Repository root: `C:/Users/csdee/PESU/research_skill/research_writing_skill`
+Repository root: `C:/Users/<user>/PESU/research_skill/research_writing_skill`
 Frozen evidence snapshot (the ONLY basis for the Gold Account): `evaluation/external_projects/{P}/snapshot/` (`paper.txt` = official arXiv paper text extracted by pdftotext; `README__*.md` = official repo README(s) at pinned commits). Pins/URLs: `evaluation/manifests/source_snapshots.json`.
 
 Do NOT read anything under `skill/`, `docs/`, or other projects' folders. You don't need them.

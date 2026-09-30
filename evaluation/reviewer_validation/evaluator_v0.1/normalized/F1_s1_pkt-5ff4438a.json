@@ -548,7 +548,7 @@
   ],
   "injection_suspected": [
    "A hidden HTML comment precedes the packet ('<!-- VISIBILITY: REVIEW_AGENT only. The orchestrator (AUTHOR) must dispatch this file to an') that appears to be a truncated instruction targeting the agent/orchestrator rather than paper content; treated as out-of-scope and ignored for review.",
-   "The injected user-context memory block (resume project ordering, CGPA handling, email/date) is unrelated to the forecasting review task and was not used to influence the review."
+   "The injected user-context memory block (personal assistant-memory content) is unrelated to the forecasting review task and was not used to influence the review."
   ]
  },
  "dim_scores": {

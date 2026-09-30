@@ -2,7 +2,7 @@
 """Reproduce the vNext Stage 2 acceptance check (spec 12: "on at least two real projects, every published figure has
 reproducible source, evidence IDs, an accurate caption, and no unresolved material integrity failure").
 
-Rebuilds ASMOS + MLPERF_TINY from real data (build.py), renders every figure, runs the visual gates V1-V6, the
+Rebuilds the acceptance projects from real data (build.py; the private one only locally), renders every figure, runs the visual gates V1-V6, the
 planner, lint and number tracing on the paper excerpt, records honest gate statuses in state.json, and re-checks
 them with validate_artifacts. Writes ACCEPTANCE.json and prints a summary. Exit 1 if acceptance fails.
 
@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-DEFAULT_CAND = HERE.parents[0] / "skill_versions" / "v0.3.0-candidate"
+DEFAULT_CAND = HERE.parents[1]            # repository root: the released skill/ + tools/ (v0.3.0+)
 
 
 def main() -> int:
@@ -37,7 +37,7 @@ def main() -> int:
 
     subprocess.run([sys.executable, str(HERE / "build.py")], check=True, stdout=subprocess.DEVNULL)
     results, ok = {}, True
-    for proj in ("ASMOS", "MLPERF_TINY"):
+    for proj in [p for p in ("ASMOS", "MLPERF_TINY") if (HERE / p / ".rcs").exists()]:   # ASMOS: private, local only
         root = HERE / proj
         rcs = root / ".rcs"
         with contextlib.redirect_stdout(io.StringIO()):

@@ -63,3 +63,7 @@ Machine-readable per-call log: `experiments.jsonl`. Decisions: `DECISIONS.md`.
   - 95/95 tests, 49/49 fixtures, 0 validator warnings.
   - Remaining, all human-only: the reading study, V5 figure reviews, ASMOS Q-003/Q-005 (`ASMOS_rce_workspace/YOUR_STEPS.md`).
     Nothing committed.
+- 2026-09-30 · **Open-source migration done (D-33), release candidate v0.4.0.**
+  - 104 tests, 49 fixtures and 18 failure cases pass; the repository audit is clean; the skill ZIP is valid.
+  - Private and third-party data are untracked (not yet pushed).
+  - The author still has to review, commit, push, tag and publish the release.

@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "id": "FC-0003",
+  "title": "Draft contradicted its own dataset count",
+  "category": "evidence-conflict",
+  "severity": "medium",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-29",
+    "by": "tool calibration",
+    "context": "Phase 9 draft of a public retrieval benchmark paper"
+  },
+  "observed_failure": "The same draft said '18 datasets' in four places and '8 of the 19 datasets we report on' in one.",
+  "expected_behavior": "Conflicting counts of the same quantity inside one draft are reported (explained subsets are not).",
+  "evidence": [
+    "DECISIONS.md D-24, D-25"
+  ],
+  "regression": {
+    "tests": [],
+    "replay_fixtures": [
+      "REAL-01",
+      "REAL-01b"
+    ]
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": "lint INCONSISTENT-COUNT"
+  },
+  "lessons": [],
+  "public": true
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": "1",
+  "id": "FC-0010",
+  "title": "Gate runner validated before refreshing the reports",
+  "category": "workflow-gate",
+  "severity": "low",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-29",
+    "by": "author agent",
+    "context": "Stage 4 end-to-end run"
+  },
+  "observed_failure": "G1 ran before the G3/V/G4 reports were regenerated, so the first run after every edit reported G1 failed.",
+  "expected_behavior": "G1 runs after the reports it checks are fresh.",
+  "evidence": [
+    "DECISIONS.md D-28"
+  ],
+  "regression": {
+    "tests": [
+      "T-045"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": ""
+  },
+  "lessons": [],
+  "public": true
+}

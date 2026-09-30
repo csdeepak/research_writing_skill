@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use RCE, please cite it as below. There is no associated paper or DOI yet."
+title: "Research Communication Engine (RCE)"
+abstract: "A model-agnostic workflow and toolset that turns raw research evidence into traceable, reviewable research papers without allowing unsupported claims to silently enter the manuscript."
+type: software
+authors:
+  - name: "C S Deepak"
+    alias: csdeepak
+repository-code: "https://github.com/csdeepak/research_writing_skill"
+license: Apache-2.0
+version: 0.4.0
+date-released: "2026-09-30"
+keywords:
+  - research writing
+  - evidence traceability
+  - scientific communication
+  - LLM agents
+  - agent skills

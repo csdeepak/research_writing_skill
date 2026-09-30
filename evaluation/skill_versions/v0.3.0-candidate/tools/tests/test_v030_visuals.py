@@ -7,7 +7,7 @@ T-032  planner (M04/M06/M10): prose for <= 3 values, trend -> line, intervals ->
 T-033  sample selection (M08): deterministic for a seed, never picks unconsented/identifying samples
 T-034  V gates in state.json: passed needs a fresh report; V5 needs a human review; stale registry blocks
 T-035  every Stage 2 replay fixture (VIS-*) passes
-T-050  V3_AXIS_ENCODING: marks must sit where the labelled value axis puts them. Fixture: the real ASMOS line
+T-050  V3_AXIS_ENCODING: marks must sit where the labelled value axis puts them. Fixture: a synthetic reproduction of the real line
        chart from the Stage 4 e2e run, whose value ticks were drawn on the x axis; fresh renders pass
 
 Run: python -m unittest discover -s tools/tests -v
@@ -144,8 +144,8 @@ class ReplayStage2Tests(unittest.TestCase):
 
 class AxisEncodingTests(unittest.TestCase):
     def test_T050(self) -> None:
-        old = (Path(__file__).resolve().parent / "fixtures" / "visual" / "REAL-ASMOS-V003_value_axis_on_x.svg").read_text(encoding="utf-8")
-        self.assertGreater(len(validate_visuals.axis_encoding(old)), 40)
+        old = (Path(__file__).resolve().parent / "fixtures" / "visual" / "SYNTH-line_value_axis_on_x.svg").read_text(encoding="utf-8")
+        self.assertGreaterEqual(len(validate_visuals.axis_encoding(old)), 30)
         line = {"points": [{"x": str(x), "y": y, "series": s} for s in ("a", "b") for x, y in
                            zip(range(0, 11), [0.0, 0.1, 0.3, 0.3, 0.5, 0.6, 0.6, 0.8, 0.9, 1.0, 1.0])],
                 "universe": [], "excluded": []}

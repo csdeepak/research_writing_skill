@@ -9,9 +9,9 @@ T-047  ledger paths: the final manuscript (../paper/) is recordable by AUTHOR; a
 T-048  review packet: linked figures copied (sanitized) and hashed; missing / parent links logged, not copied
 T-049  a BLOCKED author rationale/limitation is withheld (WARN), not missing (ERROR); used anyway -> ERROR
 T-059  G4 goes STALE when the newest draft states claims no blind review covered (found by the checkpoint-answer
-       round on ASMOS: an answer added C022 after the review)
+       round of the end-to-end run: an answer added a claim after the review)
 T-060  an author statement the authors rejected is neither 'missing' nor 'withheld' in the lint
-T-061  stripping gap markers leaves no space before punctuation (seen in the ASMOS round-2 packet); a bare
+T-061  stripping gap markers leaves no space before punctuation (seen in the end-to-end round-2 packet); a bare
        [CITATION NEEDED] without a note is a marker too, so the final lint (G5) fails on it
 T-045  run_workflow: executes gates, logs every command with tool hash, writes back only validator-confirmed status
 

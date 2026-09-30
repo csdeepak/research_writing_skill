@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="380" viewBox="0 0 640 380" font-family="Helvetica, Arial, sans-serif" font-size="12" role="img" aria-labelledby="t d" data-visual-id="V003" data-representation="line">
+<title id="t">Share routed correctly by step (synthetic)</title>
+<desc id="d">Synthetic reproduction of a mislabelled line chart: the value axis is drawn horizontally although horizontal position encodes the step.</desc>
+<rect width="640" height="380" fill="#ffffff"/>
+<line x1="40.00" y1="40" x2="40.00" y2="280" stroke="#dddddd"/>
+<text class="tick" x="40.00" y="296" text-anchor="middle">0.00</text>
+<line x1="184.00" y1="40" x2="184.00" y2="280" stroke="#dddddd"/>
+<text class="tick" x="184.00" y="296" text-anchor="middle">0.25</text>
+<line x1="328.00" y1="40" x2="328.00" y2="280" stroke="#dddddd"/>
+<text class="tick" x="328.00" y="296" text-anchor="middle">0.50</text>
+<line x1="472.00" y1="40" x2="472.00" y2="280" stroke="#dddddd"/>
+<text class="tick" x="472.00" y="296" text-anchor="middle">0.75</text>
+<line x1="616.00" y1="40" x2="616.00" y2="280" stroke="#dddddd"/>
+<text class="tick" x="616.00" y="296" text-anchor="middle">1.00</text>
+<line x1="40" y1="280" x2="616" y2="280" stroke="#333333"/>
+<text x="328.00" y="316" text-anchor="middle">Share routed correctly</text>
+<path d="M40.00,280.00 L97.60,256.00 L155.20,232.00 L212.80,208.00 L270.40,172.00 L328.00,148.00 L385.60,136.00 L443.20,112.00 L500.80,88.00 L558.40,64.00 L616.00,40.00" fill="none" stroke="#0072B2" stroke-width="2"/>
+<g class="mark" data-x="0" data-y="0" data-series="method_a"><circle cx="40.00" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="1" data-y="0.1" data-series="method_a"><circle cx="97.60" cy="256.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="2" data-y="0.2" data-series="method_a"><circle cx="155.20" cy="232.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="3" data-y="0.3" data-series="method_a"><circle cx="212.80" cy="208.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="4" data-y="0.45" data-series="method_a"><circle cx="270.40" cy="172.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="5" data-y="0.55" data-series="method_a"><circle cx="328.00" cy="148.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="6" data-y="0.6" data-series="method_a"><circle cx="385.60" cy="136.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="7" data-y="0.7" data-series="method_a"><circle cx="443.20" cy="112.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="8" data-y="0.8" data-series="method_a"><circle cx="500.80" cy="88.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="9" data-y="0.9" data-series="method_a"><circle cx="558.40" cy="64.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="10" data-y="1" data-series="method_a"><circle cx="616.00" cy="40.00" r="4.00" fill="#0072B2"/></g>
+<path d="M40.00,232.00 L97.60,220.00 L155.20,196.00 L212.80,184.00 L270.40,160.00 L328.00,124.00 L385.60,112.00 L443.20,100.00 L500.80,76.00 L558.40,52.00 L616.00,40.00" fill="none" stroke="#0072B2" stroke-width="2"/>
+<g class="mark" data-x="0" data-y="0.2" data-series="method_b"><circle cx="40.00" cy="232.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="1" data-y="0.25" data-series="method_b"><circle cx="97.60" cy="220.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="2" data-y="0.35" data-series="method_b"><circle cx="155.20" cy="196.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="3" data-y="0.4" data-series="method_b"><circle cx="212.80" cy="184.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="4" data-y="0.5" data-series="method_b"><circle cx="270.40" cy="160.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="5" data-y="0.65" data-series="method_b"><circle cx="328.00" cy="124.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="6" data-y="0.7" data-series="method_b"><circle cx="385.60" cy="112.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="7" data-y="0.75" data-series="method_b"><circle cx="443.20" cy="100.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="8" data-y="0.85" data-series="method_b"><circle cx="500.80" cy="76.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="9" data-y="0.95" data-series="method_b"><circle cx="558.40" cy="52.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="10" data-y="1" data-series="method_b"><circle cx="616.00" cy="40.00" r="4.00" fill="#0072B2"/></g>
+<path d="M40.00,280.00 L97.60,280.00 L155.20,280.00 L212.80,280.00 L270.40,280.00 L328.00,280.00 L385.60,280.00 L443.20,280.00 L500.80,280.00 L558.40,280.00 L616.00,280.00" fill="none" stroke="#0072B2" stroke-width="2"/>
+<g class="mark" data-x="0" data-y="0" data-series="frozen_baseline"><circle cx="40.00" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="1" data-y="0" data-series="frozen_baseline"><circle cx="97.60" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="2" data-y="0" data-series="frozen_baseline"><circle cx="155.20" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="3" data-y="0" data-series="frozen_baseline"><circle cx="212.80" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="4" data-y="0" data-series="frozen_baseline"><circle cx="270.40" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="5" data-y="0" data-series="frozen_baseline"><circle cx="328.00" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="6" data-y="0" data-series="frozen_baseline"><circle cx="385.60" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="7" data-y="0" data-series="frozen_baseline"><circle cx="443.20" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="8" data-y="0" data-series="frozen_baseline"><circle cx="500.80" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="9" data-y="0" data-series="frozen_baseline"><circle cx="558.40" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="10" data-y="0" data-series="frozen_baseline"><circle cx="616.00" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<path d="M40.00,280.00 L97.60,280.00 L155.20,280.00 L212.80,280.00 L270.40,280.00 L328.00,136.00 L385.60,136.00 L443.20,136.00 L500.80,136.00 L558.40,136.00 L616.00,64.00" fill="none" stroke="#0072B2" stroke-width="2"/>
+<g class="mark" data-x="0" data-y="0" data-series="retrained_every_5"><circle cx="40.00" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="1" data-y="0" data-series="retrained_every_5"><circle cx="97.60" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="2" data-y="0" data-series="retrained_every_5"><circle cx="155.20" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="3" data-y="0" data-series="retrained_every_5"><circle cx="212.80" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="4" data-y="0" data-series="retrained_every_5"><circle cx="270.40" cy="280.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="5" data-y="0.6" data-series="retrained_every_5"><circle cx="328.00" cy="136.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="6" data-y="0.6" data-series="retrained_every_5"><circle cx="385.60" cy="136.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="7" data-y="0.6" data-series="retrained_every_5"><circle cx="443.20" cy="136.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="8" data-y="0.6" data-series="retrained_every_5"><circle cx="500.80" cy="136.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="9" data-y="0.6" data-series="retrained_every_5"><circle cx="558.40" cy="136.00" r="4.00" fill="#0072B2"/></g>
+<g class="mark" data-x="10" data-y="0.9" data-series="retrained_every_5"><circle cx="616.00" cy="64.00" r="4.00" fill="#0072B2"/></g>
+</svg>

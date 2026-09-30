@@ -1,0 +1,20 @@
+name: New failure case
+description: Propose a permanent regression case (cases/failures/FC-####.json) for a failure you already understand.
+title: "[case] "
+labels: ["failure-case"]
+body:
+  - type: textarea
+    id: observed
+    attributes: {label: "Observed failure"}
+    validations: {required: true}
+  - type: textarea
+    id: expected
+    attributes: {label: "Expected behaviour"}
+    validations: {required: true}
+  - type: textarea
+    id: repro
+    attributes: {label: "Minimal synthetic reproduction (fixture files / sentence)"}
+    validations: {required: true}
+  - type: input
+    id: category
+    attributes: {label: "Category", description: "One of the categories in skill/schemas/failure_case.schema.json"}

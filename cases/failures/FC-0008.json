@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "id": "FC-0008",
+  "title": "Two rules forced the author to invent a placeholder claim",
+  "category": "attribution",
+  "severity": "medium",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-29",
+    "by": "author agent",
+    "context": "Stage 4 end-to-end run"
+  },
+  "observed_failure": "One rule required every author-stated rationale in the draft while another forbade BLOCKED claims; with the rationale blocked behind a human checkpoint, the only way through was a placeholder claim.",
+  "expected_behavior": "An author statement blocked behind an open checkpoint is reported as withheld (not missing); once rejected by the authors it is neither.",
+  "evidence": [
+    "DECISIONS.md D-28, D-31"
+  ],
+  "regression": {
+    "tests": [
+      "T-049",
+      "T-060"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": "S1/S2-author-statement-withheld; rejected statements skipped"
+  },
+  "lessons": [],
+  "public": true
+}

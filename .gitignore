@@ -4,3 +4,20 @@ __pycache__/
 # project-level artifacts created when running the skill on real projects
 /.rcs/
 !skill/examples/demo_project/.rcs/
+
+# ---- never published (open-source release audit, 2026-09-30) ----
+# The author's own unpublished project: kept locally only
+evaluation/stage2_acceptance/ASMOS/
+evaluation/stage2_acceptance/build_private_asmos.py
+evaluation/stage3_proxy/
+evaluation/stage4_e2e/
+# Third-party paper texts and READMEs are not redistributed; recreate and verify with
+#   python evaluation/harness/snapshot_sources.py restore
+evaluation/external_projects/*/snapshot/
+# Secrets and build outputs
+.env
+.env.*
+!.env.example
+dist/
+*.zip
+.rce-audit-denylist

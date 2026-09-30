@@ -1,0 +1,78 @@
+{
+ "project_root": ".",
+ "generated_at": "2026-09-30",
+ "items": [
+  {
+   "id": "E001",
+   "kind": "result",
+   "summary": "Mean MAE of AdaptNorm over the three datasets",
+   "locator": {
+    "path": "project/results/summary.csv"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "metric": "mae_mean",
+    "value": 0.8
+   },
+   "conditions": {
+    "method": "AdaptNorm"
+   }
+  },
+  {
+   "id": "E002",
+   "kind": "result",
+   "summary": "Mean MAE of StaticNorm over the three datasets",
+   "locator": {
+    "path": "project/results/summary.csv"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "metric": "mae_mean",
+    "value": 1.0
+   },
+   "conditions": {
+    "method": "StaticNorm"
+   }
+  },
+  {
+   "id": "E003",
+   "kind": "dataset",
+   "summary": "The results file covers three datasets",
+   "locator": {
+    "path": "project/results/metrics.csv"
+   },
+   "strength": "hard",
+   "status": "ok",
+   "value": {
+    "count": 3
+   },
+   "quantity": "num_datasets"
+  },
+  {
+   "id": "E004",
+   "kind": "dataset",
+   "summary": "The README says four datasets",
+   "locator": {
+    "path": "project/README.md"
+   },
+   "strength": "soft",
+   "status": "ok",
+   "value": {
+    "count": 4
+   },
+   "quantity": "num_datasets"
+  },
+  {
+   "id": "E005",
+   "kind": "hypothesis_stated",
+   "summary": "Author note: the gap may come from sensor drift (untested)",
+   "locator": {
+    "path": "project/notes/author_notes.md"
+   },
+   "strength": "soft",
+   "status": "ok"
+  }
+ ]
+}

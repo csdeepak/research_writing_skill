@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "failure_case.schema.json",
+  "title": "RCE failure case",
+  "description": "A real failure of the RCE (skill, tools or evaluator), recorded permanently. Every case names the regression test or replay fixture that now guards it; a case is never deleted because a newer version passes (docs/concepts/SELF_IMPROVEMENT.md).",
+  "type": "object",
+  "required": ["schema_version", "id", "title", "category", "severity", "found", "observed_failure", "expected_behavior", "regression", "resolution", "public"],
+  "properties": {
+    "schema_version": {"type": "string", "enum": ["1"]},
+    "id": {"type": "string", "pattern": "^FC-[0-9]{4}$"},
+    "title": {"type": "string", "minLength": 8, "maxLength": 140},
+    "category": {"type": "string", "enum": ["numerical-integrity", "claim-overreach", "attribution", "evidence-conflict", "citation",
+                                             "figure-integrity", "review-isolation", "review-protocol", "workflow-gate",
+                                             "human-checkpoint", "length", "model-adapter", "evaluator", "privacy"]},
+    "severity": {"type": "string", "enum": ["low", "medium", "high", "critical"]},
+    "introduced_in": {"type": "string"},
+    "found": {
+      "type": "object",
+      "required": ["when", "by", "context"],
+      "properties": {
+        "when": {"type": "string"},
+        "by": {"type": "string", "enum": ["tool calibration", "blind reviewer", "author agent", "orchestrator", "human", "live model run", "evaluator audit", "release audit"]},
+        "context": {"type": "string"}
+      }
+    },
+    "observed_failure": {"type": "string", "minLength": 20},
+    "expected_behavior": {"type": "string", "minLength": 20},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "regression": {
+      "type": "object",
+      "properties": {
+        "tests": {"type": "array", "items": {"type": "string", "pattern": "^T-[0-9]{3}$"}},
+        "replay_fixtures": {"type": "array", "items": {"type": "string"}},
+        "note": {"type": "string"}
+      }
+    },
+    "resolution": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {"type": "string", "enum": ["fixed", "mitigated", "open", "wontfix"]},
+        "version": {"type": "string"},
+        "summary": {"type": "string"}
+      }
+    },
+    "lessons": {"type": "array", "items": {"type": "string"}},
+    "public": {"type": "boolean"}
+  }
+}

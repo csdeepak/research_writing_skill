@@ -13,7 +13,7 @@ import micro_recon  # noqa: E402
 
 FX = {"id": "T", "passages": {"A": "a", "B": "b"},
       "questions": [{"q": "size?", "required": [["325"]], "forbidden": ["350"]},
-                    {"q": "who?", "required": [["rag"], ["0.751", "0.75"]], "forbidden": ["significant"]}]}
+                    {"q": "who?", "required": [["r"], ["0.742", "0.74"]], "forbidden": ["significant"]}]}
 
 
 class MicroTests(unittest.TestCase):
@@ -32,10 +32,10 @@ class MicroTests(unittest.TestCase):
 
     def test_T046(self) -> None:
         self.assertTrue(micro_recon.conveyed("It is 1,250 KB", ["1250"]))
-        self.assertTrue(micro_recon.conveyed("RAG scored 0.75", ["0.751", "0.75"]))
+        self.assertTrue(micro_recon.conveyed("R scored 0.74", ["0.742", "0.74"]))
         self.assertFalse(micro_recon.conveyed("not stated", ["325"]))
-        self.answer("A", ["under 350 KB", "RAG, 0.751, significantly better"])
-        self.answer("B", ["325 KB", "RAG at 0.75"])
+        self.answer("A", ["under 350 KB", "R, 0.742, significantly better"])
+        self.answer("B", ["325 KB", "R at 0.74"])
         r = micro_recon.score(self.tmp / "fx", self.tmp / "ans")["fixtures"]["T"]
         self.assertEqual(r["A"]["recall"], round(2 / 3, 3))
         self.assertEqual(r["A"]["overstatements"], 2)

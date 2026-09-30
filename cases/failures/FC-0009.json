@@ -1,0 +1,31 @@
+{
+  "schema_version": "1",
+  "id": "FC-0009",
+  "title": "Recording the final manuscript crashed the provenance ledger",
+  "category": "workflow-gate",
+  "severity": "medium",
+  "introduced_in": "0.1.0",
+  "found": {
+    "when": "2026-09-29",
+    "by": "orchestrator",
+    "context": "Stage 4 end-to-end run"
+  },
+  "observed_failure": "workflow_guard.record raised on paths outside .rcs, so the final manuscript could not be attributed.",
+  "expected_behavior": "The final manuscript (../paper/) is recordable by AUTHOR; any other outside path is a ROLE_VIOLATION, not a crash.",
+  "evidence": [
+    "DECISIONS.md D-28"
+  ],
+  "regression": {
+    "tests": [
+      "T-047"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.3.0",
+    "summary": ""
+  },
+  "lessons": [],
+  "public": true
+}

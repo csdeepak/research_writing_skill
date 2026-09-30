@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="320" viewBox="0 0 880 320" role="img" aria-labelledby="t d" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+<title id="t">Self-improvement process</title>
+<desc id="d">Real failure, reproduction, regression case, proposed rule, cheap tests, full evaluation, a human decision, then release. The human decision is required; the system never rewrites its own rules.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
+<rect x="0.5" y="0.5" width="879" height="319" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+<text x="440" y="36" text-anchor="middle" font-size="18" fill="#1f2328" font-weight="700">Self-improvement is governed by people</text>
+<rect x="40" y="74" width="170" height="58" rx="9" fill="#f6f8fa" stroke="#6e7781" stroke-width="1.6"/>
+<text x="125.0" y="108.0" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="600">Real failure</text>
+<line x1="210" y1="103" x2="248" y2="103" stroke="#57606a" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="250" y="74" width="170" height="58" rx="9" fill="#e7f1ff" stroke="#0969da" stroke-width="1.6"/>
+<text x="335.0" y="108.0" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="600">Reproduction</text>
+<line x1="420" y1="103" x2="458" y2="103" stroke="#57606a" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="460" y="74" width="170" height="58" rx="9" fill="#e7f1ff" stroke="#0969da" stroke-width="1.6"/>
+<text x="545.0" y="108.0" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="600">Regression case</text>
+<line x1="630" y1="103" x2="668" y2="103" stroke="#57606a" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="670" y="74" width="170" height="58" rx="9" fill="#fff1e5" stroke="#bc4c00" stroke-width="1.6"/>
+<text x="755.0" y="108.0" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="600">Proposed rule</text>
+<line x1="755" y1="132" x2="755" y2="194" stroke="#57606a" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="670" y="196" width="170" height="58" rx="9" fill="#e7f1ff" stroke="#0969da" stroke-width="1.6"/>
+<text x="755.0" y="230.0" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="600">Cheap tests</text>
+<line x1="670" y1="225" x2="632" y2="225" stroke="#57606a" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="460" y="196" width="170" height="58" rx="9" fill="#e7f1ff" stroke="#0969da" stroke-width="1.6"/>
+<text x="545.0" y="230.0" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="600">Full evaluation</text>
+<line x1="460" y1="225" x2="422" y2="225" stroke="#57606a" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="250" y="196" width="170" height="58" rx="9" fill="#e6f6ea" stroke="#1a7f37" stroke-width="1.6"/>
+<text x="335.0" y="230.0" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="700">Human decision</text>
+<line x1="250" y1="225" x2="212" y2="225" stroke="#57606a" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="40" y="196" width="170" height="58" rx="9" fill="#f6f8fa" stroke="#6e7781" stroke-width="1.6"/>
+<text x="125.0" y="230.0" text-anchor="middle" font-size="15" fill="#1f2328" font-weight="600">Release</text>
+<rect x="40" y="190" width="0" height="0" fill="none"/>
+<text x="440" y="296" text-anchor="middle" font-size="13" fill="#57606a" font-weight="400">Never: silent self-modification, auto-merged policy changes, deleting a case because a new version passes.</text>
+</svg>

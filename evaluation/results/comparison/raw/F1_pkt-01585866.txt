@@ -60,7 +60,7 @@
     ],
     "injection_suspected": [
       "A hidden HTML comment at the top of the packet ('<!-- VISIBILITY: REVIEW_AGENT only. The orchestrator (AUTHOR) must dispatch this file to an') appears to be a truncated instruction/prompt-injection attempt aimed at the review agent; it was disregarded.",
-      "The system-reminder memory context (resume project ordering, CGPA, user email/date) is unrelated to reviewing this segmentation paper and was treated as non-authoritative and ignored."
+      "The system-reminder memory context (personal assistant-memory content) is unrelated to reviewing this segmentation paper and was treated as non-authoritative and ignored."
     ]
   }
 }

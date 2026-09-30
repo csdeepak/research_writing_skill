@@ -20,7 +20,7 @@ Read this first when resuming. Logs: `logs/PROGRESS.md`, `logs/DECISIONS.md` (D-
 | 7 | pending (report) | — |
 | 8 | **draft done** | `results/FAILURE_ANALYSIS.md` |
 | 9 | candidate v0.2.0 built & tests pass (44/44) | `skill_versions/v0.2.0-candidate/` (+ proposal JSON/MD); **test runs interrupted**: workspaces `%TEMP%/rce_ws/{OPENHANDS,MLPERF_TINY,BEIR}__skillv0{10,20}sub` prepared (TASK.md = Phase 5 skill prompt, steps 1–17) |
-| 10 | not started | candidates: `C:/Users/csdee/PESU/capstone` (dental AI + survey paper), `PESU/PAY` (has eval/, docs/), `PESU/CDSAML/ASMOS` |
+| 10 personal projects | not started | [candidate project list redacted for the public release] |
 
 ## Next actions (in order)
 1. Resume/finish Phase 6 drafts (WHISPER strong, OPENHANDS cheap/strong) → `writers.py collect <P> skillpkg-<t>` → `compare.py packets <P> skillpkg-<t>` → `subagent_tasks.py make-cmp-reviews` → Opus subagent reviews → `make-grades cmp` → Sonnet graders → collect → `compare.py analyze`.

@@ -1,0 +1,16 @@
+name: Bug
+description: A tool crashes, a command fails, or behaviour differs from the documentation (not an integrity problem).
+title: "[bug] "
+labels: ["bug", "triage"]
+body:
+  - type: input
+    id: version
+    attributes: {label: "RCE version and Python version", placeholder: "0.4.0, Python 3.12, Windows 11"}
+    validations: {required: true}
+  - type: textarea
+    id: what
+    attributes: {label: "What happened?", description: "Command, full output, and what you expected."}
+    validations: {required: true}
+  - type: textarea
+    id: repro
+    attributes: {label: "Minimal reproduction (no private data)"}

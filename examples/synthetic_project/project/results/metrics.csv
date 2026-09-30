@@ -1,0 +1,7 @@
+method,dataset,mae,n
+AdaptNorm,Traffic,0.72,480
+AdaptNorm,Weather,0.81,512
+AdaptNorm,Energy,0.87,
+StaticNorm,Traffic,0.90,480
+StaticNorm,Weather,1.02,512
+StaticNorm,Energy,1.08,

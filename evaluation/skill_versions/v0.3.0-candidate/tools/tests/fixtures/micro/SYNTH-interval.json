@@ -1,0 +1,48 @@
+{
+ "id": "SYNTH-interval",
+ "origin": "synthetic; mirrors a real results paragraph from the Stage 4 end-to-end run (private project), values invented",
+ "rule_tested": "compression must not drop intervals (skim_layer M12-UNCERTAINTY-DROPPED)",
+ "passages": {
+  "A": "Figure 1 compares answer quality. System R reached the highest F1, 0.742 (95% CI 0.601 to 0.883), and System M the lowest, 0.428 (95% CI 0.291 to 0.560). The paired bootstrap puts R's advantage over M at +0.314 F1 (95% CI +0.127 to +0.501).",
+  "B": "Figure 1 compares answer quality. System R reached the highest F1, 0.742, and System M the lowest, 0.428. The paired bootstrap puts R's advantage over M at +0.314 F1."
+ },
+ "questions": [
+  {
+   "q": "Which system had the highest F1, and what was its score?",
+   "required": [
+    [
+     "system r",
+     " r "
+    ],
+    [
+     "0.742",
+     "0.74"
+    ]
+   ],
+   "forbidden": [
+    "significant"
+   ]
+  },
+  {
+   "q": "How certain is System R's advantage over System M? Give any interval reported.",
+   "required": [
+    [
+     "0.314",
+     "0.31"
+    ],
+    [
+     "0.127",
+     "0.13"
+    ],
+    [
+     "0.501",
+     "0.50"
+    ]
+   ],
+   "forbidden": [
+    "proves",
+    "significant"
+   ]
+  }
+ ]
+}

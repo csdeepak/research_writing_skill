@@ -38,7 +38,7 @@ FIX = Path(__file__).resolve().parent / "fixtures" / "replay"
 
 class PrecisionTests(unittest.TestCase):
     def test_T036(self) -> None:
-        self.assertTrue(audit_reader.excess_precision("RAG reached 0.7513 (95% CI 0.6121 to 0.8905)."))
+        self.assertTrue(audit_reader.excess_precision("RAG reached 0.7423 (95% CI 0.6011 to 0.8833)."))
         self.assertFalse(audit_reader.excess_precision("RAG reached 0.75 (95% CI 0.61 to 0.89)."))
         self.assertTrue(audit_reader.excess_precision("MAE 0.4091 ± 0.007."))
         self.assertFalse(audit_reader.excess_precision("MAE 0.409 ± 0.007."))
