@@ -46,11 +46,16 @@ answer. If the answer changes the RQ, record the change and why (M7, `integrity.
 
 ## 3. Step 6: corpus intake
 
-**Role:** CORPUS. **Input:** a BibTeX or RIS file, a Zotero export, an Obsidian vault, a PDF folder,
-and the references already in the project.
+**Role:** CORPUS. **Input:** a BibTeX or RIS file, a Zotero export (CSL-JSON), an Obsidian vault, a
+PDF folder, and the references already in the project.
 
-Ingest these first, so that search only has to fill gaps. Each entry becomes a candidate with its
-`origin` and its `as_cited` text. Four rules apply:
+```
+python tools/lit_search.py .rcs --intake refs.bib --intake library_pdfs/
+```
+
+Ingest these first, so that search only has to fill gaps. Each entry becomes a candidate that records
+where it was found (`found_by`) and its `as_cited` text. A PDF yields only a DOI, if one can be read, so
+it arrives as a stub for the title lookup to complete. Four rules apply:
 
 - **Same criteria.** The user's library meets the inclusion criteria that search results meet.
 - **Nothing dropped silently.** Each entry ends as kept, excluded with a reason, or unreadable.
@@ -67,12 +72,17 @@ Report what the corpus already covers per facet. Step 7 searches the rest.
 **Role:** CORPUS (`agents/corpus_agent.md`, discovery protocol).
 
 ```
-python tools/lit_search.py .rcs --online
+python tools/lit_search.py .rcs [--topic "..."]          # writes corpus/search_plan.json, then stops
+python tools/lit_search.py .rcs --online                 # runs the plan
+python tools/lit_search.py .rcs --online --snowball
+python tools/lit_search.py .rcs --stop-reason "two batches with no new method family"
 ```
 
-1. **Facets.** Build them from the story graph: problem × method family × dataset or benchmark ×
-   metric, plus synonyms. Default window: the last 5 years plus seminal works. Topic-only runs take
-   the facets from the user's words.
+1. **Facets.** The first run drafts `corpus/search_plan.json` from the story graph and evidence map:
+   problem × method family × dataset or benchmark × metric, plus synonyms. **Review it before going
+   online,** because these terms leave the machine. Sharpen the draft's keywords and set `from_year`
+   (default practice: the last 5 years, plus seminal works found by snowballing). Topic-only runs
+   seed the plan with `--topic`.
 2. **Indexes.** Search at least two indexes per facet. Semantic Scholar, OpenAlex, Crossref and
    arXiv are built in, with arXiv results flagged as preprints. Domain indexes (PubMed, DBLP, ACL
    Anthology, IEEE Xplore, ACM DL, national indexes) may be searched by hand or through the agent's
@@ -82,13 +92,17 @@ python tools/lit_search.py .rcs --online
    | Date | Index | Query | Filters | Hits | Status |
    |---|---|---|---|---|---|
 
-   `Status` is `ok` or `skipped: <reason>`. The screening table lists each candidate with a decision
-   and a reason.
+   `Status` is `ok` or `skipped: <reason>`. A run prints what each query added, so saturation is
+   visible.
 4. **Screen** titles and abstracts: does it match a story node, is it in the window, is it the
-   right type? Log every exclusion with its reason. Citation count is metadata, never a filter.
-5. **Snowball** one level, backward and forward, from the top 5 sources.
+   right type? In `corpus/candidates.json`, set `decision` to `keep` or `exclude`, with a `reason`
+   for each exclusion. Each run rewrites the Screening table in the log from those fields. Citation
+   count is metadata, never a filter.
+5. **Snowball** one level, backward and forward, from the first 5 kept sources. OpenAlex supplies
+   the citation links.
 6. **Stop** at saturation (two batches with no new method family or gap dimension) or at the budget
-   (`paper_config.budget`). Record the stopping reason.
+   (`paper_config.budget`: `max_web_queries` counts calls, one per query per index). The tool records
+   a budget stop. Saturation is your judgment: record it with `--stop-reason`.
 
 Without `--online`, the tools answer from `.rcs/cache/`. A run with no cache and no network has
 searched nothing. Say so and raise `INSUFFICIENT_LITERATURE`.
@@ -103,13 +117,19 @@ searched nothing. Say so and raise `INSUFFICIENT_LITERATURE`.
 python tools/verify_citations.py .rcs --online
 ```
 
+This looks up every registered source and every candidate with `decision: keep`. A kept candidate
+that passes joins the registry with `read_depth: abstract` and no `establishes` entry, so GL fails on
+any citation of it until someone has read it and recorded a support quote.
+
 1. **Existence.** Resolve the DOI or arXiv ID. Compare titles (§5.1). With no ID, fall back to a
    title search, preferring a matching year.
 2. **Metadata.** Fill fields from the index record, never by guessing. Keep `as_cited`. RCE's
-   `title_status` rule applies (`citation_rules.md` §8).
+   `title_status` rule applies (`citation_rules.md` §8). When index records conflict, the tool
+   records the conflict in `verification.conflicts` and leaves the fields as they were.
 3. **Triangulate.** Query Semantic Scholar, OpenAlex and Crossref, plus arXiv for arXiv works.
    Record one row per index in `verification.indexes[]`: `index`, `status`
-   (`found | not_found | skipped`), `match_score`.
+   (`found | not_found | skipped`), `match_score`, and a `reason` for a skip. An arXiv ID is
+   also looked up through its DataCite DOI, so it is triangulated like any other source.
 4. **Retraction.** See §5.3.
 5. **Flags.** See §5.4.
 6. **Verdict.** Set `verification.lookup_verified` (§5.2).
@@ -120,11 +140,12 @@ python tools/verify_citations.py .rcs --online
 ### 5.1 Title matching
 
 Lowercase both titles, strip punctuation and collapse whitespace, then take normalized Levenshtein
-similarity: `1 - distance / length of the longer title`. Accept at **0.70** or above.
+similarity: `1 - distance / length of the longer title`. Accept at **0.70** or above. A leading
+`RETRACTED:` is ignored: indexes add it to the real paper, and it must not look like a different one.
 
-The threshold is a coarse filter. "Part I" and "Part II" of a series pass it. When several records
-pass, prefer the matching year. If that leaves more than one, add the `metadata_conflict` flag and
-leave the choice to a person.
+The threshold is a coarse filter. "Part I" and "Part II" of a series pass it. When a title search
+returns several works that pass, prefer the matching year. If different works remain within 0.10 of
+the best match, add the `metadata_conflict` flag and leave the choice to a person.
 
 ### 5.2 The verdict
 
@@ -174,9 +195,12 @@ discusses the retraction, with the user's confirmation and the `retracted_acknow
 | `preprint` | The record is a preprint. Disclose the status where the citation is load-bearing |
 | `single_index` | Exactly one index found the work |
 | `post_llm_unconfirmed` | A preprint from `paper_config.contamination_cutoff_year` (default 2024) or later that no other index confirms |
-| `metadata_conflict` | Index records disagree on title, first author or year |
+| `metadata_conflict` | Index records disagree on title or first author, or on year by more than 1, or the cited first author matches no record |
+| `expression_of_concern` | Crossref records an expression of concern. The source stands, but a reader should know |
 | `predatory_suspected` | Step 9's venue screen raised concerns |
 | `retracted_acknowledged` | A person confirmed the citation is about the retraction |
+
+The tool sets the first six and refreshes them on each run. People set the last two, and those stay.
 
 `post_llm_unconfirmed` responds to the reported rise in non-existent references after LLM adoption
 (S37). The cutoff is a heuristic setting, not a measured threshold, and the flag says nothing about
@@ -218,20 +242,23 @@ weak chain is `INSUFFICIENT_LITERATURE`, never a reason to strengthen the wordin
 ## 7. Gate GL
 
 ```
-python tools/verify_citations.py .rcs --gate --out .rcs/audits/gates/GL_citations.json
+python tools/verify_citations.py .rcs --gate [--draft drafts/vNNN/paper.md] --out .rcs/audits/gates/GL_citations.json
 ```
 
-GL fails on any of these:
+GL makes no network calls. A source counts as cited when `story/lit_gap_chain.md`, a claim's `sources`
+or the `--draft` names it. GL fails on any of these:
 
 - a registered source with `lookup_verified: false`
 - a cited source with no verification record, no verdict or no support quote
 - a gap or novelty claim that is not scoped to the logged search
 - a `retracted` source without `retracted_acknowledged`
 
-`unresolvable` sources pass but must appear in `open_issues.md`. A scoped gap names the indexes,
-the date and the count: "Among the 23 works retrieved from Semantic Scholar and OpenAlex up to
-2026-11-02, none isolates …". A source added after GL goes through step 8, and GL runs again before
-that source is cited.
+`unresolvable` sources pass only when they appear in `open_issues.md`. A scoped gap names the
+indexes, the date and the count: "Among the 23 works retrieved from Semantic Scholar and OpenAlex up
+to 2026-11-02, none isolates …". The tool checks that a `GAP` line in the chain has all three and that
+the index it names has a successful query in the log. With `--draft`, it also flags unscoped phrases
+such as "no prior work" or "for the first time". It checks the wording, not whether the gap is real.
+A source added after GL goes through step 8, and GL runs again before that source is cited.
 
 ---
 
@@ -262,10 +289,15 @@ meta-analysis are optional, and they run on extracted, located data only.
 
 - **Opt-in.** A tool makes network calls only with `--online`. Otherwise it reads `.rcs/cache/`.
 - **Queries carry project terms.** List every index host in `data_policy.allowed_hosts`
-  (`.rcs/models.json`) before searching, and log every query. If the project's data may not leave
-  the machine, the search does not run, and the user hears that.
-- **Secrets.** A contact email for polite-pool access comes from `RCE_CONTACT_EMAIL`, and an optional
-  Semantic Scholar key from `SEMANTIC_SCHOLAR_API_KEY`. Neither is ever written to a file, a logged
-  URL or a command line.
-- **Limits.** At least 3 seconds between arXiv calls. Back off on 429. On a 5xx, record the index as
-  `skipped` with the reason.
+  (`.rcs/models.json`) before searching: `doi.org`, `api.crossref.org`, `api.openalex.org`,
+  `api.semanticscholar.org`, `export.arxiv.org`. Every query is logged. An unlisted host is skipped
+  with a reason, so if the project's data may not leave the machine, the search does not run and the
+  log shows why.
+- **Secrets.** A contact email for polite-pool access comes from `RCE_CONTACT_EMAIL`, and optional keys
+  from `SEMANTIC_SCHOLAR_API_KEY` and `OPENALEX_API_KEY`. They go only into request headers, never
+  into a file, a URL or a command line.
+- **Limits.** At least 3 seconds between arXiv calls. Back off on 429, then skip. On a 5xx or a network
+  error, record the index as `skipped` with the reason. Without keys, Semantic Scholar and OpenAlex
+  are often rate-limited or short of budget on shared addresses, so expect skips.
+- **Cache.** Only definite answers are cached, for 30 days. Use `--refresh` to look again. A skip is
+  never cached, so a later offline run cannot replay an outage as an answer.

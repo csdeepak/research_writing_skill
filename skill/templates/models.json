@@ -16,6 +16,7 @@
     "vllm_or_lmstudio": {"provider": "openai", "base_url": "http://localhost:8000/v1", "model": "<served model name>"},
     "any_cli":     {"provider": "command", "command": ["ollama", "run", "<model>"], "timeout": 1800},
     "any_chat_ui": {"provider": "manual", "dir": ".rcs/llm/manual"},
-    "_hosted_note": "for any hosted example also add its host, e.g. \"api.openai.com\", to data_policy.allowed_hosts"
+    "_hosted_note": "for any hosted example also add its host, e.g. \"api.openai.com\", to data_policy.allowed_hosts",
+    "_literature_note": "lit_search.py and verify_citations.py send project terms to public indexes. To allow them, add to data_policy.allowed_hosts: doi.org, api.crossref.org, api.openalex.org, api.semanticscholar.org, export.arxiv.org. format_paper.py --online also needs raw.githubusercontent.com"
   }
 }

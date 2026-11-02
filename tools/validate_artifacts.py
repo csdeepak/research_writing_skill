@@ -67,6 +67,8 @@ GATE_REPORTS = {
 # Visual gates (v0.3 Stage 2): one report, per-gate status inside it.
 GATE_REPORTS.update({g: [("audits/gates/V_visuals.json", "visuals")] for g in ("V1", "V2", "V3", "V4", "V5", "V6")})
 GATE_REPORTS["G4"] = [("audits/gates/G4_review.json", "g4")]
+GATE_REPORTS["GL"] = [("audits/gates/GL_citations.json", "gl")]
+GATE_REPORTS["GI"] = [("audits/gates/GI_integrity.json", "gi")]
 # v0.3 truth guardrail: projects that declare "guardrail": "v0.3" in state.json also need these reports.
 V03_GATE_REPORTS = {
     "G3": [("audits/gates/G3_numbers.json", "numbers")],
@@ -80,6 +82,8 @@ GATE_COMMANDS = {
     "invariance": "python tools/claim_invariance.py <tagged draft before edit> <tagged draft after edit> "
                   "--out .rcs/audits/gates/{gate}_invariance.json",
     "g4": "python tools/g4_check.py .rcs --round <round> --revised <revised draft> --out .rcs/audits/gates/G4_review.json",
+    "gl": "python tools/verify_citations.py .rcs --gate --out .rcs/audits/gates/GL_citations.json",
+    "gi": "python tools/integrity_check.py gate .rcs --stage pre|final --draft <tagged draft> --out .rcs/audits/gates/GI_integrity.json",
     "visuals": "python tools/visuals.py render .rcs && python tools/validate_visuals.py .rcs --draft <paper.md> "
                "--out .rcs/audits/gates/V_visuals.json",
 }
@@ -351,6 +355,15 @@ def check_gates(rcs: Path, project_root: Path, rep: Report) -> dict[str, str]:
                         rep.add("ERROR", where, f"{rel} is stale: {drafts[-1].parent.name} states {', '.join(added)}, "
                                                 "which no blind review covered; run another review round (step 18)")
                 continue
+            if kind == "gl":
+                reg = rcs / "corpus" / "source_registry.json"
+                if r.get("errors", 1) != 0:
+                    mark(gate, "FAILED")
+                    rep.add("ERROR", where, f"marked passed but {rel} reports {r.get('errors')} error(s)")
+                elif not reg.exists() or sha256_file(reg) != r.get("registry_sha256"):
+                    mark(gate, "STALE")
+                    rep.add("ERROR", where, f"{rel} is stale: the source registry changed after GL ran")
+                continue
             if kind == "visuals":
                 g = (r.get("gates") or {}).get(gate, {})
                 reg = rcs / "plan" / "visual_registry.json"
@@ -406,6 +419,16 @@ def check_gates(rcs: Path, project_root: Path, rep: Report) -> dict[str, str]:
                     elif words > limit:
                         mark(gate, "FAILED")
                         rep.add("ERROR", where, f"main text is {words} words, limit {limit} (LENGTH_EXCEEDED)")
+        if gate == "G5" and state.get("mode"):      # unified workflow: legacy projects have no integrity phase
+            gi = rcs / "audits" / "gates" / "GI_integrity.json"
+            try:
+                r = load_json(gi) if gi.exists() else {}
+            except json.JSONDecodeError:
+                r = {}
+            if r.get("stage") != "final" or r.get("errors", 1) != 0:
+                mark(gate, "FAILED")
+                rep.add("ERROR", f"state.json/{gate}", "G5 needs a clean GI report with stage: final (workflow step 20). "
+                                                       f"Run: {GATE_COMMANDS['gi']}")
     return eff
 
 

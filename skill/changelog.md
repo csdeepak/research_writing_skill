@@ -17,9 +17,33 @@ PATCH = clarification with no behavior change.
 chose the next minor version. `SKILL.md` keeps `version: 0.4.0` until the release step
 (`versions/README.md`).
 
-**Status: Stage A only (documents and contracts).** The documents below describe tools, schemas and
-agent prompts that later stages build. Until they exist, a gate that needs a missing tool is
-`"unverified"`, never `"passed"`.
+**Status: Stages A and B (documents, contracts and tools).** Schemas, agent prompts and adapters
+come in Stage C. Until they exist, the VERIFIER and panel roles have no prompt file, and a gate whose
+role cannot run is `"unverified"`, never `"passed"`.
+
+**Stage B, tools (all stdlib, network only behind `--online`):**
+- `tools/rce_index.py`: clients for the DOI resolver, Crossref, OpenAlex, Semantic Scholar and arXiv.
+  Each answer is `found`, `not_found` or `skipped`. Only the resolver and arXiv prove absence. Answers
+  are policy-checked and logged, and keys travel in headers only. Only definite answers are cached.
+- `tools/lit_search.py`: corpus intake (BibTeX, RIS, CSL-JSON, Obsidian, PDF folders; read-only, loud
+  on failure), a search plan drafted for review before anything is sent, facet queries on at least
+  two indexes, snowballing, and the corpus log.
+- `tools/verify_citations.py`: lookups, verdicts, cross-index rows, retraction status, flags,
+  registration of kept candidates, and gate **GL**.
+- `tools/integrity_check.py`: per-mode evidence for M1–M7, the replayable alignment sample, and gate
+  **GI** at both stages. Tool findings override a VERIFIER `CLEAR`.
+- `tools/format_paper.py`: `references.bib` from the registry, citation mapping, Pandoc with
+  `--citeproc`, PDF through LaTeX, content checks on the outputs. `tools/disclosure.py`: a draft
+  statement from the venue profile and the run's own records.
+- Wiring: GL and GI in `validate_artifacts.py` (self-certification, failure, staleness), in
+  `run_workflow.py gates` and in `rce.py`. G5 needs a final GI on unified projects only.
+  `workflow_guard.py` gains the VERIFIER and PANEL roles, and the AUTHOR may not write
+  `audits/integrity/`. `lint_draft.py` exposes its citation matcher, so all tools read citations
+  alike.
+- Found by live runs and fixed before commit: one work under an arXiv id and an arXiv DOI flagged as
+  a conflict; arXiv-only sources not triangulated; a network drop turning a real DOI `unresolvable`;
+  and `Methods` (plural) not recognised as a method section, which silently disabled M6.
+- Tests T-072 to T-093 (162 tests, network mocked).
 
 **Design source:** Academic Research Skills by Cheng-I Wu (CC BY-NC 4.0, commit `a41f3b2`,
 `docs/SOURCES.md` S32). Read for design only. Every document here is written fresh for this

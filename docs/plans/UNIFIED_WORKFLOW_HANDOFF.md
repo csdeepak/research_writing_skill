@@ -1,7 +1,7 @@
 # Unified workflow: build plan and handoff (RCE + ARS)
 
-**Status:** Stage A (documents and contracts) done; Stages B–E not started. See the Progress log (§9)
-and the contracts Stage A fixed (§10). Written 2026-11-02 at the end of the design session so a new
+**Status:** Stage A (documents and contracts) and Stage B (tools) done; Stages C–E not started. See the
+Progress log (§9) and the contracts in §10, which Stage B implemented and refined. Written 2026-11-02 at the end of the design session so a new
 session (different machine, different account) can build it.
 **Branch:** `rce-unified-workflow` (CI runs on `rce-*` branches). **Base:** `main` at v0.4.0 plus
 dependabot CI bumps, plus the merged adaptive-representation update (§0.4).
@@ -569,6 +569,7 @@ was not verified, and update `README.md` and `skill/README.md`.
 | 2026-11-02 | Design | This handoff plan written; branch `rce-unified-workflow` created | `check_repo.py` (0 errors) | Confirm §8, then Stage A |
 | 2026-11-02 | Design | Adaptive-representation update committed on `rce-adaptive-representation` and merged here | unittest 104 OK, replay 49/49, cases 18/0, `validate_artifacts --check-skill` 0 errors, `check_repo` 0 errors | Confirm §8 items 1, 3, 4, then Stage A |
 | 2026-11-02 | A | `SKILL.md` and `workflow.md` rewritten to §2; added `modes.md`, `literature.md`, `integrity.md`, `review_panel.md`, `finalize.md`; 5 new failure states; proposal `20261102-unified-workflow`; changelog; ARS credited (S32); stale step references fixed across skill docs, adapters and tool messages | unittest 104 OK, replay 49/49, cases 18/0, `validate_artifacts --check-skill` 0 errors (33 expected "unreleased change" warnings), `check_repo` 0 errors, `package_skill` valid. Word n-gram scan against all ARS text files: 0 shared at 9 words, and every 6-word hit reviewed. Windows, Python 3.12. No tool, schema or prompt built yet, so GL and GI cannot run | Stage B after the user reviews Stage A |
+| 2026-11-02 | B | Tools: `rce_index.py`, `lit_search.py`, `verify_citations.py` (GL), `integrity_check.py` (GI), `format_paper.py`, `disclosure.py`. GL and GI wired into `validate_artifacts.py`, `run_workflow.py`, `rce.py` and `workflow_guard.py` (VERIFIER, PANEL, AUTHOR denied `audits/integrity/`). `lint_draft.py` exposes its citation matcher. Docs aligned with what the build found; `docs/PRIVACY.md` covers the opt-in index calls. Tests T-072 to T-093 | unittest 266 OK (162 new, network mocked), replay 49/49, cases 18/0, `--check-skill` 0 errors, `check_repo` 0 errors, `package_skill` valid, with the 5 new tools running from the extracted ZIP. No Python 3.10+ syntax in 38 files. **Live, against the real indexes:** 8 planted sources (real, fake DOI, wrong-paper DOI with the correct DOI suggested, retracted Wakefield 1998, arXiv ID, arXiv DOI, title-only, invented title) all judged correctly, and GL failed on exactly the 4 bad ones; a search with 26 candidates from 3 of 4 indexes, Semantic Scholar 429 logged as skipped; a snowball; registration; GL pass. A network drop mid-run exposed a degraded-to-`unresolvable` bug, fixed and regression-tested. ARS copy scan: no substantive overlap (12-word hits are only imports, argparse boilerplate and a RIS-format idiom). Windows, Python 3.12. **Not verified:** real Pandoc and LaTeX output (not installed; mocked), and Linux / 3.9 until CI runs | Stage C after the user reviews Stage B |
 
 ---
 
@@ -596,13 +597,31 @@ was not verified, and update `README.md` and `skill/README.md`.
 - **Citations stay author-year in drafts**, because that is the form `lint_draft.py` C5 checks.
   `format_paper.py` must map each one to a registry key before Pandoc can restyle it.
 - **Integrity overrides are checkpoints, not accepted risks** (`ACCEPTED_RISK_FACTUAL`).
-- **`workflow_guard.py` `ROLE_WRITE`** needs VERIFIER and PANEL roles. AUTHOR's `audits/` prefix must
-  stop covering `audits/integrity/`.
-- **Stage B must also** add GL and GI to `GATE_REPORTS` in `validate_artifacts.py` and to
-  `run_workflow.py gates`. `rce_diagnostics.py` keeps `step` only when it is an int, and sub-steps are
-  strings.
+- **`workflow_guard.py`** has VERIFIER and PANEL roles (done in Stage B). `ROLE_DENY` keeps the AUTHOR
+  out of `audits/integrity/`.
+- **Wiring (done in Stage B):** GL and GI are in `GATE_REPORTS` (`validate_artifacts.py`), in
+  `run_workflow.py gates` (GL when `state.json` has a `mode`; GI with `--integrity pre|final`) and in
+  `rce.py`. G5 requires a final GI only when `state.json` has a `mode`, so v0.4 projects are unaffected.
+  `rce_diagnostics.py` keeps `step` only when it is an int, and sub-steps are strings.
+- **Stage B refinements, now part of the contract:**
+  - `lit_search.py` first writes `corpus/search_plan.json` and stops, so its terms are reviewed
+    before anything leaves the machine.
+  - `--intake` reads the user's library, and `--snowball` and `--stop-reason` complete step 7.
+  - GL counts a source as cited if the chain, a claim's `sources` or the `--draft` names it.
+  - A registered candidate starts with `establishes: []`, so citing it fails GL until someone reads it.
+  - A real ID with every title-bearing index down gives no verdict, not `unresolvable`.
+  - `metadata_conflict` ignores a one-year gap.
+  - The VERIFIER report schema is in `tools/integrity_check.py`'s docstring.
+  - Integrity overrides go in `audits/integrity/<stage>/decisions.json`.
+  - `state.story_changes` holds `{what, reason}` for M7.
+  - `format_paper.py` takes `--csl`, `--template` and `--bib-only`.
 - **`package_skill.py` fails on a backticked `tools/`, `agents/`, `schemas/` or `templates/` path in
-  `SKILL.md` that is not in the package.** Until those files exist, `SKILL.md` names new tools only
-  in `python tools/...` command form. Add the exact agent and schema paths at Stage C.
+  `SKILL.md` that is not in the package.** The tools exist now. The agent prompts and schemas do not,
+  so add their exact paths to `SKILL.md` only at Stage C.
+- **For Stage C:** add schemas for `paper_config`, the candidate list, the VERIFIER report
+  (`integrity_report`), `panel_review` and `editorial_decision`. Extend `source_registry` additively
+  with what Stage B writes: `verification.lookup_verified`, `code`, `indexes[]`, `conflicts[]`,
+  `suggestion`, plus `retraction {status, checked_at, source, observations}`, `flags[]` and
+  `arxiv_id`.
 - **Historical documents stay as written:** `docs/05_SKILL_SPECIFICATION.md`, `docs/06_VNEXT_SPEC.md`,
   evaluation logs, and past proposals and changelog entries keep the 21-step numbering.

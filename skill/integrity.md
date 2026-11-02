@@ -41,8 +41,8 @@ include incorrect implementations, errors in experimental implementation and ina
 | **M6** | Methodology fabrication | Method sentences whose claims have no `code` or `project_file` basis. Hyperparameters and preprocessing that the configs do not contain |
 | **M7** | Frame-lock | An RQ or spine that changed silently. No alternative explanation considered for the central claim |
 
-**M7 needs a record to check.** Every RQ or spine change is noted in `state.json` with a reason.
-For the central claim, `story/alternatives.md` lists the alternative explanations considered and
+**M7 needs a record to check.** Every RQ or spine change is noted in `state.json` under
+`story_changes`, as `{what, reason}`. For the central claim, `story/alternatives.md` lists the alternative explanations considered and
 what speaks for and against each. The list may be short. It may not be silently empty.
 
 ---
@@ -126,6 +126,11 @@ that `paper/paper.md` is that same text with the tags removed.
    python tools/workflow_guard.py answer --rcs .rcs --id Q-012 --answer "..." --by "Name"
    ```
 
+Then name the checkpoint in `audits/integrity/<stage>/decisions.json`:
+`{"decisions": [{"mode": "M5", "checkpoint": "Q-012"}]}`. The gate accepts it only if a named person
+answered that checkpoint with a reason of at least 20 characters, and the id appears in
+`open_issues.md`.
+
 A decision is not a pass. The mode keeps its status, the decision is recorded beside it, and it
 goes into `open_issues.md`. Only a person can make it, never an agent on anyone's behalf. It cannot
 be an accepted risk: those cover workflow decisions, not facts (`ACCEPTED_RISK_FACTUAL`). An
@@ -142,12 +147,17 @@ python tools/integrity_check.py gate .rcs --stage pre --draft drafts/vNNN/paper.
        --out .rcs/audits/gates/GI_integrity.json
 ```
 
-`GI_integrity.json` names its `stage` and carries one entry per mode, the alignment rows and sample
+`verifier_report.json` holds `draft_sha256` (copied from the bundle), `round`, `isolation`, `modes`
+(for each of M1–M7: `status`, `evidence`, `detail`) and `alignment` (a list of `{row, verdict, note}`).
+
+`GI_integrity.json` names its `stage` and carries one entry per mode, the alignment summary and sample
 seed, the draft's SHA-256, the round, and any recorded decisions. The per-stage reports stay under
 `audits/integrity/<stage>/`, so `--stage final` can compare with `--stage pre`.
 
 GI is passed only by a report with 0 errors for the current draft. A VERIFIER's words alone never
-pass it. G5 needs a report with `stage: final`.
+pass it: a tool finding overrides a `CLEAR` (`GI_CONTRADICTS_TOOL`), and in a project with a
+provenance ledger the report must be recorded under the VERIFIER role. G5 needs a report with
+`stage: final`.
 
 **Limit of this gate.** GI checks what is on record. It can show that a number matches a log. It
 cannot show that the log came from a correct experiment. Say so where it matters, and leave the
