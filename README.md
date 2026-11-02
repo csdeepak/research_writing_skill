@@ -21,6 +21,21 @@ evidence-grounded papers:
 
 When evidence is missing or conflicting, RCE **asks instead of guessing**.
 
+**Unified workflow (0.5.0 candidate, unreleased).** One ordered workflow of 8 phases and 22 steps
+([`skill/workflow.md`](skill/workflow.md)). RCE stays the spine, and five capabilities join it:
+- **Literature:** search and corpus intake, with each source looked up in bibliographic indexes and
+  checked for retraction (gate GL).
+- **Integrity:** an independent VERIFIER checks the draft for seven AI-specific research failures
+  before any reviewer sees it (gate GI).
+- **Review panel:** five seats, each committing to its criteria before it reads the paper. It ends in an
+  editorial decision.
+- **External reviews:** a path for real reviewer comments.
+- **Finalize:** a formatted paper in LaTeX, DOCX and PDF.
+
+The design draws on Academic Research Skills ([credits](#license)). Run on the demo project, the
+workflow reached a formatted PDF but stopped the paper on integrity questions only a person can
+answer ([report](evaluation/unified_e2e/REPORT.md)).
+
 ## Why it exists
 Papers written with AI assistance often have individually plausible sentences that add up to something the evidence
 does not support: an invented number, a "significant" without a test, a citation from memory, an author's hunch
@@ -40,7 +55,13 @@ points to a file (and a line, row or value). The tools check this chain on every
 - **Numbers:** every number in a draft traces to evidence; p-values are never inferred.
 - **Strong language:** "significant", "state of the art", "causes", "generalizes", "outperforms"… each needs an evidence
   license (configurable per research community).
-- **Citations:** each must resolve to a verified source registry.
+- **Citations:** each must resolve to a verified source registry. In the unified workflow, each source is also looked
+  up in the DOI resolver, Crossref, OpenAlex, Semantic Scholar and arXiv, and checked for retraction. This needs
+  `--online`, and nothing leaves the machine without it. A fabricated DOI, or a DOI that points to a different
+  paper, fails gate GL.
+- **Integrity (0.5.0 candidate):** an isolated VERIFIER judges seven failure modes, from implementation bugs to
+  frame-lock, with evidence for each. It also checks that a sample of cited sentences says no more than the source.
+  The tools' own findings override a VERIFIER's "clear".
 - **Conflicts:** conflicting evidence is never silently resolved.
 - **Authors' voice:** author-stated limitations and rationale are kept and attributed.
 - **Figures:** re-rendered from data to verify, and the axes must match the marks.
@@ -103,7 +124,8 @@ percentage's denominator), and the example says so.
 <p align="center"><img src="docs/assets/model-agnostic.svg" alt="The RCE core surrounded by interchangeable providers: Claude, OpenAI-compatible, Gemini, Ollama/local, any CLI, manual" width="640"></p>
 
 - **Rules and checks:** the rules are plain text and the checks are standard-library Python.
-- **Roles on any model:** the blind reviewer, grader and readers run on any model bound in `.rcs/models.json`:
+- **Roles on any model:** the blind reviewer, VERIFIER, review panel, grader and readers run on any model bound in
+  `.rcs/models.json`, or as subagents in a runtime that has them:
   OpenAI-compatible APIs (OpenAI, OpenRouter, Ollama, vLLM, LM Studio, Groq), Anthropic, Gemini, any CLI, or manual
   copy-paste.
 - **Local-first:** the defaults point at a local server, hosted endpoints must be explicitly allowed, and keys come
@@ -115,10 +137,13 @@ Every row has a source ([docs/research/EVALUATION.md](docs/research/EVALUATION.m
 | Area | Status |
 |---|---|
 | Evidence/claim traceability | Implemented (schemas + validator) |
-| Deterministic validation | Implemented; **104 automated tests passing** (`python -m unittest discover -s tools/tests`) |
-| Replay of known failures | 49 fixtures: 29 adversarial, 16 negative controls, 4 from real failures (`tools/replay_fixtures.py`) |
-| Documented real failure cases | 18 (`cases/failures/`), each linked to its regression test |
+| Deterministic validation | Implemented; **320 automated tests passing** (`python -m unittest discover -s tools/tests`), network and models mocked |
+| Replay of known failures | 60 fixtures: 31 adversarial, 17 negative controls, 12 from real failures (`tools/replay_fixtures.py`) |
+| Documented real failure cases | 33 (`cases/failures/`), each linked to its regression test |
 | Blind review | Demonstrated in an end-to-end run with author answers and two review rounds (private project; process results only) |
+| Citation lookup against live indexes (0.5.0 candidate) | 8 planted sources judged correctly in one manual run, including a fake DOI, a wrong-paper DOI, a retracted paper and an invented title. Not in CI |
+| Integrity benchmark (0.5.0 candidate) | 5 planted defects (fabricated DOI, wrong-paper DOI, retracted source, hallucinated result, method without basis) caught, and the clean control passes; synthetic index answers |
+| Unified workflow end to end (0.5.0 candidate) | One run on the synthetic demo project, with subagent roles: every phase ran, a formatted PDF was built, and the integrity gate stopped the paper on three questions for a person. Eight tool defects found and fixed ([report](evaluation/unified_e2e/REPORT.md)) |
 | Multi-model reviewer calibration | Claude Opus 0.933, NVIDIA Nemotron 0.945, Qwen3.8-27B 0.911 sensitivity (bar ≥ 0.90), 7-paper benchmark, 1 seed |
 | Reader-comprehension improvement | **Not established.** v0.1.0 vs a plain agent: better on 2 of 6 projects. v0.3.0 vs v0.1.0: better on 1 of 3, worse on none; single runs, noise up to 0.19 |
 | Human reader study | Not run (protocol and kit ready) |
@@ -130,6 +155,10 @@ Every row has a source ([docs/research/EVALUATION.md](docs/research/EVALUATION.m
 - Known deterministic gaps: missing sample sizes, the direction of a percentage change's denominator, and units in
   prose.
 - The evaluation is small: 6 public projects, 1 private project, single runs, LLM readers.
+- Index lookups are only as good as the indexes. A work with no DOI or arXiv id that no index lists comes out
+  unresolvable, not proven fake. When every index that could answer is down, there is no verdict at all.
+- The VERIFIER and the review panel are models, and their isolation is only as strong as the runtime makes it. Panel
+  ratings are not reader comprehension.
 - The Claude app and ChatGPT installation paths depend on product features that change. Re-check
   [INSTALL.md](docs/guides/INSTALL.md).
 
@@ -142,6 +171,7 @@ by a maintainer**. RCE never rewrites its own standards
 
 ## Documentation
 - [Architecture](docs/architecture.md)
+- [Workflow](skill/workflow.md) and [modes](skill/modes.md) (0.5.0 candidate)
 - [Evidence integrity](docs/concepts/EVIDENCE_INTEGRITY.md)
 - [Evaluation](docs/research/EVALUATION.md)
 - [Install](docs/guides/INSTALL.md)
@@ -161,3 +191,5 @@ See [CITATION.cff](CITATION.cff) (C S Deepak, *Research Communication Engine*, v
 ## License
 [Apache License 2.0](LICENSE). Third-party texts used in the evaluation are not redistributed; see [NOTICE](NOTICE).
 The theoretical foundation draws on course material summarised and cited in `docs/01_FOUNDATION_ANALYSIS.md`.
+The unified workflow's design draws on Academic Research Skills by Cheng-I Wu (CC BY-NC 4.0). It was read for design
+only, and no text, prompts, tables or code were copied ([docs/SOURCES.md](docs/SOURCES.md), S32).
