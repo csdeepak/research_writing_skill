@@ -2,7 +2,7 @@
 """Lint a Markdown draft for Research Communication Engine anti-patterns.
 
 This is a *screen*, not a judge. It finds surface signatures of problems described in
-skill/anti_patterns.md, so that audits (workflow steps 12-17) look in the right places.
+skill/anti_patterns.md, so that audits (workflow steps 16.2-16.7) look in the right places.
 It never rewrites text.
 
 Usage

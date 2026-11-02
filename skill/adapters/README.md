@@ -34,9 +34,9 @@ Start from `templates/models.json`. Its defaults point at a local server, so no 
 3. **Calibrate the reviewer, once per reviewer model:** `python tools/rce_roles.py calibrate --rcs .rcs`.
    - It needs dimension sensitivity ≥ 0.90 and false alarms ≤ 0.10 on the planted-defect benchmark.
    - Reviews from an uncalibrated model are labelled in `reviewer_log.json`. Treat them as exploratory.
-4. **Run.** Steps 1–17 run in your agent runtime. Step 18 is `python tools/build_review_packet.py ...`, then
-   `python tools/rce_roles.py review --rcs .rcs --round <round>`. The gates are identical everywhere
-   (`python tools/run_workflow.py gates ...`).
+4. **Run.** The steps run in your agent runtime. The blind reader at step 17 is
+   `python tools/build_review_packet.py ...`, then `python tools/rce_roles.py review --rcs .rcs --round <round>`. The
+   gates are identical everywhere (`python tools/run_workflow.py gates ...`).
 
 ## Choosing models (capability, not brand)
 - **REVIEW_AGENT:** your strongest reasoning model. A weak reviewer caps the whole loop, and calibration tells you

@@ -1,0 +1,76 @@
+{
+  "id": "20261102-unified-workflow",
+  "date": "2026-11-02",
+  "from_version": "0.4.0",
+  "to_version": "0.5.0",
+  "failure_observed": "Static review of the skill against its goal (one workflow that takes a project repository to a complete, verified paper) found five capability gaps. Literature is specified but has no search or verification tooling, so the model does it by hand. No gate checks a citation against an index. Nothing outside the AUTHOR checks the draft for AI-specific research failures before review. Review is a single reader with no adversarial critique, and revision has no path for real reviewer comments. There is no formatted output. No empirical reader or user failure is claimed.",
+  "evidence": {
+    "cluster_id": "static-capability-gap-review",
+    "instances": 5,
+    "metrics": {
+      "evidence_type": "five inspected capability gaps in the v0.4.0 skill and tools, not five projects or user trials",
+      "locations": [
+        "workflow.md step 7 and citation_rules.md section 2: citation checks described, no tool performs them",
+        "citation_rules.md row 8: retraction checked only when tools allow",
+        "workflow.md phases 3 to 4: no independent check between drafting and review",
+        "workflow.md steps 18 to 20: one reviewer role; no external-review path",
+        "workflow.md step 21: the skill stops at Markdown"
+      ],
+      "design_source": "Academic Research Skills, commit a41f3b2 (docs/SOURCES.md S32). Design only; nothing copied."
+    }
+  },
+  "root_cause": "missing_check",
+  "mechanism_type": "gate",
+  "change": {
+    "files": [
+      "SKILL.md",
+      "adapters/README.md",
+      "adapters/entrypoints/AGENTS.md",
+      "adapters/openai_compatible.md",
+      "anti_patterns.md",
+      "audience_model.md",
+      "changelog.md",
+      "citation_rules.md",
+      "evaluation_rubric.md",
+      "examples/project_layout.md",
+      "examples/worked_example.md",
+      "failure_states.md",
+      "finalize.md",
+      "information_design.md",
+      "integrity.md",
+      "literature.md",
+      "modes.md",
+      "principles.md",
+      "README.md",
+      "representation_design.md",
+      "review_panel.md",
+      "templates/paper_architecture.md",
+      "templates/venue_profile.generic.yaml",
+      "templates/venue_profile.yaml",
+      "tests/perturbations/EXPECTED.json",
+      "versions/proposals/20261102-unified-workflow.json",
+      "workflow.md"
+    ],
+    "summary": "Unify RCE with the capabilities of Academic Research Skills as one ordered workflow, with RCE as the spine: 8 phases and 22 steps, 12 modes, new gates GL (citations) and GI (integrity), a VERIFIER role, a 5-seat review panel, an external-review path, and a finalize phase. The revision cap falls from 3 rounds to 2 loops. Stage A delivers the documents and contracts only; tools, schemas, agent prompts and tests arrive in later stages."
+  },
+  "expected_improvement": "Fewer unverified or fabricated citations and fewer AI-specific integrity failures reaching review, plus a complete path from repository to formatted paper. None of this is measured yet. Reader comprehension benefit is not claimed.",
+  "possible_regressions": [
+    "Longer SKILL.md and more linked files raise the risk that a model loads less of the skill than it needs; the load-bearing rules stay inline for that reason.",
+    "New gates and panel rounds add cost and round trips; step 0.3 states the worst case before the run.",
+    "Step renumbering invalidates step references in older logs and case files; workflow.md carries a mapping table, and historical records are left unchanged.",
+    "The revision cap falls from 3 rounds to 2 loops, so some defects that a third round would have fixed go to open_issues.md instead.",
+    "Until the later stages land, the documents describe tools that do not exist yet; a missing tool must record its gate as unverified, never passed."
+  ],
+  "tests_added": [
+    "None yet in Stage A (documents and contracts). Planned for Stage D: unit tests for every new tool with the network mocked, new perturbation variants and failure cases."
+  ],
+  "gate": {
+    "status": "pending",
+    "results": {
+      "scope": "Stage A only: documents and contracts. Tools, schemas, agent prompts, adapters and tests are not built yet.",
+      "compatibility": "Recorded in docs/plans/UNIFIED_WORKFLOW_HANDOFF.md, section 9.",
+      "reader_effect": "not measured",
+      "version_note": "SKILL.md keeps version 0.4.0 until the release step (versions/README.md); 0.5.0 is this proposal's target. Under the changelog's own policy a workflow change would be MAJOR; the user chose the next minor version on 2026-11-02."
+    }
+  }
+}

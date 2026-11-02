@@ -9,7 +9,7 @@ For any task that writes, revises, reviews, shortens or presents a research pape
 2. Run the deterministic gates yourself; never self-certify a gate:
    `python <RCE>/tools/run_workflow.py gates .rcs --project-root . --draft <draft>`.
 3. Do not read `<RCE>/skill/agents/review_agent.md`, `recon_grader.md` or `skill_agent.md`. They belong to other roles.
-4. Blind review (step 18):
+4. Blind review (step 17):
    - build a packet: `python <RCE>/tools/build_review_packet.py <draft> --out .rcs/packets/review_<round> --audience .rcs/packets/audience.md --objective .rcs/packets/objective.md --strip-markers`;
    - then `python <RCE>/tools/rce_roles.py review --rcs .rcs --round <round>`.
 

@@ -1,6 +1,6 @@
 # Research representation: from project memory to a readable paper
 
-Use this at workflow steps 1, 6, 8, 15 and 21. This is the paper-wide design layer;
+Use this at workflow steps 1, 11, 12, 16.5 and 21. This is the paper-wide design layer;
 `figure_table_rules.md` supplies individual visual integrity rules. Start with
 [the representation plan](templates/representation_plan.md); consult
 [representation patterns](references/representation_patterns.md) for the chosen forms and

@@ -51,7 +51,7 @@
       "manipulation": "Placeholder citations attached to claims they do not support; citation dumping; a secondary claim of prior success that contradicts the gap.",
       "lint_must_fire": [],
       "lint_must_not_fire": ["B4-verb-vs-type"],
-      "detected_by": "citation audit (workflow step 16) with the placeholder contents below; the reviewer alone can flag only the internal contradiction and the dumping",
+      "detected_by": "citation audit (workflow step 16.6) with the placeholder contents below; the reviewer alone can flag only the internal contradiction and the dumping",
       "reviewer_expected_drop": ["evidence_traceability"],
       "placeholder_contents": {
         "R1": "Studies missing-value imputation in weather data; does not mention level shifts or failure frequencies. -> does NOT support 'most common failure mode'.",

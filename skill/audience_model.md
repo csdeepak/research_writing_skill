@@ -60,7 +60,7 @@ tested, what was found, and why that matters.
 
 Operational checks:
 - Q1, Q2, Q3, Q4, Q10, and Q12 of the reconstruction test are answerable from the first-read
-  subset (the step 11 self-test runs on this subset first).
+  subset (the step 16.1 self-test runs on this subset first).
 - The introduction contains no implementation detail that isn't needed to understand the
   contribution (density class CORE only).
 - Figure 1 (if it exists) is understandable from its caption and conveys either the problem,
@@ -80,7 +80,7 @@ A soft limit on *new* technical terms (excluding those known to the mode):
 | D | ≤1, with a plain gloss and example | 0 |
 | E | as C in section openings; as A deeper in | 0–1 |
 
-This is a diagnostic threshold, not a quota. Exceeding it triggers a review in step 14.
+This is a diagnostic threshold, not a quota. Exceeding it triggers a review in step 16.4.
 Evidence behind it: jargon lowers processing fluency and acceptance (S13), correlates with
 lower citation (S12), and acronym density in ML has grown sharply (S27).
 

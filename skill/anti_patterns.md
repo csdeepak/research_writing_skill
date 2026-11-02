@@ -59,7 +59,7 @@ strengthening the evidence, finding post-hoc support, or rewording to evade the 
 | ID | Name | Signature | Repair principle |
 |----|------|-----------|------------------|
 | C1 | Fluent fabrication | A specific-looking number, dataset, or citation absent from the evidence or registry | Orphan-claim lint + numeric fidelity check |
-| C2 | Polish drift | An editing pass changes claim strength or scope | Claim-invariance check (step 21) |
+| C2 | Polish drift | An editing pass changes claim strength or scope | Claim-invariance check (step 19) |
 | C3 | Template filler | Generic sentences that fit any paper ("X has attracted significant attention in recent years") | Replace with the specific context of *this* problem or delete |
 | C4 | Style-marker clusters | Dense use of the vocabulary documented in S10 ("delve", "intricate", "pivotal", "showcasing", "underscores") | Not wrong per se. Replace with plain words when it adds nothing. |
 | C5 | Symmetry padding | Lists forced to three items; balanced "not only… but also" | Say only what is true |

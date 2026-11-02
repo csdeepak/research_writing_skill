@@ -24,13 +24,19 @@ my_project/
     ├── state.json               # workflow step, gates, open failure states
     ├── evidence/                # project_inventory, research_evidence, missing_evidence
     ├── claims/                  # claim_candidates, claim_evidence_map
-    ├── story/                   # spine.md, story_graph.json, question_ledger, term_ledger, lit_gap_chain.md
-    ├── corpus/                  # source_registry, literature_map, writing_patterns, anti_patterns, corpus_log
-    ├── plan/                    # audience_profile, venue_profile, paper_architecture, skeleton, figure_cards/
+    ├── story/                   # spine.md, story_graph.json, question_ledger, term_ledger, rq_check.md,
+    │                            #   alternatives.md, lit_gap_chain.md
+    ├── corpus/                  # candidates, source_registry, literature_map, writing_patterns, anti_patterns, corpus_log
+    ├── plan/                    # paper_config, audience_profile, reader_model, venue_profile, paper_architecture,
+    │                            #   representation_plan, skeleton, figure_cards/
     ├── drafts/v001/ …           # tagged drafts
+    ├── audits/gates/            # the tool reports that pass a gate: G1, GL, G3, GI, G4, G5, RUN_LOG.jsonl
+    ├── audits/integrity/        # pre/ and final/: evidence bundle + VERIFIER report
     ├── audits/v001/ …           # lint.json, citation_audit.json, reconstruction_self.md, …
     ├── packets/review_v001_1/   # the only reviewer-visible directory
-    ├── diagnostics/v001_1/      # diagnostics.json, reconstruction.json
+    ├── diagnostics/v001_1/      # diagnostics.json, reconstruction.json, panel reports, editorial decision, roadmap
+    ├── revisions/v001_1/        # dispositions.json, external_comments.json
+    ├── cache/                   # index responses, so tools can run offline
     ├── evaluation/              # gold_story.json, grading.json, prereg_*.md
     └── private/                 # reviewer_notes.private.md (never read by AUTHOR/SKILL_AGENT)
 ```

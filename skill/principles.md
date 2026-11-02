@@ -12,7 +12,7 @@ Origins: **F0** = OOMD Technical Writing course (Units 1–4). `Sxx` = sources i
 ### P1. The reader defines meaning
 *Origin:* F0 Unit 1 (reader-centered), S01 ("meaning is what readers interpret").
 A sentence means what a competent target reader takes from it, not what the author intended.
-**Check:** the reconstruction test (step 11 self-test, step 18 blind review). A mismatch
+**Check:** the reconstruction test (step 16.1 self-test, step 17 blind review). A mismatch
 between the reader's answer and the gold story is a defect in the text, never in the reader.
 
 ### P2. Plan the argument before the prose
@@ -28,7 +28,7 @@ paper architecture validate.
 ### P4. Say how sure you are, and no surer
 *Origin:* F0 Unit 2 ("a wrong conclusion is far worse than no definite conclusion"); S05, S23,
 S30.
-**Check:** the overclaim audit (step 17) and the non-conclusion step of the Result
+**Check:** the overclaim audit (step 16.7) and the non-conclusion step of the Result
 Interpretation Chain. The "What the results do NOT establish" content must exist.
 
 ### P5. Answer the reader's next question
@@ -54,7 +54,7 @@ and synonyms for a registered term.
 
 ### P9. Put old information first and new information last
 *Origin:* F0 Unit 3 (coherence devices, topic sentences); S01 (topic and stress positions).
-**Check:** the flow audit (step 13). A paragraph's opening links to what came before, and its
+**Check:** the flow audit (step 16.3). A paragraph's opening links to what came before, and its
 emphasis lands on the new point.
 
 ### P10. Represent evidence honestly, including what went wrong
