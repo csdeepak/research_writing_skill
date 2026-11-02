@@ -30,7 +30,7 @@ evaluate, remember, and build on, without changing the truth of the research.
 | `templates/` | Architecture table, figure card, venue profiles, packet inputs, open issues, disclosure |
 | `adapters/` | Model-agnostic setup (`adapters/README.md`): Claude Code, Codex, Gemini, OpenAI-compatible, local models, `entrypoints/AGENTS.md`; executable bindings in `templates/models.json` |
 | `examples/` | Project layout; synthetic demo project with full artifacts; worked example |
-| `tests/` | Perturbation benchmark (7 variants) + expected detections; regression registry |
+| `tests/` | Perturbation benchmark: 7 reviewer variants (A–G) and 5 integrity variants (H–L), with expected detections; regression registry |
 | `changelog.md`, `versions/` | Versioned evolution |
 
 Design rationale is in `../docs/01`–`05`. Verified sources are in `../docs/SOURCES.md`.
@@ -41,4 +41,12 @@ Design rationale is in `../docs/01`–`05`. Verified sources are in `../docs/SOU
    paper from `<folder>` for `<audience>` at `<venue>`."*
 3. Expect questions at C0 (the paper config), Gate G1 (spine and claims) and G2 (outline). Those are
    the cheapest points to correct a misunderstanding.
-4. Read `open_issues.md` before the paper.
+4. Before the literature search, review the drafted search plan. Its terms leave the machine only
+   when the tools run with `--online`, and only to the hosts `.rcs/models.json` allows.
+5. Expect the integrity gate (GI) and the review panel to stop on questions only you can answer, such
+   as missing run records or a gap the retrieved literature contradicts. Answer them by name; the
+   workflow never answers for you.
+6. Read `open_issues.md` before the paper.
+
+The 0.5.0 workflow is a candidate: `SKILL.md` keeps `version: 0.4.0` until the release decision
+(`changelog.md`).
