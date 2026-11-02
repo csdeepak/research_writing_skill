@@ -93,6 +93,17 @@ and needs no keys.
 | T-091 | A disclosure that states a policy from memory, invents facts, or claims a check that did not run | `…::DisclosureTests` |
 | T-092 | The venue-profile reader misreading the templates | `…::YamlTests` |
 | T-093 | GL or GI self-certified, failed or stale but counted as passed; G5 without a final GI; legacy projects asked for GI | `…::WiringTests` |
+| T-094 | A schema change breaking v0.4 registries; a new schema accepting bad values; a `$ref` that validates nothing | `test_v050_roles.py::SchemaTests` |
+| T-095 | An invalid VERIFIER report reaching GI; a widened check with nothing to widen to | `…::VerifierReportTests` |
+| T-096 | A panel seat seeing the paper before committing; a commitment hash or packet id written by the model | `…::PanelRunTests` |
+| T-097 | A synthesizer stating a decision the findings do not give, or citing a finding no seat made | `…::PanelRunTests` |
+| T-098 | A panel round with a missing seat, a rewritten commitment, an unjudged criterion, an invented finding, an unquoted downgrade | `…::PanelCheckTests` |
+| T-099 | The decision rule or the rebuttal rule drifting | `…::RuleTests` |
+| T-100 | G4 passing with a standing panel finding, a declined devil's-advocate finding without a sufficient rebuttal, an unanswered Reject, no panel in paper mode, or a third round | `…::G4PanelTests` |
+| T-101 | A re-review with new cards or an unchecked roadmap item | `…::VerificationRoundTests` |
+| T-102 | Rebuttals scored out of order, or a concession run wearing findings away | `…::RebutTests` |
+| T-103 | A VERIFIER report whose hash, round or isolation comes from the model; a VERIFIER run that is not recorded | `…::VerifyCommandTests` |
+| T-104 | A prompt, adapter, template or schema the docs name that does not exist | `…::FilesTests` |
 
 Fixtures `H_author_limitations_replaced.md` and `I_attributed_limitations.md` are derived from
 `A_clean.md` and live in `tools/tests/fixtures/`. They are test inputs, not benchmark items;

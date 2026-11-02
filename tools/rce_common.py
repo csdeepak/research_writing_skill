@@ -43,7 +43,8 @@ def load_schema(name: str) -> dict:
 
 # ----------------------------------------------------------------------------------------
 # Minimal JSON Schema validator (subset: type, enum, required, properties, items,
-# additionalProperties (schema form), pattern, minLength, maxLength, minItems, minimum, maximum)
+# additionalProperties (schema form), pattern, minLength, maxLength, minItems, minimum, maximum,
+# and local $ref such as "#/$defs/finding")
 # ----------------------------------------------------------------------------------------
 _TYPES = {
     "object": dict,
@@ -64,7 +65,22 @@ def _type_ok(value: Any, t: str) -> bool:
     return isinstance(value, _TYPES[t])
 
 
-def _validate_subset(inst: Any, schema: dict, path: str) -> Iterator[str]:
+def _resolve(schema: dict, root: dict | None) -> dict:
+    """Follow a local $ref. Without this, a $ref would validate nothing, silently."""
+    ref = schema.get("$ref")
+    if not isinstance(ref, str) or root is None:
+        return schema
+    if not ref.startswith("#/"):
+        raise ValueError(f"only local $ref is supported, got {ref}")
+    target: Any = root
+    for part in ref[2:].split("/"):
+        target = target[part]
+    return target
+
+
+def _validate_subset(inst: Any, schema: dict, path: str, root: dict | None = None) -> Iterator[str]:
+    root = schema if root is None else root
+    schema = _resolve(schema, root)
     if "type" in schema:
         types = schema["type"] if isinstance(schema["type"], list) else [schema["type"]]
         if not any(_type_ok(inst, t) for t in types):
@@ -89,7 +105,7 @@ def _validate_subset(inst: Any, schema: dict, path: str) -> Iterator[str]:
             yield f"{path}: fewer than {schema['minItems']} items"
         if "items" in schema:
             for i, item in enumerate(inst):
-                yield from _validate_subset(item, schema["items"], f"{path}[{i}]")
+                yield from _validate_subset(item, schema["items"], f"{path}[{i}]", root)
     if isinstance(inst, dict):
         for req in schema.get("required", []):
             if req not in inst:
@@ -97,9 +113,9 @@ def _validate_subset(inst: Any, schema: dict, path: str) -> Iterator[str]:
         props = schema.get("properties", {})
         for key, val in inst.items():
             if key in props:
-                yield from _validate_subset(val, props[key], f"{path}.{key}")
+                yield from _validate_subset(val, props[key], f"{path}.{key}", root)
             elif isinstance(schema.get("additionalProperties"), dict):
-                yield from _validate_subset(val, schema["additionalProperties"], f"{path}.{key}")
+                yield from _validate_subset(val, schema["additionalProperties"], f"{path}.{key}", root)
 
 
 def validate(instance: Any, schema: dict) -> list[str]:

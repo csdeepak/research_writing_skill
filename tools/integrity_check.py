@@ -37,7 +37,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lint_draft import author_year_citations  # noqa: E402
-from rce_common import CLAIM_ID_RE, CLAIM_TAG_RE, iter_paragraphs, load_json, split_sentences  # noqa: E402
+from rce_common import CLAIM_ID_RE, CLAIM_TAG_RE, iter_paragraphs, load_json, load_schema, split_sentences, validate  # noqa: E402
 import rce_index as ix  # noqa: E402
 import verify_citations as vc  # noqa: E402
 import verify_numbers  # noqa: E402
@@ -318,10 +318,14 @@ def collect(rcs: Path, root: Path, stage: str, draft: Path) -> dict:
     seed = sha(md)
     p = load_project(rcs, root, md)
     rows = citation_rows(p)
+    selected = select(rows, p, stage, seed)
+    chosen = {r["id"] for r in selected}
     bundle = {"tool": "integrity_check", "stage": stage, "draft": str(draft).replace("\\", "/"), "draft_sha256": seed, "sample_seed": seed,
               "paper_type": p["config"].get("paper_type"), "no_experiments": bool(p["config"].get("no_experiments")),
               "declaration_contradicted": declaration_contradicted(p), "modes": deterministic(p),
-              "cited_sentences": len(rows), "alignment_rows": select(rows, p, stage, seed)}
+              "cited_sentences": len(rows), "alignment_rows": selected,
+              # judged only when a sentinel fails: then every cited sentence in that section must be judged
+              "unselected_rows": [r for r in rows if r["id"] not in chosen]}
     d = stage_dir(rcs, stage)
     d.mkdir(parents=True, exist_ok=True)
     (d / "bundle.json").write_text(json.dumps(bundle, indent=1, ensure_ascii=False), encoding="utf-8")
@@ -380,8 +384,11 @@ def gate(rcs: Path, root: Path, stage: str, draft: Path) -> dict:
     if verifier is None:
         add("ERROR", "GI_NO_VERIFIER", f"no VERIFIER report at audits/integrity/{stage}/verifier_report.json")
         verifier = {}
-    elif verifier.get("draft_sha256") != seed:
-        add("ERROR", "GI_REPORT_STALE", "the VERIFIER judged a different draft")
+    else:
+        for e in validate(verifier, load_schema("integrity_report.schema.json"))[:5]:
+            add("ERROR", "GI_REPORT_INVALID", e)
+        if verifier.get("draft_sha256") != seed:
+            add("ERROR", "GI_REPORT_STALE", "the VERIFIER judged a different draft")
     ledger = workflow_guard.load_ledger(rcs)
     if ledger and vp.exists():
         digest = hashlib.sha256(vp.read_bytes()).hexdigest()

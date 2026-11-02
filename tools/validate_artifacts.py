@@ -49,11 +49,20 @@ ARTIFACTS = {
     "corpus/anti_patterns.json": "writing_patterns.schema.json",
     "plan/visual_registry.json": "visual_registry.schema.json",
     "plan/reader_model.json": "reader_model.schema.json",
+    "plan/paper_config.json": "paper_config.schema.json",
+    "corpus/candidates.json": "candidates.schema.json",
     "evaluation/gold_story.json": "gold_story.schema.json",
 }
 GLOB_ARTIFACTS = {
     "diagnostics/**/diagnostics.json": "diagnostics.schema.json",
     "diagnostics/**/reconstruction.json": "reconstruction.schema.json",
+    "diagnostics/*/panel/cards.json": "reviewer_cards.schema.json",
+    "diagnostics/*/panel/*.commitment.json": "panel_review.schema.json",
+    "diagnostics/*/panel/*.review.json": "panel_review.schema.json",
+    "diagnostics/*/panel/*.verification.json": "panel_review.schema.json",
+    "diagnostics/*/panel/*.rebuttal.json": "panel_review.schema.json",
+    "diagnostics/*/editorial_decision.json": "editorial_decision.schema.json",
+    "audits/integrity/*/verifier_report.json": "integrity_report.schema.json",
 }
 EVIDENCE_REQUIRED_TYPES = {"measured", "observed", "derived"}
 HASHED_INPUTS = list(ARTIFACTS) + ["story/spine.md"]

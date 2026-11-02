@@ -15,6 +15,9 @@ Model names below are this runtime's bindings, not requirements of the skill (se
 | AUTHOR | The main session running the skill |
 | CORPUS_AGENT | Subagent `rce-corpus` (model: sonnet; tools: Read, Glob, Grep, Bash, WebSearch, WebFetch, Write) |
 | REVIEW_AGENT | Subagent `rce-reviewer` (model: opus; tools: Read, Write, restricted to the packet dir by instruction) for soft isolation. For hard isolation, a headless run (below). |
+| VERIFIER | Subagent `rce-verifier` (model: opus; tools: Read, Glob, Grep, Bash, Write). Writes only the verifier report. |
+| PANEL (field analyst, five seats, synthesizer) | Subagent `rce-panel`, one fresh invocation per member and phase (model: opus; tools: Read, Write). Dispatch the five commitments before any review, and the reviews before the synthesizer. |
+| COACH | Subagent `rce-coach` (model: sonnet; tools: Read). Questions only. |
 | SKILL_AGENT | Subagent `rce-skill-architect` (model: opus) |
 | RECON_GRADER | Subagent `rce-grader` (model: sonnet; tools: Read, Write) |
 
@@ -42,7 +45,19 @@ directory contains only the expected outputs. Write access outside it would be a
 - Validation: `python tools/validate_artifacts.py .rcs` and `python tools/lint_draft.py …`
   after each step.
 
+## The panel through subagents
+Run the panel in this order, each step in a fresh `rce-panel` invocation:
+1. the field analyst writes `panel/cards.json`
+2. each seat writes its `panel/<seat>.commitment.json`, without opening the paper
+3. each seat writes its `panel/<seat>.review.json`. Then add the commitment's SHA-256 to each review as
+   `commitment_sha256` and the packet id as `packet_id`
+4. the synthesizer writes `editorial_decision.json`
+
+Then run `python tools/panel_check.py .rcs --round <round>`. It fails a review that was not made against the commitment
+on disk, and a decision the findings do not give. Subagent isolation is soft: a seat that could read another seat's
+report is not blind. Label that in `open_issues.md`, or run the panel through `rce_roles.py panel` instead.
+
 ## Alternative: any model for the single-shot roles
-The reviewer, grader and readers do not have to be Claude models. Bind them in `.rcs/models.json` (`templates/models.json`)
-and run `python tools/rce_roles.py review|calibrate|run-tasks`. For release gates, a reviewer from a different model
-family than the AUTHOR reduces same-model preference bias.
+The reviewer, grader, readers, panel and VERIFIER do not have to be Claude models. Bind them in `.rcs/models.json`
+(`templates/models.json`) and run `python tools/rce_roles.py review|calibrate|run-tasks|panel|rebut|verify`. For release
+gates, a reviewer from a different model family than the AUTHOR reduces same-model preference bias.

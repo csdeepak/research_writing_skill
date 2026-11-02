@@ -119,6 +119,120 @@
               },
               "retraction_checked": {
                 "type": "boolean"
+              },
+              "lookup_verified": {
+                "enum": [
+                  true,
+                  false,
+                  "unresolvable"
+                ],
+                "description": "v0.5 (skill/literature.md section 5.2): true = found by lookup; false = the ID provably fails or names a different work (fabrication evidence); unresolvable = no index could confirm it (a coverage gap). Absent = no verdict yet."
+              },
+              "code": {
+                "enum": [
+                  null,
+                  "NO_CITED_TITLE",
+                  "DOI_MISMATCH",
+                  "ID_NOT_FOUND",
+                  "NO_TITLE_TO_COMPARE",
+                  "NOT_INDEXED",
+                  "LOOKUP_DEGRADED",
+                  "NO_IDENTIFIER"
+                ]
+              },
+              "indexes": {
+                "type": "array",
+                "description": "v0.5: one row per index consulted. 'skipped' means no answer, never 'not found'.",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "index",
+                    "status"
+                  ],
+                  "properties": {
+                    "index": {
+                      "enum": [
+                        "doi.org",
+                        "crossref",
+                        "openalex",
+                        "semantic_scholar",
+                        "arxiv"
+                      ]
+                    },
+                    "status": {
+                      "enum": [
+                        "found",
+                        "not_found",
+                        "skipped"
+                      ]
+                    },
+                    "match_score": {
+                      "type": [
+                        "number",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "reason": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "conflicts": {
+                "type": "array",
+                "description": "v0.5: disagreements between index records, recorded and never resolved by the tool",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "field",
+                    "values"
+                  ],
+                  "properties": {
+                    "field": {
+                      "enum": [
+                        "year",
+                        "first_author",
+                        "title",
+                        "first_author_cited"
+                      ]
+                    },
+                    "values": {
+                      "type": "object"
+                    },
+                    "minor": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              },
+              "suggestion": {
+                "type": "object",
+                "description": "v0.5: a similar record an index holds, for a person to consider. Never applied automatically.",
+                "properties": {
+                  "index": {
+                    "type": "string"
+                  },
+                  "doi": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "title": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "year": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  }
+                }
               }
             }
           },
@@ -175,7 +289,8 @@
               "high",
               "medium",
               "low"
-            ]
+            ],
+            "description": "v0.5: graded for the claim the source is cited for (skill/literature.md section 6)"
           },
           "limitations": {
             "type": "string"
@@ -207,6 +322,70 @@
               "as_cited",
               "unverifiable"
             ]
+          },
+          "arxiv_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "retraction": {
+            "type": "object",
+            "required": [
+              "status",
+              "checked_at"
+            ],
+            "description": "v0.5 (skill/literature.md section 5.3): what named resolvers returned on a date. Matched on DOI only.",
+            "properties": {
+              "status": {
+                "enum": [
+                  "retracted",
+                  "not_retracted",
+                  "disputed",
+                  "unknown"
+                ]
+              },
+              "checked_at": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}"
+              },
+              "source": {
+                "type": "string"
+              },
+              "observations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "source",
+                    "retracted"
+                  ],
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "retracted": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "flags": {
+            "type": "array",
+            "description": "v0.5: what a person should look at; a flag is not a verdict (skill/literature.md section 5.4)",
+            "items": {
+              "enum": [
+                "preprint",
+                "single_index",
+                "post_llm_unconfirmed",
+                "metadata_conflict",
+                "expression_of_concern",
+                "predatory_suspected",
+                "retracted_acknowledged"
+              ]
+            }
           }
         }
       }

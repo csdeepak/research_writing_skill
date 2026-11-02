@@ -17,9 +17,29 @@ PATCH = clarification with no behavior change.
 chose the next minor version. `SKILL.md` keeps `version: 0.4.0` until the release step
 (`versions/README.md`).
 
-**Status: Stages A and B (documents, contracts and tools).** Schemas, agent prompts and adapters
-come in Stage C. Until they exist, the VERIFIER and panel roles have no prompt file, and a gate whose
-role cannot run is `"unverified"`, never `"passed"`.
+**Status: Stages A to C (documents, contracts, tools, schemas, prompts and adapters).** The
+end-to-end run and the release decision come in Stages D and E.
+
+**Stage C, schemas, roles and adapters:**
+- Schemas: `source_registry` extended additively (lookup verdicts, index rows, conflicts, suggestion,
+  retraction, flags, `arxiv_id`), so v0.4 registries still validate. New: `paper_config`,
+  `candidates`, `integrity_report`, `reviewer_cards`, `panel_review`, `editorial_decision`.
+  `validate_artifacts.py` checks every one. The stdlib validator now follows local `$ref`, which
+  it used to skip without validating anything.
+- Prompts, written fresh: `agents/integrity_agent.md` (VERIFIER), `agents/panel/` (a shared seat
+  protocol, the field analyst, five seats, the synthesizer), `agents/coach_agent.md`. The literature
+  steps in `agents/corpus_agent.md` now run on the Stage B tools.
+- `tools/rce_roles.py` gains `panel` (seats commit from the card and metadata only, then review;
+  the tool stamps each review with its commitment's hash and the packet id), `rebut` and `verify`.
+  New roles `PANEL` and `VERIFIER` are in the models template.
+- `tools/panel_check.py` re-derives the decision from the findings and checks that the
+  synthesizer added nothing. `g4_check.py` uses it: standing major or fatal panel findings need
+  dispositions, the devil's-advocate concession rule is enforced from the scores, a Reject needs
+  a named person's decision, paper and restructure modes need a panel, and the cap is two rounds.
+- Adapters: Claude Code subagents `rce-verifier`, `rce-panel`, `rce-coach`; the role tables,
+  `AGENTS.md`, and the Codex, Gemini, OpenAI-compatible and local-model notes. A hosted VERIFIER
+  receives project text: `local_models.md` says so.
+- Tests T-094 to T-104 (41 tests).
 
 **Stage B, tools (all stdlib, network only behind `--online`):**
 - `tools/rce_index.py`: clients for the DOI resolver, Crossref, OpenAlex, Semantic Scholar and arXiv.
