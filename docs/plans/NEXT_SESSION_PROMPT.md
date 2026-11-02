@@ -29,9 +29,9 @@ SET UP
      python tools/check_repo.py
 
 BEFORE BUILDING
-5. Ask me the decisions in section 8 of the handoff, in one batched question, with the defaults
-   shown. One of them is whether my unpushed "adaptive representation" update is on GitHub yet;
-   don't rewrite skill/SKILL.md or skill/workflow.md until that is settled.
+5. Ask me the open decisions in section 8 of the handoff, in one batched question, with the
+   defaults shown. My "adaptive representation" update is already merged into this branch (section
+   0.4 of the handoff): build on top of it and keep everything it adds.
 
 RULES
 - Read ARS for design only. Don't copy its text, prompts, tables or code: ARS is CC BY-NC 4.0 and

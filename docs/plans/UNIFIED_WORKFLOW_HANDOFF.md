@@ -3,7 +3,7 @@
 **Status:** research and design done; **nothing is built yet**. Written 2026-11-02 at the end of the
 design session so a new session (different machine, different account) can build it.
 **Branch:** `rce-unified-workflow` (CI runs on `rce-*` branches). **Base:** `main` at v0.4.0 plus
-dependabot CI bumps.
+dependabot CI bumps, plus the merged adaptive-representation update (§0.4).
 
 Keep the **Progress log** at the bottom of this file current. Commit after every stage so the work
 can be handed off again at any point.
@@ -30,16 +30,17 @@ can be handed off again at any point.
    doc, prompt and tool fresh in RCE's own words and code.** No verbatim or lightly edited copies of
    ARS prose, prompts, tables or code. Credit ARS as a design source in `docs/SOURCES.md` and the
    changelog. (This is the design rule we agreed on. It is not legal advice.)
-4. **Unpushed local work.** The user has an *unreleased local update* ("adaptive representation",
-   2026-10-26) that exists only on the old laptop and is **not on GitHub**. It adds
-   `skill/representation_design.md`, `skill/templates/representation_plan.md`, `skill/references/`,
-   `skill/tests/representation_scenarios.md`, `skill/versions/proposals/20261026-adaptive-representation.json`,
-   and modifies `SKILL.md`, `workflow.md`, `figure_table_rules.md`, `failure_states.md`,
-   `information_design.md`, `section_rules.md`, `templates/figure_card.md`,
-   `templates/venue_profile.yaml` and `changelog.md`. **Ask the user whether it has been pushed
-   before you rewrite `SKILL.md` or `workflow.md`.** If it has, merge it into this branch first.
-   If it has not, put the new material in new files and keep edits to existing files scoped
-   section by section, so the later merge stays easy.
+4. **The adaptive-representation update is already merged into this branch.** It is the user's
+   *unreleased* update of 2026-10-26: no version bump, proposal
+   `skill/versions/proposals/20261026-adaptive-representation.json`. It also lives on its own branch,
+   `rce-adaptive-representation`. It adds `skill/representation_design.md`,
+   `skill/templates/representation_plan.md`, `skill/references/` and
+   `skill/tests/representation_scenarios.md`. It modifies `SKILL.md`, `workflow.md`,
+   `figure_table_rules.md`, `failure_states.md`, `information_design.md`, `section_rules.md`,
+   `templates/figure_card.md`, `templates/venue_profile.yaml` and `changelog.md`. **Build on top of
+   it and keep everything it adds.** It is the representation layer that P3 step 12 uses. All CI
+   checks passed on it before the merge. `validate_artifacts.py --check-skill` reports 14 expected
+   "unreleased change" warnings and 0 errors.
 5. **The repo's change discipline applies.** Behavior changes need a proposal in
    `skill/versions/proposals/` (schema `skill/schemas/skill_change.schema.json`) and a changelog
    entry. "No silent changes" (`skill/changelog.md` header).
@@ -275,8 +276,9 @@ P7 FINALIZE    19 Line edit + length + claim invariance → 20 Final integrity (
   `academic-paper/references/domain_evidence_profiles.md`, `shared/review_criteria_registry.json`.
   **Re-verify every policy against the official page at build time.** Policies change; never
   copy ARS's table.
-- **12 Architecture + representation plan + figure cards.** RCE step 8 unchanged. This is where the
-  unpushed adaptive-representation work (§0.4) plugs in.
+- **12 Architecture + representation plan + figure cards.** RCE step 8 unchanged, using the merged
+  adaptive-representation layer (§0.4): `skill/representation_design.md`,
+  `skill/templates/representation_plan.md`.
 - **13 Skeleton.** **G2:** the skeleton answers Q1–Q12, then the user approves the outline (an ARS
   checkpoint).
 
@@ -549,8 +551,8 @@ was not verified, and update `README.md` and `skill/README.md`.
 1. **License approach:** **rewrite everything in RCE's own words and code under Apache-2.0, credit
    ARS as the design source.** The alternatives are vendoring ARS files under CC BY-NC (that part
    becomes non-commercial) or requiring a side-by-side ARS install.
-2. **Unpushed adaptive-representation work** (§0.4): **ask whether it's pushed; if so, merge it
-   first.**
+2. ~~Unpushed adaptive-representation work~~: **settled.** The user had it pushed and merged into
+   this branch on 2026-11-02 (§0.4).
 3. **Name and version:** **keep `research-communication-engine`, next minor version**, with a
    proposal file.
 4. **Stage pacing:** **build stage by stage and pause for review after each.**
@@ -561,4 +563,5 @@ was not verified, and update `README.md` and `skill/README.md`.
 
 | Date | Stage | What changed | Checks run | Next |
 |---|---|---|---|---|
-| 2026-11-02 | Design | This handoff plan written; branch `rce-unified-workflow` created | none (docs only) | Confirm §8, then Stage A |
+| 2026-11-02 | Design | This handoff plan written; branch `rce-unified-workflow` created | `check_repo.py` (0 errors) | Confirm §8, then Stage A |
+| 2026-11-02 | Design | Adaptive-representation update committed on `rce-adaptive-representation` and merged here | unittest 104 OK, replay 49/49, cases 18/0, `validate_artifacts --check-skill` 0 errors, `check_repo` 0 errors | Confirm §8 items 1, 3, 4, then Stage A |
