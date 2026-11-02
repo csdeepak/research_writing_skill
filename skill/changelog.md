@@ -11,6 +11,48 @@ PATCH = clarification with no behavior change.
 
 ---
 
+## [0.5.0] — candidate, unreleased (work started 2026-11-02) — unified workflow
+
+**Why minor:** by the policy above a workflow change is MAJOR. The project is pre-1.0, and the user
+chose the next minor version. `SKILL.md` keeps `version: 0.4.0` until the release step
+(`versions/README.md`).
+
+**Status: Stage A only (documents and contracts).** The documents below describe tools, schemas and
+agent prompts that later stages build. Until they exist, a gate that needs a missing tool is
+`"unverified"`, never `"passed"`.
+
+**Design source:** Academic Research Skills by Cheng-I Wu (CC BY-NC 4.0, commit `a41f3b2`,
+`docs/SOURCES.md` S32). Read for design only. Every document here is written fresh for this
+Apache-2.0 repository, and no ARS text, prompts, tables or code are copied.
+
+**Changed (behaviour):**
+- `workflow.md` and `SKILL.md`: one ordered workflow of 8 phases and 22 steps. RCE stays the spine.
+  Literature moves ahead of planning, and steps are renumbered (mapping table at the end of
+  `workflow.md`). `SKILL.md` gains a router and a gate table.
+- Revision cap: 2 revision loops in total, down from 3 review rounds.
+- New integrity rules: nobody checks their own work, and the network is opt-in (rules 10–11).
+- `evaluation_rubric.md` and the `citation_rules.md` pipeline now follow these caps and lookups.
+
+**Added:**
+- `modes.md`: 12 modes, routing by materials, and what no mode may skip.
+- `literature.md`: corpus intake, global search, source verification (`lookup_verified`,
+  cross-index triangulation, retraction status, flags), grading, gate **GL**, and the
+  systematic-review path.
+- `integrity.md`: the VERIFIER role, seven failure modes M1–M7, claim↔reference alignment on a
+  risk-stratified sample, blocking rules, gate **GI** at two stages.
+- `review_panel.md`: field analyst, five seats with commitment before reading, editorial synthesis,
+  devil's-advocate rebuttals, verification re-review, and external human reviews.
+- `finalize.md`: references, formats, citation styles, disclosure, submission checklist, packaging.
+- P0 INTAKE: routing, `plan/paper_config.json`, budget and oversight level, checkpoint C0.
+- Failure states `FABRICATED_CITATION`, `RETRACTED_SOURCE`, `INTEGRITY_SUSPECTED`, `PANEL_REJECT`,
+  `FORMAT_TOOL_MISSING`.
+- `ai_policy` block in both venue-profile templates.
+
+Proposal: `versions/proposals/20261102-unified-workflow.json`. The gaps it addresses come from a
+static capability review, not from reader or user trials.
+
+**Not claimed:** any effect on reader comprehension or paper quality.
+
 ## [Unreleased local update] — 2026-10-26 — adaptive representation
 
 User-authorized update; no version bump or public release. Adds `representation_design.md`,

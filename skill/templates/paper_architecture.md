@@ -4,7 +4,7 @@ Story pattern: <imrad | question_led | method_first | finding_first | ocar>
 Audience mode: <A–E> · Binding personas: <…> · Venue profile: <file> (assumed rules: <n>)
 Length limit (main text): <length_limit_words> · Planned total: <Σ Words> (≤ 90% of the limit)
 
-Each row is one **paragraph slot**. The skeleton (step 9) writes one topic sentence per row.
+Each row is one **paragraph slot**. The skeleton (step 13) writes one topic sentence per row.
 
 | # | Section | Story node(s) | Reader question answered | Point (one sentence) | Claims | Density | Visual | New terms | Words | Link forward |
 |---|---------|---------------|--------------------------|----------------------|--------|---------|--------|-----------|-------|--------------|

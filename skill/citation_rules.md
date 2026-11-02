@@ -24,7 +24,10 @@ support>]` and add it to `open_issues.md`.
 
 ---
 
-## 2. The citation pipeline (every citation, step 16)
+## 2. The citation pipeline (every citation, steps 8 and 16.6)
+
+Step 8 runs the lookups (`literature.md` §5). Step 16.6 re-runs the pipeline on each citation as
+the draft uses it.
 
 | Step | Check | Pass condition | On failure |
 |------|-------|----------------|------------|
@@ -35,7 +38,7 @@ support>]` and add it to `open_issues.md`.
 | 5 Status | publication_status disclosed where it matters | Preprints cited as preprints when load-bearing | Add "(preprint)" or find the published version |
 | 6 Primary | Cite the originating source for findings, not a secondary summary, when available | A primary source is used, or the secondary one is cited as a review | Replace, or add the primary |
 | 7 Purpose | The sentence states what the source contributes | Not decorative | Remove, or state its role |
-| 8 Integrity | Not retracted (checked when tools allow) | — | Remove, or cite as retracted if discussing it |
+| 8 Integrity | Not retracted (`literature.md` §5.3) | — | Remove, or cite as retracted if discussing it |
 
 Record the results in `audits/vNNN/citation_audit.json` (a row per citation instance).
 

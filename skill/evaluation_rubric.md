@@ -77,7 +77,8 @@ Any of these blocks the move to final editing:
 ## 4. Exit criteria (per paper)
 
 All blocking defects are resolved, Core RR ≥0.8 (Q1, Q4, Q7, Q10, Q11), and the automated
-audits pass. Maximum 3 review rounds. Then report the remaining issues. Don't iterate further.
+audits pass. Maximum 2 revision loops (`review_panel.md` §8). Then report the remaining issues.
+Don't iterate further.
 
 ## 5. What the rubric is not
 

@@ -56,7 +56,7 @@ def check(rcs: Path, rnd: str, revised: Path | None) -> dict:
     ddir = rcs / "diagnostics" / rnd
     dpath = ddir / "diagnostics.json"
     if not dpath.exists():
-        err("G4_NO_REVIEW", f"no blind review for round {rnd}: run REVIEW_AGENT on a packet (workflow step 18)")
+        err("G4_NO_REVIEW", f"no blind review for round {rnd}: run REVIEW_AGENT on a packet (workflow step 17)")
         return {"errors": 1, "items": items}
     diag = json.loads(dpath.read_text(encoding="utf-8"))
     for e in validate(diag, load_schema("diagnostics.schema.json")):

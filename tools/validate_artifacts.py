@@ -349,7 +349,7 @@ def check_gates(rcs: Path, project_root: Path, rep: Report) -> dict[str, str]:
                     if added:
                         mark(gate, "STALE")
                         rep.add("ERROR", where, f"{rel} is stale: {drafts[-1].parent.name} states {', '.join(added)}, "
-                                                "which no blind review covered; run another review round (step 20)")
+                                                "which no blind review covered; run another review round (step 18)")
                 continue
             if kind == "visuals":
                 g = (r.get("gates") or {}).get(gate, {})

@@ -1,7 +1,8 @@
 # Unified workflow: build plan and handoff (RCE + ARS)
 
-**Status:** research and design done; **nothing is built yet**. Written 2026-11-02 at the end of the
-design session so a new session (different machine, different account) can build it.
+**Status:** Stage A (documents and contracts) done; Stages B–E not started. See the Progress log (§9)
+and the contracts Stage A fixed (§10). Written 2026-11-02 at the end of the design session so a new
+session (different machine, different account) can build it.
 **Branch:** `rce-unified-workflow` (CI runs on `rce-*` branches). **Base:** `main` at v0.4.0 plus
 dependabot CI bumps, plus the merged adaptive-representation update (§0.4).
 
@@ -546,15 +547,17 @@ was not verified, and update `README.md` and `skill/README.md`.
 
 ---
 
-## 8. Decisions to confirm with the user at the start (defaults in bold)
+## 8. Decisions, all confirmed by the user on 2026-11-02
 
 1. **License approach:** **rewrite everything in RCE's own words and code under Apache-2.0, credit
-   ARS as the design source.** The alternatives are vendoring ARS files under CC BY-NC (that part
+   ARS as the design source.** The alternatives were vendoring ARS files under CC BY-NC (that part
    becomes non-commercial) or requiring a side-by-side ARS install.
 2. ~~Unpushed adaptive-representation work~~: **settled.** The user had it pushed and merged into
-   this branch on 2026-11-02 (§0.4).
-3. **Name and version:** **keep `research-communication-engine`, next minor version**, with a
-   proposal file.
+   this branch on 2026-11-02 (§0.4). Confirmed in git: `c49b8fb` is on `origin/main` and this branch.
+3. **Name and version:** **keep `research-communication-engine`, next minor version (0.5.0)**, with a
+   proposal file. `SKILL.md` keeps `version: 0.4.0` until the release step in
+   `skill/versions/README.md`. Whether to release at Stage E is a decision for the user then: the
+   release gate needs a held-out evaluation that this build does not run.
 4. **Stage pacing:** **build stage by stage and pause for review after each.**
 
 ---
@@ -565,3 +568,41 @@ was not verified, and update `README.md` and `skill/README.md`.
 |---|---|---|---|---|
 | 2026-11-02 | Design | This handoff plan written; branch `rce-unified-workflow` created | `check_repo.py` (0 errors) | Confirm §8, then Stage A |
 | 2026-11-02 | Design | Adaptive-representation update committed on `rce-adaptive-representation` and merged here | unittest 104 OK, replay 49/49, cases 18/0, `validate_artifacts --check-skill` 0 errors, `check_repo` 0 errors | Confirm §8 items 1, 3, 4, then Stage A |
+| 2026-11-02 | A | `SKILL.md` and `workflow.md` rewritten to §2; added `modes.md`, `literature.md`, `integrity.md`, `review_panel.md`, `finalize.md`; 5 new failure states; proposal `20261102-unified-workflow`; changelog; ARS credited (S32); stale step references fixed across skill docs, adapters and tool messages | unittest 104 OK, replay 49/49, cases 18/0, `validate_artifacts --check-skill` 0 errors (33 expected "unreleased change" warnings), `check_repo` 0 errors, `package_skill` valid. Word n-gram scan against all ARS text files: 0 shared at 9 words, and every 6-word hit reviewed. Windows, Python 3.12. No tool, schema or prompt built yet, so GL and GI cannot run | Stage B after the user reviews Stage A |
+
+---
+
+## 10. Contracts Stage A fixed (Stages B–D must honor these, or change the docs with them)
+
+- **Tool CLIs:** `lit_search.py .rcs --online`; `verify_citations.py .rcs --online` for lookups and
+  `--gate --out ...GL_citations.json` for GL; `integrity_check.py collect|gate .rcs --stage pre|final
+  --draft <tagged draft>`; `format_paper.py paper/paper.md --rcs .rcs --to latex,docx,pdf`;
+  `disclosure.py .rcs --out disclosure.md`.
+- **New artifacts:** `corpus/candidates.json` (nothing is citable until step 8 registers it),
+  `story/rq_check.md`, `story/alternatives.md` (M7 needs it), `audits/integrity/<stage>/bundle.json`
+  and `verifier_report.json`, `paper/submission_checklist.md`, `paper/response_letter.md`,
+  `revisions/<round>/external_comments.json`, `audits/<round>/rebuttal_audit.md`.
+- **`paper_config.json` fields:** the §2 list plus `mode`, `no_experiments`, `budget`, `oversight`,
+  `contamination_cutoff_year` (default 2024; our heuristic, not a measured threshold).
+- **Verdicts:** `DOI_MISMATCH` and `ID_NOT_FOUND` give `lookup_verified: false`. A Crossref miss alone
+  is not proof: only the DOI resolver or arXiv can prove an ID absent. Every index skipped gives
+  **no verdict** (`LOOKUP_DEGRADED`), and GL treats that as unverified. Codes and the flag list are
+  in `skill/literature.md` §5.
+- **GI report:** one file, `GI_integrity.json`, with `stage` inside. Per-stage reports stay under
+  `audits/integrity/<stage>/`. G5 requires `stage: final`. The sentinel sample's seed is the draft's
+  SHA-256.
+- **Step 20 reads the tagged draft.** Claim tags are stripped at step 19, so `integrity_check.py` takes
+  the edited tagged draft and confirms `paper/paper.md` is that text with the tags removed.
+- **Citations stay author-year in drafts**, because that is the form `lint_draft.py` C5 checks.
+  `format_paper.py` must map each one to a registry key before Pandoc can restyle it.
+- **Integrity overrides are checkpoints, not accepted risks** (`ACCEPTED_RISK_FACTUAL`).
+- **`workflow_guard.py` `ROLE_WRITE`** needs VERIFIER and PANEL roles. AUTHOR's `audits/` prefix must
+  stop covering `audits/integrity/`.
+- **Stage B must also** add GL and GI to `GATE_REPORTS` in `validate_artifacts.py` and to
+  `run_workflow.py gates`. `rce_diagnostics.py` keeps `step` only when it is an int, and sub-steps are
+  strings.
+- **`package_skill.py` fails on a backticked `tools/`, `agents/`, `schemas/` or `templates/` path in
+  `SKILL.md` that is not in the package.** Until those files exist, `SKILL.md` names new tools only
+  in `python tools/...` command form. Add the exact agent and schema paths at Stage C.
+- **Historical documents stay as written:** `docs/05_SKILL_SPECIFICATION.md`, `docs/06_VNEXT_SPEC.md`,
+  evaluation logs, and past proposals and changelog entries keep the 21-step numbering.

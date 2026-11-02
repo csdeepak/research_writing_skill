@@ -1,11 +1,12 @@
 # Source Registry for the Design Phase
 
-Every external source cited in `docs/` and `skill/` is listed here. Each was checked on
-**2026-09-24** against a publisher page, DOI landing page, arXiv abstract page, or index
-record. Nothing here comes from model memory alone.
+Every external source cited in `docs/` and `skill/` is listed here. S01–S31 were checked on
+**2026-09-24** and S32 onward on **2026-11-02**, against a publisher page, DOI landing page, arXiv
+abstract page, or index record. Nothing here comes from model memory alone.
 
 Status legend: **PR** = peer-reviewed · **PP** = preprint (not peer-reviewed at the time checked) ·
-**GL** = guideline/policy · **BK** = book · **ED** = editorial/commentary · **CS** = course material
+**GL** = guideline/policy · **BK** = book · **ED** = editorial/commentary · **CS** = course material ·
+**SW** = software or its documentation
 
 | ID | Source | Type | Why it is used | Link |
 |----|--------|------|----------------|------|
@@ -41,6 +42,15 @@ Status legend: **PR** = peer-reviewed · **PP** = preprint (not peer-reviewed at
 | S29 | Dahlstrom (2014), "Using narratives and storytelling to communicate science with nonexpert audiences", *PNAS* 111(S4):13614–13620 | PR | Narrative improves comprehension and engagement, but it also persuades, which carries ethical risk | https://www.pnas.org/doi/10.1073/pnas.1320645111 |
 | S30 | Sumner et al. (2014), "The association between exaggeration in health related science news and academic press releases", *BMJ* 349:g7015 | PR | Exaggeration starts upstream, with the authors' own framing | https://doi.org/10.1136/bmj.g7015 |
 | S31 | Nature Portfolio, "How to write your paper" (author guidance) | GL | Prefers active voice ("we performed…") because readers understand it more clearly; write for non-specialists | https://www.nature.com/nature-portfolio/for-authors/write |
+| S32 | C.-I. Wu, *Academic Research Skills* (ARS), commit `a41f3b2`, CC BY-NC 4.0 | SW | **Design source only.** The capabilities absorbed into the unified workflow: literature search and citation verification, the seven-mode integrity checklist, the review panel, revision handling, formatting and disclosure. Read for design; no ARS text, prompts, tables or code are copied here | https://github.com/Imbad0202/academic-research-skills |
+| S33 | Lu et al. (2026), "Towards end-to-end automation of AI research", *Nature* 651:914–919, doi:10.1038/s41586-026-10265-5 | PR | Reports the limits of an automated research system, including incorrect implementations, errors in experimental implementation and inaccurate citations. The seven-mode grouping in `skill/integrity.md` is adapted from S32, not from this paper | https://www.nature.com/articles/s41586-026-10265-5 |
+| S34 | Page et al. (2021), "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews", *BMJ* 372:n71, doi:10.1136/bmj.n71 | GL | Reporting standard for the `systematic-review` mode | https://doi.org/10.1136/bmj.n71 |
+| S35 | Brand et al. (2015), "Beyond authorship: attribution, contribution, collaboration, and credit", *Learned Publishing* 28:151–155, doi:10.1087/20150211; NISO CRediT | GL | Contributor-role taxonomy for author contribution statements | https://credit.niso.org/ |
+| S36 | EQUATOR Network, reporting guidelines library | GL | Where study-type reporting guidelines are found (to be injected per venue, not hard-coded) | https://www.equator-network.org/ |
+| S37 | Zhao et al. (2026), "LLM hallucinations in the wild: Large-scale evidence from non-existent citations", arXiv:2605.07723 | PP | Reports a sharp rise in non-existent references after LLM adoption. Motivates the `post_llm_unconfirmed` flag; the cutoff year in `skill/literature.md` is our heuristic, not this paper's finding | https://arxiv.org/abs/2605.07723 |
+| S38 | Fandino (2019), "Formulating a good research question: Pearls and pitfalls", *Indian J Anaesth* 63(8):611–616, doi:10.4103/ija.ija_198_19 | PR | Describes the FINER criteria (feasible, interesting, novel, ethical, relevant) used in the RQ stress-test | https://pmc.ncbi.nlm.nih.gov/articles/PMC6691636/ |
+| S39 | Pandoc User's Guide | SW | `--citeproc` citation processing and PDF output through a LaTeX engine | https://pandoc.org/MANUAL.html |
+| S40 | Citation Style Language | SW | The style format that lets one reference list render in any venue's style | https://citationstyles.org/ |
 
 ## Rules for this registry
 1. Add a source only after checking it against a live index or publisher page. Record the date.

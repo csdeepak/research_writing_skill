@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Run the RCE's single-shot roles on ANY model (bindings in .rcs/models.json; see tools/rce_llm.py).
 
-  review     REVIEW_AGENT (workflow step 18) on a sanitized packet (tools/build_review_packet.py). Only the packet is
+  review     REVIEW_AGENT (workflow step 17) on a sanitized packet (tools/build_review_packet.py). Only the packet is
              sent: the role file, the two output schemas and the packet files, nothing from .rcs/. Output is validated
              (schemas, all 20 dimensions, exactly Q1-Q12, packet id), written to .rcs/diagnostics/<round>/, and recorded
              in the provenance ledger as REVIEW when the ledger is in use.
