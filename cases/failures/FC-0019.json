@@ -1,0 +1,36 @@
+{
+  "schema_version": "1",
+  "id": "FC-0019",
+  "title": "One work found under an arXiv id and an arXiv DOI was flagged as a metadata conflict",
+  "category": "citation",
+  "severity": "low",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-02",
+    "by": "tool calibration",
+    "context": "Stage B live run of verify_citations.py against the real indexes"
+  },
+  "observed_failure": "Attention Is All You Need, cited by its arXiv DOI, came back with metadata_conflict: OpenAlex keyed it by DOI and arXiv by id, so the same work counted as two.",
+  "expected_behavior": "Records reached through the source's own identifier are one work; only a title search can leave a choice for a person.",
+  "evidence": [
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9",
+    "skill/changelog.md, 0.5.0 candidate"
+  ],
+  "regression": {
+    "tests": [
+      "T-074"
+    ],
+    "replay_fixtures": [
+      "CIT-02"
+    ]
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.5.0-candidate",
+    "summary": "work keys use the arXiv id when there is one; ID lookups never mark ambiguity"
+  },
+  "lessons": [
+    "Live answers expose identifier aliasing that synthetic mocks never contain."
+  ],
+  "public": true
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1",
+  "id": "FC-0022",
+  "title": "The plural heading 'Methods' was not recognised, silently disabling the methodology-fabrication check",
+  "category": "workflow-gate",
+  "severity": "high",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-02",
+    "by": "author agent",
+    "context": "Stage B mocked test of integrity_check.py (T-087)"
+  },
+  "observed_failure": "METHOD_SECTION_RE matched 'method' with word boundaries, so 'Methods' never matched; M6 and the methods-critical alignment tier did nothing on almost any real paper, and a clean report looked like a pass.",
+  "expected_behavior": "Method-section detection matches the plural and common variants (Methods, Methodology, Experimental setup, Materials).",
+  "evidence": [
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9",
+    "skill/changelog.md, 0.5.0 candidate"
+  ],
+  "regression": {
+    "tests": [
+      "T-087"
+    ],
+    "replay_fixtures": [
+      "INT-01"
+    ]
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.5.0-candidate",
+    "summary": "the pattern covers plurals and common headings"
+  },
+  "lessons": [
+    "A check that finds nothing must be tested with a planted defect, or silence looks like success."
+  ],
+  "public": true
+}

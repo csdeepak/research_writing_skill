@@ -82,7 +82,10 @@ python tools/lit_search.py .rcs --stop-reason "two batches with no new method fa
    problem × method family × dataset or benchmark × metric, plus synonyms. **Review it before going
    online,** because these terms leave the machine. Sharpen the draft's keywords and set `from_year`
    (default practice: the last 5 years, plus seminal works found by snowballing). Topic-only runs
-   seed the plan with `--topic`.
+   seed the plan with `--topic`. Workflow labels (RQ1, H2, C007) never become keywords. Terms that
+   look coined for this project, such as a new acronym or a dataset name in CamelCase, are listed
+   under `_review.possible_project_terms`: replace each with the words the literature uses, or the
+   query finds nothing, or the wrong thing.
 2. **Indexes.** Search at least two indexes per facet. Semantic Scholar, OpenAlex, Crossref and
    arXiv are built in, with arXiv results flagged as preprints. Domain indexes (PubMed, DBLP, ACL
    Anthology, IEEE Xplore, ACM DL, national indexes) may be searched by hand or through the agent's
@@ -97,7 +100,11 @@ python tools/lit_search.py .rcs --stop-reason "two batches with no new method fa
 4. **Screen** titles and abstracts: does it match a story node, is it in the window, is it the
    right type? In `corpus/candidates.json`, set `decision` to `keep` or `exclude`, with a `reason`
    for each exclusion. Each run rewrites the Screening table in the log from those fields. Citation
-   count is metadata, never a filter.
+   count is metadata, never a filter. A preprint and its published paper have different DOIs, so
+   both stay candidates; the later one is marked `possible_version_of` the first when the
+   normalized title matches and the first author matches or the years are within one. Screen them
+   as one work. The search prints how many distinct works it found, and that is the count a gap
+   statement gives.
 5. **Snowball** one level, backward and forward, from the first 5 kept sources. OpenAlex supplies
    the citation links.
 6. **Stop** at saturation (two batches with no new method family or gap dimension) or at the budget
@@ -192,7 +199,7 @@ discusses the retraction, with the user's confirmation and the `retracted_acknow
 
 | Flag | Set when |
 |---|---|
-| `preprint` | The record is a preprint. Disclose the status where the citation is load-bearing |
+| `preprint` | Any record says preprint: the arXiv index, a preprint or repository type, a preprint server as venue, or a preprint-server DOI prefix. Index type labels alone miss some. Disclose the status where the citation is load-bearing |
 | `single_index` | Exactly one index found the work |
 | `post_llm_unconfirmed` | A preprint from `paper_config.contamination_cutoff_year` (default 2024) or later that no other index confirms |
 | `metadata_conflict` | Index records disagree on title or first author, or on year by more than 1, or the cited first author matches no record |
@@ -250,6 +257,14 @@ or the `--draft` names it. GL fails on any of these:
 
 - a registered source with `lookup_verified: false`
 - a cited source with no verification record, no verdict or no support quote
+- a draft citation that names no registered source (`CITATION_UNREGISTERED`), or more than one
+  (`CITATION_AMBIGUOUS`). A citation resolves by first author and year, then by the author form:
+  "Passalis et al." needs three or more authors, "Passalis and Tefas" exactly those two. Works that
+  are still tied, such as two papers by the same team in one year, take a `year_suffix` in the
+  registry (`a`, `b`) and are cited as 2020a and 2020b. GL, `integrity_check.py` and
+  `format_paper.py` read citations the same way. A form that contradicts the registered author list
+  is a warning (`CITATION_AUTHOR_FORM`).
+- a `--draft` that does not exist (`DRAFT_MISSING`)
 - a gap or novelty claim that is not scoped to the logged search
 - a `retracted` source without `retracted_acknowledged`
 

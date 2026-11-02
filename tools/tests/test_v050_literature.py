@@ -30,6 +30,7 @@ from unittest import mock
 
 TOOLS = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(TOOLS))
+import lint_draft as ld  # noqa: E402
 import lit_search as ls  # noqa: E402
 import rce_index as ix  # noqa: E402
 import verify_citations as vc  # noqa: E402
@@ -383,6 +384,20 @@ class FlagTests(Base):
         self.assertIn("retracted_acknowledged", s["flags"])
         self.assertNotIn("preprint", s["flags"], "tool flags are refreshed on each run")
 
+    def test_T076_semantic_scholar_journalarticle_on_arxiv_is_still_a_preprint(self):
+        """Found in the end-to-end run: S2 labels arXiv preprints JournalArticle (venue arXiv.org), which vetoed the flag."""
+        self.assertTrue(ix.is_preprint({"index": "semantic_scholar", "type": "JournalArticle", "venue": "arXiv.org"}))
+        self.assertTrue(ix.is_preprint({"index": "crossref", "type": "journal-article", "doi": "10.1101/2020.03.22.002386"}))
+        self.assertFalse(ix.is_preprint({"index": "crossref", "type": "journal-article", "doi": "10.1101/gr.123456.110", "venue": "Genome Research"}))
+        self.assertFalse(ix.is_preprint({"index": "crossref", "type": "journal-article", "venue": "Journal of Tests"}))
+        s2 = json.dumps({"paperId": "x", "title": TITLE, "year": 2025, "authors": [{"name": "Ann Smith"}], "externalIds": {"ArXiv": "2501.00001"},
+                         "venue": "arXiv.org", "publicationTypes": ["JournalArticle"]})
+        net = FakeNet(("api.openalex.org", (200, openalex(doi="10.48550/arxiv.2501.00001", kind="preprint", year=2025), {})),
+                      ("semanticscholar", (200, s2, {})), ("export.arxiv.org", (200, arxiv_feed(ident="2501.00001", year=2025), {})))
+        r = vc.verify_source(self.src(arxiv_id="2501.00001", year=2025), self.client(net))
+        self.assertIn("preprint", r["flags"])
+        self.assertNotIn("post_llm_unconfirmed", r["flags"], "three indexes confirm it")
+
     def test_T076_expression_of_concern(self):
         routes = good_routes(updated_by=[{"type": "expression_of_concern", "updated": {"date-parts": [[2020]]}}])
         self.assertIn("expression_of_concern", vc.verify_source(self.src(doi="10.1000/real"), self.client(FakeNet(*routes)))["flags"])
@@ -550,8 +565,43 @@ class GateTests(Base):
         d.write_text("Among the 23 works retrieved from OpenAlex, none reports this; this is the first study to do it within that search.\n", encoding="utf-8")
         self.assertNotIn("GAP_NOT_SCOPED", self.codes(d))
 
+    def test_T078_ambiguous_citation_is_its_own_error(self):
+        """Found in the end-to-end run: one citation matched two registered 2020 papers and GL blamed a missing quote."""
+        self.registry(self.ok(), self.ok(id="SRC-002", title="Another paper by the same team", establishes=[]))
+        self.cite("SRC-001")
+        d = self.root / "paper.md"
+        d.write_text("Adaptive methods help (Smith, 2021).\n", encoding="utf-8")
+        codes = self.codes(d)
+        self.assertIn("CITATION_AMBIGUOUS", codes)
+        self.assertNotIn("NO_SUPPORT_QUOTE", codes)
+        self.registry(self.ok(year_suffix="a"), self.ok(id="SRC-002", title="Another paper by the same team", establishes=[], year_suffix="b"))
+        d.write_text("Adaptive methods help (Smith, 2021a).\n", encoding="utf-8")
+        self.assertEqual(self.codes(d), [])
+
+    def test_T078_author_form_picks_the_work_and_a_wrong_form_is_flagged(self):
+        """Found by the VERIFIER in the end-to-end run: "Passalis and Tefas, 2020" was written for a five-author paper.
+        The author form tells two same-year works apart, and a form that contradicts the registry is a warning."""
+        team = ["Smith, Ann", "Lee, Bo", "Kim, Cy"]
+        self.registry(self.ok(authors=team), self.ok(id="SRC-002", title="Another paper by the same team", authors=team[:2]))
+        self.cite("SRC-001")
+        d = self.root / "paper.md"
+        for text, sid in (("Smith et al., 2021", "SRC-001"), ("Smith and Lee, 2021", "SRC-002"), ("Smith & Lee, 2021", "SRC-002")):
+            self.assertEqual(ld.resolve_citation(json.loads((self.rcs / "corpus" / "source_registry.json").read_text(encoding="utf-8"))["sources"],
+                                                 "smith", 2021, text), [sid], text)
+        d.write_text("Adaptive methods help (Smith et al., 2021).\n", encoding="utf-8")
+        rep = vc.gate(self.rcs, d)
+        self.assertEqual([i["code"] for i in rep["items"]], [])
+        self.registry(self.ok(authors=team))
+        d.write_text("Adaptive methods help (Smith and Kim, 2021).\n", encoding="utf-8")
+        rep = vc.gate(self.rcs, d)
+        self.assertEqual([(i["level"], i["code"]) for i in rep["items"]], [("WARN", "CITATION_AUTHOR_FORM")])
+
     def test_T078_no_registry(self):
         self.assertIn("NO_REGISTRY", self.codes())
+
+    def test_T078_a_missing_draft_fails_instead_of_passing_unread(self):
+        self.registry(self.ok())
+        self.assertIn("DRAFT_MISSING", self.codes(self.root / "drafts" / "v009" / "paper.md"))
 
     def test_T078_cli_writes_a_report(self):
         self.registry(self.ok())
@@ -653,6 +703,40 @@ class SearchTests(Base):
         self.assertIn("Review its terms", out)
         plan = json.loads((self.rcs / "corpus" / "search_plan.json").read_text(encoding="utf-8"))
         self.assertTrue(plan["facets"]["problem"] and plan["facets"]["method"])
+
+    def test_T079_plan_drops_labels_and_flags_project_terms(self):
+        """Found in the end-to-end run: the drafted plan carried RQ labels and the project's coined names."""
+        (self.rcs / "story").mkdir()
+        (self.rcs / "story" / "story_graph.json").write_text(json.dumps({"nodes": [
+            {"id": "N1", "type": "RQ", "text": "RQ1 does per-window normalization help"},
+            {"id": "N2", "type": "APPROACH", "text": "Rolling-window normalization RWN on SynthLoad"}]}), encoding="utf-8")
+        code, out = self.quiet(ls.main, [str(self.rcs)])
+        plan = json.loads((self.rcs / "corpus" / "search_plan.json").read_text(encoding="utf-8"))
+        self.assertNotIn("RQ1", " ".join(plan["facets"]["problem"]))
+        self.assertEqual(plan["_review"]["possible_project_terms"], ["RWN", "SynthLoad"])
+        self.assertIn("possible project-internal terms", out)
+
+    def test_T079_a_preprint_and_its_paper_are_one_work_in_the_count(self):
+        """Found by the VERIFIER in the end-to-end run: 66 candidates held 62 works, because an SSRN or arXiv preprint and its
+        published version carry different DOIs."""
+        data = {"candidates": []}
+        t = "FAN-TSF: A Frequency Adaptive Normalization Approach"
+        self.assertTrue(ix.add_candidate(data, {"title": t, "authors": ["Gu, Jialing"], "year": 2025, "doi": "10.2139/ssrn.1"}, "search:crossref"))
+        self.assertTrue(ix.add_candidate(data, {"title": t.upper(), "authors": ["Jialing Gu"], "year": 2025, "doi": "10.1109/x.2"}, "search:crossref"))
+        self.assertTrue(ix.add_candidate(data, {"title": t, "authors": ["Association for AI"], "year": 2026, "doi": "10.4/talk"}, "search:openalex"))
+        self.assertTrue(ix.add_candidate(data, {"title": t, "authors": ["Other, Author"], "year": 2019, "doi": "10.5/old"}, "search:openalex"))
+        self.assertEqual([c.get("possible_version_of") for c in data["candidates"]], [None, "CAND-0001", "CAND-0001", None])
+        self.assertEqual(ix.distinct_works(data), 2)
+
+    def test_T079_tools_never_crash_on_a_console_that_cannot_print_a_title(self):
+        """Found in the end-to-end run: a Windows console (cp1252) cannot print a typographic hyphen from an index title."""
+        import subprocess
+        env = dict(os.environ, PYTHONIOENCODING="cp1252")
+        code = "import sys; sys.path.insert(0, %r); import rce_common; rce_common.safe_stdout(); print('A Time‐Symmetric title')" % str(TOOLS)
+        p = subprocess.run([sys.executable, "-c", code], env=env, capture_output=True)
+        self.assertEqual(p.returncode, 0, p.stderr)
+        for tool in ("lit_search", "verify_citations", "integrity_check", "format_paper", "disclosure", "panel_check"):
+            self.assertIn("    safe_stdout()", (TOOLS / f"{tool}.py").read_text(encoding="utf-8"), tool)
 
     def test_T079_topic_only_plan(self):
         self.quiet(ls.main, [str(self.rcs), "--topic", "sleep and memory"])

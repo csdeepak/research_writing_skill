@@ -28,7 +28,9 @@
           "needs_metadata": {"type": "boolean"},
           "lookup_verified": {"enum": [true, false, "unresolvable", null]},
           "verification_code": {"type": ["string", "null"]},
-          "registered_as": {"type": "string", "pattern": "^SRC-[0-9]{3,}$"}
+          "registered_as": {"type": "string", "pattern": "^SRC-[0-9]{3,}$"},
+          "possible_version_of": {"type": "string", "pattern": "^CAND-[0-9]{4,}$",
+                                  "description": "same normalized title as an earlier candidate, with the same first author or a year within one: likely a preprint and its published version. Not merged; not counted as a separate work"}
         }
       }
     }

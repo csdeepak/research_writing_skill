@@ -30,6 +30,9 @@ python tools/build_review_packet.py <draft> --out .rcs/packets/review_<round> \
        --audience audience.md --objective objective.md --strip-markers
 ```
 
+The packet ends with a References section for the works the paper cites, built from the verified
+source registry, because the bibliography itself is only produced at P7.
+
 Each seat runs in its own context: a subagent, a fresh session, or a model bound in
 `.rcs/models.json`. No seat sees another seat's output before it commits. If a runtime cannot
 isolate, run the seats one at a time in fresh sessions. Reviews from a shared context are labelled

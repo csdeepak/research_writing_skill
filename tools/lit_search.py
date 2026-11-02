@@ -30,7 +30,7 @@ from itertools import product
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from rce_common import INJECTION_RE, load_json  # noqa: E402
+from rce_common import INJECTION_RE, load_json, safe_stdout  # noqa: E402
 import rce_index as ix  # noqa: E402
 
 DEFAULT_QUERIES = 40
@@ -239,9 +239,19 @@ def intake(rcs: Path, paths: list[str]) -> int:
 
 
 # ------------------------------------------------------------------------------ search plan
+LABEL_RE = re.compile(r"^(RQ|H|C|E|L|N)\d+$")
+# Coined names (SynthLoad) and acronyms (RWN, RWN-fixed) are often the project's own vocabulary. A search sends them to
+# the indexes, so the drafted plan names them for the reviewer (found in the end-to-end run on the demo project).
+PROJECT_TERM_RE = re.compile(r"^([A-Z][a-z]+[A-Z][A-Za-z]*|[A-Z]{2,}[A-Za-z0-9]*(-[A-Za-z0-9]+)*)$")
+
+
 def keywords(text: str, n: int = 6) -> str:
-    words = [w for w in re.findall(r"[A-Za-z][A-Za-z0-9-]+", text) if w.lower() not in STOP]
+    words = [w for w in re.findall(r"[A-Za-z][A-Za-z0-9-]+", text) if w.lower() not in STOP and not LABEL_RE.match(w)]
     return " ".join(words[:n])
+
+
+def project_terms(plan: dict) -> list[str]:
+    return sorted({w for terms in plan.get("facets", {}).values() for t in terms for w in t.split() if PROJECT_TERM_RE.match(w)})
 
 
 def draft_plan(rcs: Path, topic: str | None) -> dict:
@@ -313,7 +323,7 @@ def run_search(rcs: Path, client: ix.Client, plan: dict, max_calls: int, max_sou
     ix.save_candidates(rcs, data)
     ix.log_calls(rcs, client)
     return {"queries": len(per_query), "stop": stop, "under_two": [p["query"] for p in per_query if p["indexes_answered"] < 2],
-            "candidates": len(data["candidates"])}
+            "candidates": len(data["candidates"]), "works": ix.distinct_works(data)}
 
 
 def snowball(rcs: Path, client: ix.Client) -> int:
@@ -342,12 +352,13 @@ def snowball(rcs: Path, client: ix.Client) -> int:
 
 
 def write_screening(rcs: Path) -> None:
-    rows = [[c["id"], c.get("title") or c.get("as_cited") or "", c.get("decision"), c.get("reason") or ""]
-            for c in ix.load_candidates(rcs)["candidates"]]
+    rows = [[c["id"], (c.get("title") or c.get("as_cited") or "") + (f" (version of {c['possible_version_of']}?)" if c.get("possible_version_of") else ""),
+             c.get("decision"), c.get("reason") or ""] for c in ix.load_candidates(rcs)["candidates"]]
     ix.replace_section(rcs, "Screening", ix._table(["Candidate", "Title", "Decision", "Reason"], rows))
 
 
 def main(argv: list[str] | None = None) -> int:
+    safe_stdout()
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("rcs")
     ap.add_argument("--online", action="store_true", help="allow network calls (policy-checked and logged)")
@@ -373,15 +384,22 @@ def main(argv: list[str] | None = None) -> int:
     elif not plan_p.exists():
         if not a.intake or a.topic:
             plan = draft_plan(rcs, a.topic)
+            suspects = project_terms(plan)
+            if suspects:
+                plan["_review"] = {"possible_project_terms": suspects,
+                                   "note": "coined names and acronyms may be the project's own vocabulary: replace them with the field's terms"}
             plan_p.write_text(json.dumps(plan, indent=1, ensure_ascii=False), encoding="utf-8")
             print(f"wrote a draft search plan to {plan_p}. Review its terms: they leave the machine. Then run with --online.")
+            if suspects:
+                print(f"WARN  possible project-internal terms in the plan: {', '.join(suspects)}. Replace them with the field's terms.")
     elif not a.intake or a.online:
         if not a.online:
             print("offline: answering from .rcs/cache/ only. A query with no cached response is skipped, not empty.")
         max_calls, max_sources = _budget(rcs, a)
         res = run_search(rcs, client, load_json(plan_p), max_calls, max_sources)
         ix.replace_section(rcs, "Stopping reason", [f"{ix.today()}: {res['stop']}"])
-        print(f"search: {res['queries']} queries, {res['candidates']} candidates in total. Stopped: {res['stop']}")
+        print(f"search: {res['queries']} queries, {res['candidates']} candidates in total, {res['works']} distinct work(s) once "
+              f"likely versions of one work are counted once (possible_version_of). Count works in a scoped gap. Stopped: {res['stop']}")
         if res["under_two"]:
             print(f"WARN  {len(res['under_two'])} query(ies) reached fewer than 2 indexes. See the Status column in the log.")
         if res["candidates"] == 0:

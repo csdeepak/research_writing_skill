@@ -50,6 +50,11 @@ ARXIV_DOI_RE = re.compile(r"^10\.48550/arxiv\.(.+)$", re.I)
 RETRACTED_PREFIX_RE = re.compile(r"^\s*(\[?\s*(retracted|retraction|withdrawn)\s*\]?\s*[:\-.]?\s*)+", re.I)
 TAG_RE = re.compile(r"<[^>]+>")
 PREPRINT_TYPES = {"posted-content", "preprint"}
+# Semantic Scholar labels arXiv preprints "JournalArticle" (venue "arXiv.org"), so the type alone is not enough: the venue
+# and the preprint servers' DOI prefixes say it too. bioRxiv shares 10.1101 with journals such as Genome Research, so only
+# its own DOI forms count.
+PREPRINT_VENUE_RE = re.compile(r"\b(arxiv|biorxiv|medrxiv|ssrn|research square|preprints\.org|chemrxiv|techrxiv|osf preprints)\b", re.I)
+PREPRINT_DOI_RE = re.compile(r"^10\.(48550|2139|21203|20944|26434|36227|31219)/|^10\.1101/(\d{4}\.\d{2}\.\d{2}\.|\d{6}$)", re.I)
 PEER_TYPES = {"journal-article", "proceedings-article", "article", "conference-paper", "JournalArticle", "Conference", "book-chapter"}
 
 
@@ -184,7 +189,8 @@ def parse_arxiv_feed(xml: str) -> list[dict]:
 
 
 def is_preprint(rec: dict) -> bool:
-    return rec.get("index") == "arxiv" or rec.get("type") in PREPRINT_TYPES or rec.get("source_type") == "repository"
+    return (rec.get("index") == "arxiv" or rec.get("type") in PREPRINT_TYPES or rec.get("source_type") == "repository"
+            or bool(PREPRINT_VENUE_RE.search(rec.get("venue") or "")) or bool(PREPRINT_DOI_RE.match(rec.get("doi") or "")))
 
 
 # ------------------------------------------------------------------------------ transport, cache, policy
@@ -494,6 +500,28 @@ def candidate_key(c: dict) -> str:
     return ("doi:" + doi) if doi else ("arxiv:" + c["arxiv_id"]) if c.get("arxiv_id") else ("title:" + normalize_title(c.get("title", "")))
 
 
+def _version_of(data: dict, rec: dict) -> str | None:
+    """The candidate this record looks like another version of: the same normalized title, and the same first author or a
+    year within one. A preprint and its published paper carry different DOIs, so the DOI key keeps both; counting them as
+    two works inflated a scoped gap's count in the v0.5 end-to-end run. Flagged for screening, never merged."""
+    t = normalize_title(rec.get("title") or "")
+    if not t:
+        return None
+    first = surname(rec["authors"][0]) if rec.get("authors") else None
+    for c in data["candidates"]:
+        if c.get("possible_version_of") or normalize_title(c.get("title") or "") != t:
+            continue
+        same_author = first and c.get("authors") and surname(c["authors"][0]) == first
+        near_year = rec.get("year") and c.get("year") and abs(int(rec["year"]) - int(c["year"])) <= 1
+        if same_author or near_year:
+            return c["id"]
+    return None
+
+
+def distinct_works(data: dict) -> int:
+    return sum(1 for c in data["candidates"] if not c.get("possible_version_of"))
+
+
 def add_candidate(data: dict, rec: dict, origin: str) -> bool:
     """Merge a record into the candidate list. Returns True when it is new."""
     key = candidate_key(rec)
@@ -503,8 +531,12 @@ def add_candidate(data: dict, rec: dict, origin: str) -> bool:
                 c["found_by"].append(origin)
             return False
     n = len(data["candidates"]) + 1
-    data["candidates"].append({
+    cand = {
         "id": f"CAND-{n:04d}", "title": rec.get("title", ""), "authors": rec.get("authors", []), "year": rec.get("year"),
         "venue": rec.get("venue"), "doi": rec.get("doi"), "arxiv_id": rec.get("arxiv_id"), "url": rec.get("url"),
-        "abstract": rec.get("abstract", ""), "as_cited": rec.get("as_cited"), "found_by": [origin], "decision": "pending", "reason": None})
+        "abstract": rec.get("abstract", ""), "as_cited": rec.get("as_cited"), "found_by": [origin], "decision": "pending", "reason": None}
+    version_of = _version_of(data, rec)
+    if version_of:
+        cand["possible_version_of"] = version_of
+    data["candidates"].append(cand)
     return True

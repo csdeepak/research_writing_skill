@@ -30,8 +30,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from lint_draft import author_year_citations  # noqa: E402
-from rce_common import INJECTION_RE, load_json, split_sentences  # noqa: E402
+from lint_draft import author_form_fits, author_year_citations, resolve_citation  # noqa: E402
+from rce_common import INJECTION_RE, load_json, safe_stdout, split_sentences  # noqa: E402
 import rce_index as ix  # noqa: E402
 
 DEFAULT_CUTOFF = 2024
@@ -369,9 +369,12 @@ def _open_issues(rcs: Path) -> str:
     return ""
 
 
-def _cited(rcs: Path, sources: list[dict], draft: Path | None) -> tuple[dict[str, str], list[str]]:
-    """{source id: where it is cited}, and draft citations that resolve to nothing."""
+def _cited(rcs: Path, sources: list[dict], draft: Path | None) -> tuple[dict[str, str], list[tuple], list[tuple]]:
+    """{source id: where it is cited}, draft citations that resolve to none or several sources, and draft citations
+    whose author form does not match the source they resolve to."""
     where: dict[str, str] = {}
+    by_id = {s.get("id"): s for s in sources}
+    misnamed = []
     chain = rcs / "story" / "lit_gap_chain.md"
     if chain.exists():
         for sid in SRC_RE.findall(chain.read_text(encoding="utf-8")):
@@ -383,18 +386,16 @@ def _cited(rcs: Path, sources: list[dict], draft: Path | None) -> tuple[dict[str
                 where.setdefault(sid, f"claim {c.get('id')}")
     unresolved = []
     if draft and draft.exists():
-        index: dict[tuple, list[str]] = {}
-        for s in sources:
-            if s.get("authors") and s.get("year"):
-                index.setdefault((ix.surname(s["authors"][0]), int(s["year"])), []).append(s["id"])
         for line in draft.read_text(encoding="utf-8").splitlines():
             for name, year, text in author_year_citations(line):
-                ids = index.get((name, year))
-                if not ids:
-                    unresolved.append(text)
-                for sid in ids or []:
-                    where.setdefault(sid, f"draft: {text}")
-    return where, unresolved
+                ids = resolve_citation(sources, name, year, text)
+                if len(ids) == 1:
+                    where.setdefault(ids[0], f"draft: {text}")
+                    if not author_form_fits(by_id[ids[0]], text):
+                        misnamed.append((text, ids[0]))
+                else:
+                    unresolved.append((text, ids))
+    return where, unresolved, misnamed
 
 
 def _norm_name(s: str) -> str:
@@ -432,14 +433,24 @@ def gate(rcs: Path, draft: Path | None) -> dict:
     sources = _registry(rcs)["sources"]
     if not reg_p.exists():
         add("ERROR", "NO_REGISTRY", "corpus/source_registry.json", "no source registry: step 8 has not run")
+    if draft is not None and not draft.exists():
+        add("ERROR", "DRAFT_MISSING", str(draft), "the draft named by --draft does not exist, so none of its citations were checked")
     by_id = {s.get("id"): s for s in sources}
-    cited, unresolved = _cited(rcs, sources, draft)
+    cited, unresolved, misnamed = _cited(rcs, sources, draft)
     issues = _open_issues(rcs)
+    for text, sid in misnamed:
+        n = len(by_id[sid].get("authors") or [])
+        add("WARN", "CITATION_AUTHOR_FORM", "draft", f"({text}) resolves to {sid}, which lists {n} author(s): write 'et al.' for "
+                                                     "three or more, both surnames for two, one surname for one")
     for sid, where in sorted(cited.items()):
         if sid not in by_id:
             add("ERROR", "CITATION_UNREGISTERED", where, f"{sid} is cited but not registered")
-    for text in unresolved:
-        add("ERROR", "CITATION_UNREGISTERED", "draft", f"({text}) resolves to no registered source")
+    for text, ids in unresolved:
+        if ids:
+            add("ERROR", "CITATION_AMBIGUOUS", "draft", f"({text}) matches {', '.join(ids)}: give each a year_suffix in the registry "
+                                                        "and cite it with that letter (2020a, 2020b)")
+        else:
+            add("ERROR", "CITATION_UNREGISTERED", "draft", f"({text}) resolves to no registered source")
     for s in sources:
         sid, v = s.get("id"), s.get("verification") or {}
         verdict, is_cited = v.get("lookup_verified"), sid in cited
@@ -478,6 +489,7 @@ def gate(rcs: Path, draft: Path | None) -> dict:
 
 
 def main(argv: list[str] | None = None) -> int:
+    safe_stdout()
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("rcs")
     ap.add_argument("--online", action="store_true", help="allow network calls (policy-checked and logged)")

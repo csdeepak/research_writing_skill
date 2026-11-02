@@ -10,6 +10,8 @@ The packet is the ONLY thing the reviewer may see. This script:
     and zero-width characters stripped, so the reviewer sees what a reader sees and the manifest hashes it (v0.3;
     found by the Stage 4 e2e run, where figures were added after the manifest). A link is resolved against the
     paper's folder, then each --asset-dir, then the project's .rcs/plan/; an unresolved link is logged.
+  * appends a References section for the works the paper cites, from the project's verified source registry
+    (.rcs/corpus/source_registry.json), unless the paper has one (v0.5)
   * optionally writes claims_list.md from the claim map WITHOUT evidence IDs, sources,
     confidence reasons or locators (--claims-from .rcs/claims/claim_evidence_map.json)
   * writes packet_manifest.json with SHA-256 hashes and a removal log
@@ -102,6 +104,42 @@ def copy_figures(paper_md: str, paper: Path, out: Path, asset_dirs: list[Path]) 
     return log
 
 
+def _rcs_of(paper: Path) -> Path | None:
+    return next((anc for anc in paper.resolve().parents if anc.name == ".rcs"), None)
+
+
+def reference_list(paper_md: str, registry: Path) -> tuple[str, list[dict]]:
+    """A References section for the works the paper cites, from the verified registry, resolved the way GL resolves
+    them. The draft carries author-year citations and the bibliography is only built at P7, so without this a reviewer
+    cannot check a citation (found by the domain seat in the v0.5 end-to-end run). Entries are sanitized like the paper."""
+    from lint_draft import author_year_citations, resolve_citation
+    if "\n## References" in "\n" + paper_md or not registry.exists():
+        return "", []
+    sources = load_json(registry).get("sources", [])
+    by_id = {s.get("id"): s for s in sources}
+    ids: list[str] = []
+    log: list[dict] = []
+    for line in paper_md.splitlines():
+        for name, year, text in author_year_citations(line):
+            hit = resolve_citation(sources, name, year, text)
+            if len(hit) == 1 and hit[0] not in ids:
+                ids.append(hit[0])
+            elif len(hit) != 1:
+                log.append({"warning": "citation_not_in_reference_list", "citation": text})
+    entries = []
+    for s in sorted((by_id[i] for i in ids), key=lambda s: (s.get("authors") or [""])[0].lower()):
+        e = (f"- {'; '.join(s.get('authors') or [])} ({s.get('year')}{s.get('year_suffix') or ''}). {s.get('title', '').rstrip('.')}."
+             + (f" {s['venue']}." if s.get("venue") else "") + (" Preprint." if "preprint" in (s.get("flags") or []) else "")
+             + (f" https://doi.org/{s['doi']}" if s.get("doi") else ""))
+        if INJECTION_RE.search(e):
+            log.append({"removed": "injection_line", "text": e[:200], "file": "references"})
+            continue
+        entries.append(ZERO_WIDTH_RE.sub("", e))
+    if entries:
+        log.append({"added": "references", "count": len(entries)})
+    return ("\n## References\n\n" + "\n".join(entries) + "\n") if entries else "", log
+
+
 def claims_list(claim_map: Path) -> str:
     data = load_json(claim_map)
     lines = ["# Authors' claim list", "",
@@ -135,6 +173,12 @@ def main(argv: list[str] | None = None) -> int:
     out.mkdir(parents=True, exist_ok=True)
 
     paper, log = sanitize(Path(args.paper).read_text(encoding="utf-8"), args.strip_markers)
+    rcs = _rcs_of(Path(args.paper))
+    if rcs is not None:
+        refs, reflog = reference_list(paper, rcs / "corpus" / "source_registry.json")
+        if refs:
+            paper = paper.rstrip("\n") + "\n" + refs
+        log += reflog
     (out / "paper.md").write_text(paper, encoding="utf-8")
     for name, src in (("audience.md", args.audience), ("objective.md", args.objective)):
         text, sublog = sanitize(Path(src).read_text(encoding="utf-8"), False)

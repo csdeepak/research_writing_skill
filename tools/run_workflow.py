@@ -129,6 +129,16 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--integrity", choices=["pre", "final"])
     a = ap.parse_args(argv)
     rcs = Path(a.rcs)
+    # Draft paths may be given from the working directory or, as in the usage above, from .rcs/. A path that is neither
+    # stops the run: a gate tool handed a missing draft can pass without reading it (found in the v0.5 end-to-end run).
+    for opt in ("draft", "revised", "final", "before", "edited"):
+        p = getattr(a, opt)
+        if p and not Path(p).exists():
+            if (rcs / p).exists():
+                setattr(a, opt, str(rcs / p))
+            else:
+                print(f"--{opt} {p}: no such file (looked from the working directory and from {rcs})", file=sys.stderr)
+                return 2
     s = run_gates(rcs, Path(a.project_root) if a.project_root else rcs.resolve().parent, a)
     print("effective gates: " + ", ".join(f"{k}={v}" for k, v in sorted(s["effective_gates"].items())))
     for e in s["gate_errors"]:

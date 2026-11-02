@@ -1,0 +1,34 @@
+{
+  "schema_version": "1",
+  "id": "FC-0026",
+  "title": "The drafted search plan queried the indexes with the project's own labels and coined names",
+  "category": "citation",
+  "severity": "medium",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-02",
+    "by": "orchestrator",
+    "context": "Stage D paper-mode run of the demo project against the live indexes"
+  },
+  "observed_failure": "lit_search.py plan took keywords from the story spine, so the drafted queries contained RQ1, RWN and SynthLoad: labels and names that exist only inside this project and match nothing, or the wrong thing, in the literature.",
+  "expected_behavior": "Labels such as RQ1, H2 or C007 never become keywords, and coined or acronym terms are listed for the author to review before the plan is used.",
+  "evidence": [
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9",
+    "evaluation/unified_e2e/REPORT.md"
+  ],
+  "regression": {
+    "tests": [
+      "T-079"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.5.0-candidate",
+    "summary": "keywords skip workflow labels; possible project-internal terms are listed in the plan's _review block"
+  },
+  "lessons": [
+    "A search plan drafted from the story inherits the story's private vocabulary; a person must review it."
+  ],
+  "public": true
+}
