@@ -6,6 +6,19 @@ This is P6 from step 17 on, gate G4. Step 16 (the internal audits) comes first a
 Two reviews run because they answer different questions. REVIEW_AGENT asks whether a reader can
 reconstruct the research from the paper. The panel asks whether the paper survives critique.
 
+```
+python tools/rce_roles.py panel --rcs .rcs --round <round>                        # round 1
+python tools/rce_roles.py rebut --rcs .rcs --round <round>                        # step 18, if rebutting the devil's advocate
+python tools/rce_roles.py panel --rcs .rcs --round <round 2> --verify-from <round>  # round 2
+python tools/panel_check.py .rcs --round <round>
+```
+
+The prompts are in `agents/panel/`, and a runtime may dispatch them as subagents instead
+(`adapters/claude_code.md`). Outputs go in `.rcs/diagnostics/<round>/`: `panel/cards.json`,
+`panel/<seat>.commitment.json`, `panel/<seat>.review.json` or `.verification.json`,
+`panel/devils_advocate.rebuttal.json`, and `editorial_decision.json`. Schemas:
+`reviewer_cards`, `panel_review`, `editorial_decision`.
+
 ---
 
 ## 1. The packet and isolation
@@ -88,8 +101,11 @@ no claims. It takes the decision from the findings:
 |---|---|
 | **Reject** | Any upheld `fatal` finding |
 | **Major** | No `fatal`, and at least one `major` |
-| **Minor** | No `fatal` or `major`, and at least one `minor` or `partly` |
+| **Minor** | No `fatal` or `major`, and at least one `minor`, or a criterion judged `partly` or `not_assessed` |
 | **Accept** | No open finding, and every criterion is `meets` with a location |
+
+`tools/panel_check.py` derives the decision from the findings and the synthesizer's downgrades, and
+fails a decision that does not match.
 
 - **No arithmetic.** There is no score to total. One strong dimension cannot cancel a failure in
   another.
@@ -123,6 +139,12 @@ severity level. Below 4 it stands unchanged and must end as `fixed`, `deferred` 
 `author_question`. The bar rises to 5 straight after any concession, so that a run of small
 concessions cannot wear a finding away. Repeating an argument, or pressing harder, leaves the score
 where it was.
+
+The AUTHOR writes the rebuttals to `revisions/<round>/rebuttals.json` as
+`{"rebuttals": [{"finding_id", "text"}]}`, and the seat's scores go to
+`panel/devils_advocate.rebuttal.json`. G4 applies the rule itself: it does not trust a stated
+`new_severity`, and a `declined` or `false_positive` disposition on a devil's-advocate finding fails
+while the finding still blocks.
 
 ---
 
@@ -190,8 +212,11 @@ audit means the letter matches the draft. Whether the reviewers are satisfied is
 
 G4 passes when the latest round has a schema-valid blind review of the exact draft, every blocking
 finding and inference issue has a disposition, the reviewers stayed in their packets, and no claim
-was added after the review (`tools/g4_check.py`). The panel's `major` and `fatal` findings count as
-blocking. Run:
+was added after the review (`tools/g4_check.py`). In modes `paper` and `restructure` it also needs
+the panel, which must pass `tools/panel_check.py`. Every standing `major` or `fatal` finding needs a
+disposition, keyed `panel:<finding id>`. A Reject fails G4 until a named person's decision is
+recorded: an answered checkpoint named as `reject_checkpoint` in `dispositions.json`. A third panel
+round fails it too (`PANEL_CAP`). Run:
 
 ```
 python tools/g4_check.py .rcs --round <round> --revised <new draft> --out .rcs/audits/gates/G4_review.json

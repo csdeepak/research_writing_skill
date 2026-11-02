@@ -23,10 +23,30 @@
   "mechanism_type": "gate",
   "change": {
     "files": [
+      "README.md",
       "SKILL.md",
       "adapters/README.md",
+      "adapters/agent_config.yaml",
+      "adapters/claude_code.md",
+      "adapters/claude_code/agents/rce-coach.md",
+      "adapters/claude_code/agents/rce-panel.md",
+      "adapters/claude_code/agents/rce-verifier.md",
+      "adapters/codex.md",
       "adapters/entrypoints/AGENTS.md",
+      "adapters/gemini.md",
+      "adapters/local_models.md",
       "adapters/openai_compatible.md",
+      "agents/coach_agent.md",
+      "agents/corpus_agent.md",
+      "agents/integrity_agent.md",
+      "agents/panel/devils_advocate.md",
+      "agents/panel/domain.md",
+      "agents/panel/field_analyst.md",
+      "agents/panel/journal_fit.md",
+      "agents/panel/methodology.md",
+      "agents/panel/perspective.md",
+      "agents/panel/seat_protocol.md",
+      "agents/panel/synthesizer.md",
       "anti_patterns.md",
       "audience_model.md",
       "changelog.md",
@@ -41,11 +61,18 @@
       "literature.md",
       "modes.md",
       "principles.md",
-      "README.md",
       "representation_design.md",
       "review_panel.md",
+      "schemas/candidates.schema.json",
+      "schemas/editorial_decision.schema.json",
+      "schemas/integrity_report.schema.json",
+      "schemas/panel_review.schema.json",
+      "schemas/paper_config.schema.json",
+      "schemas/reviewer_cards.schema.json",
+      "schemas/source_registry.schema.json",
       "templates/models.json",
       "templates/paper_architecture.md",
+      "templates/paper_config.json",
       "templates/venue_profile.generic.yaml",
       "templates/venue_profile.yaml",
       "tests/README.md",
@@ -53,7 +80,7 @@
       "versions/proposals/20261102-unified-workflow.json",
       "workflow.md"
     ],
-    "summary": "Unify RCE with the capabilities of Academic Research Skills as one ordered workflow, with RCE as the spine: 8 phases and 22 steps, 12 modes, new gates GL (citations) and GI (integrity), a VERIFIER role, a 5-seat review panel, an external-review path, and a finalize phase. The revision cap falls from 3 rounds to 2 loops. Stage A delivered the documents and contracts. Stage B delivered the tools (tools/lit_search.py, verify_citations.py, integrity_check.py, format_paper.py, disclosure.py, rce_index.py) and wired GL and GI into the validator, the gate runner, the CLI and the role ledger. Schemas, agent prompts and adapters arrive in Stage C."
+    "summary": "Unify RCE with the capabilities of Academic Research Skills as one ordered workflow, with RCE as the spine: 8 phases and 22 steps, 12 modes, new gates GL (citations) and GI (integrity), a VERIFIER role, a 5-seat review panel, an external-review path, and a finalize phase. The revision cap falls from 3 rounds to 2 loops. Stage A delivered the documents and contracts. Stage B delivered the tools (tools/lit_search.py, verify_citations.py, integrity_check.py, format_paper.py, disclosure.py, rce_index.py) and wired GL and GI into the validator, the gate runner, the CLI and the role ledger. Stage C delivered the schemas, the VERIFIER, panel and coach prompts, the panel, rebut and verify roles in tools/rce_roles.py, tools/panel_check.py with G4 coverage of the panel, and the adapters."
   },
   "expected_improvement": "Fewer unverified or fabricated citations and fewer AI-specific integrity failures reaching review, plus a complete path from repository to formatted paper. None of this is measured yet. Reader comprehension benefit is not claimed.",
   "possible_regressions": [
@@ -66,12 +93,13 @@
   "tests_added": [
     "Stage B: T-072 to T-093 in tools/tests/test_v050_literature.py, test_v050_integrity.py and test_v050_finalize.py (162 tests, network mocked; registry in tests/README.md)",
     "Stage B: live smoke checks against Crossref, OpenAlex, Semantic Scholar, arXiv and the DOI resolver on planted sources, recorded in docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9 (manual, not in CI)",
+    "Stage C: T-094 to T-104 in tools/tests/test_v050_roles.py (41 tests, models mocked): schemas, the panel and VERIFIER roles, panel_check, G4 with a panel",
     "Planned for Stage D: perturbation variants and failure cases with replay coverage, and an end-to-end run on the demo project"
   ],
   "gate": {
     "status": "pending",
     "results": {
-      "scope": "Stages A and B: documents, contracts and tools. Schemas, agent prompts, adapters and the end-to-end run are not built yet.",
+      "scope": "Stages A to C: documents, contracts, tools, schemas, prompts and adapters. The end-to-end run and the release decision are not done yet.",
       "compatibility": "Recorded in docs/plans/UNIFIED_WORKFLOW_HANDOFF.md, section 9.",
       "reader_effect": "not measured",
       "version_note": "SKILL.md keeps version 0.4.0 until the release step (versions/README.md); 0.5.0 is this proposal's target. Under the changelog's own policy a workflow change would be MAJOR; the user chose the next minor version on 2026-11-02."

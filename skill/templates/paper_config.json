@@ -1,0 +1,18 @@
+{
+  "_comment": "Copy to .rcs/plan/paper_config.json at step 0.2 (schema: schemas/paper_config.schema.json). Fill what the materials answer, ask the user for the rest in one batch, and record who confirmed it at C0. Remove fields that do not apply.",
+  "mode": "paper",
+  "audience_mode": "B",
+  "audience_description": "<who the binding reader is>",
+  "venue": "<venue name, or null>",
+  "deliverable": "<e.g. journal article, workshop paper, thesis chapter>",
+  "paper_type": "empirical",
+  "citation_style": "<CSL style, e.g. IEEE or APA; or null to take it from the venue profile>",
+  "languages": ["en"],
+  "length_limit_words": null,
+  "oversight": "FULL",
+  "no_experiments": false,
+  "contamination_cutoff_year": 2024,
+  "budget": {"max_web_queries": 40, "max_sources": 200, "est_tokens": null, "worst_case_round_trips": null},
+  "confirmed_by": null,
+  "confirmed_at": null
+}

@@ -8,18 +8,27 @@ profiles:
     AUTHOR: inherit       # whatever model the user is running
     CORPUS_AGENT: {class: fast-capable, examples: ["claude sonnet-class", "gpt mid-tier", "gemini flash/pro-class"]}
     REVIEW_AGENT: {class: strongest-reasoning, examples: ["claude opus-class", "gpt top-tier reasoning", "gemini pro-class"]}
+    VERIFIER: {class: strongest-reasoning}
+    PANEL: {class: strongest-reasoning}
+    COACH: {class: fast-capable}
     SKILL_AGENT: {class: strongest-reasoning}
     RECON_GRADER: {class: fast-capable}
   budget:                 # Sonnet/Sonnet/Sonnet
     AUTHOR: inherit
     CORPUS_AGENT: {class: fast-capable}
     REVIEW_AGENT: {class: fast-capable}
+    VERIFIER: {class: fast-capable}
+    PANEL: {class: fast-capable}
+    COACH: {class: fast-capable}
     SKILL_AGENT: {class: fast-capable}
     RECON_GRADER: {class: fast-capable}
   release_gate:           # cross-family reviewer reduces same-model preference bias
     AUTHOR: inherit
     CORPUS_AGENT: {class: fast-capable}
     REVIEW_AGENT: {class: strongest-reasoning, family: different_from_AUTHOR, runs: [family_1, family_2], seeds: 3}
+    VERIFIER: {class: strongest-reasoning, family: different_from_AUTHOR}
+    PANEL: {class: strongest-reasoning, family: different_from_AUTHOR}
+    COACH: {class: fast-capable}
     SKILL_AGENT: {class: strongest-reasoning}
     RECON_GRADER: {class: fast-capable, human_spot_check: 0.2}
 
@@ -27,7 +36,7 @@ active_profile: recommended
 
 # Concrete bindings per runtime (fill for your environment)
 bindings:
-  claude_code: {CORPUS_AGENT: sonnet, REVIEW_AGENT: opus, SKILL_AGENT: opus, RECON_GRADER: sonnet}
+  claude_code: {CORPUS_AGENT: sonnet, REVIEW_AGENT: opus, VERIFIER: opus, PANEL: opus, COACH: sonnet, SKILL_AGENT: opus, RECON_GRADER: sonnet}
   codex: {CORPUS_AGENT: "<model id>", REVIEW_AGENT: "<model id>", SKILL_AGENT: "<model id>", RECON_GRADER: "<model id>"}
   openai_compatible: {base_url: "<url>", CORPUS_AGENT: "<model id>", REVIEW_AGENT: "<model id>", SKILL_AGENT: "<model id>"}
   gemini: {CORPUS_AGENT: "<model id>", REVIEW_AGENT: "<model id>", SKILL_AGENT: "<model id>"}

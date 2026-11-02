@@ -73,7 +73,8 @@ affected work stays blocked and only unaffected work continues.
 
 ### Step 0.2 — Paper config record
 - **Role:** AUTHOR (+ user)
-- **Do:** fill `plan/paper_config.json`: `mode` · audience mode A–E · venue · deliverable · paper
+- **Do:** fill `plan/paper_config.json` (template `templates/paper_config.json`, schema
+  `paper_config`): `mode` · audience mode A–E · venue · deliverable · paper
   type (empirical, theory, qualitative, systems, protocol, survey, systematic review) · citation
   style · output language(s) · length limit · oversight level · `no_experiments` (true only if the
   user declares it). Fill what the materials answer, and ask for the rest as one batch. Copy the
@@ -314,7 +315,8 @@ step 8 passes them.
 ### Step 15 — Pre-review integrity
 - **Role:** VERIFIER (`integrity.md`), in its own context, never the AUTHOR's
 - **Do:** `python tools/integrity_check.py collect .rcs --stage pre --draft drafts/vNNN/paper.md`
-  gathers the evidence. VERIFIER gives each of M1–M7 one status (`CLEAR | SUSPECTED |
+  gathers the evidence. VERIFIER (`agents/integrity_agent.md`, or `python tools/rce_roles.py verify
+  --rcs .rcs --stage pre`) gives each of M1–M7 one status (`CLEAR | SUSPECTED |
   INSUFFICIENT_EVIDENCE`) and judges claim↔reference alignment on the risk-stratified sample.
   VERIFIER edits nothing.
 - **Output:** `audits/integrity/pre/`
@@ -412,10 +414,11 @@ Both reviews read a stripped packet in isolated contexts (`review_panel.md` §1)
   Otherwise compare with the spine and claim map yourself and label the result `provisional`.
 
 **(b) Five-seat panel** (`review_panel.md` §§2–6)
-- **Role:** field analyst, five seats, SYNTHESIZER, each isolated
-- **Do:** the field analyst writes reviewer cards. Each seat (journal fit, methodology, domain,
-  perspective, devil's advocate) commits to its criteria before seeing the paper, then reviews. The
-  SYNTHESIZER merges the reports into Accept / Minor / Major / Reject plus a revision roadmap.
+- **Role:** field analyst, five seats, SYNTHESIZER, each isolated (`agents/panel/`)
+- **Do:** `python tools/rce_roles.py panel --rcs .rcs --round <round>`. The field analyst writes
+  reviewer cards. Each seat (journal fit, methodology, domain, perspective, devil's advocate) commits
+  to its criteria before seeing the paper, then reviews. The SYNTHESIZER merges the reports into
+  Accept / Minor / Major / Reject plus a revision roadmap. `tools/panel_check.py` must agree.
 - **Output:** `diagnostics/<round>/`
 - **Failure:** `PANEL_REJECT`, `ISOLATION_BREACH`.
 

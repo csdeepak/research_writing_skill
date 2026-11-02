@@ -142,10 +142,16 @@ unattended run stops at the block and continues only with what the block does no
 
 ```
 python tools/integrity_check.py collect .rcs --stage pre --draft drafts/vNNN/paper.md
-# VERIFIER reads audits/integrity/pre/bundle.json and writes audits/integrity/pre/verifier_report.json
+python tools/rce_roles.py verify --rcs .rcs --stage pre            # or dispatch agents/integrity_agent.md
 python tools/integrity_check.py gate .rcs --stage pre --draft drafts/vNNN/paper.md \
        --out .rcs/audits/gates/GI_integrity.json
 ```
+
+The VERIFIER reads `audits/integrity/<stage>/bundle.json` and writes
+`audits/integrity/<stage>/verifier_report.json` (schema `integrity_report`). The single-shot
+`rce_roles.py verify` sends the bundle, the draft, the claim and evidence maps and the story files.
+It cannot open project files, so it marks a mode `INSUFFICIENT_EVIDENCE` where a judgment needs one. A
+VERIFIER with file access (`adapters/claude_code/agents/rce-verifier.md`) can open them.
 
 `verifier_report.json` holds `draft_sha256` (copied from the bundle), `round`, `isolation`, `modes`
 (for each of M1–M7: `status`, `evidence`, `detail`) and `alignment` (a list of `{row, verdict, note}`).

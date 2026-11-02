@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rce/integrity_report.schema.json",
+  "title": "VERIFIER report (audits/integrity/<stage>/verifier_report.json; skill/integrity.md)",
+  "description": "The VERIFIER's judgments only. tools/integrity_check.py gate merges them with what the tools can prove and decides GI; a CLEAR here never overrules a tool finding.",
+  "type": "object",
+  "required": ["draft_sha256", "round", "isolation", "modes", "alignment"],
+  "properties": {
+    "draft_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$", "description": "copied from the bundle"},
+    "round": {"type": "integer", "minimum": 1},
+    "isolation": {"enum": ["isolated", "none"]},
+    "modes": {
+      "type": "object",
+      "required": ["M1", "M2", "M3", "M4", "M5", "M6", "M7"],
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status", "evidence"],
+        "properties": {
+          "status": {"enum": ["CLEAR", "SUSPECTED", "INSUFFICIENT_EVIDENCE"]},
+          "evidence": {"type": "array", "items": {"type": "string", "minLength": 3},
+                       "description": "what the judgment rests on: file locators, claim or evidence ids, bundle findings"},
+          "detail": {"type": "string"}
+        }
+      }
+    },
+    "alignment": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["row", "verdict"],
+        "properties": {
+          "row": {"type": "string", "pattern": "^A[0-9]{3,}$"},
+          "verdict": {"enum": ["supported", "overstated", "understated", "unsupported", "not_checkable"]},
+          "note": {"type": "string"}
+        }
+      }
+    },
+    "notes_private": {"type": "string"}
+  }
+}

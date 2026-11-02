@@ -25,7 +25,7 @@ evaluate, remember, and build on, without changing the truth of the research.
 | `anti_patterns.md` | Comprehension, integrity (anti-hype), and LLM-drift patterns |
 | `evaluation_rubric.md` | Reconstruction questions, 20 dimensions with anchors, exit criteria |
 | `failure_states.md` | Failure states, their classes and required actions; contribution elicitation |
-| `agents/` | Prompts for CORPUS_AGENT, REVIEW_AGENT, SKILL_AGENT, RECON_GRADER (each for its own role only) |
+| `agents/` | Prompts for CORPUS_AGENT, REVIEW_AGENT, VERIFIER, COACH, SKILL_AGENT, RECON_GRADER, and the review panel in `agents/panel/` (field analyst, five seats, synthesizer). Each is for its own role only |
 | `schemas/` | JSON Schemas for every artifact that crosses a boundary |
 | `templates/` | Architecture table, figure card, venue profiles, packet inputs, open issues, disclosure |
 | `adapters/` | Model-agnostic setup (`adapters/README.md`): Claude Code, Codex, Gemini, OpenAI-compatible, local models, `entrypoints/AGENTS.md`; executable bindings in `templates/models.json` |
