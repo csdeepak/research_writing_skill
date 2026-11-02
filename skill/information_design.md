@@ -117,3 +117,12 @@ Controls:
   later).
 - In the introduction's paper map, each section is described by the question it answers, not
   only by its title.
+
+## 6. Paper-wide representation and editorial disposition
+
+At architecture planning, use `representation_design.md` and
+`templates/representation_plan.md` to connect density classes to actual main-text,
+supplementary and retained-source destinations. Record consequential omissions with reasons.
+Operational history can leave the manuscript; evidence or limitations affecting a reported
+claim must remain visible at the appropriate level. The plan also holds shared visual language
+and the reader route across prose, figures, tables and verification artifacts.
