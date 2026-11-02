@@ -64,6 +64,36 @@ Every accepted skill amendment adds a test here or in `tools/tests/`. The link i
 | T-017 | Author limitations replaced by writer caveats in the draft (S1) | `AttributionLintTests.test_T017_*` (fixtures `tools/tests/fixtures/H_*.md` must fire, `I_*.md` must be clean; variant E must fire) |
 | T-018 | Author rationale missing from, or misplaced in, the draft (S2) | `AttributionLintTests.test_T018_*` |
 
+T-019 to T-071 are listed in the docstrings of the `tools/tests/test_v0*.py` files that hold them.
+
+**Unified workflow (proposal `20261102-unified-workflow`).** The network is mocked in every test, so CI stays offline
+and needs no keys.
+
+| ID | Guards against | Where |
+|----|----------------|-------|
+| T-072 | A title read as a different work because of case, punctuation or a `RETRACTED:` prefix | `test_v050_literature.py::TitleTests` |
+| T-073 | An outage, a refusal by data policy or a rate limit read as "not found"; a skip replayed offline from cache; arXiv called too fast; a key leaking into a URL, the cache or the log | `…::ClientTests` |
+| T-074 | A wrong verdict: a fabricated or wrong-paper ID passing, a Crossref miss treated as proof, an outage treated as `unresolvable`, near-identical titles decided without a person | `…::VerdictTests` |
+| T-075 | Retraction status taken from a title match, from the oldest event, or from one resolver when they disagree | `…::RetractionTests` |
+| T-076 | Flags missing, too noisy (a one-year gap) or overwriting what a person set | `…::FlagTests` |
+| T-077 | Metadata repaired from memory or across a conflict; a fabricated candidate registered; a new source citable before anyone read it | `…::RegistryTests` |
+| T-078 | GL passing a fabricated, unverified, unquoted, retracted or unlisted source, or an unscoped gap; GL using the network | `…::GateTests` |
+| T-079 | Intake changing the user's library or failing quietly; a search sent before its terms were reviewed; fewer than two indexes per query unreported; injected text followed | `…::IntakeTests`, `…::SearchTests` |
+| T-080 | The GI blocking matrix applied wrongly at either stage | `test_v050_integrity.py::BlockingTests` |
+| T-081 | A VERIFIER `CLEAR` overruling a tool finding, standing without evidence, or judging another draft | `…::VerifierLimitTests` |
+| T-082 | An alignment sample that cannot be replayed, misses a high-impact sentence, or does not widen after a failed sentinel | `…::AlignmentTests` |
+| T-083 | A no-experiments declaration used to hide reported experiments | `…::NoExperimentTests` |
+| T-084 | An integrity block lifted without a named person, a reason, an `open_issues.md` entry, or within the round cap | `…::DecisionTests` |
+| T-085 | A final paper that differs from the checked draft; a pre-stage suspicion left unresolved; a stale retraction check | `…::FinalStageTests` |
+| T-086 | The AUTHOR writing its own integrity verdict | `…::RoleTests` |
+| T-087 | The per-mode evidence missing a planted defect (M1–M7) | `…::EvidenceTests` |
+| T-088 | A reference field invented, unescaped or of the wrong type; uncited works in the bibliography | `test_v050_finalize.py::BibTests` |
+| T-089 | A citation mapped to the wrong key or to none, silently | `…::MappingTests` |
+| T-090 | A missing tool replaced silently, PDF through HTML, a default style chosen silently, content lost in conversion | `…::FormatTests` |
+| T-091 | A disclosure that states a policy from memory, invents facts, or claims a check that did not run | `…::DisclosureTests` |
+| T-092 | The venue-profile reader misreading the templates | `…::YamlTests` |
+| T-093 | GL or GI self-certified, failed or stale but counted as passed; G5 without a final GI; legacy projects asked for GI | `…::WiringTests` |
+
 Fixtures `H_author_limitations_replaced.md` and `I_attributed_limitations.md` are derived from
 `A_clean.md` and live in `tools/tests/fixtures/`. They are test inputs, not benchmark items;
 promoting them to `perturbations/` needs a human decision.

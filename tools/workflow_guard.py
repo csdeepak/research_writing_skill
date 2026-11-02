@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Role separation and human checkpoints (vNext Stage 4: M15; spec 4.3 fail-closed).
 
-Roles (logical, adapters/agent_config.yaml): CORPUS, AUTHOR, REVIEW, GRADER, HUMAN. Each may write only its own
-artifacts (ROLE_WRITE below). After writing, a role records what it wrote in the append-only ledger
+Roles (logical, adapters/agent_config.yaml): CORPUS, AUTHOR, VERIFIER, REVIEW, PANEL, GRADER, HUMAN. Each may write only
+its own artifacts (ROLE_WRITE below, minus ROLE_DENY: the AUTHOR never writes an integrity verdict on its own draft). After writing, a role records what it wrote in the append-only ledger
 .rcs/provenance.jsonl (role, path, sha256, time). The validator then checks:
 
   ROLE_VIOLATION           a role recorded a file it may not write (e.g. the reviewer editing the claim map)
@@ -36,11 +36,14 @@ ROLE_WRITE = {
     "AUTHOR": ["story/", "claims/claim_evidence_map.json", "plan/", "drafts/", "audits/", "packets/", "revisions/",
                "evaluation/comprehension_key.json", "comprehension_runs/", "state.json", "open_issues.md", "config.yaml",
                "checkpoints/pending.json", "evidence/missing_evidence.json", "../paper/"],
+    "VERIFIER": ["audits/integrity/"],
     "REVIEW": ["diagnostics/"],
+    "PANEL": ["diagnostics/"],
     "GRADER": ["evaluation/grading", "comprehension_runs/grades"],
     "HUMAN": ["checkpoints/answers.json", "plan/visual_registry.json", "plan/reader_model.json", "claims/claim_evidence_map.json",
-              "state.json"],
+              "state.json", "audits/integrity/"],
 }
+ROLE_DENY = {"AUTHOR": ("audits/integrity/",)}
 TRACKED = ("evidence/", "corpus/", "claims/", "story/", "plan/", "drafts/", "diagnostics/", "revisions/")
 
 
@@ -65,6 +68,8 @@ def rel(rcs: Path, p: Path) -> str:
 
 
 def allowed(role: str, path: str) -> bool:
+    if path.startswith(ROLE_DENY.get(role, ())):
+        return False
     return any(path == a or path.startswith(a) for a in ROLE_WRITE.get(role, []))
 
 

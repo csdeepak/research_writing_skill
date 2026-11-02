@@ -137,6 +137,65 @@ def length_limit(rcs: Path | None, state: dict | None = None) -> int | None:
     return None
 
 
+def _yaml_scalar(raw: str) -> Any:
+    v = raw.strip()
+    if len(v) >= 2 and v[0] == v[-1] and v[0] in "\"'":
+        return v[1:-1]
+    return {"null": None, "~": None, "true": True, "false": False, "": None}.get(v.lower(), v)
+
+
+def _yaml_flow(raw: str) -> Any:
+    """A one-line [a, b] or {k: v} value. Splits on top-level commas, so nested [] and quoted commas survive."""
+    v = raw.strip()
+    if not v or v[0] not in "[{" or v[-1] not in "]}":
+        return _yaml_scalar(v)
+    parts, buf, depth, quote = [], "", 0, ""
+    for ch in v[1:-1]:
+        if quote:
+            quote = "" if ch == quote else quote
+        elif ch in "\"'":
+            quote = ch
+        elif ch in "[{":
+            depth += 1
+        elif ch in "]}":
+            depth -= 1
+        if ch == "," and depth == 0 and not quote:
+            parts.append(buf)
+            buf = ""
+        else:
+            buf += ch
+    parts += [buf] if buf.strip() else []
+    if v[0] == "[":
+        return [_yaml_flow(p) for p in parts]
+    return {k.strip(): _yaml_flow(val) for k, _, val in (p.partition(":") for p in parts)}
+
+
+def yaml_block(text: str, key: str) -> Any:
+    """One top-level field of a venue profile. Stdlib has no YAML parser, and the templates use a small subset:
+    `key: value`, `key: [a, b]`, one-line {k: v} maps and one level of indented fields or `- item` lists."""
+    lines = [re.sub(r"\s+#.*$", "", l).rstrip() for l in text.splitlines() if not l.lstrip().startswith("#")]
+    for i, line in enumerate(lines):
+        m = re.match(rf"^{re.escape(key)}:\s*(.*)$", line)
+        if not m:
+            continue
+        if m.group(1).strip():
+            return _yaml_flow(m.group(1))
+        out: dict = {}
+        current = None
+        for sub in lines[i + 1:]:
+            if sub and not sub.startswith((" ", "\t")):
+                break
+            item = re.match(r"^\s+-\s*(.+)$", sub)
+            field = re.match(r"^\s+([A-Za-z_][\w-]*):\s*(.*)$", sub)
+            if item and current:
+                out[current] = (out[current] if isinstance(out[current], list) else []) + [_yaml_flow(item.group(1))]
+            elif field:
+                current = field.group(1)
+                out[current] = _yaml_flow(field.group(2))
+        return out
+    return None
+
+
 TABLE_RULE_RE = re.compile(r"^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)*\|?$")
 
 

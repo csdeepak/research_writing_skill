@@ -31,9 +31,14 @@ does not map to exactly one key stops the step.
 python tools/format_paper.py paper/paper.md --rcs .rcs --to latex,docx,pdf
 ```
 
-The citation style comes from `plan/venue_profile.yaml`, or from `paper_config.citation_style`.
-Pandoc applies it with `--citeproc` and a CSL file (S39, S40). A venue's own LaTeX class is used
-when the user supplies it. The tool does not write one.
+The citation style comes from `--csl`, `plan/venue_profile.yaml`, or `paper_config.citation_style`.
+Pandoc applies it with `--citeproc` and a CSL file (S39, S40). CSL files live in `.rcs/cache/csl/`.
+With `--online`, a named style is fetched from the CSL styles repository. A profile that says only
+`numeric` or `author-year` is treated as IEEE or APA, and the report records that as assumed. With no
+style at all the step stops, because Pandoc's default style would be a silent choice.
+
+`--bib-only` writes `references.bib` and stops. For a venue's own LaTeX class, pass a Pandoc template
+with `--template`. The tool does not write one.
 
 | Output | Route | Needs |
 |---|---|---|
@@ -45,9 +50,10 @@ when the user supplies it. The tool does not write one.
 - **PDF goes through LaTeX, never through HTML.** HTML-to-PDF output is not an acceptable substitute.
 - **A missing tool stops that output and only that output.** Raise `FORMAT_TOOL_MISSING`, name the
   tool and list what was not produced. Never substitute a different route silently.
-- **Check that nothing moved.** After conversion, compare the claims and numbers in the output with
-  `paper/paper.md`. Every cited work must appear in the rendered references, and every rendered
-  reference must be cited.
+- **Check that nothing moved.** After conversion, the tool confirms that every number in
+  `paper/paper.md` and every cited work appears in the output. It reads LaTeX and DOCX directly, and
+  PDF only if `pdftotext` is installed. If it cannot read an output, the report says so, and you
+  inspect that output by hand. Only cited works are written to `references.bib`.
 
 **Render and inspect at final size.** Recheck visuals, cross-references and readability, and retain
 source and export paths and hashes. If rendering or a human check is unavailable, say which checks

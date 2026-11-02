@@ -58,6 +58,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from typing import Iterator
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import hashlib  # noqa: E402
@@ -287,23 +288,27 @@ def _surname(author: str) -> str:
     return (a.split(",")[0] if "," in a else a.split()[-1] if a.split() else a).lower()
 
 
+def author_year_citations(line: str) -> Iterator[tuple[str, int, str]]:
+    """(surname, year, cited text) for each author-year citation in a line of prose."""
+    for grp in CITE_GROUP_RE.finditer(line):
+        for part in grp.group(1).split(";"):
+            m = CITE_ONE_RE.match(part)
+            if m:
+                yield m.group(1).split()[-1].lower(), int(m.group(2)), part.strip()
+
+
 def check_citations(md: str, sources: list[dict] | None, L: "Lint") -> None:
     """C5: every author-year citation must resolve to a registered source (first author's surname + year)."""
     known = {(_surname(s["authors"][0]), int(s["year"])) for s in (sources or []) if s.get("authors") and s.get("year")}
     for no, line in enumerate(md.splitlines(), 1):
-        for grp in CITE_GROUP_RE.finditer(line):
-            for part in grp.group(1).split(";"):
-                m = CITE_ONE_RE.match(part)
-                if not m:
-                    continue
-                key = (m.group(1).split()[-1].lower(), int(m.group(2)))
-                if sources is None:
-                    L.add("C5-citation-unregistered", "WARN", no, part.strip(),
-                          "citation cannot be verified: the project has no source registry (.rcs/corpus/source_registry.json)")
-                elif key not in known:
-                    L.add("C5-citation-unregistered", "ERROR", no, part.strip(),
-                          "no registered source has this first author and year: register and verify the source, or "
-                          "remove the citation (never cite from memory)")
+        for name, year, text in author_year_citations(line):
+            if sources is None:
+                L.add("C5-citation-unregistered", "WARN", no, text,
+                      "citation cannot be verified: the project has no source registry (.rcs/corpus/source_registry.json)")
+            elif (name, year) not in known:
+                L.add("C5-citation-unregistered", "ERROR", no, text,
+                      "no registered source has this first author and year: register and verify the source, or "
+                      "remove the citation (never cite from memory)")
 
 
 def lint_text(md: str, claims: dict[str, dict], final: bool, require_tags: bool,

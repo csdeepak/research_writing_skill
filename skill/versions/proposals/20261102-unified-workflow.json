@@ -44,14 +44,16 @@
       "README.md",
       "representation_design.md",
       "review_panel.md",
+      "templates/models.json",
       "templates/paper_architecture.md",
       "templates/venue_profile.generic.yaml",
       "templates/venue_profile.yaml",
+      "tests/README.md",
       "tests/perturbations/EXPECTED.json",
       "versions/proposals/20261102-unified-workflow.json",
       "workflow.md"
     ],
-    "summary": "Unify RCE with the capabilities of Academic Research Skills as one ordered workflow, with RCE as the spine: 8 phases and 22 steps, 12 modes, new gates GL (citations) and GI (integrity), a VERIFIER role, a 5-seat review panel, an external-review path, and a finalize phase. The revision cap falls from 3 rounds to 2 loops. Stage A delivers the documents and contracts only; tools, schemas, agent prompts and tests arrive in later stages."
+    "summary": "Unify RCE with the capabilities of Academic Research Skills as one ordered workflow, with RCE as the spine: 8 phases and 22 steps, 12 modes, new gates GL (citations) and GI (integrity), a VERIFIER role, a 5-seat review panel, an external-review path, and a finalize phase. The revision cap falls from 3 rounds to 2 loops. Stage A delivered the documents and contracts. Stage B delivered the tools (tools/lit_search.py, verify_citations.py, integrity_check.py, format_paper.py, disclosure.py, rce_index.py) and wired GL and GI into the validator, the gate runner, the CLI and the role ledger. Schemas, agent prompts and adapters arrive in Stage C."
   },
   "expected_improvement": "Fewer unverified or fabricated citations and fewer AI-specific integrity failures reaching review, plus a complete path from repository to formatted paper. None of this is measured yet. Reader comprehension benefit is not claimed.",
   "possible_regressions": [
@@ -62,12 +64,14 @@
     "Until the later stages land, the documents describe tools that do not exist yet; a missing tool must record its gate as unverified, never passed."
   ],
   "tests_added": [
-    "None yet in Stage A (documents and contracts). Planned for Stage D: unit tests for every new tool with the network mocked, new perturbation variants and failure cases."
+    "Stage B: T-072 to T-093 in tools/tests/test_v050_literature.py, test_v050_integrity.py and test_v050_finalize.py (162 tests, network mocked; registry in tests/README.md)",
+    "Stage B: live smoke checks against Crossref, OpenAlex, Semantic Scholar, arXiv and the DOI resolver on planted sources, recorded in docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9 (manual, not in CI)",
+    "Planned for Stage D: perturbation variants and failure cases with replay coverage, and an end-to-end run on the demo project"
   ],
   "gate": {
     "status": "pending",
     "results": {
-      "scope": "Stage A only: documents and contracts. Tools, schemas, agent prompts, adapters and tests are not built yet.",
+      "scope": "Stages A and B: documents, contracts and tools. Schemas, agent prompts, adapters and the end-to-end run are not built yet.",
       "compatibility": "Recorded in docs/plans/UNIFIED_WORKFLOW_HANDOFF.md, section 9.",
       "reader_effect": "not measured",
       "version_note": "SKILL.md keeps version 0.4.0 until the release step (versions/README.md); 0.5.0 is this proposal's target. Under the changelog's own policy a workflow change would be MAJOR; the user chose the next minor version on 2026-11-02."
