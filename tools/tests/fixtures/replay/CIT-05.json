@@ -1,0 +1,64 @@
+{
+ "id": "CIT-05",
+ "origin": "real: Stage D end-to-end run, 2026-11-02 (FC-0029)",
+ "title": "one author pair with two works in one year, cited without a suffix, is ambiguous, not unregistered",
+ "files": {
+  ".rcs/corpus/source_registry.json": {
+   "sources": [
+    {
+     "id": "SRC-001",
+     "title": "Deep adaptive input normalization for time series forecasting",
+     "authors": [
+      "Passalis, Nikolaos",
+      "Tefas, Anastasios"
+     ],
+     "year": 2020,
+     "publication_status": "PEER-REVIEWED",
+     "level": 2,
+     "verification": {
+      "method": "lookup",
+      "date": "2026-11-02",
+      "lookup_verified": true
+     },
+     "read_depth": "abstract",
+     "permitted_use": [
+      "content_citation"
+     ]
+    },
+    {
+     "id": "SRC-002",
+     "title": "Global adaptive input normalization for short-term electric load forecasting",
+     "authors": [
+      "Passalis, Nikolaos",
+      "Tefas, Anastasios"
+     ],
+     "year": 2020,
+     "publication_status": "PEER-REVIEWED",
+     "level": 2,
+     "verification": {
+      "method": "lookup",
+      "date": "2026-11-02",
+      "lookup_verified": true
+     },
+     "read_depth": "abstract",
+     "permitted_use": [
+      "content_citation"
+     ]
+    }
+   ]
+  },
+  "draft.md": "# T\n\n## Introduction\n\nAdaptive input normalization learns the shift and scale of each window (Passalis and Tefas, 2020) {C010}.\n"
+ },
+ "checks": [
+  {
+   "tool": "gl",
+   "draft": "draft.md",
+   "expect": [
+    "ERROR:CITATION_AMBIGUOUS"
+   ],
+   "forbid": [
+    "ERROR:CITATION_UNREGISTERED"
+   ]
+  }
+ ]
+}

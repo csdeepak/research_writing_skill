@@ -36,8 +36,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from lint_draft import author_year_citations  # noqa: E402
-from rce_common import CLAIM_ID_RE, CLAIM_TAG_RE, iter_paragraphs, load_json, load_schema, split_sentences, validate  # noqa: E402
+from lint_draft import author_year_citations, resolve_citation  # noqa: E402
+from rce_common import CLAIM_ID_RE, CLAIM_TAG_RE, iter_paragraphs, load_json, load_schema, safe_stdout, split_sentences, validate  # noqa: E402
 import rce_index as ix  # noqa: E402
 import verify_citations as vc  # noqa: E402
 import verify_numbers  # noqa: E402
@@ -164,9 +164,16 @@ def m2_citation(p: dict) -> dict:
 
 def m3_result(p: dict) -> dict:
     errors, signals = [], []
+    lines = p["md"].splitlines()
     for f in verify_numbers.verify(p["md"], p["rcs"], p["root"]):
+        on_line = tags(lines[f["line"] - 1]) if 0 < f["line"] <= len(lines) else []
+        is_result = any(p["claims"].get(t, {}).get("claim_type") in RESULT_TYPES for t in on_line)
         if f["rule"] == "UNTRACED_PVALUE" or f["level"] == "ERROR":
             errors.append(_hit(f["rule"], f"line {f['line']}", f"{f['excerpt']}: {f['message']}"))
+        elif f["rule"] == "UNTRACED_NUMBER" and is_result:
+            # A number stated as a result that no record contains is the hallucinated result itself, not a style issue.
+            errors.append(_hit("UNTRACED_RESULT_NUMBER", f"line {f['line']}", f"{f['excerpt']} is stated as a result ({', '.join(on_line)}) "
+                                                                                 "and matches no evidence value"))
         elif f["rule"] == "UNTRACED_NUMBER":
             signals.append(_hit(f["rule"], f"line {f['line']}", f["excerpt"]))
     for c in p["used"]:
@@ -262,15 +269,13 @@ def deterministic(p: dict) -> dict:
 
 # ------------------------------------------------------------------------------ alignment sample
 def citation_rows(p: dict) -> list[dict]:
-    index: dict[tuple, list[dict]] = {}
-    for s in p["sources"]:
-        if s.get("authors") and s.get("year"):
-            index.setdefault((ix.surname(s["authors"][0]), int(s["year"])), []).append(s)
+    by_id = {s["id"]: s for s in p["sources"] if s.get("id")}
     rows = []
     for line, section, s in sentences(p["md"]):
         cited = []
         for name, year, text in author_year_citations(s):
-            for src in index.get((name, year), []):
+            ids = resolve_citation(p["sources"], name, year, text)
+            for src in [by_id[ids[0]]] if len(ids) == 1 else []:      # an ambiguous citation is GL's error, not a row to judge
                 cited.append({"cited": text, "source": src["id"], "read_depth": src.get("read_depth"),
                               "establishes": [{k: e.get(k) for k in ("statement", "support_quote", "location", "strength")} for e in src.get("establishes") or []]})
         if cited:
@@ -501,6 +506,7 @@ def gate(rcs: Path, root: Path, stage: str, draft: Path) -> dict:
 
 
 def main(argv: list[str] | None = None) -> int:
+    safe_stdout()
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("command", choices=["collect", "gate"])
     ap.add_argument("rcs")

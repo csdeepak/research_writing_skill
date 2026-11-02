@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from pathlib import Path
 from typing import Any, Iterator
 
@@ -30,6 +31,16 @@ INJECTION_RE = re.compile(
     r"|you are (now )?an? (ai|llm) reviewer)",
     re.IGNORECASE,
 )
+
+
+def safe_stdout() -> None:
+    """Never crash on printing. A Windows console defaults to cp1252, and index titles carry characters it cannot show
+    (a typographic hyphen was enough). Unprintable characters become '?' on screen; files are always UTF-8."""
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(errors="replace")
+        except (AttributeError, ValueError):
+            pass
 
 
 def load_json(path: Path) -> Any:

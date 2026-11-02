@@ -386,6 +386,11 @@
                 "retracted_acknowledged"
               ]
             }
+          },
+          "year_suffix": {
+            "type": "string",
+            "pattern": "^[a-z]$",
+            "description": "v0.5: tells apart works with the same first author and year; cite them as 2020a, 2020b"
           }
         }
       }

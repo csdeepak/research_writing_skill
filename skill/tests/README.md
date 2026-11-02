@@ -104,6 +104,8 @@ and needs no keys.
 | T-102 | Rebuttals scored out of order, or a concession run wearing findings away | `…::RebutTests` |
 | T-103 | A VERIFIER report whose hash, round or isolation comes from the model; a VERIFIER run that is not recorded | `…::VerifyCommandTests` |
 | T-104 | A prompt, adapter, template or schema the docs name that does not exist | `…::FilesTests` |
+| T-105 | A planted fabricated DOI, wrong-paper DOI, retracted source, hallucinated result or method without basis passing the citation and integrity tools; a false alarm on the clean control | `test_v050_benchmark.py::IntegrityBenchmarkTests` |
+| T-106 | The integrity benchmark changing the reviewer calibration variants | `…::IntegrityBenchmarkTests` |
 
 Fixtures `H_author_limitations_replaced.md` and `I_attributed_limitations.md` are derived from
 `A_clean.md` and live in `tools/tests/fixtures/`. They are test inputs, not benchmark items;

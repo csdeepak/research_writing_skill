@@ -30,8 +30,8 @@ import zipfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from lint_draft import CITE_GROUP_RE, CITE_ONE_RE  # noqa: E402
-from rce_common import CLAIM_TAG_RE, load_json, yaml_block  # noqa: E402
+from lint_draft import CITE_GROUP_RE, CITE_ONE_RE, resolve_citation  # noqa: E402
+from rce_common import CLAIM_TAG_RE, load_json, safe_stdout, yaml_block  # noqa: E402
 import rce_index as ix  # noqa: E402
 
 RUN = subprocess.run                # tests replace these two: no test needs Pandoc installed
@@ -44,7 +44,7 @@ STYLE_IDS = {"ieee": "ieee", "apa": "apa", "acm": "association-for-computing-mac
 GENERIC_STYLES = {"numeric": "ieee", "author-year": "apa"}     # what a generic profile says; recorded as assumed
 CSL_URL = "https://raw.githubusercontent.com/citation-style-language/styles/master/{}.csl"
 PREFIX_RE = re.compile(r"^\s*(see |e\.g\.,? |cf\. )", re.I)
-NARRATIVE_RE = re.compile(r"\b([A-Z][A-Za-z'\-]+)((?: et al\.?| (?:and|&) [A-Z][A-Za-z'\-]+)?) \(((?:1[6-9]|20)\d{2})[a-z]?\)")
+NARRATIVE_RE = re.compile(r"\b([A-Z][A-Za-z'\-]+)((?: et al\.?| (?:and|&) [A-Z][A-Za-z'\-]+)?) \(((?:1[6-9]|20)\d{2})([a-z]?)\)")
 NUM_RE = re.compile(r"\d+(?:\.\d+)?")
 BIB_SPECIALS = str.maketrans({"&": r"\&", "%": r"\%", "#": r"\#", "_": r"\_", "$": r"\$", "{": "", "}": ""})
 PROCEEDINGS_RE = re.compile(r"\b(proceedings|proc\.|conference|workshop|symposium)\b", re.I)
@@ -73,20 +73,12 @@ def bib_entry(s: dict) -> str:
     return f"@{kind}{{{s['id']},\n{body}\n}}\n"
 
 
-def _index(sources: list[dict]) -> dict[tuple, list[str]]:
-    idx: dict[tuple, list[str]] = {}
-    for s in sources:
-        if s.get("authors") and s.get("year"):
-            idx.setdefault((ix.surname(s["authors"][0]), int(s["year"])), []).append(s["id"])
-    return idx
-
-
 def map_citations(md: str, sources: list[dict]) -> tuple[str, set[str], list[str]]:
     """Rewrite citations to registry keys. Returns (text, cited ids, problems)."""
-    idx, used, problems = _index(sources), set(), []
+    used, problems = set(), []
 
     def resolve(name: str, year: int, text: str) -> str | None:
-        ids = idx.get((name, year), [])
+        ids = resolve_citation(sources, name, year, text)
         if len(ids) != 1:
             problems.append(f"({text}) maps to {len(ids)} registered sources; it must map to exactly one")
             return None
@@ -108,7 +100,7 @@ def map_citations(md: str, sources: list[dict]) -> tuple[str, set[str], list[str
         return "(" + "; ".join(f"[{o}]" if "@" in o else o for o in out) + ")"
 
     def narrative(m: re.Match) -> str:
-        ids = idx.get((m.group(1).lower(), int(m.group(3))), [])
+        ids = resolve_citation(sources, m.group(1).lower(), int(m.group(3)), f"{m.group(3)}{m.group(4)}")
         if len(ids) != 1:
             return m.group(0)       # not a citation the lint recognises: leave the words alone
         used.add(ids[0])
@@ -267,6 +259,7 @@ def format_paper(paper: Path, rcs: Path, targets: list[str], csl: str | None, on
 
 
 def main(argv: list[str] | None = None) -> int:
+    safe_stdout()
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("paper")
     ap.add_argument("--rcs", required=True)

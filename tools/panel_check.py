@@ -37,7 +37,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from rce_common import load_json, load_schema, validate  # noqa: E402
+from rce_common import load_json, load_schema, safe_stdout, validate  # noqa: E402
 
 SEATS = ("journal_fit", "methodology", "domain", "perspective", "devils_advocate")
 PREFIX = {"journal_fit": "JF", "methodology": "ME", "domain": "DO", "perspective": "PE", "devils_advocate": "DA"}
@@ -242,6 +242,7 @@ def check_round(rcs: Path, rnd: str, packet_id: str | None = None) -> tuple[list
 
 
 def main(argv: list[str] | None = None) -> int:
+    safe_stdout()
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("rcs")
     ap.add_argument("--round", required=True)

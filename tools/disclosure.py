@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from rce_common import load_json, yaml_block  # noqa: E402
+from rce_common import load_json, safe_stdout, yaml_block  # noqa: E402
 import workflow_guard  # noqa: E402
 
 ROLE_WORK = {"CORPUS": "built the evidence map and the source registry", "AUTHOR": "drafted the story, claims, plan and text",
@@ -108,6 +108,7 @@ def build(rcs: Path) -> tuple[str, bool]:
 
 
 def main(argv: list[str] | None = None) -> int:
+    safe_stdout()
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("rcs")
     ap.add_argument("--out", default="disclosure.md")

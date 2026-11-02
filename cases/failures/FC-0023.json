@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "id": "FC-0023",
+  "title": "The stdlib schema validator skipped $ref, so referenced definitions validated nothing",
+  "category": "workflow-gate",
+  "severity": "medium",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-02",
+    "by": "author agent",
+    "context": "Stage C review of the new panel_review schema"
+  },
+  "observed_failure": "rce_common's subset validator ignored $ref, so a panel finding missing every required field would have passed schema validation in CI, where jsonschema is not installed.",
+  "expected_behavior": "Local $ref (#/...) is resolved and validated; an unsupported reference fails loudly.",
+  "evidence": [
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9",
+    "skill/changelog.md, 0.5.0 candidate"
+  ],
+  "regression": {
+    "tests": [
+      "T-094"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.5.0-candidate",
+    "summary": "local $ref support in rce_common._validate_subset"
+  },
+  "lessons": [],
+  "public": true
+}

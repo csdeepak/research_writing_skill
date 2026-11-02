@@ -17,8 +17,36 @@ PATCH = clarification with no behavior change.
 chose the next minor version. `SKILL.md` keeps `version: 0.4.0` until the release step
 (`versions/README.md`).
 
-**Status: Stages A to C (documents, contracts, tools, schemas, prompts and adapters).** The
-end-to-end run and the release decision come in Stages D and E.
+**Status: Stages A to D (documents, contracts, tools, schemas, prompts, adapters, tests and one
+end-to-end run).** The release decision comes in Stage E.
+
+**Stage D, tests and an end-to-end run:**
+- Integrity benchmark: perturbation variants H to L plant a fabricated DOI, a DOI that resolves to
+  another paper, a retracted source, a hallucinated result and a method with no basis.
+  `EXPECTED.json` gains `integrity_variants` (the reviewer `variants` are unchanged). T-105 runs
+  each variant through `verify_citations.py` and `integrity_check.py` against synthetic index
+  answers, and checks the clean control raises nothing.
+- `integrity_check.py`: an untraced number on a line tagged with a measured, observed or derived
+  claim is now an M3 error (`UNTRACED_RESULT_NUMBER`), not a warning.
+- `replay_fixtures.py` replays the new tools (`verify`, `gl`, `gi`, `panel`). Failure cases
+  FC-0019 to FC-0033, with fixtures CIT-01 to CIT-08, INT-01, INT-02 and INT-02b.
+- End-to-end run of `paper` mode on a copy of the demo project, with live lookups, subagent roles,
+  Pandoc and LaTeX (`evaluation/unified_e2e/REPORT.md`). Every phase ran. GI stopped the paper on
+  integrity questions only a named person can answer, including a gap that the retrieved abstracts
+  contradict, and G5 failed on open markers, as it should.
+- Defects that run found, each fixed with a regression test:
+  - The drafted search plan carried RQ labels and coined project terms. They are now dropped or
+    listed for review.
+  - A title the console could not print crashed the tools.
+  - Semantic Scholar's JournalArticle type hid an arXiv preprint.
+  - One citation matched two works, and GL checked the wrong one. A shared resolver now narrows by
+    year suffix and author form, reports `CITATION_AMBIGUOUS`, and warns on `CITATION_AUTHOR_FORM`.
+  - `run_workflow.py` passed a missing draft path, and GL passed without reading it. The path now
+    resolves from `.rcs/`, the run stops if no file is found, and GL reports `DRAFT_MISSING`.
+  - A preprint and its published paper counted as two works. They are now marked
+    `possible_version_of`, and the search reports distinct works.
+  - The review packet had no reference list. It now has one, built from the verified registry.
+- Tests T-105 and T-106, plus regression tests in the T-076 to T-093 groups.
 
 **Stage C, schemas, roles and adapters:**
 - Schemas: `source_registry` extended additively (lookup verdicts, index rows, conflicts, suggestion,

@@ -297,6 +297,36 @@ def author_year_citations(line: str) -> Iterator[tuple[str, int, str]]:
                 yield m.group(1).split()[-1].lower(), int(m.group(2)), part.strip()
 
 
+CITE_SUFFIX_RE = re.compile(r"(?:1[6-9]|20)\d{2}([a-z])\s*$")
+CITE_FORM_RE = re.compile(r"(?: (et al)\.?| (?:and|&) ([A-Z][A-Za-z'\-]+)),\s*(?:1[6-9]|20)\d{2}[a-z]?\s*$")
+
+
+def author_form_fits(source: dict, text: str) -> bool:
+    """Does the cited author form match the registered author list? "X et al." needs 3 or more authors, "X and Y" exactly
+    two with Y second, and a single name one author. Every common author-year style agrees on these."""
+    authors = source.get("authors") or []
+    m = CITE_FORM_RE.search(text)
+    if m and m.group(1):
+        return len(authors) >= 3
+    if m and m.group(2):
+        return len(authors) == 2 and _surname(authors[1]) == m.group(2).lower()
+    return len(authors) == 1
+
+
+def resolve_citation(sources: list[dict], name: str, year: int, text: str) -> list[str]:
+    """Registry ids an author-year citation names. One id is a resolved citation; none is unregistered; several is
+    ambiguous. The same first author and year is narrowed first by the year suffix the registry records ("2020a" with
+    year_suffix "a"), then by the author form ("Passalis et al." is not "Passalis and Tefas"). Both found in the
+    end-to-end run on the demo project."""
+    m = CITE_SUFFIX_RE.search(text)
+    hits = [s for s in sources if s.get("authors") and s.get("year") and _surname(s["authors"][0]) == name and int(s["year"]) == year]
+    if m:
+        hits = [s for s in hits if s.get("year_suffix") == m.group(1)]
+    if len(hits) > 1:
+        hits = [s for s in hits if author_form_fits(s, text)] or hits
+    return [s["id"] for s in hits]
+
+
 def check_citations(md: str, sources: list[dict] | None, L: "Lint") -> None:
     """C5: every author-year citation must resolve to a registered source (first author's surname + year)."""
     known = {(_surname(s["authors"][0]), int(s["year"])) for s in (sources or []) if s.get("authors") and s.get("year")}
