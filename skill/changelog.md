@@ -11,6 +11,20 @@ PATCH = clarification with no behavior change.
 
 ---
 
+## [Unreleased local update] — 2026-10-26 — adaptive representation
+
+User-authorized update; no version bump or public release. Adds `representation_design.md`,
+the representation plan template, conditional visual patterns, a verified source guide and
+behavioral scenarios. Integrates memory-state provenance, study-type adaptation, relevant-detail
+selection, shared visual language, source/export storage and final-size review into the workflow.
+Clarifies few-value chart choice, methods captions, venue-specific typography and actual visual
+validator coverage. Existing evidence, claim and human-review requirements remain in force.
+
+Proposal: `versions/proposals/20261026-adaptive-representation.json`. Static rule conflicts
+motivate this local change; they are not independent reader-study failures. Compatibility and
+project-demonstration results are recorded separately. Empirical reader benefit is unmeasured;
+the promotion gate remains pending.
+
 ## [0.4.0] — 2026-09-30 (open-source release)
 
 **Why minor:** new checks and mechanisms (the policy above: MINOR = new mechanism, check or rule). No artifact becomes

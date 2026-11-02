@@ -1,0 +1,63 @@
+{
+  "id": "20261026-adaptive-representation",
+  "date": "2026-10-26",
+  "from_version": "0.4.0",
+  "to_version": "unreleased-local-update",
+  "failure_observed": "Static review found four distinct overgeneralized instructions: <=3 values always prose; every caption a declarative result; all figures numeric transforms; fixed 7-point print text. A further coverage gap presents external/table validators as universal. No empirical reader failure is claimed.",
+  "evidence": {
+    "cluster_id": "static-representation-rule-review",
+    "instances": 5,
+    "metrics": {
+      "evidence_type": "five inspected documentation/tool conflicts, not five projects or user trials",
+      "locations": [
+        "figure_table_rules.md sections 2 and 9 (few-value rule)",
+        "figure_table_rules.md section 3 (caption rule)",
+        "SKILL.md Visuals Stage 2 (transform rule)",
+        "figure_table_rules.md section 7 and templates/figure_card.md (font)",
+        "tools/validate_visuals.py external_figure/table early continues versus gate documentation"
+      ]
+    }
+  },
+  "root_cause": "conflicting_rules",
+  "mechanism_type": "artifact_field",
+  "change": {
+    "files": [
+      "SKILL.md",
+      "changelog.md",
+      "failure_states.md",
+      "figure_table_rules.md",
+      "information_design.md",
+      "references/representation_patterns.md",
+      "references/representation_sources.md",
+      "representation_design.md",
+      "section_rules.md",
+      "templates/figure_card.md",
+      "templates/representation_plan.md",
+      "templates/venue_profile.yaml",
+      "tests/representation_scenarios.md",
+      "versions/proposals/20261026-adaptive-representation.json",
+      "workflow.md"
+    ],
+    "summary": "Add adaptive paper-wide representation plan and conditional guides; integrate with existing workflow and correct rigid presentation instructions without changing executable gates."
+  },
+  "expected_improvement": "More explicit evidence-adaptive display choices, reader sequence and source-to-export checks. Reader comprehension benefit is not measured.",
+  "possible_regressions": [
+    "Additional planning effort for short papers; keep optional fields proportional.",
+    "Study types outside empirical ML may exceed existing schemas/checkers; mark coverage gaps rather than certify them.",
+    "Unsupported chart forms need external tools and manual source verification.",
+    "A same-input single-project demonstration is not a controlled A/B reader study."
+  ],
+  "tests_added": [
+    "tests/representation_scenarios.md: 12 behavioral expectations, not claimed executions",
+    "Same-source dental-project planning demonstration (local, not bundled private project data)"
+  ],
+  "gate": {
+    "status": "pending",
+    "results": {
+      "scope": "User-authorized local documentation update; no new release or empirical promotion.",
+      "compatibility": "104 unit tests and 49 replay fixtures passed; 18 cases validated; repository audit and package validation passed. Generic skill validator unavailable because PyYAML is absent; existing version frontmatter also exceeds that generic validator contract. Repository-specific frontmatter/skill checks passed.",
+      "reader_effect": "not measured",
+      "review": "Local behavioral review found a no-results STOP conflict; study-type and provisional-planning scope corrected in workflow, failure states and section contracts. No controlled reader-effect study."
+    }
+  }
+}

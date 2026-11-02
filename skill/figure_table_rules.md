@@ -1,7 +1,8 @@
 # Figure and Table Rules
 
 A figure must earn its place (F0 Unit 3: "A graphic should serve a purpose"). Never make a
-figure because "papers have figures".
+figure because "papers have figures". Use `representation_design.md` for the whole-paper
+plan and `references/representation_patterns.md` for conditional visual choices.
 
 ---
 
@@ -20,7 +21,7 @@ uncertainty_shown: "shaded 95% CI across 5 seeds"
 baseline_or_reference: "dashed line = noise floor (E024)"
 non_conclusions: "does not show behavior beyond s=0.6 (not tested)"
 honesty_checks: {axes_start: "y at 0 (bar)/justified", all_conditions_shown: true, dual_axis: false, 3d: false, cherry_picked: false}
-accessibility: {colorblind_safe: true, redundant_encoding: "marker shapes", min_font_pt_at_print: 7, alt_text: "..."}
+accessibility: {colorblind_safe: true, redundant_encoding: "marker shapes", min_font_pt_at_print: null, alt_text: "..."}
 placement: "Results §4.2, after the paragraph introducing RQ2"
 caption: "…"                           # §3
 source_script: "plots/fig3.py"         # reproducibility
@@ -39,7 +40,7 @@ supplement.
 | See a trend, shape, distribution, interaction, or relative size | **Figure** |
 | Understand a process, architecture, or pipeline | **Diagram** (block/flow) |
 | See what something looks like, or qualitative outputs | **Image panel**, with labels and chosen examples plus a selection rule |
-| Compare two or three numbers | **Prose**. No visual needed. |
+| Read a few isolated values | Often **prose**; use a plot/table if uncertainty, pairing or lookup is the real task. |
 
 Chart choice (from F0 Unit 3, modernized with S24):
 - Distributions and variability: box/violin/strip or dot plots showing individual points when n
@@ -58,13 +59,14 @@ the one that orients the reader: the problem, the approach, or the headline resu
 
 ## 3. Captions
 
-- **First sentence = the takeaway** (a declarative finding), not a description ("Comparison of
-  methods").
+- **First sentence gives the supported message.** Results captions can state a finding.
+  Method, architecture and provenance captions state purpose and status; they need not
+  pretend to report a result. Planned figures do not claim unobserved findings.
 - Then: what is plotted (axes, units), the conditions, n/seeds, what the error bars mean,
   abbreviations, and the data source.
-- A table caption says what is compared and what the bold/underline marks mean (e.g. "bold =
-  best mean; entries within one std of best are underlined"). Highlight rules must be honest:
-  don't bold a best value that sits within noise without saying so.
+- A table caption explains comparisons and highlights (e.g. "bold = largest observed
+  mean; descriptive ranking only"). Within one SD is not a significance or equivalence
+  criterion. State the supported inferential comparison separately, if one exists.
 - The caption must be understandable without the main text, and the takeaway must also appear
   in the prose.
 
@@ -96,7 +98,8 @@ the one that orients the reader: the problem, the approach, or the headline resu
 
 ## 7. Accessibility
 - Colorblind-safe palette plus redundant encoding (marker, line style, label).
-- Minimum text size about 7 pt at print width.
+- Font size follows the verified venue profile and remains legible at final physical
+  width. Without a venue, mark sizing provisional. SVG pixels are not final print points.
 - Alt text (1–2 sentences: type, variables, takeaway) where the venue supports it.
 - Direct labeling instead of legends where possible.
 
@@ -118,13 +121,16 @@ Cards live in `.rcs/plan/figure_cards/` as `.json`, `.yaml`, or `.md` with a fen
 
 ## 9. The visual registry and the production contract (v0.3 Stage 2)
 
-Every figure is an entry `V###` in `.rcs/plan/visual_registry.json` (schema
-`schemas/visual_registry.schema.json`). The contract, in order:
+Every figure has a card and a representation-plan entry. Register supported forms as
+`V###` in `.rcs/plan/visual_registry.json` (schema `schemas/visual_registry.schema.json`).
+Unsupported forms retain their true type in the plan/card and an explicit integration gap;
+never relabel them merely to satisfy the schema. The contract, in order:
 
 **reader question → supported claim → available data → representation → misleading-encoding risks →
 declarative transform → render → source/semantic audit → caption → placement → reviewer check.**
 
-1. **Plan** (`tools/plan_visuals.py`, M04/M06/M10). ≤3 values: prose. Many attributes per
+1. **Plan** (`tools/plan_visuals.py`, M04/M06/M10). Its ≤3-values prose rule is a heuristic;
+   record a reasoned override for pairing, uncertainty or another reader task. Many attributes per
    category: table. Ordered x: line. Categories with intervals: dot_ci. Non-negative magnitudes:
    bar_h. Architecture: diagram (Stage 1 card checks apply). Spine claims and adverse results come
    first. An adverse result is never demoted to the supplement while favourable results on the same
@@ -134,21 +140,27 @@ declarative transform → render → source/semantic audit → caption → place
    `source_text` when values were re-typed from a document. Declare `domain` for bounded
    quantities (e.g. `[0, 1]`) and human-readable `x_labels`/`series_labels` (and, for a line chart,
    an `x_label` axis title).
-3. **Render** with `tools/visuals.py render` (stdlib SVG: Okabe-Ito colours paired with marker
+3. **Render** supported `bar_h`, `dot_ci` and `line` charts with `tools/visuals.py render` (stdlib SVG: Okabe-Ito colours paired with marker
    shapes, bars from zero, round axis ticks, half-up value labels, alt text in `<desc>`; a line
    chart's value axis is vertical). `V3_AXIS_ENCODING` fails any figure, whatever drew it, whose marks
    disagree with its labelled value axis. The
    renderer records `source_hashes` and `render_sha256`. If the data can't be drawn honestly
    (values outside the domain, negatives on a bar chart, no numbers), the entry becomes
    `NO_VALID_VISUAL`. It is not patched.
-4. **Validate** with `tools/validate_visuals.py`:
+4. **Validate** with `tools/validate_visuals.py`. The table describes intended gate roles,
+   not universal per-display coverage. Current external-figure and table branches skip
+   major per-entry checks; external provenance needs a real human record. Unsupported
+   forms require separate source/semantic/export inspection. Record the checks actually
+   performed in the representation audit, leaving uncovered checks unverified. Never infer
+   full certification from an aggregate pass. See `representation_design.md` §6.
+
 
 | Gate | Checks |
 |---|---|
 | V1 provenance | source files exist and are unchanged; evidence/claims live; every plotted value occurs in `source_text`; no DECORATIVE kind; external (hand-made) figures need a recorded human provenance check |
 | V2 numerical | the drawn marks equal a fresh re-run of the transform; every caption number is in the data or the cited evidence (interval levels like "95%" excepted) |
 | V3 semantic | bars start at zero and their lengths match their values; exclusions have reasons; duplicate marks need a declared aggregation; available uncertainty is shown or explained (`uncertainty_note`); no unlicensed implication in the caption; `forbidden_implications` absent; adverse results not demoted |
-| V4 text | the paper refers to Figure N, and that paragraph carries the figure's claim tags; the caption opens with the finding and meets its `caption_requirements` |
+| V4 text | the paper refers to Figure N, and that paragraph carries the figure's claim tags; the caption communicates its supported message and meets its applicable `caption_requirements` (finding heuristics need review for non-result diagrams) |
 | V5 usability | machine checks (alt text, fonts ≥11 px, readable ticks, no raw column labels, ≤6 series). **Passes only with `human_review`** (1-second topic, 10-second takeaway, 1-minute detail) |
 | V6 regeneration | re-rendering reproduces the file byte for byte |
 

@@ -24,9 +24,16 @@ from memory.
   note, draft, review, reference, dataset, other). Record size and modification time. Extract
   text from PDFs, notebooks, and docx. Don't open datasets larger than the budget; describe
   them instead (schema, row count).
+- **Memory inputs:** use `representation_design.md` §1 to inventory knowledge indexes,
+  decision records and summaries with dates and supersession. Separate proposed, implemented,
+  executed and measured states. Summary numbers remain attributed until their primary
+  records are checked; source files are preserved.
 - **Output:** `evidence/project_inventory.json`
 - **Done when:** every file is classified or explicitly skipped with a reason.
-- **Failure:** `NO_EVIDENCE` if there are no result-bearing files.
+- **Failure:** `NO_EVIDENCE` when the requested claim/deliverable lacks its required evidence.
+  Empirical result claims need result-bearing records; a theory, protocol or provisional
+  representation plan can instead proceed from the appropriate proofs, design or memory
+  records (`representation_design.md` §§1–2). Keep unsupported result claims blocked.
 
 ### Step 2 — Build the evidence map
 - **Role:** CORPUS_AGENT
@@ -88,14 +95,17 @@ from memory.
 - **Do:** fill `plan/audience_profile.json` (`audience_model.md`): primary, secondary, and
   tertiary tiers; mode A–E; assumed knowledge (a list of concepts the reader already knows);
   term budget; binding personas for evaluation.
-- **Failure:** `UNCLEAR_AUDIENCE` (STOP before step 8).
+- **Failure:** `UNCLEAR_AUDIENCE` (STOP before manuscript drafting). A plan-only demonstration
+  may continue with an explicitly provisional audience assumption; this is not confirmation.
 
 ### Step 6 — Identify the venue requirements
 - **Role:** AUTHOR (CORPUS_AGENT fetches if a URL or name is given)
 - **Do:** fill `plan/venue_profile.yaml` from official guidelines only (template:
   `templates/venue_profile.yaml`): section template, limits, citation style, voice preference,
   required statements, checklists, reporting guideline (EQUATOR etc.), AI-use policy. Record
-  source URLs and dates.
+  source URLs and dates. Include actual figure/table production rules (size, fonts, formats,
+  caption position, accessibility), not universal defaults. Select study-appropriate
+  reporting guidance using `representation_design.md` §2.
 - **Failure:** `VENUE_UNKNOWN`. Use `templates/venue_profile.generic.yaml` and mark every rule
   `assumed: true`.
 
@@ -120,7 +130,11 @@ from memory.
   density class · figures/tables used · the term(s) introduced · planned words. Complete a
   **figure/table card** for each planned visual (`figure_table_rules.md` §1). Assign each
   density-class SUPPLEMENTARY item a destination.
-- **Output:** `plan/paper_architecture.md`, `plan/figure_cards/*.md`
+- **Representation:** read `representation_design.md` and fill
+  `templates/representation_plan.md`: reader route, evidence maturity, form choices,
+  shared visual language, consequential dispositions and production/check coverage.
+  Use the actual study type; do not force experimental Results into a protocol or theory paper.
+- **Output:** `plan/paper_architecture.md`, `plan/representation_plan.md`, `plan/figure_cards/*.md`
 - **Checks:** every story-graph node has a slot. Every RQ has results, interpretation, and
   discussion slots. Every `author_stated` limitation has a Limitations slot, and every rationale
   claim has an Introduction (motivation) or Introduction/Method (design choice) slot. Planned
@@ -198,7 +212,14 @@ moving to the next audit if they would change what that audit sees.
   pointed to.
 
 ### Step 15 — Figure/table audit
-- **v0.3 Stage 2:** `tools/plan_visuals.py` (step 8-9 planning), `tools/visuals.py render`, then `tools/validate_visuals.py --draft --out .rcs/audits/gates/V_visuals.json`; record V1-V4/V6 as passed only from that report; V5 only with a human review (`figure_table_rules.md` §9).
+- **v0.3 Stage 2:** use `tools/plan_visuals.py` for suggestions, `tools/visuals.py render`
+  for supported forms, then `tools/validate_visuals.py .rcs --draft <draft> --out
+  .rcs/audits/gates/V_visuals.json`. Record what the report actually checked per display;
+  external/table branches skip major checks. Uncovered checks remain unverified; V5 needs
+  an actual human review (`figure_table_rules.md` §9).
+- **Paper-wide audit:** use `representation_design.md` §7. Check consistency, reader
+  sequence, adverse-result visibility and source-to-caption agreement; inspect produced
+  visuals at final size. Record findings and coverage in `audits/vNNN/representation_audit.md`.
 - **v0.3:** cards must pass the fail-closed checks in `figure_table_rules.md` §8 (`NO_VALID_VISUAL`, `UNTRACED_COMPONENT`, `BLOCKED_PERMISSION`).
 - Every visual has a complete card, is referenced in the text *before* it appears, has its
   takeaway stated in the prose, and passes the honesty and accessibility checks
@@ -267,6 +288,10 @@ moving to the next audit if they would change what that audit sees.
   edit.
 - Strip tags. Write the markers that remain into `open_issues.md`. **A paper with unresolved
   `[MISSING …]` markers is a draft, not a final paper. Say so.**
+- Render and inspect the assembled manuscript after layout/export. Recheck changed visuals,
+  cross-references and final-size readability; retain source/export paths and hashes. If
+  rendering or human checks are unavailable, say which checks remain unperformed. A clean
+  text lint is not a layout certificate (`representation_design.md` §§6–7).
 - Draft `disclosure.md` per the venue's AI policy.
 - **Gate G5:** the claim map is unchanged and the text is within the length limit.
   **Executable:** `validate_artifacts.py .rcs --out .rcs/audits/gates/G5_validate.json` and

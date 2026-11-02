@@ -42,3 +42,17 @@ checklists: []                # e.g. [{name: "NeurIPS Paper Checklist", url: "",
 reporting_guideline: null     # e.g. CONSORT 2025 / PRISMA 2020 / TRIPOD+AI / ARRIVE (domain-specific)
 review_criteria: []           # public reviewer criteria, if any
 exemplar_papers: []           # SRC ids of recent venue papers (Level 1)
+
+display_production:          # fill from current official venue guidance; null means unknown
+  column_width_mm: null
+  full_width_mm: null
+  max_height_mm: null
+  figure_font_pt: null       # use venue range/minimum; inspect at actual placed width
+  accepted_formats: []
+  raster_resolution_rules: ""
+  figure_caption_position: ""
+  table_caption_position: ""
+  alt_text_requirement: ""
+  source: ""
+  retrieved: ""
+  assumed: true
