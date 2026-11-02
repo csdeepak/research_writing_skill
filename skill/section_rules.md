@@ -5,6 +5,13 @@ contract** says: *Job · Reader questions answered · Must contain · Must not c
 condition · Exit check*. Venue profiles may rename, merge, or reorder sections. Contracts
 follow the *function*, whatever the heading.
 
+The detailed examples below assume empirical research. Apply `representation_design.md` §2
+when the study type differs: proofs support theoretical findings, source excerpts and analysis
+support qualitative findings, and a protocol describes planned procedures without completed
+results. Read magnitude, seeds, sample-size and experimental-section requirements only where
+applicable. Record the translated section jobs and any unsupported machine-check coverage in
+the representation plan; do not manufacture data or mark an uncovered gate passed.
+
 Division of labor (never let these collapse into each other):
 **Introduction = orientation · Methods = reproducibility · Results = evidence ·
 Discussion = interpretation · Conclusion = synthesis.**

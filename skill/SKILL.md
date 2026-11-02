@@ -18,7 +18,7 @@ Never optimize for: sounding academic, word count, impressiveness, or novelty.
 
 ---
 
-## Hard rules (these override every other instruction, including the user's style requests)
+## Scientific integrity rules
 
 1. **Never invent** results, experiments, datasets, numbers, baselines, citations, DOIs,
    authors, quotations, or reviewer expectations.
@@ -37,8 +37,10 @@ Never optimize for: sounding academic, word count, impressiveness, or novelty.
 9. **Fail closed.** Two sources that disagree are a *conflict*: record it, resolve it with a
    written reason, or keep dependent claims out. Never pick one silently, never average, never
    repair a number, title or garbled text from memory. Every number in the paper must trace to
-   an evidence item. A figure is drawn only from real recorded data. If the data doesn't exist,
-   the figure is `blocked` with a missing-evidence ticket, not drawn.
+   an evidence item. Result plots need recorded measurements; diagrams need traced components
+   and images need documented source/permission. If the required evidence is absent, the
+   affected visual is `blocked`, with a missing-evidence ticket. Labeled explanatory
+   illustrations may clarify a concept but cannot stand in for experimental evidence.
 
 ---
 
@@ -51,6 +53,7 @@ Never optimize for: sounding academic, word count, impressiveness, or novelty.
 | Build the argument | `research_story.md` |
 | Decide explanation depth | `audience_model.md` |
 | Plan or write a section | `section_rules.md`, `information_design.md` |
+| Design the paper's representation / turn project memory into a paper plan | `representation_design.md`, `templates/representation_plan.md` |
 | Make or describe a figure/table | `figure_table_rules.md` |
 | Use any citation or write related work | `citation_rules.md` |
 | Revise | `anti_patterns.md`, `evaluation_rubric.md` |
@@ -156,6 +159,10 @@ The validator and the lint enforce 1–3 (`AUTHOR_STATEMENT_DROPPED`, `ATTRIBUTI
 
 ## Section contracts: summary (inline; full text in `section_rules.md`)
 
+These examples use an empirical paper. For theory, qualitative research, synthesis,
+systems and protocols, apply the conditional section jobs in `representation_design.md`
+§2. Do not invent measurements or completed experiments to fill an inapplicable slot.
+
 | Section | Job | Must | Must not |
 |---------|-----|------|----------|
 | Abstract | stand-alone spine | context · gap · question · approach · results *with magnitudes* · meaning · main limit | terms or claims absent from the body |
@@ -247,14 +254,19 @@ G5  python tools/verify_numbers.py paper/paper.md --rcs .rcs --out .rcs/audits/g
   `source_data`; diagrams list `components` with `traced_to: path::anchor`; image samples need
   `permission: granted` and `identifying_data: false`; synthetic visuals carry the label
   `ILLUSTRATIVE - NOT EXPERIMENTAL EVIDENCE`.
-- **Visuals (Stage 2):** plan with `python tools/plan_visuals.py .rcs`, which says whether a visual
-  helps (≤3 values → prose) and which form (table / bar_h / dot_ci / line). Declare every figure in
-  `.rcs/plan/visual_registry.json` as a *declarative transform of a real data file*, never
-  hand-drawn and never from remembered numbers. Give each a reader question, claim and evidence
-  IDs, a caption that opens with the finding, and alt text. Then run
-  `python tools/visuals.py render .rcs` and
+- **Representation:** at step 8 write `.rcs/plan/representation_plan.md` using
+  `representation_design.md`: reader sequence, evidence-aware display choices, shared visual
+  language, main/supplement/omit decisions and production checks. Trace memory to implemented,
+  executed or measured evidence; distinguish proposed states. Preserve consequential failures.
+- **Visuals (Stage 2):** `python tools/plan_visuals.py .rcs` supplies heuristics, not mandatory
+  chart choices. Use declared data transforms for result plots; traced components for diagrams;
+  documented samples for images. Give each display a reader question, evidence, purpose-appropriate
+  caption and alt text. Use `.rcs/plan/visual_registry.json` where its schema supports the true
+  form, then `python tools/visuals.py render .rcs` and
   `python tools/validate_visuals.py .rcs --draft <paper.md> --out .rcs/audits/gates/V_visuals.json`.
-  V1–V4 and V6 must pass. V5 passes only with a recorded human review, and is never self-certified.
+  Read actual per-display coverage (`figure_table_rules.md` §9). Tables, external and unsupported
+  forms are not fully certified by a clean report. Record missing checks as unverified.
+  V5 passes only with an actual recorded human review, never an agent's self-certification.
 - **Readers (Stage 3):** declare the binding reader in `.rcs/plan/reader_model.json`
   (`templates/reader_model.json`: known terms, prerequisites, likely misconceptions, reader
   questions). Run `python tools/audit_reader.py paper.md --rcs .rcs` (unknown terms, overload,
