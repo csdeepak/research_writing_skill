@@ -3,7 +3,8 @@
 agent declaring success").
 
 G4 passes only when, for the latest review round:
-  1. a blind review exists (.rcs/diagnostics/<round>/diagnostics.json, schema-valid)                 G4_NO_REVIEW
+  1. a blind review exists (.rcs/diagnostics/<round>/diagnostics.json, schema-valid; for a panel-only verification
+     round, the review of the round it verifies, named as previous_round in its decision)          G4_NO_REVIEW
   2. it reviewed the draft it claims to: the packet manifest's source draft hash matches the draft on
      disk, and diagnostics.packet_id equals the manifest's packet_id                                  G4_PACKET_MISMATCH
   3. every BLOCKING finding (evaluation_rubric.md section 3: any dimension <= 2; evidence_traceability,
@@ -23,7 +24,8 @@ G4 passes only when, for the latest review round:
      mode paper or restructure:                                                                      PANEL_*
        - tools/panel_check.py passes: five seats, reviews made against their commitments, the decision the findings
          give, a roadmap built only from seat findings
-       - every standing major or fatal finding has a disposition, as `panel:<finding id>`
+       - every standing major or fatal finding has a disposition, as `panel:<finding id>`, and in a verification
+         round every blocking roadmap item the seats did not find addressed has one, as `panel:<R-#>`
        - a devil's-advocate finding is declined or marked false_positive only when its rebuttal score takes it out of
          blocking (5 withdraws it, 4 lowers it one level; right after a concession the next needs 5)  G4_DA_REBUTTAL
        - a Reject stops G4 until a named person decides: `"reject_checkpoint": "Q-###"` in dispositions.json,
@@ -67,7 +69,14 @@ def check(rcs: Path, rnd: str, revised: Path | None) -> dict:
     def err(code, msg):
         items.append({"level": "ERROR", "code": code, "message": msg})
 
-    ddir = rcs / "diagnostics" / rnd
+    # Round 2 is a panel-only verification re-review (review_panel.md section 8): its blind reader review is the one from the
+    # round it verifies (found in the v0.5 live run, where G4 failed G4_NO_REVIEW on a correct round 2).
+    reader_rnd = rnd
+    if not (rcs / "diagnostics" / rnd / "diagnostics.json").exists():
+        prev = _verified_round(rcs, rnd)
+        if prev and (rcs / "diagnostics" / prev / "diagnostics.json").exists():
+            reader_rnd = prev
+    ddir = rcs / "diagnostics" / reader_rnd
     dpath = ddir / "diagnostics.json"
     if not dpath.exists():
         err("G4_NO_REVIEW", f"no blind review for round {rnd}: run REVIEW_AGENT on a packet (workflow step 17)")
@@ -75,7 +84,7 @@ def check(rcs: Path, rnd: str, revised: Path | None) -> dict:
     diag = json.loads(dpath.read_text(encoding="utf-8"))
     for e in validate(diag, load_schema("diagnostics.schema.json")):
         err("G4_REVIEW_INVALID", e)
-    man_p = next(iter(sorted((rcs / "packets").glob(f"*{rnd}*/packet_manifest.json"))), None) if (rcs / "packets").exists() else None
+    man_p = _manifest(rcs, reader_rnd)
     reviewed = None
     if not man_p:
         err("G4_PACKET_MISMATCH", f"no packet manifest for round {rnd} under .rcs/packets/")
@@ -101,19 +110,28 @@ def check(rcs: Path, rnd: str, revised: Path | None) -> dict:
     need = [f"finding:{i}" for i in blocking(findings)] + [f"inference:{i}" for i in range(len(diag.get("inference_issues", [])))]
     disp_p = rcs / "revisions" / rnd / "dispositions.json"
     disp_doc = json.loads(disp_p.read_text(encoding="utf-8")) if disp_p.exists() else {}
-    disp = {d.get("item"): d for d in disp_doc.get("items", [])}
+    disp = {}
+    for r in dict.fromkeys((reader_rnd, rnd)):              # the reader's round first; this round's dispositions win
+        p = rcs / "revisions" / r / "dispositions.json"
+        if p.exists():
+            disp.update({d.get("item"): d for d in json.loads(p.read_text(encoding="utf-8")).get("items", [])})
     open_issues = (rcs / "open_issues.md").read_text(encoding="utf-8") if (rcs / "open_issues.md").exists() else ""
     asked = set()
     for cp in ("pending.json", "answers.json"):
         cpp = rcs / "checkpoints" / cp
         if cpp.exists():
             asked |= {q.get("id") for q in json.loads(cpp.read_text(encoding="utf-8")).get("questions", [])}
-    panel = _panel(rcs, rnd, diag.get("packet_id"), disp_doc, err)
+    panel_man = _manifest(rcs, rnd) if reader_rnd != rnd else man_p
+    panel_pid = json.loads(panel_man.read_text(encoding="utf-8")).get("packet_id") if panel_man else diag.get("packet_id")
+    panel = _panel(rcs, rnd, panel_pid, disp_doc, err)
     need += [f"panel:{fid}" for fid in panel.get("blocking", [])]
     any_fixed = False
     for key in need:
         d = disp.get(key)
-        if key.startswith("panel:"):
+        if key.startswith("panel:") and key.split(":", 1)[1] in panel.get("standing", {}):
+            s = panel["standing"][key.split(":", 1)[1]]
+            label = f"roadmap {key.split(':', 1)[1]} ({s['verdict']}; {', '.join(s['from_findings'])})"
+        elif key.startswith("panel:"):
             f = panel["findings"][key.split(":", 1)[1]]
             label = f"{f.get('seat')} {panel['severity'].get(f['id'])} {f.get('criterion_id')}"
             if f["id"].startswith("DA-") and d and d.get("disposition") in ("declined", "false_positive"):
@@ -158,6 +176,20 @@ def check(rcs: Path, rnd: str, revised: Path | None) -> dict:
             "blocking_items": need, "diagnostics_sha256": hashlib.sha256(dpath.read_bytes()).hexdigest(),
             "dispositions_sha256": hashlib.sha256(disp_p.read_bytes()).hexdigest() if disp_p.exists() else None,
             "panel_decision": panel.get("decision")}
+
+
+def _manifest(rcs: Path, rnd: str) -> Path | None:
+    return next(iter(sorted((rcs / "packets").glob(f"*{rnd}*/packet_manifest.json"))), None) if (rcs / "packets").exists() else None
+
+
+def _verified_round(rcs: Path, rnd: str) -> str | None:
+    """The round a verification re-review checks, from its editorial decision; None for a full round."""
+    p = rcs / "diagnostics" / rnd / "editorial_decision.json"
+    try:
+        d = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+    except json.JSONDecodeError:
+        return None
+    return d.get("previous_round") if d.get("kind") == "verification" else None
 
 
 def _panel(rcs: Path, rnd: str, packet_id: str | None, disp_doc: dict, err) -> dict:

@@ -208,6 +208,11 @@ def check_round(rcs: Path, rnd: str, packet_id: str | None = None) -> tuple[list
                 items.append(("ERROR", "PANEL_CARDS_CHANGED", "a re-review must use the same reviewer cards as the round it checks"))
         summary["derived"] = derive_verification(roadmap, checks, sev)
         summary["checks"] = checks
+        # A blocking item the seats did not find addressed still blocks G4, judged from the checks, not from the synthesizer's
+        # roadmap (found in the v0.5 live run: round 2 reported 0 blocking items while 4 blocking items stood unaddressed).
+        summary["standing"] = {r.get("id"): {"verdict": checks.get(r.get("id"), "unchecked"), "goal": r.get("goal", ""),
+                                             "from_findings": r.get("from_findings", [])}
+                               for r in roadmap if r.get("priority") == "blocking" and checks.get(r.get("id")) != "addressed"}
     else:
         summary["derived"] = derive_full(sev, judgements)
 
@@ -237,7 +242,7 @@ def check_round(rcs: Path, rnd: str, packet_id: str | None = None) -> tuple[list
             items.append(("ERROR", "PANEL_DECISION_MISMATCH", f"decision {decision.get('decision')!r}, but the findings give {summary['derived']!r}"))
     else:
         items.append(("ERROR", "PANEL_SHRUNK", f"no editorial_decision.json for {rnd}"))
-    summary["blocking"] = sorted(fid for fid, s in now.items() if s in BLOCKING)
+    summary["blocking"] = sorted(fid for fid, s in now.items() if s in BLOCKING) + sorted(summary.get("standing", {}))
     return items, summary
 
 
@@ -252,7 +257,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"{level:5} {code:28} {msg}")
     errors = sum(1 for i in items if i[0] == "ERROR")
     print(f"\npanel {a.round} ({s['kind']}): stated {s['decision']}, derived {s['derived']}; "
-          f"{len(s['blocking'])} blocking finding(s); {errors} error(s)")
+          f"{len(s['blocking'])} blocking item(s); {errors} error(s)")
     return 1 if errors else 0
 
 

@@ -18,9 +18,22 @@ chose the next minor version. `SKILL.md` keeps `version: 0.4.0` until the releas
 (`versions/README.md`).
 
 **Status: Stages A to E done. Merged to `main` on 2026-11-03 as an unreleased candidate, by the
-user's decision.** The version stays 0.4.0. A release waits for live runs of the paths only unit
-tests cover so far: the final VERIFIER pass, panel round 2, the devil's-advocate rebuttal and the
-COACH.
+user's decision.** The version stays 0.4.0. The paths only unit tests covered then (the final
+VERIFIER pass, panel round 2, the devil's-advocate rebuttal and the COACH) ran live the same day,
+and the defects they found are fixed below. Releasing is the user's decision.
+
+**Live runs of the remaining paths (2026-11-03, `evaluation/unified_e2e/REPORT.md`):**
+- G4 failed a correct panel-only round 2 for lacking a blind review. It now takes the review and its
+  dispositions from the round being verified (FC-0034).
+- Round 2 counted only new findings as blocking, so blocking items the seats found still
+  unaddressed needed no disposition. `panel_check.py` now reports them as standing, judged from the
+  seats' checks, and G4 requires a disposition for each, keyed `panel:R-#` (FC-0035).
+- Round-2 seats could read the other seats' merged findings in `editorial_decision.json`. In subagent
+  mode they now get a roadmap-only file (FC-0036, mitigated).
+- The review packet's references sort by surname (FC-0037). The COACH reads the open checkpoints, so
+  it does not ask a pending question as if it were new.
+- The rebuttal rule held live: evidence that answered part of a finding scored 3, and a rebuttal of
+  pure insistence scored 1.
 
 **Stage D, tests and an end-to-end run:**
 - Integrity benchmark: perturbation variants H to L plant a fabricated DOI, a DOI that resolves to

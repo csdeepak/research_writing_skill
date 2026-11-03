@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "id": "FC-0036",
+  "title": "Round-2 seats saw the other seats' merged findings and dissent",
+  "category": "review-isolation",
+  "severity": "low",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-02",
+    "by": "blind reviewer",
+    "context": "Live runs of the untested 0.5.0 paths on the demo project, 2026-11-03: panel round 2"
+  },
+  "observed_failure": "Each verification seat was told to read only the previous roadmap, but the file reader returned all of editorial_decision.json, including the synthesizer's merged findings and the seats' dissent. Four of five seats reported it.",
+  "expected_behavior": "In subagent mode the orchestrator writes the roadmap list alone to the new round's panel/previous_roadmap.json and gives the seats that file. rce_roles.py already passes the roadmap only.",
+  "evidence": [
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9",
+    "evaluation/unified_e2e/REPORT.md"
+  ],
+  "regression": {
+    "tests": [],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "mitigated",
+    "version": "0.5.0-candidate",
+    "summary": "adapters/claude_code.md and rce-panel.md: seats read panel/previous_roadmap.json; isolation in subagent mode stays enforced by instruction only"
+  },
+  "lessons": [
+    "An instruction to read part of a file is not isolation: give the agent only the part."
+  ],
+  "public": true
+}

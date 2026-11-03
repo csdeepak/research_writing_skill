@@ -1,0 +1,34 @@
+{
+  "schema_version": "1",
+  "id": "FC-0035",
+  "title": "Blocking items still unaddressed in round 2 needed no disposition",
+  "category": "review-protocol",
+  "severity": "high",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-02",
+    "by": "live model run",
+    "context": "Live runs of the untested 0.5.0 paths on the demo project, 2026-11-03: panel round 2"
+  },
+  "observed_failure": "In round 2 all five seats found blocking items R-1, R-7 and R-8 not addressed, and others partly. panel_check.py counted only the round's new findings as blocking, so it reported 0 blocking items, and G4 would have passed with no disposition for any of them.",
+  "expected_behavior": "Every blocking roadmap item of the verified round that the seats did not find addressed stays blocking, judged from the seats' checks rather than the synthesizer's roadmap, and needs a disposition keyed panel:R-#.",
+  "evidence": [
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9",
+    "evaluation/unified_e2e/REPORT.md"
+  ],
+  "regression": {
+    "tests": [
+      "T-100"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.5.0-candidate",
+    "summary": "panel_check.py reports standing roadmap items; g4_check.py requires their dispositions"
+  },
+  "lessons": [
+    "A gate that counts only new findings lets every old one through the second round."
+  ],
+  "public": true
+}
