@@ -1,0 +1,36 @@
+{
+  "schema_version": "1",
+  "id": "FC-0021",
+  "title": "A network drop turned a real DOI into 'unresolvable'",
+  "category": "citation",
+  "severity": "high",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-02",
+    "by": "tool calibration",
+    "context": "Stage B live rerun; the network dropped mid-run"
+  },
+  "observed_failure": "The DOI resolver confirmed the DOI, then every title-bearing index failed with URLError; the source got lookup_verified 'unresolvable' (NO_TITLE_TO_COMPARE), a negative-sounding verdict produced by an outage.",
+  "expected_behavior": "If no title-bearing index answered, there is no verdict (LOOKUP_DEGRADED) and the lookup must be re-run. Degraded is not negative.",
+  "evidence": [
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9",
+    "skill/changelog.md, 0.5.0 candidate"
+  ],
+  "regression": {
+    "tests": [
+      "T-074"
+    ],
+    "replay_fixtures": [
+      "CIT-03"
+    ]
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.5.0-candidate",
+    "summary": "NO_TITLE_TO_COMPARE requires an index that actually answered"
+  },
+  "lessons": [
+    "Test the outage path live, not only the happy path: the bug was invisible until the network failed."
+  ],
+  "public": true
+}

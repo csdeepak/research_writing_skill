@@ -38,6 +38,14 @@ required_statements:          # generated only from evidence + user input
   author_contributions: null
   ai_use_disclosure: ""       # where and how (e.g. Methods / Acknowledgments), policy URL
   source: ""
+ai_policy:                    # step 11: from the venue's official page, never from memory; policies change
+  disclosure_required: null
+  where: ""                   # e.g. Methods / Acknowledgments / cover letter
+  permitted_uses: []
+  prohibited_uses: []
+  source_url: ""
+  retrieved: ""               # YYYY-MM-DD
+  assumed: false
 checklists: []                # e.g. [{name: "NeurIPS Paper Checklist", url: "", items_file: ""}]
 reporting_guideline: null     # e.g. CONSORT 2025 / PRISMA 2020 / TRIPOD+AI / ARRIVE (domain-specific)
 review_criteria: []           # public reviewer criteria, if any

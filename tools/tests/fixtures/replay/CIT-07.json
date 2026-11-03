@@ -1,0 +1,66 @@
+{
+ "id": "CIT-07",
+ "origin": "real: Stage D end-to-end run, 2026-11-02 (FC-0030)",
+ "title": "the author form tells a five-author work from a two-author one by the same first author and year",
+ "files": {
+  ".rcs/corpus/source_registry.json": {
+   "sources": [
+    {
+     "id": "SRC-001",
+     "title": "Deep adaptive input normalization for time series forecasting",
+     "authors": [
+      "Passalis, Nikolaos",
+      "Tefas, Anastasios",
+      "Kanniainen, Juho",
+      "Gabbouj, Moncef",
+      "Iosifidis, Alexandros"
+     ],
+     "year": 2020,
+     "publication_status": "PEER-REVIEWED",
+     "level": 2,
+     "verification": {
+      "method": "lookup",
+      "date": "2026-11-02",
+      "lookup_verified": true
+     },
+     "read_depth": "abstract",
+     "permitted_use": [
+      "content_citation"
+     ]
+    },
+    {
+     "id": "SRC-002",
+     "title": "Global adaptive input normalization for short-term electric load forecasting",
+     "authors": [
+      "Passalis, Nikolaos",
+      "Tefas, Anastasios"
+     ],
+     "year": 2020,
+     "publication_status": "PEER-REVIEWED",
+     "level": 2,
+     "verification": {
+      "method": "lookup",
+      "date": "2026-11-02",
+      "lookup_verified": true
+     },
+     "read_depth": "abstract",
+     "permitted_use": [
+      "content_citation"
+     ]
+    }
+   ]
+  },
+  "draft.md": "# T\n\n## Introduction\n\nAdaptive input normalization learns the shift and scale of each window (Passalis et al., 2020) {C010}.\n"
+ },
+ "checks": [
+  {
+   "tool": "gl",
+   "draft": "draft.md",
+   "expect": [],
+   "forbid": [
+    "ERROR:CITATION_AMBIGUOUS",
+    "WARN:CITATION_AUTHOR_FORM"
+   ]
+  }
+ ]
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Claim-invariance check across an edit (workflow step 21, gate G5; docs/06_VNEXT_SPEC.md section 10 case 9).
+"""Claim-invariance check across an edit (workflow step 19, gate G5; docs/06_VNEXT_SPEC.md section 10 case 9).
 
 Compare the tagged draft before and after a language edit. For every claim/limitation tag, the text
 carrying it must keep the same numbers, the same scope and at most the same strength.

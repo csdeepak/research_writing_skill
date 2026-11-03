@@ -4,10 +4,13 @@
   python tools/run_workflow.py gates .rcs --draft drafts/v001/paper.md
          [--round v001_1 --revised drafts/v002/paper.md]
          [--final paper/paper.md --before drafts/v002/paper.md --edited drafts/v003_tagged.md]
+         [--integrity pre|final]
 
 Runs, as separate processes (the same commands a person would type):
   G1  validate_artifacts --out G1_validate.json
+  GL  verify_citations --gate --out GL_citations.json                          (unified workflow, once a registry exists)
   G3  lint_draft --rcs --out G3_lint.json;  verify_numbers --out G3_numbers.json
+  GI  integrity_check gate --stage --out GI_integrity.json                     (if --integrity: --draft at pre, --edited at final)
   V*  visuals render;  validate_visuals --draft --out V_visuals.json          (if a visual registry exists)
   G4  g4_check --round --revised --out G4_review.json                          (if --round)
   G5  validate --out G5_validate.json; lint --final --out G5_lint.json; verify_numbers --out G5_numbers.json;
@@ -46,6 +49,15 @@ def run_gates(rcs: Path, root: Path, a) -> dict:
         plan += [("G3", "lint_draft.py", [a.draft, "--rcs", str(rcs), "--out", str(gates / "G3_lint.json")], gates / "G3_lint.json"),
                  ("G3", "verify_numbers.py", [a.draft, "--rcs", str(rcs), "--project-root", str(root),
                                               "--out", str(gates / "G3_numbers.json")], gates / "G3_numbers.json")]
+    state_now = rcs / "state.json"
+    unified = state_now.exists() and bool(json.loads(state_now.read_text(encoding="utf-8")).get("mode"))
+    if unified and (rcs / "corpus" / "source_registry.json").exists():
+        plan.append(("GL", "verify_citations.py", [str(rcs), "--gate"] + (["--draft", a.draft] if a.draft else [])
+                     + ["--out", str(gates / "GL_citations.json")], gates / "GL_citations.json"))
+    stage = getattr(a, "integrity", None)       # callers built before GI existed pass no such attribute
+    if stage and (a.draft if stage == "pre" else a.edited):
+        plan.append(("GI", "integrity_check.py", ["gate", str(rcs), "--stage", stage, "--draft", a.draft if stage == "pre" else a.edited,
+                                                  "--project-root", str(root), "--out", str(gates / "GI_integrity.json")], gates / "GI_integrity.json"))
     if (rcs / "plan" / "visual_registry.json").exists():
         plan += [("V", "visuals.py", ["render", str(rcs), "--project-root", str(root)], None),
                  ("V", "validate_visuals.py", [str(rcs), "--project-root", str(root)] + (["--draft", a.draft] if a.draft else [])
@@ -81,7 +93,7 @@ def run_gates(rcs: Path, root: Path, a) -> dict:
     state_p = rcs / "state.json"
     state = json.loads(state_p.read_text(encoding="utf-8")) if state_p.exists() else {}
     g = state.setdefault("gates", {})
-    for gate in ("G1", "G3", "G4", "G5"):
+    for gate in ("G1", "GL", "G3", "GI", "G4", "G5"):
         if gate in results:
             g[gate] = "passed" if all(e["exit"] == 0 for e in results[gate] if e["report"]) else "failed"
     if "V" in results and (gates / "V_visuals.json").exists():
@@ -114,8 +126,19 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--final")
     ap.add_argument("--before")
     ap.add_argument("--edited")
+    ap.add_argument("--integrity", choices=["pre", "final"])
     a = ap.parse_args(argv)
     rcs = Path(a.rcs)
+    # Draft paths may be given from the working directory or, as in the usage above, from .rcs/. A path that is neither
+    # stops the run: a gate tool handed a missing draft can pass without reading it (found in the v0.5 end-to-end run).
+    for opt in ("draft", "revised", "final", "before", "edited"):
+        p = getattr(a, opt)
+        if p and not Path(p).exists():
+            if (rcs / p).exists():
+                setattr(a, opt, str(rcs / p))
+            else:
+                print(f"--{opt} {p}: no such file (looked from the working directory and from {rcs})", file=sys.stderr)
+                return 2
     s = run_gates(rcs, Path(a.project_root) if a.project_root else rcs.resolve().parent, a)
     print("effective gates: " + ", ".join(f"{k}={v}" for k, v in sorted(s["effective_gates"].items())))
     for e in s["gate_errors"]:

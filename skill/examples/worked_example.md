@@ -20,7 +20,7 @@ bug fix), and soft notes. Two findings drove the design:
 The spine (`demo_project/.rcs/story/spine.md`) was written before any prose. Every line
 carries claim or limitation IDs.
 
-## 2. Result dumping → Result Interpretation Chain (step 10, section rules)
+## 2. Result dumping → Result Interpretation Chain (step 14, section rules)
 
 **Before** (variant D, `tests/perturbations/D_result_dumping.md`):
 
@@ -45,7 +45,7 @@ establishes), or Q9 (what it doesn't). The lint flags `A6-result-dumping`.
 
 The numbers are identical in both variants. Only the reader's path through them changed.
 
-## 3. Overclaim → evidence-matched language (step 17)
+## 3. Overclaim → evidence-matched language (step 16.7)
 
 Variant E says: *"These results demonstrate that stale normalization, not model capacity, causes
 forecasting failure under shift {C005}."* C005 is typed `interpretation` (capacity was held
@@ -53,14 +53,14 @@ fixed, not varied: L002), so the lint raises **ERROR `B4-verb-vs-type`**. The pe
 is to *downgrade the language*: "suggest … account for much of … in this setting". Never find a
 way to keep "demonstrate".
 
-## 4. Buried contribution → orientation (steps 8, 13)
+## 4. Buried contribution → orientation (steps 12, 16.3)
 
 Variant F has correct content, but its introduction never states a question or a contribution.
 The lint raises `A1-late-question` and `A2-buried-contribution`. The architecture fix is
 structural: add paragraph slots I.3 (RQ1/RQ2) and I.4 (contributions, each tied to a result).
 This isn't a sentence-level edit.
 
-## 5. Citation misuse → citation pipeline (step 16)
+## 5. Citation misuse → citation pipeline (step 16.6)
 
 Variant G attaches placeholders [R1]–[R6] to claims. Each has a defined "actual content" in
 `tests/perturbations/EXPECTED.json`. The lint can't see this. The citation audit catches it:

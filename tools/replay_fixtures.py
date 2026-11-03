@@ -6,12 +6,21 @@ temp directory, plus expectations about what the checkers must (and must not) re
 
   {"id": "ADV-01", "origin": "spec 10 case 1 | real: <where it was observed>", "title": "...",
    "files": {"README.md": "text", ".rcs/evidence/research_evidence.json": {...}, ...},
-   "checks": [{"tool": "validate" | "lint" | "verify_numbers" | "invariance",
+   "checks": [{"tool": "validate" | "lint" | "verify_numbers" | "invariance" | "visuals" | "verify" | "gl" | "gi" | "panel",
                "draft": "paper.md", "before": "a.md", "after": "b.md", "strict": false, "final": false,
                "expect": ["ERROR:UNRECONCILED_CONFLICT"], "forbid": ["ERROR:*"]}]}
 
 Findings are normalised to LEVEL:CODE (lint/number/invariance rule ids, and UPPER_SNAKE codes in validator
 messages). "LEVEL:*" matches any code at that level.
+
+v0.5 checks:
+  verify  verify_citations.py lookups against scripted index answers, never the network:
+          "index_responses": [[url substring, http status, body], ...]. A request with no scripted answer fails as a
+          network error, so an outage is easy to stage. Tokens: VERDICT:true|false|unresolvable|none, CODE:<code>,
+          RETRACTION:<status>, FLAG:<flag>, SUGGESTION:<doi>, INDEX:<index>=<status>, SUSPICIOUS:logged
+  gl      gate GL (verify_citations.py --gate, with "draft"); also writes the report GI reads
+  gi      integrity_check.py's deterministic evidence on "draft": tool errors as ERROR:<code>, signals as WARN:<code>
+  panel   panel_check.py on "round"
 
 This is the cheap offline gate. It can show that a CHECKER change catches known failures without new
 false alarms. It cannot show that a WRITER-instruction change improves reader understanding (past drafts
@@ -95,7 +104,61 @@ def run_check(chk: dict, root: Path) -> list[str]:
         f = claim_invariance.compare((root / chk["before"]).read_text(encoding="utf-8"),
                                      (root / chk["after"]).read_text(encoding="utf-8"))
         return [f"{x['level']}:{x['rule']}" for x in f]
+    if tool in ("verify", "gl", "gi", "panel"):
+        return run_v05(chk, root)
     raise ValueError(f"unknown tool {tool}")
+
+
+def scripted_transport(responses: list):
+    """Index answers from the fixture. Anything unscripted fails like a dropped connection."""
+    def transport(url: str, headers: dict, timeout: int):
+        for pat, status, body in responses:
+            if pat in url:
+                return status, body if isinstance(body, str) else json.dumps(body), {}
+        raise OSError("no scripted answer for this request")
+    return transport
+
+
+def run_v05(chk: dict, root: Path) -> list[str]:
+    import contextlib
+    import io
+    import integrity_check
+    import panel_check
+    import rce_index
+    import verify_citations
+    rcs = root / ".rcs"
+    tool = chk["tool"]
+    draft = root / chk["draft"] if chk.get("draft") else None
+    if tool == "verify":
+        if not (rcs / "models.json").exists():
+            (rcs / "models.json").write_text(json.dumps({"data_policy": {"allowed_hosts": list(rce_index.HOSTS.values())}}), encoding="utf-8")
+        client = rce_index.Client(rcs, online=True, transport=scripted_transport(chk.get("index_responses", [])), sleep=lambda s: None)
+        with contextlib.redirect_stdout(io.StringIO()):
+            verify_citations.run(rcs, client)
+        out = []
+        for s in json.loads((rcs / "corpus" / "source_registry.json").read_text(encoding="utf-8")).get("sources", []):
+            v = s.get("verification") or {}
+            out.append(f"VERDICT:{str(v.get('lookup_verified', 'none')).lower()}")
+            out += [f"CODE:{v['code']}"] if v.get("code") else []
+            out.append(f"RETRACTION:{(s.get('retraction') or {}).get('status')}")
+            out += [f"FLAG:{f}" for f in s.get("flags", [])]
+            out += [f"SUGGESTION:{v['suggestion'].get('doi')}"] if v.get("suggestion") else []
+            out += [f"INDEX:{r['index']}={r['status']}" for r in v.get("indexes", [])]
+        log = rcs / "corpus" / "corpus_log.md"
+        if log.exists() and "## Suspicious content" in log.read_text(encoding="utf-8"):
+            out.append("SUSPICIOUS:logged")
+        return out
+    if tool == "gl":
+        rep = verify_citations.gate(rcs, draft)
+        (rcs / "audits" / "gates").mkdir(parents=True, exist_ok=True)
+        (rcs / "audits" / "gates" / "GL_citations.json").write_text(json.dumps(rep), encoding="utf-8")
+        return [f"{i['level']}:{i['code']}" for i in rep["items"]]
+    if tool == "gi":
+        det = integrity_check.deterministic(integrity_check.load_project(rcs, root, draft.read_text(encoding="utf-8")))
+        return [f"ERROR:{e['code']}" for m in det.values() for e in m["errors"]] + \
+               [f"WARN:{e['code']}" for m in det.values() for e in m["signals"]]
+    items, _ = panel_check.check_round(rcs, chk["round"], chk.get("packet_id"))
+    return [f"{level}:{code}" for level, code, _ in items]
 
 
 def _hit(token: str, found: list[str]) -> bool:

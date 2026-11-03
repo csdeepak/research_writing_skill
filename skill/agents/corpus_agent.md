@@ -47,11 +47,13 @@ downstream agents trust, so everything you record must be verifiable from its lo
    see the "curse of knowledge".
 
 ### Mode `literature`
-Follow the discovery protocol (below). Output `corpus/source_registry.json` (schema
+Follow the discovery protocol (below) and `skill/literature.md`. Output `corpus/candidates.json`
+(schema `candidates.schema.json`), `corpus/source_registry.json` (schema
 `source_registry.schema.json`), `corpus/literature_map.json` (the dimension matrix: problem
 framing, method family, key assumption, data/eval, strengths, weaknesses, relation to the
-project's RQs), and `corpus/corpus_log.md` (every query: string, index, date, hits; screening
-decisions with reasons; stopping reason).
+project's RQs), and `corpus/corpus_log.md` (every query: string, index, date, hits, status;
+screening decisions with reasons; stopping reason). The tools write the log's query and
+screening tables. You add the rest.
 
 ### Mode `patterns`
 From verified sources that pass the exemplar rubric, extract **writing patterns** (move
@@ -78,25 +80,42 @@ Schema: `writing_patterns.schema.json`. **Describe moves; do not copy sentences.
   every source.
 - MUST NOT select exemplars by citation count. Record citations as metadata only.
 - Confidential project data goes only to tools and endpoints allowed by
-  `.rcs/config.yaml → data_policy`.
+  `data_policy.allowed_hosts` in `.rcs/models.json`. Index searches carry the plan's terms, so
+  the plan is reviewed before any search runs.
 
 ## Discovery protocol (literature mode)
-1. Build query facets from `story_hints`: problem terms × method family × dataset/benchmark ×
-   metric, plus synonyms.
-2. Search ≥2 indexes per facet (e.g. Crossref/OpenAlex/Semantic Scholar plus a domain index:
-   PubMed, DBLP, ACL Anthology, IEEE Xplore, ACM DL; arXiv flagged as preprints).
-3. Screen titles and abstracts against relevance (does it match a story node?), recency (last
-   ~5 years unless seminal), and type. Log exclusions with reasons.
-4. **Verify** each kept source: resolve the DOI/arXiv ID, confirm the metadata against the
-   index, check retraction status if possible, and set `publication_status`, `read_depth`, and
-   `verification`.
-5. Read the full text where available. Abstract-only sources can't support method or result
-   claims (`permitted_use` excludes `content_citation` for those purposes).
+The tools do the lookups, and you do the judging. Nothing is citable until step 4 registers it.
+
+1. **Intake.** Ingest the user's library first:
+   `python tools/lit_search.py .rcs --intake <file or folder>`. It reads a `.bib`, `.ris` or
+   CSL-JSON file, an Obsidian vault or a PDF folder, read-only. Report any file it could not read.
+2. **Plan, then search.** `python tools/lit_search.py .rcs` drafts `corpus/search_plan.json` from
+   the story graph and evidence map: problem terms × method family × dataset/benchmark × metric,
+   plus synonyms. Sharpen its keywords and set `from_year`. The terms leave the machine, so keep
+   private project names out. Then `python tools/lit_search.py .rcs --online` searches ≥2 indexes
+   per query. You may also search a domain index (PubMed, DBLP, ACL Anthology, IEEE Xplore, ACM DL)
+   by hand. Log those queries in the same table, and add their hits to the candidates.
+3. **Screen** titles and abstracts in `corpus/candidates.json`: does it match a story node, is it
+   recent (last ~5 years unless seminal), is it the right type? Set `decision` to `keep` or
+   `exclude`, with a `reason` for each exclusion.
+4. **Verify.** `python tools/verify_citations.py .rcs --online` looks up every kept candidate and
+   every registered source, and registers those that pass. Act on what it prints:
+   - `FABRICATED_CITATION`: remove the source. A corrected DOI may come only from an index record,
+     and a person applies it.
+   - `RETRACTED_SOURCE`: report it to the AUTHOR. Do not set `retracted_acknowledged` yourself.
+   - no verdict: run it again later. Never treat it as a pass.
+   - `unresolvable`: keep it only with a support quote, and list it for `open_issues.md`.
+5. **Read** the full text where it is legally available. Abstract-only sources can't support
+   method or result claims (`permitted_use` excludes `content_citation` for those purposes).
 6. For each source, record **what it establishes**, with a support quote (≤40 words) and its
-   location. This quote is what later justifies a citation.
-7. Snowball one level from the top 5 sources.
-8. Stop at saturation (two batches with no new method family or gap dimension) or at the
-   budget. Record the stopping reason.
+   location, in `establishes`. This quote is what later justifies a citation, and GL fails
+   without it.
+7. **Snowball** one level from the top 5 kept sources: `python tools/lit_search.py .rcs --online
+   --snowball`. Screen and verify the new candidates the same way.
+8. **Stop** at saturation (two batches with no new method family or gap dimension) or at the
+   budget. Record the reason: `python tools/lit_search.py .rcs --stop-reason "..."`.
+9. **Grade** each source for the claim it supports (`evidence_quality`, with a clause of why),
+   screen its venue, and build the literature map (`skill/literature.md` §6).
 
 ## Strength rules
 `hard`: machine-produced logs/results files; tables generated by scripts; values reproducible
@@ -113,4 +132,5 @@ kept/excluded by status, suspicious content found, and anything you couldn't ope
 - `python tools/validate_artifacts.py <out_dir>`: schemas valid; IDs unique; every locator path
   exists
 - A random 20% numeric spot-check against source files
-- DOI re-resolution for every registered source
+- Gate GL: `python tools/verify_citations.py <out_dir> --gate`, with no network: every cited source
+  verified, quoted and not silently retracted

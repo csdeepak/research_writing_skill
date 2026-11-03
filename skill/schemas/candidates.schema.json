@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rce/candidates.schema.json",
+  "title": "Literature candidates (workflow steps 6-8). A candidate is not a source and cannot be cited.",
+  "type": "object",
+  "required": ["candidates"],
+  "properties": {
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "found_by", "decision"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^CAND-[0-9]{4,}$"},
+          "title": {"type": "string"},
+          "authors": {"type": "array", "items": {"type": "string"}},
+          "year": {"type": ["integer", "null"]},
+          "venue": {"type": ["string", "null"]},
+          "doi": {"type": ["string", "null"]},
+          "arxiv_id": {"type": ["string", "null"]},
+          "url": {"type": ["string", "null"]},
+          "abstract": {"type": "string"},
+          "as_cited": {"type": ["string", "null"]},
+          "found_by": {"type": "array", "minItems": 1, "items": {"type": "string",
+                       "pattern": "^(search|snowball|corpus):"}},
+          "decision": {"enum": ["pending", "keep", "exclude"]},
+          "reason": {"type": ["string", "null"], "description": "required in practice for every exclusion (logged in corpus_log.md)"},
+          "needs_metadata": {"type": "boolean"},
+          "lookup_verified": {"enum": [true, false, "unresolvable", null]},
+          "verification_code": {"type": ["string", "null"]},
+          "registered_as": {"type": "string", "pattern": "^SRC-[0-9]{3,}$"},
+          "possible_version_of": {"type": "string", "pattern": "^CAND-[0-9]{4,}$",
+                                  "description": "same normalized title as an earlier candidate, with the same first author or a year within one: likely a preprint and its published version. Not merged; not counted as a separate work"}
+        }
+      }
+    }
+  }
+}

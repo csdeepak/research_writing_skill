@@ -24,4 +24,6 @@ Local endpoints are always allowed by the data policy; nothing leaves the machin
 ## Data policy
 Local models are the default choice for confidential Level-0 data. If some roles run on hosted
 APIs, list their hosts in `data_policy.allowed_hosts` in `.rcs/models.json` (the tool refuses
-unlisted hosts). The single-shot roles send only packets (the paper text), never raw project files.
+unlisted hosts). The reviewer and panel send only packets (the paper text), never raw project files.
+The VERIFIER is the exception: it receives the draft with the claim and evidence maps, so keep it
+local when the project's data must stay on the machine.

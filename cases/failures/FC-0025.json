@@ -1,0 +1,35 @@
+{
+  "schema_version": "1",
+  "id": "FC-0025",
+  "title": "A hallucinated result number was only a warning in the integrity gate",
+  "category": "numerical-integrity",
+  "severity": "high",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-02",
+    "by": "author agent",
+    "context": "Stage D design of the integrity benchmark (variant K)"
+  },
+  "observed_failure": "verify_numbers.py reports untraced numbers as warnings outside strict mode, so a number stated as a measured result that no record contains reached GI as a signal, not as an M3 tool error.",
+  "expected_behavior": "An untraced number on a line tagged with a measured, observed or derived claim is an M3 error (UNTRACED_RESULT_NUMBER), which a VERIFIER cannot clear.",
+  "evidence": [
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9",
+    "skill/changelog.md, 0.5.0 candidate"
+  ],
+  "regression": {
+    "tests": [
+      "T-105"
+    ],
+    "replay_fixtures": [
+      "INT-02",
+      "INT-02b"
+    ]
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.5.0-candidate",
+    "summary": "M3 escalates untraced numbers in result sentences"
+  },
+  "lessons": [],
+  "public": true
+}

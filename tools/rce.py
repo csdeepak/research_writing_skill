@@ -8,6 +8,11 @@
   lint DRAFT --rcs .rcs                 draft lint (claims, licenses, citations, attribution)     -> lint_draft.py
   numbers DRAFT --rcs .rcs              trace every number to evidence                           -> verify_numbers.py
   visuals .rcs                          figure gates V1-V6                                      -> validate_visuals.py
+  search .rcs [--online]                corpus intake and global search (candidates)             -> lit_search.py
+  verify .rcs [--online | --gate]       verify sources by lookup; gate GL                        -> verify_citations.py
+  integrity collect|gate .rcs --stage   gate GI: the seven failure modes + alignment             -> integrity_check.py
+  format PAPER --rcs .rcs               references.bib and LaTeX / DOCX / PDF through Pandoc     -> format_paper.py
+  disclose .rcs                         draft the AI-use statement                               -> disclosure.py
   review / calibrate / run-tasks        single-shot roles on any model (.rcs/models.json)        -> rce_roles.py
   cases                                 validate the failure-case archive                        -> validate_cases.py
   package                               build + validate the skill ZIP                          -> package_skill.py
@@ -28,6 +33,8 @@ TOOLS = Path(__file__).resolve().parent
 PASS = {"gates": ["run_workflow.py", "gates"], "validate": ["validate_artifacts.py"], "lint": ["lint_draft.py"],
         "numbers": ["verify_numbers.py"], "visuals": ["validate_visuals.py"], "review": ["rce_roles.py", "review"],
         "calibrate": ["rce_roles.py", "calibrate"], "run-tasks": ["rce_roles.py", "run-tasks"],
+        "search": ["lit_search.py"], "verify": ["verify_citations.py"], "integrity": ["integrity_check.py"],
+        "format": ["format_paper.py"], "disclose": ["disclosure.py"],
         "cases": ["validate_cases.py"], "package": ["package_skill.py"], "audit": ["check_repo.py"]}
 
 
@@ -39,6 +46,8 @@ def _run(args: list[str]) -> tuple[int, str]:
 def check(project: Path, draft: Path | None, final: bool) -> int:
     rcs = project / ".rcs"
     steps = [("artifacts (G1)", ["validate_artifacts.py", str(rcs), "--project-root", str(project)])]
+    if (rcs / "plan" / "paper_config.json").exists() and (rcs / "corpus" / "source_registry.json").exists():
+        steps.append(("citations (GL)", ["verify_citations.py", str(rcs), "--gate"] + (["--draft", str(draft)] if draft else [])))
     if (rcs / "plan" / "visual_registry.json").exists():
         steps.append(("figures (V1-V6)", ["validate_visuals.py", str(rcs), "--project-root", str(project)]
                       + (["--draft", str(draft)] if draft else [])))

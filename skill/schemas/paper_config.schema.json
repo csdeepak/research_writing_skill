@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rce/paper_config.schema.json",
+  "title": "Paper config record (workflow step 0.2; confirmed by the user at C0)",
+  "type": "object",
+  "required": ["mode"],
+  "properties": {
+    "mode": {"enum": ["paper", "restructure", "review", "revise", "plan", "guided", "literature", "systematic-review",
+                      "citation-check", "abstract", "format", "disclosure", "calibrate"]},
+    "audience_mode": {"enum": ["A", "B", "C", "D", "E"]},
+    "audience_description": {"type": "string"},
+    "venue": {"type": ["string", "null"]},
+    "deliverable": {"type": "string"},
+    "paper_type": {"enum": ["empirical", "theory", "qualitative", "systems", "protocol", "survey", "systematic_review"]},
+    "citation_style": {"type": ["string", "null"], "description": "a CSL style name or id, e.g. IEEE, APA, nature"},
+    "languages": {"type": "array", "items": {"type": "string"}},
+    "length_limit_words": {"type": ["integer", "null"], "minimum": 1},
+    "oversight": {"enum": ["FULL", "SLIM", "MANDATORY"]},
+    "no_experiments": {"type": "boolean", "description": "true only when the user declares it (skill/integrity.md section 3)"},
+    "contamination_cutoff_year": {"type": "integer", "minimum": 2000, "maximum": 2100,
+                                  "description": "a heuristic setting for the post_llm_unconfirmed flag, not a measured threshold"},
+    "budget": {
+      "type": "object",
+      "properties": {
+        "max_web_queries": {"type": "integer", "minimum": 1, "description": "calls, one per query per index"},
+        "max_sources": {"type": "integer", "minimum": 1},
+        "est_tokens": {"type": ["integer", "null"]},
+        "worst_case_round_trips": {"type": ["integer", "null"]}
+      }
+    },
+    "confirmed_by": {"type": ["string", "null"], "description": "the named person who confirmed this record at C0"},
+    "confirmed_at": {"type": ["string", "null"]}
+  }
+}

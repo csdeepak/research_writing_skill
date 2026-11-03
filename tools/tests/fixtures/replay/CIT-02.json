@@ -1,0 +1,88 @@
+{
+ "id": "CIT-02",
+ "origin": "real: Stage B live run, 2026-11-02 (FC-0019)",
+ "title": "one work found under an arXiv DOI and an arXiv id is not a metadata conflict",
+ "files": {
+  ".rcs/corpus/source_registry.json": {
+   "sources": [
+    {
+     "id": "SRC-001",
+     "title": "Attention Is All You Need",
+     "authors": [
+      "Vaswani, Ashish"
+     ],
+     "year": 2017,
+     "publication_status": "PREPRINT",
+     "level": 2,
+     "verification": {
+      "method": "manual",
+      "date": "2026-11-02"
+     },
+     "read_depth": "full",
+     "permitted_use": [
+      "content_citation"
+     ],
+     "doi": "10.48550/arXiv.1706.03762"
+    }
+   ]
+  }
+ },
+ "checks": [
+  {
+   "tool": "verify",
+   "index_responses": [
+    [
+     "doi.org/api/handles/",
+     200,
+     {
+      "responseCode": 1
+     }
+    ],
+    [
+     "api.openalex.org/works/doi:",
+     200,
+     {
+      "id": "https://openalex.org/W2",
+      "doi": "https://doi.org/10.48550/arxiv.1706.03762",
+      "display_name": "Attention Is All You Need",
+      "publication_year": 2017,
+      "authorships": [
+       {
+        "author": {
+         "display_name": "Ashish Vaswani"
+        }
+       }
+      ],
+      "type": "preprint",
+      "is_retracted": false,
+      "primary_location": {
+       "source": {
+        "display_name": "arXiv",
+        "type": "repository"
+       }
+      }
+     }
+    ],
+    [
+     "semanticscholar.org",
+     404,
+     {
+      "error": "not found"
+     }
+    ],
+    [
+     "export.arxiv.org",
+     200,
+     "<feed xmlns=\"http://www.w3.org/2005/Atom\"><entry><id>http://arxiv.org/abs/1706.03762v7</id><title>Attention Is All You Need</title><published>2017-06-12T00:00:00Z</published><summary>s</summary><author><name>Ashish Vaswani</name></author></entry></feed>"
+    ]
+   ],
+   "expect": [
+    "VERDICT:true"
+   ],
+   "forbid": [
+    "FLAG:metadata_conflict",
+    "INDEX:crossref=not_found"
+   ]
+  }
+ ]
+}

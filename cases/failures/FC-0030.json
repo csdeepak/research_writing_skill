@@ -1,0 +1,37 @@
+{
+  "schema_version": "1",
+  "id": "FC-0030",
+  "title": "A citation label that named the wrong author list passed every tool",
+  "category": "attribution",
+  "severity": "medium",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-02",
+    "by": "live model run",
+    "context": "Stage D paper-mode run of the demo project: the VERIFIER at stage pre, round 1"
+  },
+  "observed_failure": "The draft cited a five-author paper as (Passalis and Tefas, 2020a) and a six-author preprint as (Berthelier and Nabil, 2026). The resolver read only the first surname and the year, so GL passed both. The VERIFIER marked M2 SUSPECTED. The same blind spot had made the first label match two works (FC-0029): read as written, it names the two-author paper.",
+  "expected_behavior": "The resolver narrows same-author, same-year matches by the author form ('et al.' for three or more, both surnames for two, one surname for one), and GL warns when a citation's form contradicts the registered author list (CITATION_AUTHOR_FORM).",
+  "evidence": [
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9",
+    "evaluation/unified_e2e/REPORT.md"
+  ],
+  "regression": {
+    "tests": [
+      "T-078"
+    ],
+    "replay_fixtures": [
+      "CIT-07",
+      "CIT-08"
+    ]
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.5.0-candidate",
+    "summary": "author_form_fits in lint_draft; resolve_citation narrows by it; GL warns"
+  },
+  "lessons": [
+    "The isolated VERIFIER caught what the deterministic tools let through; that is its job, and the tool then learned the rule."
+  ],
+  "public": true
+}

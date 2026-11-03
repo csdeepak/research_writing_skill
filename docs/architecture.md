@@ -6,7 +6,7 @@ RCE has three layers. Only the third touches a model, and none of them lets a mo
 
 | Layer | Where | Responsibility | Model-dependent? |
 |---|---|---|---|
-| **Skill** (rules) | `skill/SKILL.md` and linked Markdown | What the writing agent must do and must not invent; the 21-step workflow; when to ask | read by any model |
+| **Skill** (rules) | `skill/SKILL.md` and linked Markdown | What the writing agent must do and must not invent; the 8-phase workflow; when to ask | read by any model |
 | **Engine** (deterministic) | `tools/*.py` (stdlib Python ≥ 3.9) | Evidence and claim contracts, number tracing, language licenses, citation check, figure rendering and validation, review packets, gates, checkpoints, provenance ledger, packaging | **no** |
 | **Adapters** | `tools/rce_llm.py` (providers), `tools/rce_roles.py` (roles), `skill/adapters/` (runtime notes) | *How* a model is invoked: OpenAI-compatible, Anthropic, Gemini, any CLI, manual copy-paste, mock | yes, and interchangeable |
 

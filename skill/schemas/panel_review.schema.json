@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rce/panel_review.schema.json",
+  "title": "One panel seat's output for one phase (diagnostics/<round>/panel/<seat>.<phase>.json; skill/review_panel.md sections 4, 6, 8)",
+  "description": "commitment: before the seat sees the paper. review: the paper judged against that commitment. verification: a re-review of the previous roadmap. rebuttal: the devil's advocate scoring the author's rebuttals. tools/panel_check.py checks the phase-specific parts.",
+  "type": "object",
+  "required": ["seat", "phase"],
+  "properties": {
+    "seat": {"enum": ["journal_fit", "methodology", "domain", "perspective", "devils_advocate"]},
+    "phase": {"enum": ["commitment", "review", "verification", "rebuttal"]},
+    "packet_id": {"type": "string"},
+    "commitment_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$", "description": "set by the tool, not the seat"},
+    "plan": {
+      "type": "array",
+      "description": "commitment: how each criterion will be judged, written before the paper is seen",
+      "items": {
+        "type": "object",
+        "required": ["criterion_id", "how_judged", "fails_when"],
+        "properties": {"criterion_id": {"type": "string"}, "how_judged": {"type": "string", "minLength": 5},
+                       "fails_when": {"type": "string", "minLength": 5}}
+      }
+    },
+    "criteria": {
+      "type": "array",
+      "description": "review: one judgment per committed criterion",
+      "items": {
+        "type": "object",
+        "required": ["criterion_id", "judgement"],
+        "properties": {
+          "criterion_id": {"type": "string"},
+          "judgement": {"enum": ["meets", "partly", "fails", "not_assessed"]},
+          "location": {"$ref": "#/$defs/location"},
+          "note": {"type": "string"}
+        }
+      }
+    },
+    "departures": {
+      "type": "array",
+      "description": "review: where the seat departed from its commitment, and why",
+      "items": {"type": "object", "required": ["criterion_id", "reason"],
+                "properties": {"criterion_id": {"type": "string"}, "reason": {"type": "string", "minLength": 10}}}
+    },
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}},
+    "checks": {
+      "type": "array",
+      "description": "verification: one row per roadmap item of the previous round",
+      "items": {
+        "type": "object",
+        "required": ["roadmap_id", "verdict"],
+        "properties": {
+          "roadmap_id": {"type": "string", "pattern": "^R-[0-9]+$"},
+          "verdict": {"enum": ["addressed", "partly", "not_addressed", "worsened", "cannot_verify"]},
+          "location": {"$ref": "#/$defs/location"},
+          "note": {"type": "string"}
+        }
+      }
+    },
+    "scores": {
+      "type": "array",
+      "description": "rebuttal: in the order the rebuttals were scored",
+      "items": {
+        "type": "object",
+        "required": ["finding_id", "score", "reason"],
+        "properties": {
+          "finding_id": {"type": "string"},
+          "score": {"type": "integer", "minimum": 1, "maximum": 5},
+          "reason": {"type": "string", "minLength": 10},
+          "new_severity": {"enum": ["fatal", "major", "minor", "withdrawn", null]}
+        }
+      }
+    },
+    "injection_suspected": {"type": "array", "items": {"type": "object"}},
+    "notes_private": {"type": "string"}
+  },
+  "$defs": {
+    "location": {
+      "type": "object",
+      "required": ["section"],
+      "properties": {"section": {"type": "string"}, "paragraph": {"type": "integer"}, "quote": {"type": "string", "maxLength": 200}}
+    },
+    "finding": {
+      "type": "object",
+      "required": ["id", "criterion_id", "severity", "location", "problem", "why_it_matters", "repair_goal"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Z]{2,3}-[0-9]+$"},
+        "criterion_id": {"type": "string"},
+        "severity": {"enum": ["fatal", "major", "minor"]},
+        "location": {"$ref": "#/$defs/location"},
+        "problem": {"type": "string", "minLength": 10},
+        "why_it_matters": {"type": "string", "minLength": 5},
+        "repair_goal": {"type": "string", "minLength": 5, "description": "what a repair must achieve, not a rewritten sentence"}
+      }
+    }
+  }
+}

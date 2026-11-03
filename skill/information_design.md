@@ -21,7 +21,7 @@ A useful default internal order is **CLAIM → CONTEXT → EVIDENCE → EXPLANAT
 Other orders are fine when they serve the reader (e.g. CONTEXT first in the introduction's
 opening paragraph).
 
-### Paragraph diagnostic (used in step 13)
+### Paragraph diagnostic (used in step 16.3)
 For each paragraph, record: `role` (story node), `point` (one sentence), `evidence` (claim or
 evidence IDs, or "none needed: transitional"), `link_back`, `link_forward`.
 
@@ -101,7 +101,7 @@ Controls:
 - **Demonstrative + noun**: "this reduction", not a bare "this" (F0 Unit 3).
 - **Transitions must be true.** "However" needs a contrast. "Therefore" needs an inference that
   actually holds. "Moreover" needs a real addition in the same line of argument. LLM drafts
-  often use connectives decoratively. Every connective is checked in step 13, and false ones are
+  often use connectives decoratively. Every connective is checked in step 16.3, and false ones are
   deleted rather than swapped for another.
 
 ---
