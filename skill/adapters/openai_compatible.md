@@ -15,7 +15,10 @@ Bind the roles in `.rcs/models.json`. Start from `templates/models.json`.
 Then:
 - `python tools/rce_llm.py check --rcs .rcs` shows the bindings and the policy decision.
 - `python tools/rce_roles.py calibrate --rcs .rcs` calibrates the reviewer model, once.
-- `python tools/rce_roles.py review --rcs .rcs --round v002_1` runs step 18 on a packet.
+- `python tools/rce_roles.py review --rcs .rcs --round v002_1` runs step 17 on a packet.
+- `python tools/rce_roles.py panel --rcs .rcs --round v002_1` runs the five-seat panel (role `PANEL`).
+- `python tools/rce_roles.py verify --rcs .rcs --stage pre` runs the VERIFIER (role `VERIFIER`). It receives the draft
+  and the project's records, so a hosted VERIFIER sends project text to that host.
 
 Each call is **one fresh conversation**: the system message is the role file, and the user message is the schemas
 plus the packet files. There is no shared history between roles. The only shared state is the `.rcs/` files the

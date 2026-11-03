@@ -19,6 +19,16 @@ G4 passes only when, for the latest review round:
      (v0.4.0, finding lifecycle: every finding ends in one of these six states; none is dropped)
   4. the reviewer stayed in its packet (reviewer_log.json, if the runtime recorded one, lists only packet
      files)                                                                                          G4_ISOLATION
+  5. the review panel (v0.5, skill/review_panel.md), when the round has one, and always for a unified project in
+     mode paper or restructure:                                                                      PANEL_*
+       - tools/panel_check.py passes: five seats, reviews made against their commitments, the decision the findings
+         give, a roadmap built only from seat findings
+       - every standing major or fatal finding has a disposition, as `panel:<finding id>`
+       - a devil's-advocate finding is declined or marked false_positive only when its rebuttal score takes it out of
+         blocking (5 withdraws it, 4 lowers it one level; right after a concession the next needs 5)  G4_DA_REBUTTAL
+       - a Reject stops G4 until a named person decides: `"reject_checkpoint": "Q-###"` in dispositions.json,
+         answered                                                                                     PANEL_REJECT
+       - at most two panel rounds (2 revision loops in total)                                         PANEL_CAP
 
 Usage: python tools/g4_check.py .rcs --round v001_1 [--revised drafts/v002/paper.md] [--out .rcs/audits/gates/G4_review.json]
 """
@@ -32,7 +42,11 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import panel_check  # noqa: E402
 from rce_common import CLAIM_TAG_RE, load_schema, validate  # noqa: E402
+
+PANEL_MODES = {"paper", "restructure"}
+MAX_PANEL_ROUNDS = 2
 
 STRICT_DIMS = {"evidence_traceability", "claim_evidence_alignment", "unsupported_inference"}
 
@@ -56,7 +70,7 @@ def check(rcs: Path, rnd: str, revised: Path | None) -> dict:
     ddir = rcs / "diagnostics" / rnd
     dpath = ddir / "diagnostics.json"
     if not dpath.exists():
-        err("G4_NO_REVIEW", f"no blind review for round {rnd}: run REVIEW_AGENT on a packet (workflow step 18)")
+        err("G4_NO_REVIEW", f"no blind review for round {rnd}: run REVIEW_AGENT on a packet (workflow step 17)")
         return {"errors": 1, "items": items}
     diag = json.loads(dpath.read_text(encoding="utf-8"))
     for e in validate(diag, load_schema("diagnostics.schema.json")):
@@ -86,18 +100,29 @@ def check(rcs: Path, rnd: str, revised: Path | None) -> dict:
     findings = diag.get("findings", [])
     need = [f"finding:{i}" for i in blocking(findings)] + [f"inference:{i}" for i in range(len(diag.get("inference_issues", [])))]
     disp_p = rcs / "revisions" / rnd / "dispositions.json"
-    disp = {d.get("item"): d for d in (json.loads(disp_p.read_text(encoding="utf-8")).get("items", []) if disp_p.exists() else [])}
+    disp_doc = json.loads(disp_p.read_text(encoding="utf-8")) if disp_p.exists() else {}
+    disp = {d.get("item"): d for d in disp_doc.get("items", [])}
     open_issues = (rcs / "open_issues.md").read_text(encoding="utf-8") if (rcs / "open_issues.md").exists() else ""
     asked = set()
     for cp in ("pending.json", "answers.json"):
         cpp = rcs / "checkpoints" / cp
         if cpp.exists():
             asked |= {q.get("id") for q in json.loads(cpp.read_text(encoding="utf-8")).get("questions", [])}
+    panel = _panel(rcs, rnd, diag.get("packet_id"), disp_doc, err)
+    need += [f"panel:{fid}" for fid in panel.get("blocking", [])]
     any_fixed = False
     for key in need:
         d = disp.get(key)
-        label = (findings[int(key.split(":")[1])].get("dimension") if key.startswith("finding") else
-                 diag["inference_issues"][int(key.split(":")[1])].get("kind"))
+        if key.startswith("panel:"):
+            f = panel["findings"][key.split(":", 1)[1]]
+            label = f"{f.get('seat')} {panel['severity'].get(f['id'])} {f.get('criterion_id')}"
+            if f["id"].startswith("DA-") and d and d.get("disposition") in ("declined", "false_positive"):
+                err("G4_DA_REBUTTAL", f"{key}: a devil's-advocate finding stays blocking until a rebuttal scored 5 withdraws it, or "
+                                      "4 lowers it out of blocking (rce_roles.py rebut). Otherwise fix it, defer it, or ask the author")
+                continue
+        else:
+            label = (findings[int(key.split(":")[1])].get("dimension") if key.startswith("finding") else
+                     diag["inference_issues"][int(key.split(":")[1])].get("kind"))
         if not d:
             err("G4_UNADDRESSED", f"{key} ({label}) has no disposition in revisions/{rnd}/dispositions.json")
         elif d.get("disposition") == "fixed":
@@ -131,7 +156,35 @@ def check(rcs: Path, rnd: str, revised: Path | None) -> dict:
     return {"errors": sum(i["level"] == "ERROR" for i in items), "items": items, "round": rnd,
             "claims_covered": sorted(covered),
             "blocking_items": need, "diagnostics_sha256": hashlib.sha256(dpath.read_bytes()).hexdigest(),
-            "dispositions_sha256": hashlib.sha256(disp_p.read_bytes()).hexdigest() if disp_p.exists() else None}
+            "dispositions_sha256": hashlib.sha256(disp_p.read_bytes()).hexdigest() if disp_p.exists() else None,
+            "panel_decision": panel.get("decision")}
+
+
+def _panel(rcs: Path, rnd: str, packet_id: str | None, disp_doc: dict, err) -> dict:
+    """The panel's part of G4. Returns panel_check's summary, or {} when the round has no panel and needs none."""
+    state_p = rcs / "state.json"
+    mode = (json.loads(state_p.read_text(encoding="utf-8")).get("mode") if state_p.exists() else None)
+    root = rcs / "diagnostics" / rnd
+    if not (root / "panel").exists() and not (root / "editorial_decision.json").exists():
+        if mode in PANEL_MODES:
+            err("PANEL_MISSING", f"mode {mode} needs the five-seat panel for round {rnd} (rce_roles.py panel, or the runtime's panel agents)")
+        return {}
+    items, summary = panel_check.check_round(rcs, rnd, packet_id)
+    for level, code, msg in items:
+        if level == "ERROR":
+            err(code, msg)
+    if summary.get("decision") == "reject":
+        qid = str(disp_doc.get("reject_checkpoint", ""))
+        answers = rcs / "checkpoints" / "answers.json"
+        answered = {q.get("id") for q in json.loads(answers.read_text(encoding="utf-8")).get("questions", [])} if answers.exists() else set()
+        if qid not in answered:
+            err("PANEL_REJECT", "the panel's decision is Reject: stop, show the user the fatal findings, and record their decision "
+                                "as an answered checkpoint named in dispositions.json (reject_checkpoint)")
+    rounds = sorted(p.parent.name for p in (rcs / "diagnostics").glob("*/editorial_decision.json"))
+    if len(rounds) > MAX_PANEL_ROUNDS:
+        err("PANEL_CAP", f"{len(rounds)} panel rounds ({', '.join(rounds)}): the cap is {MAX_PANEL_ROUNDS} revision loops. Stop, and "
+                         "move what remains to open_issues.md")
+    return summary
 
 
 def main(argv: list[str] | None = None) -> int:

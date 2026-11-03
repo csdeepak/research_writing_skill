@@ -1,0 +1,68 @@
+{
+ "id": "INT-01",
+ "origin": "real: Stage B mocked test, 2026-11-02 (FC-0022)",
+ "title": "a method claim with no basis is found under the plural heading 'Methods'",
+ "files": {
+  ".rcs/claims/claim_evidence_map.json": {
+   "claims": [
+    {
+     "id": "C001",
+     "statement": "Inputs were denoised.",
+     "claim_type": "observed",
+     "evidence": [],
+     "basis": "none"
+    },
+    {
+     "id": "C002",
+     "statement": "Error fell to 0.42.",
+     "claim_type": "measured",
+     "evidence": [
+      "E001"
+     ],
+     "basis": "project_file"
+    },
+    {
+     "id": "C003",
+     "statement": "Error fell by 41.3%.",
+     "claim_type": "measured",
+     "evidence": [
+      "E001"
+     ],
+     "basis": "project_file"
+    }
+   ]
+  },
+  ".rcs/evidence/research_evidence.json": {
+   "items": [
+    {
+     "id": "E001",
+     "kind": "result",
+     "summary": "MAE",
+     "value": {
+      "metric": "MAE",
+      "mean": 0.42,
+      "std": 0.01,
+      "n": 5
+     },
+     "locator": {
+      "path": "results.csv",
+      "anchor": "row 2"
+     },
+     "strength": "hard",
+     "status": "ok"
+    }
+   ]
+  },
+  "results.csv": "method,mae\nours,0.42\n",
+  "paper.md": "# P\n\n## Methods\n\nInputs were denoised with a wavelet filter {C001}.\n"
+ },
+ "checks": [
+  {
+   "tool": "gi",
+   "draft": "paper.md",
+   "expect": [
+    "ERROR:METHOD_WITHOUT_BASIS"
+   ]
+  }
+ ]
+}

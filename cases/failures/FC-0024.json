@@ -1,0 +1,34 @@
+{
+  "schema_version": "1",
+  "id": "FC-0024",
+  "title": "Instruction text in an index record that did not match the source was never logged",
+  "category": "citation",
+  "severity": "medium",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-02",
+    "by": "author agent",
+    "context": "Stage B mocked test (T-077)"
+  },
+  "observed_failure": "verify_citations.py scanned only matched records for injection text, so the record most worth seeing, a mismatched one, was never logged as suspicious content.",
+  "expected_behavior": "Every record an index returns is scanned, matched or not, and instruction-like text is logged under Suspicious content.",
+  "evidence": [
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9",
+    "skill/changelog.md, 0.5.0 candidate"
+  ],
+  "regression": {
+    "tests": [
+      "T-077"
+    ],
+    "replay_fixtures": [
+      "CIT-04"
+    ]
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.5.0-candidate",
+    "summary": "scan all returned records"
+  },
+  "lessons": [],
+  "public": true
+}

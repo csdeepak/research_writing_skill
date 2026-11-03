@@ -15,6 +15,9 @@ The skill is model-agnostic by construction. It has three layers, and only the l
 | AUTHOR | yes | the agent runtime you are using: Claude Code, Codex CLI, Gemini CLI, Cursor, Aider, or any agent that can read/write files and run `python` |
 | CORPUS_AGENT | yes | a second session or subagent of that runtime (Claude Code: `claude_code/agents/rce-corpus.md`) |
 | REVIEW_AGENT | no (packet in, JSON out) | **any model** via `python tools/rce_roles.py review` (bindings in `.rcs/models.json`), or a runtime subagent |
+| PANEL: field analyst, 5 seats, synthesizer | no (packet in, JSON out) | **any model** via `python tools/rce_roles.py panel` (role `PANEL`, or `PANEL_<SEAT>` per seat), or `claude_code/agents/rce-panel.md` |
+| VERIFIER | reads project records | **any model** via `python tools/rce_roles.py verify` (role `VERIFIER`; it receives project text, so bind it like any role that does), or `claude_code/agents/rce-verifier.md` |
+| COACH (optional) | no | the runtime, as a subagent or a second session (`claude_code/agents/rce-coach.md`). Questions only |
 | RECON_GRADER, READER | no | **any model** via `tools/rce_roles.py run-tasks` |
 
 `tools/rce_llm.py` supports these providers:
@@ -34,9 +37,9 @@ Start from `templates/models.json`. Its defaults point at a local server, so no 
 3. **Calibrate the reviewer, once per reviewer model:** `python tools/rce_roles.py calibrate --rcs .rcs`.
    - It needs dimension sensitivity ≥ 0.90 and false alarms ≤ 0.10 on the planted-defect benchmark.
    - Reviews from an uncalibrated model are labelled in `reviewer_log.json`. Treat them as exploratory.
-4. **Run.** Steps 1–17 run in your agent runtime. Step 18 is `python tools/build_review_packet.py ...`, then
-   `python tools/rce_roles.py review --rcs .rcs --round <round>`. The gates are identical everywhere
-   (`python tools/run_workflow.py gates ...`).
+4. **Run.** The steps run in your agent runtime. The blind reader at step 17 is
+   `python tools/build_review_packet.py ...`, then `python tools/rce_roles.py review --rcs .rcs --round <round>`. The
+   gates are identical everywhere (`python tools/run_workflow.py gates ...`).
 
 ## Choosing models (capability, not brand)
 - **REVIEW_AGENT:** your strongest reasoning model. A weak reviewer caps the whole loop, and calibration tells you

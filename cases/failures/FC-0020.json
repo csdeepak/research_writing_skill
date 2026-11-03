@@ -1,0 +1,34 @@
+{
+  "schema_version": "1",
+  "id": "FC-0020",
+  "title": "A source with only an arXiv id was checked against arXiv alone",
+  "category": "citation",
+  "severity": "medium",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-02",
+    "by": "tool calibration",
+    "context": "Stage B live run of verify_citations.py against the real indexes"
+  },
+  "observed_failure": "An arXiv-id-only source was looked up in one index, so it was flagged single_index and never triangulated.",
+  "expected_behavior": "An arXiv id is also looked up through its DataCite DOI (10.48550/arXiv.<id>) in OpenAlex and Semantic Scholar.",
+  "evidence": [
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9",
+    "skill/changelog.md, 0.5.0 candidate"
+  ],
+  "regression": {
+    "tests": [
+      "T-074"
+    ],
+    "replay_fixtures": [
+      "CIT-01"
+    ]
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.5.0-candidate",
+    "summary": "arXiv ids are triangulated through their DataCite DOI"
+  },
+  "lessons": [],
+  "public": true
+}

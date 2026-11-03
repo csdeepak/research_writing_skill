@@ -11,8 +11,8 @@
 | Logical role | Mechanism |
 |--------------|-----------|
 | AUTHOR | The interactive Codex session |
-| CORPUS_AGENT / SKILL_AGENT / RECON_GRADER | Separate non-interactive runs: `codex exec "<contents of skill/agents/<role>.md> <task>"` in the project directory |
-| REVIEW_AGENT | A separate `codex exec` run **with the working directory set to the packet** and a read-only sandbox where possible |
+| CORPUS_AGENT / SKILL_AGENT / RECON_GRADER / VERIFIER | Separate non-interactive runs: `codex exec "<contents of skill/agents/<role>.md> <task>"` in the project directory |
+| REVIEW_AGENT, PANEL members | A separate `codex exec` run per member and phase, **with the working directory set to the packet** and a read-only sandbox where possible, or `tools/rce_roles.py panel` |
 
 Example (check `codex exec --help` for the current flag names):
 
@@ -29,8 +29,8 @@ cd .rcs/packets/review_v002_1 && codex exec "$(cat /path/to/skill/agents/review_
   `INSUFFICIENT_LITERATURE`. Never fall back to citations from memory.
 
 ## Single-shot roles without extra sessions
-REVIEW_AGENT, RECON_GRADER and READER can also run through `tools/rce_roles.py`, with any model bound in
-`.rcs/models.json`. Two ways:
+REVIEW_AGENT, the panel, the VERIFIER, RECON_GRADER and READER can also run through `tools/rce_roles.py`, with any
+model bound in `.rcs/models.json`. Two ways:
 - the API behind Codex (`openai_compatible.md`);
 - the CLI itself: `"REVIEW_AGENT": {"provider": "command", "command": ["codex", "exec", "-"]}`. Check that your
   version reads the prompt from stdin.

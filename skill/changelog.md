@@ -11,6 +11,122 @@ PATCH = clarification with no behavior change.
 
 ---
 
+## [0.5.0] — candidate, unreleased (work started 2026-11-02) — unified workflow
+
+**Why minor:** by the policy above a workflow change is MAJOR. The project is pre-1.0, and the user
+chose the next minor version. `SKILL.md` keeps `version: 0.4.0` until the release step
+(`versions/README.md`).
+
+**Status: Stages A to E done. Merged to `main` on 2026-11-03 as an unreleased candidate, by the
+user's decision.** The version stays 0.4.0. A release waits for live runs of the paths only unit
+tests cover so far: the final VERIFIER pass, panel round 2, the devil's-advocate rebuttal and the
+COACH.
+
+**Stage D, tests and an end-to-end run:**
+- Integrity benchmark: perturbation variants H to L plant a fabricated DOI, a DOI that resolves to
+  another paper, a retracted source, a hallucinated result and a method with no basis.
+  `EXPECTED.json` gains `integrity_variants` (the reviewer `variants` are unchanged). T-105 runs
+  each variant through `verify_citations.py` and `integrity_check.py` against synthetic index
+  answers, and checks the clean control raises nothing.
+- `integrity_check.py`: an untraced number on a line tagged with a measured, observed or derived
+  claim is now an M3 error (`UNTRACED_RESULT_NUMBER`), not a warning.
+- `replay_fixtures.py` replays the new tools (`verify`, `gl`, `gi`, `panel`). Failure cases
+  FC-0019 to FC-0033, with fixtures CIT-01 to CIT-08, INT-01, INT-02 and INT-02b.
+- End-to-end run of `paper` mode on a copy of the demo project, with live lookups, subagent roles,
+  Pandoc and LaTeX (`evaluation/unified_e2e/REPORT.md`). Every phase ran. GI stopped the paper on
+  integrity questions only a named person can answer, including a gap that the retrieved abstracts
+  contradict, and G5 failed on open markers, as it should.
+- Defects that run found, each fixed with a regression test:
+  - The drafted search plan carried RQ labels and coined project terms. They are now dropped or
+    listed for review.
+  - A title the console could not print crashed the tools.
+  - Semantic Scholar's JournalArticle type hid an arXiv preprint.
+  - One citation matched two works, and GL checked the wrong one. A shared resolver now narrows by
+    year suffix and author form, reports `CITATION_AMBIGUOUS`, and warns on `CITATION_AUTHOR_FORM`.
+  - `run_workflow.py` passed a missing draft path, and GL passed without reading it. The path now
+    resolves from `.rcs/`, the run stops if no file is found, and GL reports `DRAFT_MISSING`.
+  - A preprint and its published paper counted as two works. They are now marked
+    `possible_version_of`, and the search reports distinct works.
+  - The review packet had no reference list. It now has one, built from the verified registry.
+- Tests T-105 and T-106, plus regression tests in the T-076 to T-093 groups.
+
+**Stage C, schemas, roles and adapters:**
+- Schemas: `source_registry` extended additively (lookup verdicts, index rows, conflicts, suggestion,
+  retraction, flags, `arxiv_id`), so v0.4 registries still validate. New: `paper_config`,
+  `candidates`, `integrity_report`, `reviewer_cards`, `panel_review`, `editorial_decision`.
+  `validate_artifacts.py` checks every one. The stdlib validator now follows local `$ref`, which
+  it used to skip without validating anything.
+- Prompts, written fresh: `agents/integrity_agent.md` (VERIFIER), `agents/panel/` (a shared seat
+  protocol, the field analyst, five seats, the synthesizer), `agents/coach_agent.md`. The literature
+  steps in `agents/corpus_agent.md` now run on the Stage B tools.
+- `tools/rce_roles.py` gains `panel` (seats commit from the card and metadata only, then review;
+  the tool stamps each review with its commitment's hash and the packet id), `rebut` and `verify`.
+  New roles `PANEL` and `VERIFIER` are in the models template.
+- `tools/panel_check.py` re-derives the decision from the findings and checks that the
+  synthesizer added nothing. `g4_check.py` uses it: standing major or fatal panel findings need
+  dispositions, the devil's-advocate concession rule is enforced from the scores, a Reject needs
+  a named person's decision, paper and restructure modes need a panel, and the cap is two rounds.
+- Adapters: Claude Code subagents `rce-verifier`, `rce-panel`, `rce-coach`; the role tables,
+  `AGENTS.md`, and the Codex, Gemini, OpenAI-compatible and local-model notes. A hosted VERIFIER
+  receives project text: `local_models.md` says so.
+- Tests T-094 to T-104 (41 tests).
+
+**Stage B, tools (all stdlib, network only behind `--online`):**
+- `tools/rce_index.py`: clients for the DOI resolver, Crossref, OpenAlex, Semantic Scholar and arXiv.
+  Each answer is `found`, `not_found` or `skipped`. Only the resolver and arXiv prove absence. Answers
+  are policy-checked and logged, and keys travel in headers only. Only definite answers are cached.
+- `tools/lit_search.py`: corpus intake (BibTeX, RIS, CSL-JSON, Obsidian, PDF folders; read-only, loud
+  on failure), a search plan drafted for review before anything is sent, facet queries on at least
+  two indexes, snowballing, and the corpus log.
+- `tools/verify_citations.py`: lookups, verdicts, cross-index rows, retraction status, flags,
+  registration of kept candidates, and gate **GL**.
+- `tools/integrity_check.py`: per-mode evidence for M1–M7, the replayable alignment sample, and gate
+  **GI** at both stages. Tool findings override a VERIFIER `CLEAR`.
+- `tools/format_paper.py`: `references.bib` from the registry, citation mapping, Pandoc with
+  `--citeproc`, PDF through LaTeX, content checks on the outputs. `tools/disclosure.py`: a draft
+  statement from the venue profile and the run's own records.
+- Wiring: GL and GI in `validate_artifacts.py` (self-certification, failure, staleness), in
+  `run_workflow.py gates` and in `rce.py`. G5 needs a final GI on unified projects only.
+  `workflow_guard.py` gains the VERIFIER and PANEL roles, and the AUTHOR may not write
+  `audits/integrity/`. `lint_draft.py` exposes its citation matcher, so all tools read citations
+  alike.
+- Found by live runs and fixed before commit: one work under an arXiv id and an arXiv DOI flagged as
+  a conflict; arXiv-only sources not triangulated; a network drop turning a real DOI `unresolvable`;
+  and `Methods` (plural) not recognised as a method section, which silently disabled M6.
+- Tests T-072 to T-093 (162 tests, network mocked).
+
+**Design source:** Academic Research Skills by Cheng-I Wu (CC BY-NC 4.0, commit `a41f3b2`,
+`docs/SOURCES.md` S32). Read for design only. Every document here is written fresh for this
+Apache-2.0 repository, and no ARS text, prompts, tables or code are copied.
+
+**Changed (behaviour):**
+- `workflow.md` and `SKILL.md`: one ordered workflow of 8 phases and 22 steps. RCE stays the spine.
+  Literature moves ahead of planning, and steps are renumbered (mapping table at the end of
+  `workflow.md`). `SKILL.md` gains a router and a gate table.
+- Revision cap: 2 revision loops in total, down from 3 review rounds.
+- New integrity rules: nobody checks their own work, and the network is opt-in (rules 10–11).
+- `evaluation_rubric.md` and the `citation_rules.md` pipeline now follow these caps and lookups.
+
+**Added:**
+- `modes.md`: 12 modes, routing by materials, and what no mode may skip.
+- `literature.md`: corpus intake, global search, source verification (`lookup_verified`,
+  cross-index triangulation, retraction status, flags), grading, gate **GL**, and the
+  systematic-review path.
+- `integrity.md`: the VERIFIER role, seven failure modes M1–M7, claim↔reference alignment on a
+  risk-stratified sample, blocking rules, gate **GI** at two stages.
+- `review_panel.md`: field analyst, five seats with commitment before reading, editorial synthesis,
+  devil's-advocate rebuttals, verification re-review, and external human reviews.
+- `finalize.md`: references, formats, citation styles, disclosure, submission checklist, packaging.
+- P0 INTAKE: routing, `plan/paper_config.json`, budget and oversight level, checkpoint C0.
+- Failure states `FABRICATED_CITATION`, `RETRACTED_SOURCE`, `INTEGRITY_SUSPECTED`, `PANEL_REJECT`,
+  `FORMAT_TOOL_MISSING`.
+- `ai_policy` block in both venue-profile templates.
+
+Proposal: `versions/proposals/20261102-unified-workflow.json`. The gaps it addresses come from a
+static capability review, not from reader or user trials.
+
+**Not claimed:** any effect on reader comprehension or paper quality.
+
 ## [Unreleased local update] — 2026-10-26 — adaptive representation
 
 User-authorized update; no version bump or public release. Adds `representation_design.md`,

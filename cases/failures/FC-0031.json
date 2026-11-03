@@ -1,0 +1,35 @@
+{
+  "schema_version": "1",
+  "id": "FC-0031",
+  "title": "GL passed a draft it never read because the draft path did not exist",
+  "category": "workflow-gate",
+  "severity": "high",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-02",
+    "by": "orchestrator",
+    "context": "Stage D paper-mode run of the demo project against the live indexes"
+  },
+  "observed_failure": "run_workflow.py passed --draft drafts/v002/paper.md, as its own usage line writes it, to tools running from the project root. Lint and number checks failed on the missing file, but GL skipped draft checks for a path that did not exist and reported PASSED.",
+  "expected_behavior": "A draft path is found from the working directory or from .rcs/, a path that is neither stops run_workflow before any tool runs, and GL fails with DRAFT_MISSING when --draft names no file.",
+  "evidence": [
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9",
+    "evaluation/unified_e2e/REPORT.md"
+  ],
+  "regression": {
+    "tests": [
+      "T-078",
+      "T-093"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.5.0-candidate",
+    "summary": "run_workflow resolves draft paths and stops on a missing one; GL errors on a missing draft"
+  },
+  "lessons": [
+    "A gate that skips its input when the input is missing must fail, not pass."
+  ],
+  "public": true
+}

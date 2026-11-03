@@ -1,0 +1,59 @@
+{
+ "id": "CIT-03",
+ "origin": "real: Stage B live run, 2026-11-02 (FC-0021)",
+ "title": "a network drop after the resolver answered gives no verdict, never unresolvable",
+ "files": {
+  ".rcs/corpus/source_registry.json": {
+   "sources": [
+    {
+     "id": "SRC-001",
+     "title": "Beyond authorship: attribution, contribution, collaboration, and credit",
+     "authors": [
+      "Brand, Amy"
+     ],
+     "year": 2015,
+     "publication_status": "PEER-REVIEWED",
+     "level": 2,
+     "verification": {
+      "method": "manual",
+      "date": "2026-11-02"
+     },
+     "read_depth": "full",
+     "permitted_use": [
+      "content_citation"
+     ],
+     "doi": "10.1087/20150211"
+    }
+   ]
+  }
+ },
+ "checks": [
+  {
+   "tool": "verify",
+   "index_responses": [
+    [
+     "doi.org/api/handles/",
+     200,
+     {
+      "responseCode": 1
+     }
+    ]
+   ],
+   "expect": [
+    "VERDICT:none",
+    "CODE:LOOKUP_DEGRADED",
+    "INDEX:crossref=skipped"
+   ],
+   "forbid": [
+    "VERDICT:unresolvable",
+    "VERDICT:false"
+   ]
+  },
+  {
+   "tool": "gl",
+   "forbid": [
+    "ERROR:FABRICATED_CITATION"
+   ]
+  }
+ ]
+}

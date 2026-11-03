@@ -51,7 +51,7 @@
       "manipulation": "Placeholder citations attached to claims they do not support; citation dumping; a secondary claim of prior success that contradicts the gap.",
       "lint_must_fire": [],
       "lint_must_not_fire": ["B4-verb-vs-type"],
-      "detected_by": "citation audit (workflow step 16) with the placeholder contents below; the reviewer alone can flag only the internal contradiction and the dumping",
+      "detected_by": "citation audit (workflow step 16.6) with the placeholder contents below; the reviewer alone can flag only the internal contradiction and the dumping",
       "reviewer_expected_drop": ["evidence_traceability"],
       "placeholder_contents": {
         "R1": "Studies missing-value imputation in weather data; does not mention level shifts or failure frequencies. -> does NOT support 'most common failure mode'.",
@@ -62,6 +62,926 @@
         "R6": "An opinion blog post. -> publication_status OPINION; cannot support a scientific argument without being labeled as such."
       },
       "expected_citation_audit": {"R1": "fail_support", "R2": "fail_support", "R3": "fail_strength", "R4": "fail_support", "R5": "fail_support_contradicts", "R6": "fail_status"}
+    }
+  },
+  "integrity_variants": {
+    "_comment": "Integrity benchmark (proposal 20261102-unified-workflow, Stage D). Each variant is a draft on the demo project with one planted integrity defect. 'sources' are planted registry entries, and 'index_responses' are SYNTHETIC index answers in the shape of the real Crossref, OpenAlex, Semantic Scholar, arXiv and DOI-resolver APIs, so the lookup code runs offline. 'claims_patch' adds claims to the demo's claim map. 'expect' and 'forbid' use the tokens of tools/replay_fixtures.py (verify: VERDICT, CODE, RETRACTION, FLAG, SUGGESTION; gl and gi: LEVEL:CODE, with gi signals as WARN). 'verifier_expected' is what a correct VERIFIER should conclude, for calibrating a VERIFIER model; CI does not check it. NEVER place this file in a packet.",
+    "A_clean.md": {
+      "manipulation": "none: the control. One verified source, uncited.",
+      "sources": [
+        {
+          "id": "SRC-001",
+          "title": "Normalization practice in deployed load forecasting",
+          "authors": [
+            "Okafor, Ada"
+          ],
+          "year": 2021,
+          "venue": "Journal of Synthetic Forecasting",
+          "doi": "10.5555/rce.good.0001",
+          "publication_status": "PEER-REVIEWED",
+          "level": 2,
+          "verification": {
+            "method": "manual",
+            "date": "2026-11-02"
+          },
+          "read_depth": "full",
+          "permitted_use": [
+            "content_citation"
+          ],
+          "as_cited": "Normalization practice in deployed load forecasting",
+          "establishes": [
+            {
+              "statement": "training-set statistics are the usual normalization",
+              "support_quote": "inputs are standardized with the mean and standard deviation of the training set",
+              "location": "Section 2"
+            }
+          ]
+        }
+      ],
+      "index_responses": [
+        [
+          "doi.org/api/handles/",
+          200,
+          {
+            "responseCode": 1
+          }
+        ],
+        [
+          "api.crossref.org/works/10.5555",
+          200,
+          {
+            "message": {
+              "DOI": "10.5555/rce.good.0001",
+              "title": [
+                "Normalization practice in deployed load forecasting"
+              ],
+              "author": [
+                {
+                  "family": "Okafor",
+                  "given": "A."
+                }
+              ],
+              "issued": {
+                "date-parts": [
+                  [
+                    2021
+                  ]
+                ]
+              },
+              "container-title": [
+                "Journal of Synthetic Forecasting"
+              ],
+              "type": "journal-article"
+            }
+          }
+        ],
+        [
+          "api.openalex.org/works/doi:",
+          200,
+          {
+            "id": "https://openalex.org/W1",
+            "doi": "https://doi.org/10.5555/rce.good.0001",
+            "display_name": "Normalization practice in deployed load forecasting",
+            "publication_year": 2021,
+            "authorships": [
+              {
+                "author": {
+                  "display_name": "Ada Okafor"
+                }
+              }
+            ],
+            "type": "article",
+            "is_retracted": false,
+            "primary_location": {
+              "source": {
+                "display_name": "Journal of Synthetic Forecasting",
+                "type": "journal"
+              }
+            }
+          }
+        ],
+        [
+          "semanticscholar.org/graph/v1/paper/DOI:",
+          404,
+          {
+            "error": "not found"
+          }
+        ],
+        [
+          "api.crossref.org/works?",
+          200,
+          {
+            "message": {
+              "items": []
+            }
+          }
+        ],
+        [
+          "api.openalex.org/works?",
+          200,
+          {
+            "results": []
+          }
+        ],
+        [
+          "semanticscholar.org/graph/v1/paper/search",
+          200,
+          {
+            "data": []
+          }
+        ],
+        [
+          "export.arxiv.org",
+          200,
+          "<feed xmlns=\"http://www.w3.org/2005/Atom\"></feed>"
+        ]
+      ],
+      "claims_patch": [],
+      "expect": {
+        "verify": [
+          "VERDICT:true",
+          "RETRACTION:not_retracted"
+        ]
+      },
+      "forbid": {
+        "verify": [
+          "VERDICT:false",
+          "FLAG:metadata_conflict"
+        ],
+        "gl": [
+          "ERROR:*"
+        ],
+        "gi": [
+          "ERROR:*"
+        ]
+      },
+      "verifier_expected": {
+        "M1": "CLEAR",
+        "M2": "CLEAR",
+        "M3": "CLEAR",
+        "M5": "CLEAR",
+        "M6": "CLEAR"
+      }
+    },
+    "H_fabricated_doi.md": {
+      "manipulation": "A citation whose DOI the resolver says does not exist; no index knows the title.",
+      "sources": [
+        {
+          "id": "SRC-001",
+          "title": "Normalization practice in deployed load forecasting",
+          "authors": [
+            "Okafor, Ada"
+          ],
+          "year": 2021,
+          "venue": "Journal of Synthetic Forecasting",
+          "doi": "10.5555/rce.fabricated.0001",
+          "publication_status": "PEER-REVIEWED",
+          "level": 2,
+          "verification": {
+            "method": "manual",
+            "date": "2026-11-02"
+          },
+          "read_depth": "full",
+          "permitted_use": [
+            "content_citation"
+          ],
+          "as_cited": "Normalization practice in deployed load forecasting",
+          "establishes": [
+            {
+              "statement": "training-set statistics are the usual normalization",
+              "support_quote": "inputs are standardized with the mean and standard deviation of the training set",
+              "location": "Section 2"
+            }
+          ]
+        }
+      ],
+      "index_responses": [
+        [
+          "doi.org/api/handles/",
+          404,
+          {
+            "responseCode": 100
+          }
+        ],
+        [
+          "api.crossref.org/works/10.5555",
+          404,
+          {
+            "message": "not found"
+          }
+        ],
+        [
+          "api.openalex.org/works/doi:",
+          404,
+          "<html>not found</html>"
+        ],
+        [
+          "semanticscholar.org/graph/v1/paper/DOI:",
+          404,
+          {
+            "error": "not found"
+          }
+        ],
+        [
+          "api.crossref.org/works?",
+          200,
+          {
+            "message": {
+              "items": []
+            }
+          }
+        ],
+        [
+          "api.openalex.org/works?",
+          200,
+          {
+            "results": []
+          }
+        ],
+        [
+          "semanticscholar.org/graph/v1/paper/search",
+          200,
+          {
+            "data": []
+          }
+        ],
+        [
+          "export.arxiv.org",
+          200,
+          "<feed xmlns=\"http://www.w3.org/2005/Atom\"></feed>"
+        ]
+      ],
+      "claims_patch": [],
+      "expect": {
+        "verify": [
+          "VERDICT:false",
+          "CODE:ID_NOT_FOUND"
+        ],
+        "gl": [
+          "ERROR:FABRICATED_CITATION"
+        ],
+        "gi": [
+          "ERROR:GL_FAILED"
+        ]
+      },
+      "forbid": {
+        "verify": [
+          "VERDICT:true"
+        ]
+      },
+      "verifier_expected": {
+        "M2": "SUSPECTED"
+      }
+    },
+    "I_wrong_paper_doi.md": {
+      "manipulation": "A citation whose DOI resolves to an unrelated paper; an index holds the cited title under another DOI.",
+      "sources": [
+        {
+          "id": "SRC-001",
+          "title": "Seasonal statistics for streaming normalization of energy load",
+          "authors": [
+            "Lindqvist, Erik",
+            "Mora, Ines"
+          ],
+          "year": 2020,
+          "venue": "Journal of Synthetic Forecasting",
+          "doi": "10.5555/rce.wrongpaper.0002",
+          "publication_status": "PEER-REVIEWED",
+          "level": 2,
+          "verification": {
+            "method": "manual",
+            "date": "2026-11-02"
+          },
+          "read_depth": "full",
+          "permitted_use": [
+            "content_citation"
+          ],
+          "as_cited": "Seasonal statistics for streaming normalization of energy load",
+          "establishes": [
+            {
+              "statement": "training-set statistics are the usual normalization",
+              "support_quote": "inputs are standardized with the mean and standard deviation of the training set",
+              "location": "Section 2"
+            }
+          ]
+        }
+      ],
+      "index_responses": [
+        [
+          "doi.org/api/handles/",
+          200,
+          {
+            "responseCode": 1
+          }
+        ],
+        [
+          "api.crossref.org/works/10.5555",
+          200,
+          {
+            "message": {
+              "DOI": "10.5555/rce.wrongpaper.0002",
+              "title": [
+                "Sediment transport in braided river channels"
+              ],
+              "author": [
+                {
+                  "family": "Bakker",
+                  "given": "A."
+                }
+              ],
+              "issued": {
+                "date-parts": [
+                  [
+                    2020
+                  ]
+                ]
+              },
+              "container-title": [
+                "Journal of Synthetic Forecasting"
+              ],
+              "type": "journal-article"
+            }
+          }
+        ],
+        [
+          "api.openalex.org/works/doi:",
+          200,
+          {
+            "id": "https://openalex.org/W1",
+            "doi": "https://doi.org/10.5555/rce.wrongpaper.0002",
+            "display_name": "Sediment transport in braided river channels",
+            "publication_year": 2020,
+            "authorships": [
+              {
+                "author": {
+                  "display_name": "Jan Bakker"
+                }
+              }
+            ],
+            "type": "article",
+            "is_retracted": false,
+            "primary_location": {
+              "source": {
+                "display_name": "Journal of Synthetic Forecasting",
+                "type": "journal"
+              }
+            }
+          }
+        ],
+        [
+          "semanticscholar.org/graph/v1/paper/DOI:",
+          404,
+          {
+            "error": "not found"
+          }
+        ],
+        [
+          "api.crossref.org/works?",
+          200,
+          {
+            "message": {
+              "items": [
+                {
+                  "DOI": "10.5555/rce.rightpaper.0003",
+                  "title": [
+                    "Seasonal statistics for streaming normalization of energy load"
+                  ],
+                  "author": [
+                    {
+                      "family": "Lindqvist",
+                      "given": "A."
+                    }
+                  ],
+                  "issued": {
+                    "date-parts": [
+                      [
+                        2020
+                      ]
+                    ]
+                  },
+                  "container-title": [
+                    "Journal of Synthetic Forecasting"
+                  ],
+                  "type": "journal-article"
+                }
+              ]
+            }
+          }
+        ],
+        [
+          "api.openalex.org/works?",
+          200,
+          {
+            "results": []
+          }
+        ]
+      ],
+      "claims_patch": [],
+      "expect": {
+        "verify": [
+          "VERDICT:false",
+          "CODE:DOI_MISMATCH",
+          "SUGGESTION:10.5555/rce.rightpaper.0003"
+        ],
+        "gl": [
+          "ERROR:FABRICATED_CITATION"
+        ],
+        "gi": [
+          "ERROR:GL_FAILED"
+        ]
+      },
+      "forbid": {
+        "verify": [
+          "VERDICT:true"
+        ]
+      },
+      "verifier_expected": {
+        "M2": "SUSPECTED"
+      }
+    },
+    "J_retracted_source.md": {
+      "manipulation": "A citation of a paper that both resolvers report as retracted, with no acknowledgement.",
+      "sources": [
+        {
+          "id": "SRC-001",
+          "title": "Adaptive scaling of electricity demand series under regime change",
+          "authors": [
+            "Haddad, Samir"
+          ],
+          "year": 2019,
+          "venue": "Journal of Synthetic Forecasting",
+          "doi": "10.5555/rce.retracted.0004",
+          "publication_status": "PEER-REVIEWED",
+          "level": 2,
+          "verification": {
+            "method": "manual",
+            "date": "2026-11-02"
+          },
+          "read_depth": "full",
+          "permitted_use": [
+            "content_citation"
+          ],
+          "as_cited": "Adaptive scaling of electricity demand series under regime change",
+          "establishes": [
+            {
+              "statement": "training-set statistics are the usual normalization",
+              "support_quote": "inputs are standardized with the mean and standard deviation of the training set",
+              "location": "Section 2"
+            }
+          ]
+        }
+      ],
+      "index_responses": [
+        [
+          "doi.org/api/handles/",
+          200,
+          {
+            "responseCode": 1
+          }
+        ],
+        [
+          "api.crossref.org/works/10.5555",
+          200,
+          {
+            "message": {
+              "DOI": "10.5555/rce.retracted.0004",
+              "title": [
+                "RETRACTED: Adaptive scaling of electricity demand series under regime change"
+              ],
+              "author": [
+                {
+                  "family": "Haddad",
+                  "given": "A."
+                }
+              ],
+              "issued": {
+                "date-parts": [
+                  [
+                    2019
+                  ]
+                ]
+              },
+              "container-title": [
+                "Journal of Synthetic Forecasting"
+              ],
+              "type": "journal-article",
+              "updated-by": [
+                {
+                  "type": "retraction",
+                  "source": "retraction-watch",
+                  "updated": {
+                    "date-parts": [
+                      [
+                        2023,
+                        4,
+                        2
+                      ]
+                    ]
+                  },
+                  "DOI": "10.5555/rce.notice.0005"
+                }
+              ]
+            }
+          }
+        ],
+        [
+          "api.openalex.org/works/doi:",
+          200,
+          {
+            "id": "https://openalex.org/W1",
+            "doi": "https://doi.org/10.5555/rce.retracted.0004",
+            "display_name": "RETRACTED: Adaptive scaling of electricity demand series under regime change",
+            "publication_year": 2019,
+            "authorships": [
+              {
+                "author": {
+                  "display_name": "Samir Haddad"
+                }
+              }
+            ],
+            "type": "article",
+            "is_retracted": true,
+            "primary_location": {
+              "source": {
+                "display_name": "Journal of Synthetic Forecasting",
+                "type": "journal"
+              }
+            }
+          }
+        ],
+        [
+          "semanticscholar.org/graph/v1/paper/DOI:",
+          404,
+          {
+            "error": "not found"
+          }
+        ],
+        [
+          "api.crossref.org/works?",
+          200,
+          {
+            "message": {
+              "items": []
+            }
+          }
+        ],
+        [
+          "api.openalex.org/works?",
+          200,
+          {
+            "results": []
+          }
+        ],
+        [
+          "semanticscholar.org/graph/v1/paper/search",
+          200,
+          {
+            "data": []
+          }
+        ],
+        [
+          "export.arxiv.org",
+          200,
+          "<feed xmlns=\"http://www.w3.org/2005/Atom\"></feed>"
+        ]
+      ],
+      "claims_patch": [],
+      "expect": {
+        "verify": [
+          "VERDICT:true",
+          "RETRACTION:retracted"
+        ],
+        "gl": [
+          "ERROR:RETRACTED_SOURCE"
+        ],
+        "gi": [
+          "ERROR:GL_FAILED"
+        ]
+      },
+      "forbid": {
+        "gl": [
+          "ERROR:FABRICATED_CITATION"
+        ]
+      },
+      "verifier_expected": {
+        "M2": "SUSPECTED"
+      }
+    },
+    "K_hallucinated_result.md": {
+      "manipulation": "A result sentence with a number no run produced, tagged as a measured claim with no evidence.",
+      "sources": [
+        {
+          "id": "SRC-001",
+          "title": "Normalization practice in deployed load forecasting",
+          "authors": [
+            "Okafor, Ada"
+          ],
+          "year": 2021,
+          "venue": "Journal of Synthetic Forecasting",
+          "doi": "10.5555/rce.good.0001",
+          "publication_status": "PEER-REVIEWED",
+          "level": 2,
+          "verification": {
+            "method": "manual",
+            "date": "2026-11-02"
+          },
+          "read_depth": "full",
+          "permitted_use": [
+            "content_citation"
+          ],
+          "as_cited": "Normalization practice in deployed load forecasting",
+          "establishes": [
+            {
+              "statement": "training-set statistics are the usual normalization",
+              "support_quote": "inputs are standardized with the mean and standard deviation of the training set",
+              "location": "Section 2"
+            }
+          ]
+        }
+      ],
+      "index_responses": [
+        [
+          "doi.org/api/handles/",
+          200,
+          {
+            "responseCode": 1
+          }
+        ],
+        [
+          "api.crossref.org/works/10.5555",
+          200,
+          {
+            "message": {
+              "DOI": "10.5555/rce.good.0001",
+              "title": [
+                "Normalization practice in deployed load forecasting"
+              ],
+              "author": [
+                {
+                  "family": "Okafor",
+                  "given": "A."
+                }
+              ],
+              "issued": {
+                "date-parts": [
+                  [
+                    2021
+                  ]
+                ]
+              },
+              "container-title": [
+                "Journal of Synthetic Forecasting"
+              ],
+              "type": "journal-article"
+            }
+          }
+        ],
+        [
+          "api.openalex.org/works/doi:",
+          200,
+          {
+            "id": "https://openalex.org/W1",
+            "doi": "https://doi.org/10.5555/rce.good.0001",
+            "display_name": "Normalization practice in deployed load forecasting",
+            "publication_year": 2021,
+            "authorships": [
+              {
+                "author": {
+                  "display_name": "Ada Okafor"
+                }
+              }
+            ],
+            "type": "article",
+            "is_retracted": false,
+            "primary_location": {
+              "source": {
+                "display_name": "Journal of Synthetic Forecasting",
+                "type": "journal"
+              }
+            }
+          }
+        ],
+        [
+          "semanticscholar.org/graph/v1/paper/DOI:",
+          404,
+          {
+            "error": "not found"
+          }
+        ],
+        [
+          "api.crossref.org/works?",
+          200,
+          {
+            "message": {
+              "items": []
+            }
+          }
+        ],
+        [
+          "api.openalex.org/works?",
+          200,
+          {
+            "results": []
+          }
+        ],
+        [
+          "semanticscholar.org/graph/v1/paper/search",
+          200,
+          {
+            "data": []
+          }
+        ],
+        [
+          "export.arxiv.org",
+          200,
+          "<feed xmlns=\"http://www.w3.org/2005/Atom\"></feed>"
+        ]
+      ],
+      "claims_patch": [
+        {
+          "id": "C008",
+          "statement": "With a 96-step window, RWN reduced MAE by a further 41.3% at s = 0.6.",
+          "claim_type": "measured",
+          "evidence": [],
+          "confidence": "low",
+          "permitted_verbs": [
+            "reduced"
+          ],
+          "author_confirmation": "pending"
+        }
+      ],
+      "expect": {
+        "gi": [
+          "ERROR:NO_HARD_EVIDENCE",
+          "ERROR:UNTRACED_RESULT_NUMBER"
+        ]
+      },
+      "forbid": {
+        "gl": [
+          "ERROR:*"
+        ]
+      },
+      "verifier_expected": {
+        "M3": "SUSPECTED"
+      }
+    },
+    "L_method_without_basis.md": {
+      "manipulation": "A method step in the Methods section that no code or config contains, tagged with a claim whose basis is none.",
+      "sources": [
+        {
+          "id": "SRC-001",
+          "title": "Normalization practice in deployed load forecasting",
+          "authors": [
+            "Okafor, Ada"
+          ],
+          "year": 2021,
+          "venue": "Journal of Synthetic Forecasting",
+          "doi": "10.5555/rce.good.0001",
+          "publication_status": "PEER-REVIEWED",
+          "level": 2,
+          "verification": {
+            "method": "manual",
+            "date": "2026-11-02"
+          },
+          "read_depth": "full",
+          "permitted_use": [
+            "content_citation"
+          ],
+          "as_cited": "Normalization practice in deployed load forecasting",
+          "establishes": [
+            {
+              "statement": "training-set statistics are the usual normalization",
+              "support_quote": "inputs are standardized with the mean and standard deviation of the training set",
+              "location": "Section 2"
+            }
+          ]
+        }
+      ],
+      "index_responses": [
+        [
+          "doi.org/api/handles/",
+          200,
+          {
+            "responseCode": 1
+          }
+        ],
+        [
+          "api.crossref.org/works/10.5555",
+          200,
+          {
+            "message": {
+              "DOI": "10.5555/rce.good.0001",
+              "title": [
+                "Normalization practice in deployed load forecasting"
+              ],
+              "author": [
+                {
+                  "family": "Okafor",
+                  "given": "A."
+                }
+              ],
+              "issued": {
+                "date-parts": [
+                  [
+                    2021
+                  ]
+                ]
+              },
+              "container-title": [
+                "Journal of Synthetic Forecasting"
+              ],
+              "type": "journal-article"
+            }
+          }
+        ],
+        [
+          "api.openalex.org/works/doi:",
+          200,
+          {
+            "id": "https://openalex.org/W1",
+            "doi": "https://doi.org/10.5555/rce.good.0001",
+            "display_name": "Normalization practice in deployed load forecasting",
+            "publication_year": 2021,
+            "authorships": [
+              {
+                "author": {
+                  "display_name": "Ada Okafor"
+                }
+              }
+            ],
+            "type": "article",
+            "is_retracted": false,
+            "primary_location": {
+              "source": {
+                "display_name": "Journal of Synthetic Forecasting",
+                "type": "journal"
+              }
+            }
+          }
+        ],
+        [
+          "semanticscholar.org/graph/v1/paper/DOI:",
+          404,
+          {
+            "error": "not found"
+          }
+        ],
+        [
+          "api.crossref.org/works?",
+          200,
+          {
+            "message": {
+              "items": []
+            }
+          }
+        ],
+        [
+          "api.openalex.org/works?",
+          200,
+          {
+            "results": []
+          }
+        ],
+        [
+          "semanticscholar.org/graph/v1/paper/search",
+          200,
+          {
+            "data": []
+          }
+        ],
+        [
+          "export.arxiv.org",
+          200,
+          "<feed xmlns=\"http://www.w3.org/2005/Atom\"></feed>"
+        ]
+      ],
+      "claims_patch": [
+        {
+          "id": "C009",
+          "statement": "Every input window was denoised with a wavelet filter.",
+          "claim_type": "observed",
+          "evidence": [],
+          "basis": "none",
+          "confidence": "low",
+          "permitted_verbs": [
+            "was denoised"
+          ],
+          "author_confirmation": "pending"
+        }
+      ],
+      "expect": {
+        "gi": [
+          "ERROR:METHOD_WITHOUT_BASIS"
+        ]
+      },
+      "forbid": {
+        "gl": [
+          "ERROR:*"
+        ]
+      },
+      "verifier_expected": {
+        "M6": "SUSPECTED"
+      }
     }
   }
 }

@@ -19,5 +19,6 @@ required_statements:
   code_availability: true
   ai_use_disclosure: "Methods or Acknowledgments; describe the tool and what it was used for"
   assumed: true
+ai_policy: {disclosure_required: null, where: "", permitted_uses: [], prohibited_uses: [], source_url: "", retrieved: "", assumed: true}
 checklists: []
 reporting_guideline: null

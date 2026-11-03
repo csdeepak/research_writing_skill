@@ -23,4 +23,5 @@ mode with the role's schema, then re-validate locally.
 Bind REVIEW_AGENT, RECON_GRADER and READER in `.rcs/models.json` with `"provider": "gemini"` (API key in
 `GEMINI_API_KEY`, host `generativelanguage.googleapis.com` in `data_policy.allowed_hosts`), or with
 `"provider": "command", "command": ["gemini", "-p", "-"]`. Then run `python tools/rce_roles.py calibrate` and `review`.
+The panel and the VERIFIER bind the same way, as roles `PANEL` and `VERIFIER` (`rce_roles.py panel`, `verify`).
 For project context, save `entrypoints/AGENTS.md` as `GEMINI.md`.

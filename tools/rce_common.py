@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from pathlib import Path
 from typing import Any, Iterator
 
@@ -32,6 +33,16 @@ INJECTION_RE = re.compile(
 )
 
 
+def safe_stdout() -> None:
+    """Never crash on printing. A Windows console defaults to cp1252, and index titles carry characters it cannot show
+    (a typographic hyphen was enough). Unprintable characters become '?' on screen; files are always UTF-8."""
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(errors="replace")
+        except (AttributeError, ValueError):
+            pass
+
+
 def load_json(path: Path) -> Any:
     with open(path, encoding="utf-8") as fh:
         return json.load(fh)
@@ -43,7 +54,8 @@ def load_schema(name: str) -> dict:
 
 # ----------------------------------------------------------------------------------------
 # Minimal JSON Schema validator (subset: type, enum, required, properties, items,
-# additionalProperties (schema form), pattern, minLength, maxLength, minItems, minimum, maximum)
+# additionalProperties (schema form), pattern, minLength, maxLength, minItems, minimum, maximum,
+# and local $ref such as "#/$defs/finding")
 # ----------------------------------------------------------------------------------------
 _TYPES = {
     "object": dict,
@@ -64,7 +76,22 @@ def _type_ok(value: Any, t: str) -> bool:
     return isinstance(value, _TYPES[t])
 
 
-def _validate_subset(inst: Any, schema: dict, path: str) -> Iterator[str]:
+def _resolve(schema: dict, root: dict | None) -> dict:
+    """Follow a local $ref. Without this, a $ref would validate nothing, silently."""
+    ref = schema.get("$ref")
+    if not isinstance(ref, str) or root is None:
+        return schema
+    if not ref.startswith("#/"):
+        raise ValueError(f"only local $ref is supported, got {ref}")
+    target: Any = root
+    for part in ref[2:].split("/"):
+        target = target[part]
+    return target
+
+
+def _validate_subset(inst: Any, schema: dict, path: str, root: dict | None = None) -> Iterator[str]:
+    root = schema if root is None else root
+    schema = _resolve(schema, root)
     if "type" in schema:
         types = schema["type"] if isinstance(schema["type"], list) else [schema["type"]]
         if not any(_type_ok(inst, t) for t in types):
@@ -89,7 +116,7 @@ def _validate_subset(inst: Any, schema: dict, path: str) -> Iterator[str]:
             yield f"{path}: fewer than {schema['minItems']} items"
         if "items" in schema:
             for i, item in enumerate(inst):
-                yield from _validate_subset(item, schema["items"], f"{path}[{i}]")
+                yield from _validate_subset(item, schema["items"], f"{path}[{i}]", root)
     if isinstance(inst, dict):
         for req in schema.get("required", []):
             if req not in inst:
@@ -97,9 +124,9 @@ def _validate_subset(inst: Any, schema: dict, path: str) -> Iterator[str]:
         props = schema.get("properties", {})
         for key, val in inst.items():
             if key in props:
-                yield from _validate_subset(val, props[key], f"{path}.{key}")
+                yield from _validate_subset(val, props[key], f"{path}.{key}", root)
             elif isinstance(schema.get("additionalProperties"), dict):
-                yield from _validate_subset(val, schema["additionalProperties"], f"{path}.{key}")
+                yield from _validate_subset(val, schema["additionalProperties"], f"{path}.{key}", root)
 
 
 def validate(instance: Any, schema: dict) -> list[str]:
@@ -134,6 +161,65 @@ def length_limit(rcs: Path | None, state: dict | None = None) -> int | None:
         m = re.search(r"^\s*words_main:\s*(\d+)", vp.read_text(encoding="utf-8"), re.M)
         if m:
             return int(m.group(1))
+    return None
+
+
+def _yaml_scalar(raw: str) -> Any:
+    v = raw.strip()
+    if len(v) >= 2 and v[0] == v[-1] and v[0] in "\"'":
+        return v[1:-1]
+    return {"null": None, "~": None, "true": True, "false": False, "": None}.get(v.lower(), v)
+
+
+def _yaml_flow(raw: str) -> Any:
+    """A one-line [a, b] or {k: v} value. Splits on top-level commas, so nested [] and quoted commas survive."""
+    v = raw.strip()
+    if not v or v[0] not in "[{" or v[-1] not in "]}":
+        return _yaml_scalar(v)
+    parts, buf, depth, quote = [], "", 0, ""
+    for ch in v[1:-1]:
+        if quote:
+            quote = "" if ch == quote else quote
+        elif ch in "\"'":
+            quote = ch
+        elif ch in "[{":
+            depth += 1
+        elif ch in "]}":
+            depth -= 1
+        if ch == "," and depth == 0 and not quote:
+            parts.append(buf)
+            buf = ""
+        else:
+            buf += ch
+    parts += [buf] if buf.strip() else []
+    if v[0] == "[":
+        return [_yaml_flow(p) for p in parts]
+    return {k.strip(): _yaml_flow(val) for k, _, val in (p.partition(":") for p in parts)}
+
+
+def yaml_block(text: str, key: str) -> Any:
+    """One top-level field of a venue profile. Stdlib has no YAML parser, and the templates use a small subset:
+    `key: value`, `key: [a, b]`, one-line {k: v} maps and one level of indented fields or `- item` lists."""
+    lines = [re.sub(r"\s+#.*$", "", l).rstrip() for l in text.splitlines() if not l.lstrip().startswith("#")]
+    for i, line in enumerate(lines):
+        m = re.match(rf"^{re.escape(key)}:\s*(.*)$", line)
+        if not m:
+            continue
+        if m.group(1).strip():
+            return _yaml_flow(m.group(1))
+        out: dict = {}
+        current = None
+        for sub in lines[i + 1:]:
+            if sub and not sub.startswith((" ", "\t")):
+                break
+            item = re.match(r"^\s+-\s*(.+)$", sub)
+            field = re.match(r"^\s+([A-Za-z_][\w-]*):\s*(.*)$", sub)
+            if item and current:
+                out[current] = (out[current] if isinstance(out[current], list) else []) + [_yaml_flow(item.group(1))]
+            elif field:
+                current = field.group(1)
+                out[current] = _yaml_flow(field.group(2))
+        return out
     return None
 
 

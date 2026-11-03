@@ -1,0 +1,34 @@
+{
+  "schema_version": "1",
+  "id": "FC-0032",
+  "title": "A scoped gap counted a preprint and its published paper as two works",
+  "category": "numerical-integrity",
+  "severity": "medium",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-02",
+    "by": "live model run",
+    "context": "Stage D paper-mode run of the demo project: the VERIFIER at stage pre, round 2"
+  },
+  "observed_failure": "The gap said 'Among the 66 works retrieved'. Four of the 66 candidates were other versions of a listed work: an SSRN preprint and its conference paper, an arXiv preprint, its AAAI paper and a talk record. Candidates are keyed by DOI, and each version has its own DOI, so the count held 62 works.",
+  "expected_behavior": "A candidate with the same normalized title as an earlier one, and the same first author or a year within one, is marked possible_version_of. It is not merged, the screening table shows it, and the search reports distinct works, the number a scoped gap should give.",
+  "evidence": [
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9",
+    "evaluation/unified_e2e/REPORT.md"
+  ],
+  "regression": {
+    "tests": [
+      "T-079"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.5.0-candidate",
+    "summary": "rce_index marks possible_version_of; lit_search prints distinct works; the screening table names the link"
+  },
+  "lessons": [
+    "A count in a gap statement is a number like any other: it must trace to a record that means what the sentence says."
+  ],
+  "public": true
+}

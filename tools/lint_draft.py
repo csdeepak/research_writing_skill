@@ -2,7 +2,7 @@
 """Lint a Markdown draft for Research Communication Engine anti-patterns.
 
 This is a *screen*, not a judge. It finds surface signatures of problems described in
-skill/anti_patterns.md, so that audits (workflow steps 12-17) look in the right places.
+skill/anti_patterns.md, so that audits (workflow steps 16.2-16.7) look in the right places.
 It never rewrites text.
 
 Usage
@@ -58,6 +58,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from typing import Iterator
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import hashlib  # noqa: E402
@@ -287,23 +288,57 @@ def _surname(author: str) -> str:
     return (a.split(",")[0] if "," in a else a.split()[-1] if a.split() else a).lower()
 
 
+def author_year_citations(line: str) -> Iterator[tuple[str, int, str]]:
+    """(surname, year, cited text) for each author-year citation in a line of prose."""
+    for grp in CITE_GROUP_RE.finditer(line):
+        for part in grp.group(1).split(";"):
+            m = CITE_ONE_RE.match(part)
+            if m:
+                yield m.group(1).split()[-1].lower(), int(m.group(2)), part.strip()
+
+
+CITE_SUFFIX_RE = re.compile(r"(?:1[6-9]|20)\d{2}([a-z])\s*$")
+CITE_FORM_RE = re.compile(r"(?: (et al)\.?| (?:and|&) ([A-Z][A-Za-z'\-]+)),\s*(?:1[6-9]|20)\d{2}[a-z]?\s*$")
+
+
+def author_form_fits(source: dict, text: str) -> bool:
+    """Does the cited author form match the registered author list? "X et al." needs 3 or more authors, "X and Y" exactly
+    two with Y second, and a single name one author. Every common author-year style agrees on these."""
+    authors = source.get("authors") or []
+    m = CITE_FORM_RE.search(text)
+    if m and m.group(1):
+        return len(authors) >= 3
+    if m and m.group(2):
+        return len(authors) == 2 and _surname(authors[1]) == m.group(2).lower()
+    return len(authors) == 1
+
+
+def resolve_citation(sources: list[dict], name: str, year: int, text: str) -> list[str]:
+    """Registry ids an author-year citation names. One id is a resolved citation; none is unregistered; several is
+    ambiguous. The same first author and year is narrowed first by the year suffix the registry records ("2020a" with
+    year_suffix "a"), then by the author form ("Passalis et al." is not "Passalis and Tefas"). Both found in the
+    end-to-end run on the demo project."""
+    m = CITE_SUFFIX_RE.search(text)
+    hits = [s for s in sources if s.get("authors") and s.get("year") and _surname(s["authors"][0]) == name and int(s["year"]) == year]
+    if m:
+        hits = [s for s in hits if s.get("year_suffix") == m.group(1)]
+    if len(hits) > 1:
+        hits = [s for s in hits if author_form_fits(s, text)] or hits
+    return [s["id"] for s in hits]
+
+
 def check_citations(md: str, sources: list[dict] | None, L: "Lint") -> None:
     """C5: every author-year citation must resolve to a registered source (first author's surname + year)."""
     known = {(_surname(s["authors"][0]), int(s["year"])) for s in (sources or []) if s.get("authors") and s.get("year")}
     for no, line in enumerate(md.splitlines(), 1):
-        for grp in CITE_GROUP_RE.finditer(line):
-            for part in grp.group(1).split(";"):
-                m = CITE_ONE_RE.match(part)
-                if not m:
-                    continue
-                key = (m.group(1).split()[-1].lower(), int(m.group(2)))
-                if sources is None:
-                    L.add("C5-citation-unregistered", "WARN", no, part.strip(),
-                          "citation cannot be verified: the project has no source registry (.rcs/corpus/source_registry.json)")
-                elif key not in known:
-                    L.add("C5-citation-unregistered", "ERROR", no, part.strip(),
-                          "no registered source has this first author and year: register and verify the source, or "
-                          "remove the citation (never cite from memory)")
+        for name, year, text in author_year_citations(line):
+            if sources is None:
+                L.add("C5-citation-unregistered", "WARN", no, text,
+                      "citation cannot be verified: the project has no source registry (.rcs/corpus/source_registry.json)")
+            elif (name, year) not in known:
+                L.add("C5-citation-unregistered", "ERROR", no, text,
+                      "no registered source has this first author and year: register and verify the source, or "
+                      "remove the citation (never cite from memory)")
 
 
 def lint_text(md: str, claims: dict[str, dict], final: bool, require_tags: bool,
