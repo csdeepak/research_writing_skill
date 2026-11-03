@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "id": "FC-0034",
+  "title": "G4 failed a correct panel-only verification round for having no blind review",
+  "category": "workflow-gate",
+  "severity": "medium",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-02",
+    "by": "live model run",
+    "context": "Live runs of the untested 0.5.0 paths on the demo project, 2026-11-03: panel round 2"
+  },
+  "observed_failure": "review_panel.md section 8 runs round 2 as a panel-only verification re-review. g4_check.py looked for the blind reviewer's diagnostics.json in that round, found none, and failed with G4_NO_REVIEW, so a project following the documented process could never pass G4 after round 2.",
+  "expected_behavior": "For a verification round, G4 takes the blind review, its packet and its dispositions from the round it verifies (previous_round), and checks the panel against its own round's packet.",
+  "evidence": [
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9",
+    "evaluation/unified_e2e/REPORT.md"
+  ],
+  "regression": {
+    "tests": [
+      "T-100"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.5.0-candidate",
+    "summary": "g4_check.py resolves the reader's round from the verification decision"
+  },
+  "lessons": [],
+  "public": true
+}

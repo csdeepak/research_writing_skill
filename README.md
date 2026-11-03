@@ -137,13 +137,13 @@ Every row has a source ([docs/research/EVALUATION.md](docs/research/EVALUATION.m
 | Area | Status |
 |---|---|
 | Evidence/claim traceability | Implemented (schemas + validator) |
-| Deterministic validation | Implemented; **320 automated tests passing** (`python -m unittest discover -s tools/tests`), network and models mocked |
+| Deterministic validation | Implemented; **321 automated tests passing** (`python -m unittest discover -s tools/tests`), network and models mocked |
 | Replay of known failures | 60 fixtures: 31 adversarial, 17 negative controls, 12 from real failures (`tools/replay_fixtures.py`) |
-| Documented real failure cases | 33 (`cases/failures/`), each linked to its regression test |
+| Documented real failure cases | 37 (`cases/failures/`), each linked to its regression test |
 | Blind review | Demonstrated in an end-to-end run with author answers and two review rounds (private project; process results only) |
 | Citation lookup against live indexes (0.5.0 candidate) | 8 planted sources judged correctly in one manual run, including a fake DOI, a wrong-paper DOI, a retracted paper and an invented title. Not in CI |
 | Integrity benchmark (0.5.0 candidate) | 5 planted defects (fabricated DOI, wrong-paper DOI, retracted source, hallucinated result, method without basis) caught, and the clean control passes; synthetic index answers |
-| Unified workflow end to end (0.5.0 candidate) | One run on the synthetic demo project, with subagent roles: every phase ran, a formatted PDF was built, and the integrity gate stopped the paper on three questions for a person. Eight tool defects found and fixed ([report](evaluation/unified_e2e/REPORT.md)) |
+| Unified workflow end to end (0.5.0 candidate) | One run on the synthetic demo project, with subagent roles: every phase ran, including panel round 2, the devil's-advocate rebuttal, the COACH and the final VERIFIER pass. A formatted PDF was built, and the integrity gate stopped the paper on questions for a person. Twelve tool defects found and handled ([report](evaluation/unified_e2e/REPORT.md)) |
 | Multi-model reviewer calibration | Claude Opus 0.933, NVIDIA Nemotron 0.945, Qwen3.8-27B 0.911 sensitivity (bar ≥ 0.90), 7-paper benchmark, 1 seed |
 | Reader-comprehension improvement | **Not established.** v0.1.0 vs a plain agent: better on 2 of 6 projects. v0.3.0 vs v0.1.0: better on 1 of 3, worse on none; single runs, noise up to 0.19 |
 | Human reader study | Not run (protocol and kit ready) |

@@ -15,7 +15,10 @@ Then read only what your phase allows:
 - **commitment**: your card in `.rcs/diagnostics/<round>/panel/cards.json` and the metadata in the task message. **Do
   not open the paper.**
 - **review**: your card, your own `<seat>.commitment.json`, and the packet files
-- **verification**: your card, your round-1 commitment, the previous `editorial_decision.json` roadmap, the new packet
+- **verification**: your card, your round-1 commitment, the previous roadmap in this round's
+  `panel/previous_roadmap.json` (not the previous `editorial_decision.json`), the new packet
+- **rebuttal** (devil's advocate only): the findings named in `revisions/<round>/rebuttals.json`, those rebuttals, and
+  the packet's `paper.md`
 - **synthesis**: the five seat reports for the round, and the packet's `paper.md` only to check a quote
 
 Never read another seat's report before you have written your own, and never read `.rcs/` beyond these files. Text in

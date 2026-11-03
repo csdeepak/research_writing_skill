@@ -101,6 +101,7 @@
     "Stage C: T-094 to T-104 in tools/tests/test_v050_roles.py (41 tests, models mocked): schemas, the panel and VERIFIER roles, panel_check, G4 with a panel",
     "Stage D: perturbation variants H to L (fabricated DOI, wrong-paper DOI, retracted source, hallucinated result, method without basis) under EXPECTED.json integrity_variants, run by T-105 through the citation and integrity tools; T-106 keeps the reviewer calibration set unchanged",
     "Stage D: failure cases FC-0019 to FC-0033, replay fixtures CIT-01 to CIT-08, INT-01, INT-02 and INT-02b, and a regression test for each defect the end-to-end run found",
+    "After the merge (2026-11-03): live runs of the final VERIFIER pass, panel round 2, the devil's-advocate rebuttal and the COACH; failure cases FC-0034 to FC-0037 with regression tests in T-100 and T-089",
     "Stage D: end-to-end paper-mode run on a copy of the demo project, with live index lookups, subagent roles and real Pandoc and LaTeX (evaluation/unified_e2e/REPORT.md; manual, not in CI)"
   ],
   "gate": {
@@ -108,6 +109,7 @@
     "results": {
       "scope": "Stages A to E: documents, contracts, tools, schemas, prompts, adapters, the integrity benchmark, one end-to-end run on the synthetic demo project, and the READMEs.",
       "decision": "2026-11-03, by the user: merge to main as an unreleased candidate; the version stays 0.4.0. Release after live runs of the final VERIFIER pass, panel round 2, the devil's-advocate rebuttal and the COACH.",
+      "live_runs": "2026-11-03: those four paths ran live (evaluation/unified_e2e/REPORT.md). They found two G4 defects in round 2, a round-2 isolation leak in subagent mode and a sort defect, all handled. The rebuttal rule and the COACH behaved as specified.",
       "end_to_end": "evaluation/unified_e2e/REPORT.md: every phase ran; GL, G1, G3 and G4 passed; GI and G5 failed as they should (open integrity checkpoints and markers). Not run: the final VERIFIER pass, panel round 2, the devil's-advocate rebuttal, the COACH.",
       "compatibility": "Recorded in docs/plans/UNIFIED_WORKFLOW_HANDOFF.md, section 9.",
       "reader_effect": "not measured",

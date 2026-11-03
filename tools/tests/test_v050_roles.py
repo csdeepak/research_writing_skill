@@ -435,6 +435,28 @@ class G4PanelTests(Project):
             shutil.copy(self.rcs / "diagnostics" / "v001_1" / "editorial_decision.json", d / "editorial_decision.json")
         self.assertIn("PANEL_CAP", self.g4())
 
+    def test_T100_round_two_uses_the_round_one_reader_and_keeps_unaddressed_items(self):
+        """Found in the v0.5 live run: G4 on a panel-only round 2 failed G4_NO_REVIEW, and a blocking roadmap item the seats
+        found not addressed needed no disposition."""
+        (self.rcs / "state.json").write_text(json.dumps({"mode": "paper"}), encoding="utf-8")
+        self.run_panel(PanelModel(decision=standard_decision()))
+        self.dispositions([{"item": "panel:ME-1", "disposition": "fixed", "where": "section 3, the new design paragraph"}])
+        self.packet("v002_1", PAPER + "\nRevised.\n")
+        checks = [{"roadmap_id": "R-1", "verdict": "not_addressed", "location": loc()},
+                  {"roadmap_id": "R-2", "verdict": "addressed", "location": loc()}]
+        dec = {"kind": "verification", "previous_round": "v001_1", "decision": "major", "basis": "R-1 not addressed",
+               "roadmap": [{"id": "R-1", "from_findings": ["ME-1"], "priority": "blocking", "goal": "repair the design"}]}
+        self.run_panel(PanelModel(decision=dec, checks=checks), "v002_1", verify_from="v001_1")
+        codes = self.g4("v002_1")
+        self.assertNotIn("G4_NO_REVIEW", codes)
+        self.assertNotIn("PANEL_PACKET_MISMATCH", codes)
+        self.assertIn("panel:R-1", codes.get("G4_UNADDRESSED", ""))
+        p = self.rcs / "revisions" / "v002_1"
+        p.mkdir(parents=True)
+        (p / "dispositions.json").write_text(json.dumps({"items": [{"item": "panel:R-1", "disposition": "deferred"}]}), encoding="utf-8")
+        (self.rcs / "open_issues.md").write_text("- panel:R-1 still not addressed at the revision cap\n", encoding="utf-8")
+        self.assertEqual(self.g4("v002_1"), {})
+
 
 class VerificationRoundTests(Project):
     def test_T101_rereview(self):
