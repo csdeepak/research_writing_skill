@@ -112,7 +112,7 @@ def reference_list(paper_md: str, registry: Path) -> tuple[str, list[dict]]:
     """A References section for the works the paper cites, from the verified registry, resolved the way GL resolves
     them. The draft carries author-year citations and the bibliography is only built at P7, so without this a reviewer
     cannot check a citation (found by the domain seat in the v0.5 end-to-end run). Entries are sanitized like the paper."""
-    from lint_draft import author_year_citations, resolve_citation
+    from lint_draft import _surname, author_year_citations, resolve_citation
     if "\n## References" in "\n" + paper_md or not registry.exists():
         return "", []
     sources = load_json(registry).get("sources", [])
@@ -127,7 +127,7 @@ def reference_list(paper_md: str, registry: Path) -> tuple[str, list[dict]]:
             elif len(hit) != 1:
                 log.append({"warning": "citation_not_in_reference_list", "citation": text})
     entries = []
-    for s in sorted((by_id[i] for i in ids), key=lambda s: (s.get("authors") or [""])[0].lower()):
+    for s in sorted((by_id[i] for i in ids), key=lambda s: (_surname((s.get("authors") or [""])[0]), s.get("year") or 0)):
         e = (f"- {'; '.join(s.get('authors') or [])} ({s.get('year')}{s.get('year_suffix') or ''}). {s.get('title', '').rstrip('.')}."
              + (f" {s['venue']}." if s.get("venue") else "") + (" Preprint." if "preprint" in (s.get("flags") or []) else "")
              + (f" https://doi.org/{s['doi']}" if s.get("doi") else ""))

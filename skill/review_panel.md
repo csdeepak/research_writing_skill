@@ -180,7 +180,10 @@ contexts with the same cards and criteria:
 2. Look for new problems the revision introduced.
 
 Decide Accept, Minor or Major from those items. A re-review does not restart the argument about the
-paper. `tools/g4_check.py` then requires a disposition for every blocking item.
+paper. `tools/g4_check.py` then requires a disposition for every blocking item: each blocking
+roadmap item the seats did not find addressed (`panel:R-#`), and each new `major` or `fatal`
+finding. REVIEW_AGENT does not run again in round 2; G4 takes its review and dispositions from
+the round being verified.
 
 **Cap: 2 revision loops in total.** Then stop and move what remains to `open_issues.md`. Do not
 iterate toward a score. The editorial decision and the state at the cap are mandatory checkpoints.
@@ -217,7 +220,8 @@ G4 passes when the latest round has a schema-valid blind review of the exact dra
 finding and inference issue has a disposition, the reviewers stayed in their packets, and no claim
 was added after the review (`tools/g4_check.py`). In modes `paper` and `restructure` it also needs
 the panel, which must pass `tools/panel_check.py`. Every standing `major` or `fatal` finding needs a
-disposition, keyed `panel:<finding id>`. A Reject fails G4 until a named person's decision is
+disposition, keyed `panel:<finding id>`, and in round 2 so does every blocking roadmap item still
+standing, keyed `panel:<R-#>`. A Reject fails G4 until a named person's decision is
 recorded: an answered checkpoint named as `reject_checkpoint` in `dispositions.json`. A third panel
 round fails it too (`PANEL_CAP`). Run:
 

@@ -88,7 +88,7 @@ and needs no keys.
 | T-086 | The AUTHOR writing its own integrity verdict | `…::RoleTests` |
 | T-087 | The per-mode evidence missing a planted defect (M1–M7) | `…::EvidenceTests` |
 | T-088 | A reference field invented, unescaped or of the wrong type; uncited works in the bibliography | `test_v050_finalize.py::BibTests` |
-| T-089 | A citation mapped to the wrong key or to none, silently | `…::MappingTests` |
+| T-089 | A citation mapped to the wrong key or to none, silently; a review packet with no reference list, or one sorted by first name | `…::MappingTests`, `…::PacketReferenceTests` |
 | T-090 | A missing tool replaced silently, PDF through HTML, a default style chosen silently, content lost in conversion | `…::FormatTests` |
 | T-091 | A disclosure that states a policy from memory, invents facts, or claims a check that did not run | `…::DisclosureTests` |
 | T-092 | The venue-profile reader misreading the templates | `…::YamlTests` |
@@ -99,7 +99,7 @@ and needs no keys.
 | T-097 | A synthesizer stating a decision the findings do not give, or citing a finding no seat made | `…::PanelRunTests` |
 | T-098 | A panel round with a missing seat, a rewritten commitment, an unjudged criterion, an invented finding, an unquoted downgrade | `…::PanelCheckTests` |
 | T-099 | The decision rule or the rebuttal rule drifting | `…::RuleTests` |
-| T-100 | G4 passing with a standing panel finding, a declined devil's-advocate finding without a sufficient rebuttal, an unanswered Reject, no panel in paper mode, or a third round | `…::G4PanelTests` |
+| T-100 | G4 passing with a standing panel finding, a declined devil's-advocate finding without a sufficient rebuttal, an unanswered Reject, no panel in paper mode, or a third round; a round-2 re-review failed for having no reader review, or passed with a blocking item still unaddressed | `…::G4PanelTests` |
 | T-101 | A re-review with new cards or an unchecked roadmap item | `…::VerificationRoundTests` |
 | T-102 | Rebuttals scored out of order, or a concession run wearing findings away | `…::RebutTests` |
 | T-103 | A VERIFIER report whose hash, round or isolation comes from the model; a VERIFIER run that is not recorded | `…::VerifyCommandTests` |
