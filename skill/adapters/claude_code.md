@@ -48,14 +48,25 @@ directory contains only the expected outputs. Write access outside it would be a
 ## The panel through subagents
 Run the panel in this order, each step in a fresh `rce-panel` invocation:
 1. the field analyst writes `panel/cards.json`
-2. each seat writes its `panel/<seat>.commitment.json`, without opening the paper
-3. each seat writes its `panel/<seat>.review.json`. Then add the commitment's SHA-256 to each review as
-   `commitment_sha256` and the packet id as `packet_id`
+2. each seat writes its `panel/<seat>.commitment.json`, without opening the paper. Hash every commitment now, before
+   any seat sees the paper
+3. each seat writes its `panel/<seat>.review.json`. Check that each commitment still has its recorded hash, then add
+   it to the review as `commitment_sha256`, with the packet id as `packet_id`
 4. the synthesizer writes `editorial_decision.json`
 
 Then run `python tools/panel_check.py .rcs --round <round>`. It fails a review that was not made against the commitment
 on disk, and a decision the findings do not give. Subagent isolation is soft: a seat that could read another seat's
 report is not blind. Label that in `open_issues.md`, or run the panel through `rce_roles.py panel` instead.
+
+**Rebuttals** (step 18): a fresh invocation of the devil's-advocate seat reads only the rebutted findings, the
+AUTHOR's `revisions/<round>/rebuttals.json` and the packet's `paper.md`, and writes
+`panel/devils_advocate.rebuttal.json`.
+
+**Round 2** (verification): copy `panel/cards.json` unchanged into the new round. Write the previous round's
+`roadmap` list alone to the new round's `panel/previous_roadmap.json`, and give the seats that file, not
+`editorial_decision.json`. The decision also carries the other seats' merged findings and dissent, and a file reader
+returns the whole file. Then five fresh seat invocations write `panel/<seat>.verification.json`, and the synthesizer
+writes the round's `editorial_decision.json` with `kind: "verification"` and `previous_round`.
 
 ## Alternative: any model for the single-shot roles
 The reviewer, grader, readers, panel and VERIFIER do not have to be Claude models. Bind them in `.rcs/models.json`

@@ -29,7 +29,7 @@ open markers.
 | P3–P4 Draft | draft v001 from the clean demo draft, with 3 author-year citations | **G1 passed**, **G3 passed** (lint and numbers) |
 | P5 Integrity (pre) | 3 VERIFIER rounds (the cap) on drafts v001, v002, v003, each in a fresh context | **GI failed** at the cap; checkpoints Q-002 and Q-004 are open for a named person |
 | P6 Review | packet pkt-e979296a; REVIEW_AGENT; field analyst; 5 seats committed before reading, then reviewed; synthesizer | **panel_check passed** (decision Major, derived Major, 0 errors); 24 dispositions; **G4 passed** |
-| P7 Finalize | line edit (v005), claim invariance, tags stripped to `paper/paper.md`, final integrity bundle, `format_paper.py --to latex,docx,pdf --online`, `disclosure.py` | invariance passed; **GI final failed** (no VERIFIER run, M6 and M7 unresolved from pre); md, bib, tex, docx and a 4-page PDF written; disclosure drafted; **G5 failed** |
+| P7 Finalize | line edit (v005), claim invariance, tags stripped to `paper/paper.md`, final integrity bundle, `format_paper.py --to latex,docx,pdf --online`, `disclosure.py` | invariance passed; **GI final failed** (first without a VERIFIER report; on 2026-11-03 with one, on M1, M4 and M7); md, bib, tex, docx and a 4-page PDF written; disclosure drafted; **G5 failed** |
 
 ### P5 by round
 
@@ -79,14 +79,39 @@ workflow stopped there instead of letting the wording carry it.
 
 Replay fixtures CIT-05 to CIT-08 cover FC-0029 and FC-0030.
 
+## Live runs of the four remaining paths (2026-11-03)
+
+After the merge, the four paths only unit tests had covered were run live on the same project,
+each role in a fresh subagent context.
+
+| Path | What ran | Result |
+|---|---|---|
+| Devil's-advocate rebuttal | The AUTHOR wrote two rebuttals. DA-4's brought record evidence (`summary.csv` has one RWN-fixed row, at s = 0.6, with a spread). DA-1's was a deliberate probe: insistence and authority, no evidence. A fresh devil's-advocate context scored them | DA-4 scored 3 and stays minor: the evidence answered the "withheld runs" worry, but the choice of s = 0.6 is still unexplained. DA-1 scored 1 and stays major. With DA-1 declined, a probe copy of the project fails G4 with `G4_DA_REBUTTAL` |
+| COACH | A scripted author: one answer stating a fact the records lack and one the records contradict, then "just fix it" | One grounded question at a time, no options offered. The unrecorded fact was kept as an author statement needing confirmation. The contradiction was quoted back from E006 and C004. On "just fix it" it stopped, handed back to the AUTHOR and wrote nothing |
+| Panel round 2 (verification) | Packet of v004 (now with a reference list); the same cards; five fresh seats checked all 24 roadmap items; the synthesizer decided | Decision Major: 4 blocking items not addressed (R-1, R-2, R-7, R-8) and 6 partly addressed. 6 new minor findings, merged into 3 optional items. `panel_check` passed. G4 passed after 10 round-2 dispositions at the cap |
+| Final VERIFIER (step 20) | A fresh context on the edited draft v005, without the stage-pre reports | M1 INSUFFICIENT_EVIDENCE, M4 and M7 SUSPECTED, the rest CLEAR. It confirmed that `paper/paper.md` is the tagged draft without its tags. GI final failed with 4 errors, including `GI_PRE_UNRESOLVED` on M7 |
+
+Defects these runs found, each with a failure case:
+- **FC-0034.** G4 failed a correct panel-only round 2 with `G4_NO_REVIEW`. It now takes the blind
+  review from the round being verified.
+- **FC-0035.** `panel_check` counted only round 2's new findings as blocking. It reported 0 blocking
+  items while four blocking items stood unaddressed, so G4 would have passed without a disposition
+  for any of them. Standing items are now judged from the seats' checks and keyed `panel:R-#`.
+- **FC-0036.** Round-2 seats told to read only the roadmap saw all of `editorial_decision.json`.
+  The adapter now has the orchestrator hand them a roadmap-only file. This is mitigated, not fixed:
+  subagent isolation is still by instruction.
+- **FC-0037.** The packet's references sorted by first name.
+- **The COACH re-asked open checkpoint Q-003** without knowing it was open. It now reads
+  `checkpoints/pending.json`, so an answer can be recorded against the checkpoint.
+
+**Open question, not changed:** M6 was SUSPECTED at stage pre (round 3) and CLEAR at stage final,
+although its cause was never fixed: no record says the statistics are mean and standard deviation.
+The final VERIFIER called the detail "implied". `GI_PRE_UNRESOLVED` accepts any later CLEAR. So the
+variance between two fresh contexts can clear a suspicion nobody resolved. Whether the gate should
+ask for more is a design decision.
+
 ## Not run, or not verified
 
-- **The final VERIFIER pass (step 20).** It was not run, because GI cannot pass while Q-002 and
-  Q-004 are open. The gate was run without it and failed closed (`GI_NO_VERIFIER`,
-  `GI_PRE_UNRESOLVED`).
-- **Round 2 of the panel (verification re-review), the devil's-advocate rebuttal and the COACH.**
-  These were not run. A re-review means little before the gap is re-scoped. Unit tests T-101 and
-  T-102 cover these paths, but no live run has.
 - **Checkpoints.** No checkpoint was answered. C0, Q-002, Q-003 and Q-004 are open, because only a
   named person can answer them.
 - **Role records.** They were written by the orchestrator after the subagents ran, since the

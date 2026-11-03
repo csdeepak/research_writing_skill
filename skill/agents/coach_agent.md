@@ -16,6 +16,8 @@ You run in three places:
 - The question at hand: the open spine lines, the outline, or the findings to answer
 - What the evidence map and claim map already say. Read them first, so that you never ask what the files already
   answer.
+- The open checkpoints in `checkpoints/pending.json`. When your question is one already asked there, say which
+  (Q-###), so the authors' answer can be recorded against it.
 
 ## HOW TO ASK
 1. **One question at a time**, the most consequential first. Wait for the answer.

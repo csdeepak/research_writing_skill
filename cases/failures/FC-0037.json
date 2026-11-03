@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "id": "FC-0037",
+  "title": "The review packet's reference list sorted by first name",
+  "category": "citation",
+  "severity": "low",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-02",
+    "by": "orchestrator",
+    "context": "Live runs of the untested 0.5.0 paths on the demo project, 2026-11-03: panel round 2"
+  },
+  "observed_failure": "Registry authors from OpenAlex come as 'Gaspard Berthelier', so the packet's References sorted that entry under G.",
+  "expected_behavior": "Entries sort by first author's surname, then year.",
+  "evidence": [
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9",
+    "evaluation/unified_e2e/REPORT.md"
+  ],
+  "regression": {
+    "tests": [
+      "T-089"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.5.0-candidate",
+    "summary": "build_review_packet.py sorts with lint_draft's surname rule"
+  },
+  "lessons": [],
+  "public": true
+}
