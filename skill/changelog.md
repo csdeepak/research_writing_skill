@@ -17,8 +17,10 @@ PATCH = clarification with no behavior change.
 chose the next minor version. `SKILL.md` keeps `version: 0.4.0` until the release step
 (`versions/README.md`).
 
-**Status: Stages A to D (documents, contracts, tools, schemas, prompts, adapters, tests and one
-end-to-end run).** The release decision comes in Stage E.
+**Status: Stages A to E done. Merged to `main` on 2026-11-03 as an unreleased candidate, by the
+user's decision.** The version stays 0.4.0. A release waits for live runs of the paths only unit
+tests cover so far: the final VERIFIER pass, panel round 2, the devil's-advocate rebuttal and the
+COACH.
 
 **Stage D, tests and an end-to-end run:**
 - Integrity benchmark: perturbation variants H to L plant a fabricated DOI, a DOI that resolves to

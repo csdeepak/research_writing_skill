@@ -106,7 +106,8 @@
   "gate": {
     "status": "pending",
     "results": {
-      "scope": "Stages A to D: documents, contracts, tools, schemas, prompts, adapters, the integrity benchmark and one end-to-end run on the synthetic demo project. The release decision is not made yet.",
+      "scope": "Stages A to E: documents, contracts, tools, schemas, prompts, adapters, the integrity benchmark, one end-to-end run on the synthetic demo project, and the READMEs.",
+      "decision": "2026-11-03, by the user: merge to main as an unreleased candidate; the version stays 0.4.0. Release after live runs of the final VERIFIER pass, panel round 2, the devil's-advocate rebuttal and the COACH.",
       "end_to_end": "evaluation/unified_e2e/REPORT.md: every phase ran; GL, G1, G3 and G4 passed; GI and G5 failed as they should (open integrity checkpoints and markers). Not run: the final VERIFIER pass, panel round 2, the devil's-advocate rebuttal, the COACH.",
       "compatibility": "Recorded in docs/plans/UNIFIED_WORKFLOW_HANDOFF.md, section 9.",
       "reader_effect": "not measured",
