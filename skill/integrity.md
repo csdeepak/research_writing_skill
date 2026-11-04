@@ -108,7 +108,10 @@ judgment, so VERIFIER makes it from the sentence, the quote and its location.
 
 **`--stage final` (step 20)** is a fresh pass, not a re-check of the first pass's findings. A new
 VERIFIER context judges the edited draft without the earlier report, then the two are compared. Any
-mode that was `SUSPECTED` before must now be `CLEAR`, not merely unmentioned. It runs on the
+mode that was `SUSPECTED` before must now be `CLEAR`, not merely unmentioned. A mode that the last
+pre-stage round left blocking needs more than that: GI pre run again until it passes, or a named
+person's decision at stage pre (§6). A `CLEAR` from the final pass does not settle it, because two
+fresh contexts can judge the same unchanged records differently. It runs on the
 edited, still-tagged draft from step 19, because the claim tags are what it traces, and it confirms
 that `paper/paper.md` is that same text with the tags removed.
 

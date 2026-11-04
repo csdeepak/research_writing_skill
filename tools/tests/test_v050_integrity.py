@@ -345,6 +345,20 @@ class FinalStageTests(Project):
         self.verifier("final")
         self.assertNotIn("GI_PRE_UNRESOLVED", self.codes(self.gate("final")))
 
+    def test_T085_a_later_clear_does_not_settle_a_pre_stage_block(self):
+        """Found in the v0.5 live run: M6 ended stage pre SUSPECTED and blocking, and a fresh final VERIFIER called it CLEAR
+        with nothing fixed. Only re-verifying at stage pre or a named person's decision there ends that block."""
+        d = ic.stage_dir(self.rcs, "pre")
+        d.mkdir(parents=True)
+        (d / "report.json").write_text(json.dumps({"modes": {"M6": {"status": "SUSPECTED", "blocking": True}}}), encoding="utf-8")
+        self.verifier("final")
+        self.assertIn("GI_PRE_UNRESOLVED", self.codes(self.gate("final")))
+        wg.ask(self.rcs, "Q-020", "M6 is suspected at stage pre", [], [], "")
+        wg.answer(self.rcs, "Q-020", "We proceed: the statistics are mean and std, as the code shows.", "Dr Example")
+        (d / "decisions.json").write_text(json.dumps({"decisions": [{"mode": "M6", "checkpoint": "Q-020"}]}), encoding="utf-8")
+        (self.rcs / "open_issues.md").write_text("- Q-020 M6 proceeds by decision\n", encoding="utf-8")
+        self.assertNotIn("GI_PRE_UNRESOLVED", self.codes(self.gate("final")))
+
     def test_T085_old_retraction_check_fails(self):
         self.sources[0]["retraction"]["checked_at"] = "2020-01-01"
         self.save()
