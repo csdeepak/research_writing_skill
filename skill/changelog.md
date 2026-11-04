@@ -34,6 +34,8 @@ and the defects they found are fixed below. Releasing is the user's decision.
   it does not ask a pending question as if it were new.
 - The rebuttal rule held live: evidence that answered part of a finding scored 3, and a rebuttal of
   pure insistence scored 1.
+- A fresh final VERIFIER's CLEAR no longer settles a block the last stage-pre round left open. That
+  takes GI pre passing, or a named person's decision at stage pre (FC-0038, decided 2026-11-04).
 
 **Stage D, tests and an end-to-end run:**
 - Integrity benchmark: perturbation variants H to L plant a fabricated DOI, a DOI that resolves to

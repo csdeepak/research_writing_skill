@@ -104,11 +104,13 @@ Defects these runs found, each with a failure case:
 - **The COACH re-asked open checkpoint Q-003** without knowing it was open. It now reads
   `checkpoints/pending.json`, so an answer can be recorded against the checkpoint.
 
-**Open question, not changed:** M6 was SUSPECTED at stage pre (round 3) and CLEAR at stage final,
-although its cause was never fixed: no record says the statistics are mean and standard deviation.
-The final VERIFIER called the detail "implied". `GI_PRE_UNRESOLVED` accepts any later CLEAR. So the
-variance between two fresh contexts can clear a suspicion nobody resolved. Whether the gate should
-ask for more is a design decision.
+**Settled on 2026-11-04 (FC-0038):** M6 was SUSPECTED and blocking at the end of stage pre (round 3),
+and CLEAR at stage final, although its cause was never fixed: no record says the statistics are mean
+and standard deviation. The final VERIFIER called the detail "implied". `GI_PRE_UNRESOLVED`
+accepted any later CLEAR, so variance between two fresh contexts could clear a block nobody
+resolved. Now a mode the last stage-pre round left blocking fails GI final until GI pre passes or a
+named person decides it at stage pre. Re-gated, the demo's final GI also reports M6, which the old
+rule let through.
 
 ## Not run, or not verified
 

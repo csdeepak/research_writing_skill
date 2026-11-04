@@ -22,7 +22,8 @@ declaration. After at most 3 rounds, a block ends only by a named person's decis
 not change the mode's status, and it must appear in open_issues.md.
 
 Stage final also confirms that paper/paper.md is the checked draft with the tags removed, that a mode SUSPECTED at stage
-pre is now CLEAR, and that no cited source's retraction check is older than 30 days.
+pre is now CLEAR, that no mode the last stage-pre round left blocking passes without a stage-pre decision (a later CLEAR
+does not settle it), and that no cited source's retraction check is older than 30 days.
 """
 from __future__ import annotations
 
@@ -483,9 +484,17 @@ def gate(rcs: Path, root: Path, stage: str, draft: Path) -> dict:
         elif strip_tags(md).strip().replace("\r\n", "\n") != paper.read_text(encoding="utf-8").strip().replace("\r\n", "\n"):
             add("ERROR", "GI_PAPER_MISMATCH", "paper/paper.md is not the checked draft with the tags removed")
         pre = stage_dir(rcs, "pre") / "report.json"
-        if pre.exists():
+        if pre.exists():                  # absent in modes that start after step 15, such as revise
+            # A block the last stage-pre round left standing ends only by re-verifying at stage pre or by a named person's
+            # decision there. A CLEAR from a later, fresh VERIFIER does not end it: two contexts can judge the same unchanged
+            # records differently (found in the v0.5 live run, where M6 went from SUSPECTED to CLEAR with its cause unfixed).
+            pre_decided = _decisions(rcs, "pre", issues, [])
             for m, e in (load_json(pre).get("modes") or {}).items():
-                if e.get("status") == "SUSPECTED" and modes.get(m, {}).get("status") != "CLEAR" and not decisions.get(m):
+                if e.get("blocking") and not pre_decided.get(m):
+                    add("ERROR", "GI_PRE_UNRESOLVED", f"{m} still blocked GI at stage pre ({e.get('status')}) and no named person decided "
+                                                      "it. A later CLEAR does not settle it: re-verify at stage pre until GI passes, or "
+                                                      "record a decision in audits/integrity/pre/decisions.json")
+                elif e.get("status") == "SUSPECTED" and modes.get(m, {}).get("status") != "CLEAR" and not decisions.get(m):
                     add("ERROR", "GI_PRE_UNRESOLVED", f"{m} was SUSPECTED at stage pre and is not CLEAR now")
         limit = datetime.now(timezone.utc).date() - timedelta(days=RETRACTION_DAYS)
         cited = {x["source"] for r in all_rows.values() for x in r["sources"]}

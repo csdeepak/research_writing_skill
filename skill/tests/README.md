@@ -84,7 +84,7 @@ and needs no keys.
 | T-082 | An alignment sample that cannot be replayed, misses a high-impact sentence, or does not widen after a failed sentinel | `…::AlignmentTests` |
 | T-083 | A no-experiments declaration used to hide reported experiments | `…::NoExperimentTests` |
 | T-084 | An integrity block lifted without a named person, a reason, an `open_issues.md` entry, or within the round cap | `…::DecisionTests` |
-| T-085 | A final paper that differs from the checked draft; a pre-stage suspicion left unresolved; a stale retraction check | `…::FinalStageTests` |
+| T-085 | A final paper that differs from the checked draft; a pre-stage suspicion left unresolved, or a pre-stage block settled by a later CLEAR alone; a stale retraction check | `…::FinalStageTests` |
 | T-086 | The AUTHOR writing its own integrity verdict | `…::RoleTests` |
 | T-087 | The per-mode evidence missing a planted defect (M1–M7) | `…::EvidenceTests` |
 | T-088 | A reference field invented, unescaped or of the wrong type; uncited works in the bibliography | `test_v050_finalize.py::BibTests` |
