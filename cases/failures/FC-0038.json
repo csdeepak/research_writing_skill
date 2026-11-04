@@ -1,0 +1,34 @@
+{
+  "schema_version": "1",
+  "id": "FC-0038",
+  "title": "A fresh final VERIFIER's CLEAR settled a block that stage pre left open",
+  "category": "workflow-gate",
+  "severity": "high",
+  "introduced_in": "0.5.0-candidate",
+  "found": {
+    "when": "2026-11-03",
+    "by": "live model run",
+    "context": "Live runs of the untested 0.5.0 paths on the demo project: the final VERIFIER pass"
+  },
+  "observed_failure": "Stage pre ended at its round cap with M6 SUSPECTED and blocking: no record says the normalizations use the mean and standard deviation. Nobody decided it. At stage final a fresh VERIFIER, which by design does not see the pre reports, judged the same unchanged records CLEAR, and GI_PRE_UNRESOLVED accepted that, so the block disappeared without a fix or a decision.",
+  "expected_behavior": "A mode the last stage-pre round left blocking stays a GI final error until GI pre is re-run clean or a named person's decision is recorded in audits/integrity/pre/decisions.json. A later CLEAR alone does not settle it, because two fresh contexts can judge the same records differently.",
+  "evidence": [
+    "evaluation/unified_e2e/REPORT.md",
+    "docs/plans/UNIFIED_WORKFLOW_HANDOFF.md section 9"
+  ],
+  "regression": {
+    "tests": [
+      "T-085"
+    ],
+    "replay_fixtures": []
+  },
+  "resolution": {
+    "status": "fixed",
+    "version": "0.5.0-candidate",
+    "summary": "integrity_check.py fails stage final on any mode still blocking in the last stage-pre report without a stage-pre decision"
+  },
+  "lessons": [
+    "Variance between model contexts is not evidence: a verdict that flips with nothing changed needs a person, not a re-roll."
+  ],
+  "public": true
+}
