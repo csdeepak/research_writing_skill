@@ -1,195 +1,103 @@
+<div align="center">
+
 # Research Communication Engine
 
-> Evidence-grounded research writing for AI-assisted research.
+**Turn research evidence into a paper where every claim traces back to its source**
 
-Turn raw research evidence into a paper where every claim stays traceable to the evidence that supports it.
+An agent skill with standard-library checks: it maps your evidence before any prose, writes from that map, and asks you when the evidence runs out.
 
-[![ci](https://github.com/csdeepak/research_writing_skill/actions/workflows/ci.yml/badge.svg)](https://github.com/csdeepak/research_writing_skill/actions/workflows/ci.yml)
-[![license](https://img.shields.io/github/license/csdeepak/research_writing_skill)](LICENSE)
+</div>
 
-RCE turns raw research evidence into traceable, reviewable research papers without allowing unsupported claims to
-silently enter the manuscript.
+## Install
 
-It is a model-agnostic workflow for turning results, logs, notes, READMEs, drafts and data files into
-evidence-grounded papers:
-1. It builds an **evidence map** before any prose.
-2. It traces every claim and every number to that evidence.
-3. It validates strong language and citations against explicit rules.
-4. It renders figures from source data.
-5. It runs a **blind reader/reviewer** pass.
-6. It turns real failures into regression tests.
-
-When evidence is missing or conflicting, RCE **asks instead of guessing**.
-
-**Unified workflow (0.5.0 candidate, unreleased).** One ordered workflow of 8 phases and 22 steps
-([`skill/workflow.md`](skill/workflow.md)). RCE stays the spine, and five capabilities join it:
-- **Literature:** search and corpus intake, with each source looked up in bibliographic indexes and
-  checked for retraction (gate GL).
-- **Integrity:** an independent VERIFIER checks the draft for seven AI-specific research failures
-  before any reviewer sees it (gate GI).
-- **Review panel:** five seats, each committing to its criteria before it reads the paper. It ends in an
-  editorial decision.
-- **External reviews:** a path for real reviewer comments.
-- **Finalize:** a formatted paper in LaTeX, DOCX and PDF.
-
-The design draws on Academic Research Skills ([credits](#license)). Run on the demo project, the
-workflow reached a formatted PDF but stopped the paper on integrity questions only a person can
-answer ([report](evaluation/unified_e2e/REPORT.md)).
-
-## Why it exists
-Papers written with AI assistance often have individually plausible sentences that add up to something the evidence
-does not support: an invented number, a "significant" without a test, a citation from memory, an author's hunch
-stated as a finding, a README value that contradicts the results file. RCE makes those failures visible and blocks
-them where they can be checked deterministically. The model can propose; the evidence layer decides.
-
-<p align="center"><img src="docs/assets/rce-architecture.svg" alt="RCE layers: research repository, evidence, claims, writing, validation, blind review, final paper, regression cases" width="760"></p>
-
-## Evidence → claim → paper
-<p align="center"><img src="docs/assets/evidence-to-paper.svg" alt="Sources feed an evidence map, claim map, story and paper, with a traceability path from each paper claim back to its source file" width="760"></p>
-
-Every sentence in a draft carries claim tags (`{C007}`). Each claim cites evidence ids (`E012`), and each evidence item
-points to a file (and a line, row or value). The tools check this chain on every run.
-
-## What RCE checks, and what it does not promise
-**Checked deterministically** (`docs/concepts/EVIDENCE_INTEGRITY.md` maps each rule to its test):
-- **Numbers:** every number in a draft traces to evidence; p-values are never inferred.
-- **Strong language:** "significant", "state of the art", "causes", "generalizes", "outperforms"… each needs an evidence
-  license (configurable per research community).
-- **Citations:** each must resolve to a verified source registry. In the unified workflow, each source is also looked
-  up in the DOI resolver, Crossref, OpenAlex, Semantic Scholar and arXiv, and checked for retraction. This needs
-  `--online`, and nothing leaves the machine without it. A fabricated DOI, or a DOI that points to a different
-  paper, fails gate GL.
-- **Integrity (0.5.0 candidate):** an isolated VERIFIER judges seven failure modes, from implementation bugs to
-  frame-lock, with evidence for each. It also checks that a sample of cited sentences says no more than the source.
-  The tools' own findings override a VERIFIER's "clear".
-- **Conflicts:** conflicting evidence is never silently resolved.
-- **Authors' voice:** author-stated limitations and rationale are kept and attributed.
-- **Figures:** re-rendered from data to verify, and the axes must match the marks.
-- **Gates:** a gate passes only from a tool report, never from an agent saying so.
-- **Blind review:** every finding is fixed, declined with a reason, deferred, turned into an author question, or
-  marked false-positive / not reproducible. None disappears.
-
-**RCE does not promise:**
-- that an underlying model will never hallucinate;
-- to replace domain experts, statistical review or peer review;
-- to decide whether a hypothesis is true;
-- to resolve conflicting evidence by itself: it asks a person;
-- to make a claim acceptable because a model sounds confident;
-- that papers become easier to understand. Reader-understanding improvement **remains an open evaluation question**
-  (see [Current evidence](#current-evidence)).
-
-## Quick start
-**Fastest (Claude apps).** Download `research-communication-engine-v0.4.0.zip` from the releases page, or build it
-with `python tools/package_skill.py`. Upload it under **Customize → Skills**, which needs code execution enabled. See
-[docs/guides/INSTALL.md](docs/guides/INSTALL.md) for Claude Code, ChatGPT (unverified), Codex, Gemini CLI and Cursor.
-
-**Developer.**
 ```bash
-git clone https://github.com/csdeepak/research_writing_skill.git && cd research_writing_skill
-python -m unittest discover -s tools/tests          # Python >= 3.9, standard library only
-python tools/rce.py check examples/synthetic_project --draft examples/synthetic_project/drafts/flawed.md
+curl -L -o rce.zip https://github.com/csdeepak/research_writing_skill/releases/download/skill-v0.4.0/research-communication-engine-v0.4.0.zip && unzip rce.zip -d ~/.claude/skills
 ```
 
-**Model-independent (any chat model, no API).**
-1. Your agent follows `skill/SKILL.md`.
-2. The checks run locally: `python tools/rce.py check <project> --draft <draft>`.
-3. For the blind review, bind the reviewer to `{"provider": "manual"}`. RCE writes a prompt; you paste it into any
-   model and save the reply, which is validated like an API response.
+That installs the skill for Claude Code. For claude.ai, upload the same ZIP under **Customize > Skills** with code execution turned on. Codex, Gemini CLI, Cursor and any model behind an API are covered in [INSTALL.md](docs/guides/INSTALL.md). The checks need Python 3.9 or later and nothing else.
 
-## Example
-[`examples/synthetic_project/`](examples/synthetic_project/) is a fully invented study with planted problems. Output of
-the command above (abridged):
+The release is 0.4.0. The unified workflow described below (literature search, an independent integrity check, a review panel, formatted output) is the unreleased 0.5.0 candidate on `main`: build its ZIP from a clone with `python tools/package_skill.py`.
+
+## Quickstart
+
+Point your agent at the demo project that ships with the skill:
+
+> Use the Research Communication Engine skill to write a paper from ~/.claude/skills/research-communication-engine/examples/demo_project for machine-learning researchers outside forecasting.
+
+To watch the checks catch planted problems without an agent, run them on the invented study in this repository:
+
+```bash
+git clone https://github.com/csdeepak/research_writing_skill.git && cd research_writing_skill
+python tools/rce.py check examples/synthetic_project --draft examples/synthetic_project/drafts/flawed.md
+```
 
 ```text
 == artifacts (G1): FAIL (1 error(s), 1 warning(s))
    [ERROR] evidence/E003+E004: same quantity reported as 3 (project/results/metrics.csv) and 4 (project/README.md) but not recorded as a conflict (UNRECONCILED_CONFLICT)
-== figures (V1-V6): FAIL (3 error(s))
-   ERROR V6 V001   V6_NOT_REPRODUCIBLE   re-rendering from the recorded inputs does not reproduce the file (edited by hand, or inputs changed)
-   ERROR V3 V001   V3_AXIS_ENCODING      2 mark(s) disagree with the labelled value axis
 == draft lint: FAIL (6 error(s), 4 warning(s), 0 info)
-   ERROR   BLOCKED-claim-used             C004 is BLOCKED (unresolved evidence): it cannot appear as a factual claim
-   ERROR   UNLICENSED-significance_test   'significantly' asserted for C001 without a significance_test license backed by evidence
-   ERROR   UNLICENSED-sota_comparison     'state-of-the-art' asserted for C001 without a sota_comparison license backed by evidence
-   ERROR   C5-citation-unregistered       no registered source has this first author and year
-   ERROR   C6-injection                   instruction-like text aimed at models/reviewers (INJECTION_DETECTED)
+   ERROR L5    UNLICENSED-significance_test 'significantly' asserted for C001 without a significance_test license backed by evidence
+   ERROR L12   C5-citation-unregistered     no registered source has this first author and year
+   ERROR L13   C6-injection                 instruction-like text aimed at models/reviewers (INJECTION_DETECTED)
 == number tracing: FAIL (1 error(s), 0 warning(s))
-   ERROR   UNTRACED_NUMBER  0.69   no evidence value or project-file value matches this number
+   ERROR L6    UNTRACED_NUMBER  0.69       no evidence value or project-file value matches this number
 RESULT: FAIL (see ERROR lines; each names the rule to satisfy)
 ```
 
-The clean control passes. Two planted problems are **not** caught (a missing sample size, and the direction of a
-percentage's denominator), and the example says so.
+The output is abridged. The clean control passes, and two planted problems are not caught (a missing sample size, and the direction of a percentage's denominator). The example says so.
 
-## Model-agnostic
-<p align="center"><img src="docs/assets/model-agnostic.svg" alt="The RCE core surrounded by interchangeable providers: Claude, OpenAI-compatible, Gemini, Ollama/local, any CLI, manual" width="640"></p>
+## What it checks
 
-- **Rules and checks:** the rules are plain text and the checks are standard-library Python.
-- **Roles on any model:** the blind reviewer, VERIFIER, review panel, grader and readers run on any model bound in
-  `.rcs/models.json`, or as subagents in a runtime that has them:
-  OpenAI-compatible APIs (OpenAI, OpenRouter, Ollama, vLLM, LM Studio, Groq), Anthropic, Gemini, any CLI, or manual
-  copy-paste.
-- **Local-first:** the defaults point at a local server, hosted endpoints must be explicitly allowed, and keys come
-  only from environment variables ([docs/PRIVACY.md](docs/PRIVACY.md)).
+A gate passes only on a fresh tool report, never because an agent says it passed.
+
+- **Numbers:** every number in a draft traces to an evidence item or a project file, and p-values are never inferred.
+- **Strong wording:** "significant", "state of the art", "causes" and "outperforms" each need an evidence license, configurable per research field.
+- **Citations:** each resolves to a verified source registry. With `--online`, every source is looked up in the DOI resolver, Crossref, OpenAlex, Semantic Scholar and arXiv and checked for retraction, so a fabricated or wrong-paper DOI fails the gate.
+- **Conflicts:** two files that disagree are recorded and put to you, never resolved silently.
+- **The authors' voice:** limitations and rationale the authors stated stay in the paper, attributed to them.
+- **Figures:** re-rendered from the data, with marks that must match the axes.
+- **Integrity before review (0.5.0 candidate):** an isolated VERIFIER checks seven AI-specific research failures, from an unfixed implementation bug to a story locked in before the results. Tool findings override its "clear".
+- **Review:** a blind reader, plus a five-seat panel (0.5.0 candidate) that commits to its criteria before it reads the paper. Every finding ends fixed, declined with a reason, deferred, put to the authors, or marked a false positive; none disappears.
+
+## How it works
+
+<p align="center"><img src="docs/assets/evidence-to-paper.svg" alt="Sources feed an evidence map, claim map, story and paper, with a traceability path from each paper claim back to its source file" width="760"></p>
+
+Each sentence of a draft carries claim tags such as `{C007}`. Each claim cites evidence ids such as `E012`, and each evidence item points to a file and a line, row or value. The 0.5.0 candidate runs this in eight phases, each closed by a gate:
+
+| Phase | What happens | Gate |
+|---|---|---|
+| P0 Intake | Route by the materials, record the paper config, set the oversight level | C0: you confirm the config |
+| P1 Evidence | Inspect the repository, build the evidence map, the spine and the claim graph | G1 |
+| P2 Literature | Stress-test the question, search, verify every source | GL |
+| P3 Plan | Reader model, venue profile, architecture | G2: you approve the outline |
+| P4 Draft | Write the sections, results first and the abstract last | G3 |
+| P5 Integrity | Seven failure modes and claim-to-reference alignment | GI |
+| P6 Review | Blind reader and panel, revise, re-review, at most two loops | G4 |
+| P7 Finalize | Line edit, a fresh integrity pass, references, formats, disclosure | G5 |
 
 ## Current evidence
-Every row has a source ([docs/research/EVALUATION.md](docs/research/EVALUATION.md)).
 
 | Area | Status |
 |---|---|
-| Evidence/claim traceability | Implemented (schemas + validator) |
-| Deterministic validation | Implemented; **322 automated tests passing** (`python -m unittest discover -s tools/tests`), network and models mocked |
-| Replay of known failures | 60 fixtures: 31 adversarial, 17 negative controls, 12 from real failures (`tools/replay_fixtures.py`) |
-| Documented real failure cases | 38 (`cases/failures/`), each linked to its regression test |
-| Blind review | Demonstrated in an end-to-end run with author answers and two review rounds (private project; process results only) |
-| Citation lookup against live indexes (0.5.0 candidate) | 8 planted sources judged correctly in one manual run, including a fake DOI, a wrong-paper DOI, a retracted paper and an invented title. Not in CI |
-| Integrity benchmark (0.5.0 candidate) | 5 planted defects (fabricated DOI, wrong-paper DOI, retracted source, hallucinated result, method without basis) caught, and the clean control passes; synthetic index answers |
-| Unified workflow end to end (0.5.0 candidate) | One run on the synthetic demo project, with subagent roles: every phase ran, including panel round 2, the devil's-advocate rebuttal, the COACH and the final VERIFIER pass. A formatted PDF was built, and the integrity gate stopped the paper on questions for a person. Twelve tool defects found and handled ([report](evaluation/unified_e2e/REPORT.md)) |
-| Multi-model reviewer calibration | Claude Opus 0.933, NVIDIA Nemotron 0.945, Qwen3.8-27B 0.911 sensitivity (bar ≥ 0.90), 7-paper benchmark, 1 seed |
-| Reader-comprehension improvement | **Not established.** v0.1.0 vs a plain agent: better on 2 of 6 projects. v0.3.0 vs v0.1.0: better on 1 of 3, worse on none; single runs, noise up to 0.19 |
-| Human reader study | Not run (protocol and kit ready) |
-| Validity across research domains | Not established (ML/IR/speech/vision/agents papers only) |
+| Deterministic checks | 322 tests passing, in CI on Linux and Windows with Python 3.9 and 3.12 |
+| Known failures | 38 documented cases, each tied to a regression test; 60 replay fixtures (31 adversarial, 17 negative controls, 12 from real failures) |
+| Reviewer calibration | Claude Opus 0.933, NVIDIA Nemotron 0.945, Qwen3.8-27B 0.911 sensitivity against a bar of 0.90; 7-paper benchmark, 1 seed |
+| Live citation lookup (0.5.0 candidate) | 8 planted sources judged correctly in one manual run, including a fake DOI, a wrong-paper DOI and a retracted paper. Not in CI |
+| Unified workflow (0.5.0 candidate) | One end-to-end run on the synthetic demo project: every phase ran, a formatted PDF was built, and the integrity gate stopped the paper on questions only a person can answer ([report](evaluation/unified_e2e/REPORT.md)) |
+| Reader comprehension | **Not established.** v0.1.0 against a plain agent: better on 2 of 6 projects. v0.3.0 against v0.1.0: better on 1 of 3, worse on none. Single runs |
+| Human reader study | Not run; the protocol and kit are ready |
 
-## Known limitations
-- The tools check consistency, traceability and licensed wording. They cannot check whether a model *understood* a
-  source correctly, or overreach phrased without trigger words. Those are left to the blind reviewer and to people.
-- Known deterministic gaps: missing sample sizes, the direction of a percentage change's denominator, and units in
-  prose.
-- The evaluation is small: 6 public projects, 1 private project, single runs, LLM readers.
-- Index lookups are only as good as the indexes. A work with no DOI or arXiv id that no index lists comes out
-  unresolvable, not proven fake. When every index that could answer is down, there is no verdict at all.
-- The VERIFIER and the review panel are models, and their isolation is only as strong as the runtime makes it. Panel
-  ratings are not reader comprehension.
-- The Claude app and ChatGPT installation paths depend on product features that change. Re-check
-  [INSTALL.md](docs/guides/INSTALL.md).
+Every row has a source in [EVALUATION.md](docs/research/EVALUATION.md).
 
-## Self-improvement, governed by people
-<p align="center"><img src="docs/assets/self-improvement.svg" alt="Real failure, reproduction, regression case, proposed rule, cheap tests, full evaluation, human decision, release" width="760"></p>
+## Notes
 
-Failures become permanent cases and tests. Rule changes are proposals, evaluated by pre-registered tests and **decided
-by a maintainer**. RCE never rewrites its own standards
-([docs/concepts/SELF_IMPROVEMENT.md](docs/concepts/SELF_IMPROVEMENT.md)).
-
-## Documentation
-- [Architecture](docs/architecture.md)
-- [Workflow](skill/workflow.md) and [modes](skill/modes.md) (0.5.0 candidate)
-- [Evidence integrity](docs/concepts/EVIDENCE_INTEGRITY.md)
-- [Evaluation](docs/research/EVALUATION.md)
-- [Install](docs/guides/INSTALL.md)
-- [Privacy](docs/PRIVACY.md)
-- [Security](SECURITY.md)
-- [Migration assessment](docs/OPEN_SOURCE_MIGRATION_ASSESSMENT.md)
-- Design history: `docs/01`–`06` and `evaluation/`
-
-## Contributing
-The most useful contribution is a failure report: an unsupported claim that got through, or a correct one that was
-blocked. See [CONTRIBUTING.md](CONTRIBUTING.md), [GOVERNANCE.md](GOVERNANCE.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
-and [SUPPORT.md](SUPPORT.md). Roadmap: [ROADMAP.md](ROADMAP.md).
-
-## Citation
-See [CITATION.cff](CITATION.cff) (C S Deepak, *Research Communication Engine*, v0.4.0). There is no paper or DOI yet.
+- **Not promised:** that a model never hallucinates, that RCE replaces domain experts, statistical review or peer review, or that it decides whether a hypothesis is true. Whether papers become easier to understand is still open.
+- **Known gaps:** the checks cannot tell whether a model understood a source, and they miss missing sample sizes, the direction of a percentage change's denominator, and units in prose. Index lookups are only as good as the indexes. The VERIFIER and the panel are models, and their isolation is only as strong as the runtime makes it. The evaluation is small (6 public projects, 1 private, single runs, model readers) and covers ML, IR, speech, vision and agents papers only.
+- **Any model:** the reviewer, VERIFIER, panel and readers run on any model bound in `.rcs/models.json`: OpenAI-compatible APIs, Anthropic, Gemini, a local server, any CLI, or copy-paste. Hosted endpoints must be allowed explicitly, and keys come only from environment variables ([PRIVACY.md](docs/PRIVACY.md)).
+- **Governed changes:** real failures become permanent regression cases, and rule changes are proposals a maintainer decides ([SELF_IMPROVEMENT.md](docs/concepts/SELF_IMPROVEMENT.md), [GOVERNANCE.md](GOVERNANCE.md)).
+- **Prior art:** the unified workflow's design draws on Academic Research Skills by Cheng-I Wu (CC BY-NC 4.0). It was read for design only, and no text, prompts, tables or code were copied ([SOURCES.md](docs/SOURCES.md), S32). The theoretical foundation is in `docs/01_FOUNDATION_ANALYSIS.md`.
+- **More:** [architecture](docs/architecture.md), [evidence integrity](docs/concepts/EVIDENCE_INTEGRITY.md), [security](SECURITY.md), [roadmap](ROADMAP.md). A failure report is the most useful contribution ([CONTRIBUTING.md](CONTRIBUTING.md)). To cite RCE, use [CITATION.cff](CITATION.cff).
 
 ## License
-[Apache License 2.0](LICENSE). Third-party texts used in the evaluation are not redistributed; see [NOTICE](NOTICE).
-The theoretical foundation draws on course material summarised and cited in `docs/01_FOUNDATION_ANALYSIS.md`.
-The unified workflow's design draws on Academic Research Skills by Cheng-I Wu (CC BY-NC 4.0). It was read for design
-only, and no text, prompts, tables or code were copied ([docs/SOURCES.md](docs/SOURCES.md), S32).
+
+Apache-2.0. Third-party texts used in the evaluation are not redistributed; see [NOTICE](NOTICE).
