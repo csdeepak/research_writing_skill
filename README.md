@@ -137,9 +137,9 @@ Every row has a source ([docs/research/EVALUATION.md](docs/research/EVALUATION.m
 | Area | Status |
 |---|---|
 | Evidence/claim traceability | Implemented (schemas + validator) |
-| Deterministic validation | Implemented; **321 automated tests passing** (`python -m unittest discover -s tools/tests`), network and models mocked |
+| Deterministic validation | Implemented; **322 automated tests passing** (`python -m unittest discover -s tools/tests`), network and models mocked |
 | Replay of known failures | 60 fixtures: 31 adversarial, 17 negative controls, 12 from real failures (`tools/replay_fixtures.py`) |
-| Documented real failure cases | 37 (`cases/failures/`), each linked to its regression test |
+| Documented real failure cases | 38 (`cases/failures/`), each linked to its regression test |
 | Blind review | Demonstrated in an end-to-end run with author answers and two review rounds (private project; process results only) |
 | Citation lookup against live indexes (0.5.0 candidate) | 8 planted sources judged correctly in one manual run, including a fake DOI, a wrong-paper DOI, a retracted paper and an invented title. Not in CI |
 | Integrity benchmark (0.5.0 candidate) | 5 planted defects (fabricated DOI, wrong-paper DOI, retracted source, hallucinated result, method without basis) caught, and the clean control passes; synthetic index answers |
